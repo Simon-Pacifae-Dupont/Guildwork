@@ -96,6 +96,21 @@
   .canvas-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;
     background:var(--ground-2);box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
   .canvas-frame a{display:block}
+  /* the refusal, as a terminal */
+  .term{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:#070D18;overflow:hidden;
+    box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .term-head{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--edge-2);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
+  .term-head i{width:9px;height:9px;border-radius:50%;background:#26354F;display:inline-block}
+  .term-head span{margin-left:8px}
+  .term pre{margin:0;padding:18px 20px 22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    color:var(--ink-2);overflow-x:auto;white-space:pre;tab-size:4}
+  .term .cmd{color:var(--ink)}
+  .term .cmd::before{content:"PS> ";color:var(--ink-3)}
+  .term .ref{color:var(--refuse);font-weight:600}
+  .term .cond{color:var(--amber-2)}
+  .term .dim{color:var(--ink-3)}
+  @media (max-width:720px){.term pre{font-size:11.5px;padding:14px 14px 18px}}
   .caption{font-size:13.5px;color:var(--ink-3);margin:20px 0 0;max-width:78ch}
 
   /* numbers */
@@ -241,6 +256,32 @@
 
 <hr class="rule">
 
+<section id="refusal" class="wrap">
+  <h2>What a refusal looks like</h2>
+  <p>The launcher read contract #118, fetched the governance at the commit the mission would run on, and stopped before creating anything. Three days earlier an attempt at the same lot had been refused at review; its branch survived on the remote because nobody wrote a disposition for it. <strong>Silence is debris — and the launcher saw it before a second writer existed.</strong></p>
+  <div class="term">
+    <div class="term-head"><i></i><i></i><i></i><span>mission_launcher.py 118 --dry-run · Lantern, workstation</span></div>
+    <pre><span class="cmd">C:\repos\lantern\.venv\Scripts\python.exe C:\repos\lantern\tools\mission_launcher.py 118 --dry-run</span>
+
+Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading while the device bridge reconnects
+  <span class="dim">https://github.com/lantern-workshop/lantern/issues/118</span>
+  primary checkout: C:\repos\lantern
+  governance policy: 3f9c2d1a7b8e4c05d6f1a2b3c4d5e6f708192a3b <span class="dim">(origin/develop, fetched at launch)</span>
+  run: launch — creates the branch and the worktree the contract declares
+
+<span class="ref">REFUSED — 1 refusal(s). Nothing was started.</span>
+
+  <span class="cond">condition 4: a second writer would be created</span>
+      branch 'feature/dashboard-stale-reading' already exists on origin -- a writer
+      already holds the branch this Mode 'one writer' mission declares, and creating
+      it again locally with 'git worktree add -b' would put a second, diverging line
+      on the same name; under 'one writer' that is the two-writer failure itself</pre>
+  </div>
+  <p class="caption">The whole transcript — the refusal, the disposal, the run that passed, and what <code>--list</code> showed forty minutes in — is <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/examples/lantern/launcher-dry-run.md">in the kit</a>. The doubled number in the banner is real, known, and cosmetic: the title carries its own number by convention.</p>
+</section>
+
+<hr class="rule">
+
 <section id="numbers" class="wrap">
   <h2>What it ran on</h2>
   <p>A Windows desktop application in Python with a 12 100-test suite. One human — the Product Owner — who holds the hardware, the product verdict and the merge to the release branch. Every line of code, test and governance document since early August 2026 was written by AI seats under these contracts.</p>
@@ -350,5 +391,6 @@
   </div>
 </footer>
 
+<script data-goatcounter="https://guildwork.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

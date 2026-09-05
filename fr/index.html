@@ -97,6 +97,21 @@
   .canvas-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;
     background:var(--ground-2);box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
   .canvas-frame a{display:block}
+  /* the refusal, as a terminal */
+  .term{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:#070D18;overflow:hidden;
+    box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .term-head{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--edge-2);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
+  .term-head i{width:9px;height:9px;border-radius:50%;background:#26354F;display:inline-block}
+  .term-head span{margin-left:8px}
+  .term pre{margin:0;padding:18px 20px 22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    color:var(--ink-2);overflow-x:auto;white-space:pre;tab-size:4}
+  .term .cmd{color:var(--ink)}
+  .term .cmd::before{content:"PS> ";color:var(--ink-3)}
+  .term .ref{color:var(--refuse);font-weight:600}
+  .term .cond{color:var(--amber-2)}
+  .term .dim{color:var(--ink-3)}
+  @media (max-width:720px){.term pre{font-size:11.5px;padding:14px 14px 18px}}
   .caption{font-size:13.5px;color:var(--ink-3);margin:20px 0 0;max-width:78ch}
 
   /* numbers */
@@ -247,6 +262,32 @@
 
 <hr class="rule">
 
+<section id="refusal" class="wrap">
+  <h2>À quoi ressemble un refus</h2>
+  <p>Le lanceur a lu le contrat #118, récupéré la gouvernance au commit sur lequel la mission allait tourner, et s'est arrêté avant de créer quoi que ce soit. Trois jours plus tôt, une tentative sur le même lot avait été refusée en relecture ; sa branche avait survécu sur le dépôt distant parce que personne n'en avait écrit la disposition. <strong>Le silence, c'est des débris — et le lanceur les a vus avant qu'un second scribe n'existe.</strong></p>
+  <div class="term">
+    <div class="term-head"><i></i><i></i><i></i><span>mission_launcher.py 118 --dry-run · Lantern, poste de travail</span></div>
+    <pre><span class="cmd">C:\repos\lantern\.venv\Scripts\python.exe C:\repos\lantern\tools\mission_launcher.py 118 --dry-run</span>
+
+Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading while the device bridge reconnects
+  <span class="dim">https://github.com/lantern-workshop/lantern/issues/118</span>
+  primary checkout: C:\repos\lantern
+  governance policy: 3f9c2d1a7b8e4c05d6f1a2b3c4d5e6f708192a3b <span class="dim">(origin/develop, fetched at launch)</span>
+  run: launch — creates the branch and the worktree the contract declares
+
+<span class="ref">REFUSED — 1 refusal(s). Nothing was started.</span>
+
+  <span class="cond">condition 4: a second writer would be created</span>
+      branch 'feature/dashboard-stale-reading' already exists on origin -- a writer
+      already holds the branch this Mode 'one writer' mission declares, and creating
+      it again locally with 'git worktree add -b' would put a second, diverging line
+      on the same name; under 'one writer' that is the two-writer failure itself</pre>
+  </div>
+  <p class="caption">La transcription complète — le refus, la disposition, le passage qui a réussi, et ce que <code>--list</code> montrait quarante minutes plus tard — est <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/examples/lantern/launcher-dry-run.md">dans le pack</a>. Le numéro doublé du bandeau est réel, connu et cosmétique : le titre porte son propre numéro par convention. La sortie de l'outil est en anglais, comme l'outil.</p>
+</section>
+
+<hr class="rule">
+
 <section id="numbers" class="wrap">
   <h2>Sur quoi il a tourné</h2>
   <p>Une application de bureau Windows en Python, avec une suite de 12 100 tests. Un seul humain — le Product Owner — qui détient le matériel, le verdict produit et le merge vers la branche de release. Chaque ligne de code, chaque test et chaque document de gouvernance depuis début août 2026 a été écrit par des sièges IA, sous ces contrats.</p>
@@ -357,5 +398,6 @@
   </div>
 </footer>
 
+<script data-goatcounter="https://guildwork.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

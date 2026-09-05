@@ -100,6 +100,22 @@ Read `00` for the shape, `12` for why it is shaped that way, and the
 launcher transcript in `examples/lantern/launcher-dry-run.md` for what it
 feels like to run. If those three earn a fourth, read `05`.
 
+## Ten minutes to install
+
+```
+git clone https://github.com/Simon-Pacifae-Dupont/Guildwork
+mkdir -p your-repo/.github && cp -r Guildwork/templates/github/. your-repo/.github/
+cd your-repo && sh ../Guildwork/templates/labels.sh
+```
+
+Three commands: the issue form and the pull request template land in
+`.github/` on your default branch, and the seventeen labels, the `watcher:*`
+routes and the `chantier:*` workstreams are created once, by a human (on
+Windows, run the `gh label` lines of `labels.sh` from PowerShell). Then open
+a new issue with the *AI mission* form — the first contract exists. The
+launcher that will read it is yours to write from `05`; `templates/README.md`
+says which value is Lantern's and what you still owe.
+
 ## Where it comes from
 
 A Windows desktop application in Python with a 12 100-test suite, one human

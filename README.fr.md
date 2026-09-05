@@ -109,6 +109,23 @@ Lisez `00` pour la forme, `12` pour la raison de cette forme, et la
 transcription du lanceur dans `examples/lantern/launcher-dry-run.md` pour ce
 que ça fait à l'usage. Si ces trois-là en méritent un quatrième, lisez `05`.
 
+## Dix minutes pour installer
+
+```
+git clone https://github.com/Simon-Pacifae-Dupont/Guildwork
+mkdir -p votre-depot/.github && cp -r Guildwork/templates/github/. votre-depot/.github/
+cd votre-depot && sh ../Guildwork/templates/labels.sh
+```
+
+Trois commandes : le formulaire d'issue et le gabarit de pull request
+atterrissent dans `.github/` sur votre branche par défaut, et les dix-sept
+étiquettes, les routes `watcher:*` et les chantiers `chantier:*` sont créés
+une fois, par un humain (sous Windows, lancez les lignes `gh label` de
+`labels.sh` depuis PowerShell). Ouvrez ensuite une issue avec le formulaire
+*AI mission* — le premier contrat existe. Le lanceur qui le lira est à vous
+d'écrire, depuis `05` ; `templates/README.md` dit quelle valeur est celle de
+Lantern et ce qui vous reste à écrire.
+
 ## D'où ça vient
 
 Une application de bureau Windows en Python avec une suite de 12 100 tests,
