@@ -111,7 +111,9 @@
   .tl-legend i{display:inline-block;width:14px;height:10px;border-radius:2px}
   .tl-legend i.line{height:2px;width:18px;border-radius:1px;position:relative}
   .tl-legend i.line::after{content:"";position:absolute;left:5px;top:-3px;width:8px;height:8px;border-radius:50%;background:inherit}
+  .tl-scroll{overflow-x:auto}
   svg.tl{display:block;width:100%;height:auto}
+  @media (max-width:720px){svg.tl{min-width:720px}}
   svg.tl .tk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-3)}
   svg.tl .mk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-2)}
   svg.tl .lb{font-family:"IBM Plex Mono",monospace;font-size:11.5px;fill:var(--ink);font-weight:500}
@@ -358,7 +360,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <div class="tl-wrap" data-lang="fr-FR" data-merges="merges" data-rules="entrées du registre">
     <div class="tl-head"><h3>Cinq semaines, un dépôt, un humain</h3>
       <div class="tl-legend"><span><i style="background:#C9801C"></i>pull requests fusionnées, par jour</span><span><i class="line" style="background:#3F7FD8"></i>entrées du registre de constats, par jour</span></div></div>
-    <svg class="tl" viewBox="0 0 1080 300" role="img" aria-labelledby="tl-title" preserveAspectRatio="xMidYMid meet">
+    <div class="tl-scroll"><svg class="tl" viewBox="0 0 1080 300" role="img" aria-labelledby="tl-title" preserveAspectRatio="xMidYMid meet">
 <title id="tl-title">Merges par jour et entrées du registre, 1er août – 5 septembre 2026</title>
 <line x1="44" x2="1064" y1="256.0" y2="256.0" stroke="#1D2B44" stroke-width="1"/>
 <text x="36" y="260.0" text-anchor="end" class="tk">0</text>
@@ -465,7 +467,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <rect class="hit" x="979.0" y="26" width="28.3" height="230" fill="transparent" data-i="33"/>
 <rect class="hit" x="1007.3" y="26" width="28.3" height="230" fill="transparent" data-i="34"/>
 <rect class="hit" x="1035.7" y="26" width="28.3" height="230" fill="transparent" data-i="35"/>
-</svg>
+</svg></div>
     <div class="tl-tip"></div>
     <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>—</td></tr><tr><td>02/08</td><td>20</td><td>—</td></tr><tr><td>03/08</td><td>24</td><td>—</td></tr><tr><td>04/08</td><td>17</td><td>—</td></tr><tr><td>05/08</td><td>20</td><td>—</td></tr><tr><td>06/08</td><td>13</td><td>—</td></tr><tr><td>07/08</td><td>14</td><td>—</td></tr><tr><td>08/08</td><td>8</td><td>—</td></tr><tr><td>09/08</td><td>5</td><td>—</td></tr><tr><td>10/08</td><td>2</td><td>—</td></tr><tr><td>11/08</td><td>6</td><td>—</td></tr><tr><td>12/08</td><td>1</td><td>—</td></tr><tr><td>13/08</td><td>7</td><td>—</td></tr><tr><td>14/08</td><td>2</td><td>—</td></tr><tr><td>15/08</td><td>2</td><td>—</td></tr><tr><td>16/08</td><td>6</td><td>—</td></tr><tr><td>17/08</td><td>16</td><td>—</td></tr><tr><td>18/08</td><td>4</td><td>—</td></tr><tr><td>19/08</td><td>9</td><td>—</td></tr><tr><td>20/08</td><td>12</td><td>—</td></tr><tr><td>21/08</td><td>15</td><td>—</td></tr><tr><td>22/08</td><td>7</td><td>—</td></tr><tr><td>23/08</td><td>2</td><td>—</td></tr><tr><td>24/08</td><td>4</td><td>—</td></tr><tr><td>25/08</td><td>14</td><td>—</td></tr><tr><td>26/08</td><td>14</td><td>0</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>25</td><td>6</td></tr></tbody></table></details>
   </div>
