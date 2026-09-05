@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="brand/logo-lockup-dark.png">
-    <img alt="Guildwork — governance for parallel AI coding agents" src="brand/logo-lockup-light.png" width="600">
+    <img alt="Guildwork — governance for AI agents, you keep the last word" src="brand/logo-lockup-light.png" width="600">
   </picture>
 </p>
 
