@@ -101,6 +101,43 @@
     box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
   .board-frame a{display:block}
   .board-frame img{display:block;width:100%}
+  /* the trajectory */
+  .tl-wrap{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:var(--ground-2);padding:18px 18px 12px;position:relative}
+  .tl-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;margin:0 0 6px}
+  .tl-head h3{font-size:15px;margin:0}
+  .tl-legend{display:flex;gap:18px;font-size:12.5px;color:var(--ink-2)}
+  .tl-legend span{display:inline-flex;align-items:center;gap:7px}
+  .tl-legend i{display:inline-block;width:14px;height:10px;border-radius:2px}
+  .tl-legend i.line{height:2px;width:18px;border-radius:1px;position:relative}
+  .tl-legend i.line::after{content:"";position:absolute;left:5px;top:-3px;width:8px;height:8px;border-radius:50%;background:inherit}
+  svg.tl{display:block;width:100%;height:auto}
+  svg.tl .tk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-3)}
+  svg.tl .mk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-2)}
+  svg.tl .lb{font-family:"IBM Plex Mono",monospace;font-size:11.5px;fill:var(--ink);font-weight:500}
+  svg.tl .hit{cursor:crosshair}
+  .tl-tip{position:absolute;pointer-events:none;background:#14223A;border:1px solid var(--edge);border-radius:6px;padding:8px 10px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink);white-space:nowrap;display:none;box-shadow:0 10px 24px -12px rgba(0,0,0,.8)}
+  .tl-tip b{color:var(--ink-2);font-weight:400;display:block;margin-bottom:3px}
+  .tl-table{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+  .tl-table summary{cursor:pointer}
+  .tl-table table{border-collapse:collapse;margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-2)}
+  .tl-table td,.tl-table th{padding:2px 10px 2px 0;text-align:right;font-weight:400}
+  .tl-table th{color:var(--ink-3)}
+  .readings{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:26px}
+  .readings p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+  .readings strong{color:var(--ink);font-weight:600}
+  /* the two columns */
+  .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:44px}
+  .vs > div{border:1px solid var(--edge-2);border-radius:10px;padding:26px 24px 28px;background:var(--ground-2)}
+  .vs > div.me{border-color:#6E5330}
+  .vs .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+  .vs .me .tag{color:var(--amber)}
+  .vs ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+  .vs li{font-size:14px;color:var(--ink-2);padding-left:20px;position:relative}
+  .vs li::before{position:absolute;left:0;font-size:12px}
+  .vs .repo li::before{content:"·";color:var(--ink-3);font-size:18px;line-height:1;top:-1px}
+  .vs .me li::before{content:"→";color:var(--amber)}
+  .vs li em{font-style:normal;color:var(--ink)}
   /* the refusal, as a terminal */
   .term{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:#070D18;overflow:hidden;
     box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
@@ -311,6 +348,125 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="fig"><b>~45</b><span>incidents, each of which paid for one rule</span></div>
   </div>
   <p class="sober"><strong>The sober reading, because it is the one that makes the first credible.</strong> The same period produced about forty-five incidents serious enough to earn a rule, most of them inside one week. Most seats the launcher can start are <code>unknown</code> on the hardware property the queue would most like filled. Neither command-line harness enforces read-only from its own flags, and the governance says so rather than pretending. A system that can say <em>I do not know</em> in the places it does not know is the only kind whose <em>yes</em> is worth anything.</p>
+
+  <div class="tl-wrap" data-lang="en-GB" data-merges="merges" data-rules="register entries">
+    <div class="tl-head"><h3>Five weeks, one repository, one human</h3>
+      <div class="tl-legend"><span><i style="background:#C9801C"></i>pull requests merged, per day</span><span><i class="line" style="background:#3F7FD8"></i>findings-register entries, per day</span></div></div>
+    <svg class="tl" viewBox="0 0 1080 300" role="img" aria-labelledby="tl-title" preserveAspectRatio="xMidYMid meet">
+<title id="tl-title">Merges per day and register entries, 1 August – 5 September 2026</title>
+<line x1="44" x2="1064" y1="256.0" y2="256.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="260.0" text-anchor="end" class="tk">0</text>
+<line x1="44" x2="1064" y1="198.5" y2="198.5" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="202.5" text-anchor="end" class="tk">10</text>
+<line x1="44" x2="1064" y1="141.0" y2="141.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="145.0" text-anchor="end" class="tk">20</text>
+<line x1="44" x2="1064" y1="83.5" y2="83.5" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="87.5" text-anchor="end" class="tk">30</text>
+<line x1="44" x2="1064" y1="26.0" y2="26.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="30.0" text-anchor="end" class="tk">40</text>
+<line x1="752.3" x2="752.3" y1="12" y2="256.0" stroke="#9FAAC0" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="758.3" y="22" class="mk">26 Aug — the mission form goes live</text>
+<path class="bar" d="M49.2,256.0 v-59.2 q0,-4 4,-4 h10 q4,0 4,4 v59.2 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
+<path class="bar" d="M77.5,256.0 v-111.0 q0,-4 4,-4 h10 q4,0 4,4 v111.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
+<path class="bar" d="M105.8,256.0 v-134.0 q0,-4 4,-4 h10 q4,0 4,4 v134.0 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
+<path class="bar" d="M134.2,256.0 v-93.8 q0,-4 4,-4 h10 q4,0 4,4 v93.8 z" fill="#C9801C"><title>2026-08-04: 17</title></path>
+<path class="bar" d="M162.5,256.0 v-111.0 q0,-4 4,-4 h10 q4,0 4,4 v111.0 z" fill="#C9801C"><title>2026-08-05: 20</title></path>
+<path class="bar" d="M190.8,256.0 v-70.8 q0,-4 4,-4 h10 q4,0 4,4 v70.8 z" fill="#C9801C"><title>2026-08-06: 13</title></path>
+<path class="bar" d="M219.2,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-07: 14</title></path>
+<path class="bar" d="M247.5,256.0 v-42.0 q0,-4 4,-4 h10 q4,0 4,4 v42.0 z" fill="#C9801C"><title>2026-08-08: 8</title></path>
+<path class="bar" d="M275.8,256.0 v-24.8 q0,-4 4,-4 h10 q4,0 4,4 v24.8 z" fill="#C9801C"><title>2026-08-09: 5</title></path>
+<path class="bar" d="M304.2,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-10: 2</title></path>
+<path class="bar" d="M332.5,256.0 v-30.5 q0,-4 4,-4 h10 q4,0 4,4 v30.5 z" fill="#C9801C"><title>2026-08-11: 6</title></path>
+<path class="bar" d="M360.8,256.0 v-1.8 q0,-4 4,-4 h10 q4,0 4,4 v1.8 z" fill="#C9801C"><title>2026-08-12: 1</title></path>
+<path class="bar" d="M389.2,256.0 v-36.2 q0,-4 4,-4 h10 q4,0 4,4 v36.2 z" fill="#C9801C"><title>2026-08-13: 7</title></path>
+<path class="bar" d="M417.5,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-14: 2</title></path>
+<path class="bar" d="M445.8,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-15: 2</title></path>
+<path class="bar" d="M474.2,256.0 v-30.5 q0,-4 4,-4 h10 q4,0 4,4 v30.5 z" fill="#C9801C"><title>2026-08-16: 6</title></path>
+<path class="bar" d="M502.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-17: 16</title></path>
+<path class="bar" d="M530.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-18: 4</title></path>
+<path class="bar" d="M559.2,256.0 v-47.8 q0,-4 4,-4 h10 q4,0 4,4 v47.8 z" fill="#C9801C"><title>2026-08-19: 9</title></path>
+<path class="bar" d="M587.5,256.0 v-65.0 q0,-4 4,-4 h10 q4,0 4,4 v65.0 z" fill="#C9801C"><title>2026-08-20: 12</title></path>
+<path class="bar" d="M615.8,256.0 v-82.2 q0,-4 4,-4 h10 q4,0 4,4 v82.2 z" fill="#C9801C"><title>2026-08-21: 15</title></path>
+<path class="bar" d="M644.2,256.0 v-36.2 q0,-4 4,-4 h10 q4,0 4,4 v36.2 z" fill="#C9801C"><title>2026-08-22: 7</title></path>
+<path class="bar" d="M672.5,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-23: 2</title></path>
+<path class="bar" d="M700.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-24: 4</title></path>
+<path class="bar" d="M729.2,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-25: 14</title></path>
+<path class="bar" d="M757.5,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-26: 14</title></path>
+<path class="bar" d="M785.8,256.0 v-70.8 q0,-4 4,-4 h10 q4,0 4,4 v70.8 z" fill="#C9801C"><title>2026-08-27: 13</title></path>
+<path class="bar" d="M814.2,256.0 v-191.5 q0,-4 4,-4 h10 q4,0 4,4 v191.5 z" fill="#C9801C"><title>2026-08-28: 34</title></path>
+<path class="bar" d="M842.5,256.0 v-116.8 q0,-4 4,-4 h10 q4,0 4,4 v116.8 z" fill="#C9801C"><title>2026-08-29: 21</title></path>
+<path class="bar" d="M870.8,256.0 v-174.2 q0,-4 4,-4 h10 q4,0 4,4 v174.2 z" fill="#C9801C"><title>2026-08-30: 31</title></path>
+<path class="bar" d="M899.2,256.0 v-180.0 q0,-4 4,-4 h10 q4,0 4,4 v180.0 z" fill="#C9801C"><title>2026-08-31: 32</title></path>
+<path class="bar" d="M927.5,256.0 v-105.2 q0,-4 4,-4 h10 q4,0 4,4 v105.2 z" fill="#C9801C"><title>2026-09-01: 19</title></path>
+<path class="bar" d="M955.8,256.0 v-105.2 q0,-4 4,-4 h10 q4,0 4,4 v105.2 z" fill="#C9801C"><title>2026-09-02: 19</title></path>
+<path class="bar" d="M984.2,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-09-03: 4</title></path>
+<path class="bar" d="M1012.5,256.0 v-191.5 q0,-4 4,-4 h10 q4,0 4,4 v191.5 z" fill="#C9801C"><title>2026-09-04: 34</title></path>
+<path class="bar" d="M1040.8,256.0 v-139.8 q0,-4 4,-4 h10 q4,0 4,4 v139.8 z" fill="#C9801C"><title>2026-09-05: 25</title></path>
+<path d="M766.5,256.0 L794.8,198.5 L823.2,89.2 L851.5,49.0 L879.8,250.2 L908.2,181.2 L936.5,227.2 L964.8,250.2 L993.2,227.2 L1021.5,158.2 L1049.8,221.5" fill="none" stroke="#3F7FD8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="794.8" cy="198.5" r="6" fill="#0A1322"/><circle cx="794.8" cy="198.5" r="4" fill="#3F7FD8"/>
+<circle cx="823.2" cy="89.2" r="6" fill="#0A1322"/><circle cx="823.2" cy="89.2" r="4" fill="#3F7FD8"/>
+<circle cx="851.5" cy="49.0" r="6" fill="#0A1322"/><circle cx="851.5" cy="49.0" r="4" fill="#3F7FD8"/>
+<circle cx="879.8" cy="250.2" r="6" fill="#0A1322"/><circle cx="879.8" cy="250.2" r="4" fill="#3F7FD8"/>
+<circle cx="908.2" cy="181.2" r="6" fill="#0A1322"/><circle cx="908.2" cy="181.2" r="4" fill="#3F7FD8"/>
+<circle cx="936.5" cy="227.2" r="6" fill="#0A1322"/><circle cx="936.5" cy="227.2" r="4" fill="#3F7FD8"/>
+<circle cx="964.8" cy="250.2" r="6" fill="#0A1322"/><circle cx="964.8" cy="250.2" r="4" fill="#3F7FD8"/>
+<circle cx="993.2" cy="227.2" r="6" fill="#0A1322"/><circle cx="993.2" cy="227.2" r="4" fill="#3F7FD8"/>
+<circle cx="1021.5" cy="158.2" r="6" fill="#0A1322"/><circle cx="1021.5" cy="158.2" r="4" fill="#3F7FD8"/>
+<circle cx="1049.8" cy="221.5" r="6" fill="#0A1322"/><circle cx="1049.8" cy="221.5" r="4" fill="#3F7FD8"/>
+<text x="823.2" y="52.5" text-anchor="middle" class="lb">34</text>
+<text x="1021.5" y="52.5" text-anchor="middle" class="lb">34</text>
+<text x="861.5" y="39.0" text-anchor="start" class="lb">36</text>
+<text x="58.2" y="274" text-anchor="middle" class="tk">1 Aug</text>
+<text x="256.5" y="274" text-anchor="middle" class="tk">8</text>
+<text x="454.8" y="274" text-anchor="middle" class="tk">15</text>
+<text x="653.2" y="274" text-anchor="middle" class="tk">22</text>
+<text x="766.5" y="274" text-anchor="middle" class="tk">26 Aug</text>
+<text x="936.5" y="274" text-anchor="middle" class="tk">1 Sep</text>
+<text x="1049.8" y="274" text-anchor="middle" class="tk">5</text>
+<rect class="hit" x="44.0" y="26" width="28.3" height="230" fill="transparent" data-i="0"/>
+<rect class="hit" x="72.3" y="26" width="28.3" height="230" fill="transparent" data-i="1"/>
+<rect class="hit" x="100.7" y="26" width="28.3" height="230" fill="transparent" data-i="2"/>
+<rect class="hit" x="129.0" y="26" width="28.3" height="230" fill="transparent" data-i="3"/>
+<rect class="hit" x="157.3" y="26" width="28.3" height="230" fill="transparent" data-i="4"/>
+<rect class="hit" x="185.7" y="26" width="28.3" height="230" fill="transparent" data-i="5"/>
+<rect class="hit" x="214.0" y="26" width="28.3" height="230" fill="transparent" data-i="6"/>
+<rect class="hit" x="242.3" y="26" width="28.3" height="230" fill="transparent" data-i="7"/>
+<rect class="hit" x="270.7" y="26" width="28.3" height="230" fill="transparent" data-i="8"/>
+<rect class="hit" x="299.0" y="26" width="28.3" height="230" fill="transparent" data-i="9"/>
+<rect class="hit" x="327.3" y="26" width="28.3" height="230" fill="transparent" data-i="10"/>
+<rect class="hit" x="355.7" y="26" width="28.3" height="230" fill="transparent" data-i="11"/>
+<rect class="hit" x="384.0" y="26" width="28.3" height="230" fill="transparent" data-i="12"/>
+<rect class="hit" x="412.3" y="26" width="28.3" height="230" fill="transparent" data-i="13"/>
+<rect class="hit" x="440.7" y="26" width="28.3" height="230" fill="transparent" data-i="14"/>
+<rect class="hit" x="469.0" y="26" width="28.3" height="230" fill="transparent" data-i="15"/>
+<rect class="hit" x="497.3" y="26" width="28.3" height="230" fill="transparent" data-i="16"/>
+<rect class="hit" x="525.7" y="26" width="28.3" height="230" fill="transparent" data-i="17"/>
+<rect class="hit" x="554.0" y="26" width="28.3" height="230" fill="transparent" data-i="18"/>
+<rect class="hit" x="582.3" y="26" width="28.3" height="230" fill="transparent" data-i="19"/>
+<rect class="hit" x="610.7" y="26" width="28.3" height="230" fill="transparent" data-i="20"/>
+<rect class="hit" x="639.0" y="26" width="28.3" height="230" fill="transparent" data-i="21"/>
+<rect class="hit" x="667.3" y="26" width="28.3" height="230" fill="transparent" data-i="22"/>
+<rect class="hit" x="695.7" y="26" width="28.3" height="230" fill="transparent" data-i="23"/>
+<rect class="hit" x="724.0" y="26" width="28.3" height="230" fill="transparent" data-i="24"/>
+<rect class="hit" x="752.3" y="26" width="28.3" height="230" fill="transparent" data-i="25"/>
+<rect class="hit" x="780.7" y="26" width="28.3" height="230" fill="transparent" data-i="26"/>
+<rect class="hit" x="809.0" y="26" width="28.3" height="230" fill="transparent" data-i="27"/>
+<rect class="hit" x="837.3" y="26" width="28.3" height="230" fill="transparent" data-i="28"/>
+<rect class="hit" x="865.7" y="26" width="28.3" height="230" fill="transparent" data-i="29"/>
+<rect class="hit" x="894.0" y="26" width="28.3" height="230" fill="transparent" data-i="30"/>
+<rect class="hit" x="922.3" y="26" width="28.3" height="230" fill="transparent" data-i="31"/>
+<rect class="hit" x="950.7" y="26" width="28.3" height="230" fill="transparent" data-i="32"/>
+<rect class="hit" x="979.0" y="26" width="28.3" height="230" fill="transparent" data-i="33"/>
+<rect class="hit" x="1007.3" y="26" width="28.3" height="230" fill="transparent" data-i="34"/>
+<rect class="hit" x="1035.7" y="26" width="28.3" height="230" fill="transparent" data-i="35"/>
+</svg>
+    <div class="tl-tip"></div>
+    <details class="tl-table"><summary>The data, as a table</summary><table><thead><tr><th>day</th><th>merges</th><th>entries</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>—</td></tr><tr><td>02/08</td><td>20</td><td>—</td></tr><tr><td>03/08</td><td>24</td><td>—</td></tr><tr><td>04/08</td><td>17</td><td>—</td></tr><tr><td>05/08</td><td>20</td><td>—</td></tr><tr><td>06/08</td><td>13</td><td>—</td></tr><tr><td>07/08</td><td>14</td><td>—</td></tr><tr><td>08/08</td><td>8</td><td>—</td></tr><tr><td>09/08</td><td>5</td><td>—</td></tr><tr><td>10/08</td><td>2</td><td>—</td></tr><tr><td>11/08</td><td>6</td><td>—</td></tr><tr><td>12/08</td><td>1</td><td>—</td></tr><tr><td>13/08</td><td>7</td><td>—</td></tr><tr><td>14/08</td><td>2</td><td>—</td></tr><tr><td>15/08</td><td>2</td><td>—</td></tr><tr><td>16/08</td><td>6</td><td>—</td></tr><tr><td>17/08</td><td>16</td><td>—</td></tr><tr><td>18/08</td><td>4</td><td>—</td></tr><tr><td>19/08</td><td>9</td><td>—</td></tr><tr><td>20/08</td><td>12</td><td>—</td></tr><tr><td>21/08</td><td>15</td><td>—</td></tr><tr><td>22/08</td><td>7</td><td>—</td></tr><tr><td>23/08</td><td>2</td><td>—</td></tr><tr><td>24/08</td><td>4</td><td>—</td></tr><tr><td>25/08</td><td>14</td><td>—</td></tr><tr><td>26/08</td><td>14</td><td>0</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>25</td><td>6</td></tr></tbody></table></details>
+  </div>
+  <div class="readings">
+    <p><strong>The tempo.</strong> Before the contracts, 241 merges in twenty-five days — under ten a day, with the human carrying instructions between seats. After them, 246 in eleven — twenty-two a day. The seats changed at the same time as the governance, so the doubling is not the governance's alone. What is the governance's is that one person held that tempo without becoming the merge tool.</p>
+    <p><strong>The cost of learning.</strong> Every register entry is a rule a finding paid for. In the first week of the contracts the team wrote one for every two merges; in the second, one for every three, at the same pace of merges. Before 26 August the findings were not counted at all — the first thing the system did was make them visible.</p>
+  </div>
 </section>
 
 <hr class="rule">
@@ -383,6 +539,29 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Standing%20architect%20seat">Book 30 minutes<span>→</span></a>
     </div>
   </div>
+
+  <div class="vs">
+    <div class="repo">
+      <p class="tag">The repository alone</p>
+      <ul>
+        <li>fifteen documents, the issue form, the pull request template, the label recipe, eight role profiles, the journal format</li>
+        <li>the <em>specification</em> of the launcher, the session cycle and the closeout tool — precise enough to audit, and not shipped</li>
+        <li>the incidents, anonymised, with the rule each one paid for</li>
+        <li>a fictional mission followed end to end</li>
+        <li>what it costs: the three tools — seven thousand five hundred lines on the project the kit comes from — written against your harnesses, and the incidents you will meet on the way</li>
+      </ul>
+    </div>
+    <div class="me">
+      <p class="tag">With me</p>
+      <ul>
+        <li>the three tools <em>written against your CLIs and your board</em>, by the person who wrote the originals</li>
+        <li>your seats' capability table <em>measured on your machines</em>, not copied from mine</li>
+        <li>the vocabulary adapted to your workstreams before the first contract is written</li>
+        <li>the first two weeks of missions run <em>with your engineers</em> — the judgment of which rule applies to your harness is what the incidents cannot transfer</li>
+        <li>a register that starts on day one, with someone who has ruled on a hundred and twenty-seven entries already</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 </main>
@@ -410,5 +589,12 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 </footer>
 
 <script data-goatcounter="https://guildwork.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){var D={"d":["2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05","2026-08-06","2026-08-07","2026-08-08","2026-08-09","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-15","2026-08-16","2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-22","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-29","2026-08-30","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-05"],"m":[11,20,24,17,20,13,14,8,5,2,6,1,7,2,2,6,16,4,9,12,15,7,2,4,14,14,13,34,21,31,32,19,19,4,34,25],"r":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,29,36,1,13,5,1,5,17,6]};var svgs=document.querySelectorAll('svg.tl');svgs.forEach(function(svg){var wrap=svg.closest('.tl-wrap');var tip=wrap.querySelector('.tl-tip');var L=wrap.dataset.merges,R=wrap.dataset.rules;
+svg.addEventListener('mousemove',function(e){var t=e.target;if(!t.classList.contains('hit')){tip.style.display='none';return;}var i=+t.dataset.i;var d=new Date(D.d[i]+'T00:00:00Z');
+tip.innerHTML='<b>'+d.toLocaleDateString(wrap.dataset.lang,{day:'numeric',month:'long',timeZone:'UTC'})+'</b>'+D.m[i]+' '+L+'<br>'+(i>=25?D.r[i]+' '+R:'—');
+var r=wrap.getBoundingClientRect();var x=e.clientX-r.left+14,y=e.clientY-r.top-10;tip.style.display='block';if(x+tip.offsetWidth>r.width-8)x=e.clientX-r.left-tip.offsetWidth-14;tip.style.left=x+'px';tip.style.top=y+'px';});
+svg.addEventListener('mouseleave',function(){tip.style.display='none';});});})();
+</script>
 </body>
 </html>
