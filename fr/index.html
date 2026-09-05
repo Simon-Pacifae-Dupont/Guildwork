@@ -193,7 +193,8 @@
   .offer li{font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative}
   .offer li em{font-style:normal;color:var(--ink)}
   .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:12px}
-  .offer .price{margin-top:auto;padding-top:16px;border-top:1px solid var(--edge-2);
+  /* the price block has one fixed height, so the price line sits at the same height in every card */
+  .offer .price{margin-top:auto;min-height:108px;padding-top:16px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
   .offer .price small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:4px}
   .offer{position:relative}
@@ -237,6 +238,7 @@
       <a href="#numbers">Les chiffres</a>
       <a href="#kit">Le pack</a>
       <a href="#work">Travailler ensemble</a>
+      <a href="entreprises/">Sans code</a>
     </nav>
     <div class="bar-end">
       <div class="lang">
@@ -532,7 +534,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
         <li>la table des capacités, mesurée sur vos machines</li>
         <li>deux semaines de missions réelles menées <em>avec</em> vos ingénieurs — la formation, c'est le travail lui-même, pas un support de cours</li>
       </ul>
-      <p class="price">12 000 € · prix ferme<small>À distance, ou sur site en Île-de-France.</small></p>
+      <p class="price">12 000 € · prix ferme<small>Pour un dépôt et jusqu'à quatre sièges ; au-delà, l'audit chiffre. À distance, ou sur site en Île-de-France.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Gouvernance%20install%C3%A9e">Réserver 30 minutes<span>→</span></a>
     </div>
     <div class="offer">
@@ -544,7 +546,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
         <li>contrats et routage tenus à jour quand les sièges changent</li>
         <li>une lecture écrite, chaque mois, de ce que disent les chiffres</li>
       </ul>
-      <p class="price">3 500 € / mois<small>Trois mois minimum, puis au mois.</small></p>
+      <p class="price">3 500 € / mois<small>Trois mois minimum, puis au mois. Journée supplémentaire : 1 200 €.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Si%C3%A8ge%20d%27architecte%20permanent">Réserver 30 minutes<span>→</span></a>
     </div>
   </div>

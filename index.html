@@ -192,7 +192,8 @@
   .offer li{font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative}
   .offer li em{font-style:normal;color:var(--ink)}
   .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:12px}
-  .offer .price{margin-top:auto;padding-top:16px;border-top:1px solid var(--edge-2);
+  /* the price block has one fixed height, so the price line sits at the same height in every card */
+  .offer .price{margin-top:auto;min-height:108px;padding-top:16px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
   .offer .price small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:4px}
   .offer{position:relative}
@@ -231,6 +232,7 @@
       <a href="#numbers">The numbers</a>
       <a href="#kit">The kit</a>
       <a href="#work">Working together</a>
+      <a href="companies/">Without code</a>
     </nav>
     <div class="bar-end">
       <div class="lang">
@@ -525,7 +527,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
         <li>the capability table, measured on your machines</li>
         <li>two weeks of real missions run <em>with</em> your engineers — the training is the work itself, not a slide deck</li>
       </ul>
-      <p class="price">€12 000 · fixed price<small>Remote, or on site in Île-de-France.</small></p>
+      <p class="price">€12 000 · fixed price<small>For one repository and up to four seats; beyond that, the audit sets the figure. Remote, or on site in Île-de-France.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Governance%20installed">Book 30 minutes<span>→</span></a>
     </div>
     <div class="offer">
@@ -537,7 +539,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
         <li>contracts and routing kept current as seats change</li>
         <li>a monthly written reading of what the numbers say</li>
       </ul>
-      <p class="price">€3 500 / month<small>Three months minimum, then monthly.</small></p>
+      <p class="price">€3 500 / month<small>Three months minimum, then monthly. Extra day: €1 200.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Standing%20architect%20seat">Book 30 minutes<span>→</span></a>
     </div>
   </div>

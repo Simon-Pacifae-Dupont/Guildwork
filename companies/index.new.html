@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your AI agents are already at work — Simon Dupont</title>
+<meta name="description" content="For companies that do not write code: three questions, six situations, and what a discipline of contracts, gates and a register does for the AI agents your teams already use.">
+<meta property="og:title" content="Your AI agents are already at work. Nobody keeps the register.">
+<meta property="og:description" content="Three questions to ask before saying you do not need a system — and six situations you will recognise.">
+<meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
+<meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/companies/">
+<meta property="og:locale" content="en_GB">
+<link rel="alternate" hreflang="fr" href="https://simon-pacifae-dupont.github.io/Guildwork/fr/entreprises/">
+<link rel="alternate" hreflang="en" href="https://simon-pacifae-dupont.github.io/Guildwork/companies/">
+<link rel="icon" href="../brand/favicon-64.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#0B1526; --ground-2:#0A1322; --node:#14223A; --edge:#2B3B57; --edge-2:#1D2B44;
+    --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
+    --amber:#E9A23B; --amber-2:#F5C46B; --control:#7FA6D6; --refuse:#D0644A; --ok:#6FB07B;
+    --measure:66ch;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:var(--amber-2);text-decoration-color:rgba(245,196,107,.35);text-underline-offset:3px}
+  a:hover{text-decoration-color:var(--amber-2)}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:3px}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .rule{border:0;border-top:1px solid var(--edge-2);margin:0}
+
+  /* ---- masthead ---- */
+  header{position:sticky;top:0;z-index:10;background:rgba(11,21,38,.86);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--edge-2)}
+  .bar{display:flex;align-items:center;gap:20px;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-right:auto}
+  .brand svg{width:28px;height:28px;flex:none}
+  .brand b{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
+    font-weight:600;font-size:20px;letter-spacing:-.02em}
+  nav{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+  nav a{color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink)}
+  @media (max-width:720px){nav{display:none}}
+  .bar-end{display:flex;align-items:center;gap:11px;flex:none}
+  .lang{display:flex;border:1px solid var(--edge);border-radius:7px;overflow:hidden;
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em}
+  .lang a{padding:8px 10px;line-height:1;color:var(--ink-3);text-decoration:none}
+  .lang a+a{border-left:1px solid var(--edge)}
+  .lang a:hover{color:var(--ink);background:var(--node)}
+  .lang a[aria-current]{background:var(--node);color:var(--ink)}
+
+  /* ---- hero ---- */
+  .wrap.hero{padding-block:104px 80px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-3);margin:0 0 16px}
+  h1{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 144,"SOFT" 40;
+    font-weight:600;font-size:clamp(34px,5.6vw,60px);line-height:1.03;letter-spacing:-.022em;
+    margin:0 0 22px;max-width:19ch;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--amber)}
+  .lede{font-size:19px;color:var(--ink-2);max-width:var(--measure);margin:0 0 14px}
+  .lede strong{color:var(--ink);font-weight:500}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:7px;
+    font-size:14.5px;font-weight:600;text-decoration:none;border:1px solid transparent}
+  .btn.primary{background:var(--amber);color:#1B1206}
+  .btn.primary:hover{background:var(--amber-2)}
+  .btn.ghost{border-color:var(--edge);color:var(--ink)}
+  .btn.ghost:hover{border-color:#4E5F80;background:var(--node)}
+  .note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);margin:22px 0 0}
+
+  /* ---- sections ---- */
+  section.wrap{padding-block:96px}
+  section[id],.contact{scroll-margin-top:80px}
+  h2{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
+    font-weight:600;font-size:clamp(25px,3.4vw,34px);line-height:1.12;letter-spacing:-.017em;
+    margin:0 0 22px;max-width:26ch;text-wrap:balance}
+  h3{font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-.005em}
+  p{max-width:var(--measure)}
+
+  /* four failures */
+  .failures{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
+    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));margin-top:44px}
+  .failure{background:var(--ground-2);padding:28px 24px 30px}
+  .failure .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--refuse);
+    letter-spacing:.1em;margin:0 0 10px}
+  .failure p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+
+  /* canvas */
+  .canvas-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;
+    background:var(--ground-2);box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .canvas-frame a{display:block}
+  /* the board */
+  .board-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;background:#F4F3F0;
+    box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .board-frame a{display:block}
+  .board-frame img{display:block;width:100%}
+  /* the trajectory */
+  .tl-wrap{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:var(--ground-2);padding:18px 18px 12px;position:relative}
+  .tl-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;margin:0 0 6px}
+  .tl-head h3{font-size:15px;margin:0}
+  .tl-legend{display:flex;gap:18px;font-size:12.5px;color:var(--ink-2)}
+  .tl-legend span{display:inline-flex;align-items:center;gap:7px}
+  .tl-legend i{display:inline-block;width:14px;height:10px;border-radius:2px}
+  .tl-legend i.line{height:2px;width:18px;border-radius:1px;position:relative}
+  .tl-legend i.line::after{content:"";position:absolute;left:5px;top:-3px;width:8px;height:8px;border-radius:50%;background:inherit}
+  .tl-scroll{overflow-x:auto}
+  svg.tl{display:block;width:100%;height:auto}
+  @media (max-width:720px){svg.tl{min-width:720px}}
+  svg.tl .tk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-3)}
+  svg.tl .mk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-2)}
+  svg.tl .lb{font-family:"IBM Plex Mono",monospace;font-size:11.5px;fill:var(--ink);font-weight:500}
+  svg.tl .hit{cursor:crosshair}
+  .tl-tip{position:absolute;pointer-events:none;background:#14223A;border:1px solid var(--edge);border-radius:6px;padding:8px 10px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink);white-space:nowrap;display:none;box-shadow:0 10px 24px -12px rgba(0,0,0,.8)}
+  .tl-tip b{color:var(--ink-2);font-weight:400;display:block;margin-bottom:3px}
+  .tl-table{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+  .tl-table summary{cursor:pointer}
+  .tl-table table{border-collapse:collapse;margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-2)}
+  .tl-table td,.tl-table th{padding:2px 10px 2px 0;text-align:right;font-weight:400}
+  .tl-table th{color:var(--ink-3)}
+  .readings{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:26px}
+  .readings p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+  .readings strong{color:var(--ink);font-weight:600}
+  /* the two columns */
+  .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:44px}
+  .vs > div{border:1px solid var(--edge-2);border-radius:10px;padding:26px 24px 28px;background:var(--ground-2)}
+  .vs > div.me{border-color:#6E5330}
+  .vs .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+  .vs .me .tag{color:var(--amber)}
+  .vs ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+  .vs li{font-size:14px;color:var(--ink-2);padding-left:20px;position:relative}
+  .vs li::before{position:absolute;left:0;font-size:12px}
+  .vs .repo li::before{content:"·";color:var(--ink-3);font-size:18px;line-height:1;top:-1px}
+  .vs .me li::before{content:"→";color:var(--amber)}
+  .vs li em{font-style:normal;color:var(--ink)}
+  /* the refusal, as a terminal */
+  .term{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:#070D18;overflow:hidden;
+    box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .term-head{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--edge-2);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
+  .term-head i{width:9px;height:9px;border-radius:50%;background:#26354F;display:inline-block}
+  .term-head span{margin-left:8px}
+  .term pre{margin:0;padding:18px 20px 22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    color:var(--ink-2);overflow-x:auto;white-space:pre;tab-size:4}
+  .term .cmd{color:var(--ink)}
+  .term .cmd::before{content:"PS> ";color:var(--ink-3)}
+  .term .ref{color:var(--refuse);font-weight:600}
+  .term .cond{color:var(--amber-2)}
+  .term .dim{color:var(--ink-3)}
+  @media (max-width:720px){.term pre{font-size:11.5px;padding:14px 14px 18px}}
+  .caption{font-size:13.5px;color:var(--ink-3);margin:20px 0 0;max-width:78ch}
+
+  /* numbers */
+  .figs{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
+    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:44px}
+  .fig{background:var(--ground-2);padding:28px 22px 30px}
+  .fig b{display:block;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
+    font-weight:600;font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums}
+  .fig span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:9px}
+  .sober{margin-top:36px;padding-left:18px;border-left:2px solid var(--edge);color:var(--ink-2);
+    font-size:14.5px;max-width:78ch}
+  .sober strong{color:var(--ink);font-weight:600}
+
+  /* documents */
+  .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:2px;margin-top:44px;
+    background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden}
+  .doc{background:var(--ground-2);padding:18px 18px;text-decoration:none;color:inherit;display:block}
+  .doc:hover{background:var(--node)}
+  .doc code{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);display:block;margin-bottom:5px}
+  .doc span{font-size:14px;color:var(--ink)}
+
+  /* engagements */
+  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:44px}
+  .offer{border:1px solid var(--edge-2);border-radius:10px;padding:30px 26px 32px;background:var(--ground-2);
+    display:flex;flex-direction:column}
+  .offer.lead{border-color:#6E5330;background:linear-gradient(168deg,#17202E,#0A1322)}
+  .offer .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+  .offer.lead .tag{color:var(--amber)}
+  .offer h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
+    font-weight:600;font-size:21px;letter-spacing:-.015em;margin:0 0 10px}
+  .offer p{font-size:14.5px;color:var(--ink-2);margin:0 0 16px;max-width:none}
+  .offer ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
+  .offer li{font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative}
+  .offer li em{font-style:normal;color:var(--ink)}
+  .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:12px}
+  /* the price block has one fixed height, so the price line sits at the same height in every card */
+  .offer .price{margin-top:auto;min-height:108px;padding-top:16px;border-top:1px solid var(--edge-2);
+    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
+  .offer .price small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:4px}
+  .offer{position:relative}
+  .offer .go{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14px;font-weight:600;
+    color:var(--amber-2);text-decoration:none}
+  .offer .go::after{content:"";position:absolute;inset:0;border-radius:10px}
+  .offer .go span{transition:transform .16s}
+  .offer:hover{border-color:#4E5F80}
+  .offer.lead:hover{border-color:var(--amber)}
+  .offer:hover .go span{transform:translateX(3px)}
+  .offer:focus-within{outline:2px solid var(--amber);outline-offset:3px}
+  .offer .go:focus-visible{outline:none}
+
+  /* contact */
+  .contact{background:var(--ground-2);border-top:1px solid var(--edge-2);padding-block:96px}
+  .who{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:34px}
+  .who p{font-size:15px;color:var(--ink-2);flex:1 1 340px;margin:0}
+  .lines{font-family:"IBM Plex Mono",monospace;font-size:13.5px;display:flex;flex-direction:column;gap:9px}
+  .lines a{color:var(--ink)}
+
+  footer{border-top:1px solid var(--edge-2);padding-block:34px 56px;font-size:12.5px;color:var(--ink-3)}
+  footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+</style>
+
+<style>
+  /* the companies page */
+  .qs{display:grid;gap:14px;margin-top:44px;counter-reset:q}
+  .q{border:1px solid var(--edge-2);border-radius:10px;background:var(--ground-2);padding:24px 26px 26px;display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start}
+  .q::before{counter-increment:q;content:counter(q);font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:40px;line-height:1;color:var(--amber);margin-top:-4px}
+  .q p{margin:0;max-width:none}
+  .q .ask{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 48,"SOFT" 40;font-weight:600;font-size:21px;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+  .q .why{font-size:14.5px;color:var(--ink-2);margin-top:10px}
+  .punch{margin-top:26px;padding-left:18px;border-left:2px solid var(--amber);font-size:16.5px;color:var(--ink);max-width:70ch}
+  .punch strong{font-weight:600}
+  .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:44px}
+  .scene{background:var(--ground-2);padding:28px 24px 30px}
+  .scene .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
+  .scene h3{font-size:17px;margin:0 0 10px;letter-spacing:-.005em}
+  .scene p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+  .scene .rule{border:0;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--edge-2);font-size:14px;color:var(--ink)}
+  .scene .rule::before{content:"→ ";color:var(--amber)}
+  .feat{margin-top:44px;border:1px solid #6E5330;border-radius:10px;background:linear-gradient(168deg,#17202E,#0A1322);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+  @media (max-width:820px){.feat{grid-template-columns:1fr}}
+  .feat .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
+  .feat h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:0 0 14px}
+  .feat p{font-size:15.5px;color:var(--ink-2);margin:0;max-width:none}
+  .feat p+p{margin-top:12px}
+  .feat .side{border-left:1px solid var(--edge-2);padding-left:28px}
+  @media (max-width:820px){.feat .side{border-left:0;padding-left:0;border-top:1px solid var(--edge-2);padding-top:20px}}
+  .feat .side h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px;font-weight:500}
+  .feat .side p{font-size:14.5px}
+  .feat .side p strong{color:var(--ink);font-weight:600}
+  .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid #6E5330;color:var(--ink);font-size:15px}
+  .proof{margin-top:44px;border:1px solid #6E5330;border-radius:10px;background:linear-gradient(168deg,#17202E,#0A1322);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+  @media (max-width:720px){.proof{grid-template-columns:1fr}}
+  .proof p{margin:0;max-width:none;font-size:15.5px;color:var(--ink-2)}
+  .proof strong{color:var(--ink);font-weight:600}
+  .proof .fig{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:44px;line-height:1;color:var(--amber);letter-spacing:-.02em;white-space:nowrap}
+  .proof .fig small{display:block;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12.5px;color:var(--ink-3);font-weight:400;letter-spacing:0;margin-top:6px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="../">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56" fill="none" stroke="#F3EDE2" stroke-width="12" stroke-linejoin="round"/><rect x="52" y="44" width="39" height="12" fill="#E9A23B"/></svg>
+      <b>Guildwork</b>
+    </a>
+    <nav>
+      <a href="#questions">Three questions</a>
+      <a href="#situations">Six situations</a>
+      <a href="#offres">What it gives you</a>
+      <a href="../">For teams that write code</a>
+    </nav>
+    <div class="bar-end">
+      <div class="lang">
+        <a href="./" hreflang="en" lang="en" aria-current="page">EN</a>
+        <a href="../fr/entreprises/" hreflang="fr" lang="fr">FR</a>
+      </div>
+      <a class="btn ghost" href="https://cal.com/simon-pacifae-dupont/30min?notes=Company%20without%20code" style="padding:8px 15px;font-size:13px">30 minutes</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="wrap hero">
+  <p class="eyebrow">For companies that do not write code</p>
+  <h1>Your AI agents are already at work. <em>Nobody keeps the register.</em></h1>
+  <p class="lede"><strong>Five employees with ChatGPT open are five agents</strong> — with no contract, no witness and no record. The question is no longer whether to use agents. It is whether, tomorrow, you can say what they did for you — and whether you can tell them no.</p>
+  <p class="lede">I make several AI agents hold together on work that matters, with a human keeping the final say. The same discipline runs a seven-agent team on real software; it holds a law firm, an agency or a support desk just as well.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min?notes=Company%20without%20code">Book 30 minutes</a>
+    <a class="btn ghost" href="#questions">The three questions</a>
+  </div>
+  <p class="note">No agent to buy · nothing to install before understanding what you already have</p>
+</div>
+
+<hr class="rule">
+
+<section id="questions" class="wrap">
+  <h2>Three questions before saying you do not need this</h2>
+  <p>I am not trying to convince you. These three questions are enough, and you already know the answers.</p>
+  <div class="qs">
+    <div class="q"><div><p class="ask">Who, in your company, had an AI do something this week — and where is it written down?</p><p class="why">A quote, a customer reply, a meeting summary, a contract clause. If the answer is "in their ChatGPT history", it is written at the vendor's, not at yours.</p></div></div>
+    <div class="q"><div><p class="ask">If that person left tomorrow, what would remain of the way they do it?</p><p class="why">The employee who "knows how to handle" the AI has a method. It lives in their head and in their prompts. It leaves with them, like the Excel macros of old.</p></div></div>
+    <div class="q"><div><p class="ask">The last time an AI got something wrong at your company, how did you find out?</p><p class="why">From a customer. By chance. Three weeks later. Or — the most frequent answer, and the most honest — you did not.</p></div></div>
+  </div>
+  <p class="punch"><strong>If the answer to the third is "we did not", you already have the incident.</strong> What you are missing is the register — the place where every error becomes a rule instead of happening again.</p>
+</section>
+
+<hr class="rule">
+
+<section id="situations" class="wrap">
+  <h2>Six situations you will recognise</h2>
+  <p>None is invented in its mechanism: these are the four failures every team that puts several agents to work produces, carried outside code. Under each, the rule that prevents it. The first is as far from code as one can get.</p>
+  <div class="feat">
+    <div>
+      <p class="n">The restaurant</p>
+      <h3>Tonight's menu was written by an AI. So was the allergen line.</h3>
+      <p>Every week the sous-chef has an assistant write the evening menu from last week's — it is fast, it is clean, and the allergen line comes with it. This week the tiramisu changed: the new recipe has walnuts. The allergen line did not move, because the assistant read the old recipe card. Nobody re-read it; it is "the same menu as usual". The allergic customer is in the dining room on a Tuesday.</p>
+      <p>This is not an AI error. It is a source that changed without anything saying so, a menu printed without a human who did not write it reading it, and a previous time — there is always one — when the menu was already wrong and nobody wrote it down. The mechanism is exactly the one that breaks a team of developers. It does not need a line of code to exist.</p>
+    </div>
+    <div class="side">
+      <h4>What was missing, in three words</h4>
+      <p><strong>The source, named.</strong> Which recipe card was used — this week's or last week's — written on the menu itself, before printing.</p>
+      <p><strong>The gate.</strong> Nothing goes to the dining room until someone who did not write it has read the allergen line, and signed it.</p>
+      <p><strong>The register.</strong> The previous time, written down in one line, would have become the rule that prevents this one.</p>
+      <div class="rulebox">The rule fits in one sentence, and an owner understands it without being told what an agent is: <em>nothing goes to the dining room unless the card that was used is named, and a human who did not write it has read it.</em></div>
+    </div>
+  </div>
+  <div class="scenes">
+    <div class="scene"><p class="n">The firm</p><h3>Two contradictory answers to the same client</h3><p>Two associates, two AI assistants, two prompts. The client receives one position on Monday and its opposite on Tuesday, and nobody can say which one was reviewed.</p><p class="rule">One task, one written contract; nothing leaves without a reviewer who did not write it.</p></div>
+    <div class="scene"><p class="n">The agency</p><h3>An invented claim, published under the client's name</h3><p>A plausible figure, a source that does not exist, a post that has been live for four days. Nobody knows what the agent was asked, or by whom.</p><p class="rule">A gate before publication; what was used to produce it is named, and kept.</p></div>
+    <div class="scene"><p class="n">The support desk</p><h3>A refund promised outside policy</h3><p>The agent answering tickets promised a goodwill gesture nobody had authorised. Found three weeks later, by accounting.</p><p class="rule">The agent knows what it may commit to, refuses the rest — and says that it refuses.</p></div>
+    <div class="scene"><p class="n">The engineering office</p><h3>A quote computed on last year's price list</h3><p>The agent read the right template and the wrong price file. The quote went out, signed. The substitution was silent: nothing said which list had been used.</p><p class="rule">Every output names its sources; a change of source is an event, not a detail.</p></div>
+    <div class="scene"><p class="n">Management</p><h3>The method went on leave</h3><p>The assistant who has the board minutes produced "her way" is away for three weeks. Nobody knows how to reproduce what she got.</p><p class="rule">Every session leaves a record the next one can read; the method belongs to the company.</p></div>
+    <div class="scene"><p class="n">You, tonight</p><h3>The human who carries the messages</h3><p>You paste the output of one tool into another, all day, so that your agents "work together". You have become the message bus of your own assistants.</p><p class="rule">Agents hand work over through a board, not through you; you decide, you no longer carry.</p></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="offres" class="wrap">
+  <h2>What it gives you</h2>
+  <p>Nothing to buy, nothing to install before understanding what you already have. We start by looking, and the document stays with you whatever happens next.</p>
+  <div class="offers">
+    <div class="offer lead">
+      <p class="tag">Start here</p>
+      <h3>Scoping day</h3>
+      <p>One day on your premises. I look at who has which AI do what, and I write down what deserves a contract, what deserves a gate, and what should stay in human hands.</p>
+      <ul>
+        <li>the map of your real uses, including the ones nobody declared</li>
+        <li>for each process: entrust, frame, or keep — and why</li>
+        <li>the first contract written, on the process that costs the most</li>
+        <li>a document your team keeps, whatever happens next</li>
+      </ul>
+      <p class="price">€1 200 excl. VAT · fixed price<small>Deducted from the next step if you go on.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Scoping%20day">Book 30 minutes<span>→</span></a>
+    </div>
+    <div class="offer">
+      <p class="tag">The install</p>
+      <h3>First agent under contract</h3>
+      <p>One week. One process, one agent, its contract, its gate and its register — set up with the team that will run it, not in their place.</p>
+      <ul>
+        <li>the contract: what the agent may do, what it must refuse, what it must name</li>
+        <li>the gate: who reviews, and what never leaves without review</li>
+        <li>the register: every error becomes a rule, written, the same day</li>
+        <li>five days of real cases run <em>with</em> your staff — the training is the work itself</li>
+      </ul>
+      <p class="price">€4 500 excl. VAT · fixed price<small>For one process and one team; the second is priced at the scoping day. On site in Île-de-France, or remote.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=First%20agent%20under%20contract">Book 30 minutes<span>→</span></a>
+    </div>
+    <div class="offer">
+      <p class="tag">After</p>
+      <h3>One day a month</h3>
+      <p>The register gets ruled on, the contracts follow your incidents, and the second process is added once the first holds.</p>
+      <ul>
+        <li>the register reviewed, every new rule written with you</li>
+        <li>contracts adjusted when tools or people change</li>
+        <li>a written reading, every month, of what the agents did — and refused</li>
+      </ul>
+      <p class="price">€1 200 excl. VAT / month<small>Three months minimum, then monthly. Extra day: €1 200 excl. VAT.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=One%20day%20a%20month">Book 30 minutes<span>→</span></a>
+    </div>
+  </div>
+  <div class="proof">
+    <p><strong>Where the discipline comes from.</strong> It was built, incident by incident, to hold a seven-agent AI team on real software with a single human in charge — twenty-two deliveries merged a day, every error turned into a rule, all of it public and measured. It is <a href="../">Guildwork</a>. At your company there will be no repository and no code; there will be the same contracts, the same gates, the same register.</p>
+    <p class="fig">127<small>rules written in five weeks, each paid for by a real error</small></p>
+  </div>
+</section>
+
+</main>
+
+<div class="contact">
+  <div class="wrap">
+    <h2>If your teams already put AIs to work</h2>
+    <div class="who">
+      <p>I am Simon Dupont. The fastest thing you can do is take thirty minutes and describe what your staff have AIs do today — I will tell you which of the three questions is already costing you something.</p>
+      <div class="lines">
+        <a href="https://cal.com/simon-pacifae-dupont/30min?notes=Company%20without%20code">cal.com/simon-pacifae-dupont/30min</a>
+        <a href="mailto:simon.pacifae.dupont@gmail.com">simon.pacifae.dupont@gmail.com</a>
+        <a href="https://www.linkedin.com/in/simon-pacifae-dupont/">linkedin.com/in/simon-pacifae-dupont</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>The situations are mechanisms, not clients: none is drawn from a real engagement.</span>
+    <span>© 2026 Simon Dupont</span>
+  </div>
+</footer>
+<script data-goatcounter="https://guildwork.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
