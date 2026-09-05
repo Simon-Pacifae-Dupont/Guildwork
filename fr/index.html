@@ -137,6 +137,16 @@
   .offer .price{margin-top:auto;padding-top:16px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
   .offer .price small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:4px}
+  .offer{position:relative}
+  .offer .go{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14px;font-weight:600;
+    color:var(--amber-2);text-decoration:none}
+  .offer .go::after{content:"";position:absolute;inset:0;border-radius:10px}
+  .offer .go span{transition:transform .16s}
+  .offer:hover{border-color:#4E5F80}
+  .offer.lead:hover{border-color:var(--amber)}
+  .offer:hover .go span{transform:translateX(3px)}
+  .offer:focus-within{outline:2px solid var(--amber);outline-offset:3px}
+  .offer .go:focus-visible{outline:none}
 
   /* contact */
   .contact{background:var(--ground-2);border-top:1px solid var(--edge-2);padding-block:96px}
@@ -293,6 +303,7 @@
         <li>un rapport écrit que votre équipe garde, quelle que soit la suite</li>
       </ul>
       <p class="price">2 500 € · prix ferme<small>Déduit de l'installation si vous continuez.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Audit%20de%20gouvernance">Réserver 30 minutes<span>→</span></a>
     </div>
     <div class="offer">
       <p class="tag">L'installation</p>
@@ -305,6 +316,7 @@
         <li>deux semaines de missions réelles menées <em>avec</em> vos ingénieurs — la formation, c'est le travail lui-même, pas un support de cours</li>
       </ul>
       <p class="price">12 000 € · prix ferme<small>À distance, ou sur site en Île-de-France.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Gouvernance%20install%C3%A9e">Réserver 30 minutes<span>→</span></a>
     </div>
     <div class="offer">
       <p class="tag">Ensuite</p>
@@ -316,6 +328,7 @@
         <li>une lecture écrite, chaque mois, de ce que disent les chiffres</li>
       </ul>
       <p class="price">3 500 € / mois<small>Trois mois minimum, puis au mois.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Si%C3%A8ge%20d%27architecte%20permanent">Réserver 30 minutes<span>→</span></a>
     </div>
   </div>
 </section>
