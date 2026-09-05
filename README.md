@@ -110,9 +110,10 @@ and it is the work the author does.
 
 ## Contact
 
-Simon — [@PacifaeTV](https://github.com/PacifaeTV) on GitHub —
-simon92190@gmail.com. If you run, or intend to run, more than one AI coding
-agent on a codebase that matters, write.
+Simon Dupont — [GitHub](https://github.com/simon-pacifae-dupont) ·
+[LinkedIn](https://www.linkedin.com/in/simon-pacifae-dupont/) ·
+simon.pacifae.dupont@gmail.com. If you run, or intend to run, more than one
+AI coding agent on a codebase that matters, write.
 
 ## License
 
