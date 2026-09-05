@@ -191,7 +191,8 @@
   .offer li{font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative}
   .offer li em{font-style:normal;color:var(--ink)}
   .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:12px}
-  .offer .price{margin-top:auto;padding-top:16px;border-top:1px solid var(--edge-2);
+  /* the price block has one fixed height, so the price line sits at the same height in every card */
+  .offer .price{margin-top:auto;min-height:108px;padding-top:16px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
   .offer .price small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:4px}
   .offer{position:relative}
@@ -363,7 +364,7 @@
         <li>the register: every error becomes a rule, written, the same day</li>
         <li>five days of real cases run <em>with</em> your staff — the training is the work itself</li>
       </ul>
-      <p class="price">€4 500 excl. VAT · fixed price<small>On site in Île-de-France, or remote.</small></p>
+      <p class="price">€4 500 excl. VAT · fixed price<small>For one process and one team; the second is priced at the scoping day. On site in Île-de-France, or remote.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=First%20agent%20under%20contract">Book 30 minutes<span>→</span></a>
     </div>
     <div class="offer">
@@ -375,7 +376,7 @@
         <li>contracts adjusted when tools or people change</li>
         <li>a written reading, every month, of what the agents did — and refused</li>
       </ul>
-      <p class="price">€1 200 excl. VAT / month<small>Three months minimum, then monthly.</small></p>
+      <p class="price">€1 200 excl. VAT / month<small>Three months minimum, then monthly. Extra day: €1 200 excl. VAT.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=One%20day%20a%20month">Book 30 minutes<span>→</span></a>
     </div>
   </div>

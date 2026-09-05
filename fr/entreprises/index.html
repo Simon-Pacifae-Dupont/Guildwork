@@ -191,7 +191,8 @@
   .offer li{font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative}
   .offer li em{font-style:normal;color:var(--ink)}
   .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:12px}
-  .offer .price{margin-top:auto;padding-top:16px;border-top:1px solid var(--edge-2);
+  /* the price block has one fixed height, so the price line sits at the same height in every card */
+  .offer .price{margin-top:auto;min-height:108px;padding-top:16px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
   .offer .price small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:4px}
   .offer{position:relative}
@@ -363,7 +364,7 @@
         <li>le registre : chaque erreur devient une règle, écrite, le jour même</li>
         <li>cinq jours de vrais dossiers menés <em>avec</em> vos collaborateurs — la formation, c'est le travail lui-même</li>
       </ul>
-      <p class="price">4 500 € HT · prix ferme<small>Sur site en Île-de-France, ou à distance.</small></p>
+      <p class="price">4 500 € HT · prix ferme<small>Pour un processus et une équipe ; le second se chiffre à la journée de cadrage. Sur site en Île-de-France, ou à distance.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Premier%20agent%20sous%20contrat">Réserver 30 minutes<span>→</span></a>
     </div>
     <div class="offer">
@@ -375,7 +376,7 @@
         <li>les contrats ajustés quand les outils ou les personnes changent</li>
         <li>une lecture écrite, chaque mois, de ce que les agents ont fait — et refusé</li>
       </ul>
-      <p class="price">1 200 € HT / mois<small>Trois mois minimum, puis au mois.</small></p>
+      <p class="price">1 200 € HT / mois<small>Trois mois minimum, puis au mois. Journée supplémentaire : 1 200 € HT.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Une%20journ%C3%A9e%20par%20mois">Réserver 30 minutes<span>→</span></a>
     </div>
   </div>
