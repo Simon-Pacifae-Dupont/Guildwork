@@ -1,0 +1,86 @@
+# The repository declares what is regenerable. The tool never guesses.
+#
+# `tools/mission_closeout.py` refuses to remove a worktree that holds ignored
+# files, because `.gitignore` records what is not committed and says nothing
+# about what may be destroyed. This file is the only exception to that refusal,
+# and it is an exception a person wrote down, in a file reviewed like any other.
+#
+# A path listed here is declared regenerable: a tool remakes it and nothing is
+# lost. Everything not listed here is refused. There is no denylist of names
+# inside the tool and no heuristic -- `__pycache__` does not become destroyable
+# because a tool recognised the name, it becomes destroyable because it is on
+# this list and somebody approved it.
+#
+# Contents decided by the Product Owner on <date>, recorded at
+# <permalink of the decision>.
+#
+# Syntax: gitignore patterns, one per line. Git itself is the matcher -- the
+# tool passes this file to `git ls-files --exclude-from` and never interprets a
+# pattern on its own. Comment lines start with `#` in column 1. Inline
+# comments, negations (`!`), tabs, backslashes and leading or trailing
+# whitespace are refused by the reader, and a manifest the reader refuses makes
+# the tool refuse every worktree rather than fall back to a default.
+#
+# ---------------------------------------------------------------------------
+# What is NOT here is a decision, not an omission. It does not reopen without
+# evidence rather than argument:
+#
+#   docs/vendor/**          local-only by Product Owner decision and not
+#                           redistributable. The repository deliberately does
+#                           not carry those files, so destroying them destroys
+#                           the only copy and no fetch brings them back.
+#   captures/_bench/**      regenerable in theory; in practice it needs the
+#                           bench controller cabled, calibrated and time. A
+#                           directory named `captures/` is not declared
+#                           disposable on the strength of a category.
+#   /generated/             the trap this whole design exists to refuse: the
+#                           name says generated, and it holds readings whose
+#                           regeneration needs the device.
+#
+# ---------------------------------------------------------------------------
+
+# Python environments, bytecode and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Packaging output
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Editor and OS droppings
+.idea/
+.vscode/*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# The session entry snapshot. Condition 1 of the closeout tool guards
+# `session-state.json` **by name**, and it is the guard: an open session
+# refuses the worktree whatever this file says. Refusing the enclosing
+# directory as well was a second lock on a door condition 1 already holds --
+# and because `guild-bye` removes the snapshot and leaves the empty directory
+# behind, that second lock made every worktree that has ever hosted a closed
+# session refuse forever, for a directory containing nothing.
+#
+# Residual risk, stated rather than dismissed: if a future version writes
+# something other than the entry snapshot into `.guild/`, this line destroys it
+# silently. The mitigation is that the session-lifecycle specification
+# (`docs/06`) defines what lives there. If that changes, this line changes with it --
+# which is why this is a reviewed file and not a constant in the tool.
+/.guild/
+
+# Third-party agent skills: tooling installed per-machine, deliberately not
+# versioned. The versioned worker profiles are NOT here -- a directory that
+# holds reviewed profiles was not declared, and is not.
+.agents/
+.claude/skills/

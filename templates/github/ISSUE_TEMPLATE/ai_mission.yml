@@ -1,0 +1,303 @@
+# Option order in this form is governance, not cosmetics. Every required
+# dropdown leads with its most conservative option, or with an explicit
+# non-answer: `risk` with HIGH, `guild_role` with the internal-worker sentinel,
+# `human_gate` with the reserved Product Owner gate, `capabilities` with
+# `shell: host-native`, the most demanding requirement a mission can state, so a
+# hurried author over-declares rather than under-declares. GitHub pre-selects
+# nothing, but the first option is where a reader's eye and a hurried author's
+# click land, so a form that leads with the widest authority hands it out by
+# accident. The rule and its rationale live in `docs/guild/MISSION_WORKFLOW.md`
+# §9; `tools/ci/check_governance_consistency.py` enforces it here.
+name: AI mission
+description: Structured mission contract for an AI Guild agent
+title: "[MISSION] "
+labels: ["ai-mission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is the mission contract. GitHub is the source of truth: the
+        issue is the contract, the Project is the queue, the worktree is the
+        workspace, the pull request is the delivery surface, and the Guild
+        Journal is the durable session memory.
+
+        Fill every required field. A mission expressed anywhere else is not a
+        mission.
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: One bounded outcome. Not a wish list.
+      placeholder: Deliver the smallest lot that ...
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: Verifiable criteria. A reviewer must be able to check each one against the repository.
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      description: The harness that will execute the mission.
+      options:
+        - "Claude Code"
+        - "Codex"
+        - "Grok Build"
+        - "Grok HQ (profile)"
+        - "Grok Domain Expert (profile)"
+        - "Grok UX/UI (profile)"
+        - "other (name in Objective)"
+    validations:
+      required: true
+  - type: dropdown
+    id: capabilities
+    attributes:
+      label: Capabilities required
+      description: >-
+        What the mission needs the executing agent to be able to do, in the
+        vocabulary of docs/guild/AGENT_CAPABILITIES.md §3. The Agent above
+        MUST satisfy every option selected here; an agent that cannot may author
+        this mission but may not execute it. Declare and match exactly — the
+        shell locus is an enumeration, never a ladder, so select the value the
+        mission needs rather than the one that sounds strongest.
+      multiple: true
+      options:
+        - "shell: host-native"
+        - "shell: host-isolated"
+        - "shell: remote"
+        - "shell: none"
+        - "windows-desktop: yes"
+        - "device-bridge: yes"
+    validations:
+      required: true
+  - type: dropdown
+    id: guild_role
+    attributes:
+      label: Guild role
+      description: The role profile under docs/guild/roles/ the agent runs as, or the internal-worker sentinel.
+      options:
+        - "none — internal worker"
+        - "chief-architect"
+        - "claude-code"
+        - "domain-expert"
+        - "grok-build"
+        - "grok-hq"
+        - "knowledge-steward"
+        - "product-owner"
+        - "ux-ui"
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model
+      description: Free text on purpose — model identifiers churn faster than this template should. The Chief Architect chooses the model, from what the lot must do.
+      placeholder: claude-opus-5
+    validations:
+      required: true
+  - type: dropdown
+    id: effort
+    attributes:
+      label: Effort
+      description: >-
+        Reasoning effort, per the effort table in MISSION_WORKFLOW.md §6, which
+        holds the normative copy of these levels. AUTO leads and is the default: it pins
+        nothing and lets the runtime allocate to the difficulty actually met,
+        which is the conservative answer on a scale where over-declaring spends
+        budget and under-declaring risks the work. The pinned levels then
+        ascend, so the click nearest the top is the cheapest pin. ULTRACODE is
+        last because it is not a rung of that ladder — it authorises fanning the
+        work out across subagents, so it changes what the seat may do.
+      options:
+        - "AUTO"
+        - "LOW"
+        - "MEDIUM"
+        - "HIGH"
+        - "EXTRA HIGH"
+        - "MAX"
+        - "ULTRACODE"
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: budget
+    attributes:
+      label: Budget
+      description: Qualitative only. No quota percentages.
+      options:
+        - "SMALL"
+        - "MEDIUM"
+        - "LARGE"
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      description: The launcher creates one branch and one worktree in every mode — a read-only mission owns both, because its guild-bye journal entry needs a branch to reach a pushed ref. What read-only governs is what may be committed to that branch, never whether one exists.
+      options:
+        - "read-only"
+        - "one writer"
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk
+      options:
+        - "HIGH"
+        - "MEDIUM"
+        - "LOW"
+    validations:
+      required: true
+  - type: input
+    id: chantier
+    attributes:
+      label: Chantier
+      description: >-
+        Which workstream this mission serves, from the closed vocabulary in
+        MISSION_WORKFLOW.md §4.4 — chantier:dashboard, chantier:device,
+        chantier:sync, chantier:shell, chantier:gate, chantier:watcher,
+        chantier:governance, chantier:release-provenance. Exactly one, and
+        leaving it blank is a legitimate state: an unclassifiable lot is better
+        visible as unclassified than forced into a wrong bucket. chantier:shell
+        is the frame every page wears and is the smallest term: a lot that
+        fits both it and a page's chantier is the page's.
+        Descriptive only — no gate, check or launcher condition reads it.
+      placeholder: "chantier:… — one of the eight in §4.4"
+    validations:
+      required: false
+  - type: input
+    id: screen_demand
+    attributes:
+      label: Screen demand
+      description: >-
+        What this mission takes from the Product Owner's screen while it runs,
+        from the closed vocabulary in MISSION_WORKFLOW.md §6 — none, windows
+        appear, exclusive foreground — followed by the estimated time on screen,
+        which the value is useless without. Blank is a legitimate state: a
+        contract written before this field existed is undeclared, not wrong, and
+        a blank is never read as none. Descriptive only — no gate, check or
+        launcher condition reads it.
+      placeholder: "exclusive foreground — minutes, repeated per capture"
+    validations:
+      required: false
+  - type: input
+    id: host
+    attributes:
+      label: Host
+      description: >-
+        Which machine this mission needs, from the closed vocabulary in
+        MISSION_WORKFLOW.md §6 — any, workstation, laptop. Exactly one. The two
+        machines are spelled as the capability table spells them: workstation is the
+        fixed machine the device is cabled to, laptop is the portable one.
+        Blank is a legitimate state: a contract written before this field
+        existed is undeclared, not wrong, and a blank is never read as any.
+        Descriptive only — no gate, check or launcher condition reads it.
+      placeholder: "workstation — the criteria below cannot be measured anywhere else"
+    validations:
+      required: false
+  - type: dropdown
+    id: concurrency
+    attributes:
+      label: Concurrency
+      description: The standing ceiling on how many missions may run at once, any mix of writer and read-only — MISSION_WORKFLOW.md §5 carries the number, and it is not restated here because a copy drifts. Anything above the ceiling requires an explicit Product Owner exception, recorded below.
+      options:
+        - "within standing ceiling"
+        - "Product Owner exception — recorded below"
+    validations:
+      required: true
+  - type: dropdown
+    id: subagents
+    attributes:
+      label: Subagents
+      options:
+        - "forbidden (default)"
+        - "Product Owner authorized — recorded below"
+    validations:
+      required: true
+  - type: textarea
+    id: po_exception
+    attributes:
+      label: Product Owner exception
+      description: Verbatim Product Owner wording and date, required when Concurrency or Subagents departs from its default. Exceptions are recorded, never remembered.
+    validations:
+      required: false
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: The exact paths and artifacts the mission may touch.
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: Explicit exclusions. Silence is not an exclusion.
+    validations:
+      required: true
+  - type: input
+    id: branch_worktree
+    attributes:
+      label: Branch and worktree
+      description: Both halves, in every mode — branch + worktree. A read-only mission names a branch too, because its guild-bye journal entry needs one to reach a pushed ref; a value the launcher cannot split in two is refused under condition 1.
+      placeholder: feature/<slug> + wt-<slug>
+    validations:
+      required: true
+  - type: dropdown
+    id: human_gate
+    attributes:
+      label: Human gate
+      description: Who may merge the resulting work.
+      options:
+        - "reserved Product Owner gate"
+        - "routine — delegated merge (Product Owner standing ruling, recorded on the delegation issue)"
+    validations:
+      required: true
+  - type: input
+    id: human_gate_detail
+    attributes:
+      label: Reserved gate — which one
+      description: Name the reserved gate when the field above says reserved.
+      placeholder: merge to main
+    validations:
+      required: false
+  - type: textarea
+    id: stop_conditions
+    attributes:
+      label: Stop conditions
+      description: The conditions under which the agent must stop and report instead of improvising.
+    validations:
+      required: true
+  - type: input
+    id: report_target
+    attributes:
+      label: Report target
+      value: "Chief Architect, as a comment on this issue"
+    validations:
+      required: true
+  - type: checkboxes
+    id: invariants
+    attributes:
+      label: Invariants
+      description: These hold for every mission. Confirm each one.
+      options:
+        - label: One writer respected — this mission does not create a second writer.
+          required: true
+        - label: "guild-hi at entry, exactly one guild-bye at close — never re-run on exit 3."
+          required: true
+        - label: Branch pushed empty at entry, before the first file is written, and a comment posted on the issue when work begins. **Pushed again before the gate run.**
+          required: false
+        - label: Journal entry preserved to a pushed ref before any worktree removal.
+          required: true
+        - label: Explicit-path staging only — no git add -A, -u or dot.
+          required: true
+        - label: No merge without the named human gate above.
+          required: true
+        - label: Transmission report posted before guild-bye.
+          required: true
