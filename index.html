@@ -350,6 +350,13 @@
     .door-grid{gap:14px}
     footer{padding-block:26px 40px}
   }
+
+  /* the contact lines: an icon each, and the booking link reads as the call to action it is */
+  .lines a{display:flex;align-items:center;gap:10px}
+  .lines a svg{width:15px;height:15px;flex:none;fill:currentColor;opacity:.55}
+  .lines a:hover svg{opacity:.9}
+  .lines a.cal{color:var(--amber-2);font-weight:600}
+  .lines a.cal svg{opacity:1}
 </style>
 <script>
 /* pick the track before first paint, so a link to a section inside it can scroll to it */
@@ -882,10 +889,10 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
       <p data-track="code">I am Simon Dupont. I ran the seven-seat team above, wrote every rule in this kit the expensive way, and I install it on other people's repositories. The fastest thing you can do is take thirty minutes and describe your setup — I will tell you which of the four failures you already have.</p>
       <p data-track="nocode">I am Simon Dupont. The fastest thing you can do is take thirty minutes and describe what your staff have AIs do today — I will tell you which of the three questions is already costing you something.</p>
       <div class="lines">
-        <a href="https://cal.com/simon-pacifae-dupont/30min">cal.com/simon-pacifae-dupont/30min</a>
-        <a href="mailto:simon.pacifae.dupont@gmail.com">simon.pacifae.dupont@gmail.com</a>
-        <a href="https://www.linkedin.com/in/simon-pacifae-dupont/">linkedin.com/in/simon-pacifae-dupont</a>
-        <a href="https://github.com/Simon-Pacifae-Dupont">github.com/Simon-Pacifae-Dupont</a>
+        <a class="cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>Book 30 minutes</a>
+        <a href="mailto:simon.pacifae.dupont@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.5L4.6 7H19.4L12 12.5zM4 9.2V17h16V9.2l-8 6-8-6z"/></svg>simon.pacifae.dupont@gmail.com</a>
+        <a href="https://www.linkedin.com/in/simon-pacifae-dupont/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>linkedin.com/in/simon-pacifae-dupont</a>
+        <a href="https://github.com/Simon-Pacifae-Dupont"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>github.com/Simon-Pacifae-Dupont</a>
       </div>
     </div>
   </div>
