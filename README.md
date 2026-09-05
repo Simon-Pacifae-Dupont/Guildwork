@@ -54,6 +54,11 @@ Under the tools, four principles: *measured, not assumed*; *fail closed,
 and say which condition*; *a refusal does not prevent the mission, it moves
 it outside the gate*; *durable means reachable from a pushed ref*.
 
+<p align="center">
+  <a href="brand/lifecycle-canvas.png"><img alt="Where a mission can stop — the operating model drawn on the Lantern example" src="brand/lifecycle-canvas.png" width="880"></a><br>
+  <sub>Read for where it can stop: seven conditions before a session starts, a witness and a gate before anything lands, three exit codes decided by durability alone, and a register that sends every incident back into the next contract. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.html">Interactive version</a> — hover a block to isolate its path.</sub>
+</p>
+
 ## What is in this repository
 
 ```
