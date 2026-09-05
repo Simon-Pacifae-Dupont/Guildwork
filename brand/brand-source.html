@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Fraunces"; src: url("fonts/fontsource-variable-fraunces-5.3.0/files/fraunces-latin-full-normal.woff2") format("woff2"); font-weight: 100 900; font-stretch: normal; }
+@font-face { font-family: "Plex Mono"; src: url("fonts/fontsource-ibm-plex-mono-5.3.0/files/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Plex Mono"; src: url("fonts/fontsource-ibm-plex-mono-5.3.0/files/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Inter"; src: url("fonts/fontsource-inter-5.3.0/files/inter-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Inter"; src: url("fonts/fontsource-inter-5.3.0/files/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+
+:root {
+  --ink: #0B1526;
+  --ink-2: #14223A;
+  --ivory: #F3EDE2;
+  --amber: #E9A23B;
+  --amber-2: #F5C46B;
+  --muted: #8C99B0;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #666; font-family: Inter, sans-serif; }
+.board { position: relative; overflow: hidden; margin: 24px; }
+
+/* ---------- MARK ---------- */
+.mark { display: block; }
+
+/* ---------- AVATAR 1024 ---------- */
+#avatar { width: 1024px; height: 1024px; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+#avatar svg { width: 640px; height: 640px; }
+
+#avatar-ivory { width: 1024px; height: 1024px; background: var(--ivory); display: flex; align-items: center; justify-content: center; }
+#avatar-ivory svg { width: 640px; height: 640px; }
+
+/* ---------- LOCKUP ---------- */
+.lockup { display: flex; align-items: center; gap: 44px; padding: 80px 96px; width: max-content; }
+.lockup.dark { background: var(--ink); }
+.lockup.light { background: var(--ivory); }
+.lockup.transparent { background: transparent; }
+.lockup svg { width: 168px; height: 168px; flex: none; }
+.lockup .word { font-family: Fraunces, serif; font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 0; font-weight: 560; font-size: 150px; letter-spacing: -0.028em; line-height: 0.95; margin: 0; }
+.lockup .tag { font-family: "Plex Mono", monospace; font-weight: 400; font-size: 30px; letter-spacing: 0.02em; margin: 22px 0 0 6px; }
+.dark .word, .transparent .word { color: var(--ivory); }
+.light .word { color: var(--ink); }
+.dark .tag, .transparent .tag { color: var(--muted); }
+.light .tag { color: #4A5670; }
+
+/* ---------- LINKEDIN BANNER 1584x396 ---------- */
+.banner { width: 1584px; height: 396px; background: var(--ink); position: relative; overflow: hidden; }
+.banner .lanes { position: absolute; inset: 0; }
+.banner .content { position: absolute; left: 372px; top: 0; height: 396px; display: flex; align-items: center; gap: 40px; }
+.banner .content svg { width: 156px; height: 156px; flex: none; }
+.banner .word { font-family: Fraunces, serif; font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 0; font-weight: 560; font-size: 104px; letter-spacing: -0.028em; line-height: 0.95; margin: 0; color: var(--ivory); }
+.banner .tag { font-family: "Plex Mono", monospace; font-size: 23px; letter-spacing: 0.02em; color: var(--muted); margin: 16px 0 0 5px; }
+.banner .tag b { color: var(--amber-2); font-weight: 500; }
+.banner .side { position: absolute; right: 56px; top: 120px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; text-align: right; }
+.banner .foot { position: absolute; right: 56px; bottom: 34px; font-family: "Plex Mono", monospace; font-size: 18px; color: var(--amber-2); }
+.banner .side .name { font-family: Fraunces, serif; font-variation-settings: "opsz" 48, "SOFT" 40; font-weight: 500; font-size: 30px; color: var(--ivory); letter-spacing: -0.01em; }
+.banner .side .name span { color: var(--amber-2); }
+.banner .side .role { font-family: "Plex Mono", monospace; font-size: 19px; color: var(--muted); }
+
+
+/* ---------- GITHUB SOCIAL PREVIEW 1280x640 ---------- */
+.social { width: 1280px; height: 640px; background: var(--ink); position: relative; overflow: hidden; }
+.social .lanes { position: absolute; inset: 0; }
+.social .content { position: absolute; left: 96px; top: 0; height: 640px; display: flex; flex-direction: column; justify-content: center; }
+.social .row { display: flex; align-items: center; gap: 36px; }
+.social .row svg { width: 150px; height: 150px; }
+.social .word { font-family: Fraunces, serif; font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 0; font-weight: 560; font-size: 128px; letter-spacing: -0.028em; line-height: 0.95; margin: 0; color: var(--ivory); }
+.social .tag { font-family: "Plex Mono", monospace; font-size: 30px; color: var(--muted); margin: 34px 0 0 2px; letter-spacing: 0.01em; }
+.social .tag b { color: var(--amber-2); font-weight: 500; }
+.social .foot { position: absolute; left: 96px; bottom: 56px; font-family: "Plex Mono", monospace; font-size: 22px; color: var(--muted); display: flex; gap: 40px; }
+.social .foot span { color: var(--ivory); }
+</style>
+</head>
+<body>
+
+<!-- mark definition, reused -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="mark" viewBox="0 0 100 100">
+      <!-- frame: the guild -->
+      <path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56"
+            fill="none" stroke="var(--ivory)" stroke-width="12" stroke-linecap="butt" stroke-linejoin="round"/>
+      <!-- the gate bar: the delivery crossing the gate -->
+      <rect x="52" y="44" width="39" height="12" fill="var(--amber)"/>
+    </symbol>
+    <symbol id="mark-ink" viewBox="0 0 100 100">
+      <path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56"
+            fill="none" stroke="var(--ink)" stroke-width="12" stroke-linecap="butt" stroke-linejoin="round"/>
+      <rect x="52" y="44" width="39" height="12" fill="var(--amber)"/>
+    </symbol>
+    <!-- background lanes: faint parallel lines converging into one -->
+    <symbol id="lanes" viewBox="0 0 1584 396" preserveAspectRatio="none">
+      <g stroke="#FFFFFF" stroke-opacity="0.045" stroke-width="1.5" fill="none">
+        <path d="M 0 60 H 1584"/><path d="M 0 116 H 1584"/><path d="M 0 172 H 1584"/>
+        <path d="M 0 228 H 1584"/><path d="M 0 284 H 1584"/><path d="M 0 340 H 1584"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="avatar" class="board"><svg><use href="#mark"/></svg></div>
+<div id="avatar-ivory" class="board"><svg><use href="#mark-ink"/></svg></div>
+
+<div id="lockup-dark" class="board lockup dark">
+  <svg><use href="#mark"/></svg>
+  <div><p class="word">Guildwork</p><p class="tag">governance for parallel AI coding agents</p></div>
+</div>
+<div id="lockup-light" class="board lockup light">
+  <svg><use href="#mark-ink"/></svg>
+  <div><p class="word">Guildwork</p><p class="tag">governance for parallel AI coding agents</p></div>
+</div>
+<div id="lockup-transparent" class="board lockup transparent">
+  <svg><use href="#mark"/></svg>
+  <div><p class="word">Guildwork</p><p class="tag">governance for parallel AI coding agents</p></div>
+</div>
+
+<div id="banner-en" class="board banner">
+  <svg class="lanes"><use href="#lanes"/></svg>
+  <div class="content">
+    <svg><use href="#mark"/></svg>
+    <div><p class="word">Guildwork</p><p class="tag">governance for <b>parallel AI coding agents</b></p></div>
+  </div>
+  <div class="side">
+    <div class="name">Simon <span>“Pacifae”</span> Dupont</div>
+    <div class="role">AI coding-agent orchestration</div>
+  </div>
+  <div class="foot">github.com/Simon-Pacifae-Dupont/Guildwork</div>
+</div>
+
+<div id="banner-fr" class="board banner">
+  <svg class="lanes"><use href="#lanes"/></svg>
+  <div class="content">
+    <svg><use href="#mark"/></svg>
+    <div><p class="word">Guildwork</p><p class="tag">gouvernance pour <b>agents IA de code en parallèle</b></p></div>
+  </div>
+  <div class="side">
+    <div class="name">Simon <span>“Pacifae”</span> Dupont</div>
+    <div class="role">orchestration d’agents IA de code</div>
+  </div>
+  <div class="foot">github.com/Simon-Pacifae-Dupont/Guildwork</div>
+</div>
+
+<div id="social" class="board social">
+  <svg class="lanes"><use href="#lanes"/></svg>
+  <div class="content">
+    <div class="row">
+      <svg><use href="#mark"/></svg>
+      <p class="word">Guildwork</p>
+    </div>
+    <p class="tag">governance kit for <b>parallel AI coding agents</b> —<br>contracts, forms, vocabulary, tool specifications,<br>and the incidents that paid for every rule.</p>
+  </div>
+  <div class="foot"><span>MIT</span><span>documentation only</span><span>Simon “Pacifae” Dupont</span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Brand assets
+
+The mark is a geometric G: the frame is the guild, the amber bar is the
+delivery crossing the gate. Ink `#0B1526`, ivory `#F3EDE2`, amber `#E9A23B`.
+Wordmark in Fraunces, taglines in IBM Plex Mono.
+
+| File | Use |
+|---|---|
+| `guildwork-mark.svg`, `guildwork-mark-ink.svg`, `guildwork-mark-on-ink.svg` | the mark alone — ivory on transparent, ink on transparent, on an ink tile |
+| `logo-lockup-dark.png`, `logo-lockup-light.png`, `logo-lockup-transparent.png` | mark + wordmark + tagline |
+| `logo-avatar-1024.png`, `logo-avatar-400.png`, `logo-avatar-light-1024.png`, `favicon-64.png` | square avatars |
+| `github-social-preview.png` | 1280×640, the repository's social preview |
+| `linkedin-banner-en.png`, `linkedin-banner-fr.png` | 1584×396 |
+| `brand-source.html` | the source every PNG above is rendered from (Playwright screenshot of each board) |
+
+The assets are © Simon Dupont and are not covered by the MIT licence of
+the documentation; use them to refer to Guildwork, not as your own mark.
