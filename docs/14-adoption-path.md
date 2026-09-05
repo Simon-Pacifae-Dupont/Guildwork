@@ -37,9 +37,10 @@ release-target guard beside it.
 
 **3. Create the labels, by a human, once.** Then apply them from the
 architect seat, always. Decide who the architect seat is before the first
-mission: on the source project that division — the architect holds the
-board, the human holds the terminals — is the single rule that removed the
-human from the message path.
+mission: on the source project it is a cloud session with no shell on the
+developer machine, and that division — the architect holds the board, the
+human holds the terminals, and the architect *cannot* hold a terminal — is
+the single rule that removed the human from the message path.
 
 **4. Start the journal and the continuity contract.** One richer file
 written at every exit, read at every entry. This is the cheapest part of

@@ -115,7 +115,7 @@ memory of having made it. The shape of a row:
 | Claude Code (local CLI) | `shell` | `host-native` | commands in this agent's own shell mutate the developer machine's checkout directly; mission `<n>` ran the lint and the governance check there before pushing; process chain `claude.exe` in interactive session `<k>` on `workstation` | `<date>` |
 | Claude Code (local CLI) | `device-bridge` | `yes` | mission `<n>` drove the bench controller through the bridge against a live instance — `<count>` writes, each read back independently (report permalink) | `<date>` |
 | Grok Build (CLI) | `device-bridge` | `unknown` | **not measured, and deliberately not inferred**: the locus is `host-native`, which is necessary for both and sufficient for neither; no bridge run under this agent is recorded | `<date>` |
-| Claude Cowork (cloud session) | `shell` | `remote` | shell commands execute in the vendor's container, not on the developer machine — a property of where the session runs, recorded by that session about itself | `<date>` |
+| Claude Cowork (cloud session) | `shell` | `remote` | shell commands execute in the vendor's container, not on the developer machine — a property of where the session runs, recorded by that session about itself. This is the architect seat: the locus is what makes it structurally unable to be a writer | `<date>` |
 
 **"Entailed by the locus" is the only inference the table permits, and it
 runs one way.** A `shell` whose value is known and is not `host-native`

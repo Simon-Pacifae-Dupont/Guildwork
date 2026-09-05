@@ -45,9 +45,9 @@ exist.
 
 A *seat* is a harness running under a role. The role is a short profile in
 the repository (`templates/roles/`); the harness is whatever executes it —
-Claude Code, Codex, Grok Build, a Grok profile, a person. The mission
-contract names both, and the launcher refuses a mission whose harness cannot
-physically do what the contract requires.
+Claude Code, Claude Cowork, Grok Build, a Grok profile, a person. The
+mission contract names both, and the launcher refuses a mission whose
+harness cannot physically do what the contract requires.
 
 On the Lantern example — a small Python desktop application that tracks bench
 sensors for a workshop, with a bridge to a physical bench controller — the
@@ -55,11 +55,28 @@ seats are:
 
 | Seat | Runs as | Holds |
 |---|---|---|
-| Product Owner | the human | the bench, the product verdict, the merge to `main`, every irreversible act |
-| Chief Architect | Codex | contracts, routing, rulings, the register, the board — never a terminal |
+| Product Owner | the human | the bench, the product verdict, the merge to `main`, every irreversible act — and every terminal |
+| Chief Architect | Claude Cowork, a cloud session | the board: contracts — which the launcher turns into every other seat's first instruction — routing, rulings, labels, the register, and the exact commands the human runs; never a terminal |
 | Lead Software Engineer | Claude Code | implementation, tests, pull requests, adversarial self-review |
 | Software Engineering | Grok Build | assigned atomic lots |
 | HQ Architecture, Domain Expert, UX/UI | Grok profiles | adversarial review and domain authority, each in its lane |
+| Witness | any seat that did not write the delivery | reads the delivery's evidence against the repository before the gate; the gate merges on the witness's word, not the author's |
+| External reviewer | Codex, on request | a second opinion on architecture and contracts; no execution surface, so no arrow in the lifecycle below |
+
+**The architect seat orchestrates, and it cannot execute.** That is a
+design choice, not a limitation to work around. The Chief Architect runs in
+a cloud session whose shell is `remote` — it can read and write GitHub end
+to end and it can reach files on the developer machine, but it cannot run
+a command there, start a harness, or push a commit. So everything it does
+is an act on GitHub or a line of text: the contract on the issue, the
+ruling in a comment, the label on the object, the register entry, the
+routine merge it performs under the human's standing delegation — a GitHub
+act recorded on the pull request, never a push — and the command it hands
+the human to paste. The human runs the command and reports what the
+terminal said; the architect reads the report and hands over the next one.
+A seat that holds the board and cannot touch the tree is a seat that cannot
+become the second writer or the silent substitution — and a seat that
+merges only what a witness has read is not the merge tool either.
 
 The division that makes the system work is stated once and kept: **the
 architect seat holds the board; the human holds the terminals.** Issue
@@ -69,17 +86,38 @@ always and without being asked. Launch commands, merges under the gate, and
 the final say are the human's. Handing the human an act of the board puts
 him back in the loop the system exists to remove.
 
+Two consequences of the shape, stated because a reader will ask:
+
+- **What comes back.** Every incident a delivery surfaces goes to the
+  register, and from the register into the next contracts as a criterion,
+  a stop condition or a rule. The loop runs through the architect seat,
+  which is why it holds both the register and the contracts.
+- **Who signs.** The intended end state is one GitHub identity per seat, so
+  that the history says who did what without anyone remembering. On the
+  source project the bot identity exists and the seats still publish under
+  the human's; the debt is recorded on the register with the event that
+  will trigger paying it, which is how a known gap is kept from becoming a
+  forgotten one.
+
 ## The lifecycle, end to end
 
-1. **The contract is written** on the issue form. Every required field is
-   filled; the dropdowns lead conservative; the title starts with the issue's
-   own number so the mission can be found in a wall of terminals.
-2. **The launcher validates it** against the governance *at the commit the
-   mission will run on*, checks seven conditions, and refuses — naming which
-   condition fired — or creates the branch and worktree, runs the entry
-   command (`guild-hi`), and starts the declared harness under the declared model and
-   effort with a first instruction generated from the issue. There is no
-   paste, and there is no flag that can set a parameter the contract did not.
+A diagram of agents usually shows who calls whom. This one is better read
+for where it can stop: seven conditions before a session starts, a witness
+and a gate before anything lands, and a register that sends every incident
+back into the next contract.
+
+1. **The contract is written** on the issue form, by the architect seat.
+   Every required field is filled; the dropdowns lead conservative; the
+   title starts with the issue's own number so the mission can be found in
+   a wall of terminals. The architect then hands the human one launch
+   command.
+2. **The launcher validates it** — the human runs it — against the
+   governance *at the commit the mission will run on*, checks seven
+   conditions, and refuses — naming which condition fired — or creates the
+   branch and worktree, runs the entry command (`guild-hi`), and starts the
+   declared harness under the declared model and effort with a first
+   instruction generated from the issue. There is no paste, and there is no
+   flag that can set a parameter the contract did not.
 3. **The seat works** inside its worktree, stages by explicit path, pushes by
    explicit refspec, and posts a transmission report on the issue naming what
    actually ran.
@@ -89,7 +127,10 @@ him back in the loop the system exists to remove.
 5. **The session closes** with exactly one exit command (`guild-bye`), which
    writes the journal entry and returns a code that says whether the entry is durable —
    reachable from a pushed ref — or not yet.
-6. **The gate merges** — the delegated routine gate, or the reserved human one.
+6. **A witness reads the delivery** — a seat that did not write it checks
+   the report's claims against the repository — and **the gate merges**: the
+   architect seat under the human's standing delegation for routine work,
+   the human himself for everything reserved.
 7. **The closeout tool disposes** of what the run created, refusing every
    worktree whose material is not provably preserved, and closes the contract
    from the merged delivery's `Mission:` line.

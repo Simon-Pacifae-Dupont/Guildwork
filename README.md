@@ -86,7 +86,8 @@ feels like to run. If those three earn a fourth, read `05`.
 ## Where it comes from
 
 A Windows desktop application in Python with a 12 000-test suite, one human
-Product Owner, and seats on Claude Code, Codex and Grok. In the eleven days
+Product Owner, a Claude Cowork session as Chief Architect, executing seats
+on Claude Code and Grok, and Codex as an external reviewer. In the eleven days
 after the mission form went live, 229 contracts were opened and 231 pull
 requests merged; 441 sessions closed with a journal entry in the 33 days
 since the journal existed. `docs/13-by-the-numbers.md` has the full table,

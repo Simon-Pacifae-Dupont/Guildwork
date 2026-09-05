@@ -20,7 +20,8 @@ was written by AI seats under the contracts described in this pack.
 | role profiles | 8 |
 | harness options on the mission form | 7 |
 | startable seats, across two command-line harnesses | 6 — one CLI under two model tiers, the other bare and under three domain profiles |
-| architect seat | Codex, holding the board and never a terminal; a cloud session of a third harness deputises in that seat when Codex is unavailable, authoring the same contracts, labels, rulings and register |
+| architect seat | Claude Cowork — a cloud session with no shell on the developer machine, holding the board and never a terminal: contracts, labels, rulings, the register, and every command the human runs |
+| external reviewer | Codex, consulted on request; no execution surface, `unknown` on every capability |
 
 ## The throughput
 
