@@ -39,7 +39,8 @@
   /* ---- masthead ---- */
   header{position:sticky;top:0;z-index:10;background:rgba(11,21,38,.86);backdrop-filter:blur(8px);
     border-bottom:1px solid var(--edge-2)}
-  .bar{display:flex;align-items:center;gap:20px;padding:14px 0}
+  /* the shorthand must carry the side padding: .bar sits on the same element as .wrap and would otherwise cancel it */
+  .bar{display:flex;align-items:center;gap:20px;padding:14px 24px}
   .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-right:auto}
   .brand svg{width:28px;height:28px;flex:none}
   .brand b{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
@@ -207,6 +208,25 @@
   .offer:focus-within{outline:2px solid var(--amber);outline-offset:3px}
   .offer .go:focus-visible{outline:none}
 
+
+  /* ---- mobile: the three prices, comparable without scrolling ---- */
+  .pricebar{display:none}
+  @media (max-width:720px){
+    .pricebar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--edge-2);
+      border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;margin-top:34px}
+    .pricebar a{background:var(--ground-2);padding:13px 8px 14px;text-decoration:none;display:block;text-align:center}
+    .pricebar a:active{background:var(--node)}
+    .pricebar span{display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.07em;
+      text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;line-height:1.3}
+    .pricebar b{display:block;font-size:13.5px;color:var(--amber-2);font-weight:600;font-variant-numeric:tabular-nums;line-height:1.15}
+    .offers{margin-top:16px}
+    .offer{scroll-margin-top:76px}
+  }
+  /* the whole card is a click target only where there is a real pointer;
+     on touch a stray tap while scrolling should not book a call */
+  .offer .go::after{content:none}
+  @media (hover:hover) and (pointer:fine){.offer .go::after{content:"";position:absolute;inset:0;border-radius:10px}}
+
   /* contact */
   .contact{background:var(--ground-2);border-top:1px solid var(--edge-2);padding-block:96px}
   .who{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:34px}
@@ -228,11 +248,12 @@
   .punch{margin-top:26px;padding-left:18px;border-left:2px solid var(--amber);font-size:16.5px;color:var(--ink);max-width:70ch}
   .punch strong{font-weight:600}
   .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:44px}
-  .scene{background:var(--ground-2);padding:28px 24px 30px}
+  .scene{background:var(--ground-2);padding:28px 24px 30px;display:flex;flex-direction:column}
   .scene .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
   .scene h3{font-size:17px;margin:0 0 10px;letter-spacing:-.005em}
   .scene p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
-  .scene .rule{border:0;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--edge-2);font-size:14px;color:var(--ink)}
+  /* the rule block is pushed to the foot of the card and given one fixed height, so the separators line up across a row */
+  .scene .rule{border:0;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--edge-2);font-size:14px;color:var(--ink);margin-top:auto;min-height:84px}
   .scene .rule::before{content:"→ ";color:var(--amber)}
   .feat{margin-top:44px;border:1px solid #6E5330;border-radius:10px;background:linear-gradient(168deg,#17202E,#0A1322);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
   @media (max-width:820px){.feat{grid-template-columns:1fr}}
@@ -345,7 +366,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a class="door" href="#no-code" data-go="nocode" aria-pressed="false">
       <p class="tag">You have no code</p>
       <h3>A company, its processes, and AIs already at work</h3>
-      <p>A law firm, an agency, a restaurant, a support desk. Three questions, six situations you will recognise, and the first agent under contract within a week.</p>
+      <p>A law firm, an agency, a restaurant, a support desk. What you could already hand to an AI, what it would give you back in hours, and the first process under contract within a week.</p>
       <span class="go" data-off="Read this door →" data-on="You are reading this door"></span>
     </a>
   </div>
@@ -599,46 +620,55 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <section id="work" class="wrap">
   <h2>What adopting it looks like with help</h2>
   <p>The three tools are specified precisely enough to audit or re-implement, and they are not shipped. Installing this on a repository, adapting the vocabulary to a team's own seats and workstreams, measuring the capability table on their machines, writing the tools against their harnesses, and running the first two weeks of missions alongside them — that is the work, and it is the work I do.</p>
+  <div class="pricebar" aria-label="The three prices"><a href="#off-audit"><span>Audit</span><b>€2 500</b></a><a href="#off-install"><span>Install</span><b>€12 000</b></a><a href="#off-seat"><span>Seat · monthly</span><b>€3 500</b></a></div>
   <div class="offers">
-    <div class="offer lead">
+    <div class="offer lead" id="off-audit">
       <p class="tag">Start here</p>
       <h3>Governance audit</h3>
-      <p>Two days. I read the repository, the board and one week of agent sessions, and write down what will break before it does.</p>
+      <p>Two days. I read the repository, the board and one week of agent sessions, and write down what will break before it does — then what you could run on top, once it stops breaking.</p>
       <ul>
         <li>the capability table for your seats, measured, not guessed</li>
         <li>the incidents your setup is currently exposed to, named</li>
         <li>a dry run of the seven conditions over your existing board</li>
+        <li>the three fixes to make before all the others, ordered by damage avoided</li>
+        <li>what the install would gain you, costed — and what it will not fix</li>
         <li>a written report your team keeps, whatever happens next</li>
       </ul>
       <p class="price">€2 500 · fixed price<small>Deducted from the installation if you go on.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Governance%20audit">Book 30 minutes<span>→</span></a>
     </div>
-    <div class="offer">
+    <div class="offer" id="off-install">
       <p class="tag">The install</p>
       <h3>Governance installed</h3>
       <p>Two weeks. The contracts, the vocabulary and the three tools, written against your harnesses and your board — then the first missions run with your team, not for them, until the rules are theirs.</p>
       <ul>
         <li>issue form, delivery template, label taxonomy, role profiles</li>
-        <li>launcher, session cycle and closeout, against your CLIs</li>
+        <li>launcher, session cycle and closeout, <em>written against your CLIs</em> — the code is yours</li>
         <li>the capability table, measured on your machines</li>
+        <li>the workstream board, wired to your repository</li>
         <li>two weeks of real missions run <em>with</em> your engineers — the training is the work itself, not a slide deck</li>
+        <li>the findings register opened on day one, ruled on with you until the last</li>
       </ul>
       <p class="price">€12 000 · fixed price<small>For one repository and up to four seats; beyond that, the audit sets the figure. Remote, or on site in Île-de-France.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Governance%20installed">Book 30 minutes<span>→</span></a>
     </div>
-    <div class="offer">
+    <div class="offer" id="off-seat">
       <p class="tag">After</p>
       <h3>Standing architect seat</h3>
-      <p>Three days a month. The register gets ruled on, the rules follow your incidents, and the governance keeps up with the harnesses as they change.</p>
+      <p>Three days a month. The register gets ruled on, the rules follow your incidents, and the governance keeps up with the harnesses as they change — you do not inherit a frozen system the day I leave.</p>
       <ul>
         <li>the findings register reviewed at every board sweep</li>
         <li>contracts and routing kept current as seats change</li>
+        <li>the tools kept up when a CLI ships a release that breaks an assumption</li>
+        <li>your new joiners walked through the contracts already in place</li>
         <li>a monthly written reading of what the numbers say</li>
       </ul>
       <p class="price">€3 500 / month<small>Three months minimum, then monthly. Extra day: €1 200.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Standing%20architect%20seat">Book 30 minutes<span>→</span></a>
     </div>
   </div>
+
+  <p class="note">The thirty minutes are free and commit you to nothing — we look at your setup, and you leave with an opinion even if you go no further.</p>
 
   <div class="vs">
     <div class="repo">
@@ -670,6 +700,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="questions" class="wrap">
   <h2>Three questions before saying you do not need this</h2>
+  <p>Two things are true at once: your teams could hand an AI far more than they think, and nobody at your company keeps a record of what they hand it already. <strong>The second is what stops the first</strong> — you do not accelerate on ground you cannot see.</p>
   <p>I am not trying to convince you. These three questions are enough, and you already know the answers.</p>
   <div class="qs">
     <div class="q"><div><p class="ask">Who, in your company, had an AI do something this week — and where is it written down?</p><p class="why">A quote, a customer reply, a meeting summary, a contract clause. If the answer is "in their ChatGPT history", it is written at the vendor's, not at yours.</p></div></div>
@@ -713,47 +744,56 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="offres" class="wrap">
   <h2>What it gives you</h2>
-  <p>Nothing to buy, nothing to install before understanding what you already have. We start by looking, and the document stays with you whatever happens next.</p>
+  <p>Most companies I meet badly underestimate what they could hand over — and overestimate what they would have to buy to do it. So we start by looking at your real work: what can be handed over right now, what that gives you back in hours, and what must stay in human hands. Nothing to buy, and the document stays with you whatever happens next.</p>
+  <div class="pricebar" aria-label="The three prices"><a href="#off-cadrage"><span>Scoping</span><b>€1 200</b></a><a href="#off-premier"><span>First agent</span><b>€4 500</b></a><a href="#off-suivi"><span>Monthly</span><b>€1 200</b></a></div>
   <div class="offers">
-    <div class="offer lead">
+    <div class="offer lead" id="off-cadrage">
       <p class="tag">Start here</p>
       <h3>Scoping day</h3>
-      <p>One day on your premises. I look at who has which AI do what, and I write down what deserves a contract, what deserves a gate, and what should stay in human hands.</p>
+      <p>One day on your premises, looking at how you actually work — not only at what you already do with AI. I leave with what can be handed over right now, what that gives you back in hours, and what must stay in human hands.</p>
       <ul>
-        <li>the map of your real uses, including the ones nobody declared</li>
-        <li>for each process: entrust, frame, or keep — and why</li>
-        <li>the first contract written, on the process that costs the most</li>
+        <li>the tasks that can be handed to an AI today, <em>counted in hours a week</em></li>
+        <li>the ones that cannot yet — and what is missing for them to be</li>
+        <li>the map of your real AI uses, including the ones nobody declared</li>
+        <li>the first contract written, on the process worth handing over most</li>
         <li>a document your team keeps, whatever happens next</li>
       </ul>
       <p class="price">€1 200 excl. VAT · fixed price<small>Deducted from the next step if you go on.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Scoping%20day">Book 30 minutes<span>→</span></a>
     </div>
-    <div class="offer">
+    <div class="offer" id="off-premier">
       <p class="tag">The install</p>
       <h3>First agent under contract</h3>
-      <p>One week. One process, one agent, its contract, its gate and its register — set up with the team that will run it, not in their place.</p>
+      <p>One week. The process chosen for what it costs you, the agent that takes it over, and the three guardrails that make that safe — built with the team that will run it, not in their place.</p>
       <ul>
-        <li>the contract: what the agent may do, what it must refuse, what it must name</li>
+        <li>the agent itself: what it reads, what it produces, with which tools — <em>built in front of you, not a black box</em></li>
+        <li>the contract: what it may do, what it must refuse, what it must name</li>
         <li>the gate: who reviews, and what never leaves without review</li>
         <li>the register: every error becomes a rule, written, the same day</li>
         <li>five days of real cases run <em>with</em> your staff — the training is the work itself</li>
+        <li>the process measured before and after: what it cost in hours, what it costs now</li>
       </ul>
       <p class="price">€4 500 excl. VAT · fixed price<small>For one process and one team; the second is priced at the scoping day. On site in Île-de-France, or remote.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=First%20agent%20under%20contract">Book 30 minutes<span>→</span></a>
     </div>
-    <div class="offer">
+    <div class="offer" id="off-suivi">
       <p class="tag">After</p>
       <h3>One day a month</h3>
-      <p>The register gets ruled on, the contracts follow your incidents, and the second process is added once the first holds.</p>
+      <p>One day a month, on site or remote. The register gets ruled on, the contracts follow your incidents, and the perimeter widens one process at a time.</p>
       <ul>
         <li>the register reviewed, every new rule written with you</li>
-        <li>contracts adjusted when tools or people change</li>
+        <li>contracts adjusted when tools, people or your prices change</li>
+        <li>the next process put under contract as soon as the previous one holds</li>
+        <li>what your agents actually cost, tracked month by month: subscriptions, tokens, review time</li>
+        <li>your new hires walked through the contracts already in place</li>
         <li>a written reading, every month, of what the agents did — and refused</li>
       </ul>
       <p class="price">€1 200 excl. VAT / month<small>Three months minimum, then monthly. Extra day: €1 200 excl. VAT.</small></p>
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=One%20day%20a%20month">Book 30 minutes<span>→</span></a>
     </div>
   </div>
+  <p class="note">The thirty minutes are free and commit you to nothing — you describe your week, I tell you what I see in it, even if you go no further.</p>
+
   <div class="proof">
     <p><strong>Where the discipline comes from.</strong> It was built, incident by incident, to hold a seven-agent AI team on real software with a single human in charge — twenty-two deliveries merged a day, every error turned into a rule, all of it public and measured. It is <a href="#code">Guildwork</a>. At your company there will be no repository and no code; there will be the same contracts, the same gates, the same register.</p>
     <p class="fig">127<small>rules written in five weeks, each paid for by a real error</small></p>
