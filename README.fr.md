@@ -13,6 +13,8 @@
 
 **[simon-pacifae-dupont.github.io/Guildwork/fr/](https://simon-pacifae-dupont.github.io/Guildwork/fr/)** — la même chose, sur une seule page.
 
+**Vous ne développez pas ?** La même discipline — un contrat avant, un témoin pendant, un bilan après, et le droit de refuser — tient aussi bien un cabinet, une agence ou un service client. [Cette entrée est sur la même page.](https://simon-pacifae-dupont.github.io/Guildwork/fr/#sans-code)
+
 Guildwork est la gouvernance qu'une seule personne a construite, incident
 après incident, pour faire tourner une équipe d'ingénierie IA à sept sièges
 sur un produit réel, à vingt et un merges par jour — chaque mission un

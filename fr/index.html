@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Guildwork — la gouvernance de plusieurs agents IA sur un même dépôt</title>
-<meta name="description" content="Un pack de gouvernance pour faire tourner plusieurs agents de code IA sur un seul dépôt : contrats de mission, un lanceur qui refuse en nommant sa condition, journaux de session, un outil de clôture — et la quarantaine d'incidents qui ont payé chaque règle.">
-<meta property="og:title" content="Guildwork — la gouvernance de plusieurs agents IA sur un même dépôt">
-<meta property="og:description" content="Contrats, formulaires, vocabulaire, spécification des outils, et les incidents qui ont payé chaque règle.">
+<title>Guildwork — faire travailler des agents IA en gardant le dernier mot</title>
+<meta name="description" content="Une discipline pour faire travailler des agents IA sans perdre la main : un contrat avant chaque tâche, un témoin pendant, un bilan après — et le droit de refuser. Pour les équipes qui codent (pack libre MIT, lanceur, clôture, tableau) et pour les entreprises qui n’ont pas de code (cabinets, agences, support).">
+<meta property="og:title" content="Guildwork — faire travailler des agents IA en gardant le dernier mot">
+<meta property="og:description" content="Un contrat avant, un témoin pendant, un bilan après — et le droit de refuser. Pour les équipes qui codent, et pour les entreprises qui ne codent pas.">
 <meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
 <meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/fr/">
 <meta property="og:locale" content="fr_FR">
@@ -223,6 +223,77 @@
   h1{max-width:21ch}
   h2{max-width:28ch}
 </style>
+<style>
+  /* the companies page */
+  .qs{display:grid;gap:14px;margin-top:44px;counter-reset:q}
+  .q{border:1px solid var(--edge-2);border-radius:10px;background:var(--ground-2);padding:24px 26px 26px;display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start}
+  .q::before{counter-increment:q;content:counter(q);font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:40px;line-height:1;color:var(--amber);margin-top:-4px}
+  .q p{margin:0;max-width:none}
+  .q .ask{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 48,"SOFT" 40;font-weight:600;font-size:21px;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+  .q .why{font-size:14.5px;color:var(--ink-2);margin-top:10px}
+  .punch{margin-top:26px;padding-left:18px;border-left:2px solid var(--amber);font-size:16.5px;color:var(--ink);max-width:70ch}
+  .punch strong{font-weight:600}
+  .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:44px}
+  .scene{background:var(--ground-2);padding:28px 24px 30px}
+  .scene .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
+  .scene h3{font-size:17px;margin:0 0 10px;letter-spacing:-.005em}
+  .scene p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+  .scene .rule{border:0;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--edge-2);font-size:14px;color:var(--ink)}
+  .scene .rule::before{content:"→ ";color:var(--amber)}
+  .feat{margin-top:44px;border:1px solid #6E5330;border-radius:10px;background:linear-gradient(168deg,#17202E,#0A1322);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+  @media (max-width:820px){.feat{grid-template-columns:1fr}}
+  .feat .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
+  .feat h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:0 0 14px}
+  .feat p{font-size:15.5px;color:var(--ink-2);margin:0;max-width:none}
+  .feat p+p{margin-top:12px}
+  .feat .side{border-left:1px solid var(--edge-2);padding-left:28px}
+  @media (max-width:820px){.feat .side{border-left:0;padding-left:0;border-top:1px solid var(--edge-2);padding-top:20px}}
+  .feat .side h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px;font-weight:500}
+  .feat .side p{font-size:14.5px}
+  .feat .side p strong{color:var(--ink);font-weight:600}
+  .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid #6E5330;color:var(--ink);font-size:15px}
+  .proof{margin-top:44px;border:1px solid #6E5330;border-radius:10px;background:linear-gradient(168deg,#17202E,#0A1322);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+  @media (max-width:720px){.proof{grid-template-columns:1fr}}
+  .proof p{margin:0;max-width:none;font-size:15.5px;color:var(--ink-2)}
+  .proof strong{color:var(--ink);font-weight:600}
+  .proof .fig{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:44px;line-height:1;color:var(--amber);letter-spacing:-.02em;white-space:nowrap}
+  .proof .fig small{display:block;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12.5px;color:var(--ink-3);font-weight:400;letter-spacing:0;margin-top:6px}
+
+  /* ---- the two doors ---- */
+  .wrap.hero{padding-block:72px 40px}
+  .wrap.hero .cta{margin-top:30px}
+  .wrap.hero .note{margin-top:18px}
+  .wrap.hero .eyebrow,.doors .eyebrow{max-width:none}
+  section.wrap.doors{padding-block:0 72px;scroll-margin-top:72px}
+  .doors .eyebrow{margin-bottom:18px}
+  .door-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .door{display:flex;flex-direction:column;gap:10px;border:1px solid var(--edge);border-radius:12px;padding:28px 26px 24px;
+    background:var(--ground-2);color:inherit;text-decoration:none;position:relative;transition:border-color .16s,transform .16s}
+  .door:hover{border-color:#4E5F80;transform:translateY(-2px)}
+  .door[aria-pressed="true"]{border-color:var(--amber);background:linear-gradient(168deg,#17202E,#0A1322)}
+  .door .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0}
+  .door[aria-pressed="true"] .tag{color:var(--amber)}
+  .door h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;
+    font-size:23px;line-height:1.2;letter-spacing:-.015em;margin:0}
+  .door p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+  .door .go{margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;color:var(--amber-2)}
+  .door .go::after{content:attr(data-off)}
+  .door[aria-pressed="true"] .go{color:var(--ink-2);font-weight:500}
+  .door[aria-pressed="true"] .go::before{content:"\25CF  ";color:var(--amber)}
+  .door[aria-pressed="true"] .go::after{content:attr(data-on)}
+  /* the two tracks: one shows at a time once the script has run */
+  .track{scroll-margin-top:72px}
+  html[data-track="code"] [data-track="nocode"],html[data-track="nocode"] [data-track="code"]{display:none!important}
+  nav a.switch{color:var(--amber-2)}
+</style>
+<script>
+/* pick the track before first paint, so a link to a section inside it can scroll to it */
+(function(){var h=location.hash.replace(/^#/,''),t=null;
+if(/^(no-code|sans-code|nocode|questions|situations|offres|offers)$/.test(h))t='nocode';
+else if(/^(code|problem|model|refusal|board|numbers|kit|work)$/.test(h))t='code';
+if(!t){try{t=localStorage.getItem('guildwork-track')}catch(e){}}
+document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
+</script>
 </head>
 <body>
 
@@ -233,12 +304,16 @@
       <b>Guildwork</b>
     </a>
     <nav>
-      <a href="#problem">Le problème</a>
-      <a href="#model">Le modèle</a>
-      <a href="#numbers">Les chiffres</a>
-      <a href="#kit">Le pack</a>
-      <a href="#work">Travailler ensemble</a>
-      <a href="entreprises/">Sans code</a>
+      <a href="#problem" data-track="code">Le problème</a>
+      <a href="#model" data-track="code">Le modèle</a>
+      <a href="#numbers" data-track="code">Les chiffres</a>
+      <a href="#kit" data-track="code">Le pack</a>
+      <a href="#work" data-track="code">Travailler ensemble</a>
+      <a href="#questions" data-track="nocode">Trois questions</a>
+      <a href="#situations" data-track="nocode">Six situations</a>
+      <a href="#offres" data-track="nocode">Ce que ça donne</a>
+      <a class="switch" href="#sans-code" data-track="code">Sans code →</a>
+      <a class="switch" href="#code" data-track="nocode">Avec du code →</a>
     </nav>
     <div class="bar-end">
       <div class="lang">
@@ -253,10 +328,10 @@
 <main id="top">
 
 <div class="wrap hero">
-  <p class="eyebrow">MIT · documentation seule · quinze minutes</p>
-  <h1>Plusieurs agents IA, un seul dépôt, <em>et personne pour faire l'outil de merge</em>.</h1>
-  <p class="lede"><strong>Guildwork est la gouvernance qu'une seule personne a construite, incident après incident,</strong> pour faire tourner une équipe d'ingénierie IA à sept sièges sur un produit réel, à vingt et un merges par jour — chaque mission un contrat, chaque merge derrière une porte nommée, chaque session laissant une trace durable.</p>
-  <p class="lede">Il ne livre aucun code. Il est fait pour être lu — et installé.</p>
+  <p class="eyebrow">Orchestration d’agents IA · pack libre (MIT) · accompagnement</p>
+  <h1>Faire travailler des agents IA <em>en gardant le dernier mot</em>.</h1>
+  <p class="lede"><strong>Guildwork est une discipline construite incident après incident :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et le droit de refuser. Bâtie sur un logiciel réel (sept agents, vingt et un merges par jour), elle tient aussi un cabinet, une agence ou un service client.</p>
+  <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
   <div class="cta">
     <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Réserver 30 minutes</a>
     <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Lire le pack</a>
@@ -264,6 +339,27 @@
   <p class="note">Mesuré le 4 septembre 2026 · tous les chiffres ici sont réels</p>
 </div>
 
+<section id="doors" class="wrap doors" aria-label="Deux entrées, un seul modèle — choisissez la vôtre">
+  <p class="eyebrow">Deux entrées, un seul modèle — choisissez la vôtre</p>
+  <div class="door-grid">
+    <a class="door" href="#code" data-go="code" aria-pressed="false">
+      <p class="tag">Vous avez du code</p>
+      <h3>Une équipe, un dépôt, des agents qui s’y bousculent</h3>
+      <p>Claude Code, Codex, Grok ou d’autres, sur un code qui compte. Le lanceur qui refuse, le témoin, la clôture, le tableau — et trente-six jours de chiffres.</p>
+      <span class="go" data-off="Lire cette entrée →" data-on="Vous lisez cette entrée"></span>
+    </a>
+    <a class="door" href="#sans-code" data-go="nocode" aria-pressed="false">
+      <p class="tag">Vous n’avez pas de code</p>
+      <h3>Une entreprise, des process, et des IA déjà au travail</h3>
+      <p>Un cabinet, une agence, un restaurant, un service client. Trois questions, six situations que vous reconnaîtrez, et le premier agent sous contrat en une semaine.</p>
+      <span class="go" data-off="Lire cette entrée →" data-on="Vous lisez cette entrée"></span>
+    </a>
+  </div>
+</section>
+
+<hr class="rule">
+
+<div class="track" id="track-code" data-track="code">
 <hr class="rule">
 
 <section id="problem" class="wrap">
@@ -574,14 +670,113 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     </div>
   </div>
 </section>
+</div>
+
+<div class="track" id="track-nocode" data-track="nocode">
+<hr class="rule">
+
+<section id="questions" class="wrap">
+  <h2>Trois questions avant de dire que vous n'en avez pas besoin</h2>
+  <p>Je ne cherche pas à vous convaincre. Ces trois questions suffisent, et vous connaissez déjà les réponses.</p>
+  <div class="qs">
+    <div class="q"><div><p class="ask">Qui, chez vous, a fait faire quelque chose à une IA cette semaine — et où est-ce écrit ?</p><p class="why">Un devis, une réponse client, un compte-rendu, une clause. Si la réponse est « dans l'historique de son ChatGPT », c'est écrit chez l'éditeur, pas chez vous.</p></div></div>
+    <div class="q"><div><p class="ask">Si cette personne partait demain, que reste-t-il de sa façon de faire ?</p><p class="why">Le collaborateur qui « sait s'y prendre » avec l'IA a une méthode. Elle vit dans sa tête et dans ses prompts. Elle part avec lui, comme les macros Excel d'autrefois.</p></div></div>
+    <div class="q"><div><p class="ask">La dernière fois qu'une IA s'est trompée chez vous, comment l'avez-vous su ?</p><p class="why">Par un client. Par hasard. Trois semaines plus tard. Ou — la réponse la plus fréquente, et la plus honnête — vous ne l'avez pas su.</p></div></div>
+  </div>
+  <p class="punch"><strong>Si la réponse à la troisième est « on ne l'a pas su », vous avez déjà l'incident.</strong> Il vous manque le registre — l'endroit où chaque erreur devient une règle, au lieu de se reproduire.</p>
+</section>
+
+<hr class="rule">
+
+<section id="situations" class="wrap">
+  <h2>Six situations que vous reconnaîtrez</h2>
+  <p>Aucune n'est inventée dans son mécanisme : ce sont les quatre défaillances que produit toute équipe qui fait travailler plusieurs agents, transposées hors du code. Sous chacune, la règle qui l'empêche. La première est la plus loin du code qu'on puisse aller.</p>
+  <div class="feat">
+    <div>
+      <p class="n">Le restaurant</p>
+      <h3>La carte du soir a été rédigée par une IA. La mention allergènes aussi.</h3>
+      <p>Chaque semaine, le second fait rédiger la carte du soir par un assistant, à partir de celle de la semaine précédente — c'est rapide, c'est propre, et la mention des allergènes vient avec. Cette semaine, le tiramisu a changé : la nouvelle recette contient des noix. La mention, elle, n'a pas bougé, parce que l'assistant a lu l'ancienne fiche. Personne n'a relu ; c'est « la même carte que d'habitude ». Le client allergique est en salle un mardi.</p>
+      <p>Ce n'est pas une erreur d'IA. C'est une source qui a changé sans que rien le dise, une carte imprimée sans qu'un humain qui n'a pas rédigé l'ait relue, et une fois précédente — il y en a toujours une — où la carte était déjà fausse et où personne ne l'a notée. Le mécanisme est exactement celui qui fait planter une équipe de développeurs. Il n'a pas besoin d'une ligne de code pour exister.</p>
+    </div>
+    <div class="side">
+      <h4>Ce qui manquait, en trois mots</h4>
+      <p><strong>La source nommée.</strong> Quelle fiche a servi — celle de cette semaine ou celle d'avant — écrit sur la carte elle-même, avant impression.</p>
+      <p><strong>La porte.</strong> Rien ne part en salle sans qu'une personne qui n'a pas rédigé ait relu la ligne allergènes, et l'ait signé.</p>
+      <p><strong>Le registre.</strong> La fois précédente, notée en une ligne, serait devenue la règle qui empêche celle-ci.</p>
+      <div class="rulebox">La règle tient en une phrase, et un patron la comprend sans qu'on lui explique ce qu'est un agent : <em>rien ne part en salle sans que la fiche qui a servi soit nommée, et sans qu'un humain qui n'a pas rédigé ait relu.</em></div>
+    </div>
+  </div>
+  <div class="scenes">
+    <div class="scene"><p class="n">Le cabinet</p><h3>Deux réponses contradictoires au même client</h3><p>Deux collaborateurs, deux assistants IA, deux prompts. Le client reçoit lundi une position, mardi son contraire, et personne ne peut dire laquelle a été relue.</p><p class="rule">Une tâche, un contrat écrit ; rien ne part sans un relecteur qui n'a pas rédigé.</p></div>
+    <div class="scene"><p class="n">L'agence</p><h3>Une affirmation inventée, publiée sous le nom du client</h3><p>Un chiffre plausible, une source qui n'existe pas, un post en ligne depuis quatre jours. On ne sait pas ce qui a été demandé à l'agent, ni par qui.</p><p class="rule">Une porte avant publication ; ce qui a servi à produire est nommé, et il est conservé.</p></div>
+    <div class="scene"><p class="n">Le support</p><h3>Un remboursement promis hors politique</h3><p>L'agent qui répond aux tickets a promis un geste commercial que personne n'avait autorisé. Découvert trois semaines plus tard, par la comptabilité.</p><p class="rule">L'agent connaît ce qu'il peut engager, refuse le reste — et dit qu'il refuse.</p></div>
+    <div class="scene"><p class="n">Le bureau d'études</p><h3>Un devis calculé sur la grille de l'an dernier</h3><p>L'agent a lu le bon modèle et le mauvais fichier de prix. Le devis est parti, signé. La substitution était silencieuse : rien ne disait quelle grille avait servi.</p><p class="rule">Chaque production nomme ses sources ; un changement de source est un événement, pas un détail.</p></div>
+    <div class="scene"><p class="n">La direction</p><h3>La méthode est partie en congé</h3><p>L'assistante qui fait produire les comptes-rendus de direction « à sa façon » est absente trois semaines. Personne ne sait reproduire ce qu'elle obtenait.</p><p class="rule">Chaque session laisse une trace lisible par la suivante ; la méthode appartient à l'entreprise.</p></div>
+    <div class="scene"><p class="n">Vous, ce soir</p><h3>L'humain qui porte les messages</h3><p>Vous copiez la sortie d'un outil dans un autre, toute la journée, pour que vos agents « travaillent ensemble ». Vous êtes devenu le bus de messages de vos propres assistants.</p><p class="rule">Les agents se passent le travail par un tableau, pas par vous ; vous tranchez, vous ne transportez plus.</p></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="offres" class="wrap">
+  <h2>Ce que ça donne, chez vous</h2>
+  <p>Rien à acheter, rien à installer avant d'avoir compris ce que vous avez déjà. On commence par regarder, et le document reste chez vous quoi qu'il arrive.</p>
+  <div class="offers">
+    <div class="offer lead">
+      <p class="tag">Commencer ici</p>
+      <h3>Journée de cadrage</h3>
+      <p>Une journée chez vous. Je regarde qui fait faire quoi à quelle IA, et j'écris ce qui mérite un contrat, ce qui mérite une porte, et ce qui doit rester à la main.</p>
+      <ul>
+        <li>la carte de vos usages réels, y compris ceux que personne n'a déclarés</li>
+        <li>pour chaque processus : confier, encadrer, ou garder — et pourquoi</li>
+        <li>le premier contrat écrit, sur le processus qui coûte le plus</li>
+        <li>un document que votre équipe garde, quelle que soit la suite</li>
+      </ul>
+      <p class="price">1 200 € HT · prix ferme<small>Déduite de l'étape suivante si vous continuez.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Journ%C3%A9e%20de%20cadrage">Réserver 30 minutes<span>→</span></a>
+    </div>
+    <div class="offer">
+      <p class="tag">L'installation</p>
+      <h3>Premier agent sous contrat</h3>
+      <p>Une semaine. Un processus, un agent, son contrat, sa porte et son registre — mis en place avec l'équipe qui le fera tourner, pas à sa place.</p>
+      <ul>
+        <li>le contrat : ce que l'agent peut faire, ce qu'il doit refuser, ce qu'il doit nommer</li>
+        <li>la porte : qui relit, et ce qui ne part jamais sans relecture</li>
+        <li>le registre : chaque erreur devient une règle, écrite, le jour même</li>
+        <li>cinq jours de vrais dossiers menés <em>avec</em> vos collaborateurs — la formation, c'est le travail lui-même</li>
+      </ul>
+      <p class="price">4 500 € HT · prix ferme<small>Pour un processus et une équipe ; le second se chiffre à la journée de cadrage. Sur site en Île-de-France, ou à distance.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Premier%20agent%20sous%20contrat">Réserver 30 minutes<span>→</span></a>
+    </div>
+    <div class="offer">
+      <p class="tag">Ensuite</p>
+      <h3>Une journée par mois</h3>
+      <p>Le registre est arbitré, les contrats suivent vos incidents, et le second processus s'ajoute quand le premier tient.</p>
+      <ul>
+        <li>le registre revu, chaque règle nouvelle écrite avec vous</li>
+        <li>les contrats ajustés quand les outils ou les personnes changent</li>
+        <li>une lecture écrite, chaque mois, de ce que les agents ont fait — et refusé</li>
+      </ul>
+      <p class="price">1 200 € HT / mois<small>Trois mois minimum, puis au mois. Journée supplémentaire : 1 200 € HT.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Une%20journ%C3%A9e%20par%20mois">Réserver 30 minutes<span>→</span></a>
+    </div>
+  </div>
+  <div class="proof">
+    <p><strong>D'où vient la discipline.</strong> Elle a été construite, incident après incident, pour faire tenir une équipe de sept agents IA sur un logiciel réel, avec un seul humain aux commandes — vingt-deux livraisons fusionnées par jour, chaque erreur devenue une règle, tout est public et chiffré. C'est <a href="#code">Guildwork</a>. Chez vous, il n'y aura ni dépôt ni code ; il y aura les mêmes contrats, les mêmes portes, le même registre.</p>
+    <p class="fig">127<small>règles écrites en cinq semaines, chacune payée par une erreur réelle</small></p>
+  </div>
+</section>
+</div>
 
 </main>
 
 <div class="contact">
   <div class="wrap">
-    <h2>Si vous faites tourner plus d'un agent sur un code qui compte</h2>
+    <h2 data-track="code">Si vous faites tourner plus d’un agent sur un code qui compte</h2>
+    <h2 data-track="nocode">Si vos équipes font déjà travailler des IA</h2>
     <div class="who">
-      <p>Je m'appelle Simon Dupont. J'ai mené l'équipe à sept sièges décrite plus haut, j'ai écrit chaque règle de ce pack de la manière coûteuse, et je l'installe sur les dépôts des autres. Le plus rapide, pour vous, est de prendre trente minutes et de décrire votre installation — je vous dirai lesquelles des quatre défaillances vous avez déjà.</p>
+      <p data-track="code">Je m'appelle Simon Dupont. J'ai mené l'équipe à sept sièges décrite plus haut, j'ai écrit chaque règle de ce pack de la manière coûteuse, et je l'installe sur les dépôts des autres. Le plus rapide, pour vous, est de prendre trente minutes et de décrire votre installation — je vous dirai lesquelles des quatre défaillances vous avez déjà.</p>
+      <p data-track="nocode">Je m'appelle Simon Dupont. Le plus rapide est de prendre trente minutes et de me décrire ce que vos collaborateurs font faire aux IA aujourd'hui — je vous dirai laquelle des trois questions vous coûte déjà quelque chose.</p>
       <div class="lines">
         <a href="https://cal.com/simon-pacifae-dupont/30min">cal.com/simon-pacifae-dupont/30min</a>
         <a href="mailto:simon.pacifae.dupont@gmail.com">simon.pacifae.dupont@gmail.com</a>
@@ -594,7 +789,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <footer>
   <div class="wrap">
-    <span>Guildwork — MIT. Le projet Lantern, son dépôt, ses personnes et ses chiffres sont fictifs.</span>
+    <span>Guildwork — MIT. Le projet Lantern, son dépôt, ses personnes et ses chiffres sont fictifs ; les situations sont des mécanismes, pas des clients.</span>
     <span>© 2026 Simon Dupont</span>
   </div>
 </footer>
@@ -606,6 +801,19 @@ svg.addEventListener('mousemove',function(e){var t=e.target;if(!t.classList.cont
 tip.innerHTML='<b>'+d.toLocaleDateString(wrap.dataset.lang,{day:'numeric',month:'long',timeZone:'UTC'})+'</b>'+D.m[i]+' '+L+'<br>'+(i>=25?D.r[i]+' '+R:'—');
 var r=wrap.getBoundingClientRect();var x=e.clientX-r.left+14,y=e.clientY-r.top-10;tip.style.display='block';if(x+tip.offsetWidth>r.width-8)x=e.clientX-r.left-tip.offsetWidth-14;tip.style.left=x+'px';tip.style.top=y+'px';});
 svg.addEventListener('mouseleave',function(){tip.style.display='none';});});})();
+</script>
+<script>
+(function(){var root=document.documentElement,K='guildwork-track';
+function fromHash(h){h=(h||'').replace(/^#/,'');if(/^(no-code|sans-code|nocode|questions|situations|offres|offers)$/.test(h))return 'nocode';if(/^(code|problem|model|refusal|board|numbers|kit|work)$/.test(h))return 'code';return null;}
+function apply(t,scroll){root.dataset.track=t;try{localStorage.setItem(K,t)}catch(e){}
+document.querySelectorAll('.door').forEach(function(d){d.setAttribute('aria-pressed',d.dataset.go===t?'true':'false');});
+if(scroll){var el=document.getElementById('doors');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}}
+apply(root.dataset.track||'code',false);
+document.querySelectorAll('.door').forEach(function(d){d.addEventListener('click',function(e){e.preventDefault();history.replaceState(null,'',d.getAttribute('href'));apply(d.dataset.go,true);});});
+document.querySelectorAll('nav a.switch').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();history.replaceState(null,'',a.getAttribute('href'));apply(fromHash(a.getAttribute('href')),true);});});
+window.addEventListener('hashchange',function(){var n=fromHash(location.hash);if(n&&n!==root.dataset.track){apply(n,false);
+var id=location.hash.replace(/^#/,'');var el=document.getElementById(id);if(el&&!/^(code|no-code|sans-code|nocode)$/.test(id))el.scrollIntoView();}});
+})();
 </script>
 </body>
 </html>

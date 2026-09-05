@@ -14,6 +14,8 @@
 **[simon-pacifae-dupont.github.io/Guildwork](https://simon-pacifae-dupont.github.io/Guildwork/)** — the same thing, on one page.
 ([Version française](https://simon-pacifae-dupont.github.io/Guildwork/fr/) of the page and of this README; the fifteen documents are in English.)
 
+**Not a developer?** The same discipline — a contract before, a witness during, a closeout after, and the right to refuse — holds a law firm, an agency or a support desk just as well. [That door is on the same page.](https://simon-pacifae-dupont.github.io/Guildwork/#no-code)
+
 Guildwork is the governance one person built, incident by incident, to run
 a seven-seat AI engineering team on a real product at twenty-one merges a
 day — with every mission a contract, every merge behind a named gate, every
