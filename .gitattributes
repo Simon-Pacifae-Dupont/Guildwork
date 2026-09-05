@@ -1,4 +1,3 @@
-# Normalise line endings in the repository; keep the shell recipe LF on every
-# platform, since a CRLF `labels.sh` does not run under `sh`.
 * text=auto
 *.sh text eol=lf
+brand/** linguist-vendored
