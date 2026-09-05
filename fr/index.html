@@ -25,7 +25,7 @@
     /* icons: one law for the whole page — a size relative to the text they label,
        and one optical lift, larger next to lowercase (which has descenders)
        than next to capitals (which have none). No icon sets these itself. */
-    --icon:1.34em; --icon-solid:1.2em; --icon-lift:-.13em; --icon-lift-caps:-.07em;
+    --icon:1.34em; --icon-lift:-.13em; --icon-lift-caps:-.07em; --icon-lift-underlined:-.04em;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -45,15 +45,20 @@
   header{position:sticky;top:0;z-index:10;background:rgba(11,21,38,.86);backdrop-filter:blur(8px);
     border-bottom:1px solid var(--edge-2)}
   /* the shorthand must carry the side padding: .bar sits on the same element as .wrap and would otherwise cancel it */
-  .bar{display:flex;align-items:center;gap:20px;padding:14px 24px}
+  /* the bar is a utility strip: it may run wider than the text column,
+     so the section names never have to be shortened to fit */
+  header .wrap{max-width:1280px}
+  .bar{display:flex;align-items:center;gap:18px;padding:14px 24px}
   .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-right:auto}
   .brand svg{width:28px;height:28px;flex:none}
   .brand b{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
     font-weight:600;font-size:20px;letter-spacing:-.02em}
-  nav{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+  nav{display:flex;gap:17px;font-family:"IBM Plex Mono",monospace;font-size:12px}
+  nav a{white-space:nowrap}
   nav a{color:var(--ink-2);text-decoration:none}
   nav a:hover{color:var(--ink)}
-  @media (max-width:880px){nav{display:none}}
+  /* the bar needs 1120px for these words; below that the menu carries them */
+  @media (max-width:1220px){nav{display:none}}
   .bar-end{display:flex;align-items:center;gap:11px;flex:none}
   .lang{display:flex;border:1px solid var(--edge);border-radius:7px;overflow:hidden;
     font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em}
@@ -240,7 +245,7 @@
   /* ---- mobile navigation ---- */
   .burger{display:none}
   nav.menu{display:none}
-  @media (max-width:880px){
+  @media (max-width:1220px){
     .burger{display:inline-flex;flex-direction:column;justify-content:center;gap:4.5px;
       width:42px;height:36px;padding:0 9px;border:1px solid var(--edge);border-radius:7px;
       background:transparent;cursor:pointer;flex:none}
@@ -267,7 +272,7 @@
   nav.menu .menu-h{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
   nav.menu a.ic{display:flex;align-items:center;gap:11px;border-bottom:0;padding:10px 0;color:var(--ink);font-size:13.5px}
-  nav.menu a.ic svg{width:var(--icon-solid);height:var(--icon-solid);flex:none;fill:currentColor;opacity:.7}
+  nav.menu a.ic svg{width:var(--icon);height:var(--icon);flex:none;fill:currentColor;opacity:.7}
   nav.menu a.ic.cal{color:var(--amber-2);font-weight:600}
   nav.menu a.ic.cal svg{opacity:1}
 
@@ -365,7 +370,7 @@
 
   /* the contact lines: an icon each, and the booking link reads as the call to action it is */
   .lines a{display:flex;align-items:center;gap:10px}
-  .lines a svg{width:var(--icon-solid);height:var(--icon-solid);flex:none;fill:currentColor;opacity:.55}
+  .lines a svg{width:var(--icon);height:var(--icon);flex:none;fill:currentColor;opacity:.55}
   .lines a:hover svg{opacity:.9}
   .lines a.cal{color:var(--amber-2);font-weight:600}
   .lines a.cal svg{opacity:1}
@@ -380,6 +385,8 @@
   nav.menu a{display:flex;align-items:center;gap:11px}
   .door .tag{display:flex;align-items:center;gap:8px}
   .door .tag,.scene .n,.feat .n{--icon-lift:var(--icon-lift-caps)}
+  /* underlined links read lower: the rule sits under the baseline and pulls the eye down */
+  .lines,nav.menu a.ic{--icon-lift:var(--icon-lift-underlined)}
   .scene .n,.feat .n{display:flex;align-items:center;gap:7px}
   .lines a svg,nav.menu a.ic svg{position:relative;top:var(--icon-lift)}
 </style>
@@ -422,13 +429,13 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
       <b>Guildwork</b>
     </a>
     <nav>
-      <a href="#problem" data-track="code">Le problème</a>
-      <a href="#model" data-track="code">Le modèle</a>
-      <a href="#numbers" data-track="code">Les chiffres</a>
+      <a href="#problem" data-track="code">Quatre défaillances</a>
+      <a href="#model" data-track="code">Le modèle, en schéma</a>
+      <a href="#numbers" data-track="code">Les chiffres sur 36 jours</a>
       <a href="#kit" data-track="code">Les 15 documents</a>
       <a href="#work" data-track="code">Offres et tarifs</a>
-      <a href="#questions" data-track="nocode">Trois questions</a>
-      <a href="#situations" data-track="nocode">Six situations</a>
+      <a href="#questions" data-track="nocode">Trois questions à se poser</a>
+      <a href="#situations" data-track="nocode">Six situations réelles</a>
       <a href="#offres" data-track="nocode">Offres et tarifs</a>
       <a class="switch" href="#sans-code" data-track="code">Sans code →</a>
       <a class="switch" href="#code" data-track="nocode">Avec du code →</a>
