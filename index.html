@@ -357,6 +357,22 @@
   .lines a:hover svg{opacity:.9}
   .lines a.cal{color:var(--amber-2);font-weight:600}
   .lines a.cal svg{opacity:1}
+
+  /* ---- icons ---- */
+  .sprite{position:absolute;width:0;height:0;overflow:hidden}
+  /* icons are sized from the text they sit next to, and lifted by a hair:
+     next to capitals there are no descenders, so a geometrically centred icon reads low */
+  .i{width:1.34em;height:1.34em;flex:none;fill:none;stroke:currentColor;stroke-width:1.65;
+    stroke-linecap:round;stroke-linejoin:round;color:var(--ink-2);position:relative;top:-.13em}
+  nav.menu a{display:flex;align-items:center;gap:11px}
+  nav.menu a.switch .i{color:var(--amber)}
+  .door .tag{display:flex;align-items:center;gap:8px}
+  .door .tag .i{top:-.07em}
+  .door[aria-pressed="true"] .tag .i{color:var(--amber)}
+  .scene .n,.feat .n{display:flex;align-items:center;gap:7px}
+  .scene .n .i,.feat .n .i{top:-.07em}
+  .feat .n .i{color:var(--amber)}
+  .lines a svg,nav.menu a.ic svg{position:relative;top:-.13em}
 </style>
 <script>
 /* pick the track before first paint, so a link to a section inside it can scroll to it */
@@ -368,6 +384,27 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 </script>
 </head>
 <body>
+<svg class="sprite" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4 2.6 20.5h18.8L12 4Z"/><path d="M12 10.5v4.2"/><path d="M12 17.8h.01"/></symbol>
+<symbol id="i-flow" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="8" height="6" rx="1.5"/><rect x="13.5" y="14.5" width="8" height="6" rx="1.5"/><path d="M10.5 6.5h4a3 3 0 0 1 3 3v5"/></symbol>
+<symbol id="i-stop" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></symbol>
+<symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 19h18"/><path d="M6.5 19v-6M12 19V5.5M17.5 19v-9"/></symbol>
+<symbol id="i-docs" viewBox="0 0 24 24"><path d="M6.5 3h7l4.5 4.5V21h-11.5Z"/><path d="M13.5 3v4.5H18"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.5 12 4h8v8l-8.5 8.5Z"/><circle cx="16" cy="8" r="1.4"/></symbol>
+<symbol id="i-ask" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.3 2.4c-.6.2-.9.7-.9 1.3v.4"/><path d="M12 16.8h.01"/></symbol>
+<symbol id="i-cards" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="13" rx="2"/><path d="M7 4h11a2 2 0 0 1 2 2v11"/></symbol>
+<symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8.5h13"/><path d="M13.5 5 17 8.5 13.5 12"/><path d="M20 15.5H7"/><path d="M10.5 12 7 15.5 10.5 19"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="M8.5 6 3.5 12l5 6"/><path d="M15.5 6l5 6-5 6"/></symbol>
+<symbol id="i-office" viewBox="0 0 24 24"><path d="M4 21V5.5a1.5 1.5 0 0 1 1.5-1.5h7A1.5 1.5 0 0 1 14 5.5V21"/><path d="M14 10h5a1 1 0 0 1 1 1v10"/><path d="M2.5 21h19"/><path d="M7 8h4M7 12h4M7 16h4"/></symbol>
+<symbol id="i-scales" viewBox="0 0 24 24"><path d="M12 4.5v15"/><path d="M7.5 19.5h9"/><path d="M3.5 8.5h17"/><path d="M6.5 8.5 3.8 14a2.7 2.7 0 0 0 5.4 0Z"/><path d="M17.5 8.5 14.8 14a2.7 2.7 0 0 0 5.4 0Z"/></symbol>
+<symbol id="i-mega" viewBox="0 0 24 24"><path d="M3 10v4h3l6.5 4V6L6 10H3Z"/><path d="M17 9.2a4 4 0 0 1 0 5.6"/></symbol>
+<symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14.5v-2.5a8 8 0 0 1 16 0v2.5"/><path d="M4 14h3v5.5H5.5A1.5 1.5 0 0 1 4 18Z"/><path d="M20 14h-3v5.5h1.5A1.5 1.5 0 0 0 20 18Z"/></symbol>
+<symbol id="i-ruler" viewBox="0 0 24 24"><path d="M14.5 2.5 21.5 9.5 9.5 21.5 2.5 14.5Z"/><path d="M12 5l2 2M9.5 7.5l2 2M7 10l2 2M4.5 12.5l2 2"/></symbol>
+<symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.2A1.2 1.2 0 0 1 9.7 4h4.6a1.2 1.2 0 0 1 1.2 1.2V7"/><path d="M3 12h18"/></symbol>
+<symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></symbol>
+<symbol id="i-fork" viewBox="0 0 24 24"><path d="M7 3v6.5a2.2 2.2 0 0 0 4.4 0V3"/><path d="M9.2 11.7V21"/><path d="M17.5 3c-2 2-2.4 5.5 0 7.5V21"/></symbol>
+</defs></svg>
 
 <header>
   <div class="wrap bar">
@@ -398,18 +435,18 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   </div>
 
   <nav class="menu" id="menu" hidden>
-    <a href="#problem" data-track="code">Four failures</a>
-    <a href="#model" data-track="code">The model, drawn</a>
-    <a href="#refusal" data-track="code">A refusal, for real</a>
-    <a href="#board" data-track="code">The board</a>
-    <a href="#numbers" data-track="code">The numbers, 36 days</a>
-    <a href="#kit" data-track="code">The 15 documents</a>
-    <a href="#work" data-track="code">Offers and prices</a>
-    <a href="#questions" data-track="nocode">Three questions to ask</a>
-    <a href="#situations" data-track="nocode">Six real situations</a>
-    <a href="#offres" data-track="nocode">Offers and prices</a>
-    <a class="switch" href="#no-code" data-track="code">Without code →</a>
-    <a class="switch" href="#code" data-track="nocode">With code →</a>
+    <a href="#problem" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg>Four failures</a>
+    <a href="#model" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg>The model, drawn</a>
+    <a href="#refusal" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-stop"/></svg>A refusal, for real</a>
+    <a href="#board" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-board"/></svg>The board</a>
+    <a href="#numbers" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>The numbers, 36 days</a>
+    <a href="#kit" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-docs"/></svg>The 15 documents</a>
+    <a href="#work" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offers and prices</a>
+    <a href="#questions" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg>Three questions to ask</a>
+    <a href="#situations" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Six real situations</a>
+    <a href="#offres" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offers and prices</a>
+    <a class="switch" href="#no-code" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Without code →</a>
+    <a class="switch" href="#code" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>With code →</a>
     <p class="menu-h">Contact</p>
     <a class="ic cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>Book 30 minutes</a>
     <a class="ic" href="mailto:simon.pacifae.dupont@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.5L4.6 7H19.4L12 12.5zM4 9.2V17h16V9.2l-8 6-8-6z"/></svg>simon.pacifae.dupont@gmail.com</a>
@@ -436,13 +473,13 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   <p class="eyebrow">Two doors, one model — pick yours</p>
   <div class="door-grid">
     <a class="door" href="#code" data-go="code" aria-pressed="false">
-      <p class="tag">You have code</p>
+      <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>You have code</p>
       <h3>A team, one repository, agents crowding into it</h3>
       <p>Claude Code, Codex, Grok or others, on code that matters. The launcher that refuses, the witness, the closeout, the board — and thirty-six days of numbers.</p>
       <span class="go" data-off="Read this door →" data-on="You are reading this door"></span>
     </a>
     <a class="door" href="#no-code" data-go="nocode" aria-pressed="false">
-      <p class="tag">You have no code</p>
+      <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-office"/></svg>You have no code</p>
       <h3>A company, its processes, and AIs already at work</h3>
       <p>A law firm, an agency, a restaurant, a support desk. What you could already hand to an AI, what it would give you back in hours, and the first process under contract within a week.</p>
       <span class="go" data-off="Read this door →" data-on="You are reading this door"></span>
@@ -795,7 +832,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <p>None is invented in its mechanism: these are the four failures every team that puts several agents to work produces, carried outside code. Under each, the rule that prevents it. The first is as far from code as one can get.</p>
   <div class="feat">
     <div>
-      <p class="n">The restaurant</p>
+      <p class="n"><svg class="i" aria-hidden="true"><use href="#i-fork"/></svg><span>The restaurant</span></p>
       <h3>Tonight's menu was written by an AI. So was the allergen line.</h3>
       <p>Every week the sous-chef has an assistant write the evening menu from last week's — it is fast, it is clean, and the allergen line comes with it. This week the tiramisu changed: the new recipe has walnuts. The allergen line did not move, because the assistant read the old recipe card. Nobody re-read it; it is "the same menu as usual". The allergic customer is in the dining room on a Tuesday.</p>
       <p>This is not an AI error. It is a source that changed without anything saying so, a menu printed without a human who did not write it reading it, and a previous time — there is always one — when the menu was already wrong and nobody wrote it down. The mechanism is exactly the one that breaks a team of developers. It does not need a line of code to exist.</p>
@@ -809,12 +846,12 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     </div>
   </div>
   <div class="scenes">
-    <div class="scene"><p class="n">The firm</p><h3>Two contradictory answers to the same client</h3><p>Two associates, two AI assistants, two prompts. The client receives one position on Monday and its opposite on Tuesday, and nobody can say which one was reviewed.</p><p class="rule">One task, one written contract; nothing leaves without a reviewer who did not write it.</p></div>
-    <div class="scene"><p class="n">The agency</p><h3>An invented claim, published under the client's name</h3><p>A plausible figure, a source that does not exist, a post that has been live for four days. Nobody knows what the agent was asked, or by whom.</p><p class="rule">A gate before publication; what was used to produce it is named, and kept.</p></div>
-    <div class="scene"><p class="n">The support desk</p><h3>A refund promised outside policy</h3><p>The agent answering tickets promised a goodwill gesture nobody had authorised. Found three weeks later, by accounting.</p><p class="rule">The agent knows what it may commit to, refuses the rest — and says that it refuses.</p></div>
-    <div class="scene"><p class="n">The engineering office</p><h3>A quote computed on last year's price list</h3><p>The agent read the right template and the wrong price file. The quote went out, signed. The substitution was silent: nothing said which list had been used.</p><p class="rule">Every output names its sources; a change of source is an event, not a detail.</p></div>
-    <div class="scene"><p class="n">Management</p><h3>The method went on leave</h3><p>The assistant who has the board minutes produced "her way" is away for three weeks. Nobody knows how to reproduce what she got.</p><p class="rule">Every session leaves a record the next one can read; the method belongs to the company.</p></div>
-    <div class="scene"><p class="n">You, tonight</p><h3>The human who carries the messages</h3><p>You paste the output of one tool into another, all day, so that your agents "work together". You have become the message bus of your own assistants.</p><p class="rule">Agents hand work over through a board, not through you; you decide, you no longer carry.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-scales"/></svg><span>The firm</span></p><h3>Two contradictory answers to the same client</h3><p>Two associates, two AI assistants, two prompts. The client receives one position on Monday and its opposite on Tuesday, and nobody can say which one was reviewed.</p><p class="rule">One task, one written contract; nothing leaves without a reviewer who did not write it.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-mega"/></svg><span>The agency</span></p><h3>An invented claim, published under the client's name</h3><p>A plausible figure, a source that does not exist, a post that has been live for four days. Nobody knows what the agent was asked, or by whom.</p><p class="rule">A gate before publication; what was used to produce it is named, and kept.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-headset"/></svg><span>The support desk</span></p><h3>A refund promised outside policy</h3><p>The agent answering tickets promised a goodwill gesture nobody had authorised. Found three weeks later, by accounting.</p><p class="rule">The agent knows what it may commit to, refuses the rest — and says that it refuses.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ruler"/></svg><span>The engineering office</span></p><h3>A quote computed on last year's price list</h3><p>The agent read the right template and the wrong price file. The quote went out, signed. The substitution was silent: nothing said which list had been used.</p><p class="rule">Every output names its sources; a change of source is an event, not a detail.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>Management</span></p><h3>The method went on leave</h3><p>The assistant who has the board minutes produced "her way" is away for three weeks. Nobody knows how to reproduce what she got.</p><p class="rule">Every session leaves a record the next one can read; the method belongs to the company.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>You, tonight</span></p><h3>The human who carries the messages</h3><p>You paste the output of one tool into another, all day, so that your agents "work together". You have become the message bus of your own assistants.</p><p class="rule">Agents hand work over through a board, not through you; you decide, you no longer carry.</p></div>
   </div>
 </section>
 
