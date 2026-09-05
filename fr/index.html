@@ -97,6 +97,11 @@
   .canvas-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;
     background:var(--ground-2);box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
   .canvas-frame a{display:block}
+  /* the board */
+  .board-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;background:#F4F3F0;
+    box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .board-frame a{display:block}
+  .board-frame img{display:block;width:100%}
   /* the refusal, as a terminal */
   .term{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:#070D18;overflow:hidden;
     box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
@@ -284,6 +289,19 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
       on the same name; under 'one writer' that is the two-writer failure itself</pre>
   </div>
   <p class="caption">La transcription complète — le refus, la disposition, le passage qui a réussi, et ce que <code>--list</code> montrait quarante minutes plus tard — est <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/examples/lantern/launcher-dry-run.md">dans le pack</a>. Le numéro doublé du bandeau est réel, connu et cosmétique : le titre porte son propre numéro par convention. La sortie de l'outil est en anglais, comme l'outil.</p>
+</section>
+
+<hr class="rule">
+
+<section id="board" class="wrap">
+  <h2>Le tableau, lu pour ce qu'il vous doit</h2>
+  <p>Vingt et un merges par jour ne se lisent pas dans une liste d'issues. Le Product Owner ouvre une seule page à la place, qui lit le tableau pour exactement trois choses : <strong>les livraisons qui attendent une décision qui est la sienne et celle de personne d'autre, les livraisons que l'architecte fusionnera sous délégation, et les missions ouvertes par chantier.</strong> Elle ne devine rien — une livraison existe quand une pull request ouverte porte la ligne <code>Mission: #N delivers</code> du contrat, et ce qui n'entre dans aucune règle est compté sur la face du tableau plutôt que rangé à la main.</p>
+  <div class="board-frame">
+    <a href="../demo/board/">
+      <img src="../brand/board-demo.png" alt="Le tableau Lantern : une décision attend le Product Owner, deux livraisons sous délégation, treize issues ouvertes, un lot sans chantier.">
+    </a>
+  </div>
+  <p class="caption">Un instantané figé du tableau fictif Lantern — <a href="../demo/board/">ouvrir la démonstration</a>. Sur le projet réel, la même page lit GitHub en direct par le connecteur du lecteur ; la page est dans le pack sous <code>templates/board/</code>. Elle est en anglais, comme le pack.</p>
 </section>
 
 <hr class="rule">

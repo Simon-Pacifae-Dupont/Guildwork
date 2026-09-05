@@ -64,6 +64,13 @@ it outside the gate*; *durable means reachable from a pushed ref*.
   <sub>Read for where it can stop: seven conditions before a session starts, a witness and a gate before anything lands, three exit codes decided by durability alone, and a register that sends every incident back into the next contract. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.html">Interactive version</a> — hover a block to isolate its path.</sub>
 </p>
 
+**The board, read for what it owes each seat.** The Product Owner opens one
+page instead of the issue list: the deliveries waiting on their decision, the
+deliveries the architect merges under delegation, the open missions by
+workstream — and, on the face of the board, whatever fitted no rule.
+[Demonstration on the fictional Lantern board](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/)
+· the page itself is under `templates/board/`.
+
 ## What is in this repository
 
 ```

@@ -73,6 +73,14 @@ référence poussée*.
   <sub>À lire pour ses points d'arrêt : sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.fr.html">Version interactive</a> — survolez un bloc pour isoler son chemin.</sub>
 </p>
 
+**Le tableau, lu pour ce qu'il doit à chaque siège.** Le Product Owner
+ouvre une seule page à la place de la liste d'issues : les livraisons qui
+attendent sa décision, celles que l'architecte fusionne sous délégation, les
+missions ouvertes par chantier — et, sur la face du tableau, ce qui n'est
+entré dans aucune règle.
+[Démonstration sur le tableau fictif Lantern](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/)
+· la page elle-même est sous `templates/board/`.
+
 ## Ce que contient ce dépôt
 
 ```

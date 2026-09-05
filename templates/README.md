@@ -22,6 +22,7 @@ the list at the end of this page — from the corresponding page under
 | `REGENERABLE_PATHS.txt` | `docs/guild/` | `docs/07-closeout.md` |
 | `FINDINGS_REGISTER.md` | the body of one issue, kept open | `docs/09-findings-register.md` |
 | `changelog.d/README.md` | `docs/changelog.d/` | `docs/11-changelog-fragments.md` |
+| `board/board.html` | published as a page on claude.ai with the GitHub connector — see `board/README.md` | `docs/00-operating-model.md`, `docs/02-delivery-contract.md` |
 
 What the templates reference and do not contain, because it is the
 adopting project's to write, under whatever names it prefers:

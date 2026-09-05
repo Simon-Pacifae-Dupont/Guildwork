@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lantern — the board, read for what it owes you</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground:#F4F3F0; --surface:#FFFFFF; --surface-2:#FAF9F7;
+    --ink:#191D1C; --ink-2:#565C59; --ink-3:#828885;
+    --rule:#DEDCD6; --rule-2:#EBE9E4;
+    --accent:#1C5C58; --accent-soft:#E4EDEC;
+    --landed:#2C6E49; --flight:#9A6410; --owed:#9E3B3E; --idle:#6B7472;
+    --landed-bg:#E6F0E9; --flight-bg:#F6ECDC; --owed-bg:#F6E5E5; --idle-bg:#ECEEED;
+    --shadow:0 1px 2px rgba(25,29,28,.05), 0 8px 24px -16px rgba(25,29,28,.25);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#121514; --surface:#1A1E1D; --surface-2:#171B1A;
+      --ink:#E9EAE7; --ink-2:#9EA5A1; --ink-3:#79817D;
+      --rule:#2A302E; --rule-2:#232827;
+      --accent:#5CB8B0; --accent-soft:#16302E;
+      --landed:#6FBF8E; --flight:#D9A44E; --owed:#DE7F82; --idle:#8B9490;
+      --landed-bg:#16281E; --flight-bg:#2A2214; --owed-bg:#2B1A1B; --idle-bg:#1F2423;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#121514; --surface:#1A1E1D; --surface-2:#171B1A;
+    --ink:#E9EAE7; --ink-2:#9EA5A1; --ink-3:#79817D;
+    --rule:#2A302E; --rule-2:#232827;
+    --accent:#5CB8B0; --accent-soft:#16302E;
+    --landed:#6FBF8E; --flight:#D9A44E; --owed:#DE7F82; --idle:#8B9490;
+    --landed-bg:#16281E; --flight-bg:#2A2214; --owed-bg:#2B1A1B; --idle-bg:#1F2423;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+  *,*::before,*::after { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+    font-family:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:36px 24px 88px; }
+  @media (max-width:640px){ .wrap{ padding:24px 16px 60px; } }
+  h1,h2 { font-family:Archivo,"Arial Narrow",system-ui,sans-serif; text-wrap:balance; margin:0; }
+  h1 { font-size:clamp(27px,4.2vw,38px); font-weight:700; letter-spacing:-.02em; line-height:1.1; }
+  h2 { font-size:19px; font-weight:600; letter-spacing:-.01em; }
+  h3 { font-family:Archivo,system-ui,sans-serif; font-size:15px; font-weight:600; margin:0; }
+  p { margin:0; }
+  a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent); }
+  a:hover { border-bottom-color:var(--accent); }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:2px; }
+  .eyebrow { font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); }
+  .mono { font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+  header.top { border-bottom:2px solid var(--ink); padding-bottom:16px; }
+  .status-row { display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin-top:13px; font-size:13px; color:var(--ink-2); }
+  .dot { width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:7px; vertical-align:1px; }
+  .dot.live { background:var(--landed); } .dot.wait { background:var(--flight); } .dot.off { background:var(--idle); }
+  button.refresh { font:500 12px/1 "IBM Plex Mono",monospace; letter-spacing:.06em; text-transform:uppercase; background:var(--surface); color:var(--ink-2); border:1px solid var(--rule); padding:7px 11px; border-radius:3px; cursor:pointer; }
+  button.refresh:hover:not(:disabled) { color:var(--ink); border-color:var(--ink-3); }
+  button.refresh:disabled { opacity:.5; cursor:default; }
+  .demo { margin-top:14px; border-left:3px solid var(--accent); background:var(--accent-soft); padding:10px 14px; font-size:13px; color:var(--ink); max-width:76ch; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0 38px; }
+  .stat { background:var(--surface); padding:13px 15px; }
+  .stat .n { font-family:Archivo,sans-serif; font-size:25px; font-weight:700; line-height:1.1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+  .stat .l { font-size:12px; color:var(--ink-2); margin-top:2px; }
+  .stat.owed .n { color:var(--owed); } .stat.flight .n { color:var(--flight); }
+  section { margin-bottom:40px; }
+  .sec-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; border-bottom:1px solid var(--rule); padding-bottom:9px; margin-bottom:14px; }
+  .sec-head.sub { border-bottom-style:dotted; margin-top:18px; }
+  .sec-head h2, .sec-head h3 { flex:1 1 auto; }
+  .count { font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3); font-variant-numeric:tabular-nums; }
+  .state { font-size:13px; color:var(--ink-2); margin-bottom:14px; max-width:70ch; }
+  .chip { display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; padding:2.5px 7px; border-radius:3px; white-space:nowrap; }
+  .c-landed{ background:var(--landed-bg); color:var(--landed); } .c-flight{ background:var(--flight-bg); color:var(--flight); }
+  .c-owed { background:var(--owed-bg); color:var(--owed); } .c-idle { background:var(--idle-bg); color:var(--idle); }
+  .tbl-scroll { overflow-x:auto; border:1px solid var(--rule); background:var(--surface); box-shadow:var(--shadow); }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; min-width:560px; table-layout:fixed; }
+  th { text-align:left; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); padding:9px 14px; border-bottom:1px solid var(--rule); background:var(--surface-2); }
+  td { padding:10px 14px; border-bottom:1px solid var(--rule-2); vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  td.num { width:62px; } td.num a { font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; font-weight:500; border-bottom:none; }
+  td.st { width:210px; white-space:nowrap; } th:nth-child(1){width:62px} th:nth-child(3){width:210px} th:nth-child(4){width:76px}
+  td { overflow-wrap:anywhere; }
+  td.age { width:76px; font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3); font-variant-numeric:tabular-nums; text-align:right; }
+  td.age.old { color:var(--flight); }
+  .owed-list { display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule); box-shadow:var(--shadow); }
+  .owed-item { background:var(--surface); padding:13px 16px; display:grid; grid-template-columns:66px 1fr auto; gap:14px; align-items:baseline; }
+  @media (max-width:600px){ .owed-item{ grid-template-columns:1fr; gap:5px; } }
+  .owed-item .k { font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--accent); font-weight:500; } .owed-item .k a { border-bottom:none; }
+  .owed-item .q { font-weight:500; font-size:14px; }
+  .owed-item .a { font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-3); white-space:nowrap; }
+  .msg { border-left:3px solid var(--flight); background:var(--flight-bg); padding:12px 15px; font-size:13.5px; color:var(--ink); max-width:74ch; }
+  .msg.err { border-left-color:var(--owed); background:var(--owed-bg); }
+  .msg.info { border-left-color:var(--accent); background:var(--accent-soft); }
+  .msg b { font-weight:600; } .msg code { font-family:"IBM Plex Mono",monospace; font-size:12.5px; }
+  .skel { height:13px; background:var(--rule-2); border-radius:2px; animation:pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:.55} 50%{opacity:.95} }
+  footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--rule); font-size:12.5px; color:var(--ink-3); max-width:76ch; }
+  footer p + p { margin-top:8px; }
+  @media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 id="h1"></h1>
+    <div class="status-row">
+      <span id="live-state"><span class="dot wait"></span><span id="live-text"></span></span>
+      <span id="freshness" class="mono"></span>
+      <button class="refresh" id="refresh" disabled></button>
+    </div>
+    <div id="demo-note" hidden class="demo"></div>
+  </header>
+
+  <div class="stats" id="stats">
+    <div class="stat"><div class="n skel" style="width:2ch">&nbsp;</div><div class="l">&nbsp;</div></div>
+    <div class="stat"><div class="n skel" style="width:2ch">&nbsp;</div><div class="l">&nbsp;</div></div>
+    <div class="stat"><div class="n skel" style="width:2ch">&nbsp;</div><div class="l">&nbsp;</div></div>
+    <div class="stat"><div class="n skel" style="width:2ch">&nbsp;</div><div class="l">&nbsp;</div></div>
+  </div>
+
+  <div id="page-msg"></div>
+
+  <section id="owed-sec">
+    <div class="sec-head"><h2 id="owed-h"></h2><span class="count" id="owed-count"></span></div>
+    <p class="state" id="owed-state"></p>
+    <div id="owed-body"></div>
+  </section>
+
+  <section id="deleg-sec">
+    <div class="sec-head"><h2 id="deleg-h"></h2><span class="count" id="deleg-count"></span></div>
+    <p class="state" id="deleg-state"></p>
+    <div id="deleg-body"></div>
+  </section>
+
+  <section id="chantiers-sec">
+    <div class="sec-head"><h2 id="ch-h"></h2><span class="count" id="ch-count"></span></div>
+    <div id="chantiers-body"></div>
+  </section>
+
+  <section id="landed-sec">
+    <div class="sec-head"><h2 id="landed-h"></h2><span class="count" id="landed-count"></span></div>
+    <div id="landed-body"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---- configuration: everything a repository changes lives here -----------
+  var CONFIG = {
+  "owner": "lantern-workshop",
+  "repo": "lantern",
+  "server": "github",
+  "labels": {
+    "mission": "ai-mission",
+    "gatePo": "gate:po",
+    "gateDelegated": "gate:delegated",
+    "workstreamPrefix": "chantier:"
+  },
+  "staleDays": 14,
+  "refreshMs": 120000,
+  "workstreamNames": {
+    "dashboard": "Dashboard — the tiles an operator reads",
+    "device": "Device — calibration and the bench bridge",
+    "sync": "Sync — export of readings",
+    "shell": "Shell — the frame every page wears",
+    "gate": "Gate — launcher, governance check, test gate",
+    "watcher": "Watcher — the label-event watcher",
+    "governance": "Governance — the documents that say what the rules are",
+    "release-provenance": "Release provenance"
+  }
+};
+  var T = {
+  "eyebrow": "Lantern — the board, live",
+  "h1": "Where the workstreams stand",
+  "refresh": "Refresh",
+  "connecting": "connecting to the board…",
+  "live": "live",
+  "interrupted": "read interrupted",
+  "rereading": "re-reading…",
+  "offline": "offline",
+  "snapshot": "snapshot",
+  "snapshotDate": "frozen on 4 September 2026",
+  "justNow": "just now",
+  "minutesAgo": "{n} min ago",
+  "today": "today",
+  "dayUnit": "d",
+  "owedHeading": "What is owed to you, and to nobody else",
+  "owedState": "A reserved gate is not a wait. {label} says <em>who will decide</em>; it does not say the decision has arrived. A decision is owed when an open pull request carries the line <span class=\"mono\">Mission: #N delivers</span> — the contract's own line, and nothing else.",
+  "decisionNow": "A decision is waiting for you now",
+  "reservedNotReached": "Reserved gates, not reached yet",
+  "toDecideCount": "{n} to decide",
+  "nothingToDecide": "nothing to decide",
+  "nothingDeliveredOwed": "Nothing delivered is waiting on your decision. The gates below exist, but the work has not reached them yet.",
+  "reservedNote": "These contracts will come back to you, later. A lot whose reserved gate is <em>the launch</em> has no delivery to show and sits here like the others — the page cannot tell them apart and does not pretend to.",
+  "noGatePo": "No open issue carries <code>{label}</code>.",
+  "none": "None.",
+  "deliveriesPending": "Reading open deliveries — without them this page cannot tell a gate that has been reached from a gate merely declared, and it will not guess.",
+  "delegHeading": "Delivered under delegation, waiting to merge",
+  "delegState": "Deliveries whose gate is delegated: the architect merges them on the witness's word, without you. You see them pass; you have nothing to do.",
+  "deliveriesCount": "{n} delivery(ies)",
+  "nothingUnderDelegation": "No open delivery under delegation.",
+  "orphanDeliveries": "Open pull requests name a mission that is no longer open: {list}. Either the mission was closed before its delivery, or the <code>Mission:</code> line is wrong — either way, look.",
+  "noMissionLine": "{n} open pull request(s) without a <code>Mission:</code> line: {list}. The board cannot attach them to a contract, and it does not guess.",
+  "chHeading": "By workstream",
+  "missionsOpen": "{n} open missions",
+  "noMissions": "No open mission.",
+  "unclassified": "No workstream",
+  "unclassifiedNote": "These lots carry no <code>{prefix}*</code> label. One label would file them without this page having to guess.",
+  "landedHeading": "Recently landed",
+  "lastN": "last {n}",
+  "noRecentMerge": "No recent merge.",
+  "colLot": "Lot",
+  "colSubject": "Subject",
+  "colGate": "Gate",
+  "colAge": "Age",
+  "colWhatChanged": "What changed",
+  "colMerged": "Merged",
+  "chipReserved": "reserved",
+  "chipDelegated": "delegated",
+  "chipDelivered": "delivered",
+  "chipStale": "stale",
+  "openFor": "open for {age}",
+  "statOpen": "open issues",
+  "statToDecide": "to decide",
+  "statDelegated": "delivered under delegation",
+  "statUnclassified": "no workstream",
+  "statUnread": "issues not read",
+  "demoNote": "<b>This is a frozen snapshot of the fictional Lantern board</b>, so that the reading can be shown without a repository behind it. The same page, published on claude.ai with the GitHub connector, reads a real board live — that is how it is used on the project the kit comes from.",
+  "footer": "<p><b>What this page really reads.</b> The repository's open issues (every page of them), open pull requests and closed pull requests, through the viewer's own GitHub connector. Nothing is copied: states, gates and ages are computed on open and refreshed every two minutes.</p><p><b>What it does not guess.</b> A delivery exists when an open pull request carries the line <span class=\"mono\">Mission: #N delivers | supersedes</span> — the delivery contract's convention, and nothing else. A workstream exists when the <span class=\"mono\">chantier:*</span> label is set. Whatever fits no rule is counted separately, on the face of the board, rather than filed by guesswork.</p>",
+  "offlineSection": "This section reads the board live and cannot reach it here. Open the page from claude.ai with the GitHub connector connected.",
+  "errNotConnected": "<b>The {s} connector is not added for this viewer.</b> Add it in claude.ai → Settings → Connectors, then reload.",
+  "errReauth": "<b>The connection to {s} has expired.</b> Reconnect it in claude.ai → Settings → Connectors.",
+  "errSelection": "<b>Several {s} connectors are available.</b> Choose one when claude.ai asks, then refresh.",
+  "errPolicy": "<b>Access to the connector is blocked by an organisation policy.</b> This page cannot read the board here.",
+  "errApproval": "<b>The call is waiting for an approval.</b> Accept the request, then refresh.",
+  "errRate": "<b>Too many calls in a row.</b> The data shown is the last successful read; try again in a minute.",
+  "errUnavailable": "<b>GitHub did not answer.</b> The data shown is the last successful read.",
+  "errTool": "<b>GitHub answered with an error:</b> {m}.",
+  "errDefault": "<b>The board could not be read.</b> {m}"
+};
+  var SOURCE = "static";           // "mcp" (live, through the viewer's GitHub connector) or "static"
+  var STATIC = {"takenAt": 1788544800000, "issues": [{"number": 131, "title": "#131 — [MISSION] Bench controller handshake retries with a bounded backoff", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:device"], "created_at": "2026-09-03T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 129, "title": "#129 — [MISSION] Export manifest names the reading window it covers", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:sync"], "created_at": "2026-09-02T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 128, "title": "#128 — [MISSION] Dashboard tiles show the age of their last reading", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:dashboard"], "created_at": "2026-09-02T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 127, "title": "#127 — [MISSION] Shell keyboard focus survives a page change", "labels": ["ai-mission", "role:grok-build", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:shell"], "created_at": "2026-09-01T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 126, "title": "#126 — [MISSION] Launcher condition 5 names the capability it could not meet", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:gate"], "created_at": "2026-08-31T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 124, "title": "#124 — [MISSION] Watcher shadow log rotates at one megabyte", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:watcher"], "created_at": "2026-08-30T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 122, "title": "#122 — [MISSION] Closeout manifest lists the generated calibration tables", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:gate"], "created_at": "2026-08-29T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 116, "title": "#116 — [MISSION] Calibration page refuses to save a table with an unmeasured cell", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:high", "watcher:claude", "chantier:device"], "created_at": "2026-08-23T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 112, "title": "#112 — [MISSION] Session journal template gains the unpreserved declaration", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:governance"], "created_at": "2026-08-19T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 109, "title": "#109 — [MISSION] Release archive carries the commit it was built from", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:release-provenance"], "created_at": "2026-08-14T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 104, "title": "#104 — [MISSION] Sync retries an export the controller cut short", "labels": ["ai-mission", "role:grok-build", "mode:one-writer", "gate:delegated", "risk:medium", "watcher:claude"], "created_at": "2026-08-08T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 97, "title": "#97 — Findings register", "labels": ["watcher:claude"], "created_at": "2026-07-26T08:00:00Z", "updated_at": "2026-09-04T08:00:00Z"}, {"number": 61, "title": "#61 — Standing delegation: routine merges", "labels": [], "created_at": "2026-07-08T08:00:00Z", "updated_at": "2026-08-05T08:00:00Z"}], "openPrs": [{"number": 133, "title": "#131 — bench handshake retries, bounded", "body": "## Mission\n\nMission: #131 delivers — the handshake retries three times with a bounded backoff, then reports.\n\n## Execution parameters\n\nModel claude-opus-5, effort HIGH, started by tools/mission_launcher.py.", "created_at": "2026-09-04T15:00:00Z"}, {"number": 132, "title": "#128 — tile age", "body": "## Mission\n\nMission: #128 delivers — every tile shows the age of its last reading.\n", "created_at": "2026-09-04T11:00:00Z"}, {"number": 130, "title": "#129 — export manifest window", "body": "## Mission\n\nMission: #129 delivers — the manifest names its reading window.\n", "created_at": "2026-09-03T08:00:00Z"}, {"number": 115, "title": "Design reference — the Dashboard shell, offline", "body": "**Draft.** A design artefact for the UX/UI seat, not a delivery. Open to be looked at, not merged on a schedule.", "created_at": "2026-08-16T08:00:00Z"}], "closedPrs": [{"number": 125, "title": "#122 — closeout manifest lists calibration tables", "merged_at": "2026-09-04T09:00:00Z"}, {"number": 123, "title": "#118 — tiles keep their last reading while the bridge reconnects", "merged_at": "2026-09-03T08:00:00Z"}, {"number": 121, "title": "#112 — journal template: the unpreserved declaration", "merged_at": "2026-09-02T08:00:00Z"}, {"number": 120, "title": "#118 — tiles keep their last reading (refused)", "merged_at": null}, {"number": 119, "title": "#110 — device page: calibration status glyphs", "merged_at": "2026-09-01T08:00:00Z"}, {"number": 117, "title": "#108 — shell: page titles in the window title", "merged_at": "2026-08-31T08:00:00Z"}, {"number": 114, "title": "#107 — sync: export path is configurable", "merged_at": "2026-08-30T08:00:00Z"}, {"number": 113, "title": "#106 — launcher: governance pin printed in the banner", "merged_at": "2026-08-29T08:00:00Z"}, {"number": 111, "title": "#105 — watcher: allow-list of actors", "merged_at": "2026-08-28T08:00:00Z"}]};             // only read when SOURCE === "static"
+
+  var REPO_URL = "https://github.com/" + CONFIG.owner + "/" + CONFIG.repo;
+  var MISSION_LINE = new RegExp("^\\s*Mission:\\s*#(\\d+)\\s+(delivers|supersedes|refused)\\b", "mi");
+  var els = {};
+  ["eyebrow","h1","live-state","live-text","freshness","refresh","demo-note","stats","page-msg",
+   "owed-h","owed-count","owed-state","owed-body","deleg-h","deleg-count","deleg-state","deleg-body",
+   "ch-h","ch-count","chantiers-body","landed-h","landed-count","landed-body","foot"]
+    .forEach(function (id) { els[id] = document.getElementById(id); });
+
+  var state = { issues:null, prs:null, openPrs:null, issuesTruncated:0, storedAt:null,
+                issuesErr:null, prsErr:null, openPrsErr:null };
+
+  // ---- helpers ---------------------------------------------------------------
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); }
+  function unesc(s) { return String(s == null ? "" : s).replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&"); }
+  function title(t) { return unesc(t).replace(/^#\d+\s*[—-]\s*/,"").replace(/^\[(MISSION|HANDOVER|REVIEW BRIEF)\]\s*/i,""); }
+  var NOW = function () { return SOURCE === "static" ? STATIC.takenAt : Date.now(); };
+  function daysSince(iso) { return iso ? Math.floor((NOW() - new Date(iso).getTime()) / 86400000) : null; }
+  function age(iso) { var d = daysSince(iso); return d == null ? "" : d <= 0 ? T.today : d + " " + T.dayUnit; }
+  function labels(it) { return (it && it.labels) || []; }
+  function has(it, l) { return labels(it).indexOf(l) !== -1; }
+  function isMission(it) { return has(it, CONFIG.labels.mission); }
+  function link(kind, n) { return '<a href="' + REPO_URL + "/" + kind + "/" + n + '" target="_blank" rel="noopener">#' + n + "</a>"; }
+  function fmt(s, vars) { return s.replace(/\{(\w+)\}/g, function (_, k) { return vars[k] != null ? vars[k] : ""; }); }
+
+  // ---- the contract's own line: the only evidence that a delivery exists ----
+  function deliveries(openPrs) {
+    var byIssue = {}, noLine = [];
+    (openPrs || []).forEach(function (p) {
+      var m = MISSION_LINE.exec(String(p.body || ""));
+      if (!m) { noLine.push(p); return; }
+      var n = m[1], verb = m[2].toLowerCase();
+      if (!byIssue[n] || p.number > byIssue[n].pr) byIssue[n] = { pr:p.number, verb:verb };
+    });
+    return { byIssue:byIssue, noLine:noLine };
+  }
+
+  function chantierOf(it) {
+    var tagged = labels(it).filter(function (l) { return l.indexOf(CONFIG.labels.workstreamPrefix) === 0; });
+    return tagged.length ? tagged[0].slice(CONFIG.labels.workstreamPrefix.length) : null;
+  }
+
+  function gateChip(it) {
+    if (has(it, CONFIG.labels.gatePo)) return '<span class="chip c-owed">' + T.chipReserved + '</span>';
+    if (has(it, CONFIG.labels.gateDelegated)) return '<span class="chip c-idle">' + T.chipDelegated + '</span>';
+    return '<span class="chip c-idle">—</span>';
+  }
+
+  function issueRow(it, dl) {
+    var d = dl.byIssue[String(it.number)];
+    var stale = !d && daysSince(it.created_at) > CONFIG.staleDays;
+    var st = gateChip(it) + (d ? ' <span class="chip c-flight">' + T.chipDelivered + ' #' + d.pr + '</span>' : '')
+           + (stale ? ' <span class="chip c-flight">' + T.chipStale + '</span>' : '');
+    return '<tr><td class="num">' + link("issues", it.number) + '</td><td>' + esc(title(it.title)) + '</td><td class="st">' + st +
+      '</td><td class="age' + (stale ? ' old' : '') + '">' + age(it.created_at) + "</td></tr>";
+  }
+  function tableOf(rows, head) {
+    return '<div class="tbl-scroll"><table><thead><tr><th>' + T.colLot + '</th><th>' + head + "</th><th>" + T.colGate + "</th><th>" + T.colAge + "</th></tr></thead><tbody>" + rows.join("") + "</tbody></table></div>";
+  }
+  function owedRows(list, chip) {
+    chip = chip || "c-owed";
+    return '<div class="owed-list">' + list.map(function (o) {
+      var it = o.issue;
+      return '<div class="owed-item"><div class="k">' + link("issues", it.number) + '</div><div class="q">' + esc(title(it.title)) +
+        (o.d ? ' <span class="chip ' + chip + '">PR #' + o.d.pr + ' · ' + o.d.verb + '</span>' : '') +
+        '</div><div class="a">' + fmt(T.openFor, {age:age(it.created_at)}) + "</div></div>";
+    }).join("") + "</div>";
+  }
+
+  // ---- sections ---------------------------------------------------------------
+  function renderOwed(issues, dl) {
+    var gate = issues.filter(function (i) { return has(i, CONFIG.labels.gatePo); })
+                     .sort(function (a,b) { return new Date(a.created_at) - new Date(b.created_at); });
+    if (!gate.length) { els["owed-count"].textContent = ""; els["owed-body"].innerHTML = '<div class="msg info">' + fmt(T.noGatePo, {label:CONFIG.labels.gatePo}) + "</div>"; return 0; }
+    if (dl === null) {
+      els["owed-count"].textContent = "";
+      els["owed-body"].innerHTML = '<div class="msg info">' + T.deliveriesPending + "</div>" + owedRows(gate.map(function (i) { return { issue:i, d:null }; }));
+      return 0;
+    }
+    var now = [], later = [];
+    gate.forEach(function (i) { var d = dl.byIssue[String(i.number)]; (d ? now : later).push({ issue:i, d:d || null }); });
+    els["owed-count"].textContent = now.length ? fmt(T.toDecideCount, {n:now.length}) : T.nothingToDecide;
+    var html = '<div class="sec-head sub"><h3>' + T.decisionNow + '</h3><span class="count">' + now.length + "</span></div>";
+    html += now.length ? owedRows(now) : '<div class="msg info">' + T.nothingDeliveredOwed + "</div>";
+    html += '<div class="sec-head sub"><h3>' + T.reservedNotReached + '</h3><span class="count">' + later.length + "</span></div>";
+    html += later.length ? owedRows(later) + '<p class="state" style="margin-top:8px">' + T.reservedNote + "</p>" : '<div class="msg info">' + T.none + "</div>";
+    els["owed-body"].innerHTML = html;
+    return now.length;
+  }
+
+  function renderDelegated(issues, dl) {
+    if (dl === null) { els["deleg-body"].innerHTML = '<div class="msg info">' + T.deliveriesPending + "</div>"; return 0; }
+    var byNum = {}; issues.forEach(function (i) { byNum[String(i.number)] = i; });
+    var list = Object.keys(dl.byIssue).map(function (n) { return { issue:byNum[n], d:dl.byIssue[n], n:n }; })
+      .filter(function (o) { return o.issue && !has(o.issue, CONFIG.labels.gatePo); })
+      .sort(function (a,b) { return a.d.pr - b.d.pr; });
+    var orphan = Object.keys(dl.byIssue).filter(function (n) { return !byNum[n]; });
+    els["deleg-count"].textContent = list.length ? fmt(T.deliveriesCount, {n:list.length}) : "";
+    var html = list.length ? owedRows(list, "c-flight") : '<div class="msg info">' + T.nothingUnderDelegation + "</div>";
+    if (orphan.length) html += '<div class="msg" style="margin-top:10px">' + fmt(T.orphanDeliveries, {list:orphan.map(function (n) { return link("issues", n); }).join(", ")}) + "</div>";
+    if (dl.noLine.length) html += '<div class="msg" style="margin-top:10px">' + fmt(T.noMissionLine, {n:dl.noLine.length, list:dl.noLine.map(function (p) { return link("pull", p.number); }).join(", ")}) + "</div>";
+    els["deleg-body"].innerHTML = html;
+    return list.length;
+  }
+
+  function renderChantiers(issues, dl) {
+    var missions = issues.filter(isMission);
+    var groups = {}, unclassed = [];
+    missions.forEach(function (it) { var c = chantierOf(it); if (!c) { unclassed.push(it); return; } (groups[c] = groups[c] || []).push(it); });
+    var order = Object.keys(groups).sort(function (a,b) { return groups[b].length - groups[a].length || a.localeCompare(b); });
+    var html = order.map(function (id) {
+      var rows = groups[id].sort(function (a,b) { return a.number - b.number; }).map(function (it) { return issueRow(it, dl); });
+      return '<div style="margin-bottom:22px"><div class="sec-head sub" style="margin-top:0"><h3>' + esc(CONFIG.workstreamNames[id] || id) + '</h3><span class="count">' + rows.length + "</span></div>" + tableOf(rows, T.colSubject) + "</div>";
+    }).join("");
+    if (unclassed.length) {
+      html += '<div><div class="sec-head sub" style="margin-top:0"><h3>' + T.unclassified + '</h3><span class="count">' + unclassed.length + "</span></div>" +
+        tableOf(unclassed.sort(function (a,b) { return a.number - b.number; }).map(function (it) { return issueRow(it, dl); }), T.colSubject) +
+        '<div class="msg" style="margin-top:10px">' + fmt(T.unclassifiedNote, {prefix:CONFIG.labels.workstreamPrefix}) + "</div></div>";
+    }
+    els["ch-count"].textContent = fmt(T.missionsOpen, {n:missions.length});
+    els["chantiers-body"].innerHTML = html || '<div class="msg info">' + T.noMissions + "</div>";
+    return unclassed.length;
+  }
+
+  function renderLanded(prs) {
+    var merged = prs.filter(function (p) { return p.merged_at; }).sort(function (a,b) { return new Date(b.merged_at) - new Date(a.merged_at); }).slice(0, 12);
+    els["landed-count"].textContent = merged.length ? fmt(T.lastN, {n:merged.length}) : "";
+    if (!merged.length) { els["landed-body"].innerHTML = '<div class="msg info">' + T.noRecentMerge + "</div>"; return; }
+    els["landed-body"].innerHTML = '<div class="tbl-scroll"><table><thead><tr><th>PR</th><th>' + T.colWhatChanged + "</th><th>" + T.colMerged + "</th></tr></thead><tbody>" +
+      merged.map(function (p) { return '<tr><td class="num">' + link("pull", p.number) + '</td><td>' + esc(title(p.title)) + '</td><td class="age">' + age(p.merged_at) + "</td></tr>"; }).join("") + "</tbody></table></div>";
+  }
+
+  function renderStats(issues, unclassed, owedNow, delegated) {
+    var vals = [[issues.length, T.statOpen, ""], [owedNow, T.statToDecide, owedNow ? "owed" : ""], [delegated, T.statDelegated, delegated ? "flight" : ""], [unclassed, T.statUnclassified, ""]];
+    if (state.issuesTruncated) vals.push([state.issuesTruncated, T.statUnread, "owed"]);
+    els.stats.innerHTML = vals.map(function (v) { return '<div class="stat ' + v[2] + '"><div class="n">' + v[0] + '</div><div class="l">' + v[1] + "</div></div>"; }).join("");
+  }
+
+  function paint() {
+    if (state.issues) {
+      var dl = state.openPrs === null ? null : deliveries(state.openPrs);
+      var unclassed = renderChantiers(state.issues, dl || { byIssue:{}, noLine:[] });
+      var owedNow = renderOwed(state.issues, dl);
+      var delegated = renderDelegated(state.issues, dl);
+      renderStats(state.issues, unclassed, owedNow, delegated);
+    }
+    if (state.prs) renderLanded(state.prs);
+    if (SOURCE === "static") { els.freshness.textContent = T.snapshotDate; }
+    else if (state.storedAt) { var mins = Math.round((Date.now() - state.storedAt) / 60000); els.freshness.textContent = mins < 1 ? T.justNow : fmt(T.minutesAgo, {n:mins}); }
+  }
+
+  // ---- static chrome ----------------------------------------------------------
+  els.eyebrow.textContent = T.eyebrow; els.h1.textContent = T.h1; els.refresh.textContent = T.refresh;
+  els["live-text"].textContent = T.connecting;
+  els["owed-h"].textContent = T.owedHeading; els["owed-state"].innerHTML = fmt(T.owedState, {label:'<span class="mono">' + esc(CONFIG.labels.gatePo) + '</span>'});
+  els["deleg-h"].textContent = T.delegHeading; els["deleg-state"].innerHTML = T.delegState;
+  els["ch-h"].textContent = T.chHeading; els["landed-h"].textContent = T.landedHeading;
+  els.foot.innerHTML = T.footer;
+
+  // ---- every code that has its own fix gets its own copy ----------------------
+  function explain(err) {
+    var s = esc(err && err.server ? err.server : CONFIG.server);
+    switch (err && err.code) {
+      case "server_not_connected": return { cls:"err", html:fmt(T.errNotConnected, {s:s}) };
+      case "needs_reauth":         return { cls:"err", html:fmt(T.errReauth, {s:s}) };
+      case "selection_required":   return { cls:"",    html:fmt(T.errSelection, {s:s}) };
+      case "not_granted":          return null;
+      case "blocked_by_policy":    return { cls:"err", html:T.errPolicy };
+      case "approval_required":    return { cls:"",    html:T.errApproval };
+      case "rate_limited":         return { cls:"",    html:T.errRate };
+      case "server_unavailable":   return { cls:"",    html:T.errUnavailable };
+      case "tool_error":           return { cls:"err", html:fmt(T.errTool, {m:esc(err.message || "")}) };
+      default:                     return { cls:"err", html:fmt(T.errDefault, {m:esc((err && err.message) || "")}) };
+    }
+  }
+  function showPageMsg(err) { var e = explain(err); els["page-msg"].innerHTML = e ? '<div class="msg ' + e.cls + '" style="margin-bottom:26px">' + e.html + "</div>" : ""; }
+  function fallbackStatic(reason) {
+    els["live-state"].innerHTML = '<span class="dot off"></span>' + esc(reason); els.refresh.disabled = true;
+    ["owed-body","deleg-body","chantiers-body","landed-body"].forEach(function (k) { if (!els[k].innerHTML) els[k].innerHTML = '<div class="msg info">' + T.offlineSection + "</div>"; });
+    els.stats.innerHTML = "";
+  }
+
+  // ---- live source: the viewer's own GitHub connector ---------------------------
+  function startMcp(mcp) {
+    var authzDenied = { needs_reauth:1, server_not_connected:1, blocked_by_policy:1, approval_required:1 };
+    function onOk(ev, which) {
+      state[which + "Err"] = null;
+      state.storedAt = (ev.result && ev.result.cache && ev.result.cache.storedAt) || Date.now();
+      els["live-state"].innerHTML = '<span class="dot live"></span>' + T.live; els.refresh.disabled = false;
+      if (!state.issuesErr && !state.prsErr && !state.openPrsErr) els["page-msg"].innerHTML = "";
+    }
+    function onErr(ev, which) {
+      state[which + "Err"] = ev.error;
+      if (ev.error && authzDenied[ev.error.code]) state[which] = null;
+      els["live-state"].innerHTML = '<span class="dot wait"></span>' + T.interrupted;
+      showPageMsg(ev.error);
+    }
+    function watch(tool, input, onData, which) {
+      return mcp.watchTool(CONFIG.server, tool, input, function (ev) {
+        if (ev.type === "data") { onOk(ev, which); onData(ev.result && ev.result.payload); paint(); }
+        else { onErr(ev, which); paint(); }
+      }, { refetchInterval: CONFIG.refreshMs });
+    }
+    var issueInput = { owner:CONFIG.owner, repo:CONFIG.repo, state:"OPEN", perPage:100, fields:["number","title","labels","created_at","updated_at"] };
+
+    // Page one is watched; the pages behind it are read on demand, and a page that
+    // cannot be read is counted on the face of the board rather than dropped.
+    watch("list_issues", issueInput, function (p) {
+      var first = (p && p.issues) || (Array.isArray(p) ? p : []);
+      var info = (p && p.pageInfo) || {};
+      var total = (p && typeof p.totalCount === "number") ? p.totalCount : null;
+      state.issues = first; state.issuesTruncated = 0;
+      if (!info.hasNextPage) return;
+      var all = first.slice(), cursor = info.endCursor, guard = 0;
+      (function next() {
+        if (!cursor || guard++ > 20) { state.issues = all; state.issuesTruncated = total != null ? Math.max(0, total - all.length) : 0; paint(); return; }
+        var input = {}; Object.keys(issueInput).forEach(function (k) { input[k] = issueInput[k]; }); input.after = cursor;
+        mcp.callTool(CONFIG.server, "list_issues", input, { cache:{ staleTime:CONFIG.refreshMs } }).then(function (r) {
+          var q = r && r.payload; var page = (q && q.issues) || [];
+          all = all.concat(page); var pi = (q && q.pageInfo) || {}; cursor = pi.hasNextPage ? pi.endCursor : null; next();
+        }).catch(function () { state.issues = all; state.issuesTruncated = total != null ? Math.max(0, total - all.length) : 1; paint(); });
+      })();
+    }, "issues");
+
+    watch("list_pull_requests", { owner:CONFIG.owner, repo:CONFIG.repo, state:"closed", perPage:30, sort:"updated", direction:"desc", fields:["number","title","merged_at"] },
+      function (p) { state.prs = Array.isArray(p) ? p : (p && p.pull_requests) || []; }, "prs");
+
+    watch("list_pull_requests", { owner:CONFIG.owner, repo:CONFIG.repo, state:"open", perPage:50, sort:"updated", direction:"desc", fields:["number","title","body"] },
+      function (p) { state.openPrs = Array.isArray(p) ? p : (p && p.pull_requests) || []; }, "openPrs");
+
+    els.refresh.addEventListener("click", function () {
+      els.refresh.disabled = true; els["live-state"].innerHTML = '<span class="dot wait"></span>' + T.rereading;
+      Promise.resolve(mcp.invalidate(CONFIG.server)).catch(function () {}).then(function () { setTimeout(function () { els.refresh.disabled = false; }, 3000); });
+    });
+  }
+
+  // ---- static source: a frozen snapshot, for the demonstration ------------------
+  function startStatic() {
+    state.issues = STATIC.issues; state.prs = STATIC.closedPrs; state.openPrs = STATIC.openPrs; state.storedAt = STATIC.takenAt;
+    els["live-state"].innerHTML = '<span class="dot off"></span>' + T.snapshot; els.refresh.hidden = true;
+    els["demo-note"].hidden = false; els["demo-note"].innerHTML = T.demoNote;
+    paint();
+  }
+
+  if (SOURCE === "static") { startStatic(); }
+  else {
+    claude.use("mcp").then(function (mcp) { if (!mcp) { fallbackStatic(T.offline); return; } startMcp(mcp); })
+      .catch(function () { fallbackStatic(T.offline); });
+    setInterval(paint, 60000);
+  }
+})();
+</script>

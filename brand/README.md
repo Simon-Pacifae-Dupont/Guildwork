@@ -13,6 +13,7 @@ Wordmark in Fraunces, taglines in IBM Plex Mono.
 | `linkedin-banner-en.png`, `linkedin-banner-fr.png` | 1584×396 |
 | `lifecycle-canvas.png`, `lifecycle-canvas.html` | the operating model drawn on the Lantern example — image, and the interactive page it is rendered from |
 | `lifecycle-canvas.fr.png`, `lifecycle-canvas.fr.html` | the same canvas, in French |
+| `board-demo.png` | the board reader on the Lantern snapshot, as shown on the site |
 | `brand-source.html` | the source every PNG above is rendered from (Playwright screenshot of each board) |
 
 The assets are © Simon Dupont and are not covered by the MIT licence of

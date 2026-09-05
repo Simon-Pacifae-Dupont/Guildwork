@@ -96,6 +96,11 @@
   .canvas-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;
     background:var(--ground-2);box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
   .canvas-frame a{display:block}
+  /* the board */
+  .board-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;background:#F4F3F0;
+    box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .board-frame a{display:block}
+  .board-frame img{display:block;width:100%}
   /* the refusal, as a terminal */
   .term{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:#070D18;overflow:hidden;
     box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
@@ -278,6 +283,19 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
       on the same name; under 'one writer' that is the two-writer failure itself</pre>
   </div>
   <p class="caption">The whole transcript — the refusal, the disposal, the run that passed, and what <code>--list</code> showed forty minutes in — is <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/examples/lantern/launcher-dry-run.md">in the kit</a>. The doubled number in the banner is real, known, and cosmetic: the title carries its own number by convention.</p>
+</section>
+
+<hr class="rule">
+
+<section id="board" class="wrap">
+  <h2>The board, read for what it owes you</h2>
+  <p>Twenty-one merges a day is not readable from an issue list. The Product Owner opens one page instead, and it reads the board for exactly three things: <strong>the deliveries waiting on a decision that is theirs and nobody else's, the deliveries the architect will merge under delegation, and the open missions by workstream.</strong> It guesses nothing — a delivery exists when an open pull request carries the contract's own <code>Mission: #N delivers</code> line, and whatever fits no rule is counted on the face of the board rather than filed by hand.</p>
+  <div class="board-frame">
+    <a href="demo/board/">
+      <img src="brand/board-demo.png" alt="The Lantern board: one decision waiting for the Product Owner, two deliveries under delegation, thirteen open issues, one lot without a workstream.">
+    </a>
+  </div>
+  <p class="caption">A frozen snapshot of the fictional Lantern board — <a href="demo/board/">open the demonstration</a>. On the real project the same page reads GitHub live through the viewer's own connector; the page is in the kit under <code>templates/board/</code>.</p>
 </section>
 
 <hr class="rule">
