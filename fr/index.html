@@ -22,6 +22,10 @@
     --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
     --amber:#E9A23B; --amber-2:#F5C46B; --control:#7FA6D6; --refuse:#D0644A; --ok:#6FB07B;
     --measure:66ch;
+    /* icons: one law for the whole page — a size relative to the text they label,
+       and one optical lift, larger next to lowercase (which has descenders)
+       than next to capitals (which have none). No icon sets these itself. */
+    --icon:1.34em; --icon-solid:1.2em; --icon-lift:-.13em; --icon-lift-caps:-.07em;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -263,7 +267,7 @@
   nav.menu .menu-h{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
   nav.menu a.ic{display:flex;align-items:center;gap:11px;border-bottom:0;padding:10px 0;color:var(--ink);font-size:13.5px}
-  nav.menu a.ic svg{width:1.2em;height:1.2em;flex:none;fill:currentColor;opacity:.7}
+  nav.menu a.ic svg{width:var(--icon-solid);height:var(--icon-solid);flex:none;fill:currentColor;opacity:.7}
   nav.menu a.ic.cal{color:var(--amber-2);font-weight:600}
   nav.menu a.ic.cal svg{opacity:1}
 
@@ -361,7 +365,7 @@
 
   /* the contact lines: an icon each, and the booking link reads as the call to action it is */
   .lines a{display:flex;align-items:center;gap:10px}
-  .lines a svg{width:1.2em;height:1.2em;flex:none;fill:currentColor;opacity:.55}
+  .lines a svg{width:var(--icon-solid);height:var(--icon-solid);flex:none;fill:currentColor;opacity:.55}
   .lines a:hover svg{opacity:.9}
   .lines a.cal{color:var(--amber-2);font-weight:600}
   .lines a.cal svg{opacity:1}
@@ -371,14 +375,13 @@
   /* icons are sized from the text they sit next to, and lifted by a hair:
      next to capitals there are no descenders, so a geometrically centred icon reads low */
   /* an icon belongs to its label: it takes the label's own colour, never a louder one */
-  .i{width:1.34em;height:1.34em;flex:none;fill:none;stroke:currentColor;stroke-width:1.65;
-    stroke-linecap:round;stroke-linejoin:round;position:relative;top:-.13em}
+  .i{width:var(--icon);height:var(--icon);flex:none;fill:none;stroke:currentColor;stroke-width:1.65;
+    stroke-linecap:round;stroke-linejoin:round;position:relative;top:var(--icon-lift)}
   nav.menu a{display:flex;align-items:center;gap:11px}
   .door .tag{display:flex;align-items:center;gap:8px}
-  .door .tag .i{top:-.07em}
+  .door .tag,.scene .n,.feat .n{--icon-lift:var(--icon-lift-caps)}
   .scene .n,.feat .n{display:flex;align-items:center;gap:7px}
-  .scene .n .i,.feat .n .i{top:-.07em}
-  .lines a svg,nav.menu a.ic svg{position:relative;top:-.13em}
+  .lines a svg,nav.menu a.ic svg{position:relative;top:var(--icon-lift)}
 </style>
 <script>
 /* pick the track before first paint, so a link to a section inside it can scroll to it */
