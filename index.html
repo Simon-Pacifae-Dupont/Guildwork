@@ -260,7 +260,7 @@
   nav.menu .menu-h{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
   nav.menu a.ic{display:flex;align-items:center;gap:11px;border-bottom:0;padding:10px 0;color:var(--ink);font-size:13.5px}
-  nav.menu a.ic svg{width:16px;height:16px;flex:none;fill:currentColor;opacity:.7}
+  nav.menu a.ic svg{width:1.2em;height:1.2em;flex:none;fill:currentColor;opacity:.7}
   nav.menu a.ic.cal{color:var(--amber-2);font-weight:600}
   nav.menu a.ic.cal svg{opacity:1}
 
@@ -353,7 +353,7 @@
 
   /* the contact lines: an icon each, and the booking link reads as the call to action it is */
   .lines a{display:flex;align-items:center;gap:10px}
-  .lines a svg{width:15px;height:15px;flex:none;fill:currentColor;opacity:.55}
+  .lines a svg{width:1.2em;height:1.2em;flex:none;fill:currentColor;opacity:.55}
   .lines a:hover svg{opacity:.9}
   .lines a.cal{color:var(--amber-2);font-weight:600}
   .lines a.cal svg{opacity:1}
@@ -362,16 +362,14 @@
   .sprite{position:absolute;width:0;height:0;overflow:hidden}
   /* icons are sized from the text they sit next to, and lifted by a hair:
      next to capitals there are no descenders, so a geometrically centred icon reads low */
+  /* an icon belongs to its label: it takes the label's own colour, never a louder one */
   .i{width:1.34em;height:1.34em;flex:none;fill:none;stroke:currentColor;stroke-width:1.65;
-    stroke-linecap:round;stroke-linejoin:round;color:var(--ink-2);position:relative;top:-.13em}
+    stroke-linecap:round;stroke-linejoin:round;position:relative;top:-.13em}
   nav.menu a{display:flex;align-items:center;gap:11px}
-  nav.menu a.switch .i{color:var(--amber)}
   .door .tag{display:flex;align-items:center;gap:8px}
   .door .tag .i{top:-.07em}
-  .door[aria-pressed="true"] .tag .i{color:var(--amber)}
   .scene .n,.feat .n{display:flex;align-items:center;gap:7px}
   .scene .n .i,.feat .n .i{top:-.07em}
-  .feat .n .i{color:var(--amber)}
   .lines a svg,nav.menu a.ic svg{position:relative;top:-.13em}
 </style>
 <script>
