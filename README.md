@@ -9,6 +9,8 @@
 
 **Governance kit for running parallel AI coding agents.**
 
+**[simon-pacifae-dupont.github.io/Guildwork](https://simon-pacifae-dupont.github.io/Guildwork/)** — the same thing, on one page.
+
 Guildwork is the governance one person built, incident by incident, to run
 a seven-seat AI engineering team on a real product at twenty-one merges a
 day — with every mission a contract, every merge behind a named gate, every
