@@ -49,7 +49,7 @@
   nav{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px}
   nav a{color:var(--ink-2);text-decoration:none}
   nav a:hover{color:var(--ink)}
-  @media (max-width:720px){nav{display:none}}
+  @media (max-width:880px){nav{display:none}}
   .bar-end{display:flex;align-items:center;gap:11px;flex:none}
   .lang{display:flex;border:1px solid var(--edge);border-radius:7px;overflow:hidden;
     font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em}
@@ -88,7 +88,7 @@
 
   /* four failures */
   .failures{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
-    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));margin-top:44px}
+    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(258px,100%),1fr));margin-top:44px}
   .failure{background:var(--ground-2);padding:28px 24px 30px}
   .failure .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--refuse);
     letter-spacing:.1em;margin:0 0 10px}
@@ -127,11 +127,11 @@
   .tl-table table{border-collapse:collapse;margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-2)}
   .tl-table td,.tl-table th{padding:2px 10px 2px 0;text-align:right;font-weight:400}
   .tl-table th{color:var(--ink-3)}
-  .readings{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:26px}
+  .readings{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;margin-top:26px}
   .readings p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
   .readings strong{color:var(--ink);font-weight:600}
   /* the two columns */
-  .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:44px}
+  .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px;margin-top:44px}
   .vs > div{border:1px solid var(--edge-2);border-radius:10px;padding:26px 24px 28px;background:var(--ground-2)}
   .vs > div.me{border-color:#6E5330}
   .vs .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
@@ -161,7 +161,7 @@
 
   /* numbers */
   .figs{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
-    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:44px}
+    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));margin-top:44px}
   .fig{background:var(--ground-2);padding:28px 22px 30px}
   .fig b{display:block;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
     font-weight:600;font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
@@ -172,7 +172,7 @@
   .sober strong{color:var(--ink);font-weight:600}
 
   /* documents */
-  .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:2px;margin-top:44px;
+  .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(232px,100%),1fr));gap:2px;margin-top:44px;
     background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden}
   .doc{background:var(--ground-2);padding:18px 18px;text-decoration:none;color:inherit;display:block}
   .doc:hover{background:var(--node)}
@@ -180,7 +180,7 @@
   .doc span{font-size:14px;color:var(--ink)}
 
   /* engagements */
-  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:44px}
+  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px;margin-top:44px}
   .offer{border:1px solid var(--edge-2);border-radius:10px;padding:30px 26px 32px;background:var(--ground-2);
     display:flex;flex-direction:column}
   .offer.lead{border-color:#6E5330;background:linear-gradient(168deg,#17202E,#0A1322)}
@@ -228,6 +228,33 @@
   .offer .go::after{content:none}
   @media (hover:hover) and (pointer:fine){.offer .go::after{content:"";position:absolute;inset:0;border-radius:10px}}
 
+
+  /* ---- the figure caption must wrap: without this the page is wider than the phone ---- */
+  .proof .fig small{white-space:normal}
+  /* ---- mobile navigation ---- */
+  .burger{display:none}
+  nav.menu{display:none}
+  @media (max-width:880px){
+    .burger{display:inline-flex;flex-direction:column;justify-content:center;gap:4.5px;
+      width:42px;height:36px;padding:0 9px;border:1px solid var(--edge);border-radius:7px;
+      background:transparent;cursor:pointer;flex:none}
+    .burger span{display:block;height:1.5px;background:var(--ink-2);border-radius:1px;transition:transform .18s,opacity .18s}
+    .burger[aria-expanded="true"]{border-color:var(--amber)}
+    .burger[aria-expanded="true"] span{background:var(--amber-2)}
+    .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+    .bar-end .btn.ghost{display:none}
+    nav.menu{display:flex;flex-direction:column;background:var(--ground-2);
+      border-top:1px solid var(--edge-2);padding:2px 24px 12px}
+    nav.menu[hidden]{display:none}
+    nav.menu a{padding:14px 0;font-family:"IBM Plex Mono",monospace;font-size:13.5px;
+      color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--edge-2)}
+    nav.menu a:last-child{border-bottom:0}
+    nav.menu a.switch{color:var(--amber-2)}
+    nav.menu a.gh{color:var(--ink)}
+  }
+
   /* contact */
   .contact{background:var(--ground-2);border-top:1px solid var(--edge-2);padding-block:96px}
   .who{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:34px}
@@ -253,7 +280,7 @@
   .q .why{font-size:14.5px;color:var(--ink-2);margin-top:10px}
   .punch{margin-top:26px;padding-left:18px;border-left:2px solid var(--amber);font-size:16.5px;color:var(--ink);max-width:70ch}
   .punch strong{font-weight:600}
-  .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:44px}
+  .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));margin-top:44px}
   .scene{background:var(--ground-2);padding:28px 24px 30px;display:flex;flex-direction:column}
   .scene .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
   .scene h3{font-size:17px;margin:0 0 10px;letter-spacing:-.005em}
@@ -287,7 +314,7 @@
   .wrap.hero .eyebrow,.doors .eyebrow{max-width:none}
   section.wrap.doors{padding-block:0 72px;scroll-margin-top:72px}
   .doors .eyebrow{margin-bottom:18px}
-  .door-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .door-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px}
   .door{display:flex;flex-direction:column;gap:10px;border:1px solid var(--edge);border-radius:12px;padding:28px 26px 24px;
     background:var(--ground-2);color:inherit;text-decoration:none;position:relative;transition:border-color .16s,transform .16s}
   .door:hover{border-color:#4E5F80;transform:translateY(-2px)}
@@ -342,8 +369,23 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
         <a href="./" hreflang="fr" lang="fr" aria-current="page">FR</a>
       </div>
       <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork" style="padding:8px 15px;font-size:13px">GitHub</a>
+          <button class="burger" type="button" id="burger" aria-controls="menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
+
+  <nav class="menu" id="menu" hidden>
+    <a href="#problem" data-track="code">Le problème</a>
+    <a href="#model" data-track="code">Le modèle</a>
+    <a href="#numbers" data-track="code">Les chiffres</a>
+    <a href="#kit" data-track="code">Le pack</a>
+    <a href="#work" data-track="code">Travailler ensemble</a>
+    <a href="#questions" data-track="nocode">Trois questions</a>
+    <a href="#situations" data-track="nocode">Six situations</a>
+    <a href="#offres" data-track="nocode">Ce que ça donne</a>
+    <a class="switch" href="#sans-code" data-track="code">Sans code →</a>
+    <a class="switch" href="#code" data-track="nocode">Avec du code →</a>
+    <a class="gh" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">GitHub — lire le pack</a>
+  </nav>
 </header>
 
 <main id="top">
@@ -854,6 +896,15 @@ document.querySelectorAll('.door').forEach(function(d){d.addEventListener('click
 document.querySelectorAll('nav a.switch').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();history.replaceState(null,'',a.getAttribute('href'));apply(fromHash(a.getAttribute('href')),true);});});
 window.addEventListener('hashchange',function(){var n=fromHash(location.hash);if(n&&n!==root.dataset.track){apply(n,false);
 var id=location.hash.replace(/^#/,'');var el=document.getElementById(id);if(el&&!/^(code|no-code|sans-code|nocode)$/.test(id))el.scrollIntoView();}});
+})();
+</script>
+<script>
+(function(){var btn=document.querySelector('.burger'),menu=document.getElementById('menu');if(!btn||!menu)return;
+function set(open){btn.setAttribute('aria-expanded',open?'true':'false');menu.hidden=!open;}
+btn.addEventListener('click',function(){set(menu.hidden);});
+menu.addEventListener('click',function(e){if(e.target.closest('a'))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>720)set(false);});
 })();
 </script>
 </body>
