@@ -5,11 +5,14 @@
   </picture>
 </p>
 
+<p align="center"><strong>English</strong> · <a href="README.fr.md">Français</a></p>
+
 # Guildwork
 
 **Governance kit for running parallel AI coding agents.**
 
 **[simon-pacifae-dupont.github.io/Guildwork](https://simon-pacifae-dupont.github.io/Guildwork/)** — the same thing, on one page.
+([Version française](https://simon-pacifae-dupont.github.io/Guildwork/fr/) of the page and of this README; the fifteen documents are in English.)
 
 Guildwork is the governance one person built, incident by incident, to run
 a seven-seat AI engineering team on a real product at twenty-one merges a
@@ -99,7 +102,7 @@ feels like to run. If those three earn a fourth, read `05`.
 
 ## Where it comes from
 
-A Windows desktop application in Python with a 12 000-test suite, one human
+A Windows desktop application in Python with a 12 100-test suite, one human
 Product Owner, a Claude Cowork session as Chief Architect, executing seats
 on Claude Code and Grok, and Codex as an external reviewer. In the eleven days
 after the mission form went live, 229 contracts were opened and 231 pull

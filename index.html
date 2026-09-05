@@ -10,6 +10,9 @@
 <meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
 <meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="en" href="https://simon-pacifae-dupont.github.io/Guildwork/">
+<link rel="alternate" hreflang="fr" href="https://simon-pacifae-dupont.github.io/Guildwork/fr/">
+<link rel="alternate" hreflang="x-default" href="https://simon-pacifae-dupont.github.io/Guildwork/">
 <link rel="icon" href="brand/favicon-64.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
@@ -45,6 +48,13 @@
   nav a{color:var(--ink-2);text-decoration:none}
   nav a:hover{color:var(--ink)}
   @media (max-width:720px){nav{display:none}}
+  .bar-end{display:flex;align-items:center;gap:11px;flex:none}
+  .lang{display:flex;border:1px solid var(--edge);border-radius:7px;overflow:hidden;
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em}
+  .lang a{padding:8px 10px;line-height:1;color:var(--ink-3);text-decoration:none}
+  .lang a+a{border-left:1px solid var(--edge)}
+  .lang a:hover{color:var(--ink);background:var(--node)}
+  .lang a[aria-current]{background:var(--node);color:var(--ink)}
 
   /* ---- hero ---- */
   .wrap.hero{padding-block:104px 80px}
@@ -153,7 +163,13 @@
       <a href="#kit">The kit</a>
       <a href="#work">Working together</a>
     </nav>
-    <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork" style="padding:8px 15px;font-size:13px">GitHub</a>
+    <div class="bar-end">
+      <div class="lang">
+        <a href="./" hreflang="en" lang="en" aria-current="page">EN</a>
+        <a href="fr/" hreflang="fr" lang="fr">FR</a>
+      </div>
+      <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork" style="padding:8px 15px;font-size:13px">GitHub</a>
+    </div>
   </div>
 </header>
 

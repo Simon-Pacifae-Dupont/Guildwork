@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guildwork — la gouvernance de plusieurs agents IA sur un même dépôt</title>
+<meta name="description" content="Un pack de gouvernance pour faire tourner plusieurs agents de code IA sur un seul dépôt : contrats de mission, un lanceur qui refuse en nommant sa condition, journaux de session, un outil de clôture — et la quarantaine d'incidents qui ont payé chaque règle.">
+<meta property="og:title" content="Guildwork — la gouvernance de plusieurs agents IA sur un même dépôt">
+<meta property="og:description" content="Contrats, formulaires, vocabulaire, spécification des outils, et les incidents qui ont payé chaque règle.">
+<meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
+<meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/fr/">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="en" href="https://simon-pacifae-dupont.github.io/Guildwork/">
+<link rel="alternate" hreflang="fr" href="https://simon-pacifae-dupont.github.io/Guildwork/fr/">
+<link rel="alternate" hreflang="x-default" href="https://simon-pacifae-dupont.github.io/Guildwork/">
+<link rel="icon" href="../brand/favicon-64.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#0B1526; --ground-2:#0A1322; --node:#14223A; --edge:#2B3B57; --edge-2:#1D2B44;
+    --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
+    --amber:#E9A23B; --amber-2:#F5C46B; --control:#7FA6D6; --refuse:#D0644A; --ok:#6FB07B;
+    --measure:66ch;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:var(--amber-2);text-decoration-color:rgba(245,196,107,.35);text-underline-offset:3px}
+  a:hover{text-decoration-color:var(--amber-2)}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:3px}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .rule{border:0;border-top:1px solid var(--edge-2);margin:0}
+
+  /* ---- masthead ---- */
+  header{position:sticky;top:0;z-index:10;background:rgba(11,21,38,.86);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--edge-2)}
+  .bar{display:flex;align-items:center;gap:20px;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-right:auto}
+  .brand svg{width:28px;height:28px;flex:none}
+  .brand b{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
+    font-weight:600;font-size:20px;letter-spacing:-.02em}
+  nav{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+  nav a{color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink)}
+  @media (max-width:720px){nav{display:none}}
+  .bar-end{display:flex;align-items:center;gap:11px;flex:none}
+  .lang{display:flex;border:1px solid var(--edge);border-radius:7px;overflow:hidden;
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em}
+  .lang a{padding:8px 10px;line-height:1;color:var(--ink-3);text-decoration:none}
+  .lang a+a{border-left:1px solid var(--edge)}
+  .lang a:hover{color:var(--ink);background:var(--node)}
+  .lang a[aria-current]{background:var(--node);color:var(--ink)}
+
+  /* ---- hero ---- */
+  .wrap.hero{padding-block:104px 80px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-3);margin:0 0 16px}
+  h1{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 144,"SOFT" 40;
+    font-weight:600;font-size:clamp(34px,5.6vw,60px);line-height:1.03;letter-spacing:-.022em;
+    margin:0 0 22px;max-width:19ch;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--amber)}
+  .lede{font-size:19px;color:var(--ink-2);max-width:var(--measure);margin:0 0 14px}
+  .lede strong{color:var(--ink);font-weight:500}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:7px;
+    font-size:14.5px;font-weight:600;text-decoration:none;border:1px solid transparent}
+  .btn.primary{background:var(--amber);color:#1B1206}
+  .btn.primary:hover{background:var(--amber-2)}
+  .btn.ghost{border-color:var(--edge);color:var(--ink)}
+  .btn.ghost:hover{border-color:#4E5F80;background:var(--node)}
+  .note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);margin:22px 0 0}
+
+  /* ---- sections ---- */
+  section.wrap{padding-block:96px}
+  section[id],.contact{scroll-margin-top:80px}
+  h2{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
+    font-weight:600;font-size:clamp(25px,3.4vw,34px);line-height:1.12;letter-spacing:-.017em;
+    margin:0 0 22px;max-width:26ch;text-wrap:balance}
+  h3{font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-.005em}
+  p{max-width:var(--measure)}
+
+  /* four failures */
+  .failures{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
+    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));margin-top:44px}
+  .failure{background:var(--ground-2);padding:28px 24px 30px}
+  .failure .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--refuse);
+    letter-spacing:.1em;margin:0 0 10px}
+  .failure p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+
+  /* canvas */
+  .canvas-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;
+    background:var(--ground-2);box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .canvas-frame a{display:block}
+  .caption{font-size:13.5px;color:var(--ink-3);margin:20px 0 0;max-width:78ch}
+
+  /* numbers */
+  .figs{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
+    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:44px}
+  .fig{background:var(--ground-2);padding:28px 22px 30px}
+  .fig b{display:block;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
+    font-weight:600;font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums}
+  .fig span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:9px}
+  .sober{margin-top:36px;padding-left:18px;border-left:2px solid var(--edge);color:var(--ink-2);
+    font-size:14.5px;max-width:78ch}
+  .sober strong{color:var(--ink);font-weight:600}
+
+  /* documents */
+  .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:2px;margin-top:44px;
+    background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden}
+  .doc{background:var(--ground-2);padding:18px 18px;text-decoration:none;color:inherit;display:block}
+  .doc:hover{background:var(--node)}
+  .doc code{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);display:block;margin-bottom:5px}
+  .doc span{font-size:14px;color:var(--ink)}
+
+  /* engagements */
+  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:44px}
+  .offer{border:1px solid var(--edge-2);border-radius:10px;padding:30px 26px 32px;background:var(--ground-2);
+    display:flex;flex-direction:column}
+  .offer.lead{border-color:#6E5330;background:linear-gradient(168deg,#17202E,#0A1322)}
+  .offer .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+  .offer.lead .tag{color:var(--amber)}
+  .offer h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
+    font-weight:600;font-size:21px;letter-spacing:-.015em;margin:0 0 10px}
+  .offer p{font-size:14.5px;color:var(--ink-2);margin:0 0 16px;max-width:none}
+  .offer ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
+  .offer li{font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative}
+  .offer li em{font-style:normal;color:var(--ink)}
+  .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:12px}
+  .offer .price{margin-top:auto;padding-top:16px;border-top:1px solid var(--edge-2);
+    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
+  .offer .price small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:4px}
+
+  /* contact */
+  .contact{background:var(--ground-2);border-top:1px solid var(--edge-2);padding-block:96px}
+  .who{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:34px}
+  .who p{font-size:15px;color:var(--ink-2);flex:1 1 340px;margin:0}
+  .lines{font-family:"IBM Plex Mono",monospace;font-size:13.5px;display:flex;flex-direction:column;gap:9px}
+  .lines a{color:var(--ink)}
+
+  footer{border-top:1px solid var(--edge-2);padding-block:34px 56px;font-size:12.5px;color:var(--ink-3)}
+  footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+</style>
+<style>
+  /* French runs longer than English — a touch more room on the display sizes */
+  h1{max-width:21ch}
+  h2{max-width:28ch}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56" fill="none" stroke="#F3EDE2" stroke-width="12" stroke-linejoin="round"/><rect x="52" y="44" width="39" height="12" fill="#E9A23B"/></svg>
+      <b>Guildwork</b>
+    </a>
+    <nav>
+      <a href="#problem">Le problème</a>
+      <a href="#model">Le modèle</a>
+      <a href="#numbers">Les chiffres</a>
+      <a href="#kit">Le pack</a>
+      <a href="#work">Travailler ensemble</a>
+    </nav>
+    <div class="bar-end">
+      <div class="lang">
+        <a href="../" hreflang="en" lang="en">EN</a>
+        <a href="./" hreflang="fr" lang="fr" aria-current="page">FR</a>
+      </div>
+      <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork" style="padding:8px 15px;font-size:13px">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="wrap hero">
+  <p class="eyebrow">MIT · documentation seule · quinze minutes</p>
+  <h1>Plusieurs agents IA, un seul dépôt, <em>et personne pour faire l'outil de merge</em>.</h1>
+  <p class="lede"><strong>Guildwork est la gouvernance qu'une seule personne a construite, incident après incident,</strong> pour faire tourner une équipe d'ingénierie IA à sept sièges sur un produit réel, à vingt et un merges par jour — chaque mission un contrat, chaque merge derrière une porte nommée, chaque session laissant une trace durable.</p>
+  <p class="lede">Il ne livre aucun code. Il est fait pour être lu — et installé.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Réserver 30 minutes</a>
+    <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Lire le pack</a>
+  </div>
+  <p class="note">Mesuré le 4 septembre 2026 · tous les chiffres ici sont réels</p>
+</div>
+
+<hr class="rule">
+
+<section id="problem" class="wrap">
+  <h2>Quatre défaillances qu'aucun prompt ne corrige</h2>
+  <p>Plusieurs agents de code IA — éditeurs différents, harnais différents — qui travaillent en même temps sur un seul dépôt produisent les mêmes quatre dégâts, dans toutes les équipes qui s'y essaient.</p>
+  <div class="failures">
+    <div class="failure">
+      <p class="n">01 · LE SECOND SCRIBE</p>
+      <h3>Deux agents écrivent le même fichier</h3>
+      <p>et l'humain devient l'outil de merge — le seul poste que les agents étaient censés supprimer.</p>
+    </div>
+    <div class="failure">
+      <p class="n">02 · LA SUBSTITUTION SILENCIEUSE</p>
+      <h3>Un agent tourne sous des paramètres non déclarés</h3>
+      <p>un autre modèle, un autre niveau d'effort, un autre prompt, et rien n'enregistre la substitution.</p>
+    </div>
+    <div class="failure">
+      <p class="n">03 · LA SESSION PERDUE</p>
+      <h3>Ce qu'un agent a appris meurt avec son contexte</h3>
+      <p>la session suivante le redécouvre — ou travaille sur un résumé périmé, avec assurance.</p>
+    </div>
+    <div class="failure">
+      <p class="n">04 · LE BUS DE MESSAGES</p>
+      <h3>L'humain porte les instructions à la main</h3>
+      <p>d'un agent au suivant, toute la journée, ce qui est très exactement ce que les agents devaient faire cesser.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="model" class="wrap">
+  <h2>Un schéma à lire pour ses points d'arrêt</h2>
+  <p>Un schéma d'agents montre d'habitude qui appelle qui. Celui-ci montre où une mission peut être refusée : <strong>sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant.</strong></p>
+  <div class="canvas-frame">
+    <a href="../brand/lifecycle-canvas.html">
+      <img src="../brand/lifecycle-canvas.png" alt="Le modèle de fonctionnement de Guildwork : Product Owner, architecte en chef, contrat d'issue, lanceur, worktree, sièges d'exécution, pull request, témoin, porte, cycle de session, outil de clôture, et la boucle du registre de constats.">
+    </a>
+  </div>
+  <p class="caption">Dessiné sur <em>Lantern</em>, le projet fictif qui sert de démonstration au pack — le mécanisme, les conditions et les codes de sortie, eux, sont les vrais. <a href="../brand/lifecycle-canvas.html">Ouvrir la version interactive</a> et survoler un bloc pour isoler son chemin.</p>
+</section>
+
+<hr class="rule">
+
+<section id="numbers" class="wrap">
+  <h2>Sur quoi il a tourné</h2>
+  <p>Une application de bureau Windows en Python, avec une suite de 12 100 tests. Un seul humain — le Product Owner — qui détient le matériel, le verdict produit et le merge vers la branche de release. Chaque ligne de code, chaque test et chaque document de gouvernance depuis début août 2026 a été écrit par des sièges IA, sous ces contrats.</p>
+  <div class="figs">
+    <div class="fig"><b>229</b><span>contrats de mission ouverts en onze jours</span></div>
+    <div class="fig"><b>231</b><span>pull requests fusionnées sur les mêmes onze jours</span></div>
+    <div class="fig"><b>441</b><span>sessions closes avec une entrée de journal, en 33 jours</span></div>
+    <div class="fig"><b>13</b><span>livraisons refusées ou remplacées, sur 471 closes</span></div>
+    <div class="fig"><b>~45</b><span>incidents, chacun ayant payé une règle</span></div>
+  </div>
+  <p class="sober"><strong>La lecture sobre, parce que c'est elle qui rend la première crédible.</strong> La même période a produit une quarantaine d'incidents assez sérieux pour mériter une règle, la plupart concentrés sur une seule semaine. La plupart des sièges que le lanceur sait démarrer sont <code>unknown</code> sur la propriété matérielle que la file aimerait le plus voir remplie. Aucun des deux harnais en ligne de commande n'impose la lecture seule depuis ses propres options, et la gouvernance le dit au lieu de faire semblant. Un système capable de dire <em>je ne sais pas</em> là où il ne sait pas est le seul dont le <em>oui</em> vaille quelque chose.</p>
+</section>
+
+<hr class="rule">
+
+<section id="kit" class="wrap">
+  <h2>Quinze documents, numérotés dans l'ordre de lecture</h2>
+  <p>Commencez par <code>00</code> pour la forme, et <code>12</code> pour la raison de cette forme. Si ces deux-là en méritent un troisième, lisez <code>05</code>.</p>
+  <div class="docs">
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/00-operating-model.md"><code>00</code><span>Le modèle de fonctionnement</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/01-mission-contract.md"><code>01</code><span>Le contrat de mission</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/02-delivery-contract.md"><code>02</code><span>Le contrat de livraison</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/03-label-taxonomy.md"><code>03</code><span>La taxonomie d'étiquettes</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/04-capabilities-and-routing.md"><code>04</code><span>Capacités et routage</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/05-launcher.md"><code>05</code><span>Le lanceur</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/06-session-cycle.md"><code>06</code><span>Entrée et sortie de session</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/07-closeout.md"><code>07</code><span>L'outil de clôture</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/08-continuity.md"><code>08</code><span>La continuité</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/09-findings-register.md"><code>09</code><span>Le registre de constats</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/10-effort-and-execution-parameters.md"><code>10</code><span>Effort et paramètres d'exécution</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/11-changelog-fragments.md"><code>11</code><span>Les fragments de changelog</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/12-incidents.md"><code>12</code><span>Les incidents — et la règle que chacun a payée</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/13-by-the-numbers.md"><code>13</code><span>Les chiffres</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/14-adoption-path.md"><code>14</code><span>Le chemin d'adoption</span></a>
+  </div>
+  <p class="caption">Le dépôt porte aussi les fichiers prêts à poser : le formulaire d'issue, le gabarit de pull request, la recette d'étiquettes, huit profils de rôle, le format de journal, le manifeste des chemins régénérables, le registre de constats, et une mission fictive suivie de bout en bout.</p>
+  <p class="note">Les quinze documents sont en anglais et le restent : c'est la langue de travail du pack, et une règle qui existe en deux versions finit par exister en deux versions différentes.</p>
+</section>
+
+<hr class="rule">
+
+<section id="work" class="wrap">
+  <h2>Ce que donne l'adoption, accompagnée</h2>
+  <p>Les trois outils sont spécifiés assez précisément pour être audités ou réimplémentés, et ils ne sont pas livrés. Installer tout ceci sur un dépôt, adapter le vocabulaire aux sièges et aux chantiers d'une équipe, mesurer la table des capacités sur ses machines, écrire les outils contre ses harnais, et mener les deux premières semaines de missions à ses côtés — c'est ça, le travail. Et c'est le travail que je fais.</p>
+  <div class="offers">
+    <div class="offer lead">
+      <p class="tag">Commencer ici</p>
+      <h3>Audit de gouvernance</h3>
+      <p>Deux jours. Je lis le dépôt, le tableau et une semaine de sessions d'agents, et j'écris ce qui va casser avant que ça casse.</p>
+      <ul>
+        <li>la table des capacités de vos sièges, mesurée et non supposée</li>
+        <li>les incidents auxquels votre installation est exposée aujourd'hui, nommés</li>
+        <li>un passage à blanc des sept conditions sur votre tableau existant</li>
+        <li>un rapport écrit que votre équipe garde, quelle que soit la suite</li>
+      </ul>
+      <p class="price">2 500 € · prix ferme<small>Déduit de l'installation si vous continuez.</small></p>
+    </div>
+    <div class="offer">
+      <p class="tag">L'installation</p>
+      <h3>Gouvernance installée</h3>
+      <p>Deux semaines. Les contrats, le vocabulaire et les trois outils, écrits contre vos harnais et votre tableau — puis les premières missions menées avec votre équipe, pas à sa place, jusqu'à ce que les règles soient les siennes.</p>
+      <ul>
+        <li>formulaire d'issue, gabarit de livraison, taxonomie d'étiquettes, profils de rôle</li>
+        <li>lanceur, cycle de session et clôture, écrits contre vos CLI</li>
+        <li>la table des capacités, mesurée sur vos machines</li>
+        <li>deux semaines de missions réelles menées <em>avec</em> vos ingénieurs — la formation, c'est le travail lui-même, pas un support de cours</li>
+      </ul>
+      <p class="price">12 000 € · prix ferme<small>À distance, ou sur site en Île-de-France.</small></p>
+    </div>
+    <div class="offer">
+      <p class="tag">Ensuite</p>
+      <h3>Siège d'architecte permanent</h3>
+      <p>Trois jours par mois. Le registre est arbitré, les règles suivent vos incidents, et la gouvernance tient le rythme des harnais à mesure qu'ils changent.</p>
+      <ul>
+        <li>le registre de constats revu à chaque passage sur le tableau</li>
+        <li>contrats et routage tenus à jour quand les sièges changent</li>
+        <li>une lecture écrite, chaque mois, de ce que disent les chiffres</li>
+      </ul>
+      <p class="price">3 500 € / mois<small>Trois mois minimum, puis au mois.</small></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="contact">
+  <div class="wrap">
+    <h2>Si vous faites tourner plus d'un agent sur un code qui compte</h2>
+    <div class="who">
+      <p>Je m'appelle Simon Dupont. J'ai mené l'équipe à sept sièges décrite plus haut, j'ai écrit chaque règle de ce pack de la manière coûteuse, et je l'installe sur les dépôts des autres. Le plus rapide, pour vous, est de prendre trente minutes et de décrire votre installation — je vous dirai lesquelles des quatre défaillances vous avez déjà.</p>
+      <div class="lines">
+        <a href="https://cal.com/simon-pacifae-dupont/30min">cal.com/simon-pacifae-dupont/30min</a>
+        <a href="mailto:simon.pacifae.dupont@gmail.com">simon.pacifae.dupont@gmail.com</a>
+        <a href="https://www.linkedin.com/in/simon-pacifae-dupont/">linkedin.com/in/simon-pacifae-dupont</a>
+        <a href="https://github.com/Simon-Pacifae-Dupont">github.com/Simon-Pacifae-Dupont</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Guildwork — MIT. Le projet Lantern, son dépôt, ses personnes et ses chiffres sont fictifs.</span>
+    <span>© 2026 Simon Dupont</span>
+  </div>
+</footer>
+
+</body>
+</html>
