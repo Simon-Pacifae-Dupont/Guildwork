@@ -69,8 +69,8 @@ déplace hors de la porte* ; *durable veut dire atteignable depuis une
 référence poussée*.
 
 <p align="center">
-  <a href="brand/lifecycle-canvas.png"><img alt="Où une mission peut s'arrêter — le modèle de fonctionnement dessiné sur l'exemple Lantern" src="brand/lifecycle-canvas.png" width="880"></a><br>
-  <sub>À lire pour ses points d'arrêt : sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.html">Version interactive</a> — survolez un bloc pour isoler son chemin. Le schéma est légendé en anglais, comme les documents.</sub>
+  <a href="brand/lifecycle-canvas.fr.png"><img alt="Où une mission peut s'arrêter — le modèle de fonctionnement dessiné sur l'exemple Lantern" src="brand/lifecycle-canvas.fr.png" width="880"></a><br>
+  <sub>À lire pour ses points d'arrêt : sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.fr.html">Version interactive</a> — survolez un bloc pour isoler son chemin.</sub>
 </p>
 
 ## Ce que contient ce dépôt

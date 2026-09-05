@@ -1,4 +1,4 @@
-<title>Guildwork — where a mission can stop</title>
+<title>Guildwork — où une mission peut s'arrêter</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
   :root {
@@ -67,23 +67,23 @@
 <div class="wrap">
   <div class="brand">
     <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56" fill="none" stroke="#F3EDE2" stroke-width="12" stroke-linejoin="round"/><rect x="52" y="44" width="39" height="12" fill="#E9A23B"/></svg>
-    <span class="w">Guildwork</span><span class="g">governance for parallel AI coding agents</span>
+    <span class="w">Guildwork</span><span class="g">gouvernance pour agents IA de code en parallèle</span>
   </div>
-  <p class="eyebrow">The operating model, drawn · Lantern example</p>
-  <h1>Where a mission can stop</h1>
-  <p class="lede">A diagram of agents usually shows who calls whom. This one is better read for where it can stop: <strong>seven conditions before a session starts, a witness and a gate before anything lands, three exit codes decided by durability alone, and a register that sends every incident back into the next contract.</strong></p>
+  <p class="eyebrow">Le modèle de fonctionnement, dessiné · exemple Lantern</p>
+  <h1>Où une mission peut s'arrêter</h1>
+  <p class="lede">Un schéma d'agents montre d'habitude qui appelle qui. Celui-ci se lit mieux pour ses points d'arrêt : <strong>sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant.</strong></p>
 
   <div class="stage" id="stage"><div id="c"></div></div>
   <div class="legend">
-    <span><i class="key" style="background:var(--control)"></i> the path of a mission</span>
-    <span><i class="key" style="background:var(--refuse)"></i> a refusal, named</span>
-    <span><i class="key" style="background:var(--signal)"></i> the loop: what comes back into the contracts</span>
-    <span><i class="key" style="background:var(--closed)"></i> no execution surface, so no arrow</span>
+    <span><i class="key" style="background:var(--control)"></i> le trajet d'une mission</span>
+    <span><i class="key" style="background:var(--refuse)"></i> un refus, nommé</span>
+    <span><i class="key" style="background:var(--signal)"></i> la boucle : ce qui revient dans les contrats</span>
+    <span><i class="key" style="background:var(--closed)"></i> aucune surface d'exécution, donc aucune flèche</span>
   </div>
-  <p class="cap"><strong>The architect seat holds the board; the human holds the terminals.</strong> Contracts, labels, rulings and the register are the architect's, always and without being asked. Launch commands, merges under the gate and the final say are the human's. A seat that holds the board and cannot touch the tree cannot become the second writer or the silent substitution — and a gate that merges only what a witness has read is not the merge tool either.</p>
-  <p class="hint">Hover a block to isolate its path.</p>
+  <p class="cap"><strong>Le siège d'architecte tient le tableau ; l'humain tient les terminaux.</strong> Contrats, étiquettes, arbitrages et registre sont à l'architecte, toujours et sans qu'on le demande. Les commandes de lancement, les merges sous la porte et le dernier mot sont à l'humain. Un siège qui tient le tableau et ne peut pas toucher l'arbre ne peut devenir ni le second scribe ni la substitution silencieuse — et une porte qui ne fusionne que ce qu'un témoin a lu n'est pas l'outil de merge non plus.</p>
+  <p class="hint">Survolez un bloc pour isoler son chemin.</p>
 
-  <footer>Every name here belongs to <em>Lantern</em>, the fictional project the kit is demonstrated on. The mechanism, the seven conditions, the three exit codes and the five closeout conditions are the real ones — <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork">github.com/Simon-Pacifae-Dupont/Guildwork</a>. <a href="lifecycle-canvas.fr.html" hreflang="fr" lang="fr">Version française</a>.</footer>
+  <footer>Chaque nom ici appartient à <em>Lantern</em>, le projet fictif sur lequel le pack est démontré. Le mécanisme, les sept conditions, les trois codes de sortie et les cinq conditions de clôture sont les vrais — <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork">github.com/Simon-Pacifae-Dupont/Guildwork</a>. <a href="lifecycle-canvas.html" hreflang="en" lang="en">English version</a>.</footer>
 </div>
 
 <script>
@@ -148,36 +148,36 @@ function build(host, spec) {
 }
 
 const S = { w:1180, h:830, lanes:[
-    {x:30, y:40,  text:'the path of a mission — five surfaces, seven conditions'},
-    {x:30, y:290, text:'who executes, who witnesses, who merges'},
-    {x:30, y:500, text:'what every session leaves behind'},
-    {x:30, y:722, text:'advisory — no execution surface, so no arrow'}
+    {x:30, y:40,  text:'le trajet d\'une mission — cinq surfaces, sept conditions'},
+    {x:30, y:290, text:'qui exécute, qui témoigne, qui fusionne'},
+    {x:30, y:500, text:'ce que chaque session laisse derrière elle'},
+    {x:30, y:722, text:'consultatif — aucune surface d\'exécution, donc aucune flèche'}
   ], nodes:[
-  {id:'po',   x:30,  y:70, icon:'person', kind:'human', t:'Product Owner', s:'human · every terminal\nmerges under the gate\nthe final say'},
-  {id:'ca',   x:258, y:70, icon:'bot',    t:'Chief Architect', s:'Claude Cowork · cloud\nremote shell · no terminal\nholds the board'},
-  {id:'iss',  x:486, y:70, icon:'doc',    t:'Issue = contract', s:'objective · scope · stops\nauthority · title #N first', tick:'ok'},
-  {id:'lnch', x:714, y:70, icon:'shield', t:'Launcher', s:'seven conditions, checked\nat the governance commit\nrefuses by name', tick:'ok'},
-  {id:'wt',   x:942, y:70, icon:'branch', t:'Worktree', s:'one branch · one writer\nguild-hi at entry', tick:'ok'},
+  {id:'po',   x:30,  y:70, icon:'person', kind:'human', t:'Product Owner', s:'humain · tous les terminaux\nfusionne sous la porte\nle dernier mot'},
+  {id:'ca',   x:258, y:70, icon:'bot',    t:'Architecte en chef', s:'Claude Cowork · nuage\nshell distant, sans terminal\ntient le tableau', w:218},
+  {id:'iss',  x:486, y:70, icon:'doc',    t:'Issue = contrat', s:'objectif · portée · arrêts\nautorité · titre #N en tête', tick:'ok'},
+  {id:'lnch', x:714, y:70, icon:'shield', t:'Lanceur', s:'sept conditions, vérifiées\nau commit de la gouvernance\nrefuse en nommant', tick:'ok'},
+  {id:'wt',   x:942, y:70, icon:'branch', t:'Worktree', s:'une branche · un scribe\nguild-hi à l\'entrée', tick:'ok'},
 
-  {id:'reg',  x:258, y:200, icon:'book', kind:'signal', t:'Findings register', s:'leaves in exactly two ways\nruled on at every sweep', w:250, h:54},
+  {id:'reg',  x:258, y:200, icon:'book', kind:'signal', t:'Registre de constats', s:'n\'en sort que de deux façons\narbitré à chaque passage', w:250, h:54},
 
-  {id:'seats',x:30,  y:330, icon:'bot',   t:'Executing seats', s:'Claude Code · Grok Build · Grok\nunder the declared model and\neffort — no flag can change it', w:236},
-  {id:'pr',   x:300, y:330, icon:'merge', t:'Pull request = delivery', s:'Mission: #N delivers |\nsupersedes | refused\nreport: what actually ran', w:230, tick:'ok'},
-  {id:'wit',  x:565, y:330, icon:'eye',   t:'Witness', s:'a seat that did not write\nit reads the evidence\nagainst the repository', w:210, tick:'ok'},
-  {id:'gate', x:810, y:330, icon:'door',  kind:'human', t:'Gate', s:'the human — or the architect\nunder standing delegation,\non the witness\u2019s word', w:220, tick:'ok'},
+  {id:'seats',x:30,  y:330, icon:'bot',   t:'Sièges d\'exécution', s:'Claude Code · Grok Build · Grok\nsous modèle et effort déclarés\naucun drapeau ne les change', w:236},
+  {id:'pr',   x:300, y:330, icon:'merge', t:'Pull request = livraison', s:'Mission: #N delivers |\nsupersedes | refused\nrapport : ce qui a tourné', w:230, tick:'ok'},
+  {id:'wit',  x:565, y:330, icon:'eye',   t:'Témoin', s:'un siège qui n\'a pas écrit\nlit les preuves\ncontre le dépôt', w:210, tick:'ok'},
+  {id:'gate', x:810, y:330, icon:'door',  kind:'human', t:'Porte', s:'l\'humain — ou l\'architecte\nsous délégation permanente,\nsur la parole du témoin', w:220, tick:'ok'},
 
-  {id:'bye',  x:30,  y:540, icon:'bye',   t:'guild-bye', s:'one exit command\n0 durable · 3 incomplete\n2 fatal', w:200},
-  {id:'jrn',  x:265, y:540, icon:'book',  t:'Journal', s:'one file per closed session\nreachable from a pushed ref', w:220, tick:'ok'},
-  {id:'close',x:520, y:540, icon:'broom', t:'Closeout tool', s:'five conditions · manifest of\nregenerables · closes contracts\nfrom merged deliveries', w:250, tick:'ok'},
-  {id:'main', x:810, y:540, icon:'branch', kind:'terminal', t:'main', s:'merged, and nothing weaker', w:220, h:62},
+  {id:'bye',  x:30,  y:540, icon:'bye',   t:'guild-bye', s:'une commande de sortie\n0 durable · 3 incomplet\n2 fatal', w:200},
+  {id:'jrn',  x:265, y:540, icon:'book',  t:'Journal', s:'un fichier par session close\natteignable depuis une ref poussée', w:230, tick:'ok'},
+  {id:'close',x:525, y:540, icon:'broom', t:'Outil de clôture', s:'cinq conditions · manifeste des\nrégénérables · clôt les contrats\ndepuis les livraisons fusionnées', w:250, tick:'ok'},
+  {id:'main', x:810, y:540, icon:'branch', kind:'terminal', t:'main', s:'fusionné, et rien de plus faible', w:220, h:62},
 
-  {id:'cx',   x:258, y:752, icon:'eye', kind:'closed', t:'External reviewer', s:'Codex, on request · unknown on every capability', w:340, h:50}
+  {id:'cx',   x:258, y:752, icon:'eye', kind:'closed', t:'Relecteur externe', s:'Codex, sur demande · unknown sur chaque capacité', w:340, h:50}
  ],
  pills:[
-  {from:'lnch', x:600, y:196, t:'1 field absent · 2 seat, model or effort unavailable · 3 unknown role · 4 second writer · 5 capability unmet · 6 a comment sets a field · 7 title names another issue', w:450},
-  {from:'gate', x:800, y:446, t:'refused: closes unmerged — the contract stays open', w:240},
-  {from:'close',x:510, y:656, t:'refuses: not closed · not clean · not on the server · in use · not merged', w:280},
-  {from:'bye',  x:20,  y:656, t:'exit 3: written, not yet pushed — run the printed steps, never re-run', w:240}
+  {from:'lnch', x:600, y:196, t:'1 champ absent · 2 siège, modèle ou effort indisponible · 3 rôle inconnu · 4 second scribe · 5 capacité non satisfaite · 6 un commentaire fixe un champ · 7 le titre nomme une autre issue', w:470},
+  {from:'gate', x:800, y:446, t:'refusée : close sans merge — le contrat reste ouvert', w:250},
+  {from:'close',x:510, y:656, t:'refuse : non close · non propre · absente du serveur · en usage · non fusionnée', w:290},
+  {from:'bye',  x:20,  y:656, t:'exit 3 : écrit, pas encore poussé — suivre les étapes imprimées, ne jamais relancer', w:250}
  ],
  edges:[
   {from:'po',   to:'ca',   kind:'control'},
@@ -189,12 +189,12 @@ const S = { w:1180, h:830, lanes:[
   {from:'pr',   to:'wit',  kind:'control'},
   {from:'wit',  to:'gate', kind:'control'},
   {from:'gate', to:'main', kind:'control', side:'down', label:'merge'},
-  {from:'seats',to:'bye',  kind:'control', side:'down', label:'guild-bye at exit'},
+  {from:'seats',to:'bye',  kind:'control', side:'down', label:'guild-bye à la sortie'},
   {from:'bye',  to:'jrn',  kind:'control'},
   {from:'jrn',  to:'close',kind:'control'},
   {from:'main', to:'close',kind:'control', side:'back'},
-  {from:'pr',   to:'reg',  kind:'signal', side:'up', label:'what failed'},
-  {from:'reg',  to:'ca',   kind:'signal', side:'up', label:'becomes a rule'}
+  {from:'pr',   to:'reg',  kind:'signal', side:'up', label:'ce qui a échoué'},
+  {from:'reg',  to:'ca',   kind:'signal', side:'up', label:'devient une règle'}
  ]};
 build(document.getElementById('c'), S);
 function fit(){ const st=document.getElementById('stage'); const cv=st.querySelector('.canvas'); if(!cv) return; const natural=parseFloat(cv.style.width); const k=Math.min(1,(st.clientWidth-2)/natural); cv.style.transform=`scale(${k})`; st.style.height=(parseFloat(cv.style.height)*k+2)+'px'; }
