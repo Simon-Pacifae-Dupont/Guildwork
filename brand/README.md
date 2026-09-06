@@ -12,6 +12,7 @@ Wordmark in Fraunces, taglines in IBM Plex Mono.
 | `github-social-preview.png` | 1280×640, the repository's social preview |
 | `linkedin-banner-en.png`, `linkedin-banner-fr.png` | 1584×396, the LinkedIn profile cover |
 | `linkedin-post-fr.png` | 1280×640, the card to attach to a French post (the English post uses `github-social-preview.png`) |
+| `linkedin-featured-page.png`, `linkedin-featured-repo.png` | 1280×720, the two LinkedIn *Featured* thumbnails — ink for the site, ivory for the repository, so the two cards never read alike |
 | `lifecycle-canvas.png`, `lifecycle-canvas.html` | the operating model drawn on the Lantern example — image, and the interactive page it is rendered from |
 | `lifecycle-canvas.fr.png`, `lifecycle-canvas.fr.html` | the same canvas, in French |
 | `board-demo.png` | the board reader on the Lantern snapshot, as shown on the site |

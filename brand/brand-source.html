@@ -70,6 +70,30 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
 .social .tag b { color: var(--amber-2); font-weight: 500; }
 .social .foot { position: absolute; left: 96px; bottom: 56px; font-family: "Plex Mono", monospace; font-size: 22px; color: var(--muted); display: flex; gap: 40px; }
 .social .foot span { color: var(--ivory); }
+
+/* ---------- LINKEDIN FEATURED THUMBNAILS 1280x720 ---------- */
+.feat { width: 1280px; height: 720px; position: relative; overflow: hidden; }
+.feat.page { background: var(--ink); }
+.feat.repo { background: var(--ivory); }
+.feat .lanes { position: absolute; inset: 0; }
+.feat .inner { position: absolute; inset: 0; padding: 0 96px; display: flex; flex-direction: column; justify-content: center; }
+.feat .row { display: flex; align-items: center; gap: 40px; }
+.feat .row svg { width: 148px; height: 148px; flex: none; }
+.feat .word { font-family: Fraunces, serif; font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 0; font-weight: 560; font-size: 132px; letter-spacing: -0.028em; line-height: 0.92; margin: 0; }
+.feat.page .word { color: var(--ivory); }
+.feat.repo .word { color: var(--ink); }
+.feat .tag { font-family: "Plex Mono", monospace; font-size: 34px; line-height: 1.5; margin: 30px 0 0 4px; }
+.feat.page .tag { color: var(--muted); }
+.feat.repo .tag { color: #4A5670; }
+.feat .tag b { color: var(--amber-2); font-weight: 500; }
+.feat.repo .tag b { color: #B57414; }
+.feat .foot { font-family: "Plex Mono", monospace; font-size: 26px; display: flex; gap: 40px; align-items: baseline; margin: 58px 0 0 4px; }
+.feat.page .foot { color: var(--amber-2); }
+.feat.repo .foot { color: #4A5670; }
+.feat.repo .foot span { color: var(--ink); }
+/* file list on the repo card */
+.feat .files { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 56px; font-family: "Plex Mono", monospace; font-size: 27px; color: #4A5670; margin-top: 14px; }
+.feat .files i { font-style: normal; color: #B57414; }
 </style>
 </head>
 <body>
@@ -94,6 +118,24 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
       <g stroke="#FFFFFF" stroke-opacity="0.045" stroke-width="1.5" fill="none">
         <path d="M 0 60 H 1584"/><path d="M 0 116 H 1584"/><path d="M 0 172 H 1584"/>
         <path d="M 0 228 H 1584"/><path d="M 0 284 H 1584"/><path d="M 0 340 H 1584"/>
+      </g>
+    </symbol>
+    <symbol id="lanes-ink" viewBox="0 0 1584 396" preserveAspectRatio="none">
+      <g stroke="#0B1526" stroke-opacity="0.055" stroke-width="1.5" fill="none">
+        <path d="M 0 60 H 1584"/><path d="M 0 116 H 1584"/><path d="M 0 172 H 1584"/>
+        <path d="M 0 228 H 1584"/><path d="M 0 284 H 1584"/><path d="M 0 340 H 1584"/>
+      </g>
+    </symbol>
+    <symbol id="lanes-feat" viewBox="0 0 1280 720" preserveAspectRatio="none">
+      <g stroke="#FFFFFF" stroke-opacity="0.045" stroke-width="1.5" fill="none">
+        <path d="M 0 90 H 1280"/><path d="M 0 180 H 1280"/><path d="M 0 270 H 1280"/><path d="M 0 360 H 1280"/>
+        <path d="M 0 450 H 1280"/><path d="M 0 540 H 1280"/><path d="M 0 630 H 1280"/>
+      </g>
+    </symbol>
+    <symbol id="lanes-feat-ink" viewBox="0 0 1280 720" preserveAspectRatio="none">
+      <g stroke="#0B1526" stroke-opacity="0.06" stroke-width="1.5" fill="none">
+        <path d="M 0 90 H 1280"/><path d="M 0 180 H 1280"/><path d="M 0 270 H 1280"/><path d="M 0 360 H 1280"/>
+        <path d="M 0 450 H 1280"/><path d="M 0 540 H 1280"/><path d="M 0 630 H 1280"/>
       </g>
     </symbol>
   </defs>
@@ -163,6 +205,35 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
     <p class="tag">gouvernance pour <b>plusieurs agents IA sur un même dépôt</b> —<br>contrats, formulaires, vocabulaire, spécification des outils,<br>et les incidents qui ont payé chaque règle.</p>
   </div>
   <div class="foot"><span>MIT</span><span>documentation seule</span><span>Simon “Pacifae” Dupont</span></div>
+</div>
+
+<div id="featured-page" class="board feat page">
+  <svg class="lanes"><use href="#lanes-feat"/></svg>
+  <div class="inner">
+    <div class="row">
+      <svg><use href="#mark"/></svg>
+      <p class="word">La page</p>
+    </div>
+    <p class="tag">le mod&egrave;le dessin&eacute;, les chiffres de 36 jours,<br>les offres &mdash; <b>avec du code ou sans</b>.</p>
+    <div class="foot">simon-pacifae-dupont.github.io/Guildwork</div>
+  </div>
+</div>
+
+<div id="featured-repo" class="board feat repo">
+  <svg class="lanes"><use href="#lanes-feat-ink"/></svg>
+  <div class="inner">
+    <div class="row">
+      <svg><use href="#mark-ink"/></svg>
+      <p class="word">Le d&eacute;p&ocirc;t</p>
+    </div>
+    <div class="files">
+        <div><i>01</i> mission-contract.md</div><div><i>07</i> closeout.md</div>
+        <div><i>02</i> delivery-contract.md</div><div><i>09</i> findings-register.md</div>
+        <div><i>03</i> label-taxonomy.md</div><div><i>12</i> incidents.md</div>
+      <div><i>05</i> launcher.md</div><div><i>14</i> adoption-path.md</div>
+    </div>
+    <div class="foot"><span>MIT</span><span>15 documents</span><span>rien &agrave; installer</span></div>
+  </div>
 </div>
 
 </body>
