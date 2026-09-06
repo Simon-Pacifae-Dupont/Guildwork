@@ -96,6 +96,30 @@
   footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--rule); font-size:12.5px; color:var(--ink-3); max-width:76ch; }
   footer p + p { margin-top:8px; }
   @media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; } }
+
+  /* ---- state, made visible ------------------------------------------------ */
+  .stat { border-top:3px solid var(--rule-2); }
+  .stat.owed   { border-top-color:var(--owed);   background:color-mix(in srgb, var(--owed-bg) 55%, var(--surface)); }
+  .stat.flight { border-top-color:var(--flight); background:color-mix(in srgb, var(--flight-bg) 55%, var(--surface)); }
+  .sec-head { border-bottom-width:2px; }
+  #owed-sec      > .sec-head { border-bottom-color:var(--owed); }
+  #deleg-sec     > .sec-head { border-bottom-color:var(--flight); }
+  #chantiers-sec > .sec-head { border-bottom-color:var(--accent); }
+  #landed-sec    > .sec-head { border-bottom-color:var(--landed); }
+  #owed-sec  > .sec-head .count { color:var(--owed); }
+  #deleg-sec > .sec-head .count { color:var(--flight); }
+  .sec-head.sub { border-bottom-width:1px; border-bottom-color:var(--rule); }
+  .owed-item { border-left:3px solid var(--idle); }
+  .owed-item:has(.c-owed)   { border-left-color:var(--owed);   background:color-mix(in srgb, var(--owed-bg) 42%, var(--surface)); }
+  .owed-item:has(.c-flight) { border-left-color:var(--flight); background:color-mix(in srgb, var(--flight-bg) 34%, var(--surface)); }
+  .owed-item:has(.c-owed) .q { font-weight:600; }
+  tbody tr { border-left:3px solid transparent; }
+  tbody tr:has(.c-owed)   { border-left-color:var(--owed); }
+  tbody tr:has(.c-flight) { border-left-color:var(--flight); }
+  tbody tr:has(.c-landed) { border-left-color:var(--landed); }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 20px; margin:-24px 0 34px; font-size:12px; color:var(--ink-2); }
+  .legend span { display:inline-flex; align-items:center; gap:7px; }
+  .legend i { width:11px; height:11px; border-radius:2px; flex:none; }
 </style>
 
 <div class="wrap">
@@ -117,6 +141,7 @@
     <div class="stat"><div class="n skel" style="width:2ch">&nbsp;</div><div class="l">&nbsp;</div></div>
   </div>
 
+  <div class="legend" id="legend"></div>
   <div id="page-msg"></div>
 
   <section id="owed-sec">
@@ -223,6 +248,12 @@
   "chipDelivered": "delivered",
   "chipStale": "stale",
   "openFor": "open for {age}",
+  "statMissions": "open missions",
+  "statPrs": "open pull requests",
+  "legendOwed": "waiting on you",
+  "legendFlight": "moving under delegation",
+  "legendIdle": "reserved, not reached yet",
+  "legendAccent": "open, by workstream",
   "statOpen": "open issues",
   "statToDecide": "to decide",
   "statDelegated": "delivered under delegation",
@@ -376,9 +407,18 @@
   }
 
   function renderStats(issues, unclassed, owedNow, delegated) {
-    var vals = [[issues.length, T.statOpen, ""], [owedNow, T.statToDecide, owedNow ? "owed" : ""], [delegated, T.statDelegated, delegated ? "flight" : ""], [unclassed, T.statUnclassified, ""]];
+    var missions = issues.filter(function (i) { return has(i, CONFIG.labels.mission); }).length;
+    var prs = state.openPrs ? state.openPrs.length : "—";
+    var vals = [[missions, T.statMissions, ""], [issues.length, T.statOpen, ""], [prs, T.statPrs, ""],
+                [owedNow, T.statToDecide, owedNow ? "owed" : ""], [delegated, T.statDelegated, delegated ? "flight" : ""], [unclassed, T.statUnclassified, ""]];
     if (state.issuesTruncated) vals.push([state.issuesTruncated, T.statUnread, "owed"]);
     els.stats.innerHTML = vals.map(function (v) { return '<div class="stat ' + v[2] + '"><div class="n">' + v[0] + '</div><div class="l">' + v[1] + "</div></div>"; }).join("");
+    var lg = document.getElementById("legend");
+    if (lg) lg.innerHTML =
+      '<span><i style="background:var(--owed)"></i>' + T.legendOwed + "</span>" +
+      '<span><i style="background:var(--flight)"></i>' + T.legendFlight + "</span>" +
+      '<span><i style="background:var(--idle)"></i>' + T.legendIdle + "</span>" +
+      '<span><i style="background:var(--accent)"></i>' + T.legendAccent + "</span>";
   }
 
   function paint() {

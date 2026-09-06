@@ -13,11 +13,11 @@
 
 **[simon-pacifae-dupont.github.io/Guildwork/fr/](https://simon-pacifae-dupont.github.io/Guildwork/fr/)** — la même chose, sur une seule page.
 
-**Vous ne développez pas ?** La même discipline — un contrat avant, un témoin pendant, un bilan après, et le droit de refuser — tient aussi bien un cabinet, une agence ou un service client. [Cette entrée est sur la même page.](https://simon-pacifae-dupont.github.io/Guildwork/fr/#sans-code)
+**Vous ne développez pas ?** La même discipline — un contrat avant, un témoin pendant, un bilan après, et un lanceur qui refuse de démarrer ce qui n’est pas en règle — tient aussi bien un cabinet, une agence ou un service client. [Cette entrée est sur la même page.](https://simon-pacifae-dupont.github.io/Guildwork/fr/#sans-code)
 
 Guildwork est la gouvernance qu'une seule personne a construite, incident
 après incident, pour faire tourner une équipe d'ingénierie IA à sept sièges
-sur un produit réel, à vingt et un merges par jour — chaque mission un
+sur un produit réel, à vingt-quatre merges par jour — chaque mission un
 contrat, chaque merge derrière une porte nommée, chaque session laissant une
 trace durable, et l'humain hors du chemin des messages. Ce dépôt est ce
 système, extrait : les contrats, les formulaires, le vocabulaire, la
@@ -141,10 +141,10 @@ Lantern et ce qui vous reste à écrire.
 Une application de bureau Windows en Python avec une suite de 12 100 tests,
 un seul humain Product Owner, une session Claude Cowork comme architecte en
 chef, des sièges d'exécution sur Claude Code et Grok, et Codex en relecteur
-externe. Dans les onze jours qui ont suivi la mise en service du formulaire
-de mission, 229 contrats ont été ouverts et 231 pull requests fusionnées ;
-441 sessions se sont closes avec une entrée de journal, sur les 33 jours
-d'existence du journal. `docs/13-by-the-numbers.md` contient la table
+externe. Dans les onze jours
+jusqu'au 5 septembre 2026, 278 contrats ont été ouverts et 262 pull requests
+fusionnées ; 485 sessions se sont closes avec une entrée de journal, sur les
+34 jours d'existence du journal. `docs/13-by-the-numbers.md` contient la table
 complète, et ses deux lectures.
 
 Tous les exemples sont réécrits sur un projet fictif, **Lantern** — un

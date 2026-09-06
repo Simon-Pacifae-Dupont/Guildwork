@@ -430,6 +430,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
       <a href="#work" data-track="code">Offers and prices</a>
       <a href="#questions" data-track="nocode">Three questions to ask</a>
       <a href="#situations" data-track="nocode">Six real situations</a>
+      <a href="#board-nocode" data-track="nocode">The board</a>
       <a href="#offres" data-track="nocode">Offers and prices</a>
       <a class="switch" href="#no-code" data-track="code">Without code →</a>
       <a class="switch" href="#code" data-track="nocode">With code →</a>
@@ -454,6 +455,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a href="#work" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offers and prices</a>
     <a href="#questions" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg>Three questions to ask</a>
     <a href="#situations" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Six real situations</a>
+    <a href="#board-nocode" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-board"/></svg>The board</a>
     <a href="#offres" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offers and prices</a>
     <a class="switch" href="#no-code" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Without code →</a>
     <a class="switch" href="#code" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>With code →</a>
@@ -470,7 +472,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <div class="wrap hero">
   <p class="eyebrow">AI-agent orchestration · free kit (MIT) · hands-on help</p>
   <h1>Put AI agents to work <em>and keep the last word</em>.</h1>
-  <p class="lede"><strong>Guildwork is a discipline built one incident at a time:</strong> a contract before every task handed to an AI, a witness while it runs, a closeout after — and a launcher that refuses to start what isn’t in order. Built on real software (seven agents, twenty-one merges a day), it holds a law firm, an agency or a support desk just as well.</p>
+  <p class="lede"><strong>Guildwork is a discipline built one incident at a time:</strong> a contract before every task handed to an AI, a witness while it runs, a closeout after — and a launcher that refuses to start what isn’t in order. Built on real software (seven agents, twenty-four merges a day), it holds a law firm, an agency or a support desk just as well.</p>
   <p class="lede">The kit is public and free. Installing it where you work is my job.</p>
   <div class="cta">
     <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Book 30 minutes</a>
@@ -572,13 +574,19 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="board" class="wrap">
   <h2>The board, read for what it owes you</h2>
-  <p>Twenty-one merges a day is not readable from an issue list. The Product Owner opens one page instead, and it reads the board for exactly three things: <strong>the deliveries waiting on a decision that is theirs and nobody else's, the deliveries the architect will merge under delegation, and the open missions by workstream.</strong> It guesses nothing — a delivery exists when an open pull request carries the contract's own <code>Mission: #N delivers</code> line, and whatever fits no rule is counted on the face of the board rather than filed by hand.</p>
+  <p>Twenty-four merges a day is not readable from an issue list. The Product Owner opens one page instead — the page shipped in the kit under <code>templates/board/</code> — and it answers three questions, in this order, and refuses to guess the answer to any of them.</p>
+  <div class="scenes">
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Owed to you</span></p><h3>What only you can decide — and has actually arrived</h3><p>A reserved gate is not a wait. <code>gate:po</code> says <em>who</em> will decide; it does not say the decision is on your desk. The board separates the two, and lists only the contracts whose delivery is open and carries the line <code>Mission: #N delivers</code>.</p><p class="rule">If a contract is not on this list, nothing is waiting on you. That is the sentence the page exists to make true.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Moving without you</span></p><h3>What the architect merges on the witness's word</h3><p>Deliveries whose gate is delegated pass without your signature. They are shown anyway — a delegation you cannot see is not a delegation, it is a blind spot. You watch them go by; you have nothing to do about them.</p><p class="rule">Visible and actionable are not the same thing, and the board is explicit about which is which.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Refused to guess</span></p><h3>Whatever fits no rule, counted on the face of the board</h3><p>A pull request with no <code>Mission:</code> line. A delivery naming a mission that is already closed. A lot carrying no <code>chantier:</code> label. A dashboard that quietly files these away is telling you a story; this one puts them in a counter you cannot miss.</p><p class="rule">Those counters are the measure of what the governance is not yet doing. They are meant to read zero.</p></div>
+  </div>
   <div class="board-frame">
     <a href="demo/board/">
-      <img src="brand/board-demo.png" alt="The Lantern board: one decision waiting for the Product Owner, two deliveries under delegation, thirteen open issues, one lot without a workstream.">
+      <img src="brand/board-demo.png" alt="The Lantern board: six counters across the top, one decision waiting for the Product Owner in red, two deliveries under delegation in amber, three reserved gates not yet reached in grey, and a colour legend.">
     </a>
   </div>
-  <p class="caption">A frozen snapshot of the fictional Lantern board — <a href="demo/board/">open the demonstration</a>. On the real project the same page reads GitHub live through the viewer's own connector; the page is in the kit under <code>templates/board/</code>.</p>
+  <p class="caption">A frozen snapshot of the fictional Lantern board — <a href="demo/board/">open the demonstration</a>. On the real project the same page reads GitHub live through the viewer's own connector and holds no token; it is in the kit under <code>templates/board/</code>.</p>
+  <p class="punch"><strong>For someone who does not write the code, this is the difference between “we use AI” and “we know what the AI did.”</strong> Not a productivity chart — a list of what is owed, to whom, and what nothing yet accounts for.</p>
 </section>
 
 <hr class="rule">
@@ -587,10 +595,10 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <h2>What it ran on</h2>
   <p>A Windows desktop application in Python with a 12 100-test suite. One human — the Product Owner — who holds the hardware, the product verdict and the merge to the release branch. Every line of code, test and governance document since early August 2026 was written by AI seats under these contracts.</p>
   <div class="figs">
-    <div class="fig"><b>229</b><span>mission contracts opened in eleven days</span></div>
-    <div class="fig"><b>231</b><span>pull requests merged in the same eleven days</span></div>
-    <div class="fig"><b>441</b><span>sessions closed with a journal entry, in 33 days</span></div>
-    <div class="fig"><b>13</b><span>deliveries refused or superseded, of 471 closed</span></div>
+    <div class="fig"><b>278</b><span>mission contracts opened in eleven days</span></div>
+    <div class="fig"><b>262</b><span>pull requests merged in the same eleven days</span></div>
+    <div class="fig"><b>485</b><span>sessions closed with a journal entry, in 34 days</span></div>
+    <div class="fig"><b>14</b><span>deliveries refused or superseded, of 517 closed</span></div>
     <div class="fig"><b>~45</b><span>incidents, each of which paid for one rule</span></div>
   </div>
   <p class="sober"><strong>The sober reading, because it is the one that makes the first credible.</strong> The same period produced about forty-five incidents serious enough to earn a rule, most of them inside one week. Most seats the launcher can start are <code>unknown</code> on the hardware property the queue would most like filled. Neither command-line harness enforces read-only from its own flags, and the governance says so rather than pretending. A system that can say <em>I do not know</em> in the places it does not know is the only kind whose <em>yes</em> is worth anything.</p>
@@ -602,66 +610,68 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <title id="tl-title">Merges per day and register entries, 1 August – 5 September 2026</title>
 <line x1="44" x2="1064" y1="256.0" y2="256.0" stroke="#1D2B44" stroke-width="1"/>
 <text x="36" y="260.0" text-anchor="end" class="tk">0</text>
-<line x1="44" x2="1064" y1="198.5" y2="198.5" stroke="#1D2B44" stroke-width="1"/>
-<text x="36" y="202.5" text-anchor="end" class="tk">10</text>
-<line x1="44" x2="1064" y1="141.0" y2="141.0" stroke="#1D2B44" stroke-width="1"/>
-<text x="36" y="145.0" text-anchor="end" class="tk">20</text>
-<line x1="44" x2="1064" y1="83.5" y2="83.5" stroke="#1D2B44" stroke-width="1"/>
-<text x="36" y="87.5" text-anchor="end" class="tk">30</text>
+<line x1="44" x2="1064" y1="210.0" y2="210.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="214.0" text-anchor="end" class="tk">10</text>
+<line x1="44" x2="1064" y1="164.0" y2="164.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="168.0" text-anchor="end" class="tk">20</text>
+<line x1="44" x2="1064" y1="118.0" y2="118.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="122.0" text-anchor="end" class="tk">30</text>
+<line x1="44" x2="1064" y1="72.0" y2="72.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="76.0" text-anchor="end" class="tk">40</text>
 <line x1="44" x2="1064" y1="26.0" y2="26.0" stroke="#1D2B44" stroke-width="1"/>
-<text x="36" y="30.0" text-anchor="end" class="tk">40</text>
+<text x="36" y="30.0" text-anchor="end" class="tk">50</text>
 <line x1="752.3" x2="752.3" y1="12" y2="256.0" stroke="#9FAAC0" stroke-width="1" stroke-dasharray="3 4"/>
 <text x="758.3" y="22" class="mk">26 Aug — the mission form goes live</text>
-<path class="bar" d="M49.2,256.0 v-59.2 q0,-4 4,-4 h10 q4,0 4,4 v59.2 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
-<path class="bar" d="M77.5,256.0 v-111.0 q0,-4 4,-4 h10 q4,0 4,4 v111.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
-<path class="bar" d="M105.8,256.0 v-134.0 q0,-4 4,-4 h10 q4,0 4,4 v134.0 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
-<path class="bar" d="M134.2,256.0 v-93.8 q0,-4 4,-4 h10 q4,0 4,4 v93.8 z" fill="#C9801C"><title>2026-08-04: 17</title></path>
-<path class="bar" d="M162.5,256.0 v-111.0 q0,-4 4,-4 h10 q4,0 4,4 v111.0 z" fill="#C9801C"><title>2026-08-05: 20</title></path>
-<path class="bar" d="M190.8,256.0 v-70.8 q0,-4 4,-4 h10 q4,0 4,4 v70.8 z" fill="#C9801C"><title>2026-08-06: 13</title></path>
-<path class="bar" d="M219.2,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-07: 14</title></path>
-<path class="bar" d="M247.5,256.0 v-42.0 q0,-4 4,-4 h10 q4,0 4,4 v42.0 z" fill="#C9801C"><title>2026-08-08: 8</title></path>
-<path class="bar" d="M275.8,256.0 v-24.8 q0,-4 4,-4 h10 q4,0 4,4 v24.8 z" fill="#C9801C"><title>2026-08-09: 5</title></path>
-<path class="bar" d="M304.2,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-10: 2</title></path>
-<path class="bar" d="M332.5,256.0 v-30.5 q0,-4 4,-4 h10 q4,0 4,4 v30.5 z" fill="#C9801C"><title>2026-08-11: 6</title></path>
-<path class="bar" d="M360.8,256.0 v-1.8 q0,-4 4,-4 h10 q4,0 4,4 v1.8 z" fill="#C9801C"><title>2026-08-12: 1</title></path>
-<path class="bar" d="M389.2,256.0 v-36.2 q0,-4 4,-4 h10 q4,0 4,4 v36.2 z" fill="#C9801C"><title>2026-08-13: 7</title></path>
-<path class="bar" d="M417.5,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-14: 2</title></path>
-<path class="bar" d="M445.8,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-15: 2</title></path>
-<path class="bar" d="M474.2,256.0 v-30.5 q0,-4 4,-4 h10 q4,0 4,4 v30.5 z" fill="#C9801C"><title>2026-08-16: 6</title></path>
-<path class="bar" d="M502.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-17: 16</title></path>
-<path class="bar" d="M530.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-18: 4</title></path>
-<path class="bar" d="M559.2,256.0 v-47.8 q0,-4 4,-4 h10 q4,0 4,4 v47.8 z" fill="#C9801C"><title>2026-08-19: 9</title></path>
-<path class="bar" d="M587.5,256.0 v-65.0 q0,-4 4,-4 h10 q4,0 4,4 v65.0 z" fill="#C9801C"><title>2026-08-20: 12</title></path>
-<path class="bar" d="M615.8,256.0 v-82.2 q0,-4 4,-4 h10 q4,0 4,4 v82.2 z" fill="#C9801C"><title>2026-08-21: 15</title></path>
-<path class="bar" d="M644.2,256.0 v-36.2 q0,-4 4,-4 h10 q4,0 4,4 v36.2 z" fill="#C9801C"><title>2026-08-22: 7</title></path>
-<path class="bar" d="M672.5,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-23: 2</title></path>
-<path class="bar" d="M700.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-24: 4</title></path>
-<path class="bar" d="M729.2,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-25: 14</title></path>
-<path class="bar" d="M757.5,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-26: 14</title></path>
-<path class="bar" d="M785.8,256.0 v-70.8 q0,-4 4,-4 h10 q4,0 4,4 v70.8 z" fill="#C9801C"><title>2026-08-27: 13</title></path>
-<path class="bar" d="M814.2,256.0 v-191.5 q0,-4 4,-4 h10 q4,0 4,4 v191.5 z" fill="#C9801C"><title>2026-08-28: 34</title></path>
-<path class="bar" d="M842.5,256.0 v-116.8 q0,-4 4,-4 h10 q4,0 4,4 v116.8 z" fill="#C9801C"><title>2026-08-29: 21</title></path>
-<path class="bar" d="M870.8,256.0 v-174.2 q0,-4 4,-4 h10 q4,0 4,4 v174.2 z" fill="#C9801C"><title>2026-08-30: 31</title></path>
-<path class="bar" d="M899.2,256.0 v-180.0 q0,-4 4,-4 h10 q4,0 4,4 v180.0 z" fill="#C9801C"><title>2026-08-31: 32</title></path>
-<path class="bar" d="M927.5,256.0 v-105.2 q0,-4 4,-4 h10 q4,0 4,4 v105.2 z" fill="#C9801C"><title>2026-09-01: 19</title></path>
-<path class="bar" d="M955.8,256.0 v-105.2 q0,-4 4,-4 h10 q4,0 4,4 v105.2 z" fill="#C9801C"><title>2026-09-02: 19</title></path>
-<path class="bar" d="M984.2,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-09-03: 4</title></path>
-<path class="bar" d="M1012.5,256.0 v-191.5 q0,-4 4,-4 h10 q4,0 4,4 v191.5 z" fill="#C9801C"><title>2026-09-04: 34</title></path>
-<path class="bar" d="M1040.8,256.0 v-139.8 q0,-4 4,-4 h10 q4,0 4,4 v139.8 z" fill="#C9801C"><title>2026-09-05: 25</title></path>
-<path d="M766.5,256.0 L794.8,198.5 L823.2,89.2 L851.5,49.0 L879.8,250.2 L908.2,181.2 L936.5,227.2 L964.8,250.2 L993.2,227.2 L1021.5,158.2 L1049.8,221.5" fill="none" stroke="#3F7FD8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="794.8" cy="198.5" r="6" fill="#0A1322"/><circle cx="794.8" cy="198.5" r="4" fill="#3F7FD8"/>
-<circle cx="823.2" cy="89.2" r="6" fill="#0A1322"/><circle cx="823.2" cy="89.2" r="4" fill="#3F7FD8"/>
-<circle cx="851.5" cy="49.0" r="6" fill="#0A1322"/><circle cx="851.5" cy="49.0" r="4" fill="#3F7FD8"/>
-<circle cx="879.8" cy="250.2" r="6" fill="#0A1322"/><circle cx="879.8" cy="250.2" r="4" fill="#3F7FD8"/>
-<circle cx="908.2" cy="181.2" r="6" fill="#0A1322"/><circle cx="908.2" cy="181.2" r="4" fill="#3F7FD8"/>
-<circle cx="936.5" cy="227.2" r="6" fill="#0A1322"/><circle cx="936.5" cy="227.2" r="4" fill="#3F7FD8"/>
-<circle cx="964.8" cy="250.2" r="6" fill="#0A1322"/><circle cx="964.8" cy="250.2" r="4" fill="#3F7FD8"/>
-<circle cx="993.2" cy="227.2" r="6" fill="#0A1322"/><circle cx="993.2" cy="227.2" r="4" fill="#3F7FD8"/>
-<circle cx="1021.5" cy="158.2" r="6" fill="#0A1322"/><circle cx="1021.5" cy="158.2" r="4" fill="#3F7FD8"/>
-<circle cx="1049.8" cy="221.5" r="6" fill="#0A1322"/><circle cx="1049.8" cy="221.5" r="4" fill="#3F7FD8"/>
-<text x="823.2" y="52.5" text-anchor="middle" class="lb">34</text>
-<text x="1021.5" y="52.5" text-anchor="middle" class="lb">34</text>
-<text x="861.5" y="39.0" text-anchor="start" class="lb">36</text>
+<path class="bar" d="M49.2,256.0 v-46.6 q0,-4 4,-4 h10 q4,0 4,4 v46.6 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
+<path class="bar" d="M77.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
+<path class="bar" d="M105.8,256.0 v-106.4 q0,-4 4,-4 h10 q4,0 4,4 v106.4 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
+<path class="bar" d="M134.2,256.0 v-74.2 q0,-4 4,-4 h10 q4,0 4,4 v74.2 z" fill="#C9801C"><title>2026-08-04: 17</title></path>
+<path class="bar" d="M162.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-05: 20</title></path>
+<path class="bar" d="M190.8,256.0 v-55.8 q0,-4 4,-4 h10 q4,0 4,4 v55.8 z" fill="#C9801C"><title>2026-08-06: 13</title></path>
+<path class="bar" d="M219.2,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-07: 14</title></path>
+<path class="bar" d="M247.5,256.0 v-32.8 q0,-4 4,-4 h10 q4,0 4,4 v32.8 z" fill="#C9801C"><title>2026-08-08: 8</title></path>
+<path class="bar" d="M275.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-09: 5</title></path>
+<path class="bar" d="M304.2,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-10: 2</title></path>
+<path class="bar" d="M332.5,256.0 v-23.6 q0,-4 4,-4 h10 q4,0 4,4 v23.6 z" fill="#C9801C"><title>2026-08-11: 6</title></path>
+<path class="bar" d="M360.8,256.0 v-0.6 q0,-4 4,-4 h10 q4,0 4,4 v0.6 z" fill="#C9801C"><title>2026-08-12: 1</title></path>
+<path class="bar" d="M389.2,256.0 v-28.2 q0,-4 4,-4 h10 q4,0 4,4 v28.2 z" fill="#C9801C"><title>2026-08-13: 7</title></path>
+<path class="bar" d="M417.5,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-14: 2</title></path>
+<path class="bar" d="M445.8,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-15: 2</title></path>
+<path class="bar" d="M474.2,256.0 v-23.6 q0,-4 4,-4 h10 q4,0 4,4 v23.6 z" fill="#C9801C"><title>2026-08-16: 6</title></path>
+<path class="bar" d="M502.5,256.0 v-69.6 q0,-4 4,-4 h10 q4,0 4,4 v69.6 z" fill="#C9801C"><title>2026-08-17: 16</title></path>
+<path class="bar" d="M530.8,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-08-18: 4</title></path>
+<path class="bar" d="M559.2,256.0 v-37.4 q0,-4 4,-4 h10 q4,0 4,4 v37.4 z" fill="#C9801C"><title>2026-08-19: 9</title></path>
+<path class="bar" d="M587.5,256.0 v-51.2 q0,-4 4,-4 h10 q4,0 4,4 v51.2 z" fill="#C9801C"><title>2026-08-20: 12</title></path>
+<path class="bar" d="M615.8,256.0 v-65.0 q0,-4 4,-4 h10 q4,0 4,4 v65.0 z" fill="#C9801C"><title>2026-08-21: 15</title></path>
+<path class="bar" d="M644.2,256.0 v-28.2 q0,-4 4,-4 h10 q4,0 4,4 v28.2 z" fill="#C9801C"><title>2026-08-22: 7</title></path>
+<path class="bar" d="M672.5,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-23: 2</title></path>
+<path class="bar" d="M700.8,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-08-24: 4</title></path>
+<path class="bar" d="M729.2,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-25: 14</title></path>
+<path class="bar" d="M757.5,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-26: 14</title></path>
+<path class="bar" d="M785.8,256.0 v-55.8 q0,-4 4,-4 h10 q4,0 4,4 v55.8 z" fill="#C9801C"><title>2026-08-27: 13</title></path>
+<path class="bar" d="M814.2,256.0 v-152.4 q0,-4 4,-4 h10 q4,0 4,4 v152.4 z" fill="#C9801C"><title>2026-08-28: 34</title></path>
+<path class="bar" d="M842.5,256.0 v-92.6 q0,-4 4,-4 h10 q4,0 4,4 v92.6 z" fill="#C9801C"><title>2026-08-29: 21</title></path>
+<path class="bar" d="M870.8,256.0 v-138.6 q0,-4 4,-4 h10 q4,0 4,4 v138.6 z" fill="#C9801C"><title>2026-08-30: 31</title></path>
+<path class="bar" d="M899.2,256.0 v-143.2 q0,-4 4,-4 h10 q4,0 4,4 v143.2 z" fill="#C9801C"><title>2026-08-31: 32</title></path>
+<path class="bar" d="M927.5,256.0 v-83.4 q0,-4 4,-4 h10 q4,0 4,4 v83.4 z" fill="#C9801C"><title>2026-09-01: 19</title></path>
+<path class="bar" d="M955.8,256.0 v-83.4 q0,-4 4,-4 h10 q4,0 4,4 v83.4 z" fill="#C9801C"><title>2026-09-02: 19</title></path>
+<path class="bar" d="M984.2,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-09-03: 4</title></path>
+<path class="bar" d="M1012.5,256.0 v-152.4 q0,-4 4,-4 h10 q4,0 4,4 v152.4 z" fill="#C9801C"><title>2026-09-04: 34</title></path>
+<path class="bar" d="M1040.8,256.0 v-184.6 q0,-4 4,-4 h10 q4,0 4,4 v184.6 z" fill="#C9801C"><title>2026-09-05: 41</title></path>
+<path d="M766.5,256.0 L794.8,210.0 L823.2,122.6 L851.5,90.4 L879.8,251.4 L908.2,196.2 L936.5,233.0 L964.8,251.4 L993.2,233.0 L1021.5,177.8 L1049.8,228.4" fill="none" stroke="#3F7FD8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="794.8" cy="210.0" r="6" fill="#0A1322"/><circle cx="794.8" cy="210.0" r="4" fill="#3F7FD8"/>
+<circle cx="823.2" cy="122.6" r="6" fill="#0A1322"/><circle cx="823.2" cy="122.6" r="4" fill="#3F7FD8"/>
+<circle cx="851.5" cy="90.4" r="6" fill="#0A1322"/><circle cx="851.5" cy="90.4" r="4" fill="#3F7FD8"/>
+<circle cx="879.8" cy="251.4" r="6" fill="#0A1322"/><circle cx="879.8" cy="251.4" r="4" fill="#3F7FD8"/>
+<circle cx="908.2" cy="196.2" r="6" fill="#0A1322"/><circle cx="908.2" cy="196.2" r="4" fill="#3F7FD8"/>
+<circle cx="936.5" cy="233.0" r="6" fill="#0A1322"/><circle cx="936.5" cy="233.0" r="4" fill="#3F7FD8"/>
+<circle cx="964.8" cy="251.4" r="6" fill="#0A1322"/><circle cx="964.8" cy="251.4" r="4" fill="#3F7FD8"/>
+<circle cx="993.2" cy="233.0" r="6" fill="#0A1322"/><circle cx="993.2" cy="233.0" r="4" fill="#3F7FD8"/>
+<circle cx="1021.5" cy="177.8" r="6" fill="#0A1322"/><circle cx="1021.5" cy="177.8" r="4" fill="#3F7FD8"/>
+<circle cx="1049.8" cy="228.4" r="6" fill="#0A1322"/><circle cx="1049.8" cy="228.4" r="4" fill="#3F7FD8"/>
+<text x="823.2" y="91.6" text-anchor="middle" class="lb">34</text>
+<text x="1049.8" y="59.4" text-anchor="middle" class="lb">41</text>
+<text x="861.5" y="80.4" text-anchor="start" class="lb">36</text>
 <text x="58.2" y="274" text-anchor="middle" class="tk">1 Aug</text>
 <text x="256.5" y="274" text-anchor="middle" class="tk">8</text>
 <text x="454.8" y="274" text-anchor="middle" class="tk">15</text>
@@ -863,6 +873,25 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>Management</span></p><h3>The method went on leave</h3><p>The assistant who has the board minutes produced "her way" is away for three weeks. Nobody knows how to reproduce what she got.</p><p class="rule">Every session leaves a record the next one can read; the method belongs to the company.</p></div>
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>You, tonight</span></p><h3>The human who carries the messages</h3><p>You paste the output of one tool into another, all day, so that your agents "work together". You have become the message bus of your own assistants.</p><p class="rule">Agents hand work over through a board, not through you; you decide, you no longer carry.</p></div>
   </div>
+</section>
+
+<hr class="rule">
+
+<section id="board-nocode" class="wrap">
+  <h2>The same board, without a line of code</h2>
+  <p>The tool that holds all of this is one page that reads what your teams handed to an AI, and sorts it into three piles. On a software project it reads pull requests. In a firm, an agency or a support desk it reads quotes, client replies, meeting notes and drafted clauses. <strong>The objects change; the three questions do not.</strong></p>
+  <div class="scenes">
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Owed to you</span></p><h3>What is waiting for you, and for nobody else</h3><p>The quote above your threshold. The reply to a complaint. The clause an assistant drafted. Each names the person who signs it, and appears in front of that person only once it is genuinely finished.</p><p class="rule">If it is not on your list, it is not waiting on you — and you stop being the bottleneck by default.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Moving without you</span></p><h3>What goes out under delegation, in plain sight</h3><p>Routine answers, standard confirmations, the summaries nobody needs to arbitrate. They leave without your signature — and they are still shown, because a delegation nobody can see is not a delegation.</p><p class="rule">You do not approve them. You can name, at any moment, everything that went out in your name.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Refused to guess</span></p><h3>What nothing yet accounts for</h3><p>A document whose source is not stated. A piece of work with no named owner. A reply attached to a request that was already closed. These are not filed quietly — they are counted, in front of everyone.</p><p class="rule">That counter is the honest measure of where your practice is not yet holding. It is meant to read zero.</p></div>
+  </div>
+  <div class="board-frame">
+    <a href="demo/board/">
+      <img src="brand/board-demo.png" alt="The board on the fictional Lantern example: six counters across the top, one item waiting for its owner in red, two moving under delegation in amber, three reserved but not yet reached in grey, and a colour legend.">
+    </a>
+  </div>
+  <p class="caption">The demonstration runs on a software example, because that is the one I can show publicly — <a href="demo/board/">open it</a>. Read the columns across: an <em>issue</em> is a request, a <em>delivery</em> is the document produced, a <em>workstream</em> is a client or a service. The mechanism is identical.</p>
+  <p class="punch"><strong>This matters more without code, not less.</strong> A development team at least has a version history: someone can reconstruct who changed what. A firm whose assistants draft, answer and summarise all day has no history at all — until someone gives it one.</p>
 </section>
 
 <hr class="rule">

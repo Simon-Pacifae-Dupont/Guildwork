@@ -436,6 +436,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
       <a href="#work" data-track="code">Offres et tarifs</a>
       <a href="#questions" data-track="nocode">Trois questions à se poser</a>
       <a href="#situations" data-track="nocode">Six situations réelles</a>
+      <a href="#board-nocode" data-track="nocode">Le tableau de bord</a>
       <a href="#offres" data-track="nocode">Offres et tarifs</a>
       <a class="switch" href="#sans-code" data-track="code">Sans code →</a>
       <a class="switch" href="#code" data-track="nocode">Avec du code →</a>
@@ -460,6 +461,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a href="#work" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offres et tarifs</a>
     <a href="#questions" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg>Trois questions à se poser</a>
     <a href="#situations" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Six situations réelles</a>
+    <a href="#board-nocode" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-board"/></svg>Le tableau de bord</a>
     <a href="#offres" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offres et tarifs</a>
     <a class="switch" href="#sans-code" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Sans code →</a>
     <a class="switch" href="#code" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Avec du code →</a>
@@ -476,7 +478,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <div class="wrap hero">
   <p class="eyebrow">Orchestration d’agents IA · pack libre (MIT) · accompagnement</p>
   <h1>Faire travailler des agents IA <em>en gardant le dernier mot</em>.</h1>
-  <p class="lede"><strong>Guildwork est une discipline construite incident après incident :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Bâtie sur un logiciel réel (sept agents, vingt et un merges par jour), elle tient aussi un cabinet, une agence ou un service client.</p>
+  <p class="lede"><strong>Guildwork est une discipline construite incident après incident :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Bâtie sur un logiciel réel (sept agents, vingt-quatre merges par jour), elle tient aussi un cabinet, une agence ou un service client.</p>
   <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
   <div class="cta">
     <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Réserver 30 minutes</a>
@@ -578,13 +580,19 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="board" class="wrap">
   <h2>Le tableau, lu pour ce qu'il vous doit</h2>
-  <p>Vingt et un merges par jour ne se lisent pas dans une liste d'issues. Le Product Owner ouvre une seule page à la place, qui lit le tableau pour exactement trois choses : <strong>les livraisons qui attendent une décision qui est la sienne et celle de personne d'autre, les livraisons que l'architecte fusionnera sous délégation, et les missions ouvertes par chantier.</strong> Elle ne devine rien — une livraison existe quand une pull request ouverte porte la ligne <code>Mission: #N delivers</code> du contrat, et ce qui n'entre dans aucune règle est compté sur la face du tableau plutôt que rangé à la main.</p>
+  <p>Vingt-quatre merges par jour ne se lisent pas dans une liste d'issues. Le Product Owner ouvre une seule page à la place — celle que le pack livre sous <code>templates/board/</code> — et elle répond à trois questions, dans cet ordre, en refusant de deviner la réponse à chacune.</p>
+  <div class="scenes">
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Ce qu'on vous doit</span></p><h3>Ce que vous seul pouvez trancher — et qui est vraiment arrivé</h3><p>Une porte réservée n'est pas une attente. <code>gate:po</code> dit <em>qui</em> tranchera ; il ne dit pas que la décision est sur votre bureau. Le tableau sépare les deux et ne liste que les contrats dont la livraison est ouverte et porte la ligne <code>Mission: #N delivers</code>.</p><p class="rule">Si un contrat n'est pas dans cette liste, rien ne vous attend. C'est la phrase que cette page existe pour rendre vraie.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Ce qui avance sans vous</span></p><h3>Ce que l'architecte fusionne sur la parole du témoin</h3><p>Les livraisons dont la porte est déléguée passent sans votre signature. Elles sont montrées quand même : une délégation qu'on ne voit pas n'est pas une délégation, c'est un angle mort. Vous les regardez passer, vous n'avez rien à en faire.</p><p class="rule">Visible et actionnable ne sont pas la même chose, et le tableau dit lequel est lequel.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Tout ce qui n'entre dans aucune règle, compté sur la face du tableau</h3><p>Une pull request sans ligne <code>Mission:</code>. Une livraison qui nomme une mission déjà close. Un lot sans étiquette <code>chantier:</code>. Un tableau qui range discrètement ces cas-là vous raconte une histoire ; celui-ci les met dans un compteur qu'on ne peut pas manquer.</p><p class="rule">Ces compteurs sont la mesure de ce que la gouvernance ne fait pas encore. Ils sont faits pour afficher zéro.</p></div>
+  </div>
   <div class="board-frame">
     <a href="../demo/board/">
-      <img src="../brand/board-demo.png" alt="Le tableau Lantern : une décision attend le Product Owner, deux livraisons sous délégation, treize issues ouvertes, un lot sans chantier.">
+      <img src="../brand/board-demo.png" alt="Le tableau Lantern : six compteurs en haut, une décision attend le Product Owner en rouge, deux livraisons sous délégation en ambre, trois portes réservées non atteintes en gris, et une légende des couleurs.">
     </a>
   </div>
-  <p class="caption">Un instantané figé du tableau fictif Lantern — <a href="../demo/board/">ouvrir la démonstration</a>. Sur le projet réel, la même page lit GitHub en direct par le connecteur du lecteur ; la page est dans le pack sous <code>templates/board/</code>. Elle est en anglais, comme le pack.</p>
+  <p class="caption">Un instantané figé du tableau fictif Lantern — <a href="../demo/board/">ouvrir la démonstration</a>. Sur le projet réel, la même page lit GitHub en direct par le connecteur du lecteur et ne détient aucun jeton ; elle est dans le pack sous <code>templates/board/</code>. Elle est en anglais, comme le pack.</p>
+  <p class="punch"><strong>Pour qui n'écrit pas le code, c'est la différence entre « on utilise l'IA » et « on sait ce que l'IA a fait ».</strong> Pas une courbe de productivité — la liste de ce qui est dû, à qui, et de ce que rien ne justifie encore.</p>
 </section>
 
 <hr class="rule">
@@ -593,10 +601,10 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <h2>Sur quoi il a tourné</h2>
   <p>Une application de bureau Windows en Python, avec une suite de 12 100 tests. Un seul humain — le Product Owner — qui détient le matériel, le verdict produit et le merge vers la branche de release. Chaque ligne de code, chaque test et chaque document de gouvernance depuis début août 2026 a été écrit par des sièges IA, sous ces contrats.</p>
   <div class="figs">
-    <div class="fig"><b>229</b><span>contrats de mission ouverts en onze jours</span></div>
-    <div class="fig"><b>231</b><span>pull requests fusionnées sur les mêmes onze jours</span></div>
-    <div class="fig"><b>441</b><span>sessions closes avec une entrée de journal, en 33 jours</span></div>
-    <div class="fig"><b>13</b><span>livraisons refusées ou remplacées, sur 471 closes</span></div>
+    <div class="fig"><b>278</b><span>contrats de mission ouverts en onze jours</span></div>
+    <div class="fig"><b>262</b><span>pull requests fusionnées sur les mêmes onze jours</span></div>
+    <div class="fig"><b>485</b><span>sessions closes avec une entrée de journal, en 34 jours</span></div>
+    <div class="fig"><b>14</b><span>livraisons refusées ou remplacées, sur 517 closes</span></div>
     <div class="fig"><b>~45</b><span>incidents, chacun ayant payé une règle</span></div>
   </div>
   <p class="sober"><strong>La lecture sobre, parce que c'est elle qui rend la première crédible.</strong> La même période a produit une quarantaine d'incidents assez sérieux pour mériter une règle, la plupart concentrés sur une seule semaine. La plupart des sièges que le lanceur sait démarrer sont <code>unknown</code> sur la propriété matérielle que la file aimerait le plus voir remplie. Aucun des deux harnais en ligne de commande n'impose la lecture seule depuis ses propres options, et la gouvernance le dit au lieu de faire semblant. Un système capable de dire <em>je ne sais pas</em> là où il ne sait pas est le seul dont le <em>oui</em> vaille quelque chose.</p>
@@ -608,66 +616,68 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <title id="tl-title">Merges par jour et entrées du registre, 1er août – 5 septembre 2026</title>
 <line x1="44" x2="1064" y1="256.0" y2="256.0" stroke="#1D2B44" stroke-width="1"/>
 <text x="36" y="260.0" text-anchor="end" class="tk">0</text>
-<line x1="44" x2="1064" y1="198.5" y2="198.5" stroke="#1D2B44" stroke-width="1"/>
-<text x="36" y="202.5" text-anchor="end" class="tk">10</text>
-<line x1="44" x2="1064" y1="141.0" y2="141.0" stroke="#1D2B44" stroke-width="1"/>
-<text x="36" y="145.0" text-anchor="end" class="tk">20</text>
-<line x1="44" x2="1064" y1="83.5" y2="83.5" stroke="#1D2B44" stroke-width="1"/>
-<text x="36" y="87.5" text-anchor="end" class="tk">30</text>
+<line x1="44" x2="1064" y1="210.0" y2="210.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="214.0" text-anchor="end" class="tk">10</text>
+<line x1="44" x2="1064" y1="164.0" y2="164.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="168.0" text-anchor="end" class="tk">20</text>
+<line x1="44" x2="1064" y1="118.0" y2="118.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="122.0" text-anchor="end" class="tk">30</text>
+<line x1="44" x2="1064" y1="72.0" y2="72.0" stroke="#1D2B44" stroke-width="1"/>
+<text x="36" y="76.0" text-anchor="end" class="tk">40</text>
 <line x1="44" x2="1064" y1="26.0" y2="26.0" stroke="#1D2B44" stroke-width="1"/>
-<text x="36" y="30.0" text-anchor="end" class="tk">40</text>
+<text x="36" y="30.0" text-anchor="end" class="tk">50</text>
 <line x1="752.3" x2="752.3" y1="12" y2="256.0" stroke="#9FAAC0" stroke-width="1" stroke-dasharray="3 4"/>
-<text x="758.3" y="22" class="mk">26 août — le formulaire entre en service</text>
-<path class="bar" d="M49.2,256.0 v-59.2 q0,-4 4,-4 h10 q4,0 4,4 v59.2 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
-<path class="bar" d="M77.5,256.0 v-111.0 q0,-4 4,-4 h10 q4,0 4,4 v111.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
-<path class="bar" d="M105.8,256.0 v-134.0 q0,-4 4,-4 h10 q4,0 4,4 v134.0 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
-<path class="bar" d="M134.2,256.0 v-93.8 q0,-4 4,-4 h10 q4,0 4,4 v93.8 z" fill="#C9801C"><title>2026-08-04: 17</title></path>
-<path class="bar" d="M162.5,256.0 v-111.0 q0,-4 4,-4 h10 q4,0 4,4 v111.0 z" fill="#C9801C"><title>2026-08-05: 20</title></path>
-<path class="bar" d="M190.8,256.0 v-70.8 q0,-4 4,-4 h10 q4,0 4,4 v70.8 z" fill="#C9801C"><title>2026-08-06: 13</title></path>
-<path class="bar" d="M219.2,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-07: 14</title></path>
-<path class="bar" d="M247.5,256.0 v-42.0 q0,-4 4,-4 h10 q4,0 4,4 v42.0 z" fill="#C9801C"><title>2026-08-08: 8</title></path>
-<path class="bar" d="M275.8,256.0 v-24.8 q0,-4 4,-4 h10 q4,0 4,4 v24.8 z" fill="#C9801C"><title>2026-08-09: 5</title></path>
-<path class="bar" d="M304.2,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-10: 2</title></path>
-<path class="bar" d="M332.5,256.0 v-30.5 q0,-4 4,-4 h10 q4,0 4,4 v30.5 z" fill="#C9801C"><title>2026-08-11: 6</title></path>
-<path class="bar" d="M360.8,256.0 v-1.8 q0,-4 4,-4 h10 q4,0 4,4 v1.8 z" fill="#C9801C"><title>2026-08-12: 1</title></path>
-<path class="bar" d="M389.2,256.0 v-36.2 q0,-4 4,-4 h10 q4,0 4,4 v36.2 z" fill="#C9801C"><title>2026-08-13: 7</title></path>
-<path class="bar" d="M417.5,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-14: 2</title></path>
-<path class="bar" d="M445.8,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-15: 2</title></path>
-<path class="bar" d="M474.2,256.0 v-30.5 q0,-4 4,-4 h10 q4,0 4,4 v30.5 z" fill="#C9801C"><title>2026-08-16: 6</title></path>
-<path class="bar" d="M502.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-17: 16</title></path>
-<path class="bar" d="M530.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-18: 4</title></path>
-<path class="bar" d="M559.2,256.0 v-47.8 q0,-4 4,-4 h10 q4,0 4,4 v47.8 z" fill="#C9801C"><title>2026-08-19: 9</title></path>
-<path class="bar" d="M587.5,256.0 v-65.0 q0,-4 4,-4 h10 q4,0 4,4 v65.0 z" fill="#C9801C"><title>2026-08-20: 12</title></path>
-<path class="bar" d="M615.8,256.0 v-82.2 q0,-4 4,-4 h10 q4,0 4,4 v82.2 z" fill="#C9801C"><title>2026-08-21: 15</title></path>
-<path class="bar" d="M644.2,256.0 v-36.2 q0,-4 4,-4 h10 q4,0 4,4 v36.2 z" fill="#C9801C"><title>2026-08-22: 7</title></path>
-<path class="bar" d="M672.5,256.0 v-7.5 q0,-4 4,-4 h10 q4,0 4,4 v7.5 z" fill="#C9801C"><title>2026-08-23: 2</title></path>
-<path class="bar" d="M700.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-24: 4</title></path>
-<path class="bar" d="M729.2,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-25: 14</title></path>
-<path class="bar" d="M757.5,256.0 v-76.5 q0,-4 4,-4 h10 q4,0 4,4 v76.5 z" fill="#C9801C"><title>2026-08-26: 14</title></path>
-<path class="bar" d="M785.8,256.0 v-70.8 q0,-4 4,-4 h10 q4,0 4,4 v70.8 z" fill="#C9801C"><title>2026-08-27: 13</title></path>
-<path class="bar" d="M814.2,256.0 v-191.5 q0,-4 4,-4 h10 q4,0 4,4 v191.5 z" fill="#C9801C"><title>2026-08-28: 34</title></path>
-<path class="bar" d="M842.5,256.0 v-116.8 q0,-4 4,-4 h10 q4,0 4,4 v116.8 z" fill="#C9801C"><title>2026-08-29: 21</title></path>
-<path class="bar" d="M870.8,256.0 v-174.2 q0,-4 4,-4 h10 q4,0 4,4 v174.2 z" fill="#C9801C"><title>2026-08-30: 31</title></path>
-<path class="bar" d="M899.2,256.0 v-180.0 q0,-4 4,-4 h10 q4,0 4,4 v180.0 z" fill="#C9801C"><title>2026-08-31: 32</title></path>
-<path class="bar" d="M927.5,256.0 v-105.2 q0,-4 4,-4 h10 q4,0 4,4 v105.2 z" fill="#C9801C"><title>2026-09-01: 19</title></path>
-<path class="bar" d="M955.8,256.0 v-105.2 q0,-4 4,-4 h10 q4,0 4,4 v105.2 z" fill="#C9801C"><title>2026-09-02: 19</title></path>
-<path class="bar" d="M984.2,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-09-03: 4</title></path>
-<path class="bar" d="M1012.5,256.0 v-191.5 q0,-4 4,-4 h10 q4,0 4,4 v191.5 z" fill="#C9801C"><title>2026-09-04: 34</title></path>
-<path class="bar" d="M1040.8,256.0 v-139.8 q0,-4 4,-4 h10 q4,0 4,4 v139.8 z" fill="#C9801C"><title>2026-09-05: 25</title></path>
-<path d="M766.5,256.0 L794.8,198.5 L823.2,89.2 L851.5,49.0 L879.8,250.2 L908.2,181.2 L936.5,227.2 L964.8,250.2 L993.2,227.2 L1021.5,158.2 L1049.8,221.5" fill="none" stroke="#3F7FD8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="794.8" cy="198.5" r="6" fill="#0A1322"/><circle cx="794.8" cy="198.5" r="4" fill="#3F7FD8"/>
-<circle cx="823.2" cy="89.2" r="6" fill="#0A1322"/><circle cx="823.2" cy="89.2" r="4" fill="#3F7FD8"/>
-<circle cx="851.5" cy="49.0" r="6" fill="#0A1322"/><circle cx="851.5" cy="49.0" r="4" fill="#3F7FD8"/>
-<circle cx="879.8" cy="250.2" r="6" fill="#0A1322"/><circle cx="879.8" cy="250.2" r="4" fill="#3F7FD8"/>
-<circle cx="908.2" cy="181.2" r="6" fill="#0A1322"/><circle cx="908.2" cy="181.2" r="4" fill="#3F7FD8"/>
-<circle cx="936.5" cy="227.2" r="6" fill="#0A1322"/><circle cx="936.5" cy="227.2" r="4" fill="#3F7FD8"/>
-<circle cx="964.8" cy="250.2" r="6" fill="#0A1322"/><circle cx="964.8" cy="250.2" r="4" fill="#3F7FD8"/>
-<circle cx="993.2" cy="227.2" r="6" fill="#0A1322"/><circle cx="993.2" cy="227.2" r="4" fill="#3F7FD8"/>
-<circle cx="1021.5" cy="158.2" r="6" fill="#0A1322"/><circle cx="1021.5" cy="158.2" r="4" fill="#3F7FD8"/>
-<circle cx="1049.8" cy="221.5" r="6" fill="#0A1322"/><circle cx="1049.8" cy="221.5" r="4" fill="#3F7FD8"/>
-<text x="823.2" y="52.5" text-anchor="middle" class="lb">34</text>
-<text x="1021.5" y="52.5" text-anchor="middle" class="lb">34</text>
-<text x="861.5" y="39.0" text-anchor="start" class="lb">36</text>
+<text x="758.3" y="22" class="mk">26 août — le formulaire de mission est en service</text>
+<path class="bar" d="M49.2,256.0 v-46.6 q0,-4 4,-4 h10 q4,0 4,4 v46.6 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
+<path class="bar" d="M77.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
+<path class="bar" d="M105.8,256.0 v-106.4 q0,-4 4,-4 h10 q4,0 4,4 v106.4 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
+<path class="bar" d="M134.2,256.0 v-74.2 q0,-4 4,-4 h10 q4,0 4,4 v74.2 z" fill="#C9801C"><title>2026-08-04: 17</title></path>
+<path class="bar" d="M162.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-05: 20</title></path>
+<path class="bar" d="M190.8,256.0 v-55.8 q0,-4 4,-4 h10 q4,0 4,4 v55.8 z" fill="#C9801C"><title>2026-08-06: 13</title></path>
+<path class="bar" d="M219.2,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-07: 14</title></path>
+<path class="bar" d="M247.5,256.0 v-32.8 q0,-4 4,-4 h10 q4,0 4,4 v32.8 z" fill="#C9801C"><title>2026-08-08: 8</title></path>
+<path class="bar" d="M275.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-09: 5</title></path>
+<path class="bar" d="M304.2,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-10: 2</title></path>
+<path class="bar" d="M332.5,256.0 v-23.6 q0,-4 4,-4 h10 q4,0 4,4 v23.6 z" fill="#C9801C"><title>2026-08-11: 6</title></path>
+<path class="bar" d="M360.8,256.0 v-0.6 q0,-4 4,-4 h10 q4,0 4,4 v0.6 z" fill="#C9801C"><title>2026-08-12: 1</title></path>
+<path class="bar" d="M389.2,256.0 v-28.2 q0,-4 4,-4 h10 q4,0 4,4 v28.2 z" fill="#C9801C"><title>2026-08-13: 7</title></path>
+<path class="bar" d="M417.5,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-14: 2</title></path>
+<path class="bar" d="M445.8,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-15: 2</title></path>
+<path class="bar" d="M474.2,256.0 v-23.6 q0,-4 4,-4 h10 q4,0 4,4 v23.6 z" fill="#C9801C"><title>2026-08-16: 6</title></path>
+<path class="bar" d="M502.5,256.0 v-69.6 q0,-4 4,-4 h10 q4,0 4,4 v69.6 z" fill="#C9801C"><title>2026-08-17: 16</title></path>
+<path class="bar" d="M530.8,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-08-18: 4</title></path>
+<path class="bar" d="M559.2,256.0 v-37.4 q0,-4 4,-4 h10 q4,0 4,4 v37.4 z" fill="#C9801C"><title>2026-08-19: 9</title></path>
+<path class="bar" d="M587.5,256.0 v-51.2 q0,-4 4,-4 h10 q4,0 4,4 v51.2 z" fill="#C9801C"><title>2026-08-20: 12</title></path>
+<path class="bar" d="M615.8,256.0 v-65.0 q0,-4 4,-4 h10 q4,0 4,4 v65.0 z" fill="#C9801C"><title>2026-08-21: 15</title></path>
+<path class="bar" d="M644.2,256.0 v-28.2 q0,-4 4,-4 h10 q4,0 4,4 v28.2 z" fill="#C9801C"><title>2026-08-22: 7</title></path>
+<path class="bar" d="M672.5,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-23: 2</title></path>
+<path class="bar" d="M700.8,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-08-24: 4</title></path>
+<path class="bar" d="M729.2,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-25: 14</title></path>
+<path class="bar" d="M757.5,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-26: 14</title></path>
+<path class="bar" d="M785.8,256.0 v-55.8 q0,-4 4,-4 h10 q4,0 4,4 v55.8 z" fill="#C9801C"><title>2026-08-27: 13</title></path>
+<path class="bar" d="M814.2,256.0 v-152.4 q0,-4 4,-4 h10 q4,0 4,4 v152.4 z" fill="#C9801C"><title>2026-08-28: 34</title></path>
+<path class="bar" d="M842.5,256.0 v-92.6 q0,-4 4,-4 h10 q4,0 4,4 v92.6 z" fill="#C9801C"><title>2026-08-29: 21</title></path>
+<path class="bar" d="M870.8,256.0 v-138.6 q0,-4 4,-4 h10 q4,0 4,4 v138.6 z" fill="#C9801C"><title>2026-08-30: 31</title></path>
+<path class="bar" d="M899.2,256.0 v-143.2 q0,-4 4,-4 h10 q4,0 4,4 v143.2 z" fill="#C9801C"><title>2026-08-31: 32</title></path>
+<path class="bar" d="M927.5,256.0 v-83.4 q0,-4 4,-4 h10 q4,0 4,4 v83.4 z" fill="#C9801C"><title>2026-09-01: 19</title></path>
+<path class="bar" d="M955.8,256.0 v-83.4 q0,-4 4,-4 h10 q4,0 4,4 v83.4 z" fill="#C9801C"><title>2026-09-02: 19</title></path>
+<path class="bar" d="M984.2,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-09-03: 4</title></path>
+<path class="bar" d="M1012.5,256.0 v-152.4 q0,-4 4,-4 h10 q4,0 4,4 v152.4 z" fill="#C9801C"><title>2026-09-04: 34</title></path>
+<path class="bar" d="M1040.8,256.0 v-184.6 q0,-4 4,-4 h10 q4,0 4,4 v184.6 z" fill="#C9801C"><title>2026-09-05: 41</title></path>
+<path d="M766.5,256.0 L794.8,210.0 L823.2,122.6 L851.5,90.4 L879.8,251.4 L908.2,196.2 L936.5,233.0 L964.8,251.4 L993.2,233.0 L1021.5,177.8 L1049.8,228.4" fill="none" stroke="#3F7FD8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="794.8" cy="210.0" r="6" fill="#0A1322"/><circle cx="794.8" cy="210.0" r="4" fill="#3F7FD8"/>
+<circle cx="823.2" cy="122.6" r="6" fill="#0A1322"/><circle cx="823.2" cy="122.6" r="4" fill="#3F7FD8"/>
+<circle cx="851.5" cy="90.4" r="6" fill="#0A1322"/><circle cx="851.5" cy="90.4" r="4" fill="#3F7FD8"/>
+<circle cx="879.8" cy="251.4" r="6" fill="#0A1322"/><circle cx="879.8" cy="251.4" r="4" fill="#3F7FD8"/>
+<circle cx="908.2" cy="196.2" r="6" fill="#0A1322"/><circle cx="908.2" cy="196.2" r="4" fill="#3F7FD8"/>
+<circle cx="936.5" cy="233.0" r="6" fill="#0A1322"/><circle cx="936.5" cy="233.0" r="4" fill="#3F7FD8"/>
+<circle cx="964.8" cy="251.4" r="6" fill="#0A1322"/><circle cx="964.8" cy="251.4" r="4" fill="#3F7FD8"/>
+<circle cx="993.2" cy="233.0" r="6" fill="#0A1322"/><circle cx="993.2" cy="233.0" r="4" fill="#3F7FD8"/>
+<circle cx="1021.5" cy="177.8" r="6" fill="#0A1322"/><circle cx="1021.5" cy="177.8" r="4" fill="#3F7FD8"/>
+<circle cx="1049.8" cy="228.4" r="6" fill="#0A1322"/><circle cx="1049.8" cy="228.4" r="4" fill="#3F7FD8"/>
+<text x="823.2" y="91.6" text-anchor="middle" class="lb">34</text>
+<text x="1049.8" y="59.4" text-anchor="middle" class="lb">41</text>
+<text x="861.5" y="80.4" text-anchor="start" class="lb">36</text>
 <text x="58.2" y="274" text-anchor="middle" class="tk">1er août</text>
 <text x="256.5" y="274" text-anchor="middle" class="tk">8</text>
 <text x="454.8" y="274" text-anchor="middle" class="tk">15</text>
@@ -871,6 +881,25 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>La direction</span></p><h3>La méthode est partie en congé</h3><p>L'assistante qui fait produire les comptes-rendus de direction « à sa façon » est absente trois semaines. Personne ne sait reproduire ce qu'elle obtenait.</p><p class="rule">Chaque session laisse une trace lisible par la suivante ; la méthode appartient à l'entreprise.</p></div>
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>Vous, ce soir</span></p><h3>L'humain qui porte les messages</h3><p>Vous copiez la sortie d'un outil dans un autre, toute la journée, pour que vos agents « travaillent ensemble ». Vous êtes devenu le bus de messages de vos propres assistants.</p><p class="rule">Les agents se passent le travail par un tableau, pas par vous ; vous tranchez, vous ne transportez plus.</p></div>
   </div>
+</section>
+
+<hr class="rule">
+
+<section id="board-nocode" class="wrap">
+  <h2>Le même tableau, sans une ligne de code</h2>
+  <p>L'outil qui tient tout cela est une page unique, qui lit ce que vos équipes ont confié à une IA et le range en trois piles. Sur un projet logiciel, elle lit des pull requests. Dans un cabinet, une agence ou un service client, elle lit des devis, des réponses, des comptes-rendus, des clauses rédigées. <strong>Les objets changent ; les trois questions, non.</strong></p>
+  <div class="scenes">
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Ce qu'on vous doit</span></p><h3>Ce qui vous attend, vous et personne d'autre</h3><p>Le devis au-dessus de votre seuil. La réponse à une réclamation. La clause qu'un assistant a rédigée. Chacun nomme la personne qui signe, et n'apparaît devant elle qu'une fois réellement terminé.</p><p class="rule">Si ce n'est pas dans votre liste, ça ne vous attend pas — et vous cessez d'être le goulot par défaut.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Ce qui avance sans vous</span></p><h3>Ce qui part sous délégation, à la vue de tous</h3><p>Les réponses courantes, les confirmations standard, les comptes-rendus que personne n'a besoin d'arbitrer. Ils partent sans votre signature — et restent affichés, parce qu'une délégation que personne ne voit n'est pas une délégation.</p><p class="rule">Vous ne les validez pas. Vous pouvez nommer, à tout instant, tout ce qui est parti en votre nom.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Ce que rien ne justifie encore</h3><p>Un document dont la source n'est pas nommée. Un travail sans responsable désigné. Une réponse rattachée à une demande déjà close. Ces cas ne sont pas rangés discrètement : ils sont comptés, devant tout le monde.</p><p class="rule">Ce compteur est la mesure honnête de là où votre pratique ne tient pas encore. Il est fait pour afficher zéro.</p></div>
+  </div>
+  <div class="board-frame">
+    <a href="../demo/board/">
+      <img src="../brand/board-demo.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs en haut, un élément attend son responsable en rouge, deux avancent sous délégation en ambre, trois sont réservés mais pas atteints en gris, et une légende des couleurs.">
+    </a>
+  </div>
+  <p class="caption">La démonstration tourne sur un exemple logiciel, parce que c'est celui que je peux montrer publiquement — <a href="../demo/board/">l'ouvrir</a>. Lisez les colonnes en face : une <em>issue</em> est une demande, une <em>livraison</em> est le document produit, un <em>chantier</em> est un client ou un service. Le mécanisme est identique.</p>
+  <p class="punch"><strong>Ça compte davantage sans code, pas moins.</strong> Une équipe de développement a au moins un historique de versions : quelqu'un peut reconstituer qui a changé quoi. Un cabinet dont les assistants rédigent, répondent et résument toute la journée n'a aucun historique — jusqu'à ce que quelqu'un lui en donne un.</p>
 </section>
 
 <hr class="rule">
