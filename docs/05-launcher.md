@@ -4,7 +4,7 @@
 it declares against the governance at the commit the mission will run on,
 and refuses to start anything when the contract does not check out.*
 
-This is a specification. The pack ships no code: the behaviour below is what
+This is a specification. The launcher is specified here, not shipped: the behaviour below is what
 the tool on the source project does, stated precisely enough to be
 re-implemented or audited. Where a number is quoted, it is the source
 project's.
@@ -396,3 +396,30 @@ source project it was taken in practice before it was taken in writing:
 every mission passes through the launcher, the profile seats included, and
 the sentence saying it is opt-in stands until the ruling that retires it is
 recorded.
+
+## Seven is what is specified, not what the reference runs
+
+The reference implementation refuses on more than seven conditions today.
+Three arrived after this document was written: one that reserves a resource
+only one seat can hold at a time — the machine's foreground, in the Lantern
+example, where a run opens windows and a second run would type into the
+first one's; one that refuses a first instruction too long to survive the
+command line, which now travels as a file; and one that refuses a scope the
+launcher cannot read, after a prose path drifted into naming nothing and a
+repair was written to a lot no one had looked at.
+
+They are not in the table, and the table is not wrong. A condition reaches
+this document when it has stopped moving and its refusal has been paid for —
+an incident it would have prevented, named in `12-incidents.md`, not a
+precaution someone thought of. Between those two moments a condition lives in
+the implementation and nowhere else, and anyone reading only this file is
+guarded by seven rather than ten.
+
+That gap is the cost of the rule, and it is cheaper than its opposite. A
+document that tracked the implementation week by week would be a changelog
+with a specification's authority: the reader could not tell which conditions
+had been paid for and which were still being tried, and the first one
+withdrawn would take the credibility of the other nine with it. The number in
+the heading is a claim about what has held, not a count of what runs — and
+when these three have held, they will be numbered here and the heading will
+say ten.
