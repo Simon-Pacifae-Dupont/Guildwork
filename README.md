@@ -28,8 +28,11 @@ It is meant to be read. The three tools are specified, not shipped — one
 page is: the board reader below, which you can open right now.
 
 <p align="center">
-  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="The board on the fictional Lantern example: six counters, one decision waiting for its owner in red, two deliveries moving under delegation in amber, three reserved gates not yet reached in grey, and a colour legend." src="brand/board-demo.png" width="880"></a><br>
-  <sub>What the Product Owner opens instead of the issue list. It reads the repository live, through the viewer's own GitHub connector, and holds no token. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Open the demonstration</a> · <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">en français</a>.</sub>
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/board-demo-dark.png">
+    <img alt="The board on the fictional Lantern example: six counters each carrying how it was read, and one decision card with an approve or hold choice and the exact comment it would publish." src="brand/board-demo.png" width="880">
+  </picture></a><br>
+  <sub>The board as it runs, on the fictional Lantern example. Six counters, each carrying <em>how</em> it was read; then the one decision that is the Product Owner's and nobody else's, taken on the page where it is read — with the comment it will publish shown word for word first. It never merges. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Open the demonstration</a> — frozen, and it says so on its face.</sub>
 </p>
 
 ## The problem
@@ -78,15 +81,22 @@ on nobody else's, what the architect merges under delegation without them,
 and what fits no rule — a pull request with no `Mission:` line, a delivery
 naming a closed mission, a lot with no workstream. Those last are counted on
 the face of the board rather than filed by guesswork, and they are meant to
-read zero. State is carried in colour, so what is owed to you is visible
-before it is read.
+read zero. Every figure carries how it was obtained, because a count read in
+full and a count that stopped early are different claims.
 
-The page holds no token and copies nothing: it reads the repository live
-through the viewer's own GitHub connector and recomputes on open. Every
-string sits in one object, which is how the French demonstration exists.
+It holds no token and copies nothing: it reads the repository through the
+viewer's own GitHub connector. It never merges — the page is one share away
+from anyone, and a merge control on a shareable page is a gate anyone can
+pass. And it publishes what it cannot see: a session on another machine, a
+process that discloses no command line, an agent started by hand.
+
+What the kit publishes today is the board *reader*, under
+`templates/board/`. The host reading and the decision path shown in the
+demonstration are newer, and reach the kit when they have stopped moving —
+which is the rule everything else here follows.
 [Demonstration](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/) ·
-[en français](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/) ·
-the page itself is under `templates/board/`.
+[the published reader](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/reader/) ·
+[en français](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/).
 
 ## What is in this repository
 
@@ -107,14 +117,14 @@ examples/    one fictional mission followed end to end — issue, launcher trans
 | [02 — The delivery contract](docs/02-delivery-contract.md) | the pull request template, the `Mission:` line and its three states, who disposes of what a run created |
 | [03 — The label taxonomy](docs/03-label-taxonomy.md) | seventeen labels and no more; routing labels are events; workstream labels are descriptive |
 | [04 — Capabilities and routing](docs/04-capabilities-and-routing.md) | three atoms, an enumeration that is not a ladder, `unknown` routes as cannot |
-| [05 — The launcher](docs/05-launcher.md) | the seven conditions, the governance pin, `--resume`, `--list`, the generated instruction |
+| [05 — The launcher](docs/05-launcher.md) | the seven conditions — and why the reference implementation refuses on ten — the governance pin, `--resume`, `--list`, the generated instruction |
 | [06 — Session entry and exit](docs/06-session-cycle.md) | `guild-hi`, `guild-bye`, exit codes 0/2/3, the three-state declaration |
 | [07 — The closeout tool](docs/07-closeout.md) | five conditions, the regenerable-paths manifest, what closes a mission |
 | [08 — Continuity](docs/08-continuity.md) | source precedence, the seven failure modes, what a handover owes its successor |
 | [09 — The findings register](docs/09-findings-register.md) | one issue, two exits, reviewed at every sweep |
 | [10 — Effort and execution parameters](docs/10-effort-and-execution-parameters.md) | the exact mapping, per-seat levels, *state what ran* |
 | [11 — Changelog fragments](docs/11-changelog-fragments.md) | one file per mission, assembled at release |
-| [12 — Incidents](docs/12-incidents.md) | about forty-five failures, and the rule each one paid for |
+| [12 — Incidents](docs/12-incidents.md) | forty-seven failures, and the rule each one paid for |
 | [13 — By the numbers](docs/13-by-the-numbers.md) | the real project's figures, domain removed |
 | [14 — The adoption path](docs/14-adoption-path.md) | what to do in what order, and what this pack does not contain |
 
