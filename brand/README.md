@@ -15,7 +15,7 @@ Wordmark in Fraunces, taglines in IBM Plex Mono.
 | `linkedin-featured-page.png`, `linkedin-featured-repo.png` | 1280×720, the two LinkedIn *Featured* thumbnails — ink for the site, ivory for the repository, so the two cards never read alike |
 | `lifecycle-canvas.png`, `lifecycle-canvas.html` | the operating model drawn on the Lantern example — image, and the interactive page it is rendered from |
 | `lifecycle-canvas.fr.png`, `lifecycle-canvas.fr.html` | the same canvas, in French |
-| `board-demo.png`, `board-demo-dark.png` | the board on the Lantern snapshot, as shown on both languages of the site — light and dark, so the README follows the reader's theme |
+| `board-demo-dark.png` | the board on the Lantern snapshot, as shown on both languages of the site and in the READMEs — the board is dark only, on the site's own navy, with the state hues of the reference board |
 | `board-demo.fr.png` | the French board reader, rendered from `fr/demo/board/` |
 | `brand-source.html` | the source every PNG above is rendered from (Playwright screenshot of each board) |
 
