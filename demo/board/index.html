@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,51 +8,25 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
   :root{
-    --ground:#eef1f0; --surface:#ffffff; --surface-2:#e6eae9;
-    --ink:#141d1c; --ink-2:#41504e; --muted:#5e6d6b;
-    --line:#d3dbd9; --line-strong:#b9c4c2; --brand:#0d5c66;
+    /* Guildwork's own palette: the board wears the colours of the site it lives on,
+       and it is dark only, like the site. */
+    --ground:#0B1526; --surface:#0A1322; --surface-2:#14223A;
+    --ink:#F3EDE2; --ink-2:#9FAAC0; --muted:#6B7791;
+    --line:#1D2B44; --line-strong:#2B3B57; --brand:#E9A23B;
 
-    /* FIVE STATES. One row carries exactly one, always filled, the word inside. */
-    --s-run:#8f5c10;      --s-run-tint:#f9edd8;
-    --s-bridge:#6b4795;   --s-bridge-tint:#ece4f6;
-    --s-next:#1a5384;     --s-next-tint:#dde9f3;
-    --s-you:#9c3223;      --s-you-tint:#f8e1dc;
-    --s-done:#1c6640;     --s-done-tint:#dcebe1;
+    /* FIVE STATES. One row carries exactly one, always filled, the word inside.
+       Running is gold, the bench claim is violet, next is blue, owed to you is red,
+       landed is green. */
+    --s-run:#E9A23B;      --s-run-tint:#3B3228;
+    --s-bridge:#BDA2E4;   --s-bridge-tint:#2E2545;
+    --s-next:#7FA6D6;     --s-next-tint:#24334A;
+    --s-you:#D0644A;      --s-you-tint:#36252B;
+    --s-done:#6FB07B;     --s-done-tint:#203636;
 
-    /* WORKSTREAMS. Panel frame only — never a row. All muted against the states. */
-    --w-device:#46634d; --w-sync:#3c6f6e; --w-dashboard:#366175;
-    --w-gate:#6a684a;   --w-watcher:#6f536b; --w-governance:#5f6683;
+    /* WORKSTREAMS. Panel frame only — never a row. Muted against the states. */
+    --w-device:#7C8FB0; --w-sync:#8AA3A0; --w-dashboard:#7FA0BF;
+    --w-gate:#A9A489;   --w-watcher:#A793B0; --w-governance:#9AA3C8;
 
-    --shadow:0 1px 2px rgba(20,29,28,.06);
-    --shadow-lift:0 2px 10px rgba(20,29,28,.09);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --ground:#0d1414; --surface:#151e1e; --surface-2:#1d2827;
-      --ink:#e7edeb; --ink-2:#b3c0be; --muted:#8a9896;
-      --line:#283433; --line-strong:#3a4746; --brand:#5cb9c4;
-      --s-run:#e8ae57;      --s-run-tint:#382914;
-      --s-bridge:#bda2e4;   --s-bridge-tint:#2b2242;
-      --s-next:#79b4e0;     --s-next-tint:#132a3b;
-      --s-you:#ec8a79;      --s-you-tint:#3b1d18;
-      --s-done:#78c48c;     --s-done-tint:#163020;
-      --w-device:#88a88f; --w-sync:#80b8b6; --w-dashboard:#79a7bd;
-      --w-gate:#b2af8c;   --w-watcher:#b797b2; --w-governance:#a6accf;
-      --shadow:0 1px 2px rgba(0,0,0,.35);
-      --shadow-lift:0 2px 12px rgba(0,0,0,.5);
-    }
-  }
-  :root[data-theme="dark"]{
-    --ground:#0d1414; --surface:#151e1e; --surface-2:#1d2827;
-    --ink:#e7edeb; --ink-2:#b3c0be; --muted:#8a9896;
-    --line:#283433; --line-strong:#3a4746; --brand:#5cb9c4;
-    --s-run:#e8ae57;      --s-run-tint:#382914;
-    --s-bridge:#bda2e4;   --s-bridge-tint:#2b2242;
-    --s-next:#79b4e0;     --s-next-tint:#132a3b;
-    --s-you:#ec8a79;      --s-you-tint:#3b1d18;
-    --s-done:#78c48c;     --s-done-tint:#163020;
-    --w-device:#88a88f; --w-sync:#80b8b6; --w-dashboard:#79a7bd;
-    --w-gate:#b2af8c;   --w-watcher:#b797b2; --w-governance:#a6accf;
     --shadow:0 1px 2px rgba(0,0,0,.35);
     --shadow-lift:0 2px 12px rgba(0,0,0,.5);
   }
