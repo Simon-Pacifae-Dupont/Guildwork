@@ -29,8 +29,11 @@ page l'est : le lecteur de tableau ci-dessous, que vous pouvez ouvrir tout de
 suite.
 
 <p align="center">
-  <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/"><img alt="Le tableau sur l'exemple fictif Lantern : six compteurs, une décision qui attend son responsable en rouge, deux livraisons sous délégation en ambre, trois portes réservées non atteintes en gris, et une légende des couleurs." src="brand/board-demo.fr.png" width="880"></a><br>
-  <sub>Ce que le Product Owner ouvre à la place de la liste d'issues. La page lit le dépôt en direct, par le connecteur GitHub du lecteur, et ne détient aucun jeton. <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">Ouvrir la démonstration</a> · <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">in English</a>.</sub>
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/board-demo-dark.png">
+    <img alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait." src="brand/board-demo.png" width="880">
+  </picture></a><br>
+  <sub>Le tableau tel qu'il tourne, sur l'exemple fictif Lantern. Six compteurs, portant chacun <em>comment</em> il a été lu ; puis la seule décision qui revient au Product Owner et à personne d'autre, prise sur la page où elle se lit — le commentaire qu'elle publiera étant montré mot pour mot avant. Il ne fusionne jamais. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Ouvrir la démonstration</a> — figée, et elle le dit sur sa face. Elle est en anglais, comme le pack ; <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">le lecteur livré existe en français</a>.</sub>
 </p>
 
 > **Les quinze documents du pack sont en anglais** et le restent : c'est la
@@ -69,7 +72,7 @@ générée depuis l'issue. Un **cycle de session** ouvre chaque session en
 lisant ce que la précédente a laissé, et la referme avec une seule commande
 de sortie dont le code est décidé par la seule durabilité. Un **outil de
 clôture** refuse de supprimer tout worktree dont la matière n'est pas
-préservée de façon démontrable, et clôt les contrats depuis leurs livraisons
+préservée de façon démontrable, et clot les contrats depuis leurs livraisons
 fusionnées, avec quatre refus qui lui sont propres.
 
 Sous les outils, quatre principes : *mesuré, pas supposé* ; *échouer fermé,
@@ -88,16 +91,23 @@ et celle de personne d'autre, ce que l'architecte fusionne sous délégation
 sans lui, et ce qui n'entre dans aucune règle — une pull request sans ligne
 `Mission:`, une livraison qui nomme une mission close, un lot sans chantier.
 Ces derniers sont comptés sur la face du tableau plutôt que rangés au jugé,
-et ces compteurs sont faits pour afficher zéro. L'état est porté par la
-couleur : ce qu'on vous doit se voit avant d'être lu.
+et ces compteurs sont faits pour afficher zéro. Chaque chiffre porte la
+façon dont il a été obtenu : un compte lu en entier et un compte qui s'est
+arrêté en route ne sont pas la même affirmation.
 
-La page ne détient aucun jeton et ne recopie rien : elle lit le dépôt en
-direct par le connecteur GitHub du lecteur et recalcule à l'ouverture.
-Toutes ses phrases vivent dans un seul objet — c'est ainsi que la
-démonstration française existe.
-[Démonstration](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/) ·
-[in English](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/) ·
-la page elle-même est sous `templates/board/`.
+Il ne détient aucun jeton et ne recopie rien : il lit le dépôt par le
+connecteur GitHub du lecteur. Il ne fusionne jamais — la page est à un
+partage de n'importe qui, et un bouton de fusion sur une page partageable
+est une porte que tout le monde franchit. Et il publie ce qu'il ne voit
+pas : une session sur une autre machine, un processus qui n'expose pas sa
+ligne de commande, un agent lancé à la main.
+
+Ce que le pack livre aujourd'hui, c'est le *lecteur*, sous
+`templates/board/`. La lecture de l'hôte et le chemin de décision montrés
+dans la démonstration sont plus récents, et rejoindront le pack quand ils
+auront cessé de bouger — c'est la règle que tout le reste ici applique.
+[Démonstration](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/) ·
+[le lecteur livré, en français](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/).
 
 ## Ce que contient ce dépôt
 
@@ -118,14 +128,14 @@ examples/    une mission fictive suivie de bout en bout — issue, transcription
 | [02 — Le contrat de livraison](docs/02-delivery-contract.md) | le gabarit de pull request, la ligne `Mission:` et ses trois états, qui dispose de ce qu'une exécution a créé |
 | [03 — La taxonomie d'étiquettes](docs/03-label-taxonomy.md) | dix-sept étiquettes et pas une de plus ; les étiquettes de routage sont des événements, celles de chantier sont descriptives |
 | [04 — Capacités et routage](docs/04-capabilities-and-routing.md) | trois atomes, une énumération qui n'est pas une échelle, `unknown` route comme *ne peut pas* |
-| [05 — Le lanceur](docs/05-launcher.md) | les sept conditions, l'épinglage de la gouvernance, `--resume`, `--list`, l'instruction générée |
+| [05 — Le lanceur](docs/05-launcher.md) | les sept conditions — et pourquoi l'implémentation de référence en refuse dix — l'épinglage de la gouvernance, `--resume`, `--list`, l'instruction générée |
 | [06 — Entrée et sortie de session](docs/06-session-cycle.md) | `guild-hi`, `guild-bye`, les codes de sortie 0/2/3, la déclaration à trois états |
-| [07 — L'outil de clôture](docs/07-closeout.md) | cinq conditions, le manifeste des chemins régénérables, ce qui clôt une mission |
+| [07 — L'outil de clôture](docs/07-closeout.md) | cinq conditions, le manifeste des chemins régénérables, ce qui clot une mission |
 | [08 — La continuité](docs/08-continuity.md) | la préséance des sources, les sept modes de défaillance, ce qu'une passation doit à celui qui suit |
 | [09 — Le registre de constats](docs/09-findings-register.md) | une issue, deux sorties, revue à chaque passage |
 | [10 — Effort et paramètres d'exécution](docs/10-effort-and-execution-parameters.md) | la correspondance exacte, les niveaux par siège, *dire ce qui a tourné* |
 | [11 — Les fragments de changelog](docs/11-changelog-fragments.md) | un fichier par mission, assemblés à la release |
-| [12 — Les incidents](docs/12-incidents.md) | une quarantaine de défaillances, et la règle que chacune a payée |
+| [12 — Les incidents](docs/12-incidents.md) | quarante-sept défaillances, et la règle que chacune a payée |
 | [13 — Les chiffres](docs/13-by-the-numbers.md) | les chiffres réels du projet, domaine retiré |
 | [14 — Le chemin d'adoption](docs/14-adoption-path.md) | quoi faire dans quel ordre, et ce que ce pack ne contient pas |
 
