@@ -72,7 +72,7 @@ générée depuis l'issue. Un **cycle de session** ouvre chaque session en
 lisant ce que la précédente a laissé, et la referme avec une seule commande
 de sortie dont le code est décidé par la seule durabilité. Un **outil de
 clôture** refuse de supprimer tout worktree dont la matière n'est pas
-préservée de façon démontrable, et clot les contrats depuis leurs livraisons
+préservée de façon démontrable, et clôt les contrats depuis leurs livraisons
 fusionnées, avec quatre refus qui lui sont propres.
 
 Sous les outils, quatre principes : *mesuré, pas supposé* ; *échouer fermé,
@@ -130,7 +130,7 @@ examples/    une mission fictive suivie de bout en bout — issue, transcription
 | [04 — Capacités et routage](docs/04-capabilities-and-routing.md) | trois atomes, une énumération qui n'est pas une échelle, `unknown` route comme *ne peut pas* |
 | [05 — Le lanceur](docs/05-launcher.md) | les sept conditions — et pourquoi l'implémentation de référence en refuse dix — l'épinglage de la gouvernance, `--resume`, `--list`, l'instruction générée |
 | [06 — Entrée et sortie de session](docs/06-session-cycle.md) | `guild-hi`, `guild-bye`, les codes de sortie 0/2/3, la déclaration à trois états |
-| [07 — L'outil de clôture](docs/07-closeout.md) | cinq conditions, le manifeste des chemins régénérables, ce qui clot une mission |
+| [07 — L'outil de clôture](docs/07-closeout.md) | cinq conditions, le manifeste des chemins régénérables, ce qui clôt une mission |
 | [08 — La continuité](docs/08-continuity.md) | la préséance des sources, les sept modes de défaillance, ce qu'une passation doit à celui qui suit |
 | [09 — Le registre de constats](docs/09-findings-register.md) | une issue, deux sorties, revue à chaque passage |
 | [10 — Effort et paramètres d'exécution](docs/10-effort-and-execution-parameters.md) | la correspondance exacte, les niveaux par siège, *dire ce qui a tourné* |
