@@ -18,6 +18,7 @@ Wordmark in Fraunces, taglines in IBM Plex Mono.
 | `board-demo-dark.png` | the board on the Lantern snapshot, as shown on both languages of the site and in the READMEs — the board is dark only, on the site's own navy, with the state hues of the reference board |
 | `board-demo.fr.png` | the French board reader, rendered from `fr/demo/board/` |
 | `brand-source.html` | the source every PNG above is rendered from (Playwright screenshot of each board) |
+| `design-system.md` | the tokens and the rules every Guildwork surface follows — ground, ink, the five state hues, what is not a state |
 
 The assets are © Simon Dupont and are not covered by the MIT licence of
 the documentation; use them to refer to Guildwork, not as your own mark.
