@@ -1,43 +1,43 @@
-<p align="center">
+﻿<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="brand/logo-lockup-dark.png">
-    <img alt="Guildwork — governance for AI agents, you keep the last word" src="brand/logo-lockup-light.png" width="600">
+    <img alt="Guildwork â€” governance for AI agents, you keep the last word" src="brand/logo-lockup-light.png" width="600">
   </picture>
 </p>
 
-<p align="center"><strong>English</strong> · <a href="README.fr.md">Français</a></p>
+<p align="center"><strong>English</strong> Â· <a href="README.fr.md">FranÃ§ais</a></p>
 
 # Guildwork
 
 **Governance kit for running parallel AI coding agents.**
 
-**[simon-pacifae-dupont.github.io/Guildwork](https://simon-pacifae-dupont.github.io/Guildwork/)** — the same thing, on one page.
-([Version française](https://simon-pacifae-dupont.github.io/Guildwork/fr/) of the page and of this README; the fifteen documents are in English.)
+**[simon-pacifae-dupont.github.io/Guildwork](https://simon-pacifae-dupont.github.io/Guildwork/)** â€” the same thing, on one page.
+([Version franÃ§aise](https://simon-pacifae-dupont.github.io/Guildwork/fr/) of the page and of this README; the fifteen documents are in English.)
 
-**Not a developer?** The same discipline — a contract before, a witness during, a closeout after, and a launcher that refuses to start what isn’t in order — holds a law firm, an agency or a support desk just as well. [That door is on the same page.](https://simon-pacifae-dupont.github.io/Guildwork/#no-code)
+**Not a developer?** The same discipline â€” a contract before, a witness during, a closeout after, and a launcher that refuses to start what isnâ€™t in order â€” holds a law firm, an agency or a support desk just as well. [That door is on the same page.](https://simon-pacifae-dupont.github.io/Guildwork/#no-code)
 
 Guildwork is the governance one person built, incident by incident, to run
 a seven-seat AI engineering team on a real product at twenty-four merges a
-day — with every mission a contract, every merge behind a named gate, every
+day â€” with every mission a contract, every merge behind a named gate, every
 session leaving a durable record, and the human out of the message path.
 This repository is that system, extracted: the contracts, the forms, the
 vocabulary, the specification of the three tools that hold it together, and
 the incidents that paid for every rule.
 
-It is meant to be read. The three tools are specified, not shipped — one
+It is meant to be read. The three tools are specified, not shipped â€” one
 page is: the board reader below, which you can open right now.
 
 <p align="center">
   <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><picture>
     <source media="(prefers-color-scheme: dark)" srcset="brand/board-demo-dark.png">
-    <img alt="The board on the fictional Lantern example: six counters each carrying how it was read, and one decision card with an approve or hold choice and the exact comment it would publish." src="brand/board-demo.png" width="880">
+    <img alt="The board on the fictional Lantern example: six counters each carrying how it was read, and one decision card with an approve or hold choice and the exact comment it would publish." src="brand/board-demo-dark.png" width="880">
   </picture></a><br>
-  <sub>The board as it runs, on the fictional Lantern example. Six counters, each carrying <em>how</em> it was read; then the one decision that is the Product Owner's and nobody else's, taken on the page where it is read — with the comment it will publish shown word for word first. It never merges. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Open the demonstration</a> — frozen, and it says so on its face.</sub>
+  <sub>The board as it runs, on the fictional Lantern example. Six counters, each carrying <em>how</em> it was read; then the one decision that is the Product Owner's and nobody else's, taken on the page where it is read â€” with the comment it will publish shown word for word first. It never merges. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Open the demonstration</a> â€” frozen, and it says so on its face.</sub>
 </p>
 
 ## The problem
 
-Several AI coding agents — different vendors, different harnesses — working
+Several AI coding agents â€” different vendors, different harnesses â€” working
 on one repository at once produce four kinds of damage that no prompt
 cures: two agents writing the same file, with the human as the merge tool;
 an agent running under a model, an effort or a prompt nobody declared, with
@@ -57,7 +57,7 @@ exist.
 
 A **launcher** reads the contract by number, validates it against the
 governance *at the commit the mission will run on*, checks seven
-conditions, and refuses — naming which condition fired — or creates the
+conditions, and refuses â€” naming which condition fired â€” or creates the
 workspace, performs the session entry, and starts the declared harness
 under the declared model and effort with a first instruction generated
 from the issue. A **session cycle** opens every session by reading what
@@ -71,32 +71,32 @@ and say which condition*; *a refusal does not prevent the mission, it moves
 it outside the gate*; *durable means reachable from a pushed ref*.
 
 <p align="center">
-  <a href="brand/lifecycle-canvas.png"><img alt="Where a mission can stop — the operating model drawn on the Lantern example" src="brand/lifecycle-canvas.png" width="880"></a><br>
-  <sub>Read for where it can stop: seven conditions before a session starts, a witness and a gate before anything lands, three exit codes decided by durability alone, and a register that sends every incident back into the next contract. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.html">Interactive version</a> — hover a block to isolate its path.</sub>
+  <a href="brand/lifecycle-canvas.png"><img alt="Where a mission can stop â€” the operating model drawn on the Lantern example" src="brand/lifecycle-canvas.png" width="880"></a><br>
+  <sub>Read for where it can stop: seven conditions before a session starts, a witness and a gate before anything lands, three exit codes decided by durability alone, and a register that sends every incident back into the next contract. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.html">Interactive version</a> â€” hover a block to isolate its path.</sub>
 </p>
 
 **The board, read for what it owes each seat.** Six counters, then three
 questions in this order: what is waiting on the Product Owner's decision and
 on nobody else's, what the architect merges under delegation without them,
-and what fits no rule — a pull request with no `Mission:` line, a delivery
+and what fits no rule â€” a pull request with no `Mission:` line, a delivery
 naming a closed mission, a lot with no workstream. Those last are counted on
 the face of the board rather than filed by guesswork, and they are meant to
 read zero. Every figure carries how it was obtained, because a count read in
 full and a count that stopped early are different claims.
 
 It holds no token and copies nothing: it reads the repository through the
-viewer's own GitHub connector. It never merges — the page is one share away
+viewer's own GitHub connector. It never merges â€” the page is one share away
 from anyone, and a merge control on a shareable page is a gate anyone can
 pass. And it publishes what it cannot see: a session on another machine, a
 process that discloses no command line, an agent started by hand.
 
 What the kit publishes today is the board *reader*, under
 `templates/board/`. The host reading and the decision path shown in the
-demonstration are newer, and reach the kit when they have stopped moving —
+demonstration are newer, and reach the kit when they have stopped moving â€”
 which is the rule everything else here follows.
-[Demonstration](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/) ·
-[the published reader](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/reader/) ·
-[en français](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/).
+[Demonstration](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/) Â·
+[the published reader](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/reader/) Â·
+[en franÃ§ais](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/).
 
 ## What is in this repository
 
@@ -105,28 +105,28 @@ docs/        fifteen documents, numbered in reading order
 templates/   the files to drop into a repository: issue form, pull request template,
              label recipe, role profiles, journal format, regenerable-paths manifest,
              findings register, changelog convention
-examples/    one fictional mission followed end to end — issue, launcher transcript,
+examples/    one fictional mission followed end to end â€” issue, launcher transcript,
              generated instruction, transmission report, pull request, journal entry,
              closeout transcript, register
 ```
 
 | Document | What it settles |
 |---|---|
-| [00 — The operating model](docs/00-operating-model.md) | the five surfaces, the seats, the lifecycle, the principles |
-| [01 — The mission contract](docs/01-mission-contract.md) | the issue form field by field, conservative ordering, what a comment may amend |
-| [02 — The delivery contract](docs/02-delivery-contract.md) | the pull request template, the `Mission:` line and its three states, who disposes of what a run created |
-| [03 — The label taxonomy](docs/03-label-taxonomy.md) | seventeen labels and no more; routing labels are events; workstream labels are descriptive |
-| [04 — Capabilities and routing](docs/04-capabilities-and-routing.md) | three atoms, an enumeration that is not a ladder, `unknown` routes as cannot |
-| [05 — The launcher](docs/05-launcher.md) | the seven conditions — and why the reference implementation refuses on ten — the governance pin, `--resume`, `--list`, the generated instruction |
-| [06 — Session entry and exit](docs/06-session-cycle.md) | `guild-hi`, `guild-bye`, exit codes 0/2/3, the three-state declaration |
-| [07 — The closeout tool](docs/07-closeout.md) | five conditions, the regenerable-paths manifest, what closes a mission |
-| [08 — Continuity](docs/08-continuity.md) | source precedence, the seven failure modes, what a handover owes its successor |
-| [09 — The findings register](docs/09-findings-register.md) | one issue, two exits, reviewed at every sweep |
-| [10 — Effort and execution parameters](docs/10-effort-and-execution-parameters.md) | the exact mapping, per-seat levels, *state what ran* |
-| [11 — Changelog fragments](docs/11-changelog-fragments.md) | one file per mission, assembled at release |
-| [12 — Incidents](docs/12-incidents.md) | forty-seven failures, and the rule each one paid for |
-| [13 — By the numbers](docs/13-by-the-numbers.md) | the real project's figures, domain removed |
-| [14 — The adoption path](docs/14-adoption-path.md) | what to do in what order, and what this pack does not contain |
+| [00 â€” The operating model](docs/00-operating-model.md) | the five surfaces, the seats, the lifecycle, the principles |
+| [01 â€” The mission contract](docs/01-mission-contract.md) | the issue form field by field, conservative ordering, what a comment may amend |
+| [02 â€” The delivery contract](docs/02-delivery-contract.md) | the pull request template, the `Mission:` line and its three states, who disposes of what a run created |
+| [03 â€” The label taxonomy](docs/03-label-taxonomy.md) | seventeen labels and no more; routing labels are events; workstream labels are descriptive |
+| [04 â€” Capabilities and routing](docs/04-capabilities-and-routing.md) | three atoms, an enumeration that is not a ladder, `unknown` routes as cannot |
+| [05 â€” The launcher](docs/05-launcher.md) | the seven conditions â€” and why the reference implementation refuses on ten â€” the governance pin, `--resume`, `--list`, the generated instruction |
+| [06 â€” Session entry and exit](docs/06-session-cycle.md) | `guild-hi`, `guild-bye`, exit codes 0/2/3, the three-state declaration |
+| [07 â€” The closeout tool](docs/07-closeout.md) | five conditions, the regenerable-paths manifest, what closes a mission |
+| [08 â€” Continuity](docs/08-continuity.md) | source precedence, the seven failure modes, what a handover owes its successor |
+| [09 â€” The findings register](docs/09-findings-register.md) | one issue, two exits, reviewed at every sweep |
+| [10 â€” Effort and execution parameters](docs/10-effort-and-execution-parameters.md) | the exact mapping, per-seat levels, *state what ran* |
+| [11 â€” Changelog fragments](docs/11-changelog-fragments.md) | one file per mission, assembled at release |
+| [12 â€” Incidents](docs/12-incidents.md) | forty-seven failures, and the rule each one paid for |
+| [13 â€” By the numbers](docs/13-by-the-numbers.md) | the real project's figures, domain removed |
+| [14 â€” The adoption path](docs/14-adoption-path.md) | what to do in what order, and what this pack does not contain |
 
 ## Fifteen minutes
 
@@ -146,7 +146,7 @@ Three commands: the issue form and the pull request template land in
 `.github/` on your default branch, and the seventeen labels, the `watcher:*`
 routes and the `chantier:*` workstreams are created once, by a human (on
 Windows, run the `gh label` lines of `labels.sh` from PowerShell). Then open
-a new issue with the *AI mission* form — the first contract exists. The
+a new issue with the *AI mission* form â€” the first contract exists. The
 launcher that will read it is yours to write from `05`; `templates/README.md`
 says which value is Lantern's and what you still owe.
 
@@ -160,8 +160,8 @@ to 5 September 2026, 278 contracts were opened and 262 pull requests merged;
 existed. `docs/13-by-the-numbers.md` has the full table,
 and both readings of it.
 
-Every example here is rewritten on a fictional project, **Lantern** — a
-workshop sensor dashboard with a bridge to a bench controller — so that the
+Every example here is rewritten on a fictional project, **Lantern** â€” a
+workshop sensor dashboard with a bridge to a bench controller â€” so that the
 mechanics can be shown without describing the real product. Nothing about
 Lantern is load-bearing.
 
@@ -172,18 +172,18 @@ in `05`, `06` and `07` precisely enough to audit or re-implement, and they
 are not shipped: installing this on a repository, adapting the vocabulary to
 a team's own seats and workstreams, measuring the capability table on the
 team's machines, writing the tools against the team's harnesses, and
-running the first two weeks of missions alongside the team is the work —
+running the first two weeks of missions alongside the team is the work â€”
 and it is the work the author does.
 
 ## Contact
 
-Simon Dupont — [GitHub](https://github.com/simon-pacifae-dupont) ·
-[LinkedIn](https://www.linkedin.com/in/simon-pacifae-dupont/) ·
+Simon Dupont â€” [GitHub](https://github.com/simon-pacifae-dupont) Â·
+[LinkedIn](https://www.linkedin.com/in/simon-pacifae-dupont/) Â·
 simon.pacifae.dupont@gmail.com. If you run, or intend to run, more than one
 AI coding agent on a codebase that matters, write.
 
 ## License
 
-MIT — see `LICENSE`. The Lantern project, its repository, its people and
+MIT â€” see `LICENSE`. The Lantern project, its repository, its people and
 its numbers are fictional; the figures in `docs/13-by-the-numbers.md` are
 real; they were measured on 6 September 2026, over complete days only.

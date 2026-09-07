@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+﻿<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -19,7 +19,7 @@
     --s-you:#9c3223;      --s-you-tint:#f8e1dc;
     --s-done:#1c6640;     --s-done-tint:#dcebe1;
 
-    /* WORKSTREAMS. Panel frame only — never a row. All muted against the states. */
+    /* WORKSTREAMS. Panel frame only â€” never a row. All muted against the states. */
     --w-device:#46634d; --w-sync:#3c6f6e; --w-dashboard:#366175;
     --w-gate:#6a684a;   --w-watcher:#6f536b; --w-governance:#5f6683;
 
@@ -221,11 +221,11 @@
   <div class="masthead">
     <div>
       <h1>Workstreams</h1>
-      <div class="sub">lantern-labs/lantern · develop</div>
+      <div class="sub">lantern-labs/lantern Â· develop</div>
     </div>
     <div class="refreshbox">
       <div class="refresh">Refresh</div>
-      <div class="stamp">read · issues 11:12 · pull requests 11:12 · merges 11:04</div>
+      <div class="stamp">read Â· issues 11:12 Â· pull requests 11:12 Â· merges 11:04</div>
     </div>
   </div>
 
@@ -240,11 +240,11 @@
   </div>
 
   <div class="demoflag">
-    <b>A frozen demonstration, on the fictional Lantern example.</b> The controls below are shown, not live — this page writes nothing.
+    <b>A frozen demonstration, on the fictional Lantern example.</b> The controls below are shown, not live â€” this page writes nothing.
     What the kit publishes today is the board <em>reader</em>, <code>templates/board/board.html</code>, which reads a real repository
     through the viewer's own GitHub connector; <a href="reader/">its demonstration is here</a>. The host reading and the decision path
     shown on this page are newer than that template and run on the repository this was built in. They reach the kit when they have
-    stopped moving — which is the same rule everything else in this pack follows.
+    stopped moving â€” which is the same rule everything else in this pack follows.
   </div>
 
 
@@ -260,19 +260,19 @@
         <span class="tag">gate:po</span>
         <span class="rel">delivers PR #133</span>
       </div>
-      <p class="issueline">#131 — Bench controller handshake retries with a bounded backoff</p>
+      <p class="issueline">#131 â€” Bench controller handshake retries with a bounded backoff</p>
       <p>Three retries with a bounded backoff, and the fourth reports rather than retries. The seat measured the failure before repairing it: the controller answered on the second attempt in eleven runs out of twelve, and never on the fourth.</p>
 
       <div class="act">
         <div>
           <p class="lbl">Recommendation</p>
-          <p class="reco"><b>Approve the delivery</b> — the gate passed, and the door is exercised from this card rather than read in a diff.</p>
+          <p class="reco"><b>Approve the delivery</b> â€” the gate passed, and the door is exercised from this card rather than read in a diff.</p>
         </div>
         <div>
           <p class="lbl">Choose</p>
           <div class="opts">
-            <div class="opt on"><span class="k">approve</span><span>Approve the delivery — sets <span class="mono">gate:po-approved</span></span></div>
-            <div class="opt"><span class="k">hold</span><span>Not yet — the door stays mine</span></div>
+            <div class="opt on"><span class="k">approve</span><span>Approve the delivery â€” sets <span class="mono">gate:po-approved</span></span></div>
+            <div class="opt"><span class="k">hold</span><span>Not yet â€” the door stays mine</span></div>
           </div>
         </div>
         <div>
@@ -286,7 +286,7 @@ hourly task, which merges under its five unchanged conditions.
 
 *Decided from the workstream board, and recorded by it. The merge
 stays with the hourly task, under its five conditions.*</pre>
-          <p class="also">Posted on the issue in the name of <b>simon</b>. And <span class="mono">gate:po</span> gains <span class="mono">gate:po-approved</span> beside it — that is the label the hourly task reads, and it is what merges. This page records a decision; it never merges.</p>
+          <p class="also">Posted on the issue in the name of <b>simon</b>. And <span class="mono">gate:po</span> gains <span class="mono">gate:po-approved</span> beside it â€” that is the label the hourly task reads, and it is what merges. This page records a decision; it never merges.</p>
         </div>
         <div class="row">
           <div class="go">Write this</div>
@@ -327,11 +327,11 @@ stays with the hourly task, under its five conditions.*</pre>
       </div>
       <div class="agebar">
         <span class="badge s-run">reading fresh</span>
-        <span>Read 40 s ago (11:12:31), threshold 90 min. Past it the execution marks go out by themselves and the two counters that depend on them read <span class="mono">?</span> — a page that cannot see processes must never assert that one is alive.</span>
+        <span>Read 40 s ago (11:12:31), threshold 90 min. Past it the execution marks go out by themselves and the two counters that depend on them read <span class="mono">?</span> â€” a page that cannot see processes must never assert that one is alive.</span>
       </div>
 
       <div class="trackwrap">
-        <h4>Order of passage on the bench — 3 chosen by hand on 6 September, not derived</h4>
+        <h4>Order of passage on the bench â€” 3 chosen by hand on 6 September, not derived</h4>
         <ul class="track">
           <li class="s-next"><span class="who"><span class="rank">1</span>#126</span><span class="why">the launcher names the capability it could not meet</span></li>
           <li class="s-next"><span class="who"><span class="rank">2</span>#116</span><span class="why">waits for #126 to have <i>landed</i></span></li>
@@ -339,10 +339,10 @@ stays with the hourly task, under its five conditions.*</pre>
         </ul>
       </div>
       <div class="trackwrap">
-        <h4>Claim the bench outside that order — 2, of which 1 not launched</h4>
+        <h4>Claim the bench outside that order â€” 2, of which 1 not launched</h4>
         <ul class="track">
           <li class="s-next"><span class="who">#103</span><span class="why">firmware probe, writer collision with #124</span></li>
-          <li class="s-you"><span class="who">#97</span><span class="why">not launched — its start is your door</span></li>
+          <li class="s-you"><span class="who">#97</span><span class="why">not launched â€” its start is your door</span></li>
         </ul>
       </div>
     </div>
@@ -361,7 +361,7 @@ stays with the hourly task, under its five conditions.*</pre>
             <span class="t">Bench controller handshake retries with a bounded backoff</span>
             <span class="marks"><span class="badge s-you">for you</span><span class="tag">gate:po</span><span class="rel">delivers PR #133</span></span></span></li>
           <li class="s-next"><span class="n">#103</span><span class="body">
-            <span class="t">What a firmware probe actually costs — the instrument first</span>
+            <span class="t">What a firmware probe actually costs â€” the instrument first</span>
             <span class="blocked">writer collision with #124 on the same file</span>
             <span class="marks"><span class="badge s-next">next</span></span></span></li>
         </ul>
