@@ -17,7 +17,7 @@
 
 Guildwork est la gouvernance qu'une seule personne a construite, incident
 après incident, pour faire tourner une équipe d'ingénierie IA à sept sièges
-sur un produit réel, à vingt-quatre merges par jour — chaque mission un
+sur un produit réel, à vingt-cinq merges par jour — chaque mission un
 contrat, chaque merge derrière une porte nommée, chaque session laissant une
 trace durable, et l'humain hors du chemin des messages. Ce dépôt est ce
 système, extrait : les contrats, les formulaires, le vocabulaire, la
@@ -164,10 +164,10 @@ Lantern et ce qui vous reste à écrire.
 Une application de bureau Windows en Python avec une suite de 12 100 tests,
 un seul humain Product Owner, une session Claude Cowork comme architecte en
 chef, des sièges d'exécution sur Claude Code et Grok, et Codex en relecteur
-externe. Dans les onze jours
-jusqu'au 5 septembre 2026, 278 contrats ont été ouverts et 262 pull requests
-fusionnées ; 485 sessions se sont closes avec une entrée de journal, sur les
-34 jours d'existence du journal. `docs/13-by-the-numbers.md` contient la table
+externe. Dans les douze jours
+jusqu'au 6 septembre 2026, 323 contrats ont été ouverts et 300 pull requests
+fusionnées ; 531 sessions se sont closes avec une entrée de journal, sur les
+35 jours d'existence du journal. `docs/13-by-the-numbers.md` contient la table
 complète, et ses deux lectures.
 
 Tous les exemples sont réécrits sur un projet fictif, **Lantern** — un

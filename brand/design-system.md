@@ -15,8 +15,8 @@ and the demonstrations open dark whatever the visitor's system says
 | Token | Value | Role |
 |---|---|---|
 | `--ground` | `#0B1526` | the page |
-| `--surface` | `#0A1322` | cards, panels, tiles |
-| `--surface-2` | `#14223A` | a lifted panel, a header strip, a soft note |
+| `--surface` | `#0A1322` | the plain level of the elevation ladder below: tiles, panels, rows |
+| `--surface-2` / `--strip` | `#14223A` | a header strip, a hover, a selected control |
 | `--line` | `#1D2B44` | quiet rules between siblings |
 | `--line-strong` | `#2B3B57` | a border that frames |
 | `--ink` | `#F3EDE2` | text, ivory |
@@ -28,6 +28,35 @@ and the demonstrations open dark whatever the visitor's system says
 The one exception is the shipped reader's light theme, kept for teams who
 install the template outside the site: ivory ground `#F3EDE2`, navy ink
 `#0B1526`, rules `#D9D2C4` / `#E8E2D6`, teal accent `#0D5C66`.
+
+## Elevation — one ladder for every surface
+
+The ground is navy and it stays navy, but nothing that sits on it may be
+flat navy on navy: that is the mistake the site made until 7 September,
+when the figure tiles, the offers and the chart panel all read as one
+sheet. Every surface that carries the mark is placed on this ladder, and
+the ladder is what a new widget reads before it draws anything.
+
+| Level | Token | Value | Frame | Shadow | Use |
+|---|---|---|---|---|---|
+| ground | `--ground` | `#0B1526` | — | — | the page, and nothing else |
+| surface | `--surface` | `#0A1322`, flat | `--line` `#1D2B44` | `--shadow` | a tile in a grid, a board panel, a list row, a menu — the plain level |
+| card | `--card` | gradient 168°: `#1B2434` → `#0F1929` at 55 % → `#0A1322` | `--line` | `--shadow` | anything the eye should land on as an object: a figure, an offer, a door, a question, the chart |
+| card-lead | `--card-lead` | gradient 168°: `#232C3B` → `#121C2D` at 52 % → `#0A1322` | `--line-amber` `#6E5330` | `--shadow-lift` | the one object of a section that is chosen or featured — at most one per section |
+| strip | `--strip` | `#14223A`, flat | — | — | a header band inside a card, a hover, a selected control, a tooltip |
+| well | `--well` | `#070D18`, flat | `--line-strong` `#2B3B57` | inset | an inset that reads as a hole: a terminal, a code block, an input |
+
+The gradient starts less blue than the ground and ends at the surface
+value, so a card lifts at its top-left and sits down at its bottom-right
+without ever leaving the navy family. Two shadows only: `--shadow`
+(`0 1px 2px rgba(0,0,0,.35), 0 16px 34px -22px rgba(0,0,0,.8)`) and
+`--shadow-lift` (`0 2px 12px rgba(0,0,0,.5), 0 26px 64px -34px rgba(0,0,0,.9)`).
+
+The board sits on the same ladder: its panels are *surface* with a
+workstream frame, its header bands are *strip*, its decision card is
+*surface* with a state rule and `--shadow-lift`. A board never uses
+*card-lead*: on a board the thing that must stand out is a state, and a
+state is a hue, not an elevation.
 
 ## The six states — the reference board's hues, never the site's
 
@@ -74,6 +103,22 @@ reader may say *in flight*, and a French board says *cassé* — but the
 seven positions, their hues and what each may colour do not. That is what
 makes the states one system across every board that carries the mark,
 whatever project it follows.
+
+## The counter bar shows every state, green included
+
+The row of counters at the top of a board carries one tile per state, in
+the ladder's order — running, holds the screen, next, for you, broken,
+landed — and then the plain counts. A state that is absent that day shows
+its zero in its own hue rather than disappearing: a board with `0 broken`
+in red and `9 landed` in green says more than a board with neither. Green
+is the state that resolves the tension red creates, and a bar that shows
+red without green leaves the reader holding it.
+
+A demonstration also shows the hand. The frozen board cannot click, so it
+draws the pointer on the confirm, the button pressed, and a green ring at
+the tip: what the reader would do, and what colour it leads to. The image
+of the board that the site and the READMEs carry is cut just below that
+card, so it ends on the action rather than on a list.
 
 ## What is not a state, and must never look like one
 

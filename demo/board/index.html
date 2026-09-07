@@ -74,7 +74,7 @@
     border:1px solid var(--line-strong); border-radius:2px; padding:10px 22px; letter-spacing:.01em}
 
   /* glance */
-  .glance{display:grid; gap:1px; margin:1px -17px 0; grid-template-columns:repeat(7,1fr);
+  .glance{display:grid; gap:1px; margin:1px -17px 0; grid-template-columns:repeat(8,1fr);
     background:var(--line); border-bottom:1px solid var(--line)}
   .glance .tile{background:var(--ground); padding:15px 17px 16px; display:flex; flex-direction:column; gap:3px; min-width:0}
   .glance .tile > b{font-family:"IBM Plex Mono",monospace; font-size:30px; font-weight:600; line-height:1;
@@ -122,6 +122,14 @@
   .act .go,.act .back{font:inherit; font-size:13.5px; font-weight:600;
     border:1px solid var(--line-strong); background:var(--surface); color:var(--ink); padding:10px 17px}
   .act .go{border-color:var(--s); background:var(--s); color:var(--ground)}
+  /* The demonstration shows the hand: a pointer on the confirm, the button pressed.
+     The click itself is what the frozen page cannot do; the green counter above is what it leads to. */
+  .act .row{position:relative}
+  .act .go.pressed{background:#D9D2C4; border-color:#D9D2C4; box-shadow:inset 0 2px 5px rgba(0,0,0,.4)}
+  .hand{position:absolute; left:70px; top:14px; width:44px; height:44px; pointer-events:none}
+  .hand .ring{position:absolute; left:-1px; top:-2px; width:28px; height:28px; border-radius:50%;
+    border:2px solid var(--s-done); box-shadow:0 0 0 4px var(--s-done-tint)}
+  .hand svg{position:absolute; left:11px; top:11px; width:22px; height:30px; filter:drop-shadow(0 2px 3px rgba(0,0,0,.7))}
 
   /* the bench */
   .bench{border:1px solid var(--line); border-left:3px solid var(--s-bridge);
@@ -212,6 +220,7 @@
     <div class="tile s-next"><b>5</b><span class="cap">next</span><em>chosen by hand</em></div>
     <div class="tile s-you"><b>1</b><span class="cap">for you</span><em>read on GitHub</em></div>
     <div class="tile s-broken"><b>1</b><span class="cap">broken</span><em>checks read on GitHub</em></div>
+    <div class="tile s-done"><b>9</b><span class="cap">landed today</span><em>merges 11:04</em></div>
     <div class="tile"><b>14</b><span class="cap">open issues</span><em>read in full</em></div>
     <div class="tile"><b>5</b><span class="cap">open deliveries</span><em>read on GitHub</em></div>
 
@@ -267,8 +276,9 @@ stays with the hourly task, under its five conditions.*</pre>
           <p class="also">Posted on the issue in the name of <b>simon</b>. And <span class="mono">gate:po</span> gains <span class="mono">gate:po-approved</span> beside it — that is the label the hourly task reads, and it is what merges. This page records a decision; it never merges.</p>
         </div>
         <div class="row">
-          <div class="go">Write this</div>
+          <div class="go pressed">Write this</div>
           <div class="back">Back</div>
+          <span class="hand" aria-hidden="true"><span class="ring"></span><svg viewBox="0 0 22 30"><path d="M2 1.5 L2 22.5 L7.2 17.6 L11 27.5 L15.2 25.6 L11.4 16 L18.6 15.7 Z" fill="#F3EDE2" stroke="#0B1526" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         </div>
       </div>
     </article>

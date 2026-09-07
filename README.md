@@ -17,7 +17,7 @@
 **Not a developer?** The same discipline — a contract before, a witness during, a closeout after, and a launcher that refuses to start what isn’t in order — holds a law firm, an agency or a support desk just as well. [That door is on the same page.](https://simon-pacifae-dupont.github.io/Guildwork/#no-code)
 
 Guildwork is the governance one person built, incident by incident, to run
-a seven-seat AI engineering team on a real product at twenty-four merges a
+a seven-seat AI engineering team on a real product at twenty-five merges a
 day — with every mission a contract, every merge behind a named gate, every
 session leaving a durable record, and the human out of the message path.
 This repository is that system, extracted: the contracts, the forms, the
@@ -151,9 +151,9 @@ says which value is Lantern's and what you still owe.
 
 A Windows desktop application in Python with a 12 100-test suite, one human
 Product Owner, a Claude Cowork session as Chief Architect, executing seats
-on Claude Code and Grok, and Codex as an external reviewer. In the eleven days
-to 5 September 2026, 278 contracts were opened and 262 pull requests merged;
-485 sessions closed with a journal entry in the 34 days since the journal
+on Claude Code and Grok, and Codex as an external reviewer. In the twelve days
+to 6 September 2026, 323 contracts were opened and 300 pull requests merged;
+531 sessions closed with a journal entry in the 35 days since the journal
 existed. `docs/13-by-the-numbers.md` has the full table,
 and both readings of it.
 

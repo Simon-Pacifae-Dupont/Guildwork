@@ -1,8 +1,8 @@
 # The case, by the numbers
 
 *What this governance ran on, how much went through it, and how fast. All
-figures are real. They were measured on 6 September 2026 over complete days
-only — 1 August to 5 September, thirty-six days — and are frozen at that
+figures are real. They were measured on 7 September 2026 over complete days
+only — 1 August to 6 September, thirty-seven days — and are frozen at that
 reading; the domain is
 deliberately not described beyond one sentence.*
 
@@ -29,18 +29,18 @@ was written by AI seats under the contracts described in this pack.
 
 | | |
 |---|---|
-| journal entries written by closed sessions | **485** in 34 days (3 August → 5 September) |
-| … by the lead engineer seat | 452 |
+| journal entries written by closed sessions | **531** in 35 days (3 August → 6 September) |
+| … by the lead engineer seat | 498 |
 | … by the five other AI seats that wrote one | 33 |
-| busiest day | 40 closed sessions |
-| mission contracts opened on the issue form | **278** in the 11 days to 5 September (26 August → 5 September) — about 25 a day |
-| pull requests merged in those 11 days | **262** — about 24 a day |
-| pull requests merged over the project's life | 503, of which 472 since the charter was adopted on 3 August |
-| deliveries closed unmerged — refused or superseded | 14, of 517 closed |
-| merged deliveries carrying a `Mission:` line | 287 |
+| busiest day | 46 closed sessions |
+| mission contracts opened on the issue form | **323** in the 12 days to 6 September (26 August → 6 September) — about 27 a day |
+| pull requests merged in those 12 days | **300** — about 25 a day |
+| pull requests merged over the project's life | 541, of which 510 since the charter was adopted on 3 August |
+| deliveries closed unmerged — refused or superseded | 14, of 555 closed |
+| merged deliveries carrying a `Mission:` line | 325 |
 | standing concurrency ceiling | 4 missions at once, any mix of writer and read-only — raised from 2 |
 
-Twenty-five contracts and twenty-four merges a day, for eleven days, with one
+Twenty-seven contracts and twenty-five merges a day, for twelve days, with one
 human at the gate. That is the number the rest of this pack exists to make
 safe: at that tempo nothing survives on memory, and everything the human is
 asked to remember is a defect.
@@ -52,7 +52,7 @@ asked to remember is a defect.
 | labels | 28 — the seventeen-label mission taxonomy, three routing labels, eight workstream labels |
 | launcher conditions | 7, plus three warnings that block nothing |
 | closeout conditions | 5, plus four refusals in the contract-closing mode |
-| register entries | five families; the governance family alone passed 120 entries |
+| register entries | five families; the governance family alone passed 130 entries |
 | normative workflow document | 2 300 lines, 138 KB, owned by a named seat with a stated obligation |
 | capability document | 50 KB, every cell of its table carrying its own provenance |
 | continuity contract | 11 KB |
@@ -63,10 +63,10 @@ asked to remember is a defect.
 ## Two readings of the same numbers
 
 **The optimistic reading.** A single person ran a seven-seat AI engineering
-team at twenty-four merges a day for eleven days, with every merge behind a
+team at twenty-five merges a day for twelve days, with every merge behind a
 named gate, every session leaving a durable record, every substitution of
-model or effort surfaced in a durable artefact, and thirteen deliveries out
-of four hundred and seventy-one closed refused or superseded — with the
+model or effort surfaced in a durable artefact, and fourteen deliveries out
+of five hundred and fifty-five closed refused or superseded — with the
 refusal recorded on each.
 
 **The sober reading.** The same period produced about forty-five incidents

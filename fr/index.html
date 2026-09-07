@@ -18,7 +18,18 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
   :root{
-    --ground:#0B1526; --ground-2:#0A1322; --node:#14223A; --edge:#2B3B57; --edge-2:#1D2B44;
+    --ground:#0B1526;
+    /* ELEVATION — one ladder for every surface that carries the mark (brand/design-system.md).
+       ground < surface (flat) < card (gradient) < card-lead (gradient + amber frame); strip = a header band or a
+       selected control inside a card; well = an inset that reads as a hole (terminal, code, input). */
+    --surface:#0A1322; --strip:#14223A; --well:#070D18;
+    --line:#1D2B44; --line-strong:#2B3B57; --line-amber:#6E5330;
+    --card:linear-gradient(168deg,#1B2434 0%,#0F1929 55%,#0A1322 100%);
+    --card-lead:linear-gradient(168deg,#232C3B 0%,#121C2D 52%,#0A1322 100%);
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 16px 34px -22px rgba(0,0,0,.8);
+    --shadow-lift:0 2px 12px rgba(0,0,0,.5),0 26px 64px -34px rgba(0,0,0,.9);
+    /* legacy names — aliases of the ladder above, so older rules keep reading */
+    --ground-2:var(--surface); --node:var(--strip); --edge:var(--line-strong); --edge-2:var(--line);
     --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
     --amber:#E9A23B; --amber-2:#F5C46B; --control:#7FA6D6; --refuse:#D0644A; --ok:#6FB07B;
     --measure:66ch;
@@ -98,22 +109,22 @@
   /* four failures */
   .failures{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
     border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(258px,100%),1fr));margin-top:44px}
-  .failure{background:var(--ground-2);padding:28px 24px 30px}
+  .failure{background:var(--card);padding:28px 24px 30px}
   .failure .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--refuse);
     letter-spacing:.1em;margin:0 0 10px}
   .failure p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
 
   /* canvas */
-  .canvas-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;
-    background:var(--ground-2);box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .canvas-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
+    background:var(--card);box-shadow:var(--shadow-lift)}
   .canvas-frame a{display:block}
   /* the board */
-  .board-frame{margin-top:44px;border:1px solid var(--edge);border-radius:10px;overflow:hidden;background:#F4F3F0;
-    box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .board-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
+    box-shadow:var(--shadow-lift)}
   .board-frame a{display:block}
   .board-frame img{display:block;width:100%}
   /* the trajectory */
-  .tl-wrap{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:var(--ground-2);padding:18px 18px 12px;position:relative}
+  .tl-wrap{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:18px 18px 12px;position:relative}
   .tl-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;margin:0 0 6px}
   .tl-head h3{font-size:15px;margin:0}
   .tl-legend{display:flex;gap:18px;font-size:12.5px;color:var(--ink-2)}
@@ -128,7 +139,7 @@
   svg.tl .mk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-2)}
   svg.tl .lb{font-family:"IBM Plex Mono",monospace;font-size:11.5px;fill:var(--ink);font-weight:500}
   svg.tl .hit{cursor:crosshair}
-  .tl-tip{position:absolute;pointer-events:none;background:#14223A;border:1px solid var(--edge);border-radius:6px;padding:8px 10px;
+  .tl-tip{position:absolute;pointer-events:none;background:var(--strip);border:1px solid var(--edge);border-radius:6px;padding:8px 10px;
     font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink);white-space:nowrap;display:none;box-shadow:0 10px 24px -12px rgba(0,0,0,.8)}
   .tl-tip b{color:var(--ink-2);font-weight:400;display:block;margin-bottom:3px}
   .tl-table{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
@@ -141,8 +152,8 @@
   .readings strong{color:var(--ink);font-weight:600}
   /* the two columns */
   .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px;margin-top:44px}
-  .vs > div{border:1px solid var(--edge-2);border-radius:10px;padding:26px 24px 28px;background:var(--ground-2)}
-  .vs > div.me{border-color:#6E5330}
+  .vs > div{border:1px solid var(--line);border-radius:10px;padding:26px 24px 28px;background:var(--card);box-shadow:var(--shadow)}
+  .vs > div.me{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
   .vs .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
   .vs .me .tag{color:var(--amber)}
   .vs ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
@@ -152,8 +163,8 @@
   .vs .me li::before{content:"→";color:var(--amber)}
   .vs li em{font-style:normal;color:var(--ink)}
   /* the refusal, as a terminal */
-  .term{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:#070D18;overflow:hidden;
-    box-shadow:0 26px 64px -34px rgba(0,0,0,.9)}
+  .term{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;background:var(--well);overflow:hidden;
+    box-shadow:var(--shadow-lift)}
   .term-head{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
   .term-head i{width:9px;height:9px;border-radius:50%;background:#26354F;display:inline-block}
@@ -171,7 +182,7 @@
   /* numbers */
   .figs{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
     border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));margin-top:44px}
-  .fig{background:var(--ground-2);padding:28px 22px 30px}
+  .fig{background:var(--card);padding:28px 22px 30px}
   .fig b{display:block;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
     font-weight:600;font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
@@ -183,16 +194,16 @@
   /* documents */
   .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(232px,100%),1fr));gap:2px;margin-top:44px;
     background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden}
-  .doc{background:var(--ground-2);padding:18px 18px;text-decoration:none;color:inherit;display:block}
-  .doc:hover{background:var(--node)}
+  .doc{background:var(--surface);padding:18px 18px;text-decoration:none;color:inherit;display:block}
+  .doc:hover{background:var(--strip)}
   .doc code{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);display:block;margin-bottom:5px}
   .doc span{font-size:14px;color:var(--ink)}
 
   /* engagements */
   .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px;margin-top:44px}
-  .offer{border:1px solid var(--edge-2);border-radius:10px;padding:30px 26px 32px;background:var(--ground-2);
+  .offer{border:1px solid var(--line);border-radius:10px;padding:30px 26px 32px;background:var(--card);box-shadow:var(--shadow);
     display:flex;flex-direction:column}
-  .offer.lead{border-color:#6E5330;background:linear-gradient(168deg,#17202E,#0A1322)}
+  .offer.lead{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
   .offer .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
   .offer.lead .tag{color:var(--amber)}
@@ -294,7 +305,7 @@
 <style>
   /* the companies page */
   .qs{display:grid;gap:14px;margin-top:44px;counter-reset:q}
-  .q{border:1px solid var(--edge-2);border-radius:10px;background:var(--ground-2);padding:24px 26px 26px;display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start}
+  .q{border:1px solid var(--line);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:24px 26px 26px;display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start}
   .q::before{counter-increment:q;content:counter(q);font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:40px;line-height:1;color:var(--amber);margin-top:-4px}
   .q p{margin:0;max-width:none}
   .q .ask{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 48,"SOFT" 40;font-weight:600;font-size:21px;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
@@ -302,14 +313,14 @@
   .punch{margin-top:26px;padding-left:18px;border-left:2px solid var(--amber);font-size:16.5px;color:var(--ink);max-width:70ch}
   .punch strong{font-weight:600}
   .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));margin-top:44px}
-  .scene{background:var(--ground-2);padding:28px 24px 30px;display:flex;flex-direction:column}
+  .scene{background:var(--card);padding:28px 24px 30px;display:flex;flex-direction:column}
   .scene .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
   .scene h3{font-size:17px;margin:0 0 10px;letter-spacing:-.005em}
   .scene p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
   /* the rule block is pushed to the foot of the card and given one fixed height, so the separators line up across a row */
   .scene .rule{border:0;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--edge-2);font-size:14px;color:var(--ink);margin-top:auto;min-height:84px}
   .scene .rule::before{content:"→ ";color:var(--amber)}
-  .feat{margin-top:44px;border:1px solid #6E5330;border-radius:10px;background:linear-gradient(168deg,#17202E,#0A1322);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+  .feat{margin-top:44px;border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
   @media (max-width:820px){.feat{grid-template-columns:1fr}}
   .feat .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
   .feat h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:0 0 14px}
@@ -320,8 +331,8 @@
   .feat .side h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px;font-weight:500}
   .feat .side p{font-size:14.5px}
   .feat .side p strong{color:var(--ink);font-weight:600}
-  .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid #6E5330;color:var(--ink);font-size:15px}
-  .proof{margin-top:44px;border:1px solid #6E5330;border-radius:10px;background:linear-gradient(168deg,#17202E,#0A1322);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+  .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid var(--line-amber);color:var(--ink);font-size:15px}
+  .proof{margin-top:44px;border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
   @media (max-width:720px){.proof{grid-template-columns:1fr}}
   .proof p{margin:0;max-width:none;font-size:15.5px;color:var(--ink-2)}
   .proof strong{color:var(--ink);font-weight:600}
@@ -337,9 +348,9 @@
   .doors .eyebrow{margin-bottom:18px}
   .door-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px}
   .door{display:flex;flex-direction:column;gap:10px;border:1px solid var(--edge);border-radius:12px;padding:28px 26px 24px;
-    background:var(--ground-2);color:inherit;text-decoration:none;position:relative;transition:border-color .16s,transform .16s}
+    background:var(--card);box-shadow:var(--shadow);color:inherit;text-decoration:none;position:relative;transition:border-color .16s,transform .16s}
   .door:hover{border-color:#4E5F80;transform:translateY(-2px)}
-  .door[aria-pressed="true"]{border-color:var(--amber);background:linear-gradient(168deg,#17202E,#0A1322)}
+  .door[aria-pressed="true"]{border-color:var(--amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
   .door .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0}
   .door[aria-pressed="true"] .tag{color:var(--amber)}
   .door h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;
@@ -431,7 +442,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <nav>
       <a href="#problem" data-track="code">Quatre défaillances</a>
       <a href="#model" data-track="code">Le modèle, en schéma</a>
-      <a href="#numbers" data-track="code">Les chiffres sur 36 jours</a>
+      <a href="#numbers" data-track="code">Les chiffres sur 37 jours</a>
       <a href="#kit" data-track="code">Les 15 documents</a>
       <a href="#work" data-track="code">Offres et tarifs</a>
       <a href="#questions" data-track="nocode">Trois questions à se poser</a>
@@ -456,7 +467,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a href="#model" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg>Le modèle, en schéma</a>
     <a href="#refusal" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-stop"/></svg>Un refus, en vrai</a>
     <a href="#board" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-board"/></svg>Le tableau de bord</a>
-    <a href="#numbers" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Les chiffres sur 36 jours</a>
+    <a href="#numbers" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Les chiffres sur 37 jours</a>
     <a href="#kit" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-docs"/></svg>Les 15 documents</a>
     <a href="#work" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offres et tarifs</a>
     <a href="#questions" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg>Trois questions à se poser</a>
@@ -478,13 +489,13 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <div class="wrap hero">
   <p class="eyebrow">Orchestration d’agents IA · pack libre (MIT) · accompagnement</p>
   <h1>Faire travailler des agents IA <em>en gardant le dernier mot</em>.</h1>
-  <p class="lede"><strong>Guildwork est une discipline construite incident après incident :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Bâtie sur un logiciel réel (sept agents, vingt-quatre merges par jour), elle tient aussi un cabinet, une agence ou un service client.</p>
+  <p class="lede"><strong>Guildwork est une discipline construite incident après incident :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Bâtie sur un logiciel réel (sept agents, vingt-cinq merges par jour), elle tient aussi un cabinet, une agence ou un service client.</p>
   <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
   <div class="cta">
     <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Réserver 30 minutes</a>
     <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Lire le pack</a>
   </div>
-  <p class="note">Mesuré le 4 septembre 2026 · tous les chiffres ici sont réels</p>
+  <p class="note">Mesuré le 7 septembre 2026 · tous les chiffres ici sont réels</p>
 </div>
 
 <section id="doors" class="wrap doors" aria-label="Deux entrées, un seul modèle — choisissez la vôtre">
@@ -493,7 +504,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a class="door" href="#code" data-go="code" aria-pressed="false">
       <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Vous avez du code</p>
       <h3>Une équipe, un dépôt, des agents qui s’y bousculent</h3>
-      <p>Claude Code, Codex, Grok ou d’autres, sur un code qui compte. Le lanceur qui refuse, le témoin, la clôture, le tableau — et trente-six jours de chiffres.</p>
+      <p>Claude Code, Codex, Grok ou d’autres, sur un code qui compte. Le lanceur qui refuse, le témoin, la clôture, le tableau — et trente-sept jours de chiffres.</p>
       <span class="go" data-off="Lire cette entrée →" data-on="Vous lisez cette entrée"></span>
     </a>
     <a class="door" href="#sans-code" data-go="nocode" aria-pressed="false">
@@ -601,10 +612,10 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <h2>Sur quoi il a tourné</h2>
   <p>Une application de bureau Windows en Python, avec une suite de 12 100 tests. Un seul humain — le Product Owner — qui détient le matériel, le verdict produit et le merge vers la branche de release. Chaque ligne de code, chaque test et chaque document de gouvernance depuis début août 2026 a été écrit par des sièges IA, sous ces contrats.</p>
   <div class="figs">
-    <div class="fig"><b>278</b><span>contrats de mission ouverts en onze jours</span></div>
-    <div class="fig"><b>262</b><span>pull requests fusionnées sur les mêmes onze jours</span></div>
-    <div class="fig"><b>485</b><span>sessions closes avec une entrée de journal, en 34 jours</span></div>
-    <div class="fig"><b>14</b><span>livraisons refusées ou remplacées, sur 517 closes</span></div>
+    <div class="fig"><b>323</b><span>contrats de mission ouverts en douze jours</span></div>
+    <div class="fig"><b>300</b><span>pull requests fusionnées sur les mêmes douze jours</span></div>
+    <div class="fig"><b>531</b><span>sessions closes avec une entrée de journal, en 35 jours</span></div>
+    <div class="fig"><b>14</b><span>livraisons refusées ou remplacées, sur 555 closes</span></div>
     <div class="fig"><b>47</b><span>incidents, chacun ayant payé une règle</span></div>
   </div>
   <p class="sober"><strong>La lecture sobre, parce que c'est elle qui rend la première crédible.</strong> La même période a produit quarante-sept incidents assez sérieux pour mériter une règle, la plupart concentrés sur une seule semaine. La plupart des sièges que le lanceur sait démarrer sont <code>unknown</code> sur la propriété matérielle que la file aimerait le plus voir remplie. Aucun des deux harnais en ligne de commande n'impose la lecture seule depuis ses propres options, et la gouvernance le dit au lieu de faire semblant. Un système capable de dire <em>je ne sais pas</em> là où il ne sait pas est le seul dont le <em>oui</em> vaille quelque chose.</p>
@@ -613,7 +624,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="tl-head"><h3>Cinq semaines, un dépôt, un humain</h3>
       <div class="tl-legend"><span><i style="background:#C9801C"></i>pull requests fusionnées, par jour</span><span><i class="line" style="background:#3F7FD8"></i>entrées du registre de constats, par jour</span></div></div>
     <div class="tl-scroll"><svg class="tl" viewBox="0 0 1080 300" role="img" aria-labelledby="tl-title" preserveAspectRatio="xMidYMid meet">
-<title id="tl-title">Merges par jour et entrées du registre, 1er août – 5 septembre 2026</title>
+<title id="tl-title">Merges par jour et entrées du registre, 1er août – 6 septembre 2026</title>
 <line x1="44" x2="1064" y1="256.0" y2="256.0" stroke="#1D2B44" stroke-width="1"/>
 <text x="36" y="260.0" text-anchor="end" class="tk">0</text>
 <line x1="44" x2="1064" y1="210.0" y2="210.0" stroke="#1D2B44" stroke-width="1"/>
@@ -626,107 +637,110 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <text x="36" y="76.0" text-anchor="end" class="tk">40</text>
 <line x1="44" x2="1064" y1="26.0" y2="26.0" stroke="#1D2B44" stroke-width="1"/>
 <text x="36" y="30.0" text-anchor="end" class="tk">50</text>
-<line x1="752.3" x2="752.3" y1="12" y2="256.0" stroke="#9FAAC0" stroke-width="1" stroke-dasharray="3 4"/>
-<text x="758.3" y="22" class="mk">26 août — le formulaire de mission est en service</text>
-<path class="bar" d="M49.2,256.0 v-46.6 q0,-4 4,-4 h10 q4,0 4,4 v46.6 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
-<path class="bar" d="M77.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
-<path class="bar" d="M105.8,256.0 v-106.4 q0,-4 4,-4 h10 q4,0 4,4 v106.4 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
-<path class="bar" d="M134.2,256.0 v-74.2 q0,-4 4,-4 h10 q4,0 4,4 v74.2 z" fill="#C9801C"><title>2026-08-04: 17</title></path>
-<path class="bar" d="M162.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-05: 20</title></path>
-<path class="bar" d="M190.8,256.0 v-55.8 q0,-4 4,-4 h10 q4,0 4,4 v55.8 z" fill="#C9801C"><title>2026-08-06: 13</title></path>
-<path class="bar" d="M219.2,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-07: 14</title></path>
-<path class="bar" d="M247.5,256.0 v-32.8 q0,-4 4,-4 h10 q4,0 4,4 v32.8 z" fill="#C9801C"><title>2026-08-08: 8</title></path>
-<path class="bar" d="M275.8,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-09: 5</title></path>
-<path class="bar" d="M304.2,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-10: 2</title></path>
-<path class="bar" d="M332.5,256.0 v-23.6 q0,-4 4,-4 h10 q4,0 4,4 v23.6 z" fill="#C9801C"><title>2026-08-11: 6</title></path>
-<path class="bar" d="M360.8,256.0 v-0.6 q0,-4 4,-4 h10 q4,0 4,4 v0.6 z" fill="#C9801C"><title>2026-08-12: 1</title></path>
-<path class="bar" d="M389.2,256.0 v-28.2 q0,-4 4,-4 h10 q4,0 4,4 v28.2 z" fill="#C9801C"><title>2026-08-13: 7</title></path>
-<path class="bar" d="M417.5,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-14: 2</title></path>
-<path class="bar" d="M445.8,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-15: 2</title></path>
-<path class="bar" d="M474.2,256.0 v-23.6 q0,-4 4,-4 h10 q4,0 4,4 v23.6 z" fill="#C9801C"><title>2026-08-16: 6</title></path>
-<path class="bar" d="M502.5,256.0 v-69.6 q0,-4 4,-4 h10 q4,0 4,4 v69.6 z" fill="#C9801C"><title>2026-08-17: 16</title></path>
-<path class="bar" d="M530.8,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-08-18: 4</title></path>
-<path class="bar" d="M559.2,256.0 v-37.4 q0,-4 4,-4 h10 q4,0 4,4 v37.4 z" fill="#C9801C"><title>2026-08-19: 9</title></path>
-<path class="bar" d="M587.5,256.0 v-51.2 q0,-4 4,-4 h10 q4,0 4,4 v51.2 z" fill="#C9801C"><title>2026-08-20: 12</title></path>
-<path class="bar" d="M615.8,256.0 v-65.0 q0,-4 4,-4 h10 q4,0 4,4 v65.0 z" fill="#C9801C"><title>2026-08-21: 15</title></path>
-<path class="bar" d="M644.2,256.0 v-28.2 q0,-4 4,-4 h10 q4,0 4,4 v28.2 z" fill="#C9801C"><title>2026-08-22: 7</title></path>
-<path class="bar" d="M672.5,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-23: 2</title></path>
-<path class="bar" d="M700.8,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-08-24: 4</title></path>
-<path class="bar" d="M729.2,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-25: 14</title></path>
-<path class="bar" d="M757.5,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-26: 14</title></path>
-<path class="bar" d="M785.8,256.0 v-55.8 q0,-4 4,-4 h10 q4,0 4,4 v55.8 z" fill="#C9801C"><title>2026-08-27: 13</title></path>
-<path class="bar" d="M814.2,256.0 v-152.4 q0,-4 4,-4 h10 q4,0 4,4 v152.4 z" fill="#C9801C"><title>2026-08-28: 34</title></path>
-<path class="bar" d="M842.5,256.0 v-92.6 q0,-4 4,-4 h10 q4,0 4,4 v92.6 z" fill="#C9801C"><title>2026-08-29: 21</title></path>
-<path class="bar" d="M870.8,256.0 v-138.6 q0,-4 4,-4 h10 q4,0 4,4 v138.6 z" fill="#C9801C"><title>2026-08-30: 31</title></path>
-<path class="bar" d="M899.2,256.0 v-143.2 q0,-4 4,-4 h10 q4,0 4,4 v143.2 z" fill="#C9801C"><title>2026-08-31: 32</title></path>
-<path class="bar" d="M927.5,256.0 v-83.4 q0,-4 4,-4 h10 q4,0 4,4 v83.4 z" fill="#C9801C"><title>2026-09-01: 19</title></path>
-<path class="bar" d="M955.8,256.0 v-83.4 q0,-4 4,-4 h10 q4,0 4,4 v83.4 z" fill="#C9801C"><title>2026-09-02: 19</title></path>
-<path class="bar" d="M984.2,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-09-03: 4</title></path>
-<path class="bar" d="M1012.5,256.0 v-152.4 q0,-4 4,-4 h10 q4,0 4,4 v152.4 z" fill="#C9801C"><title>2026-09-04: 34</title></path>
-<path class="bar" d="M1040.8,256.0 v-184.6 q0,-4 4,-4 h10 q4,0 4,4 v184.6 z" fill="#C9801C"><title>2026-09-05: 41</title></path>
-<path d="M766.5,256.0 L794.8,210.0 L823.2,122.6 L851.5,90.4 L879.8,251.4 L908.2,196.2 L936.5,233.0 L964.8,251.4 L993.2,233.0 L1021.5,177.8 L1049.8,228.4" fill="none" stroke="#3F7FD8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="794.8" cy="210.0" r="6" fill="#0A1322"/><circle cx="794.8" cy="210.0" r="4" fill="#3F7FD8"/>
-<circle cx="823.2" cy="122.6" r="6" fill="#0A1322"/><circle cx="823.2" cy="122.6" r="4" fill="#3F7FD8"/>
-<circle cx="851.5" cy="90.4" r="6" fill="#0A1322"/><circle cx="851.5" cy="90.4" r="4" fill="#3F7FD8"/>
-<circle cx="879.8" cy="251.4" r="6" fill="#0A1322"/><circle cx="879.8" cy="251.4" r="4" fill="#3F7FD8"/>
-<circle cx="908.2" cy="196.2" r="6" fill="#0A1322"/><circle cx="908.2" cy="196.2" r="4" fill="#3F7FD8"/>
-<circle cx="936.5" cy="233.0" r="6" fill="#0A1322"/><circle cx="936.5" cy="233.0" r="4" fill="#3F7FD8"/>
-<circle cx="964.8" cy="251.4" r="6" fill="#0A1322"/><circle cx="964.8" cy="251.4" r="4" fill="#3F7FD8"/>
-<circle cx="993.2" cy="233.0" r="6" fill="#0A1322"/><circle cx="993.2" cy="233.0" r="4" fill="#3F7FD8"/>
-<circle cx="1021.5" cy="177.8" r="6" fill="#0A1322"/><circle cx="1021.5" cy="177.8" r="4" fill="#3F7FD8"/>
-<circle cx="1049.8" cy="228.4" r="6" fill="#0A1322"/><circle cx="1049.8" cy="228.4" r="4" fill="#3F7FD8"/>
-<text x="823.2" y="91.6" text-anchor="middle" class="lb">34</text>
-<text x="1049.8" y="59.4" text-anchor="middle" class="lb">41</text>
-<text x="861.5" y="80.4" text-anchor="start" class="lb">36</text>
-<text x="58.2" y="274" text-anchor="middle" class="tk">1er août</text>
-<text x="256.5" y="274" text-anchor="middle" class="tk">8</text>
-<text x="454.8" y="274" text-anchor="middle" class="tk">15</text>
-<text x="653.2" y="274" text-anchor="middle" class="tk">22</text>
-<text x="766.5" y="274" text-anchor="middle" class="tk">26 août</text>
-<text x="936.5" y="274" text-anchor="middle" class="tk">1er sept.</text>
-<text x="1049.8" y="274" text-anchor="middle" class="tk">5</text>
-<rect class="hit" x="44.0" y="26" width="28.3" height="230" fill="transparent" data-i="0"/>
-<rect class="hit" x="72.3" y="26" width="28.3" height="230" fill="transparent" data-i="1"/>
-<rect class="hit" x="100.7" y="26" width="28.3" height="230" fill="transparent" data-i="2"/>
-<rect class="hit" x="129.0" y="26" width="28.3" height="230" fill="transparent" data-i="3"/>
-<rect class="hit" x="157.3" y="26" width="28.3" height="230" fill="transparent" data-i="4"/>
-<rect class="hit" x="185.7" y="26" width="28.3" height="230" fill="transparent" data-i="5"/>
-<rect class="hit" x="214.0" y="26" width="28.3" height="230" fill="transparent" data-i="6"/>
-<rect class="hit" x="242.3" y="26" width="28.3" height="230" fill="transparent" data-i="7"/>
-<rect class="hit" x="270.7" y="26" width="28.3" height="230" fill="transparent" data-i="8"/>
-<rect class="hit" x="299.0" y="26" width="28.3" height="230" fill="transparent" data-i="9"/>
-<rect class="hit" x="327.3" y="26" width="28.3" height="230" fill="transparent" data-i="10"/>
-<rect class="hit" x="355.7" y="26" width="28.3" height="230" fill="transparent" data-i="11"/>
-<rect class="hit" x="384.0" y="26" width="28.3" height="230" fill="transparent" data-i="12"/>
-<rect class="hit" x="412.3" y="26" width="28.3" height="230" fill="transparent" data-i="13"/>
-<rect class="hit" x="440.7" y="26" width="28.3" height="230" fill="transparent" data-i="14"/>
-<rect class="hit" x="469.0" y="26" width="28.3" height="230" fill="transparent" data-i="15"/>
-<rect class="hit" x="497.3" y="26" width="28.3" height="230" fill="transparent" data-i="16"/>
-<rect class="hit" x="525.7" y="26" width="28.3" height="230" fill="transparent" data-i="17"/>
-<rect class="hit" x="554.0" y="26" width="28.3" height="230" fill="transparent" data-i="18"/>
-<rect class="hit" x="582.3" y="26" width="28.3" height="230" fill="transparent" data-i="19"/>
-<rect class="hit" x="610.7" y="26" width="28.3" height="230" fill="transparent" data-i="20"/>
-<rect class="hit" x="639.0" y="26" width="28.3" height="230" fill="transparent" data-i="21"/>
-<rect class="hit" x="667.3" y="26" width="28.3" height="230" fill="transparent" data-i="22"/>
-<rect class="hit" x="695.7" y="26" width="28.3" height="230" fill="transparent" data-i="23"/>
-<rect class="hit" x="724.0" y="26" width="28.3" height="230" fill="transparent" data-i="24"/>
-<rect class="hit" x="752.3" y="26" width="28.3" height="230" fill="transparent" data-i="25"/>
-<rect class="hit" x="780.7" y="26" width="28.3" height="230" fill="transparent" data-i="26"/>
-<rect class="hit" x="809.0" y="26" width="28.3" height="230" fill="transparent" data-i="27"/>
-<rect class="hit" x="837.3" y="26" width="28.3" height="230" fill="transparent" data-i="28"/>
-<rect class="hit" x="865.7" y="26" width="28.3" height="230" fill="transparent" data-i="29"/>
-<rect class="hit" x="894.0" y="26" width="28.3" height="230" fill="transparent" data-i="30"/>
-<rect class="hit" x="922.3" y="26" width="28.3" height="230" fill="transparent" data-i="31"/>
-<rect class="hit" x="950.7" y="26" width="28.3" height="230" fill="transparent" data-i="32"/>
-<rect class="hit" x="979.0" y="26" width="28.3" height="230" fill="transparent" data-i="33"/>
-<rect class="hit" x="1007.3" y="26" width="28.3" height="230" fill="transparent" data-i="34"/>
-<rect class="hit" x="1035.7" y="26" width="28.3" height="230" fill="transparent" data-i="35"/>
+<line x1="733.2" x2="733.2" y1="12" y2="256.0" stroke="#9FAAC0" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="739.2" y="22" class="mk">26 août — le formulaire de mission est en service</text>
+<path class="bar" d="M48.8,256.0 v-46.6 q0,-4 4,-4 h10 q4,0 4,4 v46.6 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
+<path class="bar" d="M76.4,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
+<path class="bar" d="M103.9,256.0 v-106.4 q0,-4 4,-4 h10 q4,0 4,4 v106.4 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
+<path class="bar" d="M131.5,256.0 v-74.2 q0,-4 4,-4 h10 q4,0 4,4 v74.2 z" fill="#C9801C"><title>2026-08-04: 17</title></path>
+<path class="bar" d="M159.1,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-05: 20</title></path>
+<path class="bar" d="M186.6,256.0 v-55.8 q0,-4 4,-4 h10 q4,0 4,4 v55.8 z" fill="#C9801C"><title>2026-08-06: 13</title></path>
+<path class="bar" d="M214.2,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-07: 14</title></path>
+<path class="bar" d="M241.8,256.0 v-32.8 q0,-4 4,-4 h10 q4,0 4,4 v32.8 z" fill="#C9801C"><title>2026-08-08: 8</title></path>
+<path class="bar" d="M269.3,256.0 v-19.0 q0,-4 4,-4 h10 q4,0 4,4 v19.0 z" fill="#C9801C"><title>2026-08-09: 5</title></path>
+<path class="bar" d="M296.9,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-10: 2</title></path>
+<path class="bar" d="M324.5,256.0 v-23.6 q0,-4 4,-4 h10 q4,0 4,4 v23.6 z" fill="#C9801C"><title>2026-08-11: 6</title></path>
+<path class="bar" d="M352.0,256.0 v-0.6 q0,-4 4,-4 h10 q4,0 4,4 v0.6 z" fill="#C9801C"><title>2026-08-12: 1</title></path>
+<path class="bar" d="M379.6,256.0 v-28.2 q0,-4 4,-4 h10 q4,0 4,4 v28.2 z" fill="#C9801C"><title>2026-08-13: 7</title></path>
+<path class="bar" d="M407.2,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-14: 2</title></path>
+<path class="bar" d="M434.7,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-15: 2</title></path>
+<path class="bar" d="M462.3,256.0 v-23.6 q0,-4 4,-4 h10 q4,0 4,4 v23.6 z" fill="#C9801C"><title>2026-08-16: 6</title></path>
+<path class="bar" d="M489.9,256.0 v-69.6 q0,-4 4,-4 h10 q4,0 4,4 v69.6 z" fill="#C9801C"><title>2026-08-17: 16</title></path>
+<path class="bar" d="M517.4,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-08-18: 4</title></path>
+<path class="bar" d="M545.0,256.0 v-37.4 q0,-4 4,-4 h10 q4,0 4,4 v37.4 z" fill="#C9801C"><title>2026-08-19: 9</title></path>
+<path class="bar" d="M572.6,256.0 v-51.2 q0,-4 4,-4 h10 q4,0 4,4 v51.2 z" fill="#C9801C"><title>2026-08-20: 12</title></path>
+<path class="bar" d="M600.1,256.0 v-65.0 q0,-4 4,-4 h10 q4,0 4,4 v65.0 z" fill="#C9801C"><title>2026-08-21: 15</title></path>
+<path class="bar" d="M627.7,256.0 v-28.2 q0,-4 4,-4 h10 q4,0 4,4 v28.2 z" fill="#C9801C"><title>2026-08-22: 7</title></path>
+<path class="bar" d="M655.3,256.0 v-5.2 q0,-4 4,-4 h10 q4,0 4,4 v5.2 z" fill="#C9801C"><title>2026-08-23: 2</title></path>
+<path class="bar" d="M682.8,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-08-24: 4</title></path>
+<path class="bar" d="M710.4,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-25: 14</title></path>
+<path class="bar" d="M738.0,256.0 v-60.4 q0,-4 4,-4 h10 q4,0 4,4 v60.4 z" fill="#C9801C"><title>2026-08-26: 14</title></path>
+<path class="bar" d="M765.5,256.0 v-55.8 q0,-4 4,-4 h10 q4,0 4,4 v55.8 z" fill="#C9801C"><title>2026-08-27: 13</title></path>
+<path class="bar" d="M793.1,256.0 v-152.4 q0,-4 4,-4 h10 q4,0 4,4 v152.4 z" fill="#C9801C"><title>2026-08-28: 34</title></path>
+<path class="bar" d="M820.7,256.0 v-92.6 q0,-4 4,-4 h10 q4,0 4,4 v92.6 z" fill="#C9801C"><title>2026-08-29: 21</title></path>
+<path class="bar" d="M848.2,256.0 v-138.6 q0,-4 4,-4 h10 q4,0 4,4 v138.6 z" fill="#C9801C"><title>2026-08-30: 31</title></path>
+<path class="bar" d="M875.8,256.0 v-143.2 q0,-4 4,-4 h10 q4,0 4,4 v143.2 z" fill="#C9801C"><title>2026-08-31: 32</title></path>
+<path class="bar" d="M903.4,256.0 v-83.4 q0,-4 4,-4 h10 q4,0 4,4 v83.4 z" fill="#C9801C"><title>2026-09-01: 19</title></path>
+<path class="bar" d="M930.9,256.0 v-83.4 q0,-4 4,-4 h10 q4,0 4,4 v83.4 z" fill="#C9801C"><title>2026-09-02: 19</title></path>
+<path class="bar" d="M958.5,256.0 v-14.4 q0,-4 4,-4 h10 q4,0 4,4 v14.4 z" fill="#C9801C"><title>2026-09-03: 4</title></path>
+<path class="bar" d="M986.1,256.0 v-152.4 q0,-4 4,-4 h10 q4,0 4,4 v152.4 z" fill="#C9801C"><title>2026-09-04: 34</title></path>
+<path class="bar" d="M1013.6,256.0 v-184.6 q0,-4 4,-4 h10 q4,0 4,4 v184.6 z" fill="#C9801C"><title>2026-09-05: 41</title></path>
+<path class="bar" d="M1041.2,256.0 v-170.8 q0,-4 4,-4 h10 q4,0 4,4 v170.8 z" fill="#C9801C"><title>2026-09-06: 38</title></path>
+<path d="M747.0,256.0 L774.5,210.0 L802.1,122.6 L829.7,90.4 L857.2,251.4 L884.8,196.2 L912.4,233.0 L939.9,251.4 L967.5,233.0 L995.1,177.8 L1022.6,228.4 L1050.2,200.8" fill="none" stroke="#3F7FD8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="774.5" cy="210.0" r="6" fill="#0A1322"/><circle cx="774.5" cy="210.0" r="4" fill="#3F7FD8"/>
+<circle cx="802.1" cy="122.6" r="6" fill="#0A1322"/><circle cx="802.1" cy="122.6" r="4" fill="#3F7FD8"/>
+<circle cx="829.7" cy="90.4" r="6" fill="#0A1322"/><circle cx="829.7" cy="90.4" r="4" fill="#3F7FD8"/>
+<circle cx="857.2" cy="251.4" r="6" fill="#0A1322"/><circle cx="857.2" cy="251.4" r="4" fill="#3F7FD8"/>
+<circle cx="884.8" cy="196.2" r="6" fill="#0A1322"/><circle cx="884.8" cy="196.2" r="4" fill="#3F7FD8"/>
+<circle cx="912.4" cy="233.0" r="6" fill="#0A1322"/><circle cx="912.4" cy="233.0" r="4" fill="#3F7FD8"/>
+<circle cx="939.9" cy="251.4" r="6" fill="#0A1322"/><circle cx="939.9" cy="251.4" r="4" fill="#3F7FD8"/>
+<circle cx="967.5" cy="233.0" r="6" fill="#0A1322"/><circle cx="967.5" cy="233.0" r="4" fill="#3F7FD8"/>
+<circle cx="995.1" cy="177.8" r="6" fill="#0A1322"/><circle cx="995.1" cy="177.8" r="4" fill="#3F7FD8"/>
+<circle cx="1022.6" cy="228.4" r="6" fill="#0A1322"/><circle cx="1022.6" cy="228.4" r="4" fill="#3F7FD8"/>
+<circle cx="1050.2" cy="200.8" r="6" fill="#0A1322"/><circle cx="1050.2" cy="200.8" r="4" fill="#3F7FD8"/>
+<text x="1022.6" y="59.4" text-anchor="middle" class="lb">41</text>
+<text x="1050.2" y="73.2" text-anchor="middle" class="lb">38</text>
+<text x="839.7" y="80.4" text-anchor="start" class="lb">36</text>
+<text x="57.8" y="274" text-anchor="middle" class="tk">1er août</text>
+<text x="250.8" y="274" text-anchor="middle" class="tk">8</text>
+<text x="443.7" y="274" text-anchor="middle" class="tk">15</text>
+<text x="636.7" y="274" text-anchor="middle" class="tk">22</text>
+<text x="747.0" y="274" text-anchor="middle" class="tk">26 août</text>
+<text x="912.4" y="274" text-anchor="middle" class="tk">1er sept.</text>
+<text x="1050.2" y="274" text-anchor="middle" class="tk">6</text>
+<rect class="hit" x="44.0" y="26" width="27.6" height="230" fill="transparent" data-i="0"/>
+<rect class="hit" x="71.6" y="26" width="27.6" height="230" fill="transparent" data-i="1"/>
+<rect class="hit" x="99.1" y="26" width="27.6" height="230" fill="transparent" data-i="2"/>
+<rect class="hit" x="126.7" y="26" width="27.6" height="230" fill="transparent" data-i="3"/>
+<rect class="hit" x="154.3" y="26" width="27.6" height="230" fill="transparent" data-i="4"/>
+<rect class="hit" x="181.8" y="26" width="27.6" height="230" fill="transparent" data-i="5"/>
+<rect class="hit" x="209.4" y="26" width="27.6" height="230" fill="transparent" data-i="6"/>
+<rect class="hit" x="237.0" y="26" width="27.6" height="230" fill="transparent" data-i="7"/>
+<rect class="hit" x="264.5" y="26" width="27.6" height="230" fill="transparent" data-i="8"/>
+<rect class="hit" x="292.1" y="26" width="27.6" height="230" fill="transparent" data-i="9"/>
+<rect class="hit" x="319.7" y="26" width="27.6" height="230" fill="transparent" data-i="10"/>
+<rect class="hit" x="347.2" y="26" width="27.6" height="230" fill="transparent" data-i="11"/>
+<rect class="hit" x="374.8" y="26" width="27.6" height="230" fill="transparent" data-i="12"/>
+<rect class="hit" x="402.4" y="26" width="27.6" height="230" fill="transparent" data-i="13"/>
+<rect class="hit" x="429.9" y="26" width="27.6" height="230" fill="transparent" data-i="14"/>
+<rect class="hit" x="457.5" y="26" width="27.6" height="230" fill="transparent" data-i="15"/>
+<rect class="hit" x="485.1" y="26" width="27.6" height="230" fill="transparent" data-i="16"/>
+<rect class="hit" x="512.6" y="26" width="27.6" height="230" fill="transparent" data-i="17"/>
+<rect class="hit" x="540.2" y="26" width="27.6" height="230" fill="transparent" data-i="18"/>
+<rect class="hit" x="567.8" y="26" width="27.6" height="230" fill="transparent" data-i="19"/>
+<rect class="hit" x="595.4" y="26" width="27.6" height="230" fill="transparent" data-i="20"/>
+<rect class="hit" x="622.9" y="26" width="27.6" height="230" fill="transparent" data-i="21"/>
+<rect class="hit" x="650.5" y="26" width="27.6" height="230" fill="transparent" data-i="22"/>
+<rect class="hit" x="678.1" y="26" width="27.6" height="230" fill="transparent" data-i="23"/>
+<rect class="hit" x="705.6" y="26" width="27.6" height="230" fill="transparent" data-i="24"/>
+<rect class="hit" x="733.2" y="26" width="27.6" height="230" fill="transparent" data-i="25"/>
+<rect class="hit" x="760.8" y="26" width="27.6" height="230" fill="transparent" data-i="26"/>
+<rect class="hit" x="788.3" y="26" width="27.6" height="230" fill="transparent" data-i="27"/>
+<rect class="hit" x="815.9" y="26" width="27.6" height="230" fill="transparent" data-i="28"/>
+<rect class="hit" x="843.5" y="26" width="27.6" height="230" fill="transparent" data-i="29"/>
+<rect class="hit" x="871.0" y="26" width="27.6" height="230" fill="transparent" data-i="30"/>
+<rect class="hit" x="898.6" y="26" width="27.6" height="230" fill="transparent" data-i="31"/>
+<rect class="hit" x="926.2" y="26" width="27.6" height="230" fill="transparent" data-i="32"/>
+<rect class="hit" x="953.7" y="26" width="27.6" height="230" fill="transparent" data-i="33"/>
+<rect class="hit" x="981.3" y="26" width="27.6" height="230" fill="transparent" data-i="34"/>
+<rect class="hit" x="1008.9" y="26" width="27.6" height="230" fill="transparent" data-i="35"/>
+<rect class="hit" x="1036.4" y="26" width="27.6" height="230" fill="transparent" data-i="36"/>
 </svg></div>
     <div class="tl-tip"></div>
-    <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>—</td></tr><tr><td>02/08</td><td>20</td><td>—</td></tr><tr><td>03/08</td><td>24</td><td>—</td></tr><tr><td>04/08</td><td>17</td><td>—</td></tr><tr><td>05/08</td><td>20</td><td>—</td></tr><tr><td>06/08</td><td>13</td><td>—</td></tr><tr><td>07/08</td><td>14</td><td>—</td></tr><tr><td>08/08</td><td>8</td><td>—</td></tr><tr><td>09/08</td><td>5</td><td>—</td></tr><tr><td>10/08</td><td>2</td><td>—</td></tr><tr><td>11/08</td><td>6</td><td>—</td></tr><tr><td>12/08</td><td>1</td><td>—</td></tr><tr><td>13/08</td><td>7</td><td>—</td></tr><tr><td>14/08</td><td>2</td><td>—</td></tr><tr><td>15/08</td><td>2</td><td>—</td></tr><tr><td>16/08</td><td>6</td><td>—</td></tr><tr><td>17/08</td><td>16</td><td>—</td></tr><tr><td>18/08</td><td>4</td><td>—</td></tr><tr><td>19/08</td><td>9</td><td>—</td></tr><tr><td>20/08</td><td>12</td><td>—</td></tr><tr><td>21/08</td><td>15</td><td>—</td></tr><tr><td>22/08</td><td>7</td><td>—</td></tr><tr><td>23/08</td><td>2</td><td>—</td></tr><tr><td>24/08</td><td>4</td><td>—</td></tr><tr><td>25/08</td><td>14</td><td>—</td></tr><tr><td>26/08</td><td>14</td><td>0</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>25</td><td>6</td></tr></tbody></table></details>
+    <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>—</td></tr><tr><td>02/08</td><td>20</td><td>—</td></tr><tr><td>03/08</td><td>24</td><td>—</td></tr><tr><td>04/08</td><td>17</td><td>—</td></tr><tr><td>05/08</td><td>20</td><td>—</td></tr><tr><td>06/08</td><td>13</td><td>—</td></tr><tr><td>07/08</td><td>14</td><td>—</td></tr><tr><td>08/08</td><td>8</td><td>—</td></tr><tr><td>09/08</td><td>5</td><td>—</td></tr><tr><td>10/08</td><td>2</td><td>—</td></tr><tr><td>11/08</td><td>6</td><td>—</td></tr><tr><td>12/08</td><td>1</td><td>—</td></tr><tr><td>13/08</td><td>7</td><td>—</td></tr><tr><td>14/08</td><td>2</td><td>—</td></tr><tr><td>15/08</td><td>2</td><td>—</td></tr><tr><td>16/08</td><td>6</td><td>—</td></tr><tr><td>17/08</td><td>16</td><td>—</td></tr><tr><td>18/08</td><td>4</td><td>—</td></tr><tr><td>19/08</td><td>9</td><td>—</td></tr><tr><td>20/08</td><td>12</td><td>—</td></tr><tr><td>21/08</td><td>15</td><td>—</td></tr><tr><td>22/08</td><td>7</td><td>—</td></tr><tr><td>23/08</td><td>2</td><td>—</td></tr><tr><td>24/08</td><td>4</td><td>—</td></tr><tr><td>25/08</td><td>14</td><td>—</td></tr><tr><td>26/08</td><td>14</td><td>—</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>41</td><td>6</td></tr><tr><td>06/09</td><td>38</td><td>12</td></tr></tbody></table></details>
   </div>
   <div class="readings">
-    <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours — moins de dix par jour, l'humain portant les instructions d'un siège à l'autre. Après, 262 en onze — vingt-quatre par jour. Les sièges ont changé en même temps que la gouvernance ; le doublement n'est donc pas à elle seule. Ce qui est à elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>
+    <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours — moins de dix par jour, l'humain portant les instructions d'un siège à l'autre. Après, 300 en douze — vingt-cinq par jour. Les sièges ont changé en même temps que la gouvernance ; le doublement n'est donc pas à elle seule. Ce qui est à elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>
     <p><strong>Le coût de l'apprentissage.</strong> Chaque entrée du registre est une règle qu'un constat a payée. La première semaine des contrats, l'équipe en a écrit une pour deux merges ; la deuxième, une pour trois, au même rythme de merges. Avant le 26 août, les constats n'étaient pas comptés du tout — la première chose que le système a faite, c'est les rendre visibles.</p>
   </div>
 </section>
@@ -831,7 +845,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
         <li>la table des capacités de vos sièges <em>mesurée sur vos machines</em>, pas recopiée des miennes</li>
         <li>le vocabulaire adapté à vos chantiers avant que le premier contrat soit écrit</li>
         <li>les deux premières semaines de missions menées <em>avec vos ingénieurs</em> — le jugement de savoir quelle règle s'applique à votre harnais est ce que les incidents ne transmettent pas</li>
-        <li>un registre qui démarre le premier jour, avec quelqu'un qui a déjà arbitré plus de cent vingt entrées</li>
+        <li>un registre qui démarre le premier jour, avec quelqu'un qui a déjà arbitré plus de cent trente entrées</li>
       </ul>
     </div>
   </div>
@@ -957,8 +971,8 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <p class="note">Les trente minutes sont gratuites et sans engagement — vous me décrivez votre semaine, je vous dis ce que j'y vois, même si vous n'allez pas plus loin.</p>
 
   <div class="proof">
-    <p><strong>D'où vient la discipline.</strong> Elle a été construite, incident après incident, pour faire tenir une équipe de sept agents IA sur un logiciel réel, avec un seul humain aux commandes — vingt-quatre livraisons fusionnées par jour, chaque erreur devenue une règle, tout est public et chiffré. C'est <a href="#code">Guildwork</a>. Chez vous, il n'y aura ni dépôt ni code ; il y aura les mêmes contrats, les mêmes portes, le même registre.</p>
-    <p class="fig">127<small>règles écrites en cinq semaines, chacune payée par une erreur réelle</small></p>
+    <p><strong>D'où vient la discipline.</strong> Elle a été construite, incident après incident, pour faire tenir une équipe de sept agents IA sur un logiciel réel, avec un seul humain aux commandes — vingt-cinq livraisons fusionnées par jour, chaque erreur devenue une règle, tout est public et chiffré. C'est <a href="#code">Guildwork</a>. Chez vous, il n'y aura ni dépôt ni code ; il y aura les mêmes contrats, les mêmes portes, le même registre.</p>
+    <p class="fig">139<small>règles écrites en cinq semaines, chacune payée par une erreur réelle</small></p>
   </div>
 </section>
 </div>
@@ -991,7 +1005,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <script data-goatcounter="https://guildwork.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
-(function(){var D={"d":["2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05","2026-08-06","2026-08-07","2026-08-08","2026-08-09","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-15","2026-08-16","2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-22","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-29","2026-08-30","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-05"],"m":[11,20,24,17,20,13,14,8,5,2,6,1,7,2,2,6,16,4,9,12,15,7,2,4,14,14,13,34,21,31,32,19,19,4,34,25],"r":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,29,36,1,13,5,1,5,17,6]};var svgs=document.querySelectorAll('svg.tl');svgs.forEach(function(svg){var wrap=svg.closest('.tl-wrap');var tip=wrap.querySelector('.tl-tip');var L=wrap.dataset.merges,R=wrap.dataset.rules;
+(function(){var D={"d":["2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05","2026-08-06","2026-08-07","2026-08-08","2026-08-09","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-15","2026-08-16","2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-22","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-29","2026-08-30","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-05","2026-09-06"],"m":[11,20,24,17,20,13,14,8,5,2,6,1,7,2,2,6,16,4,9,12,15,7,2,4,14,14,13,34,21,31,32,19,19,4,34,41,38],"r":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,29,36,1,13,5,1,5,17,6,12]};var svgs=document.querySelectorAll('svg.tl');svgs.forEach(function(svg){var wrap=svg.closest('.tl-wrap');var tip=wrap.querySelector('.tl-tip');var L=wrap.dataset.merges,R=wrap.dataset.rules;
 svg.addEventListener('mousemove',function(e){var t=e.target;if(!t.classList.contains('hit')){tip.style.display='none';return;}var i=+t.dataset.i;var d=new Date(D.d[i]+'T00:00:00Z');
 tip.innerHTML='<b>'+d.toLocaleDateString(wrap.dataset.lang,{day:'numeric',month:'long',timeZone:'UTC'})+'</b>'+D.m[i]+' '+L+'<br>'+(i>=25?D.r[i]+' '+R:'—');
 var r=wrap.getBoundingClientRect();var x=e.clientX-r.left+14,y=e.clientY-r.top-10;tip.style.display='block';if(x+tip.offsetWidth>r.width-8)x=e.clientX-r.left-tip.offsetWidth-14;tip.style.left=x+'px';tip.style.top=y+'px';});
