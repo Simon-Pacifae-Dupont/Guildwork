@@ -1,37 +1,37 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lantern — le tableau, lu pour ce qu’il vous doit</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
   :root {
-    --ground:#F4F3F0; --surface:#FFFFFF; --surface-2:#FAF9F7;
-    --ink:#191D1C; --ink-2:#565C59; --ink-3:#828885;
-    --rule:#DEDCD6; --rule-2:#EBE9E4;
+    --ground:#F3EDE2; --surface:#FFFFFF; --surface-2:#FAF6EE;
+    --ink:#0B1526; --ink-2:#3E4A60; --ink-3:#6B7791;
+    --rule:#D9D2C4; --rule-2:#E8E2D6;
     --accent:#1C5C58; --accent-soft:#E4EDEC;
-    --landed:#2C6E49; --flight:#9A6410; --owed:#9E3B3E; --idle:#6B7472;
-    --landed-bg:#E6F0E9; --flight-bg:#F6ECDC; --owed-bg:#F6E5E5; --idle-bg:#ECEEED;
+    --landed:#3E7F4B; --flight:#B8771A; --owed:#B5452F; --idle:#3F6EA6;
+    --landed-bg:#E3F0E4; --flight-bg:#FBEDD3; --owed-bg:#F8E4DE; --idle-bg:#E1EAF5;
     --shadow:0 1px 2px rgba(25,29,28,.05), 0 8px 24px -16px rgba(25,29,28,.25);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --ground:#121514; --surface:#1A1E1D; --surface-2:#171B1A;
-      --ink:#E9EAE7; --ink-2:#9EA5A1; --ink-3:#79817D;
-      --rule:#2A302E; --rule-2:#232827;
-      --accent:#5CB8B0; --accent-soft:#16302E;
-      --landed:#6FBF8E; --flight:#D9A44E; --owed:#DE7F82; --idle:#8B9490;
-      --landed-bg:#16281E; --flight-bg:#2A2214; --owed-bg:#2B1A1B; --idle-bg:#1F2423;
+      --ground:#0B1526; --surface:#0A1322; --surface-2:#14223A;
+      --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
+      --rule:#2B3B57; --rule-2:#1D2B44;
+      --accent:#5CB8B0; --accent-soft:#14223A;
+      --landed:#6FB07B; --flight:#E9A23B; --owed:#D0644A; --idle:#7FA6D6;
+      --landed-bg:#203636; --flight-bg:#3B3228; --owed-bg:#36252B; --idle-bg:#24334A;
       --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
     }
   }
   :root[data-theme="dark"] {
-    --ground:#121514; --surface:#1A1E1D; --surface-2:#171B1A;
-    --ink:#E9EAE7; --ink-2:#9EA5A1; --ink-3:#79817D;
-    --rule:#2A302E; --rule-2:#232827;
-    --accent:#5CB8B0; --accent-soft:#16302E;
-    --landed:#6FBF8E; --flight:#D9A44E; --owed:#DE7F82; --idle:#8B9490;
-    --landed-bg:#16281E; --flight-bg:#2A2214; --owed-bg:#2B1A1B; --idle-bg:#1F2423;
+    --ground:#0B1526; --surface:#0A1322; --surface-2:#14223A;
+    --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
+    --rule:#2B3B57; --rule-2:#1D2B44;
+    --accent:#5CB8B0; --accent-soft:#14223A;
+    --landed:#6FB07B; --flight:#E9A23B; --owed:#D0644A; --idle:#7FA6D6;
+    --landed-bg:#203636; --flight-bg:#3B3228; --owed-bg:#36252B; --idle-bg:#24334A;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
   }
   *,*::before,*::after { box-sizing:border-box; }
