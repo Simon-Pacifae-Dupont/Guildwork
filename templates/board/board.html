@@ -1,8 +1,8 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Guildwork â€” the board reader</title>
+<title>Guildwork — the board reader</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
   :root {
@@ -10,8 +10,8 @@
     --ink:#191D1C; --ink-2:#565C59; --ink-3:#828885;
     --rule:#DEDCD6; --rule-2:#EBE9E4;
     --accent:#1C5C58; --accent-soft:#E4EDEC;
-    --landed:#1c6640; --flight:#8f5c10; --owed:#9c3223; --idle:#1a5384;
-    --landed-bg:#dcebe1; --flight-bg:#f9edd8; --owed-bg:#f8e1dc; --idle-bg:#dde9f3;
+    --landed:#2C6E49; --flight:#9A6410; --owed:#9E3B3E; --idle:#6B7472;
+    --landed-bg:#E6F0E9; --flight-bg:#F6ECDC; --owed-bg:#F6E5E5; --idle-bg:#ECEEED;
     --shadow:0 1px 2px rgba(25,29,28,.05), 0 8px 24px -16px rgba(25,29,28,.25);
   }
   @media (prefers-color-scheme: dark) {
@@ -20,8 +20,8 @@
       --ink:#E9EAE7; --ink-2:#9EA5A1; --ink-3:#79817D;
       --rule:#2A302E; --rule-2:#232827;
       --accent:#5CB8B0; --accent-soft:#16302E;
-      --landed:#78c48c; --flight:#e8ae57; --owed:#ec8a79; --idle:#79b4e0;
-      --landed-bg:#163020; --flight-bg:#382914; --owed-bg:#3b1d18; --idle-bg:#132a3b;
+      --landed:#6FBF8E; --flight:#D9A44E; --owed:#DE7F82; --idle:#8B9490;
+      --landed-bg:#16281E; --flight-bg:#2A2214; --owed-bg:#2B1A1B; --idle-bg:#1F2423;
       --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
     }
   }
@@ -30,8 +30,8 @@
     --ink:#E9EAE7; --ink-2:#9EA5A1; --ink-3:#79817D;
     --rule:#2A302E; --rule-2:#232827;
     --accent:#5CB8B0; --accent-soft:#16302E;
-    --landed:#78c48c; --flight:#e8ae57; --owed:#ec8a79; --idle:#79b4e0;
-    --landed-bg:#163020; --flight-bg:#382914; --owed-bg:#3b1d18; --idle-bg:#132a3b;
+    --landed:#6FBF8E; --flight:#D9A44E; --owed:#DE7F82; --idle:#8B9490;
+    --landed-bg:#16281E; --flight-bg:#2A2214; --owed-bg:#2B1A1B; --idle-bg:#1F2423;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
   }
   *,*::before,*::after { box-sizing:border-box; }
@@ -187,24 +187,24 @@
   "staleDays": 14,
   "refreshMs": 120000,
   "workstreamNames": {
-    "dashboard": "Dashboard â€” the tiles an operator reads",
-    "device": "Device â€” calibration and the bench bridge",
-    "sync": "Sync â€” export of readings",
-    "shell": "Shell â€” the frame every page wears",
-    "gate": "Gate â€” launcher, governance check, test gate",
-    "watcher": "Watcher â€” the label-event watcher",
-    "governance": "Governance â€” the documents that say what the rules are",
+    "dashboard": "Dashboard — the tiles an operator reads",
+    "device": "Device — calibration and the bench bridge",
+    "sync": "Sync — export of readings",
+    "shell": "Shell — the frame every page wears",
+    "gate": "Gate — launcher, governance check, test gate",
+    "watcher": "Watcher — the label-event watcher",
+    "governance": "Governance — the documents that say what the rules are",
     "release-provenance": "Release provenance"
   }
 };
   var T = {
-  "eyebrow": "Lantern â€” the board, live",
+  "eyebrow": "Lantern — the board, live",
   "h1": "Where the workstreams stand",
   "refresh": "Refresh",
-  "connecting": "connecting to the boardâ€¦",
+  "connecting": "connecting to the board…",
   "live": "live",
   "interrupted": "read interrupted",
-  "rereading": "re-readingâ€¦",
+  "rereading": "re-reading…",
   "offline": "offline",
   "snapshot": "snapshot",
   "snapshotDate": "frozen on 4 September 2026",
@@ -213,21 +213,21 @@
   "today": "today",
   "dayUnit": "d",
   "owedHeading": "What is owed to you, and to nobody else",
-  "owedState": "A reserved gate is not a wait. {label} says <em>who will decide</em>; it does not say the decision has arrived. A decision is owed when an open pull request carries the line <span class=\"mono\">Mission: #N delivers</span> â€” the contract's own line, and nothing else.",
+  "owedState": "A reserved gate is not a wait. {label} says <em>who will decide</em>; it does not say the decision has arrived. A decision is owed when an open pull request carries the line <span class=\"mono\">Mission: #N delivers</span> — the contract's own line, and nothing else.",
   "decisionNow": "A decision is waiting for you now",
   "reservedNotReached": "Reserved gates, not reached yet",
   "toDecideCount": "{n} to decide",
   "nothingToDecide": "nothing to decide",
   "nothingDeliveredOwed": "Nothing delivered is waiting on your decision. The gates below exist, but the work has not reached them yet.",
-  "reservedNote": "These contracts will come back to you, later. A lot whose reserved gate is <em>the launch</em> has no delivery to show and sits here like the others â€” the page cannot tell them apart and does not pretend to.",
+  "reservedNote": "These contracts will come back to you, later. A lot whose reserved gate is <em>the launch</em> has no delivery to show and sits here like the others — the page cannot tell them apart and does not pretend to.",
   "noGatePo": "No open issue carries <code>{label}</code>.",
   "none": "None.",
-  "deliveriesPending": "Reading open deliveries â€” without them this page cannot tell a gate that has been reached from a gate merely declared, and it will not guess.",
+  "deliveriesPending": "Reading open deliveries — without them this page cannot tell a gate that has been reached from a gate merely declared, and it will not guess.",
   "delegHeading": "Delivered under delegation, waiting to merge",
   "delegState": "Deliveries whose gate is delegated: the architect merges them on the witness's word, without you. You see them pass; you have nothing to do.",
   "deliveriesCount": "{n} delivery(ies)",
   "nothingUnderDelegation": "No open delivery under delegation.",
-  "orphanDeliveries": "Open pull requests name a mission that is no longer open: {list}. Either the mission was closed before its delivery, or the <code>Mission:</code> line is wrong â€” either way, look.",
+  "orphanDeliveries": "Open pull requests name a mission that is no longer open: {list}. Either the mission was closed before its delivery, or the <code>Mission:</code> line is wrong — either way, look.",
   "noMissionLine": "{n} open pull request(s) without a <code>Mission:</code> line: {list}. The board cannot attach them to a contract, and it does not guess.",
   "chHeading": "By workstream",
   "missionsOpen": "{n} open missions",
@@ -259,11 +259,11 @@
   "statDelegated": "delivered under delegation",
   "statUnclassified": "no workstream",
   "statUnread": "issues not read",
-  "demoNote": "<b>This is a frozen snapshot of the fictional Lantern board</b>, so that the reading can be shown without a repository behind it. The same page, published on claude.ai with the GitHub connector, reads a real board live â€” that is how it is used on the project the kit comes from.",
-  "footer": "<p><b>What this page really reads.</b> The repository's open issues (every page of them), open pull requests and closed pull requests, through the viewer's own GitHub connector. Nothing is copied: states, gates and ages are computed on open and refreshed every two minutes.</p><p><b>What it does not guess.</b> A delivery exists when an open pull request carries the line <span class=\"mono\">Mission: #N delivers | supersedes</span> â€” the delivery contract's convention, and nothing else. A workstream exists when the <span class=\"mono\">chantier:*</span> label is set. Whatever fits no rule is counted separately, on the face of the board, rather than filed by guesswork.</p>",
+  "demoNote": "<b>This is a frozen snapshot of the fictional Lantern board</b>, so that the reading can be shown without a repository behind it. The same page, published on claude.ai with the GitHub connector, reads a real board live — that is how it is used on the project the kit comes from.",
+  "footer": "<p><b>What this page really reads.</b> The repository's open issues (every page of them), open pull requests and closed pull requests, through the viewer's own GitHub connector. Nothing is copied: states, gates and ages are computed on open and refreshed every two minutes.</p><p><b>What it does not guess.</b> A delivery exists when an open pull request carries the line <span class=\"mono\">Mission: #N delivers | supersedes</span> — the delivery contract's convention, and nothing else. A workstream exists when the <span class=\"mono\">chantier:*</span> label is set. Whatever fits no rule is counted separately, on the face of the board, rather than filed by guesswork.</p>",
   "offlineSection": "This section reads the board live and cannot reach it here. Open the page from claude.ai with the GitHub connector connected.",
-  "errNotConnected": "<b>The {s} connector is not added for this viewer.</b> Add it in claude.ai â†’ Settings â†’ Connectors, then reload.",
-  "errReauth": "<b>The connection to {s} has expired.</b> Reconnect it in claude.ai â†’ Settings â†’ Connectors.",
+  "errNotConnected": "<b>The {s} connector is not added for this viewer.</b> Add it in claude.ai → Settings → Connectors, then reload.",
+  "errReauth": "<b>The connection to {s} has expired.</b> Reconnect it in claude.ai → Settings → Connectors.",
   "errSelection": "<b>Several {s} connectors are available.</b> Choose one when claude.ai asks, then refresh.",
   "errPolicy": "<b>Access to the connector is blocked by an organisation policy.</b> This page cannot read the board here.",
   "errApproval": "<b>The call is waiting for an approval.</b> Accept the request, then refresh.",
@@ -289,7 +289,7 @@
   // ---- helpers ---------------------------------------------------------------
   function esc(s) { return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); }
   function unesc(s) { return String(s == null ? "" : s).replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&"); }
-  function title(t) { return unesc(t).replace(/^#\d+\s*[â€”-]\s*/,"").replace(/^\[(MISSION|HANDOVER|REVIEW BRIEF)\]\s*/i,""); }
+  function title(t) { return unesc(t).replace(/^#\d+\s*[—-]\s*/,"").replace(/^\[(MISSION|HANDOVER|REVIEW BRIEF)\]\s*/i,""); }
   var NOW = function () { return SOURCE === "static" ? STATIC.takenAt : Date.now(); };
   function daysSince(iso) { return iso ? Math.floor((NOW() - new Date(iso).getTime()) / 86400000) : null; }
   function age(iso) { var d = daysSince(iso); return d == null ? "" : d <= 0 ? T.today : d + " " + T.dayUnit; }
@@ -319,7 +319,7 @@
   function gateChip(it) {
     if (has(it, CONFIG.labels.gatePo)) return '<span class="chip c-owed">' + T.chipReserved + '</span>';
     if (has(it, CONFIG.labels.gateDelegated)) return '<span class="chip c-idle">' + T.chipDelegated + '</span>';
-    return '<span class="chip c-idle">â€”</span>';
+    return '<span class="chip c-idle">—</span>';
   }
 
   function issueRow(it, dl) {
@@ -338,7 +338,7 @@
     return '<div class="owed-list">' + list.map(function (o) {
       var it = o.issue;
       return '<div class="owed-item"><div class="k">' + link("issues", it.number) + '</div><div class="q">' + esc(title(it.title)) +
-        (o.d ? ' <span class="chip ' + chip + '">PR #' + o.d.pr + ' Â· ' + o.d.verb + '</span>' : '') +
+        (o.d ? ' <span class="chip ' + chip + '">PR #' + o.d.pr + ' · ' + o.d.verb + '</span>' : '') +
         '</div><div class="a">' + fmt(T.openFor, {age:age(it.created_at)}) + "</div></div>";
     }).join("") + "</div>";
   }
@@ -408,7 +408,7 @@
 
   function renderStats(issues, unclassed, owedNow, delegated) {
     var missions = issues.filter(function (i) { return has(i, CONFIG.labels.mission); }).length;
-    var prs = state.openPrs ? state.openPrs.length : "â€”";
+    var prs = state.openPrs ? state.openPrs.length : "—";
     var vals = [[missions, T.statMissions, ""], [issues.length, T.statOpen, ""], [prs, T.statPrs, ""],
                 [owedNow, T.statToDecide, owedNow ? "owed" : ""], [delegated, T.statDelegated, delegated ? "flight" : ""], [unclassed, T.statUnclassified, ""]];
     if (state.issuesTruncated) vals.push([state.issuesTruncated, T.statUnread, "owed"]);

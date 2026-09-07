@@ -1,12 +1,12 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Guildwork â€” faire travailler des agents IA en gardant le dernier mot</title>
-<meta name="description" content="Une discipline pour faire travailler des agents IA sans perdre la main : un contrat avant chaque tÃ¢che, un tÃ©moin pendant, un bilan aprÃ¨s â€” et un lanceur qui refuse de dÃ©marrer ce qui nâ€™est pas en rÃ¨gle. Pour les Ã©quipes qui codent (pack libre MIT, lanceur, clÃ´ture, tableau) et pour les entreprises qui nâ€™ont pas de code (cabinets, agences, support).">
-<meta property="og:title" content="Guildwork â€” faire travailler des agents IA en gardant le dernier mot">
-<meta property="og:description" content="Un contrat avant, un tÃ©moin pendant, un bilan aprÃ¨s â€” et un lanceur qui refuse de dÃ©marrer ce qui nâ€™est pas en rÃ¨gle. Pour les Ã©quipes qui codent, et pour les entreprises qui ne codent pas.">
+<title>Guildwork — faire travailler des agents IA en gardant le dernier mot</title>
+<meta name="description" content="Une discipline pour faire travailler des agents IA sans perdre la main : un contrat avant chaque tâche, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Pour les équipes qui codent (pack libre MIT, lanceur, clôture, tableau) et pour les entreprises qui n’ont pas de code (cabinets, agences, support).">
+<meta property="og:title" content="Guildwork — faire travailler des agents IA en gardant le dernier mot">
+<meta property="og:description" content="Un contrat avant, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Pour les équipes qui codent, et pour les entreprises qui ne codent pas.">
 <meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
 <meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/fr/">
 <meta property="og:locale" content="fr_FR">
@@ -22,7 +22,7 @@
     --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
     --amber:#E9A23B; --amber-2:#F5C46B; --control:#7FA6D6; --refuse:#D0644A; --ok:#6FB07B;
     --measure:66ch;
-    /* icons: one law for the whole page â€” a size relative to the text they label,
+    /* icons: one law for the whole page — a size relative to the text they label,
        and one optical lift, larger next to lowercase (which has descenders)
        than next to capitals (which have none). No icon sets these itself. */
     --icon:1.34em; --icon-lift:-.13em; --icon-lift-caps:-.07em; --icon-lift-underlined:-.04em;
@@ -148,8 +148,8 @@
   .vs ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
   .vs li{font-size:14px;color:var(--ink-2);padding-left:20px;position:relative}
   .vs li::before{position:absolute;left:0;font-size:12px}
-  .vs .repo li::before{content:"Â·";color:var(--ink-3);font-size:18px;line-height:1;top:-1px}
-  .vs .me li::before{content:"â†’";color:var(--amber)}
+  .vs .repo li::before{content:"·";color:var(--ink-3);font-size:18px;line-height:1;top:-1px}
+  .vs .me li::before{content:"→";color:var(--amber)}
   .vs li em{font-style:normal;color:var(--ink)}
   /* the refusal, as a terminal */
   .term{margin-top:44px;border:1px solid var(--edge);border-radius:10px;background:#070D18;overflow:hidden;
@@ -202,7 +202,7 @@
   .offer ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
   .offer li{font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative}
   .offer li em{font-style:normal;color:var(--ink)}
-  .offer li::before{content:"â†’";position:absolute;left:0;color:var(--amber);font-size:12px}
+  .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:12px}
   /* the price block has one fixed height, so the price line sits at the same height in every card */
   .offer .price{margin-top:auto;min-height:108px;padding-top:16px;border-top:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
@@ -287,7 +287,7 @@
   footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 </style>
 <style>
-  /* French runs longer than English â€” a touch more room on the display sizes */
+  /* French runs longer than English — a touch more room on the display sizes */
   h1{max-width:21ch}
   h2{max-width:28ch}
 </style>
@@ -308,7 +308,7 @@
   .scene p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
   /* the rule block is pushed to the foot of the card and given one fixed height, so the separators line up across a row */
   .scene .rule{border:0;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--edge-2);font-size:14px;color:var(--ink);margin-top:auto;min-height:84px}
-  .scene .rule::before{content:"â†’ ";color:var(--amber)}
+  .scene .rule::before{content:"→ ";color:var(--amber)}
   .feat{margin-top:44px;border:1px solid #6E5330;border-radius:10px;background:linear-gradient(168deg,#17202E,#0A1322);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
   @media (max-width:820px){.feat{grid-template-columns:1fr}}
   .feat .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
@@ -429,17 +429,17 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
       <b>Guildwork</b>
     </a>
     <nav>
-      <a href="#problem" data-track="code">Quatre dÃ©faillances</a>
-      <a href="#model" data-track="code">Le modÃ¨le, en schÃ©ma</a>
+      <a href="#problem" data-track="code">Quatre défaillances</a>
+      <a href="#model" data-track="code">Le modèle, en schéma</a>
       <a href="#numbers" data-track="code">Les chiffres sur 36 jours</a>
       <a href="#kit" data-track="code">Les 15 documents</a>
       <a href="#work" data-track="code">Offres et tarifs</a>
-      <a href="#questions" data-track="nocode">Trois questions Ã  se poser</a>
-      <a href="#situations" data-track="nocode">Six situations rÃ©elles</a>
+      <a href="#questions" data-track="nocode">Trois questions à se poser</a>
+      <a href="#situations" data-track="nocode">Six situations réelles</a>
       <a href="#board-nocode" data-track="nocode">Le tableau de bord</a>
       <a href="#offres" data-track="nocode">Offres et tarifs</a>
-      <a class="switch" href="#sans-code" data-track="code">Sans code â†’</a>
-      <a class="switch" href="#code" data-track="nocode">Avec du code â†’</a>
+      <a class="switch" href="#sans-code" data-track="code">Sans code →</a>
+      <a class="switch" href="#code" data-track="nocode">Avec du code →</a>
     </nav>
     <div class="bar-end">
       <div class="lang">
@@ -452,55 +452,55 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   </div>
 
   <nav class="menu" id="menu" hidden>
-    <a href="#problem" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg>Quatre dÃ©faillances</a>
-    <a href="#model" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg>Le modÃ¨le, en schÃ©ma</a>
+    <a href="#problem" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg>Quatre défaillances</a>
+    <a href="#model" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg>Le modèle, en schéma</a>
     <a href="#refusal" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-stop"/></svg>Un refus, en vrai</a>
     <a href="#board" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-board"/></svg>Le tableau de bord</a>
     <a href="#numbers" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Les chiffres sur 36 jours</a>
     <a href="#kit" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-docs"/></svg>Les 15 documents</a>
     <a href="#work" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offres et tarifs</a>
-    <a href="#questions" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg>Trois questions Ã  se poser</a>
-    <a href="#situations" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Six situations rÃ©elles</a>
+    <a href="#questions" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg>Trois questions à se poser</a>
+    <a href="#situations" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Six situations réelles</a>
     <a href="#board-nocode" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-board"/></svg>Le tableau de bord</a>
     <a href="#offres" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offres et tarifs</a>
-    <a class="switch" href="#sans-code" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Sans code â†’</a>
-    <a class="switch" href="#code" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Avec du code â†’</a>
+    <a class="switch" href="#sans-code" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Sans code →</a>
+    <a class="switch" href="#code" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Avec du code →</a>
     <p class="menu-h">Contact</p>
-    <a class="ic cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>RÃ©server 30 minutes</a>
+    <a class="ic cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>Réserver 30 minutes</a>
     <a class="ic" href="mailto:simon.pacifae.dupont@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.5L4.6 7H19.4L12 12.5zM4 9.2V17h16V9.2l-8 6-8-6z"/></svg>simon.pacifae.dupont@gmail.com</a>
     <a class="ic" href="https://www.linkedin.com/in/simon-pacifae-dupont/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>LinkedIn</a>
-    <a class="ic" href="https://github.com/Simon-Pacifae-Dupont/Guildwork"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>GitHub â€” lire le pack</a>
+    <a class="ic" href="https://github.com/Simon-Pacifae-Dupont/Guildwork"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>GitHub — lire le pack</a>
   </nav>
 </header>
 
 <main id="top">
 
 <div class="wrap hero">
-  <p class="eyebrow">Orchestration dâ€™agents IA Â· pack libre (MIT) Â· accompagnement</p>
+  <p class="eyebrow">Orchestration d’agents IA · pack libre (MIT) · accompagnement</p>
   <h1>Faire travailler des agents IA <em>en gardant le dernier mot</em>.</h1>
-  <p class="lede"><strong>Guildwork est une discipline construite incident aprÃ¨s incident :</strong> un contrat avant chaque tÃ¢che confiÃ©e Ã  une IA, un tÃ©moin pendant, un bilan aprÃ¨s â€” et un lanceur qui refuse de dÃ©marrer ce qui nâ€™est pas en rÃ¨gle. BÃ¢tie sur un logiciel rÃ©el (sept agents, vingt-quatre merges par jour), elle tient aussi un cabinet, une agence ou un service client.</p>
-  <p class="lede">Le pack est public et gratuit. Lâ€™installer chez vous, câ€™est mon mÃ©tier.</p>
+  <p class="lede"><strong>Guildwork est une discipline construite incident après incident :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Bâtie sur un logiciel réel (sept agents, vingt-quatre merges par jour), elle tient aussi un cabinet, une agence ou un service client.</p>
+  <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
   <div class="cta">
-    <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">RÃ©server 30 minutes</a>
+    <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Réserver 30 minutes</a>
     <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Lire le pack</a>
   </div>
-  <p class="note">MesurÃ© le 4 septembre 2026 Â· tous les chiffres ici sont rÃ©els</p>
+  <p class="note">Mesuré le 4 septembre 2026 · tous les chiffres ici sont réels</p>
 </div>
 
-<section id="doors" class="wrap doors" aria-label="Deux entrÃ©es, un seul modÃ¨le â€” choisissez la vÃ´tre">
-  <p class="eyebrow">Deux entrÃ©es, un seul modÃ¨le â€” choisissez la vÃ´tre</p>
+<section id="doors" class="wrap doors" aria-label="Deux entrées, un seul modèle — choisissez la vôtre">
+  <p class="eyebrow">Deux entrées, un seul modèle — choisissez la vôtre</p>
   <div class="door-grid">
     <a class="door" href="#code" data-go="code" aria-pressed="false">
       <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Vous avez du code</p>
-      <h3>Une Ã©quipe, un dÃ©pÃ´t, des agents qui sâ€™y bousculent</h3>
-      <p>Claude Code, Codex, Grok ou dâ€™autres, sur un code qui compte. Le lanceur qui refuse, le tÃ©moin, la clÃ´ture, le tableau â€” et trente-six jours de chiffres.</p>
-      <span class="go" data-off="Lire cette entrÃ©e â†’" data-on="Vous lisez cette entrÃ©e"></span>
+      <h3>Une équipe, un dépôt, des agents qui s’y bousculent</h3>
+      <p>Claude Code, Codex, Grok ou d’autres, sur un code qui compte. Le lanceur qui refuse, le témoin, la clôture, le tableau — et trente-six jours de chiffres.</p>
+      <span class="go" data-off="Lire cette entrée →" data-on="Vous lisez cette entrée"></span>
     </a>
     <a class="door" href="#sans-code" data-go="nocode" aria-pressed="false">
-      <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-office"/></svg>Vous nâ€™avez pas de code</p>
-      <h3>Une entreprise, des process, et des IA dÃ©jÃ  au travail</h3>
-      <p>Un cabinet, une agence, un restaurant, un service client. Ce que vous pourriez dÃ©jÃ  confier Ã  une IA, ce que Ã§a vous rendrait en heures, et le premier processus sous contrat en une semaine.</p>
-      <span class="go" data-off="Lire cette entrÃ©e â†’" data-on="Vous lisez cette entrÃ©e"></span>
+      <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-office"/></svg>Vous n’avez pas de code</p>
+      <h3>Une entreprise, des process, et des IA déjà au travail</h3>
+      <p>Un cabinet, une agence, un restaurant, un service client. Ce que vous pourriez déjà confier à une IA, ce que ça vous rendrait en heures, et le premier processus sous contrat en une semaine.</p>
+      <span class="go" data-off="Lire cette entrée →" data-on="Vous lisez cette entrée"></span>
     </a>
   </div>
 </section>
@@ -511,28 +511,28 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <hr class="rule">
 
 <section id="problem" class="wrap">
-  <h2>Quatre dÃ©faillances qu'aucun prompt ne corrige</h2>
-  <p>Plusieurs agents de code IA â€” Ã©diteurs diffÃ©rents, harnais diffÃ©rents â€” qui travaillent en mÃªme temps sur un seul dÃ©pÃ´t produisent les mÃªmes quatre dÃ©gÃ¢ts, dans toutes les Ã©quipes qui s'y essaient.</p>
+  <h2>Quatre défaillances qu'aucun prompt ne corrige</h2>
+  <p>Plusieurs agents de code IA — éditeurs différents, harnais différents — qui travaillent en même temps sur un seul dépôt produisent les mêmes quatre dégâts, dans toutes les équipes qui s'y essaient.</p>
   <div class="failures">
     <div class="failure">
-      <p class="n">01 Â· LE SECOND SCRIBE</p>
-      <h3>Deux agents Ã©crivent le mÃªme fichier</h3>
-      <p>et l'humain devient l'outil de merge â€” le seul poste que les agents Ã©taient censÃ©s supprimer.</p>
+      <p class="n">01 · LE SECOND SCRIBE</p>
+      <h3>Deux agents écrivent le même fichier</h3>
+      <p>et l'humain devient l'outil de merge — le seul poste que les agents étaient censés supprimer.</p>
     </div>
     <div class="failure">
-      <p class="n">02 Â· LA SUBSTITUTION SILENCIEUSE</p>
-      <h3>Un agent tourne sous des paramÃ¨tres non dÃ©clarÃ©s</h3>
-      <p>un autre modÃ¨le, un autre niveau d'effort, un autre prompt, et rien n'enregistre la substitution.</p>
+      <p class="n">02 · LA SUBSTITUTION SILENCIEUSE</p>
+      <h3>Un agent tourne sous des paramètres non déclarés</h3>
+      <p>un autre modèle, un autre niveau d'effort, un autre prompt, et rien n'enregistre la substitution.</p>
     </div>
     <div class="failure">
-      <p class="n">03 Â· LA SESSION PERDUE</p>
+      <p class="n">03 · LA SESSION PERDUE</p>
       <h3>Ce qu'un agent a appris meurt avec son contexte</h3>
-      <p>la session suivante le redÃ©couvre â€” ou travaille sur un rÃ©sumÃ© pÃ©rimÃ©, avec assurance.</p>
+      <p>la session suivante le redécouvre — ou travaille sur un résumé périmé, avec assurance.</p>
     </div>
     <div class="failure">
-      <p class="n">04 Â· LE BUS DE MESSAGES</p>
-      <h3>L'humain porte les instructions Ã  la main</h3>
-      <p>d'un agent au suivant, toute la journÃ©e, ce qui est trÃ¨s exactement ce que les agents devaient faire cesser.</p>
+      <p class="n">04 · LE BUS DE MESSAGES</p>
+      <h3>L'humain porte les instructions à la main</h3>
+      <p>d'un agent au suivant, toute la journée, ce qui est très exactement ce que les agents devaient faire cesser.</p>
     </div>
   </div>
 </section>
@@ -540,32 +540,32 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <hr class="rule">
 
 <section id="model" class="wrap">
-  <h2>Un schÃ©ma Ã  lire pour ses points d'arrÃªt</h2>
-  <p>Un schÃ©ma d'agents montre d'habitude qui appelle qui. Celui-ci montre oÃ¹ une mission peut Ãªtre refusÃ©e : <strong>sept conditions avant qu'une session dÃ©marre, un tÃ©moin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie dÃ©cidÃ©s par la seule durabilitÃ©, et un registre qui renvoie chaque incident dans le contrat suivant.</strong></p>
+  <h2>Un schéma à lire pour ses points d'arrêt</h2>
+  <p>Un schéma d'agents montre d'habitude qui appelle qui. Celui-ci montre où une mission peut être refusée : <strong>sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant.</strong></p>
   <div class="canvas-frame">
     <a href="../brand/lifecycle-canvas.fr.html">
-      <img src="../brand/lifecycle-canvas.fr.png" alt="Le modÃ¨le de fonctionnement de Guildwork : Product Owner, architecte en chef, contrat d'issue, lanceur, worktree, siÃ¨ges d'exÃ©cution, pull request, tÃ©moin, porte, cycle de session, outil de clÃ´ture, et la boucle du registre de constats.">
+      <img src="../brand/lifecycle-canvas.fr.png" alt="Le modèle de fonctionnement de Guildwork : Product Owner, architecte en chef, contrat d'issue, lanceur, worktree, sièges d'exécution, pull request, témoin, porte, cycle de session, outil de clôture, et la boucle du registre de constats.">
     </a>
   </div>
-  <p class="caption">DessinÃ© sur <em>Lantern</em>, le projet fictif qui sert de dÃ©monstration au pack â€” le mÃ©canisme, les conditions et les codes de sortie, eux, sont les vrais. <a href="../brand/lifecycle-canvas.fr.html">Ouvrir la version interactive</a> et survoler un bloc pour isoler son chemin.</p>
+  <p class="caption">Dessiné sur <em>Lantern</em>, le projet fictif qui sert de démonstration au pack — le mécanisme, les conditions et les codes de sortie, eux, sont les vrais. <a href="../brand/lifecycle-canvas.fr.html">Ouvrir la version interactive</a> et survoler un bloc pour isoler son chemin.</p>
 </section>
 
 <hr class="rule">
 
 <section id="refusal" class="wrap">
-  <h2>Ã€ quoi ressemble un refus</h2>
-  <p>Le lanceur a lu le contrat #118, rÃ©cupÃ©rÃ© la gouvernance au commit sur lequel la mission allait tourner, et s'est arrÃªtÃ© avant de crÃ©er quoi que ce soit. Trois jours plus tÃ´t, une tentative sur le mÃªme lot avait Ã©tÃ© refusÃ©e en relecture ; sa branche avait survÃ©cu sur le dÃ©pÃ´t distant parce que personne n'en avait Ã©crit la disposition. <strong>Le silence, c'est des dÃ©bris â€” et le lanceur les a vus avant qu'un second scribe n'existe.</strong></p>
+  <h2>À quoi ressemble un refus</h2>
+  <p>Le lanceur a lu le contrat #118, récupéré la gouvernance au commit sur lequel la mission allait tourner, et s'est arrêté avant de créer quoi que ce soit. Trois jours plus tôt, une tentative sur le même lot avait été refusée en relecture ; sa branche avait survécu sur le dépôt distant parce que personne n'en avait écrit la disposition. <strong>Le silence, c'est des débris — et le lanceur les a vus avant qu'un second scribe n'existe.</strong></p>
   <div class="term">
-    <div class="term-head"><i></i><i></i><i></i><span>mission_launcher.py 118 --dry-run Â· Lantern, poste de travail</span></div>
+    <div class="term-head"><i></i><i></i><i></i><span>mission_launcher.py 118 --dry-run · Lantern, poste de travail</span></div>
     <pre><span class="cmd">C:\repos\lantern\.venv\Scripts\python.exe C:\repos\lantern\tools\mission_launcher.py 118 --dry-run</span>
 
-Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last reading while the device bridge reconnects
+Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading while the device bridge reconnects
   <span class="dim">https://github.com/lantern-workshop/lantern/issues/118</span>
   primary checkout: C:\repos\lantern
   governance policy: 3f9c2d1a7b8e4c05d6f1a2b3c4d5e6f708192a3b <span class="dim">(origin/develop, fetched at launch)</span>
-  run: launch â€” creates the branch and the worktree the contract declares
+  run: launch — creates the branch and the worktree the contract declares
 
-<span class="ref">REFUSED â€” 1 refusal(s). Nothing was started.</span>
+<span class="ref">REFUSED — 1 refusal(s). Nothing was started.</span>
 
   <span class="cond">condition 4: a second writer would be created</span>
       branch 'feature/dashboard-stale-reading' already exists on origin -- a writer
@@ -573,47 +573,47 @@ Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last re
       it again locally with 'git worktree add -b' would put a second, diverging line
       on the same name; under 'one writer' that is the two-writer failure itself</pre>
   </div>
-  <p class="caption">La transcription complÃ¨te â€” le refus, la disposition, le passage qui a rÃ©ussi, et ce que <code>--list</code> montrait quarante minutes plus tard â€” est <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/examples/lantern/launcher-dry-run.md">dans le pack</a>. Le numÃ©ro doublÃ© du bandeau est rÃ©el, connu et cosmÃ©tique : le titre porte son propre numÃ©ro par convention. La sortie de l'outil est en anglais, comme l'outil.</p>
+  <p class="caption">La transcription complète — le refus, la disposition, le passage qui a réussi, et ce que <code>--list</code> montrait quarante minutes plus tard — est <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/examples/lantern/launcher-dry-run.md">dans le pack</a>. Le numéro doublé du bandeau est réel, connu et cosmétique : le titre porte son propre numéro par convention. La sortie de l'outil est en anglais, comme l'outil.</p>
 </section>
 
 <hr class="rule">
 
 <section id="board" class="wrap">
   <h2>Le tableau, lu pour ce qu'il vous doit</h2>
-  <p>Vingt-quatre merges par jour ne se lisent pas dans une liste d'issues. Le Product Owner ouvre une seule page Ã  la place â€” celle que le pack livre sous <code>templates/board/</code> â€” et elle rÃ©pond Ã  trois questions, dans cet ordre, en refusant de deviner la rÃ©ponse Ã  chacune.</p>
+  <p>Vingt-quatre merges par jour ne se lisent pas dans une liste d'issues. Le Product Owner ouvre une seule page à la place — celle que le pack livre sous <code>templates/board/</code> — et elle répond à trois questions, dans cet ordre, en refusant de deviner la réponse à chacune.</p>
   <div class="scenes">
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Ce qu'on vous doit</span></p><h3>Ce que vous seul pouvez trancher â€” et qui est vraiment arrivÃ©</h3><p>Une porte rÃ©servÃ©e n'est pas une attente. <code>gate:po</code> dit <em>qui</em> tranchera ; il ne dit pas que la dÃ©cision est sur votre bureau. Le tableau sÃ©pare les deux et ne liste que les contrats dont la livraison est ouverte et porte la ligne <code>Mission: #N delivers</code>.</p><p class="rule">Si un contrat n'est pas dans cette liste, rien ne vous attend. C'est la phrase que cette page existe pour rendre vraie.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Ce qui avance sans vous</span></p><h3>Ce que l'architecte fusionne sur la parole du tÃ©moin</h3><p>Les livraisons dont la porte est dÃ©lÃ©guÃ©e passent sans votre signature. Elles sont montrÃ©es quand mÃªme : une dÃ©lÃ©gation qu'on ne voit pas n'est pas une dÃ©lÃ©gation, c'est un angle mort. Vous les regardez passer, vous n'avez rien Ã  en faire.</p><p class="rule">Visible et actionnable ne sont pas la mÃªme chose, et le tableau dit lequel est lequel.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Tout ce qui n'entre dans aucune rÃ¨gle, comptÃ© sur la face du tableau</h3><p>Une pull request sans ligne <code>Mission:</code>. Une livraison qui nomme une mission dÃ©jÃ  close. Un lot sans Ã©tiquette <code>chantier:</code>. Un tableau qui range discrÃ¨tement ces cas-lÃ  vous raconte une histoire ; celui-ci les met dans un compteur qu'on ne peut pas manquer.</p><p class="rule">Ces compteurs sont la mesure de ce que la gouvernance ne fait pas encore. Ils sont faits pour afficher zÃ©ro.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Ce qu'on vous doit</span></p><h3>Ce que vous seul pouvez trancher — et qui est vraiment arrivé</h3><p>Une porte réservée n'est pas une attente. <code>gate:po</code> dit <em>qui</em> tranchera ; il ne dit pas que la décision est sur votre bureau. Le tableau sépare les deux et ne liste que les contrats dont la livraison est ouverte et porte la ligne <code>Mission: #N delivers</code>.</p><p class="rule">Si un contrat n'est pas dans cette liste, rien ne vous attend. C'est la phrase que cette page existe pour rendre vraie.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Ce qui avance sans vous</span></p><h3>Ce que l'architecte fusionne sur la parole du témoin</h3><p>Les livraisons dont la porte est déléguée passent sans votre signature. Elles sont montrées quand même : une délégation qu'on ne voit pas n'est pas une délégation, c'est un angle mort. Vous les regardez passer, vous n'avez rien à en faire.</p><p class="rule">Visible et actionnable ne sont pas la même chose, et le tableau dit lequel est lequel.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Tout ce qui n'entre dans aucune règle, compté sur la face du tableau</h3><p>Une pull request sans ligne <code>Mission:</code>. Une livraison qui nomme une mission déjà close. Un lot sans étiquette <code>chantier:</code>. Un tableau qui range discrètement ces cas-là vous raconte une histoire ; celui-ci les met dans un compteur qu'on ne peut pas manquer.</p><p class="rule">Ces compteurs sont la mesure de ce que la gouvernance ne fait pas encore. Ils sont faits pour afficher zéro.</p></div>
   </div>
   <div class="board-frame">
     <a href="../demo/board/">
-      <img src="../brand/board-demo-dark.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la faÃ§on dont il a Ã©tÃ© lu, et une carte de dÃ©cision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait.">
+      <img src="../brand/board-demo.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait.">
     </a>
   </div>
-  <p class="caption">Le tableau tel qu'il tourne, sur l'exemple fictif Lantern â€” <a href="../demo/board/">ouvrir la dÃ©monstration</a>. Elle est figÃ©e et le dit sur sa face : les commandes sont montrÃ©es, pas actives. Ce que le pack livre aujourd'hui, c'est le <a href="demo/board/">lecteur, traduit en franÃ§ais</a>, sous <code>templates/board/</code> ; la lecture de l'hÃ´te et le chemin de dÃ©cision sont plus rÃ©cents et rejoindront le pack quand ils auront cessÃ© de bouger. La dÃ©monstration ci-dessus est en anglais, comme le pack.</p>
-  <p class="punch"><strong>Pour qui n'Ã©crit pas le code, c'est la diffÃ©rence entre Â« on utilise l'IA Â» et Â« on sait ce que l'IA a fait Â».</strong> Pas une courbe de productivitÃ© â€” la liste de ce qui est dÃ», Ã  qui, et de ce que rien ne justifie encore.</p>
+  <p class="caption">Le tableau tel qu'il tourne, sur l'exemple fictif Lantern — <a href="../demo/board/">ouvrir la démonstration</a>. Elle est figée et le dit sur sa face : les commandes sont montrées, pas actives. Ce que le pack livre aujourd'hui, c'est le <a href="demo/board/">lecteur, traduit en français</a>, sous <code>templates/board/</code> ; la lecture de l'hôte et le chemin de décision sont plus récents et rejoindront le pack quand ils auront cessé de bouger. La démonstration ci-dessus est en anglais, comme le pack.</p>
+  <p class="punch"><strong>Pour qui n'écrit pas le code, c'est la différence entre « on utilise l'IA » et « on sait ce que l'IA a fait ».</strong> Pas une courbe de productivité — la liste de ce qui est dû, à qui, et de ce que rien ne justifie encore.</p>
 </section>
 
 <hr class="rule">
 
 <section id="numbers" class="wrap">
-  <h2>Sur quoi il a tournÃ©</h2>
-  <p>Une application de bureau Windows en Python, avec une suite de 12 100 tests. Un seul humain â€” le Product Owner â€” qui dÃ©tient le matÃ©riel, le verdict produit et le merge vers la branche de release. Chaque ligne de code, chaque test et chaque document de gouvernance depuis dÃ©but aoÃ»t 2026 a Ã©tÃ© Ã©crit par des siÃ¨ges IA, sous ces contrats.</p>
+  <h2>Sur quoi il a tourné</h2>
+  <p>Une application de bureau Windows en Python, avec une suite de 12 100 tests. Un seul humain — le Product Owner — qui détient le matériel, le verdict produit et le merge vers la branche de release. Chaque ligne de code, chaque test et chaque document de gouvernance depuis début août 2026 a été écrit par des sièges IA, sous ces contrats.</p>
   <div class="figs">
     <div class="fig"><b>278</b><span>contrats de mission ouverts en onze jours</span></div>
-    <div class="fig"><b>262</b><span>pull requests fusionnÃ©es sur les mÃªmes onze jours</span></div>
-    <div class="fig"><b>485</b><span>sessions closes avec une entrÃ©e de journal, en 34 jours</span></div>
-    <div class="fig"><b>14</b><span>livraisons refusÃ©es ou remplacÃ©es, sur 517 closes</span></div>
-    <div class="fig"><b>47</b><span>incidents, chacun ayant payÃ© une rÃ¨gle</span></div>
+    <div class="fig"><b>262</b><span>pull requests fusionnées sur les mêmes onze jours</span></div>
+    <div class="fig"><b>485</b><span>sessions closes avec une entrée de journal, en 34 jours</span></div>
+    <div class="fig"><b>14</b><span>livraisons refusées ou remplacées, sur 517 closes</span></div>
+    <div class="fig"><b>47</b><span>incidents, chacun ayant payé une règle</span></div>
   </div>
-  <p class="sober"><strong>La lecture sobre, parce que c'est elle qui rend la premiÃ¨re crÃ©dible.</strong> La mÃªme pÃ©riode a produit quarante-sept incidents assez sÃ©rieux pour mÃ©riter une rÃ¨gle, la plupart concentrÃ©s sur une seule semaine. La plupart des siÃ¨ges que le lanceur sait dÃ©marrer sont <code>unknown</code> sur la propriÃ©tÃ© matÃ©rielle que la file aimerait le plus voir remplie. Aucun des deux harnais en ligne de commande n'impose la lecture seule depuis ses propres options, et la gouvernance le dit au lieu de faire semblant. Un systÃ¨me capable de dire <em>je ne sais pas</em> lÃ  oÃ¹ il ne sait pas est le seul dont le <em>oui</em> vaille quelque chose.</p>
+  <p class="sober"><strong>La lecture sobre, parce que c'est elle qui rend la première crédible.</strong> La même période a produit quarante-sept incidents assez sérieux pour mériter une règle, la plupart concentrés sur une seule semaine. La plupart des sièges que le lanceur sait démarrer sont <code>unknown</code> sur la propriété matérielle que la file aimerait le plus voir remplie. Aucun des deux harnais en ligne de commande n'impose la lecture seule depuis ses propres options, et la gouvernance le dit au lieu de faire semblant. Un système capable de dire <em>je ne sais pas</em> là où il ne sait pas est le seul dont le <em>oui</em> vaille quelque chose.</p>
 
-  <div class="tl-wrap" data-lang="fr-FR" data-merges="merges" data-rules="entrÃ©es du registre">
-    <div class="tl-head"><h3>Cinq semaines, un dÃ©pÃ´t, un humain</h3>
-      <div class="tl-legend"><span><i style="background:#C9801C"></i>pull requests fusionnÃ©es, par jour</span><span><i class="line" style="background:#3F7FD8"></i>entrÃ©es du registre de constats, par jour</span></div></div>
+  <div class="tl-wrap" data-lang="fr-FR" data-merges="merges" data-rules="entrées du registre">
+    <div class="tl-head"><h3>Cinq semaines, un dépôt, un humain</h3>
+      <div class="tl-legend"><span><i style="background:#C9801C"></i>pull requests fusionnées, par jour</span><span><i class="line" style="background:#3F7FD8"></i>entrées du registre de constats, par jour</span></div></div>
     <div class="tl-scroll"><svg class="tl" viewBox="0 0 1080 300" role="img" aria-labelledby="tl-title" preserveAspectRatio="xMidYMid meet">
-<title id="tl-title">Merges par jour et entrÃ©es du registre, 1er aoÃ»t â€“ 5 septembre 2026</title>
+<title id="tl-title">Merges par jour et entrées du registre, 1er août – 5 septembre 2026</title>
 <line x1="44" x2="1064" y1="256.0" y2="256.0" stroke="#1D2B44" stroke-width="1"/>
 <text x="36" y="260.0" text-anchor="end" class="tk">0</text>
 <line x1="44" x2="1064" y1="210.0" y2="210.0" stroke="#1D2B44" stroke-width="1"/>
@@ -627,7 +627,7 @@ Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last re
 <line x1="44" x2="1064" y1="26.0" y2="26.0" stroke="#1D2B44" stroke-width="1"/>
 <text x="36" y="30.0" text-anchor="end" class="tk">50</text>
 <line x1="752.3" x2="752.3" y1="12" y2="256.0" stroke="#9FAAC0" stroke-width="1" stroke-dasharray="3 4"/>
-<text x="758.3" y="22" class="mk">26 aoÃ»t â€” le formulaire de mission est en service</text>
+<text x="758.3" y="22" class="mk">26 août — le formulaire de mission est en service</text>
 <path class="bar" d="M49.2,256.0 v-46.6 q0,-4 4,-4 h10 q4,0 4,4 v46.6 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
 <path class="bar" d="M77.5,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
 <path class="bar" d="M105.8,256.0 v-106.4 q0,-4 4,-4 h10 q4,0 4,4 v106.4 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
@@ -678,11 +678,11 @@ Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last re
 <text x="823.2" y="91.6" text-anchor="middle" class="lb">34</text>
 <text x="1049.8" y="59.4" text-anchor="middle" class="lb">41</text>
 <text x="861.5" y="80.4" text-anchor="start" class="lb">36</text>
-<text x="58.2" y="274" text-anchor="middle" class="tk">1er aoÃ»t</text>
+<text x="58.2" y="274" text-anchor="middle" class="tk">1er août</text>
 <text x="256.5" y="274" text-anchor="middle" class="tk">8</text>
 <text x="454.8" y="274" text-anchor="middle" class="tk">15</text>
 <text x="653.2" y="274" text-anchor="middle" class="tk">22</text>
-<text x="766.5" y="274" text-anchor="middle" class="tk">26 aoÃ»t</text>
+<text x="766.5" y="274" text-anchor="middle" class="tk">26 août</text>
 <text x="936.5" y="274" text-anchor="middle" class="tk">1er sept.</text>
 <text x="1049.8" y="274" text-anchor="middle" class="tk">5</text>
 <rect class="hit" x="44.0" y="26" width="28.3" height="230" fill="transparent" data-i="0"/>
@@ -723,115 +723,115 @@ Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last re
 <rect class="hit" x="1035.7" y="26" width="28.3" height="230" fill="transparent" data-i="35"/>
 </svg></div>
     <div class="tl-tip"></div>
-    <details class="tl-table"><summary>Les donnÃ©es, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrÃ©es</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>â€”</td></tr><tr><td>02/08</td><td>20</td><td>â€”</td></tr><tr><td>03/08</td><td>24</td><td>â€”</td></tr><tr><td>04/08</td><td>17</td><td>â€”</td></tr><tr><td>05/08</td><td>20</td><td>â€”</td></tr><tr><td>06/08</td><td>13</td><td>â€”</td></tr><tr><td>07/08</td><td>14</td><td>â€”</td></tr><tr><td>08/08</td><td>8</td><td>â€”</td></tr><tr><td>09/08</td><td>5</td><td>â€”</td></tr><tr><td>10/08</td><td>2</td><td>â€”</td></tr><tr><td>11/08</td><td>6</td><td>â€”</td></tr><tr><td>12/08</td><td>1</td><td>â€”</td></tr><tr><td>13/08</td><td>7</td><td>â€”</td></tr><tr><td>14/08</td><td>2</td><td>â€”</td></tr><tr><td>15/08</td><td>2</td><td>â€”</td></tr><tr><td>16/08</td><td>6</td><td>â€”</td></tr><tr><td>17/08</td><td>16</td><td>â€”</td></tr><tr><td>18/08</td><td>4</td><td>â€”</td></tr><tr><td>19/08</td><td>9</td><td>â€”</td></tr><tr><td>20/08</td><td>12</td><td>â€”</td></tr><tr><td>21/08</td><td>15</td><td>â€”</td></tr><tr><td>22/08</td><td>7</td><td>â€”</td></tr><tr><td>23/08</td><td>2</td><td>â€”</td></tr><tr><td>24/08</td><td>4</td><td>â€”</td></tr><tr><td>25/08</td><td>14</td><td>â€”</td></tr><tr><td>26/08</td><td>14</td><td>0</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>25</td><td>6</td></tr></tbody></table></details>
+    <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>—</td></tr><tr><td>02/08</td><td>20</td><td>—</td></tr><tr><td>03/08</td><td>24</td><td>—</td></tr><tr><td>04/08</td><td>17</td><td>—</td></tr><tr><td>05/08</td><td>20</td><td>—</td></tr><tr><td>06/08</td><td>13</td><td>—</td></tr><tr><td>07/08</td><td>14</td><td>—</td></tr><tr><td>08/08</td><td>8</td><td>—</td></tr><tr><td>09/08</td><td>5</td><td>—</td></tr><tr><td>10/08</td><td>2</td><td>—</td></tr><tr><td>11/08</td><td>6</td><td>—</td></tr><tr><td>12/08</td><td>1</td><td>—</td></tr><tr><td>13/08</td><td>7</td><td>—</td></tr><tr><td>14/08</td><td>2</td><td>—</td></tr><tr><td>15/08</td><td>2</td><td>—</td></tr><tr><td>16/08</td><td>6</td><td>—</td></tr><tr><td>17/08</td><td>16</td><td>—</td></tr><tr><td>18/08</td><td>4</td><td>—</td></tr><tr><td>19/08</td><td>9</td><td>—</td></tr><tr><td>20/08</td><td>12</td><td>—</td></tr><tr><td>21/08</td><td>15</td><td>—</td></tr><tr><td>22/08</td><td>7</td><td>—</td></tr><tr><td>23/08</td><td>2</td><td>—</td></tr><tr><td>24/08</td><td>4</td><td>—</td></tr><tr><td>25/08</td><td>14</td><td>—</td></tr><tr><td>26/08</td><td>14</td><td>0</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>25</td><td>6</td></tr></tbody></table></details>
   </div>
   <div class="readings">
-    <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours â€” moins de dix par jour, l'humain portant les instructions d'un siÃ¨ge Ã  l'autre. AprÃ¨s, 262 en onze â€” vingt-quatre par jour. Les siÃ¨ges ont changÃ© en mÃªme temps que la gouvernance ; le doublement n'est donc pas Ã  elle seule. Ce qui est Ã  elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>
-    <p><strong>Le coÃ»t de l'apprentissage.</strong> Chaque entrÃ©e du registre est une rÃ¨gle qu'un constat a payÃ©e. La premiÃ¨re semaine des contrats, l'Ã©quipe en a Ã©crit une pour deux merges ; la deuxiÃ¨me, une pour trois, au mÃªme rythme de merges. Avant le 26 aoÃ»t, les constats n'Ã©taient pas comptÃ©s du tout â€” la premiÃ¨re chose que le systÃ¨me a faite, c'est les rendre visibles.</p>
+    <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours — moins de dix par jour, l'humain portant les instructions d'un siège à l'autre. Après, 262 en onze — vingt-quatre par jour. Les sièges ont changé en même temps que la gouvernance ; le doublement n'est donc pas à elle seule. Ce qui est à elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>
+    <p><strong>Le coût de l'apprentissage.</strong> Chaque entrée du registre est une règle qu'un constat a payée. La première semaine des contrats, l'équipe en a écrit une pour deux merges ; la deuxième, une pour trois, au même rythme de merges. Avant le 26 août, les constats n'étaient pas comptés du tout — la première chose que le système a faite, c'est les rendre visibles.</p>
   </div>
 </section>
 
 <hr class="rule">
 
 <section id="kit" class="wrap">
-  <h2>Quinze documents, numÃ©rotÃ©s dans l'ordre de lecture</h2>
-  <p>Commencez par <code>00</code> pour la forme, et <code>12</code> pour la raison de cette forme. Si ces deux-lÃ  en mÃ©ritent un troisiÃ¨me, lisez <code>05</code>.</p>
+  <h2>Quinze documents, numérotés dans l'ordre de lecture</h2>
+  <p>Commencez par <code>00</code> pour la forme, et <code>12</code> pour la raison de cette forme. Si ces deux-là en méritent un troisième, lisez <code>05</code>.</p>
   <div class="docs">
-    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/00-operating-model.md"><code>00</code><span>Le modÃ¨le de fonctionnement</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/00-operating-model.md"><code>00</code><span>Le modèle de fonctionnement</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/01-mission-contract.md"><code>01</code><span>Le contrat de mission</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/02-delivery-contract.md"><code>02</code><span>Le contrat de livraison</span></a>
-    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/03-label-taxonomy.md"><code>03</code><span>La taxonomie d'Ã©tiquettes</span></a>
-    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/04-capabilities-and-routing.md"><code>04</code><span>CapacitÃ©s et routage</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/03-label-taxonomy.md"><code>03</code><span>La taxonomie d'étiquettes</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/04-capabilities-and-routing.md"><code>04</code><span>Capacités et routage</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/05-launcher.md"><code>05</code><span>Le lanceur</span></a>
-    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/06-session-cycle.md"><code>06</code><span>EntrÃ©e et sortie de session</span></a>
-    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/07-closeout.md"><code>07</code><span>L'outil de clÃ´ture</span></a>
-    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/08-continuity.md"><code>08</code><span>La continuitÃ©</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/06-session-cycle.md"><code>06</code><span>Entrée et sortie de session</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/07-closeout.md"><code>07</code><span>L'outil de clôture</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/08-continuity.md"><code>08</code><span>La continuité</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/09-findings-register.md"><code>09</code><span>Le registre de constats</span></a>
-    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/10-effort-and-execution-parameters.md"><code>10</code><span>Effort et paramÃ¨tres d'exÃ©cution</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/10-effort-and-execution-parameters.md"><code>10</code><span>Effort et paramètres d'exécution</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/11-changelog-fragments.md"><code>11</code><span>Les fragments de changelog</span></a>
-    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/12-incidents.md"><code>12</code><span>Les incidents â€” et la rÃ¨gle que chacun a payÃ©e</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/12-incidents.md"><code>12</code><span>Les incidents — et la règle que chacun a payée</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/13-by-the-numbers.md"><code>13</code><span>Les chiffres</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/14-adoption-path.md"><code>14</code><span>Le chemin d'adoption</span></a>
   </div>
-  <p class="caption">Le dÃ©pÃ´t porte aussi les fichiers prÃªts Ã  poser : le formulaire d'issue, le gabarit de pull request, la recette d'Ã©tiquettes, huit profils de rÃ´le, le format de journal, le manifeste des chemins rÃ©gÃ©nÃ©rables, le registre de constats, et une mission fictive suivie de bout en bout.</p>
-  <p class="note">Les quinze documents sont en anglais et le restent : c'est la langue de travail du pack, et une rÃ¨gle qui existe en deux versions finit par exister en deux versions diffÃ©rentes.</p>
+  <p class="caption">Le dépôt porte aussi les fichiers prêts à poser : le formulaire d'issue, le gabarit de pull request, la recette d'étiquettes, huit profils de rôle, le format de journal, le manifeste des chemins régénérables, le registre de constats, et une mission fictive suivie de bout en bout.</p>
+  <p class="note">Les quinze documents sont en anglais et le restent : c'est la langue de travail du pack, et une règle qui existe en deux versions finit par exister en deux versions différentes.</p>
 </section>
 
 <hr class="rule">
 
 <section id="work" class="wrap">
-  <h2>Ce que donne l'adoption, accompagnÃ©e</h2>
-  <p>Les trois outils sont spÃ©cifiÃ©s assez prÃ©cisÃ©ment pour Ãªtre auditÃ©s ou rÃ©implÃ©mentÃ©s, et ils ne sont pas livrÃ©s. Installer tout ceci sur un dÃ©pÃ´t, adapter le vocabulaire aux siÃ¨ges et aux chantiers d'une Ã©quipe, mesurer la table des capacitÃ©s sur ses machines, Ã©crire les outils contre ses harnais, et mener les deux premiÃ¨res semaines de missions Ã  ses cÃ´tÃ©s â€” c'est Ã§a, le travail. Et c'est le travail que je fais.</p>
-  <div class="pricebar" aria-label="Les trois tarifs"><a href="#off-audit"><span>Audit<i>2 jours</i></span><b>2 500 â‚¬</b></a><a href="#off-install"><span>Installation<i>2 semaines</i></span><b>12 000 â‚¬</b></a><a href="#off-seat"><span>Architecte<i>au mois</i></span><b>3 500 â‚¬</b></a></div>
+  <h2>Ce que donne l'adoption, accompagnée</h2>
+  <p>Les trois outils sont spécifiés assez précisément pour être audités ou réimplémentés, et ils ne sont pas livrés. Installer tout ceci sur un dépôt, adapter le vocabulaire aux sièges et aux chantiers d'une équipe, mesurer la table des capacités sur ses machines, écrire les outils contre ses harnais, et mener les deux premières semaines de missions à ses côtés — c'est ça, le travail. Et c'est le travail que je fais.</p>
+  <div class="pricebar" aria-label="Les trois tarifs"><a href="#off-audit"><span>Audit<i>2 jours</i></span><b>2 500 €</b></a><a href="#off-install"><span>Installation<i>2 semaines</i></span><b>12 000 €</b></a><a href="#off-seat"><span>Architecte<i>au mois</i></span><b>3 500 €</b></a></div>
   <div class="offers">
     <div class="offer lead" id="off-audit">
       <p class="tag">Commencer ici</p>
       <h3>Audit de gouvernance</h3>
-      <p>Deux jours. Je lis le dÃ©pÃ´t, le tableau et une semaine de sessions d'agents, et j'Ã©cris ce qui va casser avant que Ã§a casse â€” puis ce que vous pourriez faire tourner en plus, une fois que Ã§a ne casse plus.</p>
+      <p>Deux jours. Je lis le dépôt, le tableau et une semaine de sessions d'agents, et j'écris ce qui va casser avant que ça casse — puis ce que vous pourriez faire tourner en plus, une fois que ça ne casse plus.</p>
       <ul>
-        <li>la table des capacitÃ©s de vos siÃ¨ges, mesurÃ©e et non supposÃ©e</li>
-        <li>les incidents auxquels votre installation est exposÃ©e aujourd'hui, nommÃ©s</li>
-        <li>un passage Ã  blanc des sept conditions sur votre tableau existant</li>
-        <li>les trois corrections Ã  faire avant toutes les autres, par ordre de dÃ©gÃ¢t Ã©vitÃ©</li>
-        <li>ce que l'installation vous ferait gagner, chiffrÃ© â€” et ce qu'elle ne rÃ©glera pas</li>
-        <li>un rapport Ã©crit que votre Ã©quipe garde, quelle que soit la suite</li>
+        <li>la table des capacités de vos sièges, mesurée et non supposée</li>
+        <li>les incidents auxquels votre installation est exposée aujourd'hui, nommés</li>
+        <li>un passage à blanc des sept conditions sur votre tableau existant</li>
+        <li>les trois corrections à faire avant toutes les autres, par ordre de dégât évité</li>
+        <li>ce que l'installation vous ferait gagner, chiffré — et ce qu'elle ne réglera pas</li>
+        <li>un rapport écrit que votre équipe garde, quelle que soit la suite</li>
       </ul>
-      <p class="price">2 500 â‚¬ Â· prix ferme<small>DÃ©duit de l'installation si vous continuez.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Audit%20de%20gouvernance">RÃ©server 30 minutes<span>â†’</span></a>
+      <p class="price">2 500 € · prix ferme<small>Déduit de l'installation si vous continuez.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Audit%20de%20gouvernance">Réserver 30 minutes<span>→</span></a>
     </div>
     <div class="offer" id="off-install">
       <p class="tag">L'installation</p>
-      <h3>Gouvernance installÃ©e</h3>
-      <p>Deux semaines. Les contrats, le vocabulaire et les trois outils, Ã©crits contre vos harnais et votre tableau â€” puis les premiÃ¨res missions menÃ©es avec votre Ã©quipe, pas Ã  sa place, jusqu'Ã  ce que les rÃ¨gles soient les siennes.</p>
+      <h3>Gouvernance installée</h3>
+      <p>Deux semaines. Les contrats, le vocabulaire et les trois outils, écrits contre vos harnais et votre tableau — puis les premières missions menées avec votre équipe, pas à sa place, jusqu'à ce que les règles soient les siennes.</p>
       <ul>
-        <li>formulaire d'issue, gabarit de livraison, taxonomie d'Ã©tiquettes, profils de rÃ´le</li>
-        <li>lanceur, cycle de session et clÃ´ture, <em>Ã©crits contre vos CLI</em> â€” le code vous appartient</li>
-        <li>la table des capacitÃ©s, mesurÃ©e sur vos machines</li>
-        <li>le tableau de bord des chantiers, branchÃ© sur votre dÃ©pÃ´t</li>
-        <li>deux semaines de missions rÃ©elles menÃ©es <em>avec</em> vos ingÃ©nieurs â€” la formation, c'est le travail lui-mÃªme, pas un support de cours</li>
-        <li>le registre de constats ouvert le premier jour, arbitrÃ© avec vous jusqu'au dernier</li>
+        <li>formulaire d'issue, gabarit de livraison, taxonomie d'étiquettes, profils de rôle</li>
+        <li>lanceur, cycle de session et clôture, <em>écrits contre vos CLI</em> — le code vous appartient</li>
+        <li>la table des capacités, mesurée sur vos machines</li>
+        <li>le tableau de bord des chantiers, branché sur votre dépôt</li>
+        <li>deux semaines de missions réelles menées <em>avec</em> vos ingénieurs — la formation, c'est le travail lui-même, pas un support de cours</li>
+        <li>le registre de constats ouvert le premier jour, arbitré avec vous jusqu'au dernier</li>
       </ul>
-      <p class="price">12 000 â‚¬ Â· prix ferme<small>Pour un dÃ©pÃ´t et jusqu'Ã  quatre siÃ¨ges ; au-delÃ , l'audit chiffre. Ã€ distance, ou sur site en ÃŽle-de-France.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Gouvernance%20install%C3%A9e">RÃ©server 30 minutes<span>â†’</span></a>
+      <p class="price">12 000 € · prix ferme<small>Pour un dépôt et jusqu'à quatre sièges ; au-delà, l'audit chiffre. À distance, ou sur site en Île-de-France.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Gouvernance%20install%C3%A9e">Réserver 30 minutes<span>→</span></a>
     </div>
     <div class="offer" id="off-seat">
       <p class="tag">Ensuite</p>
-      <h3>SiÃ¨ge d'architecte permanent</h3>
-      <p>Trois jours par mois. Le registre est arbitrÃ©, les rÃ¨gles suivent vos incidents, et la gouvernance tient le rythme des harnais Ã  mesure qu'ils changent â€” vous n'hÃ©ritez pas d'un systÃ¨me figÃ© le jour oÃ¹ je pars.</p>
+      <h3>Siège d'architecte permanent</h3>
+      <p>Trois jours par mois. Le registre est arbitré, les règles suivent vos incidents, et la gouvernance tient le rythme des harnais à mesure qu'ils changent — vous n'héritez pas d'un système figé le jour où je pars.</p>
       <ul>
-        <li>le registre de constats revu Ã  chaque passage sur le tableau</li>
-        <li>contrats et routage tenus Ã  jour quand les siÃ¨ges changent</li>
-        <li>les outils suivis quand vos CLI publient une version qui casse une hypothÃ¨se</li>
+        <li>le registre de constats revu à chaque passage sur le tableau</li>
+        <li>contrats et routage tenus à jour quand les sièges changent</li>
+        <li>les outils suivis quand vos CLI publient une version qui casse une hypothèse</li>
         <li>vos nouveaux arrivants pris en main sur les contrats en place</li>
-        <li>le tableau de bord tenu Ã  jour quand vos chantiers changent de nom ou de pÃ©rimÃ¨tre</li>
-        <li>une lecture Ã©crite, chaque mois, de ce que disent les chiffres</li>
+        <li>le tableau de bord tenu à jour quand vos chantiers changent de nom ou de périmètre</li>
+        <li>une lecture écrite, chaque mois, de ce que disent les chiffres</li>
       </ul>
-      <p class="price">3 500 â‚¬ / mois<small>Trois mois minimum, puis au mois. JournÃ©e supplÃ©mentaire : 1 200 â‚¬.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Si%C3%A8ge%20d%27architecte%20permanent">RÃ©server 30 minutes<span>â†’</span></a>
+      <p class="price">3 500 € / mois<small>Trois mois minimum, puis au mois. Journée supplémentaire : 1 200 €.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Si%C3%A8ge%20d%27architecte%20permanent">Réserver 30 minutes<span>→</span></a>
     </div>
   </div>
 
-  <p class="note">Les trente minutes sont gratuites et sans engagement â€” on regarde votre installation, et vous repartez avec un avis mÃªme si vous n'allez pas plus loin.</p>
+  <p class="note">Les trente minutes sont gratuites et sans engagement — on regarde votre installation, et vous repartez avec un avis même si vous n'allez pas plus loin.</p>
 
   <div class="vs">
     <div class="repo">
-      <p class="tag">Le dÃ©pÃ´t seul</p>
+      <p class="tag">Le dépôt seul</p>
       <ul>
-        <li>quinze documents, le formulaire d'issue, le gabarit de pull request, la recette d'Ã©tiquettes, huit profils de rÃ´le, le format de journal</li>
-        <li>la <em>spÃ©cification</em> du lanceur, du cycle de session et de l'outil de clÃ´ture â€” assez prÃ©cise pour Ãªtre auditÃ©e, et non livrÃ©e</li>
-        <li>les incidents, anonymisÃ©s, avec la rÃ¨gle que chacun a payÃ©e</li>
+        <li>quinze documents, le formulaire d'issue, le gabarit de pull request, la recette d'étiquettes, huit profils de rôle, le format de journal</li>
+        <li>la <em>spécification</em> du lanceur, du cycle de session et de l'outil de clôture — assez précise pour être auditée, et non livrée</li>
+        <li>les incidents, anonymisés, avec la règle que chacun a payée</li>
         <li>une mission fictive suivie de bout en bout</li>
-        <li>ce que Ã§a coÃ»te : les trois outils â€” sept mille cinq cents lignes sur le projet d'origine â€” Ã  Ã©crire contre vos harnais, et les incidents que vous rencontrerez en chemin</li>
+        <li>ce que ça coûte : les trois outils — sept mille cinq cents lignes sur le projet d'origine — à écrire contre vos harnais, et les incidents que vous rencontrerez en chemin</li>
       </ul>
     </div>
     <div class="me">
       <p class="tag">Avec moi</p>
       <ul>
-        <li>les trois outils <em>Ã©crits contre vos CLI et votre tableau</em>, par celui qui a Ã©crit les originaux</li>
-        <li>la table des capacitÃ©s de vos siÃ¨ges <em>mesurÃ©e sur vos machines</em>, pas recopiÃ©e des miennes</li>
-        <li>le vocabulaire adaptÃ© Ã  vos chantiers avant que le premier contrat soit Ã©crit</li>
-        <li>les deux premiÃ¨res semaines de missions menÃ©es <em>avec vos ingÃ©nieurs</em> â€” le jugement de savoir quelle rÃ¨gle s'applique Ã  votre harnais est ce que les incidents ne transmettent pas</li>
-        <li>un registre qui dÃ©marre le premier jour, avec quelqu'un qui a dÃ©jÃ  arbitrÃ© plus de cent vingt entrÃ©es</li>
+        <li>les trois outils <em>écrits contre vos CLI et votre tableau</em>, par celui qui a écrit les originaux</li>
+        <li>la table des capacités de vos sièges <em>mesurée sur vos machines</em>, pas recopiée des miennes</li>
+        <li>le vocabulaire adapté à vos chantiers avant que le premier contrat soit écrit</li>
+        <li>les deux premières semaines de missions menées <em>avec vos ingénieurs</em> — le jugement de savoir quelle règle s'applique à votre harnais est ce que les incidents ne transmettent pas</li>
+        <li>un registre qui démarre le premier jour, avec quelqu'un qui a déjà arbitré plus de cent vingt entrées</li>
       </ul>
     </div>
   </div>
@@ -843,122 +843,122 @@ Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last re
 
 <section id="questions" class="wrap">
   <h2>Trois questions avant de dire que vous n'en avez pas besoin</h2>
-  <p>Deux choses sont vraies en mÃªme temps : vos Ã©quipes pourraient confier Ã  une IA bien plus qu'elles ne le croient, et personne chez vous ne tient le registre de ce qu'elles lui confient dÃ©jÃ . <strong>La seconde est ce qui empÃªche la premiÃ¨re</strong> â€” on n'accÃ©lÃ¨re pas sur un terrain qu'on ne voit pas.</p>
-  <p>Je ne cherche pas Ã  vous convaincre. Ces trois questions suffisent, et vous connaissez dÃ©jÃ  les rÃ©ponses.</p>
+  <p>Deux choses sont vraies en même temps : vos équipes pourraient confier à une IA bien plus qu'elles ne le croient, et personne chez vous ne tient le registre de ce qu'elles lui confient déjà. <strong>La seconde est ce qui empêche la première</strong> — on n'accélère pas sur un terrain qu'on ne voit pas.</p>
+  <p>Je ne cherche pas à vous convaincre. Ces trois questions suffisent, et vous connaissez déjà les réponses.</p>
   <div class="qs">
-    <div class="q"><div><p class="ask">Qui, chez vous, a fait faire quelque chose Ã  une IA cette semaine â€” et oÃ¹ est-ce Ã©crit ?</p><p class="why">Un devis, une rÃ©ponse client, un compte-rendu, une clause. Si la rÃ©ponse est Â« dans l'historique de son ChatGPT Â», c'est Ã©crit chez l'Ã©diteur, pas chez vous.</p></div></div>
-    <div class="q"><div><p class="ask">Si cette personne partait demain, que reste-t-il de sa faÃ§on de faire ?</p><p class="why">Le collaborateur qui Â« sait s'y prendre Â» avec l'IA a une mÃ©thode. Elle vit dans sa tÃªte et dans ses prompts. Elle part avec lui, comme les macros Excel d'autrefois.</p></div></div>
-    <div class="q"><div><p class="ask">La derniÃ¨re fois qu'une IA s'est trompÃ©e chez vous, comment l'avez-vous su ?</p><p class="why">Par un client. Par hasard. Trois semaines plus tard. Ou â€” la rÃ©ponse la plus frÃ©quente, et la plus honnÃªte â€” vous ne l'avez pas su.</p></div></div>
+    <div class="q"><div><p class="ask">Qui, chez vous, a fait faire quelque chose à une IA cette semaine — et où est-ce écrit ?</p><p class="why">Un devis, une réponse client, un compte-rendu, une clause. Si la réponse est « dans l'historique de son ChatGPT », c'est écrit chez l'éditeur, pas chez vous.</p></div></div>
+    <div class="q"><div><p class="ask">Si cette personne partait demain, que reste-t-il de sa façon de faire ?</p><p class="why">Le collaborateur qui « sait s'y prendre » avec l'IA a une méthode. Elle vit dans sa tête et dans ses prompts. Elle part avec lui, comme les macros Excel d'autrefois.</p></div></div>
+    <div class="q"><div><p class="ask">La dernière fois qu'une IA s'est trompée chez vous, comment l'avez-vous su ?</p><p class="why">Par un client. Par hasard. Trois semaines plus tard. Ou — la réponse la plus fréquente, et la plus honnête — vous ne l'avez pas su.</p></div></div>
   </div>
-  <p class="punch"><strong>Si la rÃ©ponse Ã  la troisiÃ¨me est Â« on ne l'a pas su Â», vous avez dÃ©jÃ  l'incident.</strong> Il vous manque le registre â€” l'endroit oÃ¹ chaque erreur devient une rÃ¨gle, au lieu de se reproduire.</p>
+  <p class="punch"><strong>Si la réponse à la troisième est « on ne l'a pas su », vous avez déjà l'incident.</strong> Il vous manque le registre — l'endroit où chaque erreur devient une règle, au lieu de se reproduire.</p>
 </section>
 
 <hr class="rule">
 
 <section id="situations" class="wrap">
-  <h2>Six situations que vous reconnaÃ®trez</h2>
-  <p>Aucune n'est inventÃ©e dans son mÃ©canisme : ce sont les quatre dÃ©faillances que produit toute Ã©quipe qui fait travailler plusieurs agents, transposÃ©es hors du code. Sous chacune, la rÃ¨gle qui l'empÃªche. La premiÃ¨re est la plus loin du code qu'on puisse aller.</p>
+  <h2>Six situations que vous reconnaîtrez</h2>
+  <p>Aucune n'est inventée dans son mécanisme : ce sont les quatre défaillances que produit toute équipe qui fait travailler plusieurs agents, transposées hors du code. Sous chacune, la règle qui l'empêche. La première est la plus loin du code qu'on puisse aller.</p>
   <div class="feat">
     <div>
       <p class="n"><svg class="i" aria-hidden="true"><use href="#i-fork"/></svg><span>Le restaurant</span></p>
-      <h3>La carte du soir a Ã©tÃ© rÃ©digÃ©e par une IA. La mention allergÃ¨nes aussi.</h3>
-      <p>Chaque semaine, le second fait rÃ©diger la carte du soir par un assistant, Ã  partir de celle de la semaine prÃ©cÃ©dente â€” c'est rapide, c'est propre, et la mention des allergÃ¨nes vient avec. Cette semaine, le tiramisu a changÃ© : la nouvelle recette contient des noix. La mention, elle, n'a pas bougÃ©, parce que l'assistant a lu l'ancienne fiche. Personne n'a relu ; c'est Â« la mÃªme carte que d'habitude Â». Le client allergique est en salle un mardi.</p>
-      <p>Ce n'est pas une erreur d'IA. C'est une source qui a changÃ© sans que rien le dise, une carte imprimÃ©e sans qu'un humain qui n'a pas rÃ©digÃ© l'ait relue, et une fois prÃ©cÃ©dente â€” il y en a toujours une â€” oÃ¹ la carte Ã©tait dÃ©jÃ  fausse et oÃ¹ personne ne l'a notÃ©e. Le mÃ©canisme est exactement celui qui fait planter une Ã©quipe de dÃ©veloppeurs. Il n'a pas besoin d'une ligne de code pour exister.</p>
+      <h3>La carte du soir a été rédigée par une IA. La mention allergènes aussi.</h3>
+      <p>Chaque semaine, le second fait rédiger la carte du soir par un assistant, à partir de celle de la semaine précédente — c'est rapide, c'est propre, et la mention des allergènes vient avec. Cette semaine, le tiramisu a changé : la nouvelle recette contient des noix. La mention, elle, n'a pas bougé, parce que l'assistant a lu l'ancienne fiche. Personne n'a relu ; c'est « la même carte que d'habitude ». Le client allergique est en salle un mardi.</p>
+      <p>Ce n'est pas une erreur d'IA. C'est une source qui a changé sans que rien le dise, une carte imprimée sans qu'un humain qui n'a pas rédigé l'ait relue, et une fois précédente — il y en a toujours une — où la carte était déjà fausse et où personne ne l'a notée. Le mécanisme est exactement celui qui fait planter une équipe de développeurs. Il n'a pas besoin d'une ligne de code pour exister.</p>
     </div>
     <div class="side">
       <h4>Ce qui manquait, en trois mots</h4>
-      <p><strong>La source nommÃ©e.</strong> Quelle fiche a servi â€” celle de cette semaine ou celle d'avant â€” Ã©crit sur la carte elle-mÃªme, avant impression.</p>
-      <p><strong>La porte.</strong> Rien ne part en salle sans qu'une personne qui n'a pas rÃ©digÃ© ait relu la ligne allergÃ¨nes, et l'ait signÃ©.</p>
-      <p><strong>Le registre.</strong> La fois prÃ©cÃ©dente, notÃ©e en une ligne, serait devenue la rÃ¨gle qui empÃªche celle-ci.</p>
-      <div class="rulebox">La rÃ¨gle tient en une phrase, et un patron la comprend sans qu'on lui explique ce qu'est un agent : <em>rien ne part en salle sans que la fiche qui a servi soit nommÃ©e, et sans qu'un humain qui n'a pas rÃ©digÃ© ait relu.</em></div>
+      <p><strong>La source nommée.</strong> Quelle fiche a servi — celle de cette semaine ou celle d'avant — écrit sur la carte elle-même, avant impression.</p>
+      <p><strong>La porte.</strong> Rien ne part en salle sans qu'une personne qui n'a pas rédigé ait relu la ligne allergènes, et l'ait signé.</p>
+      <p><strong>Le registre.</strong> La fois précédente, notée en une ligne, serait devenue la règle qui empêche celle-ci.</p>
+      <div class="rulebox">La règle tient en une phrase, et un patron la comprend sans qu'on lui explique ce qu'est un agent : <em>rien ne part en salle sans que la fiche qui a servi soit nommée, et sans qu'un humain qui n'a pas rédigé ait relu.</em></div>
     </div>
   </div>
   <div class="scenes">
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-scales"/></svg><span>Le cabinet</span></p><h3>Deux rÃ©ponses contradictoires au mÃªme client</h3><p>Deux collaborateurs, deux assistants IA, deux prompts. Le client reÃ§oit lundi une position, mardi son contraire, et personne ne peut dire laquelle a Ã©tÃ© relue.</p><p class="rule">Une tÃ¢che, un contrat Ã©crit ; rien ne part sans un relecteur qui n'a pas rÃ©digÃ©.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-mega"/></svg><span>L'agence</span></p><h3>Une affirmation inventÃ©e, publiÃ©e sous le nom du client</h3><p>Un chiffre plausible, une source qui n'existe pas, un post en ligne depuis quatre jours. On ne sait pas ce qui a Ã©tÃ© demandÃ© Ã  l'agent, ni par qui.</p><p class="rule">Une porte avant publication ; ce qui a servi Ã  produire est nommÃ©, et il est conservÃ©.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-headset"/></svg><span>Le support</span></p><h3>Un remboursement promis hors politique</h3><p>L'agent qui rÃ©pond aux tickets a promis un geste commercial que personne n'avait autorisÃ©. DÃ©couvert trois semaines plus tard, par la comptabilitÃ©.</p><p class="rule">L'agent connaÃ®t ce qu'il peut engager, refuse le reste â€” et dit qu'il refuse.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ruler"/></svg><span>Le bureau d'Ã©tudes</span></p><h3>Un devis calculÃ© sur la grille de l'an dernier</h3><p>L'agent a lu le bon modÃ¨le et le mauvais fichier de prix. Le devis est parti, signÃ©. La substitution Ã©tait silencieuse : rien ne disait quelle grille avait servi.</p><p class="rule">Chaque production nomme ses sources ; un changement de source est un Ã©vÃ©nement, pas un dÃ©tail.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>La direction</span></p><h3>La mÃ©thode est partie en congÃ©</h3><p>L'assistante qui fait produire les comptes-rendus de direction Â« Ã  sa faÃ§on Â» est absente trois semaines. Personne ne sait reproduire ce qu'elle obtenait.</p><p class="rule">Chaque session laisse une trace lisible par la suivante ; la mÃ©thode appartient Ã  l'entreprise.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>Vous, ce soir</span></p><h3>L'humain qui porte les messages</h3><p>Vous copiez la sortie d'un outil dans un autre, toute la journÃ©e, pour que vos agents Â« travaillent ensemble Â». Vous Ãªtes devenu le bus de messages de vos propres assistants.</p><p class="rule">Les agents se passent le travail par un tableau, pas par vous ; vous tranchez, vous ne transportez plus.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-scales"/></svg><span>Le cabinet</span></p><h3>Deux réponses contradictoires au même client</h3><p>Deux collaborateurs, deux assistants IA, deux prompts. Le client reçoit lundi une position, mardi son contraire, et personne ne peut dire laquelle a été relue.</p><p class="rule">Une tâche, un contrat écrit ; rien ne part sans un relecteur qui n'a pas rédigé.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-mega"/></svg><span>L'agence</span></p><h3>Une affirmation inventée, publiée sous le nom du client</h3><p>Un chiffre plausible, une source qui n'existe pas, un post en ligne depuis quatre jours. On ne sait pas ce qui a été demandé à l'agent, ni par qui.</p><p class="rule">Une porte avant publication ; ce qui a servi à produire est nommé, et il est conservé.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-headset"/></svg><span>Le support</span></p><h3>Un remboursement promis hors politique</h3><p>L'agent qui répond aux tickets a promis un geste commercial que personne n'avait autorisé. Découvert trois semaines plus tard, par la comptabilité.</p><p class="rule">L'agent connaît ce qu'il peut engager, refuse le reste — et dit qu'il refuse.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ruler"/></svg><span>Le bureau d'études</span></p><h3>Un devis calculé sur la grille de l'an dernier</h3><p>L'agent a lu le bon modèle et le mauvais fichier de prix. Le devis est parti, signé. La substitution était silencieuse : rien ne disait quelle grille avait servi.</p><p class="rule">Chaque production nomme ses sources ; un changement de source est un événement, pas un détail.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>La direction</span></p><h3>La méthode est partie en congé</h3><p>L'assistante qui fait produire les comptes-rendus de direction « à sa façon » est absente trois semaines. Personne ne sait reproduire ce qu'elle obtenait.</p><p class="rule">Chaque session laisse une trace lisible par la suivante ; la méthode appartient à l'entreprise.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>Vous, ce soir</span></p><h3>L'humain qui porte les messages</h3><p>Vous copiez la sortie d'un outil dans un autre, toute la journée, pour que vos agents « travaillent ensemble ». Vous êtes devenu le bus de messages de vos propres assistants.</p><p class="rule">Les agents se passent le travail par un tableau, pas par vous ; vous tranchez, vous ne transportez plus.</p></div>
   </div>
 </section>
 
 <hr class="rule">
 
 <section id="board-nocode" class="wrap">
-  <h2>Le mÃªme tableau, sans une ligne de code</h2>
-  <p>L'outil qui tient tout cela est une page unique, qui lit ce que vos Ã©quipes ont confiÃ© Ã  une IA et le range en trois piles. Sur un projet logiciel, elle lit des pull requests. Dans un cabinet, une agence ou un service client, elle lit des devis, des rÃ©ponses, des comptes-rendus, des clauses rÃ©digÃ©es. <strong>Les objets changent ; les trois questions, non.</strong></p>
+  <h2>Le même tableau, sans une ligne de code</h2>
+  <p>L'outil qui tient tout cela est une page unique, qui lit ce que vos équipes ont confié à une IA et le range en trois piles. Sur un projet logiciel, elle lit des pull requests. Dans un cabinet, une agence ou un service client, elle lit des devis, des réponses, des comptes-rendus, des clauses rédigées. <strong>Les objets changent ; les trois questions, non.</strong></p>
   <div class="scenes">
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Ce qu'on vous doit</span></p><h3>Ce qui vous attend, vous et personne d'autre</h3><p>Le devis au-dessus de votre seuil. La rÃ©ponse Ã  une rÃ©clamation. La clause qu'un assistant a rÃ©digÃ©e. Chacun nomme la personne qui signe, et n'apparaÃ®t devant elle qu'une fois rÃ©ellement terminÃ©.</p><p class="rule">Si ce n'est pas dans votre liste, Ã§a ne vous attend pas â€” et vous cessez d'Ãªtre le goulot par dÃ©faut.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Ce qui avance sans vous</span></p><h3>Ce qui part sous dÃ©lÃ©gation, Ã  la vue de tous</h3><p>Les rÃ©ponses courantes, les confirmations standard, les comptes-rendus que personne n'a besoin d'arbitrer. Ils partent sans votre signature â€” et restent affichÃ©s, parce qu'une dÃ©lÃ©gation que personne ne voit n'est pas une dÃ©lÃ©gation.</p><p class="rule">Vous ne les validez pas. Vous pouvez nommer, Ã  tout instant, tout ce qui est parti en votre nom.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Ce que rien ne justifie encore</h3><p>Un document dont la source n'est pas nommÃ©e. Un travail sans responsable dÃ©signÃ©. Une rÃ©ponse rattachÃ©e Ã  une demande dÃ©jÃ  close. Ces cas ne sont pas rangÃ©s discrÃ¨tement : ils sont comptÃ©s, devant tout le monde.</p><p class="rule">Ce compteur est la mesure honnÃªte de lÃ  oÃ¹ votre pratique ne tient pas encore. Il est fait pour afficher zÃ©ro.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Ce qu'on vous doit</span></p><h3>Ce qui vous attend, vous et personne d'autre</h3><p>Le devis au-dessus de votre seuil. La réponse à une réclamation. La clause qu'un assistant a rédigée. Chacun nomme la personne qui signe, et n'apparaît devant elle qu'une fois réellement terminé.</p><p class="rule">Si ce n'est pas dans votre liste, ça ne vous attend pas — et vous cessez d'être le goulot par défaut.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Ce qui avance sans vous</span></p><h3>Ce qui part sous délégation, à la vue de tous</h3><p>Les réponses courantes, les confirmations standard, les comptes-rendus que personne n'a besoin d'arbitrer. Ils partent sans votre signature — et restent affichés, parce qu'une délégation que personne ne voit n'est pas une délégation.</p><p class="rule">Vous ne les validez pas. Vous pouvez nommer, à tout instant, tout ce qui est parti en votre nom.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Ce que rien ne justifie encore</h3><p>Un document dont la source n'est pas nommée. Un travail sans responsable désigné. Une réponse rattachée à une demande déjà close. Ces cas ne sont pas rangés discrètement : ils sont comptés, devant tout le monde.</p><p class="rule">Ce compteur est la mesure honnête de là où votre pratique ne tient pas encore. Il est fait pour afficher zéro.</p></div>
   </div>
   <div class="board-frame">
     <a href="../demo/board/">
-      <img src="../brand/board-demo-dark.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la faÃ§on dont il a Ã©tÃ© lu, et une carte de dÃ©cision avec le libellÃ© exact qu'elle publierait.">
+      <img src="../brand/board-demo.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec le libellé exact qu'elle publierait.">
     </a>
   </div>
-  <p class="caption">La dÃ©monstration tourne sur un exemple logiciel, parce que c'est celui que je peux montrer publiquement â€” <a href="../demo/board/">l'ouvrir</a>. Lisez les colonnes en face : une <em>issue</em> est une demande, une <em>livraison</em> est le document produit, un <em>chantier</em> est un client ou un service. Le mÃ©canisme est identique, et la dÃ©cision se prend sur la page plutÃ´t qu'ailleurs.</p>
-  <p class="punch"><strong>Ã‡a compte davantage sans code, pas moins.</strong> Une Ã©quipe de dÃ©veloppement a au moins un historique de versions : quelqu'un peut reconstituer qui a changÃ© quoi. Un cabinet dont les assistants rÃ©digent, rÃ©pondent et rÃ©sument toute la journÃ©e n'a aucun historique â€” jusqu'Ã  ce que quelqu'un lui en donne un.</p>
+  <p class="caption">La démonstration tourne sur un exemple logiciel, parce que c'est celui que je peux montrer publiquement — <a href="../demo/board/">l'ouvrir</a>. Lisez les colonnes en face : une <em>issue</em> est une demande, une <em>livraison</em> est le document produit, un <em>chantier</em> est un client ou un service. Le mécanisme est identique, et la décision se prend sur la page plutôt qu'ailleurs.</p>
+  <p class="punch"><strong>Ça compte davantage sans code, pas moins.</strong> Une équipe de développement a au moins un historique de versions : quelqu'un peut reconstituer qui a changé quoi. Un cabinet dont les assistants rédigent, répondent et résument toute la journée n'a aucun historique — jusqu'à ce que quelqu'un lui en donne un.</p>
 </section>
 
 <hr class="rule">
 
 <section id="offres" class="wrap">
-  <h2>Ce que Ã§a donne, chez vous</h2>
-  <p>La plupart des entreprises que je rencontre sous-estiment largement ce qu'elles pourraient confier â€” et surestiment ce qu'il faudrait acheter pour le faire. On commence donc par regarder votre travail rÃ©el : ce qui peut Ãªtre confiÃ© dÃ¨s maintenant, ce que Ã§a vous rendrait en heures, et ce qui doit rester Ã  la main. Rien Ã  acheter, et le document reste chez vous quoi qu'il arrive.</p>
-  <div class="pricebar" aria-label="Les trois tarifs"><a href="#off-cadrage"><span>Cadrage<i>1 jour</i></span><b>1 200 â‚¬</b></a><a href="#off-premier"><span>Premier agent<i>1 semaine</i></span><b>4 500 â‚¬</b></a><a href="#off-suivi"><span>Suivi<i>au mois</i></span><b>1 200 â‚¬</b></a></div>
+  <h2>Ce que ça donne, chez vous</h2>
+  <p>La plupart des entreprises que je rencontre sous-estiment largement ce qu'elles pourraient confier — et surestiment ce qu'il faudrait acheter pour le faire. On commence donc par regarder votre travail réel : ce qui peut être confié dès maintenant, ce que ça vous rendrait en heures, et ce qui doit rester à la main. Rien à acheter, et le document reste chez vous quoi qu'il arrive.</p>
+  <div class="pricebar" aria-label="Les trois tarifs"><a href="#off-cadrage"><span>Cadrage<i>1 jour</i></span><b>1 200 €</b></a><a href="#off-premier"><span>Premier agent<i>1 semaine</i></span><b>4 500 €</b></a><a href="#off-suivi"><span>Suivi<i>au mois</i></span><b>1 200 €</b></a></div>
   <div class="offers">
     <div class="offer lead" id="off-cadrage">
       <p class="tag">Commencer ici</p>
-      <h3>JournÃ©e de cadrage</h3>
-      <p>Une journÃ©e chez vous, Ã  regarder comment vous travaillez vraiment â€” pas seulement ce que vous faites dÃ©jÃ  avec l'IA. J'en repars avec ce qui peut Ãªtre confiÃ© dÃ¨s maintenant, ce que Ã§a vous rend en heures, et ce qui doit rester Ã  la main.</p>
+      <h3>Journée de cadrage</h3>
+      <p>Une journée chez vous, à regarder comment vous travaillez vraiment — pas seulement ce que vous faites déjà avec l'IA. J'en repars avec ce qui peut être confié dès maintenant, ce que ça vous rend en heures, et ce qui doit rester à la main.</p>
       <ul>
-        <li>les tÃ¢ches qui peuvent Ãªtre confiÃ©es Ã  une IA aujourd'hui, <em>chiffrÃ©es en heures par semaine</em></li>
-        <li>celles qui ne le peuvent pas encore â€” et ce qui manque pour qu'elles le puissent</li>
-        <li>la carte de vos usages IA rÃ©els, y compris ceux que personne n'a dÃ©clarÃ©s</li>
-        <li>le premier contrat Ã©crit, sur le processus qui rapporte le plus Ã  confier</li>
-        <li>un document que votre Ã©quipe garde, quelle que soit la suite</li>
+        <li>les tâches qui peuvent être confiées à une IA aujourd'hui, <em>chiffrées en heures par semaine</em></li>
+        <li>celles qui ne le peuvent pas encore — et ce qui manque pour qu'elles le puissent</li>
+        <li>la carte de vos usages IA réels, y compris ceux que personne n'a déclarés</li>
+        <li>le premier contrat écrit, sur le processus qui rapporte le plus à confier</li>
+        <li>un document que votre équipe garde, quelle que soit la suite</li>
       </ul>
-      <p class="price">1 200 â‚¬ HT Â· prix ferme<small>DÃ©duite de l'Ã©tape suivante si vous continuez.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Journ%C3%A9e%20de%20cadrage">RÃ©server 30 minutes<span>â†’</span></a>
+      <p class="price">1 200 € HT · prix ferme<small>Déduite de l'étape suivante si vous continuez.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Journ%C3%A9e%20de%20cadrage">Réserver 30 minutes<span>→</span></a>
     </div>
     <div class="offer" id="off-premier">
       <p class="tag">L'installation</p>
       <h3>Premier agent sous contrat</h3>
-      <p>Une semaine. Le processus choisi pour ce qu'il vous coÃ»te, l'agent qui le prend en charge, et les trois garde-fous qui rendent Ã§a sÃ»r â€” montÃ©s avec l'Ã©quipe qui le fera tourner, pas Ã  sa place.</p>
+      <p>Une semaine. Le processus choisi pour ce qu'il vous coûte, l'agent qui le prend en charge, et les trois garde-fous qui rendent ça sûr — montés avec l'équipe qui le fera tourner, pas à sa place.</p>
       <ul>
-        <li>l'agent lui-mÃªme : ce qu'il lit, ce qu'il produit, avec quels outils â€” <em>montÃ© devant vous, pas une boÃ®te noire</em></li>
+        <li>l'agent lui-même : ce qu'il lit, ce qu'il produit, avec quels outils — <em>monté devant vous, pas une boîte noire</em></li>
         <li>le contrat : ce qu'il peut faire, ce qu'il doit refuser, ce qu'il doit nommer</li>
         <li>la porte : qui relit, et ce qui ne part jamais sans relecture</li>
-        <li>le registre : chaque erreur devient une rÃ¨gle, Ã©crite, le jour mÃªme</li>
-        <li>cinq jours de vrais dossiers menÃ©s <em>avec</em> vos collaborateurs â€” la formation, c'est le travail lui-mÃªme</li>
-        <li>l'avant/aprÃ¨s du processus, mesurÃ© : ce qu'il coÃ»tait en heures, ce qu'il coÃ»te aprÃ¨s</li>
+        <li>le registre : chaque erreur devient une règle, écrite, le jour même</li>
+        <li>cinq jours de vrais dossiers menés <em>avec</em> vos collaborateurs — la formation, c'est le travail lui-même</li>
+        <li>l'avant/après du processus, mesuré : ce qu'il coûtait en heures, ce qu'il coûte après</li>
       </ul>
-      <p class="price">4 500 â‚¬ HT Â· prix ferme<small>Pour un processus et une Ã©quipe ; le second se chiffre Ã  la journÃ©e de cadrage. Sur site en ÃŽle-de-France, ou Ã  distance.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Premier%20agent%20sous%20contrat">RÃ©server 30 minutes<span>â†’</span></a>
+      <p class="price">4 500 € HT · prix ferme<small>Pour un processus et une équipe ; le second se chiffre à la journée de cadrage. Sur site en Île-de-France, ou à distance.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Premier%20agent%20sous%20contrat">Réserver 30 minutes<span>→</span></a>
     </div>
     <div class="offer" id="off-suivi">
       <p class="tag">Ensuite</p>
-      <h3>Une journÃ©e par mois</h3>
-      <p>Une journÃ©e par mois, chez vous ou Ã  distance. Le registre est arbitrÃ©, les contrats suivent vos incidents, et le pÃ©rimÃ¨tre s'Ã©largit d'un processus Ã  la fois.</p>
+      <h3>Une journée par mois</h3>
+      <p>Une journée par mois, chez vous ou à distance. Le registre est arbitré, les contrats suivent vos incidents, et le périmètre s'élargit d'un processus à la fois.</p>
       <ul>
-        <li>le registre revu, chaque rÃ¨gle nouvelle Ã©crite avec vous</li>
-        <li>les contrats ajustÃ©s quand les outils, les personnes ou vos prix changent</li>
-        <li>le processus suivant mis sous contrat dÃ¨s que le prÃ©cÃ©dent tient</li>
-        <li>le coÃ»t rÃ©el de vos agents suivi mois par mois : abonnements, jetons, temps de relecture</li>
+        <li>le registre revu, chaque règle nouvelle écrite avec vous</li>
+        <li>les contrats ajustés quand les outils, les personnes ou vos prix changent</li>
+        <li>le processus suivant mis sous contrat dès que le précédent tient</li>
+        <li>le coût réel de vos agents suivi mois par mois : abonnements, jetons, temps de relecture</li>
         <li>vos nouvelles recrues prises en main sur les contrats existants</li>
-        <li>une lecture Ã©crite, chaque mois, de ce que les agents ont fait â€” et refusÃ©</li>
+        <li>une lecture écrite, chaque mois, de ce que les agents ont fait — et refusé</li>
       </ul>
-      <p class="price">1 200 â‚¬ HT / mois<small>Trois mois minimum, puis au mois. JournÃ©e supplÃ©mentaire : 1 200 â‚¬ HT.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Une%20journ%C3%A9e%20par%20mois">RÃ©server 30 minutes<span>â†’</span></a>
+      <p class="price">1 200 € HT / mois<small>Trois mois minimum, puis au mois. Journée supplémentaire : 1 200 € HT.</small></p>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Une%20journ%C3%A9e%20par%20mois">Réserver 30 minutes<span>→</span></a>
     </div>
   </div>
-  <p class="note">Les trente minutes sont gratuites et sans engagement â€” vous me dÃ©crivez votre semaine, je vous dis ce que j'y vois, mÃªme si vous n'allez pas plus loin.</p>
+  <p class="note">Les trente minutes sont gratuites et sans engagement — vous me décrivez votre semaine, je vous dis ce que j'y vois, même si vous n'allez pas plus loin.</p>
 
   <div class="proof">
-    <p><strong>D'oÃ¹ vient la discipline.</strong> Elle a Ã©tÃ© construite, incident aprÃ¨s incident, pour faire tenir une Ã©quipe de sept agents IA sur un logiciel rÃ©el, avec un seul humain aux commandes â€” vingt-quatre livraisons fusionnÃ©es par jour, chaque erreur devenue une rÃ¨gle, tout est public et chiffrÃ©. C'est <a href="#code">Guildwork</a>. Chez vous, il n'y aura ni dÃ©pÃ´t ni code ; il y aura les mÃªmes contrats, les mÃªmes portes, le mÃªme registre.</p>
-    <p class="fig">127<small>rÃ¨gles Ã©crites en cinq semaines, chacune payÃ©e par une erreur rÃ©elle</small></p>
+    <p><strong>D'où vient la discipline.</strong> Elle a été construite, incident après incident, pour faire tenir une équipe de sept agents IA sur un logiciel réel, avec un seul humain aux commandes — vingt-quatre livraisons fusionnées par jour, chaque erreur devenue une règle, tout est public et chiffré. C'est <a href="#code">Guildwork</a>. Chez vous, il n'y aura ni dépôt ni code ; il y aura les mêmes contrats, les mêmes portes, le même registre.</p>
+    <p class="fig">127<small>règles écrites en cinq semaines, chacune payée par une erreur réelle</small></p>
   </div>
 </section>
 </div>
@@ -967,13 +967,13 @@ Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last re
 
 <div class="contact">
   <div class="wrap">
-    <h2 data-track="code">Si vous faites tourner plus dâ€™un agent sur un code qui compte</h2>
-    <h2 data-track="nocode">Si vos Ã©quipes font dÃ©jÃ  travailler des IA</h2>
+    <h2 data-track="code">Si vous faites tourner plus d’un agent sur un code qui compte</h2>
+    <h2 data-track="nocode">Si vos équipes font déjà travailler des IA</h2>
     <div class="who">
-      <p data-track="code">Je m'appelle Simon Dupont. J'ai menÃ© l'Ã©quipe Ã  sept siÃ¨ges dÃ©crite plus haut, j'ai payÃ© chaque rÃ¨gle de ce pack au prix d'un incident, et je l'installe sur les dÃ©pÃ´ts des autres. Le plus rapide, pour vous, est de prendre trente minutes et de dÃ©crire votre installation â€” je vous dirai lesquelles des quatre dÃ©faillances vous avez dÃ©jÃ .</p>
-      <p data-track="nocode">Je m'appelle Simon Dupont. Le plus rapide est de prendre trente minutes et de me dÃ©crire ce que vos collaborateurs font faire aux IA aujourd'hui â€” je vous dirai laquelle des trois questions vous coÃ»te dÃ©jÃ  quelque chose.</p>
+      <p data-track="code">Je m'appelle Simon Dupont. J'ai mené l'équipe à sept sièges décrite plus haut, j'ai payé chaque règle de ce pack au prix d'un incident, et je l'installe sur les dépôts des autres. Le plus rapide, pour vous, est de prendre trente minutes et de décrire votre installation — je vous dirai lesquelles des quatre défaillances vous avez déjà.</p>
+      <p data-track="nocode">Je m'appelle Simon Dupont. Le plus rapide est de prendre trente minutes et de me décrire ce que vos collaborateurs font faire aux IA aujourd'hui — je vous dirai laquelle des trois questions vous coûte déjà quelque chose.</p>
       <div class="lines">
-        <a class="cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>RÃ©server 30 minutes</a>
+        <a class="cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>Réserver 30 minutes</a>
         <a href="mailto:simon.pacifae.dupont@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.5L4.6 7H19.4L12 12.5zM4 9.2V17h16V9.2l-8 6-8-6z"/></svg>simon.pacifae.dupont@gmail.com</a>
         <a href="https://www.linkedin.com/in/simon-pacifae-dupont/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>linkedin.com/in/simon-pacifae-dupont</a>
         <a href="https://github.com/Simon-Pacifae-Dupont"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>github.com/Simon-Pacifae-Dupont</a>
@@ -984,8 +984,8 @@ Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last re
 
 <footer>
   <div class="wrap">
-    <span>Guildwork â€” MIT. Le projet Lantern, son dÃ©pÃ´t, ses personnes et ses chiffres sont fictifs ; les situations sont des mÃ©canismes, pas des clients.</span>
-    <span>Â© 2026 Simon Dupont</span>
+    <span>Guildwork — MIT. Le projet Lantern, son dépôt, ses personnes et ses chiffres sont fictifs ; les situations sont des mécanismes, pas des clients.</span>
+    <span>© 2026 Simon Dupont</span>
   </div>
 </footer>
 
@@ -993,7 +993,7 @@ Mission #118 â€” #118 â€” [MISSION] Dashboard tiles keep their last re
 <script>
 (function(){var D={"d":["2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05","2026-08-06","2026-08-07","2026-08-08","2026-08-09","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-15","2026-08-16","2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-22","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-29","2026-08-30","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-05"],"m":[11,20,24,17,20,13,14,8,5,2,6,1,7,2,2,6,16,4,9,12,15,7,2,4,14,14,13,34,21,31,32,19,19,4,34,25],"r":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,29,36,1,13,5,1,5,17,6]};var svgs=document.querySelectorAll('svg.tl');svgs.forEach(function(svg){var wrap=svg.closest('.tl-wrap');var tip=wrap.querySelector('.tl-tip');var L=wrap.dataset.merges,R=wrap.dataset.rules;
 svg.addEventListener('mousemove',function(e){var t=e.target;if(!t.classList.contains('hit')){tip.style.display='none';return;}var i=+t.dataset.i;var d=new Date(D.d[i]+'T00:00:00Z');
-tip.innerHTML='<b>'+d.toLocaleDateString(wrap.dataset.lang,{day:'numeric',month:'long',timeZone:'UTC'})+'</b>'+D.m[i]+' '+L+'<br>'+(i>=25?D.r[i]+' '+R:'â€”');
+tip.innerHTML='<b>'+d.toLocaleDateString(wrap.dataset.lang,{day:'numeric',month:'long',timeZone:'UTC'})+'</b>'+D.m[i]+' '+L+'<br>'+(i>=25?D.r[i]+' '+R:'—');
 var r=wrap.getBoundingClientRect();var x=e.clientX-r.left+14,y=e.clientY-r.top-10;tip.style.display='block';if(x+tip.offsetWidth>r.width-8)x=e.clientX-r.left-tip.offsetWidth-14;tip.style.left=x+'px';tip.style.top=y+'px';});
 svg.addEventListener('mouseleave',function(){tip.style.display='none';});});})();
 </script>
