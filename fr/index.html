@@ -587,11 +587,11 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Tout ce qui n'entre dans aucune règle, compté sur la face du tableau</h3><p>Une pull request sans ligne <code>Mission:</code>. Une livraison qui nomme une mission déjà close. Un lot sans étiquette <code>chantier:</code>. Un tableau qui range discrètement ces cas-là vous raconte une histoire ; celui-ci les met dans un compteur qu'on ne peut pas manquer.</p><p class="rule">Ces compteurs sont la mesure de ce que la gouvernance ne fait pas encore. Ils sont faits pour afficher zéro.</p></div>
   </div>
   <div class="board-frame">
-    <a href="demo/board/">
-      <img src="../brand/board-demo.fr.png" alt="Le tableau Lantern : six compteurs en haut, une décision attend le Product Owner en rouge, deux livraisons sous délégation en ambre, trois portes réservées non atteintes en gris, et une légende des couleurs.">
+    <a href="../demo/board/">
+      <img src="../brand/board-demo.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait.">
     </a>
   </div>
-  <p class="caption">Un instantané figé du tableau fictif Lantern — <a href="demo/board/">ouvrir la démonstration</a>. Sur le projet réel, la même page lit GitHub en direct par le connecteur du lecteur et ne détient aucun jeton ; elle est dans le pack sous <code>templates/board/</code>. Le pack la livre en anglais : toutes ses phrases vivent dans un seul objet <code>T</code>, et cette démonstration-ci est cet objet traduit.</p>
+  <p class="caption">Le tableau tel qu'il tourne, sur l'exemple fictif Lantern — <a href="../demo/board/">ouvrir la démonstration</a>. Elle est figée et le dit sur sa face : les commandes sont montrées, pas actives. Ce que le pack livre aujourd'hui, c'est le <a href="demo/board/">lecteur, traduit en français</a>, sous <code>templates/board/</code> ; la lecture de l'hôte et le chemin de décision sont plus récents et rejoindront le pack quand ils auront cessé de bouger. La démonstration ci-dessus est en anglais, comme le pack.</p>
   <p class="punch"><strong>Pour qui n'écrit pas le code, c'est la différence entre « on utilise l'IA » et « on sait ce que l'IA a fait ».</strong> Pas une courbe de productivité — la liste de ce qui est dû, à qui, et de ce que rien ne justifie encore.</p>
 </section>
 
@@ -605,9 +605,9 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="fig"><b>262</b><span>pull requests fusionnées sur les mêmes onze jours</span></div>
     <div class="fig"><b>485</b><span>sessions closes avec une entrée de journal, en 34 jours</span></div>
     <div class="fig"><b>14</b><span>livraisons refusées ou remplacées, sur 517 closes</span></div>
-    <div class="fig"><b>~45</b><span>incidents, chacun ayant payé une règle</span></div>
+    <div class="fig"><b>47</b><span>incidents, chacun ayant payé une règle</span></div>
   </div>
-  <p class="sober"><strong>La lecture sobre, parce que c'est elle qui rend la première crédible.</strong> La même période a produit une quarantaine d'incidents assez sérieux pour mériter une règle, la plupart concentrés sur une seule semaine. La plupart des sièges que le lanceur sait démarrer sont <code>unknown</code> sur la propriété matérielle que la file aimerait le plus voir remplie. Aucun des deux harnais en ligne de commande n'impose la lecture seule depuis ses propres options, et la gouvernance le dit au lieu de faire semblant. Un système capable de dire <em>je ne sais pas</em> là où il ne sait pas est le seul dont le <em>oui</em> vaille quelque chose.</p>
+  <p class="sober"><strong>La lecture sobre, parce que c'est elle qui rend la première crédible.</strong> La même période a produit quarante-sept incidents assez sérieux pour mériter une règle, la plupart concentrés sur une seule semaine. La plupart des sièges que le lanceur sait démarrer sont <code>unknown</code> sur la propriété matérielle que la file aimerait le plus voir remplie. Aucun des deux harnais en ligne de commande n'impose la lecture seule depuis ses propres options, et la gouvernance le dit au lieu de faire semblant. Un système capable de dire <em>je ne sais pas</em> là où il ne sait pas est le seul dont le <em>oui</em> vaille quelque chose.</p>
 
   <div class="tl-wrap" data-lang="fr-FR" data-merges="merges" data-rules="entrées du registre">
     <div class="tl-head"><h3>Cinq semaines, un dépôt, un humain</h3>
@@ -726,7 +726,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>—</td></tr><tr><td>02/08</td><td>20</td><td>—</td></tr><tr><td>03/08</td><td>24</td><td>—</td></tr><tr><td>04/08</td><td>17</td><td>—</td></tr><tr><td>05/08</td><td>20</td><td>—</td></tr><tr><td>06/08</td><td>13</td><td>—</td></tr><tr><td>07/08</td><td>14</td><td>—</td></tr><tr><td>08/08</td><td>8</td><td>—</td></tr><tr><td>09/08</td><td>5</td><td>—</td></tr><tr><td>10/08</td><td>2</td><td>—</td></tr><tr><td>11/08</td><td>6</td><td>—</td></tr><tr><td>12/08</td><td>1</td><td>—</td></tr><tr><td>13/08</td><td>7</td><td>—</td></tr><tr><td>14/08</td><td>2</td><td>—</td></tr><tr><td>15/08</td><td>2</td><td>—</td></tr><tr><td>16/08</td><td>6</td><td>—</td></tr><tr><td>17/08</td><td>16</td><td>—</td></tr><tr><td>18/08</td><td>4</td><td>—</td></tr><tr><td>19/08</td><td>9</td><td>—</td></tr><tr><td>20/08</td><td>12</td><td>—</td></tr><tr><td>21/08</td><td>15</td><td>—</td></tr><tr><td>22/08</td><td>7</td><td>—</td></tr><tr><td>23/08</td><td>2</td><td>—</td></tr><tr><td>24/08</td><td>4</td><td>—</td></tr><tr><td>25/08</td><td>14</td><td>—</td></tr><tr><td>26/08</td><td>14</td><td>0</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>25</td><td>6</td></tr></tbody></table></details>
   </div>
   <div class="readings">
-    <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours — moins de dix par jour, l'humain portant les instructions d'un siège à l'autre. Après, 246 en onze — vingt-deux par jour. Les sièges ont changé en même temps que la gouvernance ; le doublement n'est donc pas à elle seule. Ce qui est à elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>
+    <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours — moins de dix par jour, l'humain portant les instructions d'un siège à l'autre. Après, 262 en onze — vingt-quatre par jour. Les sièges ont changé en même temps que la gouvernance ; le doublement n'est donc pas à elle seule. Ce qui est à elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>
     <p><strong>Le coût de l'apprentissage.</strong> Chaque entrée du registre est une règle qu'un constat a payée. La première semaine des contrats, l'équipe en a écrit une pour deux merges ; la deuxième, une pour trois, au même rythme de merges. Avant le 26 août, les constats n'étaient pas comptés du tout — la première chose que le système a faite, c'est les rendre visibles.</p>
   </div>
 </section>
@@ -831,7 +831,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
         <li>la table des capacités de vos sièges <em>mesurée sur vos machines</em>, pas recopiée des miennes</li>
         <li>le vocabulaire adapté à vos chantiers avant que le premier contrat soit écrit</li>
         <li>les deux premières semaines de missions menées <em>avec vos ingénieurs</em> — le jugement de savoir quelle règle s'applique à votre harnais est ce que les incidents ne transmettent pas</li>
-        <li>un registre qui démarre le premier jour, avec quelqu'un qui a déjà arbitré cent vingt-sept entrées</li>
+        <li>un registre qui démarre le premier jour, avec quelqu'un qui a déjà arbitré plus de cent vingt entrées</li>
       </ul>
     </div>
   </div>
@@ -894,11 +894,11 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Ce que rien ne justifie encore</h3><p>Un document dont la source n'est pas nommée. Un travail sans responsable désigné. Une réponse rattachée à une demande déjà close. Ces cas ne sont pas rangés discrètement : ils sont comptés, devant tout le monde.</p><p class="rule">Ce compteur est la mesure honnête de là où votre pratique ne tient pas encore. Il est fait pour afficher zéro.</p></div>
   </div>
   <div class="board-frame">
-    <a href="demo/board/">
-      <img src="../brand/board-demo.fr.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs en haut, un élément attend son responsable en rouge, deux avancent sous délégation en ambre, trois sont réservés mais pas atteints en gris, et une légende des couleurs.">
+    <a href="../demo/board/">
+      <img src="../brand/board-demo.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec le libellé exact qu'elle publierait.">
     </a>
   </div>
-  <p class="caption">La démonstration tourne sur un exemple logiciel, parce que c'est celui que je peux montrer publiquement — <a href="demo/board/">l'ouvrir</a>. Lisez les colonnes en face : une <em>issue</em> est une demande, une <em>livraison</em> est le document produit, un <em>chantier</em> est un client ou un service. Le mécanisme est identique.</p>
+  <p class="caption">La démonstration tourne sur un exemple logiciel, parce que c'est celui que je peux montrer publiquement — <a href="../demo/board/">l'ouvrir</a>. Lisez les colonnes en face : une <em>issue</em> est une demande, une <em>livraison</em> est le document produit, un <em>chantier</em> est un client ou un service. Le mécanisme est identique, et la décision se prend sur la page plutôt qu'ailleurs.</p>
   <p class="punch"><strong>Ça compte davantage sans code, pas moins.</strong> Une équipe de développement a au moins un historique de versions : quelqu'un peut reconstituer qui a changé quoi. Un cabinet dont les assistants rédigent, répondent et résument toute la journée n'a aucun historique — jusqu'à ce que quelqu'un lui en donne un.</p>
 </section>
 
@@ -957,7 +957,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <p class="note">Les trente minutes sont gratuites et sans engagement — vous me décrivez votre semaine, je vous dis ce que j'y vois, même si vous n'allez pas plus loin.</p>
 
   <div class="proof">
-    <p><strong>D'où vient la discipline.</strong> Elle a été construite, incident après incident, pour faire tenir une équipe de sept agents IA sur un logiciel réel, avec un seul humain aux commandes — vingt-deux livraisons fusionnées par jour, chaque erreur devenue une règle, tout est public et chiffré. C'est <a href="#code">Guildwork</a>. Chez vous, il n'y aura ni dépôt ni code ; il y aura les mêmes contrats, les mêmes portes, le même registre.</p>
+    <p><strong>D'où vient la discipline.</strong> Elle a été construite, incident après incident, pour faire tenir une équipe de sept agents IA sur un logiciel réel, avec un seul humain aux commandes — vingt-quatre livraisons fusionnées par jour, chaque erreur devenue une règle, tout est public et chiffré. C'est <a href="#code">Guildwork</a>. Chez vous, il n'y aura ni dépôt ni code ; il y aura les mêmes contrats, les mêmes portes, le même registre.</p>
     <p class="fig">127<small>règles écrites en cinq semaines, chacune payée par une erreur réelle</small></p>
   </div>
 </section>

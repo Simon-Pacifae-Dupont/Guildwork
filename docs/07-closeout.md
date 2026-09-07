@@ -6,7 +6,7 @@ deliverable; removal is what is left over when no condition fired. A second
 mode closes the mission contracts that merged deliveries have discharged,
 with four refusals of its own.*
 
-This is a specification. The pack ships no code.
+This is a specification. The closeout tool is specified here, not shipped.
 
 ```
 tools/mission_closeout.py                        dry run: every refusal, every removal that would happen

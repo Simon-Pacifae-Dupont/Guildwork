@@ -1,7 +1,7 @@
 # Incidents, and the rules they paid for
 
 *Every rule in this pack was bought by a failure on a real project, and
-most of them were bought within a week of each other. The failures are
+most of them were bought within a week of each other. Forty-seven failures are
 listed here — anonymised, without issue numbers, with the domain removed —
 because a rule whose incident is unknown is a rule that gets relaxed by the
 first person who finds it inconvenient.*
