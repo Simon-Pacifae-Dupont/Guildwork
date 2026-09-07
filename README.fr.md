@@ -24,7 +24,14 @@ système, extrait : les contrats, les formulaires, le vocabulaire, la
 spécification des trois outils qui tiennent l'ensemble, et les incidents qui
 ont payé chaque règle.
 
-Il ne livre aucun code. Il est fait pour être lu.
+Il est fait pour être lu. Les trois outils sont spécifiés, pas livrés — une
+page l'est : le lecteur de tableau ci-dessous, que vous pouvez ouvrir tout de
+suite.
+
+<p align="center">
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/"><img alt="Le tableau sur l'exemple fictif Lantern : six compteurs, une décision qui attend son responsable en rouge, deux livraisons sous délégation en ambre, trois portes réservées non atteintes en gris, et une légende des couleurs." src="brand/board-demo.fr.png" width="880"></a><br>
+  <sub>Ce que le Product Owner ouvre à la place de la liste d'issues. La page lit le dépôt en direct, par le connecteur GitHub du lecteur, et ne détient aucun jeton. <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">Ouvrir la démonstration</a> · <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">in English</a>.</sub>
+</p>
 
 > **Les quinze documents du pack sont en anglais** et le restent : c'est la
 > langue de travail du système, et une règle qui existe en deux versions
@@ -75,13 +82,22 @@ référence poussée*.
   <sub>À lire pour ses points d'arrêt : sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.fr.html">Version interactive</a> — survolez un bloc pour isoler son chemin.</sub>
 </p>
 
-**Le tableau, lu pour ce qu'il doit à chaque siège.** Le Product Owner
-ouvre une seule page à la place de la liste d'issues : les livraisons qui
-attendent sa décision, celles que l'architecte fusionne sous délégation, les
-missions ouvertes par chantier — et, sur la face du tableau, ce qui n'est
-entré dans aucune règle.
-[Démonstration sur le tableau fictif Lantern](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/)
-· la page elle-même est sous `templates/board/`.
+**Le tableau, lu pour ce qu'il doit à chaque siège.** Six compteurs, puis
+trois questions dans cet ordre : ce qui attend la décision du Product Owner
+et celle de personne d'autre, ce que l'architecte fusionne sous délégation
+sans lui, et ce qui n'entre dans aucune règle — une pull request sans ligne
+`Mission:`, une livraison qui nomme une mission close, un lot sans chantier.
+Ces derniers sont comptés sur la face du tableau plutôt que rangés au jugé,
+et ces compteurs sont faits pour afficher zéro. L'état est porté par la
+couleur : ce qu'on vous doit se voit avant d'être lu.
+
+La page ne détient aucun jeton et ne recopie rien : elle lit le dépôt en
+direct par le connecteur GitHub du lecteur et recalcule à l'ouverture.
+Toutes ses phrases vivent dans un seul objet — c'est ainsi que la
+démonstration française existe.
+[Démonstration](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/) ·
+[in English](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/) ·
+la page elle-même est sous `templates/board/`.
 
 ## Ce que contient ce dépôt
 
@@ -173,4 +189,4 @@ tourner, plus d'un agent de code IA sur un code qui compte, écrivez.
 
 MIT — voir `LICENSE`. Le projet Lantern, son dépôt, ses personnes et ses
 chiffres sont fictifs ; les chiffres de `docs/13-by-the-numbers.md` sont
-réels et ont été mesurés le 4 septembre 2026.
+réels ; ils ont été mesurés le 6 septembre 2026, sur des jours complets uniquement.
