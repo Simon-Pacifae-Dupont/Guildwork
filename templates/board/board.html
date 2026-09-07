@@ -10,8 +10,8 @@
     --ink:#0B1526; --ink-2:#3E4A60; --ink-3:#6B7791;
     --rule:#D9D2C4; --rule-2:#E8E2D6;
     --accent:#0D5C66; --accent-soft:#E4EDEC;
-    --landed:#1C6640; --flight:#8F5C10; --owed:#9C3223; --idle:#1A5384;
-    --landed-bg:#DCEBE1; --flight-bg:#F9EDD8; --owed-bg:#F8E1DC; --idle-bg:#DDE9F3;
+    --landed:#1C6640; --flight:#8F5C10; --owed:#0B1526; --idle:#1A5384; --broken:#9C3223;
+    --landed-bg:#DCEBE1; --flight-bg:#F9EDD8; --owed-bg:#E4DFD3; --idle-bg:#DDE9F3; --broken-bg:#F8E1DC;
     --shadow:0 1px 2px rgba(25,29,28,.05), 0 8px 24px -16px rgba(25,29,28,.25);
   }
   @media (prefers-color-scheme: dark) {
@@ -20,8 +20,8 @@
       --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
       --rule:#2B3B57; --rule-2:#1D2B44;
       --accent:#5CB9C4; --accent-soft:#14223A;
-      --landed:#78C48C; --flight:#E8AE57; --owed:#EC8A79; --idle:#79B4E0;
-      --landed-bg:#203637; --flight-bg:#36322D; --owed-bg:#372B33; --idle-bg:#203348;
+      --landed:#78C48C; --flight:#E8AE57; --owed:#F3EDE2; --idle:#79B4E0; --broken:#EC8A79;
+      --landed-bg:#203637; --flight-bg:#36322D; --owed-bg:#393E48; --idle-bg:#203348; --broken-bg:#372B33;
       --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
     }
   }
@@ -30,8 +30,8 @@
     --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
     --rule:#2B3B57; --rule-2:#1D2B44;
     --accent:#5CB9C4; --accent-soft:#14223A;
-    --landed:#78C48C; --flight:#E8AE57; --owed:#EC8A79; --idle:#79B4E0;
-    --landed-bg:#203637; --flight-bg:#36322D; --owed-bg:#372B33; --idle-bg:#203348;
+    --landed:#78C48C; --flight:#E8AE57; --owed:#F3EDE2; --idle:#79B4E0; --broken:#EC8A79;
+    --landed-bg:#203637; --flight-bg:#36322D; --owed-bg:#393E48; --idle-bg:#203348; --broken-bg:#372B33;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
   }
   *,*::before,*::after { box-sizing:border-box; }
@@ -61,7 +61,7 @@
   .stat { background:var(--surface); padding:13px 15px; }
   .stat .n { font-family:Archivo,sans-serif; font-size:25px; font-weight:700; line-height:1.1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
   .stat .l { font-size:12px; color:var(--ink-2); margin-top:2px; }
-  .stat.owed .n { color:var(--owed); } .stat.flight .n { color:var(--flight); }
+  .stat.owed .n { color:var(--owed); } .stat.flight .n { color:var(--flight); } .stat.broken .n { color:var(--broken); }
   section { margin-bottom:40px; }
   .sec-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; border-bottom:1px solid var(--rule); padding-bottom:9px; margin-bottom:14px; }
   .sec-head.sub { border-bottom-style:dotted; margin-top:18px; }
@@ -88,7 +88,7 @@
   .owed-item .q { font-weight:500; font-size:14px; }
   .owed-item .a { font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-3); white-space:nowrap; }
   .msg { border-left:3px solid var(--flight); background:var(--flight-bg); padding:12px 15px; font-size:13.5px; color:var(--ink); max-width:74ch; }
-  .msg.err { border-left-color:var(--owed); background:var(--owed-bg); }
+  .msg.err { border-left-color:var(--broken); background:var(--broken-bg); }
   .msg.info { border-left-color:var(--accent); background:var(--accent-soft); }
   .msg b { font-weight:600; } .msg code { font-family:"IBM Plex Mono",monospace; font-size:12.5px; }
   .skel { height:13px; background:var(--rule-2); border-radius:2px; animation:pulse 1.4s ease-in-out infinite; }
@@ -101,6 +101,7 @@
   .stat { border-top:3px solid var(--rule-2); }
   .stat.owed   { border-top-color:var(--owed);   background:color-mix(in srgb, var(--owed-bg) 55%, var(--surface)); }
   .stat.flight { border-top-color:var(--flight); background:color-mix(in srgb, var(--flight-bg) 55%, var(--surface)); }
+  .stat.broken { border-top-color:var(--broken); background:color-mix(in srgb, var(--broken-bg) 55%, var(--surface)); }
   .sec-head { border-bottom-width:2px; }
   #owed-sec      > .sec-head { border-bottom-color:var(--owed); }
   #deleg-sec     > .sec-head { border-bottom-color:var(--flight); }
@@ -253,6 +254,7 @@
   "legendOwed": "waiting on you",
   "legendFlight": "moving under delegation",
   "legendIdle": "reserved, not reached yet",
+  "legendBroken": "broken — a reading that failed, or came back short",
   "legendAccent": "open, by workstream",
   "statOpen": "open issues",
   "statToDecide": "to decide",
@@ -411,13 +413,14 @@
     var prs = state.openPrs ? state.openPrs.length : "—";
     var vals = [[missions, T.statMissions, ""], [issues.length, T.statOpen, ""], [prs, T.statPrs, ""],
                 [owedNow, T.statToDecide, owedNow ? "owed" : ""], [delegated, T.statDelegated, delegated ? "flight" : ""], [unclassed, T.statUnclassified, ""]];
-    if (state.issuesTruncated) vals.push([state.issuesTruncated, T.statUnread, "owed"]);
+    if (state.issuesTruncated) vals.push([state.issuesTruncated, T.statUnread, "broken"]);
     els.stats.innerHTML = vals.map(function (v) { return '<div class="stat ' + v[2] + '"><div class="n">' + v[0] + '</div><div class="l">' + v[1] + "</div></div>"; }).join("");
     var lg = document.getElementById("legend");
     if (lg) lg.innerHTML =
       '<span><i style="background:var(--owed)"></i>' + T.legendOwed + "</span>" +
       '<span><i style="background:var(--flight)"></i>' + T.legendFlight + "</span>" +
       '<span><i style="background:var(--idle)"></i>' + T.legendIdle + "</span>" +
+      '<span><i style="background:var(--broken)"></i>' + T.legendBroken + "</span>" +
       '<span><i style="background:var(--accent)"></i>' + T.legendAccent + "</span>";
   }
 

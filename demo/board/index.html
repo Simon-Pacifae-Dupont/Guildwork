@@ -13,14 +13,17 @@
     --ink:#F3EDE2; --ink-2:#9FAAC0; --muted:#6B7791;
     --line:#1D2B44; --line-strong:#2B3B57; --brand:#5CB9C4;
 
-    /* FIVE STATES, the hues the reference board established: one row carries
+    /* SIX STATES, the hues the reference board established: one row carries
        exactly one, always filled, the word inside. Each tint is the state mixed
-       into the site's surface, so a tinted row still sits on navy. */
+       into the site's surface, so a tinted row still sits on navy.
+       "for you" is the ink itself: every other hue is a machine state, the human
+       is the one object on the board without a colour. Red is kept for "broken". */
     --s-run:#E8AE57;      --s-run-tint:#36322D;
     --s-bridge:#BDA2E4;   --s-bridge-tint:#2E3049;
     --s-next:#79B4E0;     --s-next-tint:#203348;
-    --s-you:#EC8A79;      --s-you-tint:#372B33;
+    --s-you:#F3EDE2;      --s-you-tint:#393E48;
     --s-done:#78C48C;     --s-done-tint:#203637;
+    --s-broken:#EC8A79;   --s-broken-tint:#372B33;
 
     /* WORKSTREAMS. Panel frame only — never a row. Muted against the states. */
     --w-device:#88A88F; --w-sync:#80B8B6; --w-dashboard:#79A7BD;
@@ -45,6 +48,7 @@
   .s-next  {--s:var(--s-next);   --t:var(--s-next-tint)}
   .s-you   {--s:var(--s-you);    --t:var(--s-you-tint)}
   .s-done  {--s:var(--s-done);   --t:var(--s-done-tint)}
+  .s-broken{--s:var(--s-broken); --t:var(--s-broken-tint)}
 
   .badge{
     display:inline-block; background:var(--s); color:var(--ground);
@@ -70,7 +74,7 @@
     border:1px solid var(--line-strong); border-radius:2px; padding:10px 22px; letter-spacing:.01em}
 
   /* glance */
-  .glance{display:grid; gap:1px; margin:1px -17px 0; grid-template-columns:repeat(6,1fr);
+  .glance{display:grid; gap:1px; margin:1px -17px 0; grid-template-columns:repeat(7,1fr);
     background:var(--line); border-bottom:1px solid var(--line)}
   .glance .tile{background:var(--ground); padding:15px 17px 16px; display:flex; flex-direction:column; gap:3px; min-width:0}
   .glance .tile > b{font-family:"IBM Plex Mono",monospace; font-size:30px; font-weight:600; line-height:1;
@@ -173,7 +177,7 @@
   @media (max-width:820px){
     .streams{grid-template-columns:1fr}
     .procs{grid-template-columns:1fr}
-    .glance{grid-template-columns:repeat(3,1fr)}
+    .glance{grid-template-columns:repeat(4,1fr)}
   }
   @media (max-width:520px){
     .glance{grid-template-columns:repeat(2,1fr); margin-left:0; margin-right:0}
@@ -207,8 +211,9 @@
     <div class="tile s-bridge"><b>1</b><span class="cap">holds the bench</span><em>read 40 s ago</em></div>
     <div class="tile s-next"><b>5</b><span class="cap">next</span><em>chosen by hand</em></div>
     <div class="tile s-you"><b>1</b><span class="cap">for you</span><em>read on GitHub</em></div>
-    <div class="tile"><b>13</b><span class="cap">open issues</span><em>read in full</em></div>
-    <div class="tile"><b>4</b><span class="cap">open deliveries</span><em>read on GitHub</em></div>
+    <div class="tile s-broken"><b>1</b><span class="cap">broken</span><em>checks read on GitHub</em></div>
+    <div class="tile"><b>14</b><span class="cap">open issues</span><em>read in full</em></div>
+    <div class="tile"><b>5</b><span class="cap">open deliveries</span><em>read on GitHub</em></div>
 
   </div>
 
@@ -340,11 +345,15 @@ stays with the hourly task, under its five conditions.*</pre>
         </ul>
       </section>
       <section class="stream" style="--w:var(--w-sync)">
-        <header><h3>sync</h3><span class="count">2</span></header>
+        <header><h3>sync</h3><span class="count">3</span></header>
         <ul class="items">
           <li class="s-run now"><span class="n">#142</span><span class="body">
             <span class="t">The sync log names the reading it could not parse</span>
             <span class="marks"><span class="badge s-run">running</span><span class="rel">issue of #135</span></span></span></li>
+          <li class="s-broken"><span class="n">#138</span><span class="body">
+            <span class="t">The sync worker reconnects after the device sleeps</span>
+            <span class="blocked">checks red on the delivery — it does not reach the hourly task until they pass</span>
+            <span class="marks"><span class="badge s-broken">broken</span><span class="rel">delivers PR #140</span></span></span></li>
           <li class="s-done"><span class="n">#129</span><span class="body">
             <span class="t">Export manifest names the reading window it covers</span>
             <span class="marks"><span class="badge s-done">landed</span><span class="rel">delivered PR #130</span></span></span></li>
