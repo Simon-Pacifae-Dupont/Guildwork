@@ -29,10 +29,7 @@ page l'est : le lecteur de tableau ci-dessous, que vous pouvez ouvrir tout de
 suite.
 
 <p align="center">
-  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="brand/board-demo-dark.png">
-    <img alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait." src="brand/board-demo.png" width="880">
-  </picture></a><br>
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait." src="brand/board-demo-dark.png" width="880"></a><br>
   <sub>Le tableau tel qu'il tourne, sur l'exemple fictif Lantern. Six compteurs, portant chacun <em>comment</em> il a été lu ; puis la seule décision qui revient au Product Owner et à personne d'autre, prise sur la page où elle se lit — le commentaire qu'elle publiera étant montré mot pour mot avant. Il ne fusionne jamais. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Ouvrir la démonstration</a> — figée, et elle le dit sur sa face. Elle est en anglais, comme le pack ; <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">le lecteur livré existe en français</a>.</sub>
 </p>
 
