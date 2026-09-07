@@ -24,7 +24,13 @@ This repository is that system, extracted: the contracts, the forms, the
 vocabulary, the specification of the three tools that hold it together, and
 the incidents that paid for every rule.
 
-It ships no code. It is meant to be read.
+It is meant to be read. The three tools are specified, not shipped — one
+page is: the board reader below, which you can open right now.
+
+<p align="center">
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="The board on the fictional Lantern example: six counters, one decision waiting for its owner in red, two deliveries moving under delegation in amber, three reserved gates not yet reached in grey, and a colour legend." src="brand/board-demo.png" width="880"></a><br>
+  <sub>What the Product Owner opens instead of the issue list. It reads the repository live, through the viewer's own GitHub connector, and holds no token. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Open the demonstration</a> · <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">en français</a>.</sub>
+</p>
 
 ## The problem
 
@@ -66,12 +72,21 @@ it outside the gate*; *durable means reachable from a pushed ref*.
   <sub>Read for where it can stop: seven conditions before a session starts, a witness and a gate before anything lands, three exit codes decided by durability alone, and a register that sends every incident back into the next contract. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.html">Interactive version</a> — hover a block to isolate its path.</sub>
 </p>
 
-**The board, read for what it owes each seat.** The Product Owner opens one
-page instead of the issue list: the deliveries waiting on their decision, the
-deliveries the architect merges under delegation, the open missions by
-workstream — and, on the face of the board, whatever fitted no rule.
-[Demonstration on the fictional Lantern board](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/)
-· the page itself is under `templates/board/`.
+**The board, read for what it owes each seat.** Six counters, then three
+questions in this order: what is waiting on the Product Owner's decision and
+on nobody else's, what the architect merges under delegation without them,
+and what fits no rule — a pull request with no `Mission:` line, a delivery
+naming a closed mission, a lot with no workstream. Those last are counted on
+the face of the board rather than filed by guesswork, and they are meant to
+read zero. State is carried in colour, so what is owed to you is visible
+before it is read.
+
+The page holds no token and copies nothing: it reads the repository live
+through the viewer's own GitHub connector and recomputes on open. Every
+string sits in one object, which is how the French demonstration exists.
+[Demonstration](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/) ·
+[en français](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/) ·
+the page itself is under `templates/board/`.
 
 ## What is in this repository
 
@@ -161,4 +176,4 @@ AI coding agent on a codebase that matters, write.
 
 MIT — see `LICENSE`. The Lantern project, its repository, its people and
 its numbers are fictional; the figures in `docs/13-by-the-numbers.md` are
-real and were measured on 4 September 2026.
+real; they were measured on 6 September 2026, over complete days only.
