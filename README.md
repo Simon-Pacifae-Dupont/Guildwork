@@ -28,10 +28,7 @@ It is meant to be read. The three tools are specified, not shipped — one
 page is: the board reader below, which you can open right now.
 
 <p align="center">
-  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="brand/board-demo-dark.png">
-    <img alt="The board on the fictional Lantern example: six counters each carrying how it was read, and one decision card with an approve or hold choice and the exact comment it would publish." src="brand/board-demo.png" width="880">
-  </picture></a><br>
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="The board on the fictional Lantern example: six counters each carrying how it was read, and one decision card with an approve or hold choice and the exact comment it would publish." src="brand/board-demo-dark.png" width="880"></a><br>
   <sub>The board as it runs, on the fictional Lantern example. Six counters, each carrying <em>how</em> it was read; then the one decision that is the Product Owner's and nobody else's, taken on the page where it is read — with the comment it will publish shown word for word first. It never merges. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Open the demonstration</a> — frozen, and it says so on its face.</sub>
 </p>
 
