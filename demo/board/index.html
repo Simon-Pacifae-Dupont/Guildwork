@@ -8,24 +8,23 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
   :root{
-    /* Guildwork's own palette: the board wears the colours of the site it lives on,
-       and it is dark only, like the site. */
+    /* The site's own ground: Guildwork navy, ivory ink. The board is dark only, like the site. */
     --ground:#0B1526; --surface:#0A1322; --surface-2:#14223A;
     --ink:#F3EDE2; --ink-2:#9FAAC0; --muted:#6B7791;
-    --line:#1D2B44; --line-strong:#2B3B57; --brand:#E9A23B;
+    --line:#1D2B44; --line-strong:#2B3B57; --brand:#5CB9C4;
 
-    /* FIVE STATES. One row carries exactly one, always filled, the word inside.
-       Running is gold, the bench claim is violet, next is blue, owed to you is red,
-       landed is green. */
-    --s-run:#E9A23B;      --s-run-tint:#3B3228;
-    --s-bridge:#BDA2E4;   --s-bridge-tint:#2E2545;
-    --s-next:#7FA6D6;     --s-next-tint:#24334A;
-    --s-you:#D0644A;      --s-you-tint:#36252B;
-    --s-done:#6FB07B;     --s-done-tint:#203636;
+    /* FIVE STATES, the hues the reference board established: one row carries
+       exactly one, always filled, the word inside. Each tint is the state mixed
+       into the site's surface, so a tinted row still sits on navy. */
+    --s-run:#E8AE57;      --s-run-tint:#36322D;
+    --s-bridge:#BDA2E4;   --s-bridge-tint:#2E3049;
+    --s-next:#79B4E0;     --s-next-tint:#203348;
+    --s-you:#EC8A79;      --s-you-tint:#372B33;
+    --s-done:#78C48C;     --s-done-tint:#203637;
 
     /* WORKSTREAMS. Panel frame only — never a row. Muted against the states. */
-    --w-device:#7C8FB0; --w-sync:#8AA3A0; --w-dashboard:#7FA0BF;
-    --w-gate:#A9A489;   --w-watcher:#A793B0; --w-governance:#9AA3C8;
+    --w-device:#88A88F; --w-sync:#80B8B6; --w-dashboard:#79A7BD;
+    --w-gate:#B2AF8C;   --w-watcher:#B797B2; --w-governance:#A6ACCF;
 
     --shadow:0 1px 2px rgba(0,0,0,.35);
     --shadow-lift:0 2px 12px rgba(0,0,0,.5);
