@@ -16,9 +16,9 @@
 
 **Not a developer?** The same discipline — a contract before, a witness during, a closeout after, and a launcher that refuses to start what isn’t in order — holds a law firm, an agency or a support desk just as well. [That door is on the same page.](https://simon-pacifae-dupont.github.io/Guildwork/#no-code)
 
-Guildwork is the governance one person built, incident by incident, to run
-a seven-seat AI engineering team on a real product at twenty-five merges a
-day — with every mission a contract, every merge behind a named gate, every
+Guildwork is the governance one person built, incident by incident — and
+runs every day — to hold a seven-seat AI engineering team on a real product
+at twenty-five merges a day: with every mission a contract, every merge behind a named gate, every
 session leaving a durable record, and the human out of the message path.
 This repository is that system, extracted: the contracts, the forms, the
 vocabulary, the specification of the three tools that hold it together, and
@@ -28,8 +28,8 @@ It is meant to be read. The three tools are specified, not shipped — one
 page is: the board reader below, which you can open right now.
 
 <p align="center">
-  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="The board on the fictional Lantern example: six counters each carrying how it was read, and one decision card with an approve or hold choice and the exact comment it would publish." src="brand/board-demo-dark.png" width="880"></a><br>
-  <sub>The board as it runs, on the fictional Lantern example. Six counters, each carrying <em>how</em> it was read; then the one decision that is the Product Owner's and nobody else's, taken on the page where it is read — with the comment it will publish shown word for word first. It never merges. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Open the demonstration</a> — frozen, and it says so on its face.</sub>
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="The board on the fictional Lantern example: eight counters, one per state, each carrying how it was read, and one decision card with an approve or hold choice and the exact comment it would publish." src="brand/board-demo-dark.png" width="880"></a><br>
+  <sub>The board as it runs, on the fictional Lantern example. Eight counters — one per state, green included — each carrying <em>how</em> it was read; then the one decision that is the Product Owner's and nobody else's, taken on the page where it is read — with the comment it will publish shown word for word first. It never merges. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Open the demonstration</a> — frozen, and it says so on its face.</sub>
 </p>
 
 ## The problem
@@ -161,6 +161,20 @@ Every example here is rewritten on a fictional project, **Lantern** — a
 workshop sensor dashboard with a bridge to a bench controller — so that the
 mechanics can be shown without describing the real product. Nothing about
 Lantern is load-bearing.
+
+## Where it is going
+
+The kit is the part that has stopped moving. Three things are still moving
+on the project it comes from, and each will reach the kit the way everything
+here did — once a real incident has paid for it. The board becomes the
+control: not a report on the agents, but the page where the one decision
+that is the Product Owner's is taken and recorded by the same click. A
+watcher sees what a board cannot: a seat stopped on a permission prompt
+looks exactly like a seat at work, and the rule for that is being paid for
+this week. And the same seven states — running, holding the screen, next,
+for you, landed, broken, expired — sit on every board, whatever it follows;
+the names adapt to a project, the positions and the hues do not
+(`brand/design-system.md`).
 
 ## What it is not
 

@@ -16,8 +16,8 @@
 **Vous ne développez pas ?** La même discipline — un contrat avant, un témoin pendant, un bilan après, et un lanceur qui refuse de démarrer ce qui n’est pas en règle — tient aussi bien un cabinet, une agence ou un service client. [Cette entrée est sur la même page.](https://simon-pacifae-dupont.github.io/Guildwork/fr/#sans-code)
 
 Guildwork est la gouvernance qu'une seule personne a construite, incident
-après incident, pour faire tourner une équipe d'ingénierie IA à sept sièges
-sur un produit réel, à vingt-cinq merges par jour — chaque mission un
+après incident — et qui tourne chaque jour — pour tenir une équipe
+d'ingénierie IA à sept sièges sur un produit réel, à vingt-cinq merges par jour : chaque mission un
 contrat, chaque merge derrière une porte nommée, chaque session laissant une
 trace durable, et l'humain hors du chemin des messages. Ce dépôt est ce
 système, extrait : les contrats, les formulaires, le vocabulaire, la
@@ -29,8 +29,8 @@ page l'est : le lecteur de tableau ci-dessous, que vous pouvez ouvrir tout de
 suite.
 
 <p align="center">
-  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait." src="brand/board-demo-dark.png" width="880"></a><br>
-  <sub>Le tableau tel qu'il tourne, sur l'exemple fictif Lantern. Six compteurs, portant chacun <em>comment</em> il a été lu ; puis la seule décision qui revient au Product Owner et à personne d'autre, prise sur la page où elle se lit — le commentaire qu'elle publiera étant montré mot pour mot avant. Il ne fusionne jamais. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Ouvrir la démonstration</a> — figée, et elle le dit sur sa face. Elle est en anglais, comme le pack ; <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">le lecteur livré existe en français</a>.</sub>
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="Le tableau sur l'exemple fictif Lantern : huit compteurs, un par état, portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait." src="brand/board-demo-dark.png" width="880"></a><br>
+  <sub>Le tableau tel qu'il tourne, sur l'exemple fictif Lantern. Huit compteurs — un par état, vert compris — portant chacun <em>comment</em> il a été lu ; puis la seule décision qui revient au Product Owner et à personne d'autre, prise sur la page où elle se lit — le commentaire qu'elle publiera étant montré mot pour mot avant. Il ne fusionne jamais. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Ouvrir la démonstration</a> — figée, et elle le dit sur sa face. Elle est en anglais, comme le pack ; <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">le lecteur livré existe en français</a>.</sub>
 </p>
 
 > **Les quinze documents du pack sont en anglais** et le restent : c'est la
@@ -174,6 +174,20 @@ Tous les exemples sont réécrits sur un projet fictif, **Lantern** — un
 tableau de bord de capteurs d'atelier relié à un contrôleur de banc — pour
 que les mécaniques puissent être montrées sans décrire le produit réel. Rien
 de ce qui concerne Lantern n'est porteur.
+
+## Où ça va
+
+Le kit est la partie qui a cessé de bouger. Trois choses bougent encore sur
+le projet dont il vient, et chacune rejoindra le kit comme tout ce qui est
+ici : une fois qu'un incident réel l'aura payée. Le tableau devient le
+contrôle : pas un rapport sur les agents, mais la page où la seule décision
+qui revient au Product Owner se prend et s'enregistre du même clic. Un
+veilleur voit ce qu'un tableau ne peut pas voir : un siège arrêté sur une
+demande de permission ressemble trait pour trait à un siège qui travaille,
+et la règle est en train d'être payée cette semaine. Et les mêmes sept
+états — en cours, tient l'écran, à venir, pour vous, atterri, cassé,
+périmé — sont sur chaque tableau, quoi qu'il suive ; les noms s'adaptent au
+projet, les positions et les teintes non (`brand/design-system.md`).
 
 ## Ce que ce n'est pas
 

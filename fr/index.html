@@ -231,6 +231,11 @@
 
 
   /* ---- mobile: the three prices, comparable without scrolling ---- */
+  /* where this is going — prose, not cards: three short claims after the proof */
+  .next{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .next p{margin:0;font-size:14.5px;color:var(--ink-2)}
+  .next p b{display:block;color:var(--ink);font-weight:600;margin-bottom:6px}
+  @media (max-width:820px){.next{grid-template-columns:1fr}}
   .pricebar{display:none}
   @media (max-width:720px){
     .pricebar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--edge-2);
@@ -489,7 +494,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <div class="wrap hero">
   <p class="eyebrow">Orchestration d’agents IA · pack libre (MIT) · accompagnement</p>
   <h1>Faire travailler des agents IA <em>en gardant le dernier mot</em>.</h1>
-  <p class="lede"><strong>Guildwork est une discipline construite incident après incident :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Bâtie sur un logiciel réel (sept agents, vingt-cinq merges par jour), elle tient aussi un cabinet, une agence ou un service client.</p>
+  <p class="lede"><strong>Guildwork est une discipline construite incident après incident, et qui se construit encore :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Elle tourne aujourd'hui sur un logiciel réel (sept agents, vingt-cinq merges par jour) et tient aussi un cabinet, une agence ou un service client.</p>
   <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
   <div class="cta">
     <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Réserver 30 minutes</a>
@@ -504,7 +509,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a class="door" href="#code" data-go="code" aria-pressed="false">
       <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Vous avez du code</p>
       <h3>Une équipe, un dépôt, des agents qui s’y bousculent</h3>
-      <p>Claude Code, Codex, Grok ou d’autres, sur un code qui compte. Le lanceur qui refuse, le témoin, la clôture, le tableau — et trente-sept jours de chiffres.</p>
+      <p>Claude Code, Codex, Grok ou d’autres, sur un code qui compte. Le lanceur qui refuse, le témoin, la clôture, le tableau — et trente-sept jours de chiffres, qui continuent.</p>
       <span class="go" data-off="Lire cette entrée →" data-on="Vous lisez cette entrée"></span>
     </a>
     <a class="door" href="#sans-code" data-go="nocode" aria-pressed="false">
@@ -591,7 +596,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="board" class="wrap">
   <h2>Le tableau, lu pour ce qu'il vous doit</h2>
-  <p>Vingt-quatre merges par jour ne se lisent pas dans une liste d'issues. Le Product Owner ouvre une seule page à la place — celle que le pack livre sous <code>templates/board/</code> — et elle répond à trois questions, dans cet ordre, en refusant de deviner la réponse à chacune.</p>
+  <p>Vingt-cinq merges par jour ne se lisent pas dans une liste d'issues. Le Product Owner ouvre une seule page à la place — celle que le pack livre sous <code>templates/board/</code> — et elle répond à trois questions, dans cet ordre, en refusant de deviner la réponse à chacune.</p>
   <div class="scenes">
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Ce qu'on vous doit</span></p><h3>Ce que vous seul pouvez trancher — et qui est vraiment arrivé</h3><p>Une porte réservée n'est pas une attente. <code>gate:po</code> dit <em>qui</em> tranchera ; il ne dit pas que la décision est sur votre bureau. Le tableau sépare les deux et ne liste que les contrats dont la livraison est ouverte et porte la ligne <code>Mission: #N delivers</code>.</p><p class="rule">Si un contrat n'est pas dans cette liste, rien ne vous attend. C'est la phrase que cette page existe pour rendre vraie.</p></div>
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Ce qui avance sans vous</span></p><h3>Ce que l'architecte fusionne sur la parole du témoin</h3><p>Les livraisons dont la porte est déléguée passent sans votre signature. Elles sont montrées quand même : une délégation qu'on ne voit pas n'est pas une délégation, c'est un angle mort. Vous les regardez passer, vous n'avez rien à en faire.</p><p class="rule">Visible et actionnable ne sont pas la même chose, et le tableau dit lequel est lequel.</p></div>
@@ -599,7 +604,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   </div>
   <div class="board-frame">
     <a href="../demo/board/">
-      <img src="../brand/board-demo-dark.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait.">
+      <img src="../brand/board-demo-dark.png" alt="Le tableau sur l'exemple fictif Lantern : huit compteurs, un par état, portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait.">
     </a>
   </div>
   <p class="caption">Le tableau tel qu'il tourne, sur l'exemple fictif Lantern — <a href="../demo/board/">ouvrir la démonstration</a>. Elle est figée et le dit sur sa face : les commandes sont montrées, pas actives. Ce que le pack livre aujourd'hui, c'est le <a href="demo/board/">lecteur, traduit en français</a>, sous <code>templates/board/</code> ; la lecture de l'hôte et le chemin de décision sont plus récents et rejoindront le pack quand ils auront cessé de bouger. La démonstration ci-dessus est en anglais, comme le pack.</p>
@@ -609,8 +614,8 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <hr class="rule">
 
 <section id="numbers" class="wrap">
-  <h2>Sur quoi il a tourné</h2>
-  <p>Une application de bureau Windows en Python, avec une suite de 12 100 tests. Un seul humain — le Product Owner — qui détient le matériel, le verdict produit et le merge vers la branche de release. Chaque ligne de code, chaque test et chaque document de gouvernance depuis début août 2026 a été écrit par des sièges IA, sous ces contrats.</p>
+  <h2>Sur quoi il tourne</h2>
+  <p>Une application de bureau Windows en Python, avec une suite de 12 100 tests. Un seul humain — le Product Owner — qui détient le matériel, le verdict produit et le merge vers la branche de release. Chaque ligne de code, chaque test et chaque document de gouvernance depuis début août 2026 est écrit par des sièges IA, sous ces contrats — et l'est encore.</p>
   <div class="figs">
     <div class="fig"><b>323</b><span>contrats de mission ouverts en douze jours</span></div>
     <div class="fig"><b>300</b><span>pull requests fusionnées sur les mêmes douze jours</span></div>
@@ -771,6 +776,16 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <p class="note">Les quinze documents sont en anglais et le restent : c'est la langue de travail du pack, et une règle qui existe en deux versions finit par exister en deux versions différentes.</p>
 </section>
 
+<section id="next" class="wrap">
+  <h2>Où ça va</h2>
+  <p>Le kit est la partie qui a cessé de bouger. Trois choses bougent encore sur le projet dont il vient, et chacune rejoindra le kit comme tout ce qui est ici : une fois qu'un incident réel l'aura payée.</p>
+  <div class="next">
+    <p><b>Le tableau devient le contrôle.</b> Pas un rapport sur les agents : la page où la seule décision qui vous revient se prend, et s'enregistre du même clic. Vingt-cinq merges par jour ne se tiennent pas autrement.</p>
+    <p><b>Un veilleur qui voit ce qu'un tableau ne peut pas voir.</b> Un siège arrêté sur une demande de permission ressemble trait pour trait à un siège qui travaille — même processus, même fenêtre. La règle est en train d'être payée cette semaine.</p>
+    <p><b>Les mêmes sept états sur chaque tableau.</b> En cours, tient l'écran, à venir, pour vous, atterri, cassé, périmé — quoi que le tableau suive. Les noms s'adaptent au projet ; les positions et les teintes, non.</p>
+  </div>
+</section>
+
 <hr class="rule">
 
 <section id="work" class="wrap">
@@ -909,11 +924,16 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   </div>
   <div class="board-frame">
     <a href="../demo/board/">
-      <img src="../brand/board-demo-dark.png" alt="Le tableau sur l'exemple fictif Lantern : six compteurs portant chacun la façon dont il a été lu, et une carte de décision avec le libellé exact qu'elle publierait.">
+      <img src="../brand/board-demo-dark.png" alt="Le tableau sur l'exemple fictif Lantern : huit compteurs, un par état, portant chacun la façon dont il a été lu, et une carte de décision avec le libellé exact qu'elle publierait.">
     </a>
   </div>
   <p class="caption">La démonstration tourne sur un exemple logiciel, parce que c'est celui que je peux montrer publiquement — <a href="../demo/board/">l'ouvrir</a>. Lisez les colonnes en face : une <em>issue</em> est une demande, une <em>livraison</em> est le document produit, un <em>chantier</em> est un client ou un service. Le mécanisme est identique, et la décision se prend sur la page plutôt qu'ailleurs.</p>
   <p class="punch"><strong>Ça compte davantage sans code, pas moins.</strong> Une équipe de développement a au moins un historique de versions : quelqu'un peut reconstituer qui a changé quoi. Un cabinet dont les assistants rédigent, répondent et résument toute la journée n'a aucun historique — jusqu'à ce que quelqu'un lui en donne un.</p>
+</section>
+
+<section id="next-nocode" class="wrap">
+  <h2>Où ça va</h2>
+  <p>Une page qui lit ce que vos équipes confient à une IA — les devis cette année, les comptes rendus et les réponses clients la suivante — et le trie dans les mêmes trois piles, sous les mêmes sept états qu'un tableau de logiciel. La personne qui signe est dans le fauteuil du consultant, pas de l'exécutant : l'IA apporte la chose finie et la seule décision qui lui revient, et tout le reste part au grand jour.</p>
 </section>
 
 <hr class="rule">
