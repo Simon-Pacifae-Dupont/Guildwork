@@ -18,7 +18,7 @@
 
 Guildwork is the governance one person built, incident by incident — and
 runs every day — to hold a seven-seat AI engineering team on a real product
-at twenty-five merges a day: with every mission a contract, every merge behind a named gate, every
+at 24.5 merges a day over the thirteen complete days to 7 September 2026: with every mission a contract, every merge behind a named gate, every
 session leaving a durable record, and the human out of the message path.
 This repository is that system, extracted: the contracts, the forms, the
 vocabulary, the specification of the three tools that hold it together, and
@@ -149,10 +149,12 @@ says which value is Lantern's and what you still owe.
 
 ## Where it comes from
 
-A Windows desktop application in Python with a 12 100-test suite, one human
+A Windows desktop application in Python with a 13 155-test suite measured on
+8 September 2026, one human
 Product Owner, a Claude Cowork session as Chief Architect, executing seats
 on Claude Code and Grok, and Codex as an external reviewer. In the twelve days
-to 6 September 2026, 323 contracts were opened and 300 pull requests merged;
+to 6 September 2026, 323 contracts were opened; in the thirteen complete days
+to 7 September, 318 pull requests merged — 24.5 a day over that window;
 531 sessions closed with a journal entry in the 35 days since the journal
 existed. `docs/13-by-the-numbers.md` has the full table,
 and both readings of it.

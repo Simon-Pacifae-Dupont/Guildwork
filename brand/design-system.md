@@ -58,6 +58,11 @@ workstream frame, its header bands are *strip*, its decision card is
 *card-lead*: on a board the thing that must stand out is a state, and a
 state is a hue, not an elevation.
 
+The exact wording a decision would publish is a *well*: `--well` with an
+ivory frame and inset shadow. It is a preview, not an outcome, so it never
+uses the green *landed* tint. Green appears only where the confirmed action
+leads — in the frozen demonstration, the ring at the pointer's tip.
+
 ## The six states — the reference board's hues, never the site's
 
 A state colours exactly three things: the counter of that state, the badge

@@ -15,6 +15,16 @@ holds the hardware, the product verdict and the merge to the release branch.
 Every line of code, test and governance document since early August 2026
 was written by AI seats under the contracts described in this pack.
 
+### Later reading — kept separate from the frozen table
+
+On 8 September, the latest complete suite result at commit `4859946b` was
+**12 996 passed, 135 skipped and 24 xfailed: 13 155 collected tests**. On
+7 September, 18 further pull requests merged. That makes **318 merges over
+the 13 complete days from 26 August to 7 September — 24.5 a day** (318 ÷ 13,
+rounded to one decimal). The contract and journal counts below were not read
+again and remain frozen at 6 September; this update does not silently extend
+their window.
+
 ## The seats
 
 | | |
@@ -50,7 +60,7 @@ asked to remember is a defect.
 | | |
 |---|---|
 | labels | 28 — the seventeen-label mission taxonomy, three routing labels, eight workstream labels |
-| launcher conditions | 7, plus three warnings that block nothing |
+| launcher conditions | 7 specified; the reference implementation currently refuses on 10 |
 | closeout conditions | 5, plus four refusals in the contract-closing mode |
 | register entries | five families; the governance family alone passed 130 entries |
 | normative workflow document | 2 300 lines, 138 KB, owned by a named seat with a stated obligation |
