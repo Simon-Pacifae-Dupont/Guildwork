@@ -17,7 +17,7 @@
 
 Guildwork est la gouvernance qu'une seule personne a construite, incident
 après incident — et qui tourne chaque jour — pour tenir une équipe
-d'ingénierie IA à sept sièges sur un produit réel, à 24,5 merges par jour sur les treize journées complètes jusqu'au 7 septembre 2026 : chaque mission un
+d'ingénierie IA à sept sièges sur un produit réel, à vingt-cinq merges par jour : chaque mission un
 contrat, chaque merge derrière une porte nommée, chaque session laissant une
 trace durable, et l'humain hors du chemin des messages. Ce dépôt est ce
 système, extrait : les contrats, les formulaires, le vocabulaire, la
@@ -162,14 +162,12 @@ Lantern et ce qui vous reste à écrire.
 ## D'où ça vient
 
 Une application de bureau Windows en Python avec une suite de 13 155 tests,
-mesurée le 8 septembre 2026,
-un seul humain Product Owner, une session Claude Cowork comme architecte en
-chef, des sièges d'exécution sur Claude Code et Grok, et Codex en relecteur
-externe. Dans les douze jours jusqu'au 6 septembre 2026, 323 contrats ont été
-ouverts ; dans les treize journées complètes jusqu'au 7 septembre, 318 pull
-requests ont été fusionnées — 24,5 par jour sur cette fenêtre ; 531 sessions
-se sont closes avec une entrée de journal, sur les
-35 jours d'existence du journal. `docs/13-by-the-numbers.md` contient la table
+mesurée le 8 septembre 2026 ; un seul humain Product Owner, une session
+Claude Cowork comme architecte en chef, des sièges d'exécution sur Claude Code
+et Grok, et Codex en relecteur externe. Dans les treize jours jusqu'au
+7 septembre 2026, 344 contrats ont été ouverts et 320 pull requests fusionnées —
+vingt-cinq par jour ; 548 sessions se sont closes avec une entrée de journal, sur
+les 36 jours d'existence du journal. `docs/13-by-the-numbers.md` contient la table
 complète, et ses deux lectures.
 
 Tous les exemples sont réécrits sur un projet fictif, **Lantern** — un
@@ -212,4 +210,4 @@ tourner, plus d'un agent de code IA sur un code qui compte, écrivez.
 
 MIT — voir `LICENSE`. Le projet Lantern, son dépôt, ses personnes et ses
 chiffres sont fictifs ; les chiffres de `docs/13-by-the-numbers.md` sont
-réels ; ils ont été mesurés le 6 septembre 2026, sur des jours complets uniquement.
+réels ; ils ont été mesurés le 9 septembre 2026, sur des jours complets uniquement.
