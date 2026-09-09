@@ -138,6 +138,17 @@ card, so it ends on the action rather than on a list.
   would claim the reader owes something.
 - **Why a row is blocked** is a word under its title, never a hue.
 
+## An image of a surface is a door to it
+
+Every image that shows a surface which exists interactively — the board,
+the canvas, a reader — is wrapped in a link to that surface and carries the
+same button, bottom right, on a strip of `--surface` under the image, never
+over it: *Explore the interactive canvas ↗*, *Explore the interactive
+board ↗*. The `alt` says the image can be clicked. A bare image of an
+interactive surface is a mistake: the reader must never have to guess that
+the real thing is one click away. The READMEs, which cannot draw a button,
+make the image itself the link and say so in the caption.
+
 ## Focus lights the thread, and dims the rest
 
 Every surface that shows more than one object — the canvas, a board, a

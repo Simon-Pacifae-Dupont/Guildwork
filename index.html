@@ -116,19 +116,18 @@
   /* canvas */
   .canvas-frame{position:relative;margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
     background:var(--card);box-shadow:var(--shadow-lift)}
-  .canvas-frame a{display:block;position:relative;text-decoration:none;padding-bottom:58px;background:var(--surface)}
-  .canvas-frame a img{display:block}
-  .canvas-frame a::after{content:attr(data-action);position:absolute;right:14px;bottom:12px;padding:9px 13px;
+  .canvas-frame a,.board-frame a{display:block;position:relative;text-decoration:none;padding-bottom:58px;background:var(--surface)}
+  .canvas-frame a img,.board-frame a img{display:block}
+  .canvas-frame a::after,.board-frame a::after{content:attr(data-action);position:absolute;right:14px;bottom:12px;padding:9px 13px;
     border:1px solid rgba(245,196,107,.62);border-radius:999px;background:rgba(7,13,24,.9);color:var(--amber-2);
     font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.03em;
     box-shadow:0 10px 30px rgba(0,0,0,.45);backdrop-filter:blur(7px);transition:transform .16s ease,background .16s ease}
-  .canvas-frame a:hover::after,.canvas-frame a:focus-visible::after{transform:translateY(-2px);background:var(--strip)}
-  .canvas-frame a:focus-visible{outline-offset:-4px}
-  @media(max-width:560px){.canvas-frame a{padding-bottom:46px}.canvas-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:9.5px}}
+  .canvas-frame a:hover::after,.canvas-frame a:focus-visible::after,.board-frame a:hover::after,.board-frame a:focus-visible::after{transform:translateY(-2px);background:var(--strip)}
+  .canvas-frame a:focus-visible,.board-frame a:focus-visible{outline-offset:-4px}
+  @media(max-width:560px){.canvas-frame a,.board-frame a{padding-bottom:46px}.canvas-frame a::after,.board-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:9.5px}}
   /* the board */
   .board-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
     box-shadow:var(--shadow-lift)}
-  .board-frame a{display:block}
   .board-frame img{display:block;width:100%}
   /* the trajectory */
   .tl-wrap{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:18px 18px 12px;position:relative}
@@ -605,7 +604,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Refused to guess</span></p><h3>Whatever fits no rule, counted on the face of the board</h3><p>A pull request with no <code>Mission:</code> line. A delivery naming a mission that is already closed. A lot carrying no <code>chantier:</code> label. A dashboard that quietly files these away is telling you a story; this one puts them in a counter you cannot miss.</p><p class="rule">Those counters are the measure of what the governance is not yet doing. They are meant to read zero.</p></div>
   </div>
   <div class="board-frame">
-    <a href="demo/board/">
+    <a href="demo/board/" data-action="Explore the interactive board ↗" aria-label="Open the interactive board demonstration">
       <img src="brand/board-demo-dark.png" alt="The board on the fictional Lantern example: eight counters, one per state, each carrying how it was read, and one decision card with an approve or hold choice and the exact comment it would publish.">
     </a>
   </div>
@@ -926,7 +925,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Refused to guess</span></p><h3>What nothing yet accounts for</h3><p>A document whose source is not stated. A piece of work with no named owner. A reply attached to a request that was already closed. These are not filed quietly — they are counted, in front of everyone.</p><p class="rule">That counter is the honest measure of where your practice is not yet holding. It is meant to read zero.</p></div>
   </div>
   <div class="board-frame">
-    <a href="demo/board/">
+    <a href="demo/board/" data-action="Explore the interactive board ↗" aria-label="Open the interactive board demonstration">
       <img src="brand/board-demo-dark.png" alt="The board on the fictional Lantern example: eight counters, one per state, each carrying how it was read, and one decision card with an approve or hold choice and the exact wording it would publish.">
     </a>
   </div>

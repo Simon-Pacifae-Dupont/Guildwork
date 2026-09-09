@@ -117,19 +117,18 @@
   /* canvas */
   .canvas-frame{position:relative;margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
     background:var(--card);box-shadow:var(--shadow-lift)}
-  .canvas-frame a{display:block;position:relative;text-decoration:none;padding-bottom:58px;background:var(--surface)}
-  .canvas-frame a img{display:block}
-  .canvas-frame a::after{content:attr(data-action);position:absolute;right:14px;bottom:12px;padding:9px 13px;
+  .canvas-frame a,.board-frame a{display:block;position:relative;text-decoration:none;padding-bottom:58px;background:var(--surface)}
+  .canvas-frame a img,.board-frame a img{display:block}
+  .canvas-frame a::after,.board-frame a::after{content:attr(data-action);position:absolute;right:14px;bottom:12px;padding:9px 13px;
     border:1px solid rgba(245,196,107,.62);border-radius:999px;background:rgba(7,13,24,.9);color:var(--amber-2);
     font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.03em;
     box-shadow:0 10px 30px rgba(0,0,0,.45);backdrop-filter:blur(7px);transition:transform .16s ease,background .16s ease}
-  .canvas-frame a:hover::after,.canvas-frame a:focus-visible::after{transform:translateY(-2px);background:var(--strip)}
-  .canvas-frame a:focus-visible{outline-offset:-4px}
-  @media(max-width:560px){.canvas-frame a{padding-bottom:46px}.canvas-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:9.5px}}
+  .canvas-frame a:hover::after,.canvas-frame a:focus-visible::after,.board-frame a:hover::after,.board-frame a:focus-visible::after{transform:translateY(-2px);background:var(--strip)}
+  .canvas-frame a:focus-visible,.board-frame a:focus-visible{outline-offset:-4px}
+  @media(max-width:560px){.canvas-frame a,.board-frame a{padding-bottom:46px}.canvas-frame a::after,.board-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:9.5px}}
   /* the board */
   .board-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
     box-shadow:var(--shadow-lift)}
-  .board-frame a{display:block}
   .board-frame img{display:block;width:100%}
   /* the trajectory */
   .tl-wrap{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:18px 18px 12px;position:relative}
@@ -611,7 +610,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Tout ce qui n'entre dans aucune règle, compté sur la face du tableau</h3><p>Une pull request sans ligne <code>Mission:</code>. Une livraison qui nomme une mission déjà close. Un lot sans étiquette <code>chantier:</code>. Un tableau qui range discrètement ces cas-là vous raconte une histoire ; celui-ci les met dans un compteur qu'on ne peut pas manquer.</p><p class="rule">Ces compteurs sont la mesure de ce que la gouvernance ne fait pas encore. Ils sont faits pour afficher zéro.</p></div>
   </div>
   <div class="board-frame">
-    <a href="../demo/board/">
+    <a href="../demo/board/" data-action="Explorer le tableau interactif ↗" aria-label="Ouvrir la démonstration interactive du tableau">
       <img src="../brand/board-demo-dark.png" alt="Le tableau sur l'exemple fictif Lantern : huit compteurs, un par état, portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait.">
     </a>
   </div>
@@ -934,7 +933,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span>Ce qu'il refuse de deviner</span></p><h3>Ce que rien ne justifie encore</h3><p>Un document dont la source n'est pas nommée. Un travail sans responsable désigné. Une réponse rattachée à une demande déjà close. Ces cas ne sont pas rangés discrètement : ils sont comptés, devant tout le monde.</p><p class="rule">Ce compteur est la mesure honnête de là où votre pratique ne tient pas encore. Il est fait pour afficher zéro.</p></div>
   </div>
   <div class="board-frame">
-    <a href="../demo/board/">
+    <a href="../demo/board/" data-action="Explorer le tableau interactif ↗" aria-label="Ouvrir la démonstration interactive du tableau">
       <img src="../brand/board-demo-dark.png" alt="Le tableau sur l'exemple fictif Lantern : huit compteurs, un par état, portant chacun la façon dont il a été lu, et une carte de décision avec le libellé exact qu'elle publierait.">
     </a>
   </div>
