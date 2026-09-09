@@ -31,7 +31,7 @@
   const LANE = [
     { rule: 36,  y: 68,  h: 130, labelX: 34 },
     { rule: 352, y: 372, h: 116, labelX: 34 },
-    { rule: 588, y: 620, h: 116, labelX: 400 },   // indented: the two drops from lane 2 land at its left
+    { rule: 588, y: 620, h: 116, centerOn: ['close', 'bye'] },   // its label sits centred between the two drops from lane 2, at equal distance from each
     { rule: 838, y: 870, h: 130, labelX: 34 }
   ];
   const LOOP_X = 14;       // the register's way back up, in the left margin
@@ -62,7 +62,7 @@
       lanes: [
         'contract and launch — five surfaces · ten checks today',
         'execute and deliver — nobody certifies their own work  ←',
-        'close and learn — durable evidence, every session  ←',
+        'close and learn — the durable evidence  ←',
         'watch and route — what exists now, and what comes next'
       ],
       nodes: {
@@ -98,7 +98,7 @@
       lanes: [
         'contrat et lancement — cinq surfaces · dix contrôles aujourd’hui',
         'exécuter et livrer — personne ne certifie son propre travail  ←',
-        'clore et apprendre — une preuve durable, à chaque session  ←',
+        'clore et apprendre — la preuve durable  ←',
         'observer et router — ce qui existe, puis la prochaine étape'
       ],
       nodes: {
@@ -200,15 +200,17 @@
     host.appendChild(cv);
 
     // lanes
+    const laneSpans = [];
     T.lanes.forEach((text, i) => {
       const lane = document.createElement('div');
       lane.className = 'lane';
       lane.style.top = LANE[i].rule + 'px';
       const span = document.createElement('span');
       span.textContent = text;
-      span.style.left = (LANE[i].labelX - 34) + 'px';
+      span.style.left = ((LANE[i].labelX || 34) - 34) + 'px';
       lane.appendChild(span);
       cv.appendChild(lane);
+      laneSpans[i] = span;
     });
 
     // cards
@@ -227,6 +229,13 @@
         (n.tag ? `<div class="tag">${n.tag}</div>` : '') + (n.tick ? '<div class="tick">✓</div>' : '');
       cv.appendChild(e);
     }
+
+    // a lane label that must sit between two wires is centred between them once its width is known
+    LANE.forEach((L, i) => {
+      if (!L.centerOn) return;
+      const mid = L.centerOn.map(id => box[id].x + box[id].w / 2).reduce((a, b) => a + b) / L.centerOn.length;
+      laneSpans[i].style.left = (mid - 34 - laneSpans[i].offsetWidth / 2) + 'px';
+    });
 
     // refusal notes, hung from their card on a dashed red thread
     for (const id in PILLS) {
@@ -248,7 +257,8 @@
     const GAP = 5;   // an arrowhead ends this far before the edge it points at, so no card ever covers it
     const port = (b, side, f) => side === 'r' ? [b.x + b.w, b.y + b.h / 2] : side === 'l' ? [b.x, b.y + b.h / 2]
       : side === 'b' ? [b.x + b.w * (f ?? 0.5), b.y + b.h] : [b.x + b.w * (f ?? 0.5), b.y];
-    const into = (p, side) => side === 'r' ? [p[0] - GAP, p[1]] : side === 'l' ? [p[0] + GAP, p[1]] : side === 'b' ? [p[0], p[1] + GAP] : [p[0], p[1] - GAP];
+    // the point an arrow ends at, GAP outside the side it points at
+    const into = (p, side) => side === 'r' ? [p[0] + GAP, p[1]] : side === 'l' ? [p[0] - GAP, p[1]] : side === 'b' ? [p[0], p[1] + GAP] : [p[0], p[1] - GAP];
     const labelAt = (x, y, text, ed) => {
       const t = el('text', { class: 'wlab', x, y, 'text-anchor': 'middle' }, svg);
       t.textContent = text;
