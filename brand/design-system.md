@@ -177,6 +177,24 @@ Every object that can start a thread is reachable by keyboard (`tabindex`),
 and focus behaves exactly as hover. `prefers-reduced-motion` removes the
 transition, not the dimming.
 
+## Rhythm — four gaps, and no other vertical number
+
+Airy, not empty. The site keeps four named distances and every margin on
+the page is one of them:
+
+| Token | Value | Between |
+|---|---|---|
+| `--gap-section` | 72 px (48 on mobile) | one section and the next — each side, so 144 px of ground between two titles |
+| `--gap-object` | 32 px (24 on mobile) | a section's intro and its first object: a frame, a grid, a terminal, a card row |
+| `--gap-caption` | 16 px | an object and the caption or note that reads it |
+| `--gap-para` | 12 px | two paragraphs |
+
+The hero breathes more (88 px above, 64 below) because nothing precedes it.
+A grid never ends on an empty cell: the documents grid has sixteen cells
+because the sixteenth is the drop-in files, not a hole. When a screen shows
+more ground than content between two sections, the fix is the token, not
+the section.
+
 ## Type
 
 Site: Fraunces for display, IBM Plex Sans for text, IBM Plex Mono for

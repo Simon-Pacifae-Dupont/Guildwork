@@ -33,6 +33,8 @@
     --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
     --amber:#E9A23B; --amber-2:#F5C46B; --control:#7FA6D6; --refuse:#D0644A; --ok:#6FB07B;
     --measure:66ch;
+    /* the vertical rhythm — brand/design-system.md "Rhythm: four gaps" */
+    --gap-section:72px; --gap-object:32px; --gap-caption:16px; --gap-para:12px;
     /* icons: one law for the whole page — a size relative to the text they label,
        and one optical lift, larger next to lowercase (which has descenders)
        than next to capitals (which have none). No icon sets these itself. */
@@ -79,7 +81,7 @@
   .lang a[aria-current]{background:var(--node);color:var(--ink)}
 
   /* ---- hero ---- */
-  .wrap.hero{padding-block:104px 80px}
+  .wrap.hero{padding-block:88px 64px}
   .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;
     text-transform:uppercase;color:var(--ink-3);margin:0 0 16px}
   h1{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 144,"SOFT" 40;
@@ -88,17 +90,17 @@
   h1 em{font-style:normal;color:var(--amber)}
   .lede{font-size:19px;color:var(--ink-2);max-width:var(--measure);margin:0 0 14px}
   .lede strong{color:var(--ink);font-weight:500}
-  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
   .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:7px;
     font-size:14.5px;font-weight:600;text-decoration:none;border:1px solid transparent}
   .btn.primary{background:var(--amber);color:#1B1206}
   .btn.primary:hover{background:var(--amber-2)}
   .btn.ghost{border-color:var(--edge);color:var(--ink)}
   .btn.ghost:hover{border-color:#4E5F80;background:var(--node)}
-  .note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);margin:22px 0 0}
+  .note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);margin:var(--gap-caption) 0 0}
 
   /* ---- sections ---- */
-  section.wrap{padding-block:96px}
+  section.wrap{padding-block:var(--gap-section)}
   section[id],.contact{scroll-margin-top:80px}
   h2{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
     font-weight:600;font-size:clamp(25px,3.4vw,34px);line-height:1.12;letter-spacing:-.017em;
@@ -108,14 +110,14 @@
 
   /* four failures */
   .failures{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
-    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(258px,100%),1fr));margin-top:44px}
+    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(258px,100%),1fr));margin-top:var(--gap-object)}
   .failure{background:var(--card);padding:28px 24px 30px}
   .failure .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--refuse);
     letter-spacing:.1em;margin:0 0 10px}
   .failure p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
 
   /* canvas */
-  .canvas-frame{position:relative;margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
+  .canvas-frame{position:relative;margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
     background:var(--card);box-shadow:var(--shadow-lift)}
   .canvas-frame a,.board-frame a{display:block;position:relative;text-decoration:none;padding-bottom:58px;background:var(--surface)}
   .canvas-frame a img,.board-frame a img{display:block}
@@ -127,11 +129,11 @@
   .canvas-frame a:focus-visible,.board-frame a:focus-visible{outline-offset:-4px}
   @media(max-width:560px){.canvas-frame a,.board-frame a{padding-bottom:46px}.canvas-frame a::after,.board-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:9.5px}}
   /* the board */
-  .board-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
+  .board-frame{margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
     box-shadow:var(--shadow-lift)}
   .board-frame img{display:block;width:100%}
   /* the trajectory */
-  .tl-wrap{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:18px 18px 12px;position:relative}
+  .tl-wrap{margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:18px 18px 12px;position:relative}
   .tl-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;margin:0 0 6px}
   .tl-head h3{font-size:15px;margin:0}
   .tl-legend{display:flex;gap:18px;font-size:12.5px;color:var(--ink-2)}
@@ -158,7 +160,7 @@
   .readings p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
   .readings strong{color:var(--ink);font-weight:600}
   /* the two columns */
-  .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px;margin-top:44px}
+  .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px;margin-top:var(--gap-object)}
   .vs > div{border:1px solid var(--line);border-radius:10px;padding:26px 24px 28px;background:var(--card);box-shadow:var(--shadow)}
   .vs > div.me{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
   .vs .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
@@ -170,7 +172,7 @@
   .vs .me li::before{content:"→";color:var(--amber)}
   .vs li em{font-style:normal;color:var(--ink)}
   /* the refusal, as a terminal */
-  .term{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;background:var(--well);overflow:hidden;
+  .term{margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;background:var(--well);overflow:hidden;
     box-shadow:var(--shadow-lift)}
   .term-head{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--edge-2);
     font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
@@ -184,22 +186,22 @@
   .term .cond{color:var(--amber-2)}
   .term .dim{color:var(--ink-3)}
   @media (max-width:720px){.term pre{font-size:11.5px;padding:14px 14px 18px}}
-  .caption{font-size:13.5px;color:var(--ink-3);margin:20px 0 0;max-width:78ch}
+  .caption{font-size:13.5px;color:var(--ink-3);margin:var(--gap-caption) 0 0;max-width:78ch}
 
   /* numbers */
   .figs{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
-    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));margin-top:44px}
+    border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));margin-top:var(--gap-object)}
   .fig{background:var(--card);padding:28px 22px 30px}
   .fig b{display:block;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
     font-weight:600;font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
   .fig span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:9px}
-  .sober{margin-top:36px;padding-left:18px;border-left:2px solid var(--edge);color:var(--ink-2);
+  .sober{margin-top:28px;padding-left:18px;border-left:2px solid var(--edge);color:var(--ink-2);
     font-size:14.5px;max-width:78ch}
   .sober strong{color:var(--ink);font-weight:600}
 
   /* documents */
-  .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(232px,100%),1fr));gap:2px;margin-top:44px;
+  .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(232px,100%),1fr));gap:2px;margin-top:var(--gap-object);
     background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden}
   .doc{background:var(--surface);padding:18px 18px;text-decoration:none;color:inherit;display:block}
   .doc:hover{background:var(--strip)}
@@ -207,7 +209,7 @@
   .doc span{font-size:14px;color:var(--ink)}
 
   /* engagements */
-  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px;margin-top:44px}
+  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px;margin-top:var(--gap-object)}
   .offer{border:1px solid var(--line);border-radius:10px;padding:30px 26px 32px;background:var(--card);box-shadow:var(--shadow);
     display:flex;flex-direction:column}
   .offer.lead{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
@@ -301,7 +303,7 @@
 
   /* contact */
   .contact{background:var(--ground-2);border-top:1px solid var(--edge-2);padding-block:96px}
-  .who{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:34px}
+  .who{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:28px}
   .who p{font-size:15px;color:var(--ink-2);flex:1 1 340px;margin:0}
   .lines{font-family:"IBM Plex Mono",monospace;font-size:13.5px;display:flex;flex-direction:column;gap:9px}
   .lines a{color:var(--ink)}
@@ -316,15 +318,15 @@
 </style>
 <style>
   /* the companies page */
-  .qs{display:grid;gap:14px;margin-top:44px;counter-reset:q}
+  .qs{display:grid;gap:14px;margin-top:var(--gap-object);counter-reset:q}
   .q{border:1px solid var(--line);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:24px 26px 26px;display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start}
   .q::before{counter-increment:q;content:counter(q);font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:40px;line-height:1;color:var(--amber);margin-top:-4px}
   .q p{margin:0;max-width:none}
   .q .ask{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 48,"SOFT" 40;font-weight:600;font-size:21px;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
   .q .why{font-size:14.5px;color:var(--ink-2);margin-top:10px}
-  .punch{margin-top:26px;padding-left:18px;border-left:2px solid var(--amber);font-size:16.5px;color:var(--ink);max-width:70ch}
+  .punch{margin-top:22px;padding-left:18px;border-left:2px solid var(--amber);font-size:16.5px;color:var(--ink);max-width:70ch}
   .punch strong{font-weight:600}
-  .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));margin-top:44px}
+  .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));margin-top:var(--gap-object)}
   .scene{background:var(--card);padding:28px 24px 30px;display:flex;flex-direction:column}
   .scene .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
   .scene h3{font-size:17px;margin:0 0 10px;letter-spacing:-.005em}
@@ -332,7 +334,7 @@
   /* the rule block is pushed to the foot of the card and given one fixed height, so the separators line up across a row */
   .scene .rule{border:0;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--edge-2);font-size:14px;color:var(--ink);margin-top:auto;min-height:84px}
   .scene .rule::before{content:"→ ";color:var(--amber)}
-  .feat{margin-top:44px;border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+  .feat{margin-top:var(--gap-object);border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
   @media (max-width:820px){.feat{grid-template-columns:1fr}}
   .feat .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
   .feat h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:0 0 14px}
@@ -344,7 +346,7 @@
   .feat .side p{font-size:14.5px}
   .feat .side p strong{color:var(--ink);font-weight:600}
   .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid var(--line-amber);color:var(--ink);font-size:15px}
-  .proof{margin-top:44px;border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+  .proof{margin-top:var(--gap-object);border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
   @media (max-width:720px){.proof{grid-template-columns:1fr}}
   .proof p{margin:0;max-width:none;font-size:15.5px;color:var(--ink-2)}
   .proof strong{color:var(--ink);font-weight:600}
@@ -380,12 +382,12 @@
 
   /* ---- mobile: the page breathes on a large screen, it should not sprawl on a small one ---- */
   @media (max-width:720px){
-    section.wrap{padding-block:56px}
+    section.wrap{padding-block:48px}
     .contact{padding-block:56px}
     .wrap.hero{padding-block:44px 30px}
     section.wrap.doors{padding-block:0 48px}
     h2{margin-bottom:16px}
-    .failures,.canvas-frame,.board-frame,.tl-wrap,.term,.figs,.docs,.offers,.vs,.scenes,.qs,.feat,.proof,.readings{margin-top:28px}
+    .failures,.canvas-frame,.board-frame,.tl-wrap,.term,.figs,.docs,.offers,.vs,.scenes,.qs,.feat,.proof,.readings{margin-top:24px}
     .sober{margin-top:24px}
     .door-grid{gap:14px}
     footer{padding-block:26px 40px}
@@ -781,8 +783,8 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/12-incidents.md"><code>12</code><span>Les incidents — et la règle que chacun a payée</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/13-by-the-numbers.md"><code>13</code><span>Les chiffres</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/14-adoption-path.md"><code>14</code><span>Le chemin d'adoption</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/tree/main/templates"><code>templates/ · examples/</code><span>Les fichiers prêts à poser, et une mission fictive suivie de bout en bout</span></a>
   </div>
-  <p class="caption">Le dépôt porte aussi les fichiers prêts à poser : le formulaire d'issue, le gabarit de pull request, la recette d'étiquettes, huit profils de rôle, le format de journal, le manifeste des chemins régénérables, le registre de constats, et une mission fictive suivie de bout en bout.</p>
   <p class="note">Les quinze documents sont en anglais et le restent : c'est la langue de travail du pack, et une règle qui existe en deux versions finit par exister en deux versions différentes.</p>
 </section>
 
