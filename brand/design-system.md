@@ -138,6 +138,34 @@ card, so it ends on the action rather than on a list.
   would claim the reader owes something.
 - **Why a row is blocked** is a word under its title, never a hue.
 
+## Focus lights the thread, and dims the rest
+
+Every surface that shows more than one object — the canvas, a board, a
+reader — answers the pointer the same way. Hover or keyboard-focus one
+object and its **thread** stays lit while everything else on the surface
+steps back to 18 % opacity, in 160 ms. Nothing is brightened, recoloured
+or moved except the object under the pointer, which may lift by 2 px.
+Leaving it, pressing Escape, or tapping elsewhere restores the surface.
+
+What a thread is depends on where you start:
+
+- from a **counter tile** — every object in that state (hover *for you*
+  and only what is owed to you stays readable);
+- from a **row, card or process** — every object that shares one of its
+  numbers (`#131` lights `PR #133` because the row says *delivers PR
+  #133*), plus the counter tile of its state;
+- on the **canvas**, from a block — its wires, the blocks at their other
+  ends, and the refusal note that hangs from it.
+
+A tile with no state (`open issues`) starts no thread. A panel's frame and
+heading are never dimmed: the workstream stays as context around its one
+lit row. Text is never covered by the effect, and the effect never lies:
+an object is lit because it is related, not because it is important.
+
+Every object that can start a thread is reachable by keyboard (`tabindex`),
+and focus behaves exactly as hover. `prefers-reduced-motion` removes the
+transition, not the dimming.
+
 ## Type
 
 Site: Fraunces for display, IBM Plex Sans for text, IBM Plex Mono for
@@ -155,5 +183,9 @@ site. Counters are always tabular monospace.
 | the reader's demonstrations | `demo/board/reader/`, `fr/demo/board/` | dark, forced |
 | the images | `brand/board-demo-dark.png`, `brand/board-demo.fr.png` | rendered from the two demonstrations above at 1020 px, 2×, quantised with a coverage palette so the small state glyphs keep their hue |
 
+| the operating canvas | `demo/canvas/`, `fr/demo/canvas/` | dark only |
+
 A change to a token is made here first, then applied to every file in the
-table in the same commit. An image is never edited; it is re-rendered.
+table in the same commit. An image is never edited; it is re-rendered. The
+focus behaviour above is carried by the same short script on every surface
+in the table; a new surface inherits it before it inherits anything else.

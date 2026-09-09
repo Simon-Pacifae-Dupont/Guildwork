@@ -121,6 +121,12 @@
   .legend { display:flex; flex-wrap:wrap; gap:6px 20px; margin:-24px 0 34px; font-size:12px; color:var(--ink-2); }
   .legend span { display:inline-flex; align-items:center; gap:7px; }
   .legend i { width:11px; height:11px; border-radius:2px; flex:none; }
+  /* focus lights the thread, and dims the rest (brand/design-system.md) */
+  .stat, .owed-item, tbody tr { transition:opacity .16s ease, transform .16s ease; }
+  .focusing :is(.stat, .owed-item, tbody tr):not(.hot) { opacity:.18; }
+  .src.stat { transform:translateY(-2px); }
+  :is(.stat, .owed-item, tbody tr):focus-visible { outline:1px solid var(--rule-2); outline-offset:2px; }
+  @media (prefers-reduced-motion:reduce) { .stat, .owed-item, tbody tr { transition:none; } }
 </style>
 
 <div class="wrap">
@@ -536,5 +542,49 @@
       .catch(function () { fallbackStatic(T.offline); });
     setInterval(paint, 60000);
   }
+})();
+</script>
+<script>
+/* Focus lights the thread, and dims the rest — brand/design-system.md.
+   Hover or focus one object: what shares its state (from a counter) or one of
+   its numbers (from a row) stays lit; everything else steps back. */
+(function () {
+  var ITEMS = ".stat, .owed-item, tbody tr", TILES = ".stat";
+  var scope = document.querySelector("body");
+  if (!scope) return;
+  function stateOf(el) { var m = /\b(owed|flight|broken)\b/.exec(el.className); if (m) return m[1]; var c = el.querySelector(".chip.c-owed, .chip.c-flight"); return c ? (c.className.indexOf("c-owed") >= 0 ? "owed" : "flight") : null; }
+  function numbers(el) { return (el.textContent.match(/#\d+/g) || []); }
+  function all() { return Array.prototype.slice.call(scope.querySelectorAll(ITEMS)); }
+  function thread(src) {
+    var items = all(), st = stateOf(src), lit = [src], ns = numbers(src);
+    if (src.matches(TILES)) {
+      if (!st) return null;
+      items.forEach(function (e) { if (e !== src && !e.matches(TILES) && stateOf(e) === st) lit.push(e); });
+      return lit;
+    }
+    if (!ns.length && !st) return null;
+    items.forEach(function (e) {
+      if (e === src) return;
+      if (e.matches(TILES)) { if (st && stateOf(e) === st) lit.push(e); return; }
+      var en = numbers(e);
+      for (var i = 0; i < ns.length; i++) if (en.indexOf(ns[i]) >= 0) { lit.push(e); return; }
+    });
+    return lit;
+  }
+  function clear() { scope.classList.remove("focusing"); all().forEach(function (e) { e.classList.remove("hot", "src"); }); }
+  function light(src) {
+    var lit = thread(src); clear(); if (!lit) return;
+    scope.classList.add("focusing"); lit.forEach(function (e) { e.classList.add("hot"); }); src.classList.add("src");
+  }
+  function item(t) { return t && t.closest ? t.closest(ITEMS) : null; }
+  scope.addEventListener("pointerover", function (ev) { var t = item(ev.target); if (t) light(t); });
+  scope.addEventListener("pointerout", function (ev) { var t = item(ev.target); if (t && !(ev.relatedTarget && t.contains(ev.relatedTarget))) clear(); });
+  scope.addEventListener("focusin", function (ev) { var t = item(ev.target); if (t) light(t); });
+  scope.addEventListener("focusout", function (ev) { var t = item(ev.target); if (t && !(ev.relatedTarget && t.contains(ev.relatedTarget))) clear(); });
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") clear(); });
+  document.addEventListener("pointerdown", function (ev) { if (!item(ev.target)) clear(); });
+  function reach() { all().forEach(function (e) { if (!e.hasAttribute("tabindex")) e.setAttribute("tabindex", "0"); }); }
+  reach();
+  if (window.MutationObserver) new MutationObserver(reach).observe(scope, { childList: true, subtree: true });
 })();
 </script>

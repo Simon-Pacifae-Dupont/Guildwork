@@ -198,6 +198,12 @@
     box-shadow:var(--shadow)}
   .demoflag b{color:var(--ink)}
   .demoflag code{font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+  /* focus lights the thread, and dims the rest (brand/design-system.md) */
+  .tile,.decision,.proc,.track li,.items li{transition:opacity .16s ease,transform .16s ease}
+  .focusing :is(.tile,.decision,.proc,.track li,.items li):not(.hot){opacity:.18}
+  .src:is(.tile,.decision,.proc){transform:translateY(-2px)}
+  :is(.tile,.decision,.proc,.track li,.items li):focus-visible{outline:1px solid var(--line-strong);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){.tile,.decision,.proc,.track li,.items li{transition:none}}
 </style>
 </head>
 <body>
@@ -375,5 +381,49 @@ stays with the hourly task, under its five conditions.*</pre>
 
 </div>
 
+<script>
+/* Focus lights the thread, and dims the rest — brand/design-system.md.
+   Hover or focus one object: what shares its state (from a counter) or one of
+   its numbers (from a row) stays lit; everything else steps back. */
+(function () {
+  var ITEMS = ".tile, .decision, .proc, .track li, .items li", TILES = ".tile";
+  var scope = document.querySelector(".wrap");
+  if (!scope) return;
+  function stateOf(el) { var m = /\bs-(run|bridge|next|you|done|broken)\b/.exec(el.className); if (m) return m[1]; var b = el.querySelector(".badge"); m = b && /\bs-(run|bridge|next|you|done|broken)\b/.exec(b.className); return m ? m[1] : null; }
+  function numbers(el) { return (el.textContent.match(/#\d+/g) || []); }
+  function all() { return Array.prototype.slice.call(scope.querySelectorAll(ITEMS)); }
+  function thread(src) {
+    var items = all(), st = stateOf(src), lit = [src], ns = numbers(src);
+    if (src.matches(TILES)) {
+      if (!st) return null;
+      items.forEach(function (e) { if (e !== src && !e.matches(TILES) && stateOf(e) === st) lit.push(e); });
+      return lit;
+    }
+    if (!ns.length && !st) return null;
+    items.forEach(function (e) {
+      if (e === src) return;
+      if (e.matches(TILES)) { if (st && stateOf(e) === st) lit.push(e); return; }
+      var en = numbers(e);
+      for (var i = 0; i < ns.length; i++) if (en.indexOf(ns[i]) >= 0) { lit.push(e); return; }
+    });
+    return lit;
+  }
+  function clear() { scope.classList.remove("focusing"); all().forEach(function (e) { e.classList.remove("hot", "src"); }); }
+  function light(src) {
+    var lit = thread(src); clear(); if (!lit) return;
+    scope.classList.add("focusing"); lit.forEach(function (e) { e.classList.add("hot"); }); src.classList.add("src");
+  }
+  function item(t) { return t && t.closest ? t.closest(ITEMS) : null; }
+  scope.addEventListener("pointerover", function (ev) { var t = item(ev.target); if (t) light(t); });
+  scope.addEventListener("pointerout", function (ev) { var t = item(ev.target); if (t && !(ev.relatedTarget && t.contains(ev.relatedTarget))) clear(); });
+  scope.addEventListener("focusin", function (ev) { var t = item(ev.target); if (t) light(t); });
+  scope.addEventListener("focusout", function (ev) { var t = item(ev.target); if (t && !(ev.relatedTarget && t.contains(ev.relatedTarget))) clear(); });
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") clear(); });
+  document.addEventListener("pointerdown", function (ev) { if (!item(ev.target)) clear(); });
+  function reach() { all().forEach(function (e) { if (!e.hasAttribute("tabindex")) e.setAttribute("tabindex", "0"); }); }
+  reach();
+  if (window.MutationObserver) new MutationObserver(reach).observe(scope, { childList: true, subtree: true });
+})();
+</script>
 </body>
 </html>
