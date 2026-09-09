@@ -238,13 +238,17 @@
       e.textContent = T.pills[id];
       cv.appendChild(e);
       const b = box[id];
-      const path = el('path', { d: `M${p.hangX},${b.y + b.h} L${p.hangX},${p.y}`, class: 'wire refuse', 'marker-end': 'url(#arrow-refuse)' }, svg);
+      const hd = `M${p.hangX},${b.y + b.h} L${p.hangX},${p.y - 5}`;
+      el('path', { d: hd, class: 'casing' }, svg);
+      const path = el('path', { d: hd, class: 'wire refuse', 'marker-end': 'url(#arrow-refuse)' }, svg);
       path.dataset.a = id; path.dataset.b = 'pill-' + id;
     }
 
     // wires
+    const GAP = 5;   // an arrowhead ends this far before the edge it points at, so no card ever covers it
     const port = (b, side, f) => side === 'r' ? [b.x + b.w, b.y + b.h / 2] : side === 'l' ? [b.x, b.y + b.h / 2]
       : side === 'b' ? [b.x + b.w * (f ?? 0.5), b.y + b.h] : [b.x + b.w * (f ?? 0.5), b.y];
+    const into = (p, side) => side === 'r' ? [p[0] - GAP, p[1]] : side === 'l' ? [p[0] + GAP, p[1]] : side === 'b' ? [p[0], p[1] + GAP] : [p[0], p[1] - GAP];
     const labelAt = (x, y, text, ed) => {
       const t = el('text', { class: 'wlab', x, y, 'text-anchor': 'middle' }, svg);
       t.textContent = text;
@@ -253,35 +257,32 @@
       svg.insertBefore(bg, t);
       bg.dataset.a = ed.a; bg.dataset.b = ed.b; t.dataset.a = ed.a; t.dataset.b = ed.b;
     };
-    const dots = [];
     edges(T.labels).forEach(ed => {
       const a = box[ed.a], b = box[ed.b];
       let p1, p2, d, lab;
       if (ed.how === 'h') {
         const rightward = b.x > a.x;
-        p1 = port(a, rightward ? 'r' : 'l'); p2 = port(b, rightward ? 'l' : 'r');
-        const dx = Math.max(20, Math.abs(p2[0] - p1[0]) * .5) * (rightward ? 1 : -1);
-        d = `M${p1[0]},${p1[1]} C${p1[0] + dx},${p1[1]} ${p2[0] - dx},${p2[1]} ${p2[0]},${p2[1]}`;
+        p1 = port(a, rightward ? 'r' : 'l'); p2 = into(port(b, rightward ? 'l' : 'r'), rightward ? 'l' : 'r');
+        d = `M${p1[0]},${p1[1]} L${p2[0]},${p2[1]}`;
       } else if (ed.how === 'drop') {
-        p1 = port(a, 'b', ed.ax); p2 = port(b, 't', ed.bx);
-        const m = (p2[1] - p1[1]) * .55;
-        d = `M${p1[0]},${p1[1]} C${p1[0]},${p1[1] + m} ${p2[0]},${p2[1] - m} ${p2[0]},${p2[1]}`;
-        lab = [(p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2 + 3];
+        p1 = port(a, 'b', ed.ax); p2 = into(port(b, 't', ed.bx), 't');
+        const my = (p1[1] + p2[1]) / 2;
+        d = p1[0] === p2[0] ? `M${p1[0]},${p1[1]} L${p2[0]},${p2[1]}` : rounded([p1, [p1[0], my], [p2[0], my], p2], 14);
+        lab = [(p1[0] + p2[0]) / 2, my + 3];
       } else if (ed.how === 'loop') {
-        p1 = port(a, 'l'); p2 = port(b, 'b');
+        p1 = port(a, 'l'); p2 = into(port(b, 'b'), 'b');
         d = rounded([p1, [LOOP_X, p1[1]], [LOOP_X, LOOP_Y], [p2[0], LOOP_Y], p2], 14);
         lab = [(LOOP_X + p2[0]) / 2 + 20, LOOP_Y + 3];
       } else if (ed.how === 'wake') {
-        p1 = [WAKE_X, a.y]; p2 = [WAKE_X, b.y + b.h];
+        p1 = [WAKE_X, a.y]; p2 = [WAKE_X, b.y + b.h + GAP];
         d = `M${p1[0]},${p1[1]} L${p2[0]},${p2[1]}`;
         lab = [WAKE_X, (p1[1] + p2[1]) / 2 + 3];
       }
+      el('path', { d, class: 'casing' }, svg);   // the wire cuts the lane rule; the rule never cuts the wire
       const pa = el('path', { d, class: 'wire ' + ed.kind + (ed.kind === 'signal' ? ' flow' : ''), 'marker-end': `url(#arrow-${ed.kind})` }, svg);
       pa.dataset.a = ed.a; pa.dataset.b = ed.b;
-      dots.push(p1, p2);
       if (ed.label && lab) labelAt(lab[0], lab[1], ed.label, ed);
     });
-    dots.forEach(p => el('circle', { cx: p[0], cy: p[1], r: 2.8, fill: '#0A1322', stroke: 'var(--line-strong)' }, svg));
 
     // focus: a card lights its wires and its neighbours
     const related = id => {
