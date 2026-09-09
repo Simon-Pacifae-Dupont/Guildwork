@@ -45,7 +45,8 @@ exist.
 
 A *seat* is a harness running under a role. The role is a short profile in
 the repository (`templates/roles/`); the harness is whatever executes it —
-Claude Code, Claude Cowork, Grok Build, a Grok profile, a person. The
+Claude Code, Grok Build, Codex CLI, a Grok profile, ChatGPT Work in its
+advisory seat, or a person. The
 mission contract names both, and the launcher refuses a mission whose
 harness cannot physically do what the contract requires.
 
@@ -56,12 +57,11 @@ seats are:
 | Seat | Runs as | Holds |
 |---|---|---|
 | Product Owner | the human | the bench, the product verdict, the merge to `main`, every irreversible act — and every terminal |
-| Chief Architect | Claude Cowork, a cloud session | the board: contracts — which the launcher turns into every other seat's first instruction — routing, rulings, labels, the register, and the exact commands the human runs; never a terminal |
+| Chief Architect | ChatGPT Work, an advisory cloud session | the board: contracts — which the launcher turns into every other seat's first instruction — routing, rulings, labels, the register, and the exact commands the human runs; never a local launch surface |
 | Lead Software Engineer | Claude Code | implementation, tests, pull requests, adversarial self-review |
-| Software Engineering | Grok Build | assigned atomic lots |
+| Software Engineering | Grok Build and Codex CLI | assigned atomic lots in declared worktrees, under the model and effort named by the contract |
 | HQ Architecture, Domain Expert, UX/UI | Grok profiles | adversarial review and domain authority, each in its lane |
 | Witness | any seat that did not write the delivery | reads the delivery's evidence against the repository before the gate; the gate merges on the witness's word, not the author's |
-| External reviewer | Codex, on request | a second opinion on architecture and contracts; no execution surface, so no arrow in the lifecycle below |
 
 **The architect seat orchestrates, and it cannot execute.** That is a
 design choice, not a limitation to work around. The Chief Architect runs in
@@ -102,9 +102,12 @@ Two consequences of the shape, stated because a reader will ask:
 ## The lifecycle, end to end
 
 A diagram of agents usually shows who calls whom. This one is better read
-for where it can stop: seven conditions before a session starts, a witness
+for where it can stop: ten checks in the reference launcher — seven stable
+contract conditions plus three operational guards — before a session starts, a witness
 and a gate before anything lands, and a register that sends every incident
-back into the next contract.
+back into the next contract. It is drawn, block by block, at
+[`demo/canvas/`](../demo/canvas/) (French: [`fr/demo/canvas/`](../fr/demo/canvas/)) —
+the same canvas the README shows; hover a block to isolate its path.
 
 1. **The contract is written** on the issue form, by the architect seat.
    Every required field is filled; the dropdowns lead conservative; the
@@ -112,8 +115,9 @@ back into the next contract.
    a wall of terminals. The architect then hands the human one launch
    command.
 2. **The launcher validates it** — the human runs it — against the
-   governance *at the commit the mission will run on*, checks seven
-   conditions, and refuses — naming which condition fired — or creates the
+   governance *at the commit the mission will run on*, checks ten things —
+   seven stable contract conditions plus three operational guards — and
+   refuses, naming which one fired, or creates the
    branch and worktree, runs the entry command (`guild-hi`), and starts the
    declared harness under the declared model and effort with a first
    instruction generated from the issue. There is no paste, and there is no
@@ -134,6 +138,11 @@ back into the next contract.
 7. **The closeout tool disposes** of what the run created, refusing every
    worktree whose material is not provably preserved, and closes the contract
    from the merged delivery's `Mission:` line.
+8. **The watcher observes without impersonating a seat.** Today it reads
+   authorised GitHub events and fresh host state every two minutes,
+   deduplicates and records them, and starts no model. The later
+   receive–deliver–wake path remains disabled until its adapters pass their
+   canaries; even then it will carry a named route, never grant authority.
 
 ## The four principles under the rules
 

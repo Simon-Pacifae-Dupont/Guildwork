@@ -115,9 +115,17 @@
   .failure p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
 
   /* canvas */
-  .canvas-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
+  .canvas-frame{position:relative;margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
     background:var(--card);box-shadow:var(--shadow-lift)}
-  .canvas-frame a{display:block}
+  .canvas-frame a{display:block;position:relative;text-decoration:none;padding-bottom:58px;background:var(--surface)}
+  .canvas-frame a img{display:block}
+  .canvas-frame a::after{content:attr(data-action);position:absolute;right:14px;bottom:12px;padding:9px 13px;
+    border:1px solid rgba(245,196,107,.62);border-radius:999px;background:rgba(7,13,24,.9);color:var(--amber-2);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.03em;
+    box-shadow:0 10px 30px rgba(0,0,0,.45);backdrop-filter:blur(7px);transition:transform .16s ease,background .16s ease}
+  .canvas-frame a:hover::after,.canvas-frame a:focus-visible::after{transform:translateY(-2px);background:var(--strip)}
+  .canvas-frame a:focus-visible{outline-offset:-4px}
+  @media(max-width:560px){.canvas-frame a{padding-bottom:46px}.canvas-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:9.5px}}
   /* the board */
   .board-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
     box-shadow:var(--shadow-lift)}
@@ -509,7 +517,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a class="door" href="#code" data-go="code" aria-pressed="false">
       <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Vous avez du code</p>
       <h3>Une équipe, un dépôt, des agents qui s’y bousculent</h3>
-      <p>Claude Code, Codex, Grok ou d’autres, sur un code qui compte. Le lanceur qui refuse, le témoin, la clôture, le tableau — et trente-huit jours de chiffres, qui continuent.</p>
+      <p>Claude Code, Codex CLI, Grok ou d’autres, sur un code qui compte. Le lanceur qui refuse, le témoin, la clôture, le tableau — et trente-huit jours de chiffres, qui continuent.</p>
       <span class="go" data-off="Lire cette entrée →" data-on="Vous lisez cette entrée"></span>
     </a>
     <a class="door" href="#sans-code" data-go="nocode" aria-pressed="false">
@@ -556,14 +564,14 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <hr class="rule">
 
 <section id="model" class="wrap">
-  <h2>Un schéma à lire pour ses points d'arrêt</h2>
-  <p>Un schéma d'agents montre d'habitude qui appelle qui. Celui-ci montre où une mission peut être refusée : <strong>sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant.</strong></p>
+  <h2>Un schéma à lire pour ses arrêts — et son mouvement</h2>
+  <p>Un schéma d'agents montre d'habitude qui appelle qui. Celui-ci montre où une mission peut être refusée, et ce qui la porte : <strong>dix contrôles avant qu'une session démarre — sept conditions stables du contrat, trois garde-fous durcis par l'usage — un témoin et une porte humaine avant toute intégration, trois codes de sortie décidés par la seule durabilité, un registre qui renvoie chaque incident dans le contrat suivant, et un watcher dessiné deux fois : ce qu'il fait aujourd'hui, et la boucle recevoir–transmettre–réveiller qui doit encore mériter son activation.</strong></p>
   <div class="canvas-frame">
-    <a href="../brand/lifecycle-canvas.fr.html">
-      <img src="../brand/lifecycle-canvas.fr.png" alt="Le modèle de fonctionnement de Guildwork : Product Owner, architecte en chef, contrat d'issue, lanceur, worktree, sièges d'exécution, pull request, témoin, porte, cycle de session, outil de clôture, et la boucle du registre de constats.">
+    <a href="demo/canvas/" data-action="Explorer le canvas interactif ↗" aria-label="Ouvrir le canvas interactif de fonctionnement de Guildwork">
+      <img src="../brand/lifecycle-canvas.fr.png" alt="Le modèle de fonctionnement de Guildwork : Product Owner, ChatGPT Work au siège consultatif d'architecte en chef, contrat d'issue, lanceur à dix contrôles, worktree, Claude Code, Grok Build et Codex CLI en sièges d'exécution, pull request, témoin, porte, main, guild-bye, journal, outil de clôture, registre de constats, et le watcher en deux temps.">
     </a>
   </div>
-  <p class="caption">Dessiné sur <em>Lantern</em>, le projet fictif qui sert de démonstration au pack — le mécanisme, les conditions et les codes de sortie, eux, sont les vrais. <a href="../brand/lifecycle-canvas.fr.html">Ouvrir la version interactive</a> et survoler un bloc pour isoler son chemin.</p>
+  <p class="caption">Dessiné sur <em>Lantern</em>, le projet fictif qui sert de démonstration au pack — le mécanisme, les contrôles et les codes de sortie, eux, sont les vrais. <a href="demo/canvas/">Ouvrir la version interactive</a> et survoler un bloc pour isoler son chemin.</p>
 </section>
 
 <hr class="rule">
@@ -784,7 +792,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <p>Le kit est la partie qui a cessé de bouger. Trois choses bougent encore sur le projet dont il vient, et chacune rejoindra le kit comme tout ce qui est ici : une fois qu'un incident réel l'aura payée.</p>
   <div class="next">
     <p><b>Le tableau devient le contrôle.</b> Pas un rapport sur les agents : la page où la seule décision qui vous revient se prend, et s'enregistre du même clic. Vingt-cinq merges par jour ne se tiennent pas autrement.</p>
-    <p><b>Un veilleur qui voit ce qu'un tableau ne peut pas voir.</b> Un siège arrêté sur une demande de permission ressemble trait pour trait à un siège qui travaille — même processus, même fenêtre. La règle est en train d'être payée cette semaine.</p>
+    <p><b>Un watcher qui lit maintenant, et routera ensuite.</b> Aujourd'hui, il observe les événements autorisés et les lectures fraîches de l'hôte toutes les deux minutes sans démarrer de modèle. Après les canaris de ses adaptateurs, il pourra recevoir la route, transmettre le contrat canonique et réveiller le siège nommé — sans acquérir la moindre autorité.</p>
     <p><b>Les mêmes sept états sur chaque tableau.</b> En cours, tient l'écran, à venir, pour vous, atterri, cassé, périmé — quoi que le tableau suive. Les noms s'adaptent au projet ; les positions et les teintes, non.</p>
   </div>
 </section>
@@ -803,7 +811,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
       <ul>
         <li>la table des capacités de vos sièges, mesurée et non supposée</li>
         <li>les incidents auxquels votre installation est exposée aujourd'hui, nommés</li>
-        <li>un passage à blanc des sept conditions sur votre tableau existant</li>
+        <li>un passage à blanc des dix contrôles de lancement actuels sur votre tableau existant</li>
         <li>les trois corrections à faire avant toutes les autres, par ordre de dégât évité</li>
         <li>ce que l'installation vous ferait gagner, chiffré — et ce qu'elle ne réglera pas</li>
         <li>un rapport écrit que votre équipe garde, quelle que soit la suite</li>

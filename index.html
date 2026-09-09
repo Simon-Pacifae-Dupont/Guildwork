@@ -114,9 +114,17 @@
   .failure p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
 
   /* canvas */
-  .canvas-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
+  .canvas-frame{position:relative;margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
     background:var(--card);box-shadow:var(--shadow-lift)}
-  .canvas-frame a{display:block}
+  .canvas-frame a{display:block;position:relative;text-decoration:none;padding-bottom:58px;background:var(--surface)}
+  .canvas-frame a img{display:block}
+  .canvas-frame a::after{content:attr(data-action);position:absolute;right:14px;bottom:12px;padding:9px 13px;
+    border:1px solid rgba(245,196,107,.62);border-radius:999px;background:rgba(7,13,24,.9);color:var(--amber-2);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.03em;
+    box-shadow:0 10px 30px rgba(0,0,0,.45);backdrop-filter:blur(7px);transition:transform .16s ease,background .16s ease}
+  .canvas-frame a:hover::after,.canvas-frame a:focus-visible::after{transform:translateY(-2px);background:var(--strip)}
+  .canvas-frame a:focus-visible{outline-offset:-4px}
+  @media(max-width:560px){.canvas-frame a{padding-bottom:46px}.canvas-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:9.5px}}
   /* the board */
   .board-frame{margin-top:44px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
     box-shadow:var(--shadow-lift)}
@@ -503,7 +511,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a class="door" href="#code" data-go="code" aria-pressed="false">
       <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>You have code</p>
       <h3>A team, one repository, agents crowding into it</h3>
-      <p>Claude Code, Codex, Grok or others, on code that matters. The launcher that refuses, the witness, the closeout, the board — and thirty-eight days of numbers, still counting.</p>
+      <p>Claude Code, Codex CLI, Grok or others, on code that matters. The launcher that refuses, the witness, the closeout, the board — and thirty-eight days of numbers, still counting.</p>
       <span class="go" data-off="Read this door →" data-on="You are reading this door"></span>
     </a>
     <a class="door" href="#no-code" data-go="nocode" aria-pressed="false">
@@ -550,14 +558,14 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <hr class="rule">
 
 <section id="model" class="wrap">
-  <h2>Read it for where it can stop</h2>
-  <p>A diagram of agents usually shows who calls whom. This one shows where a mission can be refused: <strong>seven conditions before a session starts, a witness and a gate before anything lands, three exit codes decided by durability alone, and a register that sends every incident back into the next contract.</strong></p>
+  <h2>Read it for where it stops — and how it moves</h2>
+  <p>A diagram of agents usually shows who calls whom. This one shows where a mission can be refused, and what carries it: <strong>ten checks before a session starts — seven stable contract conditions, three guards hardened in operation — a witness and a human gate before anything lands, three exit codes decided by durability alone, a register that sends every incident back into the next contract, and a watcher drawn twice: what it does today, and the receive–deliver–wake loop that still has to earn activation.</strong></p>
   <div class="canvas-frame">
-    <a href="brand/lifecycle-canvas.html">
-      <img src="brand/lifecycle-canvas.png" alt="The Guildwork operating model: Product Owner, Chief Architect, issue contract, launcher, worktree, executing seats, pull request, witness, gate, session cycle, closeout tool, and the findings register loop.">
+    <a href="demo/canvas/" data-action="Explore the interactive canvas ↗" aria-label="Open the interactive Guildwork operating canvas">
+      <img src="brand/lifecycle-canvas.png" alt="The Guildwork operating model: Product Owner, ChatGPT Work as advisory Chief Architect, issue contract, launcher with ten checks, worktree, Claude Code, Grok Build and Codex CLI as executing seats, pull request, witness, gate, main, guild-bye, journal, closeout tool, findings register, and the watcher in two tenses.">
     </a>
   </div>
-  <p class="caption">Drawn on <em>Lantern</em>, the fictional project the kit is demonstrated on — the mechanism, the conditions and the exit codes are the real ones. <a href="brand/lifecycle-canvas.html">Open the interactive version</a> and hover a block to isolate its path.</p>
+  <p class="caption">Drawn on <em>Lantern</em>, the fictional project the kit is demonstrated on — the mechanism, the checks and the exit codes are the real ones. <a href="demo/canvas/">Open the interactive version</a> and hover a block to isolate its path.</p>
 </section>
 
 <hr class="rule">
@@ -777,7 +785,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
   <p>The kit is the part that has stopped moving. Three things are still moving on the project it comes from, and each will reach the kit the way everything here did — once a real incident has paid for it.</p>
   <div class="next">
     <p><b>The board becomes the control.</b> Not a report on the agents: the page where the one decision that is yours is taken, and recorded by the same click. Twenty-five merges a day are not survivable any other way.</p>
-    <p><b>A watcher that sees what a board cannot.</b> A seat stopped on a permission prompt looks exactly like a seat at work — same process, same window. The rule for that is being paid for this week.</p>
+    <p><b>A watcher that reads now, and routes next.</b> Today it observes authorised events and fresh host readings every two minutes without starting a model. After its adapter canaries, it can receive the route, deliver the canonical contract and wake the named seat — without inheriting any authority.</p>
     <p><b>The same seven states on every board.</b> Running, holding the screen, next, for you, landed, broken, expired — whatever the board follows. The names adapt to a project; the positions and the hues do not.</p>
   </div>
 </section>
@@ -796,7 +804,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
       <ul>
         <li>the capability table for your seats, measured, not guessed</li>
         <li>the incidents your setup is currently exposed to, named</li>
-        <li>a dry run of the seven conditions over your existing board</li>
+        <li>a dry run of the ten current launch checks over your existing board</li>
         <li>the three fixes to make before all the others, ordered by damage avoided</li>
         <li>what the install would gain you, costed — and what it will not fix</li>
         <li>a written report your team keeps, whatever happens next</li>

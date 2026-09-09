@@ -27,7 +27,8 @@ otherwise type:
    that commit** (`git show <sha>:<path>`), never from a working tree;
 4. read the mission issue from GitHub by number — body, title, state,
    comments;
-5. evaluate the seven conditions;
+5. evaluate the ten current checks — seven stable contract conditions plus
+   three operational guards;
 6. create the branch and the worktree **from that same commit**;
 7. export the source path so the worktree's session resolves its own
    source and not the primary checkout's;
@@ -56,7 +57,7 @@ rendered identically to a pinned run would be the same defect with a
 friendlier face. A policy file that cannot be reached at the pinned commit
 is a stop, never a fallback.
 
-## The seven conditions
+## The seven stable contract conditions
 
 Every condition can refuse, and the message names which one fired.
 
@@ -196,8 +197,9 @@ the drafting state, not a defect.
 
 The launcher reads the issue's state on the call it already makes, and warns
 when the state is anything but open. It is **not an eighth condition**: it is
-appended after the seven have run, carries no condition number, changes no
-exit code, and a closed issue whose seven conditions pass still starts. Three
+appended after the seven stable contract conditions have run, carries no
+condition number, changes no exit code, and a closed issue whose contract
+conditions pass still starts. Three
 closed issues once returned *contract OK* with nothing saying so, and a
 second run of any of them would have produced a branch, a worktree and a
 delivery indistinguishable from a first. Why warn rather than refuse: a
@@ -397,7 +399,7 @@ every mission passes through the launcher, the profile seats included, and
 the sentence saying it is opt-in stands until the ruling that retires it is
 recorded.
 
-## Seven is what is specified, not what the reference runs
+## Seven are stable; the reference currently runs ten
 
 The reference implementation refuses on more than seven conditions today.
 Three arrived after this document was written: one that reserves a resource

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Guildwork — le canvas de fonctionnement</title>
+  <meta name="description" content="Où une mission peut s’arrêter et comment elle avance : le modèle de fonctionnement Guildwork dessiné sur l’exemple fictif Lantern, bloc par bloc.">
+  <link rel="icon" href="../../../brand/favicon-64.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../../../demo/canvas/canvas.css">
+</head>
+<body>
+<main class="wrap">
+  <a class="brand" href="../../" aria-label="Retour au site Guildwork">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M62 15H27Q15 15 15 27v46q0 12 12 12h46q12 0 12-12V56" fill="none" stroke="#F3EDE2" stroke-width="12" stroke-linejoin="round"/><rect x="52" y="44" width="39" height="12" fill="#E9A23B"/></svg>
+    <span class="w">Guildwork</span><span class="g">gouvernance pour agents IA · vous gardez le dernier mot</span>
+  </a>
+  <p class="eyebrow">Le modèle de fonctionnement, dessiné · exemple Lantern</p>
+  <h1>Où une mission peut s’arrêter — et comment elle avance</h1>
+  <p class="lede">À lire comme un chemin. <strong>Dix contrôles avant qu’une session démarre — sept conditions stables du contrat, trois garde-fous durcis par l’usage — un témoin et une porte humaine avant toute intégration, une seule commande de sortie dont le code ne dépend que de la durabilité, et un registre qui renvoie chaque incident dans le contrat suivant.</strong> Le watcher est dessiné deux fois, exprès : ce qu’il fait aujourd’hui, et la boucle recevoir–transmettre–réveiller qui doit encore mériter son activation.</p>
+  <div class="stage" id="stage"></div>
+  <div class="legend">
+    <span><i class="key" style="background:var(--control)"></i> trajet de la mission</span>
+    <span><i class="key" style="background:var(--broken)"></i> refus nommé</span>
+    <span><i class="key" style="background:var(--amber)"></i> boucle d’apprentissage</span>
+    <span><i class="key future"></i> prochain, pas encore actif</span>
+  </div>
+  <p class="cap"><strong>Le tableau a un architecte ; l’arbre a des sièges d’exécution ; l’autorité reste humaine.</strong> ChatGPT Work tient les contrats et le tableau sans devenir un second scribe silencieux. Claude Code, Grok Build et Codex CLI exécutent dans leurs worktrees déclarés, sous le modèle et l’effort que le contrat nomme. Le watcher transporte des observations et, plus tard, des routes — jamais une autorisation.</p>
+  <p class="hint">Survolez ou ciblez un bloc pour isoler son chemin.</p>
+  <footer><a href="../../">Retour au site Guildwork</a> · <a href="../board/">le tableau, tel qu’il tourne</a>. Chaque nom de projet appartient à <em>Lantern</em>, l’exemple fictif. Le mécanisme, les dix contrôles de lancement, les trois codes de sortie et les cinq contrôles de clôture sont réels — <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork">github.com/Simon-Pacifae-Dupont/Guildwork</a>. <a href="../../../demo/canvas/" hreflang="en" lang="en">English version</a>.</footer>
+</main>
+<script>if(new URLSearchParams(location.search).has('export'))document.documentElement.classList.add('export')</script>
+<script src="../../../demo/canvas/canvas.js"></script>
+</body>
+</html>

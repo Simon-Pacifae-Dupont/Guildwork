@@ -78,8 +78,8 @@ déplace hors de la porte* ; *durable veut dire atteignable depuis une
 référence poussée*.
 
 <p align="center">
-  <a href="brand/lifecycle-canvas.fr.png"><img alt="Où une mission peut s'arrêter — le modèle de fonctionnement dessiné sur l'exemple Lantern" src="brand/lifecycle-canvas.fr.png" width="880"></a><br>
-  <sub>À lire pour ses points d'arrêt : sept conditions avant qu'une session démarre, un témoin et une porte avant que quoi que ce soit n'atterrisse, trois codes de sortie décidés par la seule durabilité, et un registre qui renvoie chaque incident dans le contrat suivant. <a href="https://simon-pacifae-dupont.github.io/Guildwork/brand/lifecycle-canvas.fr.html">Version interactive</a> — survolez un bloc pour isoler son chemin.</sub>
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/canvas/"><img alt="Où une mission peut s'arrêter — le modèle de fonctionnement dessiné sur l'exemple Lantern ; cliquer pour ouvrir la version interactive" src="brand/lifecycle-canvas.fr.png" width="880"></a><br>
+  <sub>À lire comme un chemin : dix contrôles avant qu'une session démarre — sept conditions stables du contrat, trois garde-fous durcis par l'usage — un témoin et une porte humaine avant toute intégration, trois codes de sortie décidés par la seule durabilité, un registre qui renvoie chaque incident dans le contrat suivant, et un watcher dessiné deux fois — ce qu'il fait aujourd'hui, et la boucle recevoir–transmettre–réveiller qui n'est pas encore active. <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/canvas/">Version interactive</a> — survolez un bloc pour isoler son chemin.</sub>
 </p>
 
 **Le tableau, lu pour ce qu'il doit à chaque siège.** Six compteurs, puis
@@ -116,6 +116,11 @@ templates/   les fichiers à poser dans un dépôt : formulaire d'issue, gabarit
 examples/    une mission fictive suivie de bout en bout — issue, transcription du
              lanceur, instruction générée, rapport de transmission, pull request,
              entrée de journal, transcription de clôture, registre
+demo/        les deux pages que le site ouvre : le tableau tel qu'il tourne (demo/board/,
+             avec le lecteur livré sous demo/board/reader/) et le canvas de
+             fonctionnement (demo/canvas/) ; versions françaises sous fr/demo/
+brand/       la marque, les lockups, le design system, et chaque image que le README
+             et le site montrent — toutes rendues depuis une page de demo/, jamais retouchées
 ```
 
 | Document | Ce qu'il tranche |
@@ -162,9 +167,9 @@ Lantern et ce qui vous reste à écrire.
 ## D'où ça vient
 
 Une application de bureau Windows en Python avec une suite de 13 155 tests,
-mesurée le 8 septembre 2026 ; un seul humain Product Owner, une session
-Claude Cowork comme architecte en chef, des sièges d'exécution sur Claude Code
-et Grok, et Codex en relecteur externe. Dans les treize jours jusqu'au
+mesurée le 8 septembre 2026 ; un seul humain Product Owner, ChatGPT Work au
+siège consultatif d'architecte en chef, et des sièges d'exécution sur Claude
+Code, Grok Build et Codex CLI. Dans les treize jours jusqu'au
 7 septembre 2026, 344 contrats ont été ouverts et 320 pull requests fusionnées —
 vingt-cinq par jour ; 548 sessions se sont closes avec une entrée de journal, sur
 les 36 jours d'existence du journal. `docs/13-by-the-numbers.md` contient la table
@@ -181,10 +186,12 @@ Le kit est la partie qui a cessé de bouger. Trois choses bougent encore sur
 le projet dont il vient, et chacune rejoindra le kit comme tout ce qui est
 ici : une fois qu'un incident réel l'aura payée. Le tableau devient le
 contrôle : pas un rapport sur les agents, mais la page où la seule décision
-qui revient au Product Owner se prend et s'enregistre du même clic. Un
-veilleur voit ce qu'un tableau ne peut pas voir : un siège arrêté sur une
-demande de permission ressemble trait pour trait à un siège qui travaille,
-et la règle est en train d'être payée cette semaine. Et les mêmes sept
+qui revient au Product Owner se prend et s'enregistre du même clic. Le
+watcher observe déjà les événements GitHub autorisés et les lectures fraîches
+de l'hôte toutes les deux minutes, les déduplique et publie la dernière
+lecture sans démarrer de modèle ; après les canaris de ses adaptateurs, il
+pourra recevoir la route, transmettre le contrat canonique et réveiller le
+siège existant nommé — ce trajet n'est volontairement pas encore actif. Et les mêmes sept
 états — en cours, tient l'écran, à venir, pour vous, atterri, cassé,
 périmé — sont sur chaque tableau, quoi qu'il suive ; les noms s'adaptent au
 projet, les positions et les teintes non (`brand/design-system.md`).

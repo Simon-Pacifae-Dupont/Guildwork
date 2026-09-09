@@ -13,8 +13,7 @@ Wordmark in Fraunces, taglines in IBM Plex Mono.
 | `linkedin-banner-en.png`, `linkedin-banner-fr.png` | 1584×396, the LinkedIn profile cover |
 | `linkedin-post-fr.png` | 1280×640, the card to attach to a French post (the English post uses `github-social-preview.png`) |
 | `linkedin-featured-page.png`, `linkedin-featured-repo.png` | 1280×720, the two LinkedIn *Featured* thumbnails — ink for the site, ivory for the repository, so the two cards never read alike |
-| `lifecycle-canvas.png`, `lifecycle-canvas.html` | the operating model drawn on the Lantern example — image, and the interactive page it is rendered from |
-| `lifecycle-canvas.fr.png`, `lifecycle-canvas.fr.html` | the same canvas, in French |
+| `lifecycle-canvas.png`, `lifecycle-canvas.fr.png` | the operating model drawn on the Lantern example, English and French — rendered from the interactive pages at `demo/canvas/` and `fr/demo/canvas/` (`?export` on either page gives the frame the PNG is cut from); every public image links to the interactive page. `lifecycle-canvas.html` and `lifecycle-canvas.fr.html` here only forward to those pages |
 | `board-demo-dark.png` | the board on the Lantern snapshot, as shown on both languages of the site and in the READMEs — the board is dark only, on the site's own navy, with the state hues of the reference board |
 | `board-demo.fr.png` | the French board reader, rendered from `fr/demo/board/` |
 | `brand-source.html` | the source every PNG above is rendered from (Playwright screenshot of each board) |

@@ -1,0 +1,85 @@
+/* Guildwork — the operating canvas. Ground, ink and elevation are the site's
+   (brand/design-system.md); the four wire colours are roles, not states:
+   control blue for the mission path, amber for the learning loop, red for a
+   named refusal, teal dashed for what is next and not active yet. */
+:root {
+  --ground:#0B1526; --surface:#0A1322; --strip:#14223A; --card-a:#1B2434; --card-b:#0F1929; --well:#070D18;
+  --dot:#182338; --line:#1D2B44; --line-strong:#2B3B57; --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
+  --amber:#E9A23B; --amber-2:#F5C46B; --accent:#5CB9C4; --control:#7FA6D6; --broken:#EC8A79; --landed:#78C48C;
+}
+*{box-sizing:border-box} html{color-scheme:dark}
+body{margin:0;background:radial-gradient(circle at 14% 0%,rgba(92,185,196,.08),transparent 30rem),radial-gradient(circle at 88% 8%,rgba(233,162,59,.07),transparent 28rem),var(--ground);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:44px 22px 80px}
+.export .wrap{max-width:2316px;padding:0}
+.export .brand,.export .eyebrow,.export h1,.export .lede,.export .legend,.export .cap,.export .hint,.export footer{display:none}
+.export .stage{border:0;border-radius:0;box-shadow:none}
+.brand{display:flex;align-items:center;gap:12px;margin:0 0 24px;color:inherit;text-decoration:none;width:max-content;max-width:100%}
+.brand svg{width:34px;height:34px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
+.brand .w{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:22px;letter-spacing:-.02em}
+.brand .g{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);margin-left:6px}
+.eyebrow{margin:0 0 10px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+h1{margin:0 0 14px;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:clamp(30px,4.4vw,44px);line-height:1.06;letter-spacing:-.018em;text-wrap:balance}
+.lede{color:var(--ink-2);max-width:76ch;margin:0 0 28px;font-size:16.5px}.lede strong{color:var(--ink);font-weight:600}
+
+/* the stage: a well the canvas sits in, dotted like graph paper */
+.stage{position:relative;overflow:auto;border:1px solid var(--line-strong);border-radius:14px;background-color:var(--surface);background-image:linear-gradient(180deg,rgba(20,34,58,.18),transparent 12rem),radial-gradient(var(--dot) 1px,transparent 1px);background-size:auto,22px 22px;background-position:0 0,-1px -1px;box-shadow:0 2px 12px rgba(0,0,0,.5),0 34px 80px -46px rgba(0,0,0,.95),inset 0 1px 0 rgba(255,255,255,.035)}
+.canvas{position:relative;transform-origin:0 0;isolation:isolate}
+.canvas::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 79% 57%,rgba(92,185,196,.055),transparent 19rem),radial-gradient(circle at 30% 78%,rgba(233,162,59,.045),transparent 21rem);z-index:0}
+.canvas svg.wires{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:1}
+
+/* lanes: a rule across, a label chip sitting on it */
+.lane{position:absolute;left:34px;width:1121px;height:1px;border-top:1px solid rgba(43,59,87,.78);z-index:2}
+.lane span{position:absolute;top:-10px;padding:1px 12px 1px 0;background:var(--surface);color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:10px;line-height:18px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+
+/* cards: the site's card gradient; a 3px left bar in the card's role colour */
+.node{position:absolute;z-index:4;display:flex;gap:11px;align-items:flex-start;overflow:hidden;padding:13px 12px 12px;border:1px solid var(--line-strong);border-radius:11px;background:linear-gradient(168deg,var(--card-a),var(--card-b) 55%,var(--surface));box-shadow:0 1px 2px rgba(0,0,0,.35),0 16px 34px -22px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.025);transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
+.node::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--control);opacity:.72}
+.node::after{content:"";position:absolute;width:92px;height:92px;right:-50px;top:-55px;border-radius:50%;background:rgba(127,166,214,.08);pointer-events:none}
+.node .glyph{position:relative;flex:0 0 29px;height:29px;display:grid;place-items:center;border:1px solid var(--line-strong);border-radius:8px;background:var(--strip);color:var(--control);box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.node .glyph svg{width:16px;height:16px;display:block}
+.node .copy{min-width:0;padding-right:2px}
+.node .k{margin:0 0 2px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:8.5px;line-height:1.2;letter-spacing:.12em;text-transform:uppercase}
+.node .t{font-size:13px;font-weight:600;line-height:1.27;letter-spacing:-.008em}
+.node .s{margin-top:5px;color:var(--ink-2);font-family:"IBM Plex Mono",monospace;font-size:9.5px;line-height:1.46;white-space:pre-line}
+.node .tag{position:absolute;right:9px;top:9px;z-index:1;padding:3px 6px;border:1px solid var(--line-strong);border-radius:999px;background:rgba(7,13,24,.72);color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:8px;line-height:1;letter-spacing:.08em;text-transform:uppercase}
+.node.tagged .k{padding-right:50px}
+.node .tick{position:absolute;right:9px;bottom:7px;color:var(--landed);font-size:10px;line-height:1}
+.node.human{border-color:#6E5330;background:linear-gradient(168deg,#232C3B,#121C2D 52%,var(--surface))}
+.node.human::before{background:var(--amber);opacity:1}.node.human::after{background:rgba(233,162,59,.1)}.node.human .glyph{border-color:#7A5B2E;color:var(--amber)}
+.node.signal::before{background:var(--amber);opacity:1}.node.signal::after{background:rgba(233,162,59,.09)}.node.signal .glyph{border-color:#6E5330;color:var(--amber)}
+.node.watcher{border-color:#2F6670}.node.watcher::before{background:var(--accent);opacity:1}.node.watcher::after{background:rgba(92,185,196,.12)}.node.watcher .glyph{border-color:#2F6670;color:var(--accent)}.node.watcher .tag{border-color:#2F6670;color:var(--accent)}
+.node.future{border-color:#2F6670;border-style:dashed;background:linear-gradient(168deg,#172A34,#0E1D2A 54%,var(--surface))}.node.future::before{background:var(--accent);opacity:.82}.node.future::after{background:rgba(92,185,196,.13)}.node.future .glyph{border-color:#2F6670;color:var(--accent)}.node.future .tag{border-color:#2F6670;color:var(--accent)}
+.node.landed{border-color:#315E45;background:linear-gradient(168deg,#1B2E31,#102126 55%,var(--surface))}.node.landed::before{background:var(--landed);opacity:1}.node.landed::after{background:rgba(120,196,140,.1)}.node.landed .glyph{border-color:#315E45;color:var(--landed)}.node.landed .t{color:#D8F0DE}
+
+/* refusal notes */
+.pill{position:absolute;z-index:5;padding:9px 13px 9px 15px;border:1px solid #633B37;border-radius:9px;background:linear-gradient(180deg,#231819,#17131A);color:#E7A69B;font-family:"IBM Plex Mono",monospace;font-size:9.5px;line-height:1.48;white-space:pre-line;box-shadow:0 10px 24px -18px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.025);transition:opacity .16s ease}
+.pill::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;border-radius:9px 0 0 9px;background:var(--broken)}
+
+/* wires */
+path.wire{fill:none;stroke-linecap:round;stroke-linejoin:round}
+path.wire.control{stroke:var(--control);stroke-width:1.7;opacity:.8}
+path.wire.signal{stroke:var(--amber);stroke-width:2;opacity:.9}
+path.wire.refuse{stroke:var(--broken);stroke-width:1.55;opacity:.72;stroke-dasharray:5 5}
+path.wire.future{stroke:var(--accent);stroke-width:1.9;opacity:.85;stroke-dasharray:7 7}
+.flow{stroke-dasharray:7 10;animation:dash 1.8s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-34}}
+@media(prefers-reduced-motion:reduce){.flow{animation:none}}
+text.wlab{fill:var(--ink-2);font-family:"IBM Plex Mono",monospace;font-size:9.5px}
+.wlab-bg{fill:var(--surface);stroke:rgba(43,59,87,.7);stroke-width:.8px}
+
+/* focus: hover or tab a card, its path stays lit and the rest steps back */
+.stage.focusing .node:not(.hot),.stage.focusing .pill:not(.hot){opacity:.2}
+.stage.focusing path.wire:not(.hot){opacity:.1}
+.stage.focusing text.wlab:not(.hot),.stage.focusing .wlab-bg:not(.hot){opacity:.15}
+.node.hot{transform:translateY(-3px);border-color:#5B7095;box-shadow:0 2px 12px rgba(0,0,0,.5),0 28px 58px -30px rgba(0,0,0,.95)}
+path.wire.hot{opacity:1;stroke-width:2.7}
+
+/* below the stage */
+.legend{display:flex;flex-wrap:wrap;gap:10px 20px;margin:16px 0 0;color:var(--ink-2);font-size:12.5px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.key{width:21px;height:2px;border-radius:2px;display:inline-block}
+.key.future{background:repeating-linear-gradient(90deg,var(--accent) 0 6px,transparent 6px 10px)}
+.cap{margin:24px 0 0;padding-left:15px;border-left:2px solid var(--line-strong);color:var(--ink-2);font-size:14px;max-width:82ch}.cap strong{color:var(--ink);font-weight:600}
+.hint{margin:11px 0 0;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:11px}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line-strong);color:var(--ink-3);font-size:12.5px}footer a{color:var(--ink-2)}
+@media(max-width:640px){.wrap{padding:30px 14px 58px}.brand{align-items:flex-start;flex-wrap:wrap}.brand .g{width:100%;margin:-7px 0 0 46px}.lede{font-size:15.5px}.hint::after{content:" · horizontal scroll is intentional"}html[lang="fr"] .hint::after{content:" · le défilement horizontal est volontaire"}}

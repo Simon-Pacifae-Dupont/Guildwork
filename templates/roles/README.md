@@ -15,7 +15,7 @@ The eight profiles of the Lantern example:
 | Slug | Seat | Nature |
 |---|---|---|
 | `product-owner` | the human | final authority, merge to `main` |
-| `chief-architect` | Claude Cowork (cloud) | contracts, routing, rulings, labels, the register, the commands the human runs — no terminal |
+| `chief-architect` | ChatGPT Work (advisory cloud session) | contracts, routing, rulings, labels, the register, the commands the human runs — no local launch surface |
 | `claude-code` | Claude Code | implementation, tests, pull requests |
 | `grok-build` | Grok Build | delivery of assigned atomic lots |
 | `grok-hq` | Grok HQ (profile) | adversarial architecture review |
@@ -27,9 +27,9 @@ A profile that has no active session owner says so in a `Status:` line, as
 `knowledge-steward` does. A placeholder that looks staffed is worse than an
 honest gap.
 
-Two seats have no profile on purpose. The **witness** is not a role but a
+The **witness** has no profile on purpose. It is not a role but a
 position: any seat that did not write a delivery may witness it, and a
 profile would suggest a dedicated reviewer where the rule is only *not the
-author*. The **external reviewer** (Codex) is consulted from outside the
-lifecycle and has no execution surface, so it holds no mission and needs no
-card at entry.
+author*. Codex CLI is an execution harness, not a Guild role: a Codex mission
+uses the role named by its contract, or the internal-worker sentinel, so it
+does not need a misleading harness-named profile.

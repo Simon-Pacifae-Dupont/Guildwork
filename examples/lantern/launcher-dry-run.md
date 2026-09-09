@@ -95,7 +95,8 @@ nothing is pasted.
 ## 4. The launch
 
 The same command without `--dry-run`. The launcher fetches again, resolves
-the ref again, re-evaluates the seven conditions against whatever the tree
+the ref again, re-evaluates the ten current checks — seven stable contract
+conditions plus three operational guards — against whatever the tree
 is *now*, and only then runs the three commands. It exits `0` when the
 agent session it started exits `0`; a non-zero agent exit is reported as
 `4` with the agent's own code printed, never returned.

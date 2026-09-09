@@ -115,7 +115,8 @@ memory of having made it. The shape of a row:
 | Claude Code (local CLI) | `shell` | `host-native` | commands in this agent's own shell mutate the developer machine's checkout directly; mission `<n>` ran the lint and the governance check there before pushing; process chain `claude.exe` in interactive session `<k>` on `workstation` | `<date>` |
 | Claude Code (local CLI) | `device-bridge` | `yes` | mission `<n>` drove the bench controller through the bridge against a live instance — `<count>` writes, each read back independently (report permalink) | `<date>` |
 | Grok Build (CLI) | `device-bridge` | `unknown` | **not measured, and deliberately not inferred**: the locus is `host-native`, which is necessary for both and sufficient for neither; no bridge run under this agent is recorded | `<date>` |
-| Claude Cowork (cloud session) | `shell` | `remote` | shell commands execute in the vendor's container, not on the developer machine — a property of where the session runs, recorded by that session about itself. This is the architect seat: the locus is what makes it structurally unable to be a writer | `<date>` |
+| ChatGPT Work (advisory cloud session) | `shell` | `remote` | commands execute away from the developer machine — a property of where the session runs, recorded by that session about itself. This is the architect seat: the locus is what keeps it from becoming a silent local writer | `<date>` |
+| Codex CLI (local execution seat) | `shell` | `host-native` | the declared Codex process ran the mission commands inside its named worktree and recorded the process, model and effort in the transmission report | `<date>` |
 
 **"Entailed by the locus" is the only inference the table permits, and it
 runs one way.** A `shell` whose value is known and is not `host-native`
@@ -135,8 +136,9 @@ measured loading them, each row recording the loading runtime's locus, and
 there is no contradiction. What those rows do not do is make a profile
 *startable*: a row records what an agent can do, the launcher's condition 2
 asks whether it can start the seat a form value names, and whether a given
-mission launches is all seven conditions passing on that issue's own
-fields. Three questions, not two. **A cell filled because filling it would
+mission launches is all ten current checks passing on that issue's own
+fields — seven stable contract conditions plus three operational guards.
+Three questions, not two. **A cell filled because filling it would
 unblock a queued mission is the guess this table exists to refuse** — and
 the cell a queued mission would most like filled is precisely the one left
 `unknown` until somebody measures it.
