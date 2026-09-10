@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The ignored file that git worktree remove destroys — Paid for by an incident · Guildwork</title>
+<meta name="description" content="Condition 2 asks for untracked and ignored explicitly; the only exception is a committed manifest a person wrote down.">
+<meta property="og:title" content="The ignored file that git worktree remove destroys — Paid for by an incident · Guildwork">
+<meta property="og:description" content="Condition 2 asks for untracked and ignored explicitly; the only exception is a committed manifest a person wrote down.">
+<meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
+<meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/incidents/ignored-file-that-git-worktree-remove-destroys/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="en" href="https://simon-pacifae-dupont.github.io/Guildwork/incidents/ignored-file-that-git-worktree-remove-destroys/">
+<link rel="alternate" hreflang="fr" href="https://simon-pacifae-dupont.github.io/Guildwork/fr/incidents/ignored-file-that-git-worktree-remove-destroys/">
+<link rel="alternate" hreflang="x-default" href="https://simon-pacifae-dupont.github.io/Guildwork/incidents/ignored-file-that-git-worktree-remove-destroys/">
+<link rel="icon" href="../../brand/favicon-64.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../brand/incidents.css">
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="../../"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56" fill="none" stroke="#F3EDE2" stroke-width="12" stroke-linejoin="round"/><rect x="52" y="44" width="39" height="12" fill="#E9A23B"/></svg><b>Guildwork</b></a>
+    <nav>
+      <a href="../">← All incidents</a>
+      <a href="../../">The kit</a>
+    </nav>
+    <div class="bar-end">
+      <div class="lang">
+        <a href="./" hreflang="en" lang="en" aria-current="page">EN</a>
+        <a href="../../fr/incidents/ignored-file-that-git-worktree-remove-destroys/" hreflang="fr" lang="fr">FR</a>
+      </div>
+      <a class="lang" style="padding:8px 12px;color:var(--ink-2);text-decoration:none" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">GitHub</a>
+    </div>
+  </div>
+</header>
+<div class="wrap hero">
+  <p class="eyebrow"><span>Paid for by an incident</span><span>Delivery and disposal</span></p>
+  <h1>The ignored file that <code>git worktree remove</code> destroys</h1>
+</div>
+<main class="wrap">
+  <section>
+    <h2>What broke</h2>
+    <div class="card"><p>A gitignored file, or any untracked file under a common configuration, is destroyed by a <code>git worktree remove</code> that exits 0 with no <code>--force</code> — reproduced on two Git versions. An earlier revision of the tool&#x27;s own documentation claimed a backstop existed, and that claim is what made the hole invisible to the tool&#x27;s own review.</p></div>
+  </section>
+  <section>
+    <h2>The rule it paid for</h2>
+    <div class="card-lead"><p class="rule-text">Condition 2 asks for untracked <em>and</em> ignored explicitly; the only exception is a committed manifest a person wrote down.</p></div>
+  </section>
+  <nav class="pager"><a href="../twenty-nine-issues-closed-by-hand/"><span class="dir">Previous incident</span>Twenty-nine issues closed by hand</a><a href="../misread-as-absent-from-the-repository/"><span class="dir">Next incident</span><code>??</code> misread as &quot;absent from the repository&quot;</a></nav>
+</main>
+<footer class="wrap">
+  <p>All forty-seven incidents, and the rule each one paid for, are public in the Guildwork kit under an MIT licence. Every example is rewritten on a fictional project called Lantern: the mechanics are real, the product is not.</p>
+  <p><a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/12-incidents.md">The full register</a> · <a href="../../">The kit</a></p>
+</footer>
+</body>
+</html>

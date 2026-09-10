@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le fichier ignoré que git worktree remove détruit — Payé par un incident · Guildwork</title>
+<meta name="description" content="La condition 2 demande explicitement le non suivi et l&amp;#x27;ignoré ; la seule exception est un manifeste commité qu&amp;#x27;une personne a écrit.">
+<meta property="og:title" content="Le fichier ignoré que git worktree remove détruit — Payé par un incident · Guildwork">
+<meta property="og:description" content="La condition 2 demande explicitement le non suivi et l&amp;#x27;ignoré ; la seule exception est un manifeste commité qu&amp;#x27;une personne a écrit.">
+<meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
+<meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/fr/incidents/ignored-file-that-git-worktree-remove-destroys/">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="en" href="https://simon-pacifae-dupont.github.io/Guildwork/incidents/ignored-file-that-git-worktree-remove-destroys/">
+<link rel="alternate" hreflang="fr" href="https://simon-pacifae-dupont.github.io/Guildwork/fr/incidents/ignored-file-that-git-worktree-remove-destroys/">
+<link rel="alternate" hreflang="x-default" href="https://simon-pacifae-dupont.github.io/Guildwork/incidents/ignored-file-that-git-worktree-remove-destroys/">
+<link rel="icon" href="../../../brand/favicon-64.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../../brand/incidents.css">
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="../../"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56" fill="none" stroke="#F3EDE2" stroke-width="12" stroke-linejoin="round"/><rect x="52" y="44" width="39" height="12" fill="#E9A23B"/></svg><b>Guildwork</b></a>
+    <nav>
+      <a href="../">← Tous les incidents</a>
+      <a href="../../">Le kit</a>
+    </nav>
+    <div class="bar-end">
+      <div class="lang">
+        <a href="../../../incidents/ignored-file-that-git-worktree-remove-destroys/" hreflang="en" lang="en">EN</a>
+        <a href="./" hreflang="fr" lang="fr" aria-current="page">FR</a>
+      </div>
+      <a class="lang" style="padding:8px 12px;color:var(--ink-2);text-decoration:none" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">GitHub</a>
+    </div>
+  </div>
+</header>
+<div class="wrap hero">
+  <p class="eyebrow"><span>Payé par un incident</span><span>Livraison et disposition</span></p>
+  <h1>Le fichier ignoré que <code>git worktree remove</code> détruit</h1>
+</div>
+<main class="wrap">
+  <section>
+    <h2>Ce qui a cassé</h2>
+    <div class="card"><p>Un fichier ignoré par git, ou tout fichier non suivi sous une configuration courante, est détruit par un <code>git worktree remove</code> qui sort en 0 sans <code>--force</code> — reproduit sur deux versions de Git. Une révision antérieure de la documentation de l&#x27;outil affirmait qu&#x27;un garde-fou existait, et c&#x27;est cette affirmation qui a rendu le trou invisible à la revue de l&#x27;outil lui-même.</p></div>
+  </section>
+  <section>
+    <h2>La règle qu'il a payée</h2>
+    <div class="card-lead"><p class="rule-text">La condition 2 demande explicitement le non suivi <em>et</em> l&#x27;ignoré ; la seule exception est un manifeste commité qu&#x27;une personne a écrit.</p></div>
+  </section>
+  <nav class="pager"><a href="../twenty-nine-issues-closed-by-hand/"><span class="dir">Incident précédent</span>Vingt-neuf issues fermées à la main</a><a href="../misread-as-absent-from-the-repository/"><span class="dir">Incident suivant</span><code>??</code> lu comme « absent du dépôt »</a></nav>
+</main>
+<footer class="wrap">
+  <p>Les quarante-sept incidents et la règle que chacun a payée sont publics dans le kit Guildwork, sous licence MIT. Chaque exemple est réécrit sur un projet fictif nommé Lantern : les mécaniques sont réelles, le produit ne l'est pas.</p>
+  <p><a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/12-incidents.md">Le registre complet</a> · <a href="../../">Le kit, en français</a></p>
+</footer>
+</body>
+</html>

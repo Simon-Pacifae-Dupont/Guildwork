@@ -310,6 +310,10 @@
 
   footer{border-top:1px solid var(--edge-2);padding-block:34px 56px;font-size:12.5px;color:var(--ink-3)}
   footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+
+  /* the 47 figure is a door to the incident pages — design-system.md, "an image of a surface is a door to it" */
+  a.fig{text-decoration:none;color:inherit;transition:transform .16s}
+  a.fig:hover{transform:translateY(-2px)}
 </style>
 <style>
   /* French runs longer than English — a touch more room on the display sizes */
@@ -458,6 +462,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
       <a href="#model" data-track="code">Le modèle, en schéma</a>
       <a href="#numbers" data-track="code">Les chiffres sur 38 jours</a>
       <a href="#kit" data-track="code">Les 15 documents</a>
+      <a href="incidents/" data-track="code">Les 47 incidents</a>
       <a href="#work" data-track="code">Offres et tarifs</a>
       <a href="#questions" data-track="nocode">Trois questions à se poser</a>
       <a href="#situations" data-track="nocode">Six situations réelles</a>
@@ -483,6 +488,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a href="#board" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-board"/></svg>Le tableau de bord</a>
     <a href="#numbers" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Les chiffres sur 38 jours</a>
     <a href="#kit" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-docs"/></svg>Les 15 documents</a>
+    <a href="incidents/" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-stop"/></svg>Les 47 incidents</a>
     <a href="#work" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>Offres et tarifs</a>
     <a href="#questions" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg>Trois questions à se poser</a>
     <a href="#situations" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Six situations réelles</a>
@@ -630,7 +636,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
     <div class="fig"><b>320</b><span>pull requests fusionnées sur les mêmes treize jours</span></div>
     <div class="fig"><b>548</b><span>sessions closes avec une entrée de journal, en 36 jours</span></div>
     <div class="fig"><b>14</b><span>livraisons refusées ou remplacées, sur 575 closes</span></div>
-    <div class="fig"><b>47</b><span>incidents, chacun ayant payé une règle</span></div>
+    <a class="fig" href="incidents/"><b>47</b><span>incidents, chacun ayant payé une règle — les lire un par un ↗</span></a>
   </div>
   <p class="sober"><strong>La lecture sobre, parce que c'est elle qui rend la première crédible.</strong> La même période a produit quarante-sept incidents assez sérieux pour mériter une règle, la plupart concentrés sur une seule semaine. La plupart des sièges que le lanceur sait démarrer sont <code>unknown</code> sur la propriété matérielle que la file aimerait le plus voir remplie. Aucun des deux harnais en ligne de commande n'impose la lecture seule depuis ses propres options, et la gouvernance le dit au lieu de faire semblant. Un système capable de dire <em>je ne sais pas</em> là où il ne sait pas est le seul dont le <em>oui</em> vaille quelque chose.</p>
 

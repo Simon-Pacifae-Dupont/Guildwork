@@ -1,0 +1,84 @@
+/* Guildwork — incident pages. Tokens and ladder: brand/design-system.md */
+*{box-sizing:border-box}
+:root{
+ --ground:#0B1526;--surface:#0A1322;--strip:#14223A;--well:#070D18;
+ --line:#1D2B44;--line-strong:#2B3B57;--line-amber:#6E5330;
+ --card:linear-gradient(168deg,#1B2434 0%,#0F1929 55%,#0A1322 100%);
+ --card-lead:linear-gradient(168deg,#232C3B 0%,#121C2D 52%,#0A1322 100%);
+ --shadow:0 1px 2px rgba(0,0,0,.35),0 16px 34px -22px rgba(0,0,0,.8);
+ --shadow-lift:0 2px 12px rgba(0,0,0,.5),0 26px 64px -34px rgba(0,0,0,.9);
+ --ink:#F3EDE2;--ink-2:#9FAAC0;--ink-3:#6B7791;
+ --amber:#E9A23B;--amber-2:#F5C46B;--accent:#5CB9C4;
+ --measure:66ch;
+ --gap-section:72px;--gap-object:32px;--gap-caption:16px;--gap-para:12px;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);
+ font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;
+ -webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--amber-2);text-decoration-color:rgba(245,196,107,.35);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--amber-2)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:10;background:rgba(11,21,38,.86);backdrop-filter:blur(8px);
+ border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:18px;padding:14px 24px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-right:auto}
+.brand svg{width:28px;height:28px;flex:none}
+.brand b{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
+ font-weight:600;font-size:20px;letter-spacing:-.02em}
+.bar nav{display:flex;gap:17px;font-family:"IBM Plex Mono",monospace;font-size:12px}
+.bar nav a{color:var(--ink-2);text-decoration:none;white-space:nowrap}
+.bar nav a:hover{color:var(--ink)}
+@media (max-width:860px){.bar nav{display:none}}
+.bar-end{display:flex;align-items:center;gap:11px;flex:none}
+.lang{display:flex;border:1px solid var(--line-strong);border-radius:7px;overflow:hidden;
+ font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em}
+.lang a{padding:8px 10px;line-height:1;color:var(--ink-3);text-decoration:none}
+.lang a+a{border-left:1px solid var(--line-strong)}
+.lang a:hover{color:var(--ink);background:var(--strip)}
+.lang a[aria-current]{background:var(--strip);color:var(--ink)}
+.hero{padding-block:88px 64px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;
+ text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.eyebrow .num{color:var(--amber)}
+h1 code{background:none;border:0;padding:0;font-size:.82em}
+h1{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;
+ font-size:clamp(30px,4.6vw,50px);line-height:1.1;letter-spacing:-.02em;margin:0;max-width:20ch}
+main{padding-bottom:var(--gap-section)}
+section{margin-bottom:var(--gap-section)}
+h2{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 40,"SOFT" 40;font-weight:600;
+ font-size:22px;letter-spacing:-.01em;margin:0 0 var(--gap-object)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+ box-shadow:var(--shadow);padding:30px 32px}
+.card-lead{background:var(--card-lead);border:1px solid var(--line-amber);border-radius:14px;
+ box-shadow:var(--shadow-lift);padding:30px 32px}
+.card p,.card-lead p{margin:0 0 var(--gap-para);max-width:var(--measure)}
+.card p:last-child,.card-lead p:last-child{margin-bottom:0}
+.label{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--ink-3);margin:0 0 var(--gap-caption)}
+.card-lead .label{color:var(--amber)}
+.rule-text{font-size:19px;line-height:1.55}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--well);
+ border:1px solid var(--line-strong);border-radius:4px;padding:1px 5px}
+.pager{display:flex;gap:24px;justify-content:space-between;border-top:1px solid var(--line);
+ padding-top:var(--gap-object);margin-bottom:var(--gap-section);
+ font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.45}
+.pager code{background:none;border:0;padding:0}
+.pager a{color:var(--ink-2);text-decoration:none;max-width:46%}
+.pager a:last-child{text-align:right}
+.pager a:hover{color:var(--ink)}
+.pager .dir{display:block;color:var(--ink-3);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+footer{border-top:1px solid var(--line);padding-block:var(--gap-object);color:var(--ink-2);font-size:14px}
+footer p{margin:0 0 var(--gap-para);max-width:var(--measure)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.grid a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;
+ box-shadow:var(--shadow);padding:20px 22px;text-decoration:none;color:inherit;transition:transform .16s}
+.grid a:hover{transform:translateY(-2px)}
+.grid .t code{background:none;border:0;padding:0;font-size:.9em}
+.grid .t{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:17px;line-height:1.25;margin:8px 0 8px}
+.grid .r{color:var(--ink-2);font-size:13.5px;line-height:1.5;margin:0}
+.sec-head{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+ color:var(--ink-3);margin:0 0 var(--gap-object);padding-top:8px;border-top:1px solid var(--line)}
