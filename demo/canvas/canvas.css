@@ -65,7 +65,10 @@ path.wire.refuse{stroke:var(--broken);stroke-width:1.55;opacity:.72;stroke-dasha
 path.wire.future{stroke:var(--accent);stroke-width:1.9;opacity:.85;stroke-dasharray:7 7}
 .flow{stroke-dasharray:7 10;animation:dash 1.8s linear infinite}
 @keyframes dash{to{stroke-dashoffset:-34}}
-@media(prefers-reduced-motion:reduce){.flow{animation:none}}
+/* the teal 'next' thread flows too, on its own 7+7 period so the loop never jumps */
+path.wire.future.flow{animation:dash-future 1.8s linear infinite}
+@keyframes dash-future{to{stroke-dashoffset:-28}}
+@media(prefers-reduced-motion:reduce){.flow,path.wire.future.flow{animation:none}}
 text.wlab{fill:var(--ink-2);font-family:"IBM Plex Mono",monospace;font-size:9.5px}
 .wlab-bg{fill:var(--surface);stroke:rgba(43,59,87,.7);stroke-width:.8px}
 

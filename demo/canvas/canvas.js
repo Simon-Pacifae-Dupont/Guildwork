@@ -26,13 +26,14 @@
 
   /* ---------------------------------------------------------------- geometry
      Five columns of 205, a 24 gap. Four lanes. The canvas is 1180 × 960. */
-  const W = 1180, H = 1032, CW = 205;
+  const W = 1180, H = 1294, CW = 205;
   const X = [34, 263, 492, 721, 950];
   const LANE = [
     { rule: 36,  y: 68,  h: 130, labelX: 34 },
     { rule: 352, y: 372, h: 116, labelX: 34 },
     { rule: 588, y: 620, h: 116, centerOn: ['close', 'bye'] },   // its label sits centred between the two drops from lane 2, at equal distance from each
-    { rule: 838, y: 870, h: 130, labelX: 34 }
+    { rule: 838, y: 870, h: 130, labelX: 34 },
+    { rule: 1088, y: 1120, h: 142, labelX: 34 }
   ];
   const LOOP_X = 14;       // the register's way back up, in the left margin
   const LOOP_Y = 322;      // and its way across, between the launcher's pill and lane 2
@@ -43,7 +44,8 @@
     po: [0, 0], ca: [0, 1], iss: [0, 2], lnch: [0, 3], wt: [0, 4],
     main: [1, 0], gate: [1, 1], wit: [1, 2], pr: [1, 3], seats: [1, 4],
     reg: [2, 0], close: [2, 1], jrn: [2, 2], bye: [2, 3],
-    event: [3, 0], watch: [3, 1], read: [3, 2], dispatch: [3, 3]
+    event: [3, 0], watch: [3, 1], read: [3, 2], dispatch: [3, 3],
+    ask: [4, 0], rev: [4, 1], opin: [4, 2]
   };
   const SPAN = { dispatch: 2 };
 
@@ -63,7 +65,8 @@
         'contract and launch — five surfaces · ten checks today',
         'execute and deliver — nobody certifies their own work  ←',
         'close and learn — the durable evidence  ←',
-        'watch and route — what exists now, and what comes next'
+        'watch and route — what exists now, and what comes next',
+        'consult — the read from someone with nothing to defend'
       ],
       nodes: {
         po:    { icon: 'person', kind: 'human',   k: 'authority',          t: 'Product Owner',        s: 'human · final say\nlaunches and merges\nunder the named gate' },
@@ -83,7 +86,10 @@
         event: { icon: 'inbox',  kind: 'watcher', k: 'authorised signal',  t: 'GitHub event',         s: 'a route label is applied\nor the host produces\na new measured reading' },
         watch: { icon: 'pulse',  kind: 'watcher', k: 'today · deterministic', t: 'Watcher',           s: 'polls every two minutes\nsees · dedupes · records\nstarts no model', tag: 'now' },
         read:  { icon: 'eye',    kind: 'watcher', k: 'current output',     t: 'Fresh board reading',  s: 'the latest host state\ntime of the reading\nprojection, never truth', tag: 'now' },
-        dispatch: { icon: 'send', kind: 'future', k: 'next · after canaries', t: 'Receive · deliver · wake', s: 'accept the authorised mission event · send the canonical contract\nwake the named existing seat · zero model call when nothing changed', tag: 'next' }
+        dispatch: { icon: 'send', kind: 'future', k: 'next · after canaries', t: 'Receive · deliver · wake', s: 'accept the authorised mission event · send the canonical contract\nwake the named existing seat · zero model call when nothing changed', tag: 'next' },
+        ask:   { icon: 'doc',  kind: 'control', k: 'what calls for it',  t: 'A contested ruling',        s: 'a ruling under dispute\na design to validate\na figure nobody measured' },
+        rev:   { icon: 'bot',  kind: 'control', k: 'outside review',     t: 'Consultant with no surface', s: 'GPT · Grok, outside the tree\nstarts nothing, merges nothing\nhence a neutral read', tag: 'neutral' },
+        opin:  { icon: 'book', kind: 'control', k: 'what it produces',   t: 'An opinion, not a decision', s: 'a finding in the register\nthe gate stays human\nan opinion merges nothing' }
       },
       pills: {
         lnch:  '1–7 contract · seat/model/effort · role\nwriter · capability · source · title\n8 exclusive display · 9 transport limit\n10 unreadable scope path',
@@ -99,7 +105,8 @@
         'contrat et lancement — cinq surfaces · dix contrôles aujourd’hui',
         'exécuter et livrer — personne ne certifie son propre travail  ←',
         'clore et apprendre — la preuve durable  ←',
-        'observer et router — ce qui existe, puis la prochaine étape'
+        'observer et router — ce qui existe, puis la prochaine étape',
+        'consulter — l’avis de qui n’a rien à défendre'
       ],
       nodes: {
         po:    { icon: 'person', kind: 'human',   k: 'autorité',            t: 'Product Owner',         s: 'humain · dernier mot\nlance et fusionne\nsous la porte nommée' },
@@ -119,7 +126,10 @@
         event: { icon: 'inbox',  kind: 'watcher', k: 'signal autorisé',     t: 'Événement GitHub',      s: 'une étiquette de route\nou une nouvelle mesure\nde l’hôte' },
         watch: { icon: 'pulse',  kind: 'watcher', k: 'aujourd’hui · déterministe', t: 'Watcher',        s: 'toutes les deux minutes\nvoit, déduplique, note\nne démarre aucun modèle', tag: 'actuel' },
         read:  { icon: 'eye',    kind: 'watcher', k: 'sortie actuelle',     t: 'Lecture fraîche du tableau', s: 'dernier état de l’hôte\nl’heure de la lecture\nprojection, pas vérité', tag: 'actuel' },
-        dispatch: { icon: 'send', kind: 'future', k: 'ensuite · après validation', t: 'Recevoir · transmettre · réveiller', s: 'recevoir l’événement autorisé · transmettre le contrat canonique\nréveiller le bon siège existant · zéro appel IA si rien ne change', tag: 'prochain' }
+        dispatch: { icon: 'send', kind: 'future', k: 'ensuite · après validation', t: 'Recevoir · transmettre · réveiller', s: 'recevoir l’événement autorisé · transmettre le contrat canonique\nréveiller le bon siège existant · zéro appel IA si rien ne change', tag: 'prochain' },
+        ask:   { icon: 'doc',  kind: 'control', k: 'ce qui déclenche',   t: 'Une décision contestée',   s: 'un arbitrage discuté\nune conception à valider\nun chiffre non mesuré' },
+        rev:   { icon: 'bot',  kind: 'control', k: 'relecture externe',  t: 'Consultant sans surface',  s: 'GPT · Grok, hors de l’arbre\nne lance ni ne fusionne\nd’où l’avis neutre', tag: 'neutre' },
+        opin:  { icon: 'book', kind: 'control', k: 'ce que ça produit',  t: 'Un avis, pas une décision', s: 'un constat au registre\nla porte reste humaine\nun avis ne fusionne rien' }
       },
       pills: {
         lnch:  '1–7 contrat · siège/modèle/effort · rôle\nscribe · capacité · source · titre\n8 écran exclusif · 9 limite de transport\n10 chemin de portée illisible',
@@ -155,7 +165,9 @@
       { a: 'event', b: 'watch', kind: 'control', how: 'h' },
       { a: 'watch', b: 'read', kind: 'control', how: 'h' },
       { a: 'read', b: 'dispatch', kind: 'future', how: 'h' },
-      { a: 'dispatch', b: 'seats', kind: 'future', how: 'wake', label: L.wake }
+      { a: 'dispatch', b: 'seats', kind: 'future', how: 'wake', label: L.wake },
+      { a: 'ask', b: 'rev', kind: 'control', how: 'h' },
+      { a: 'rev', b: 'opin', kind: 'signal', how: 'h' }
     ];
   }
 
@@ -289,7 +301,7 @@
         lab = [WAKE_X, (p1[1] + p2[1]) / 2 + 3];
       }
       el('path', { d, class: 'casing' }, svg);   // the wire cuts the lane rule; the rule never cuts the wire
-      const pa = el('path', { d, class: 'wire ' + ed.kind + (ed.kind === 'signal' ? ' flow' : ''), 'marker-end': `url(#arrow-${ed.kind})` }, svg);
+      const pa = el('path', { d, class: 'wire ' + ed.kind + (ed.kind === 'signal' || ed.kind === 'future' ? ' flow' : ''), 'marker-end': `url(#arrow-${ed.kind})` }, svg);
       pa.dataset.a = ed.a; pa.dataset.b = ed.b;
       if (ed.label && lab) labelAt(lab[0], lab[1], ed.label, ed);
     });
