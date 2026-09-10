@@ -257,14 +257,47 @@ site. Counters are always tabular monospace.
 | Surface | File | Theme |
 |---|---|---|
 | the site, both languages | `index.html`, `fr/index.html` | dark only |
-| the board as it runs (demonstration) | `demo/board/index.html` | dark only, forced |
+| the board as it runs (demonstration) | `demo/board/index.html`, `fr/demo/board/index.html` | dark only, forced |
 | the shipped reader | `templates/board/board.html` | follows the viewer; light theme kept |
-| the reader's demonstrations | `demo/board/reader/`, `fr/demo/board/` | dark, forced |
-| the images | `brand/board-demo-dark.png`, `brand/board-demo.fr.png` | rendered from the two demonstrations above at 1020 px, 2×, quantised with a coverage palette so the small state glyphs keep their hue |
-
+| the reader's demonstrations | `demo/board/reader/`, `fr/demo/board/reader/` | dark, forced |
+| the images | `brand/board-demo-dark.png`, `brand/board-demo.fr.png` | rendered from the board demonstration in each language — recipe below |
 | the operating canvas | `demo/canvas/`, `fr/demo/canvas/` | dark only |
 
 A change to a token is made here first, then applied to every file in the
 table in the same commit. An image is never edited; it is re-rendered. The
 focus behaviour above is carried by the same short script on every surface
 in the table; a new surface inherits it before it inherits anything else.
+
+## Two languages, one skeleton
+
+Rules live in one language — a rule that exists twice is a rule that will
+diverge. Narratives live in both, and the board demonstration is a
+narrative: `demo/board/index.html` and `fr/demo/board/index.html` are two
+files on purpose.
+
+What keeps them from drifting is not one file, it is one skeleton. **The
+two pages carry the same tags, in the same order, with the same
+attributes; only the text nodes differ.** The French page is not written,
+it is generated from the English one by substituting text nodes, so a
+structural change made on one side and not the other is a defect that
+shows up as a different tag count. The check is mechanical: strip every
+text node from both files and the two tag sequences must be identical.
+When one page gains a card, the other gains the same card in the same
+place, in the same commit.
+
+The URLs mirror the same way. `/demo/board/` and `/fr/demo/board/` are the
+demonstration; `/demo/board/reader/` and `/fr/demo/board/reader/` are the
+shipped reader. A reader who arrives in one language never lands in the
+other, and the language switch at the foot of each page is the only place
+that crosses.
+
+## Rendering the board images
+
+Both images come from the same recipe, and both are re-rendered together:
+viewport **1020 CSS px wide**, device scale **2.4** (so the file is 2448 px
+across), viewport tall enough that the clip is not silently trimmed to it,
+the page fully loaded, then a clip from the top down to **62 px below the
+bottom of `.decision`** — which lands just under the next section's
+heading, with air below it and nothing cut. Saved in **true colour**: a
+256-colour palette softens the small state glyphs and reads as blur at
+any size.

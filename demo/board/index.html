@@ -204,6 +204,10 @@
   .src:is(.tile,.decision,.proc){transform:translateY(-2px)}
   :is(.tile,.decision,.proc,.track li,.items li):focus-visible{outline:1px solid var(--line-strong);outline-offset:2px}
   @media (prefers-reduced-motion:reduce){.tile,.decision,.proc,.track li,.items li{transition:none}}
+  /* le passage d'une langue à l'autre : même page, même adresse au miroir près */
+  .langswitch{max-width:1180px;margin:0 auto;padding:0 22px 34px;color:var(--muted);
+    font-size:13px;font-family:"IBM Plex Mono",monospace}
+  .langswitch a{color:var(--ink-2)}
 </style>
 </head>
 <body>
@@ -380,6 +384,8 @@ stays with the hourly task, under its five conditions.*</pre>
   </section>
 
 </div>
+
+<p class="langswitch"><a href="../../fr/demo/board/" hreflang="fr" lang="fr">Version française</a></p>
 
 <script>
 /* Focus lights the thread, and dims the rest — brand/design-system.md.

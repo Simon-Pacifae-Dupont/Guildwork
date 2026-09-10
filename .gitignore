@@ -4,3 +4,6 @@ Thumbs.db
 desktop.ini
 .idea/
 .vscode/
+
+# Dossier cree par l'application Claude dans le depot. Jamais publie.
+Claude outputs/
