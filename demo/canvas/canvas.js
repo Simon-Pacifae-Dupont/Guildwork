@@ -194,6 +194,58 @@
     return d + ` L${last[0]},${last[1]}`;
   }
 
+  /* ------------------------------------------------------------- packets
+     The canvas is a production line, so it should read like one: when the
+     system runs, you watch the work move through it, and a pipe with nothing
+     in it is a pipe that has stopped. Every wire carries a train of parcels
+     at one constant speed — filled where something really runs today,
+     outlined on the path that is drawn but not yet active. Nothing moves
+     under prefers-reduced-motion, and nothing is drawn at all in the
+     exported image, which has to stay a still picture. */
+  const SPEED = 42;      // pixels per second, the same in every pipe
+  const SPACING = 34;    // distance between two parcels in the same pipe
+  const MAX_PER_WIRE = 16;
+
+  function packets(svg, wireOf) {
+    if (document.documentElement.classList.contains('export')) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const layer = el('g', { class: 'pkts' }, svg);
+    for (const key in wireOf) {
+      const w = wireOf[key];
+      const len = w.path.getTotalLength();
+      if (!isFinite(len) || len < 8) continue;
+      const dur = len / SPEED;
+      const n = Math.max(2, Math.min(MAX_PER_WIRE, Math.round(len / SPACING)));
+      for (let k = 0; k < n; k++) {
+        const g = el('g', { class: 'pkt ' + w.kind }, layer);
+        g.dataset.a = w.path.dataset.a; g.dataset.b = w.path.dataset.b;
+        shape(w.kind, g);
+        const m = el('animateMotion', {
+          dur: dur.toFixed(3) + 's', repeatCount: 'indefinite', rotate: 'auto',
+          calcMode: 'linear', begin: (-k * dur / n).toFixed(3) + 's'
+        }, g);
+        const mp = el('mpath', {}, m);
+        mp.setAttribute('href', '#' + w.path.id);
+        mp.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#' + w.path.id);
+      }
+    }
+    // a parcel passes behind a label, never across the word: the labels are
+    // repainted last so nothing on a wire can sit on top of a word
+    svg.querySelectorAll('.wlab-bg, text.wlab').forEach(e => svg.appendChild(e));
+  }
+
+  // a parcel where work really moves; an outline where the path is drawn but idle
+  function shape(kind, g) {
+    if (kind === 'signal') {
+      el('rect', { x: -3.1, y: -3.1, width: 6.2, height: 6.2, rx: 1.1, transform: 'rotate(45)', class: 'body' }, g);
+    } else if (kind === 'future') {
+      el('rect', { x: -3.4, y: -3.4, width: 6.8, height: 6.8, rx: 1.9, class: 'body hollow' }, g);
+    } else {
+      el('rect', { x: -3.6, y: -3.6, width: 7.2, height: 7.2, rx: 2.1, class: 'body' }, g);
+    }
+  }
+
   function build(host, lang) {
     const T = COPY[lang];
     host.setAttribute('aria-label', T.stage);
@@ -266,6 +318,7 @@
     }
 
     // wires
+    const wireOf = {};
     const GAP = 5;   // an arrowhead ends this far before the edge it points at, so no card ever covers it
     const port = (b, side, f) => side === 'r' ? [b.x + b.w, b.y + b.h / 2] : side === 'l' ? [b.x, b.y + b.h / 2]
       : side === 'b' ? [b.x + b.w * (f ?? 0.5), b.y + b.h] : [b.x + b.w * (f ?? 0.5), b.y];
@@ -301,10 +354,13 @@
         lab = [WAKE_X, (p1[1] + p2[1]) / 2 + 3];
       }
       el('path', { d, class: 'casing' }, svg);   // the wire cuts the lane rule; the rule never cuts the wire
-      const pa = el('path', { d, class: 'wire ' + ed.kind + (ed.kind === 'signal' || ed.kind === 'future' ? ' flow' : ''), 'marker-end': `url(#arrow-${ed.kind})` }, svg);
+      const pa = el('path', { id: `w-${ed.a}-${ed.b}`, d, class: 'wire ' + ed.kind + (ed.kind === 'signal' || ed.kind === 'future' ? ' flow' : ''), 'marker-end': `url(#arrow-${ed.kind})` }, svg);
       pa.dataset.a = ed.a; pa.dataset.b = ed.b;
+      wireOf[ed.a + '>' + ed.b] = { path: pa, kind: ed.kind };
       if (ed.label && lab) labelAt(lab[0], lab[1], ed.label, ed);
     });
+
+    packets(svg, wireOf);
 
     // focus: a card lights its wires and its neighbours
     const related = id => {

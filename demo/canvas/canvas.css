@@ -63,16 +63,25 @@ path.wire.control{stroke:var(--control);stroke-width:1.7;opacity:.8}
 path.wire.signal{stroke:var(--amber);stroke-width:2;opacity:.9}
 path.wire.refuse{stroke:var(--broken);stroke-width:1.55;opacity:.72;stroke-dasharray:5 5}
 path.wire.future{stroke:var(--accent);stroke-width:1.9;opacity:.85;stroke-dasharray:7 7}
-.flow{stroke-dasharray:7 10;animation:dash 1.8s linear infinite}
+.flow{stroke-dasharray:7 10;animation:dash 2.6s linear infinite}
 @keyframes dash{to{stroke-dashoffset:-34}}
 /* the teal 'next' thread flows too, on its own 7+7 period so the loop never jumps */
-path.wire.future.flow{animation:dash-future 1.8s linear infinite}
+path.wire.future.flow{animation:dash-future 2.6s linear infinite}
 @keyframes dash-future{to{stroke-dashoffset:-28}}
 @media(prefers-reduced-motion:reduce){.flow,path.wire.future.flow{animation:none}}
 text.wlab{fill:var(--ink-2);font-family:"IBM Plex Mono",monospace;font-size:9.5px}
 .wlab-bg{fill:var(--surface);stroke:rgba(43,59,87,.7);stroke-width:.8px}
 
 /* focus: hover or tab a card, its path stays lit and the rest steps back */
+/* packets — the work itself, moving. A filled parcel where something runs
+   today; an outline on the path that is drawn but not yet active. */
+.pkt .body{fill:var(--control);stroke:none}
+.pkt.signal .body{fill:var(--amber)}
+.pkt.future .body{fill:none;stroke:var(--accent);stroke-width:1.5}
+.pkts{filter:drop-shadow(0 0 3.5px rgba(127,166,214,.5))}
+.pkt.signal{filter:drop-shadow(0 0 4px rgba(233,162,59,.55))}
+.pkt.future{filter:drop-shadow(0 0 3.5px rgba(92,185,196,.5))}
+.stage.focusing .pkt:not(.hot){opacity:.12}
 .stage.focusing .node:not(.hot),.stage.focusing .pill:not(.hot){opacity:.2}
 .stage.focusing path.wire:not(.hot){opacity:.1}
 .stage.focusing text.wlab:not(.hot),.stage.focusing .wlab-bg:not(.hot){opacity:.15}

@@ -177,6 +177,27 @@ Every object that can start a thread is reachable by keyboard (`tabindex`),
 and focus behaves exactly as hover. `prefers-reduced-motion` removes the
 transition, not the dimming.
 
+## A running system shows the work moving
+
+A canvas that draws a production line has to read like one: every wire
+carries a train of parcels at one constant speed, and a pipe with nothing
+in it is a pipe that has stopped. The parcel takes the colour of its wire
+and nothing else enters the palette: a **filled** parcel where something
+really runs today, an **outline** on a path that is drawn but not yet
+active — the same distinction the teal *next* thread already makes, said
+twice so it cannot be missed.
+
+Three rules hold it in place. A parcel passes *behind* a label, never
+across the word, so the labels are painted last. Nothing moves under
+`prefers-reduced-motion: reduce` — the parcels are not drawn at all,
+rather than drawn and frozen. And nothing is drawn in `?export`: the
+rendered image has to stay a still picture, identical from one render to
+the next.
+
+Speed is a constant of the surface, not of the wire: 42 pixels a second,
+one parcel every 34 pixels, capped at sixteen per wire so a long return
+loop does not become a bead curtain.
+
 ## Rhythm — four gaps, and no other vertical number
 
 Airy, not empty. The site keeps four named distances and every margin on
