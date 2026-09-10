@@ -29,8 +29,8 @@ page l'est : le lecteur de tableau ci-dessous, que vous pouvez ouvrir tout de
 suite.
 
 <p align="center">
-  <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/"><img alt="Le tableau sur l'exemple fictif Lantern : huit compteurs, un par état, portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait." src="brand/board-demo.fr.png" width="880"></a><br>
-  <sub>Le tableau tel qu'il tourne, sur l'exemple fictif Lantern. Huit compteurs — un par état, vert compris — portant chacun <em>comment</em> il a été lu ; puis la seule décision qui revient au Product Owner et à personne d'autre, prise sur la page où elle se lit — le commentaire qu'elle publiera étant montré mot pour mot avant. Il ne fusionne jamais. <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">Ouvrir la démonstration</a> — figée, et elle le dit sur sa face.</sub>
+  <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/"><img alt="Le tableau sur l'exemple fictif Lantern : huit compteurs, un par état, portant chacun la façon dont il a été lu, et une carte de décision avec un choix approuver ou suspendre et le commentaire exact qu'elle publierait." src="brand/board-demo-dark.png" width="880"></a><br>
+  <sub>Le tableau tel qu'il tourne, sur l'exemple fictif Lantern. Huit compteurs — un par état, vert compris — portant chacun <em>comment</em> il a été lu ; puis la seule décision qui revient au Product Owner et à personne d'autre, prise sur la page où elle se lit — le commentaire qu'elle publiera étant montré mot pour mot avant. Il ne fusionne jamais. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/board/">Ouvrir la démonstration</a> — figée, et elle le dit sur sa face. Elle est en anglais, comme le pack ; <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">le lecteur livré existe en français</a>.</sub>
 </p>
 
 > **Les quinze documents du pack sont en anglais** et le restent : c'est la
@@ -103,9 +103,8 @@ Ce que le pack livre aujourd'hui, c'est le *lecteur*, sous
 `templates/board/`. La lecture de l'hôte et le chemin de décision montrés
 dans la démonstration sont plus récents, et rejoindront le pack quand ils
 auront cessé de bouger — c'est la règle que tout le reste ici applique.
-[Démonstration](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/) ·
-[le lecteur livré](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/reader/) ·
-[in English](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/).
+[Démonstration](https://simon-pacifae-dupont.github.io/Guildwork/demo/board/) ·
+[le lecteur livré, en français](https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/).
 
 ## Ce que contient ce dépôt
 
