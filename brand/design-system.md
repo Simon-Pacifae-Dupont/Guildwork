@@ -207,6 +207,14 @@ a parcel crawls through a fourteen-pixel corner arc and races down a
 three-hundred-pixel straight, and they pile up in the bends — which reads
 as a jam, the opposite of what the drawing says.
 
+A parcel fades in as it leaves a card and fades out as it reaches the next,
+over a fixed distance — seven pixels — and not a fixed share of the trip, so
+the fade is the same everywhere whatever the wire's length. Without it, a
+parcel on the nineteen-pixel gap between two neighbouring cards vanishes at
+one end and snaps back to the other, and the eye reads a rewind rather than
+a flow. It also says the true thing: the work is not gone, it is inside the
+card being worked on.
+
 The shape says which family it belongs to, and the fill says whether it
 runs: a **rounded square** for the mission itself, a **circle** for the
 finding on its way back to the contract, and a **hollow square** on the

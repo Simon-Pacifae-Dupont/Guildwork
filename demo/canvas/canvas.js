@@ -205,6 +205,7 @@
   const SPEED = 24;      // pixels per second, the same in every pipe
   const SPACING = 22;    // distance between two parcels in the same pipe
   const MAX_PER_WIRE = 16;
+  const FADE = 7;        // pixels of fade in and out at each end of a pipe
 
   function packets(svg, wireOf) {
     if (document.documentElement.classList.contains('export')) return;
@@ -232,6 +233,16 @@
         const mp = el('mpath', {}, m);
         mp.setAttribute('href', '#' + w.path.id);
         mp.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#' + w.path.id);
+        // A parcel fades in as it leaves a card and fades out as it reaches the
+        // next, over a fixed distance rather than a fixed share of the trip. Without
+        // it, a parcel on the nineteen-pixel gap between two cards vanishes at one
+        // end and snaps back to the other, which reads as a rewind, not a flow.
+        const t = (Math.min(FADE, len * 0.28) / len).toFixed(4);
+        el('animate', {
+          attributeName: 'opacity', dur: dur.toFixed(3) + 's', repeatCount: 'indefinite',
+          calcMode: 'linear', values: '0;1;1;0', keyTimes: `0;${t};${(1 - t).toFixed(4)};1`,
+          begin: (-k * dur / n).toFixed(3) + 's'
+        }, g);
       }
     }
     // a parcel passes behind a label, never across the word: the labels are
