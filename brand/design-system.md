@@ -194,9 +194,25 @@ rather than drawn and frozen. And nothing is drawn in `?export`: the
 rendered image has to stay a still picture, identical from one render to
 the next.
 
-Speed is a constant of the surface, not of the wire: 42 pixels a second,
-one parcel every 34 pixels, capped at sixteen per wire so a long return
-loop does not become a bead curtain.
+Speed is a constant of the surface, not of the wire: 34 pixels a second,
+one parcel every 22 pixels, capped at sixteen per wire so a long return
+loop does not become a bead curtain. The motion is `calcMode="paced"`,
+never `linear`: linear gives every path segment the same slice of time, so
+a parcel crawls through a fourteen-pixel corner arc and races down a
+three-hundred-pixel straight, and they pile up in the bends — which reads
+as a jam, the opposite of what the drawing says.
+
+The shape says which family it belongs to, and the fill says whether it
+runs: a **rounded square** for the mission itself, a **circle** for the
+finding on its way back to the contract, and a **hollow square** on the
+path that is drawn but not yet active.
+
+An arrowhead and a moving parcel say the same thing twice, and on a
+nineteen-pixel gap between two cards the arrowhead leaves the parcel no
+room at all. So the arrowheads belong to the still: they are hidden while
+the parcels run, and they come back wherever the parcels do not — the
+exported image, and any viewer who asked for reduced motion. For the same
+reason the dashes hold still. One motion per line, and it is the work.
 
 ## Rhythm — four gaps, and no other vertical number
 

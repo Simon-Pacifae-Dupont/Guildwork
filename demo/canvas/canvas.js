@@ -202,28 +202,32 @@
      outlined on the path that is drawn but not yet active. Nothing moves
      under prefers-reduced-motion, and nothing is drawn at all in the
      exported image, which has to stay a still picture. */
-  const SPEED = 42;      // pixels per second, the same in every pipe
-  const SPACING = 34;    // distance between two parcels in the same pipe
+  const SPEED = 34;      // pixels per second, the same in every pipe
+  const SPACING = 22;    // distance between two parcels in the same pipe
   const MAX_PER_WIRE = 16;
 
   function packets(svg, wireOf) {
     if (document.documentElement.classList.contains('export')) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    svg.classList.add('running');   // the parcels carry the direction; the arrowheads step aside
     const layer = el('g', { class: 'pkts' }, svg);
     for (const key in wireOf) {
       const w = wireOf[key];
       const len = w.path.getTotalLength();
       if (!isFinite(len) || len < 8) continue;
       const dur = len / SPEED;
-      const n = Math.max(2, Math.min(MAX_PER_WIRE, Math.round(len / SPACING)));
+      const n = Math.max(1, Math.min(MAX_PER_WIRE, Math.round(len / SPACING)));
       for (let k = 0; k < n; k++) {
         const g = el('g', { class: 'pkt ' + w.kind }, layer);
         g.dataset.a = w.path.dataset.a; g.dataset.b = w.path.dataset.b;
         shape(w.kind, g);
+        // 'paced', not 'linear': linear gives every path segment the same slice of
+        // time, so a parcel crawls through a 14-pixel corner arc and races down a
+        // 300-pixel straight — they pile up in the bends. Paced is constant speed.
         const m = el('animateMotion', {
           dur: dur.toFixed(3) + 's', repeatCount: 'indefinite', rotate: 'auto',
-          calcMode: 'linear', begin: (-k * dur / n).toFixed(3) + 's'
+          calcMode: 'paced', begin: (-k * dur / n).toFixed(3) + 's'
         }, g);
         const mp = el('mpath', {}, m);
         mp.setAttribute('href', '#' + w.path.id);
@@ -238,11 +242,11 @@
   // a parcel where work really moves; an outline where the path is drawn but idle
   function shape(kind, g) {
     if (kind === 'signal') {
-      el('rect', { x: -3.1, y: -3.1, width: 6.2, height: 6.2, rx: 1.1, transform: 'rotate(45)', class: 'body' }, g);
+      el('circle', { cx: 0, cy: 0, r: 3.5, class: 'body' }, g);            // a finding on its way back
     } else if (kind === 'future') {
-      el('rect', { x: -3.4, y: -3.4, width: 6.8, height: 6.8, rx: 1.9, class: 'body hollow' }, g);
+      el('rect', { x: -3.4, y: -3.4, width: 6.8, height: 6.8, rx: 1.9, class: 'body hollow' }, g);  // drawn, not running
     } else {
-      el('rect', { x: -3.6, y: -3.6, width: 7.2, height: 7.2, rx: 2.1, class: 'body' }, g);
+      el('rect', { x: -3.6, y: -3.6, width: 7.2, height: 7.2, rx: 2.1, class: 'body' }, g);         // the mission itself
     }
   }
 
