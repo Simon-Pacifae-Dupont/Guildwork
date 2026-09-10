@@ -202,7 +202,7 @@
      outlined on the path that is drawn but not yet active. Nothing moves
      under prefers-reduced-motion, and nothing is drawn at all in the
      exported image, which has to stay a still picture. */
-  const SPEED = 34;      // pixels per second, the same in every pipe
+  const SPEED = 24;      // pixels per second, the same in every pipe
   const SPACING = 22;    // distance between two parcels in the same pipe
   const MAX_PER_WIRE = 16;
 

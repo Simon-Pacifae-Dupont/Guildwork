@@ -194,9 +194,14 @@ rather than drawn and frozen. And nothing is drawn in `?export`: the
 rendered image has to stay a still picture, identical from one render to
 the next.
 
-Speed is a constant of the surface, not of the wire: 34 pixels a second,
+Speed is a constant of the surface, not of the wire: 24 pixels a second,
 one parcel every 22 pixels, capped at sixteen per wire so a long return
-loop does not become a bead curtain. The motion is `calcMode="paced"`,
+loop does not become a bead curtain. One speed for every pipe is what
+makes the drawing read as one system, so the number is chosen for the
+*shortest* wire, not the longest: the gap between two neighbouring cards
+is nineteen pixels, and below roughly a second the crossing stops being a
+flow and becomes a flash. The long return loop is slower to complete as a
+result, which is correct — it is a margin, not the line. The motion is `calcMode="paced"`,
 never `linear`: linear gives every path segment the same slice of time, so
 a parcel crawls through a fourteen-pixel corner arc and races down a
 three-hundred-pixel straight, and they pile up in the bends — which reads
