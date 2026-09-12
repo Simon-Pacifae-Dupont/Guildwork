@@ -375,7 +375,22 @@ var DAYS = {
       head:"Ça engage l'entreprise, et ça porte votre nom",
       body:"La réponse est prête, elle cite les textes qui s'appliquent, une personne qui ne l'a pas écrite l'a relue. L'envoyer vous revient.",
       detail:"Relu par : Nadia · 2 textes cités · délai légal vérifié"}},
-    {who:"L'assistant qui trie",what:"Planning d'intégration des trois arrivants",h:0.9}]}
+    {who:"L'assistant qui trie",what:"Planning d'intégration des trois arrivants",h:0.9}]},
+  {name:"Le service client", intro:"Un service client de quatre personnes, deux cents messages par jour, un assistant qui répond aux questions courantes.",
+   punch:"Deux cents réponses parties aujourd'hui, et pas une promesse que la comptabilité découvrira dans trois semaines.",
+   caught:"640 €", caughtLabel:"promis en votre nom sans autorisation, arrêtés",
+   items:[
+    {who:"L'assistant qui répond",what:"Réponses aux cent vingt questions courantes de la nuit : délais, suivi, factures",h:1.2},
+    {who:"L'assistant qui répond",what:"Réclamations du week-end, trente-deux dossiers",h:1.1,stop:{
+      head:"Trois avoirs allaient être promis au-dessus du plafond",
+      body:"Trois clients furieux, trois gestes commerciaux de deux cents euros et plus. Le plafond de l'assistant est de trente euros ; au-delà, c'est une personne qui décide. Il s'est arrêté et vous présente les trois dossiers.",
+      saved:"Ce que ça aurait coûté : <b>640 € promis en votre nom</b> sans que personne l'ait décidé, découverts par la comptabilité trois semaines plus tard.",tech:null}},
+    {who:"L'assistant qui trie",what:"Messages du jour classés par urgence et par équipe",h:1.0},
+    {who:"L'assistant qui rédige",what:"Réponse au client Marchand, qui menace de résilier",h:1.0,gate:{
+      head:"Un contrat annuel en jeu, et ça porte votre nom",
+      body:"La réponse est prête : elle reconnaît l'erreur et propose un geste dans les règles. Une personne qui ne l'a pas écrite l'a relue. L'envoyer vous revient.",
+      detail:"Relu par : Karim · geste : 30 € · contrat : 4 800 € par an · historique joint"}},
+    {who:"L'assistant qui rédige",what:"Bilan de la semaine : les cinq motifs de réclamation les plus fréquents",h:0.9}]}
  ]},
  en:{ code:[
   {name:"The software company", intro:"A team of six, a product in production, version 2.4 due on Friday.",
@@ -534,7 +549,22 @@ var DAYS = {
       head:"It binds the company, and it carries your name",
       body:"The reply is ready, it cites the rules that apply, a person who did not write it has read it. Sending it is yours.",
       detail:"Read by: Nadia · 2 rules cited · legal deadline checked"}},
-    {who:"The sorting assistant",what:"Onboarding schedule for the three newcomers",h:0.9}]}
+    {who:"The sorting assistant",what:"Onboarding schedule for the three newcomers",h:0.9}]},
+  {name:"Customer service", intro:"A four-person customer service desk, two hundred messages a day, one assistant answering the routine ones.",
+   punch:"Two hundred replies out today, and not one promise that accounting discovers three weeks later.",
+   caught:"€640", caughtLabel:"promised in your name without approval, stopped",
+   items:[
+    {who:"The replies assistant",what:"Replies to the hundred and twenty routine questions from overnight: delivery, tracking, invoices",h:1.2},
+    {who:"The replies assistant",what:"Weekend complaints, thirty-two cases",h:1.1,stop:{
+      head:"Three credits were about to be promised above the limit",
+      body:"Three furious customers, three gestures of two hundred euros and more. The assistant's ceiling is thirty euros; above that, a person decides. It stopped and put the three cases in front of you.",
+      saved:"What it would have cost: <b>€640 promised in your name</b> with nobody having decided it, found by accounting three weeks later.",tech:null}},
+    {who:"The inbox assistant",what:"Today's messages sorted by urgency and by team",h:1.0},
+    {who:"The drafting assistant",what:"Reply to the Marchand account, which is threatening to cancel",h:1.0,gate:{
+      head:"A yearly contract at stake, and it carries your name",
+      body:"The reply is ready: it owns the mistake and offers a gesture within the rules. A person who did not write it has read it back. Sending it is yours.",
+      detail:"Read by: Karim · gesture: €30 · contract: €4,800 a year · history attached"}},
+    {who:"The drafting assistant",what:"Week's summary: the five most frequent complaint reasons",h:0.9}]}
  ]}
 };
 var STATE_LABEL = {
