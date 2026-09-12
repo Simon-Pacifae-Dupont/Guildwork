@@ -47,11 +47,13 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 .tk:hover{color:var(--ink);border-color:#4E5F80}
 .tk[aria-pressed=true]{background:var(--strip);border-color:var(--amber);color:var(--ink);font-weight:600}
 
-.stage{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:28px 0 0}
+.pick{padding:26px 0 0}
+.pick-label{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+.stage{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:16px 0 0}
 @media(min-width:940px){.stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}
  #side{position:sticky;top:20px}}
 
-.days{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.days{display:flex;gap:8px;flex-wrap:wrap;margin:0}
 .day{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);
  font:inherit;font-size:13.5px;padding:8px 14px;border-radius:8px;cursor:pointer}
 .day:hover{color:var(--ink);border-color:#4E5F80}
@@ -147,9 +149,13 @@ pre b{color:var(--ink);font-weight:500}
  <p class="lede" id="lede"></p>
 </div>
 
+<div class="wrap pick">
+ <p class="pick-label" id="pickLabel"></p>
+ <div class="days" id="days" role="group"></div>
+</div>
+
 <div class="wrap stage">
  <section>
- <div class="days" id="days" role="group"></div>
  <div class="board">
   <div class="board-head"><h2 id="boardTitle"></h2><span class="clock" id="clock"></span></div>
   <div class="rows" id="rows"></div>
@@ -169,7 +175,7 @@ var CAL = "https://cal.com/simon-pacifae-dupont/30min";
 var T = {
  en:{
   code:"You have code", nocode:"You don't have code",
-  eyebrow:"Interactive · nothing to install · 2 minutes",
+  eyebrow:"Interactive · nothing to install · 2 minutes",pickLabel:"Pick a day",
   title:"A day in charge",
   lede:"Five pieces of work, agents that do them, and you. Press start and see what actually reaches you.",
   boardTitle:"Today", clockLabel:"start",
@@ -191,7 +197,7 @@ var T = {
  },
  fr:{
   code:"Vous avez du code", nocode:"Vous n'avez pas de code",
-  eyebrow:"Interactif · rien à installer · 2 minutes",
+  eyebrow:"Interactif · rien à installer · 2 minutes",pickLabel:"Choisissez une journée",
   title:"Une journée aux commandes",
   lede:"Cinq travaux, des agents qui les font, et vous. Lancez, et regardez ce qui remonte vraiment jusqu'à vous.",
   boardTitle:"Aujourd'hui", clockLabel:"départ",
@@ -232,7 +238,7 @@ var DAYS = {
     {who:"Grok Build",what:"Réécrire les tests du module d'export",h:1.0},
     {who:"Claude Code",what:"Notes de version 2.4",h:1.0,gate:{
       head:"Prêt à sortir, et ça porte votre nom",
-      body:"Les notes sont écrites, les contrôles sont au vert, et un second siège qui ne les a pas écrites les a relues. Publier vous revient : c'est la seule chose ici qu'on ne peut pas reprendre.",
+      body:"Les notes sont écrites, les contrôles sont au vert, et un second siège les a relues. Publier vous revient : c'est la seule chose ici qu'on ne peut pas reprendre.",
       detail:"Relu par : Grok HQ · 14 fichiers · 0 échec introduit"}},
     {who:"Codex CLI",what:"Mettre à jour les dépendances avant le week-end",h:0.9}]},
   {name:"L'agence web", intro:"Une agence de huit personnes qui livre des sites à des clients. Trois chantiers en parallèle.",
@@ -305,92 +311,92 @@ var DAYS = {
    punch:"Vingt-trois réponses parties aujourd'hui. Vous en avez lu une.",
    caught:"4 200 €", caughtLabel:"arrêté avant de sortir",
    items:[
-    {who:"L'assistant qui rédige",what:"Réponse au dossier Meyer",h:1.2},
-    {who:"L'assistant qui chiffre",what:"Devis pour la reprise du dossier Lenoir",h:1.2,stop:{
+    {who:"L'assistant IA qui rédige",what:"Réponse au dossier Meyer",h:1.2},
+    {who:"L'assistant IA qui chiffre",what:"Devis pour la reprise du dossier Lenoir",h:1.2,stop:{
       head:"Un devis partait sur la grille de l'an dernier",
-      body:"La demande nommait la grille 2026. Le fichier que l'assistant a ouvert était celle de 2025. Il a été arrêté avant d'écrire une ligne, et on vous le dit maintenant plutôt qu'à la facturation.",
+      body:"La demande nommait la grille 2026. Le fichier que l'assistant IA a ouvert était celle de 2025. Il a été arrêté avant d'écrire une ligne, et on vous le dit maintenant plutôt qu'à la facturation.",
       saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : un devis signé <b>4 200 € en dessous</b>, découvert six semaines plus tard.",tech:null}},
-    {who:"L'assistant qui trie",what:"Trier et répondre aux demandes simples",h:1.0},
-    {who:"L'assistant qui rédige",what:"Réponse à la réclamation de Mme Aubert",h:1.0,gate:{
+    {who:"L'assistant IA qui trie",what:"Trier et répondre aux demandes simples",h:1.0},
+    {who:"L'assistant IA qui rédige",what:"Réponse à la réclamation de Mme Aubert",h:1.0,gate:{
       head:"Prête à partir, et ça porte votre nom",
-      body:"La réponse est écrite, elle nomme les documents qui ont servi, et une personne qui ne l'a pas rédigée l'a relue. L'envoi vous revient.",
-      detail:"Relu par : Camille · sources : le dossier Aubert, les conditions 2026"}},
-    {who:"L'assistant qui rédige",what:"Compte-rendu de la réunion de ce matin",h:0.9}]},
+      body:"La réponse est écrite, elle nomme les documents qui ont servi, et l'assistant IA de relecture l'a validée. L'envoi vous revient.",
+      detail:"Validée par : l'assistant IA de relecture · sources : le dossier Aubert, les conditions 2026"}},
+    {who:"L'assistant IA qui rédige",what:"Compte-rendu de la réunion de ce matin",h:0.9}]},
   {name:"L'hôtel", intro:"Un hôtel de soixante chambres, quarante demandes de séminaire par semaine, un responsable pour les chiffrer.",
    punch:"Quarante devis partis avant midi. La semaine dernière, douze.",
    caught:"6 800 €", caughtLabel:"de trop peu sur un devis, arrêté",
    items:[
-    {who:"L'assistant qui chiffre",what:"Devis pour les quatorze demandes de séminaire d'hier",h:1.3},
-    {who:"L'assistant qui chiffre",what:"Devis mariage Garnier, cent vingt personnes",h:1.0,stop:{
+    {who:"L'assistant IA qui chiffre",what:"Devis pour les quatorze demandes de séminaire d'hier",h:1.3},
+    {who:"L'assistant IA qui chiffre",what:"Devis mariage Garnier, cent vingt personnes",h:1.0,stop:{
       head:"Un devis de mariage partait au tarif de basse saison",
-      body:"La demande nommait la grille haute saison. L'assistant a ouvert celle de l'hiver. Arrêté avant l'envoi, et on vous le dit maintenant plutôt que le jour du mariage.",
+      body:"La demande nommait la grille haute saison. L'assistant IA a ouvert celle de l'hiver. Arrêté avant l'envoi, et on vous le dit maintenant plutôt que le jour du mariage.",
       saved:"Ce que ça aurait coûté : un devis signé <b>6 800 € en dessous</b>, pour une date qu'on ne peut plus revendre.",tech:null}},
-    {who:"L'assistant qui répond",what:"Réponses aux avis en ligne de la semaine",h:1.0},
-    {who:"L'assistant qui rédige",what:"Proposition pour le séminaire Duval, trois jours",h:1.0,gate:{
+    {who:"L'assistant IA qui répond",what:"Réponses aux avis en ligne de la semaine",h:1.0},
+    {who:"L'assistant IA qui rédige",what:"Proposition pour le séminaire Duval, trois jours",h:1.0,gate:{
       head:"Dix-huit mille euros de contrat, et ça porte votre nom",
-      body:"La proposition est prête, les dates sont libres, une personne qui ne l'a pas écrite l'a relue. L'envoyer vous revient.",
-      detail:"Relu par : Inès · 3 jours · 40 chambres · grille haute saison vérifiée"}},
-    {who:"L'assistant qui trie",what:"Confirmations et relances du jour",h:0.9}]},
+      body:"La proposition est prête, les dates sont libres, l'assistant IA de relecture l'a validée. L'envoyer vous revient.",
+      detail:"Validée par : l'assistant IA de relecture · 3 jours · 40 chambres · grille haute saison vérifiée"}},
+    {who:"L'assistant IA qui trie",what:"Confirmations et relances du jour",h:0.9}]},
   {name:"La boutique en ligne", intro:"Une boutique en ligne de trois personnes, deux mille produits, un catalogue jamais fini.",
    punch:"Cent fiches écrites aujourd'hui. À ce rythme, le catalogue est fini dans un mois, pas dans trois ans.",
    caught:"1 900 €", caughtLabel:"de retours acceptés hors délai, arrêtés",
    items:[
-    {who:"L'assistant qui rédige",what:"Fiches produit, lot 1 : cinquante références",h:1.2},
-    {who:"L'assistant qui répond",what:"Réponses aux demandes de retour du week-end",h:1.0,stop:{
+    {who:"L'assistant IA qui rédige",what:"Fiches produit, lot 1 : cinquante références",h:1.2},
+    {who:"L'assistant IA qui répond",what:"Réponses aux demandes de retour du week-end",h:1.0,stop:{
       head:"Douze retours allaient être acceptés hors délai",
-      body:"La règle de la boutique dit trente jours. Douze demandes en avaient quarante-cinq. L'assistant n'a pas le droit d'accorder ce que la règle refuse : il s'est arrêté et vous les présente.",
+      body:"La règle de la boutique dit trente jours. Douze demandes en avaient quarante-cinq. L'assistant IA n'a pas le droit d'accorder ce que la règle refuse : il s'est arrêté et vous les présente.",
       saved:"Ce que ça aurait coûté : <b>1 900 € de remboursements</b> hors règle, et un précédent que tous les clients suivants invoqueront.",tech:null}},
-    {who:"L'assistant qui rédige",what:"Fiches produit, lot 2 : cinquante références",h:1.2},
-    {who:"L'assistant qui rédige",what:"Lettre de rentrée aux huit mille clients",h:1.0,gate:{
+    {who:"L'assistant IA qui rédige",what:"Fiches produit, lot 2 : cinquante références",h:1.2},
+    {who:"L'assistant IA qui rédige",what:"Lettre de rentrée aux huit mille clients",h:1.0,gate:{
       head:"Huit mille personnes vont la recevoir, et on ne rappelle pas un e-mail",
-      body:"Le texte est prêt, une personne qui ne l'a pas écrit l'a relu, les liens sont testés. L'envoi vous revient.",
-      detail:"Relu par : Thomas · 8 000 destinataires · 3 liens testés"}},
-    {who:"L'assistant qui trie",what:"Mise à jour des stocks depuis le fournisseur",h:0.9}]},
+      body:"Le texte est prêt, l'assistant IA de relecture l'a validé, les liens sont testés. L'envoi vous revient.",
+      detail:"Validé par : l'assistant IA de relecture · 8 000 destinataires · 3 liens testés"}},
+    {who:"L'assistant IA qui trie",what:"Mise à jour des stocks depuis le fournisseur",h:0.9}]},
   {name:"L'agence de communication", intro:"Une agence de six personnes, quatre clients à faire parler chaque jour.",
    punch:"Quatre clients servis avant seize heures. Vous avez validé une publication.",
    caught:"1 chiffre", caughtLabel:"inventé, arrêté avant publication",
    items:[
-    {who:"L'assistant qui rédige",what:"Publications de la semaine pour le client Vidal",h:1.0},
-    {who:"L'assistant qui rédige",what:"Communiqué de presse pour le client Nexa",h:1.2,stop:{
+    {who:"L'assistant IA qui rédige",what:"Publications de la semaine pour le client Vidal",h:1.0},
+    {who:"L'assistant IA qui rédige",what:"Communiqué de presse pour le client Nexa",h:1.2,stop:{
       head:"Un communiqué partait avec un chiffre que rien ne justifie",
       body:"Le communiqué citait une croissance de 40 %. Aucun document fourni ne la contenait. La règle dit qu'un chiffre nomme sa source ou ne sort pas : le communiqué s'est arrêté à la porte.",
       saved:"Ce que ça aurait coûté : <b>un chiffre inventé sous le nom d'un client</b>. La dernière fois, ça a coûté le client.",tech:null}},
-    {who:"L'assistant qui rédige",what:"Proposition commerciale pour un nouveau prospect",h:1.2},
-    {who:"L'assistant qui rédige",what:"Rapport mensuel du client Vidal, à publier",h:0.9,gate:{
+    {who:"L'assistant IA qui rédige",what:"Proposition commerciale pour un nouveau prospect",h:1.2},
+    {who:"L'assistant IA qui rédige",what:"Rapport mensuel du client Vidal, à publier",h:0.9,gate:{
       head:"Ça part sous le nom du client, et c'est vous qui répondez",
-      body:"Le rapport est prêt, chaque chiffre nomme sa source, une personne qui ne l'a pas écrit l'a relu. Publier vous revient.",
-      detail:"Relu par : Sarah · 6 pages · 9 chiffres, 9 sources"}},
-    {who:"L'assistant qui trie",what:"Veille et revue de presse du matin",h:0.9}]},
+      body:"Le rapport est prêt, chaque chiffre nomme sa source, l'assistant IA de relecture l'a validé. Publier vous revient.",
+      detail:"Validé par : l'assistant IA de relecture · 6 pages · 9 chiffres, 9 sources"}},
+    {who:"L'assistant IA qui trie",what:"Veille et revue de presse du matin",h:0.9}]},
   {name:"Les ressources humaines", intro:"Le service RH d'une entreprise de trois cents personnes. Un poste ouvert, trente candidatures, et les outils que chacun utilise dans son coin.",
    punch:"Trente candidats ont eu une réponse le jour même. Aucun CV n'est sorti de l'entreprise.",
    caught:"30 CV", caughtLabel:"gardés dans l'entreprise",
    items:[
-    {who:"L'assistant qui trie",what:"Tri des trente candidatures selon la fiche de poste",h:1.2},
-    {who:"L'assistant qui rédige",what:"Réponses aux candidats non retenus",h:1.0,stop:{
+    {who:"L'assistant IA qui trie",what:"Tri des trente candidatures selon la fiche de poste",h:1.2},
+    {who:"L'assistant IA qui rédige",what:"Réponses aux candidats non retenus",h:1.0,stop:{
       head:"Trente CV allaient partir dans un outil que personne n'a déclaré",
       body:"La demande envoyait les candidatures vers l'outil gratuit qu'une collaboratrice utilise chez elle. Non déclaré veut dire non autorisé. Arrêté avant qu'un seul dossier ne sorte.",
       saved:"Ce que ça aurait coûté : <b>trente dossiers personnels</b> chez un éditeur avec qui vous n'avez aucun contrat, et l'obligation de le déclarer.",tech:null}},
-    {who:"L'assistant qui rédige",what:"Fiche de poste pour le prochain recrutement",h:1.0},
-    {who:"L'assistant qui rédige",what:"Réponse à la demande de rupture conventionnelle de M. Roux",h:1.0,gate:{
+    {who:"L'assistant IA qui rédige",what:"Fiche de poste pour le prochain recrutement",h:1.0},
+    {who:"L'assistant IA qui rédige",what:"Réponse à la demande de rupture conventionnelle de M. Roux",h:1.0,gate:{
       head:"Ça engage l'entreprise, et ça porte votre nom",
-      body:"La réponse est prête, elle cite les textes qui s'appliquent, une personne qui ne l'a pas écrite l'a relue. L'envoyer vous revient.",
-      detail:"Relu par : Nadia · 2 textes cités · délai légal vérifié"}},
-    {who:"L'assistant qui trie",what:"Planning d'intégration des trois arrivants",h:0.9}]},
-  {name:"Le service client", intro:"Un service client de quatre personnes, deux cents messages par jour, un assistant qui répond aux questions courantes.",
+      body:"La réponse est prête, elle cite les textes qui s'appliquent, l'assistant IA de relecture l'a validée. L'envoyer vous revient.",
+      detail:"Validée par : l'assistant IA de relecture · 2 textes cités · délai légal vérifié"}},
+    {who:"L'assistant IA qui trie",what:"Planning d'intégration des trois arrivants",h:0.9}]},
+  {name:"Le service client", intro:"Un service client de quatre personnes, deux cents messages par jour, un assistant IA qui répond aux questions courantes.",
    punch:"Deux cents réponses parties aujourd'hui, et pas une promesse que la comptabilité découvrira dans trois semaines.",
    caught:"640 €", caughtLabel:"promis en votre nom sans autorisation, arrêtés",
    items:[
-    {who:"L'assistant qui répond",what:"Réponses aux cent vingt questions courantes de la nuit : délais, suivi, factures",h:1.2},
-    {who:"L'assistant qui répond",what:"Réclamations du week-end, trente-deux dossiers",h:1.1,stop:{
+    {who:"L'assistant IA qui répond",what:"Réponses aux cent vingt questions courantes de la nuit : délais, suivi, factures",h:1.2},
+    {who:"L'assistant IA qui répond",what:"Réclamations du week-end, trente-deux dossiers",h:1.1,stop:{
       head:"Trois avoirs allaient être promis au-dessus du plafond",
-      body:"Trois clients furieux, trois gestes commerciaux de deux cents euros et plus. Le plafond de l'assistant est de trente euros ; au-delà, c'est une personne qui décide. Il s'est arrêté et vous présente les trois dossiers.",
+      body:"Trois clients furieux, trois gestes commerciaux de deux cents euros et plus. Le plafond de l'assistant IA est de trente euros ; au-delà, c'est une personne qui décide. Il s'est arrêté et vous présente les trois dossiers.",
       saved:"Ce que ça aurait coûté : <b>640 € promis en votre nom</b> sans que personne l'ait décidé, découverts par la comptabilité trois semaines plus tard.",tech:null}},
-    {who:"L'assistant qui trie",what:"Messages du jour classés par urgence et par équipe",h:1.0},
-    {who:"L'assistant qui rédige",what:"Réponse au client Marchand, qui menace de résilier",h:1.0,gate:{
+    {who:"L'assistant IA qui trie",what:"Messages du jour classés par urgence et par équipe",h:1.0},
+    {who:"L'assistant IA qui rédige",what:"Réponse au client Marchand, qui menace de résilier",h:1.0,gate:{
       head:"Un contrat annuel en jeu, et ça porte votre nom",
-      body:"La réponse est prête : elle reconnaît l'erreur et propose un geste dans les règles. Une personne qui ne l'a pas écrite l'a relue. L'envoyer vous revient.",
-      detail:"Relu par : Karim · geste : 30 € · contrat : 4 800 € par an · historique joint"}},
-    {who:"L'assistant qui rédige",what:"Bilan de la semaine : les cinq motifs de réclamation les plus fréquents",h:0.9}]}
+      body:"La réponse est prête : elle reconnaît l'erreur et propose un geste dans les règles. L'assistant IA de relecture l'a validée. L'envoyer vous revient.",
+      detail:"Validée par : l'assistant IA de relecture · geste : 30 € · contrat : 4 800 € par an · historique joint"}},
+    {who:"L'assistant IA qui rédige",what:"Bilan de la semaine : les cinq motifs de réclamation les plus fréquents",h:0.9}]}
  ]},
  en:{ code:[
   {name:"The software company", intro:"A team of six, a product in production, version 2.4 due on Friday.",
@@ -406,7 +412,7 @@ var DAYS = {
     {who:"Grok Build",what:"Rewrite the tests for the export module",h:1.0},
     {who:"Claude Code",what:"Release notes for 2.4",h:1.0,gate:{
       head:"Ready to go out, and it carries your name",
-      body:"The notes are written, the checks are green, and a second seat that did not write them has read them. Publishing is yours: it is the one thing here that cannot be taken back.",
+      body:"The notes are written, the checks are green, and a second seat has read them. Publishing is yours: it is the one thing here that cannot be taken back.",
       detail:"Reviewed by: Grok HQ · 14 files · 0 failures introduced"}},
     {who:"Codex CLI",what:"Update the dependencies before the weekend",h:0.9}]},
   {name:"The web agency", intro:"An eight-person agency that builds sites for clients. Three jobs in parallel.",
@@ -479,92 +485,92 @@ var DAYS = {
    punch:"Twenty-three replies went out today. You read one.",
    caught:"€4,200", caughtLabel:"caught before it went out",
    items:[
-    {who:"The drafting assistant",what:"Reply to the Meyer file",h:1.2},
-    {who:"The quote assistant",what:"Quote for taking over the Lenoir file",h:1.2,stop:{
+    {who:"The AI assistant that drafts",what:"Reply to the Meyer file",h:1.2},
+    {who:"The AI assistant that quotes",what:"Quote for taking over the Lenoir file",h:1.2,stop:{
       head:"A quote was about to go out on last year's prices",
-      body:"The request named the 2026 rate card. The file the assistant reached for was 2025. It was stopped before writing a line, and you are being told now rather than at invoicing.",
+      body:"The request named the 2026 rate card. The file the AI assistant reached for was 2025. It was stopped before writing a line, and you are being told now rather than at invoicing.",
       saved:"What it cost you: <b>nothing</b>. What it would have cost: a signed quote <b>€4,200 under</b>, found six weeks later.",tech:null}},
-    {who:"The inbox assistant",what:"Sort and answer the simple requests",h:1.0},
-    {who:"The drafting assistant",what:"Reply to Mrs Aubert's complaint",h:1.0,gate:{
+    {who:"The AI assistant that sorts the inbox",what:"Sort and answer the simple requests",h:1.0},
+    {who:"The AI assistant that drafts",what:"Reply to Mrs Aubert's complaint",h:1.0,gate:{
       head:"Ready to go out, and it carries your name",
-      body:"The reply is written, it names the documents it used, and a person who did not write it has read it. Sending is yours.",
-      detail:"Read by: Camille · sources: the Aubert file, the 2026 terms"}},
-    {who:"The drafting assistant",what:"Minutes of this morning's meeting",h:0.9}]},
+      body:"The reply is written, it names the documents it used, and the reviewing AI assistant has signed it off. Sending is yours.",
+      detail:"Signed off by: the reviewing AI assistant · sources: the Aubert file, the 2026 terms"}},
+    {who:"The AI assistant that drafts",what:"Minutes of this morning's meeting",h:0.9}]},
   {name:"The hotel", intro:"A sixty-room hotel, forty group enquiries a week, one manager to price them.",
    punch:"Forty quotes out before noon. Last week, twelve.",
    caught:"€6,800", caughtLabel:"too low on one quote, stopped",
    items:[
-    {who:"The quote assistant",what:"Quotes for yesterday's fourteen seminar enquiries",h:1.3},
-    {who:"The quote assistant",what:"Garnier wedding quote, a hundred and twenty guests",h:1.0,stop:{
+    {who:"The AI assistant that quotes",what:"Quotes for yesterday's fourteen seminar enquiries",h:1.3},
+    {who:"The AI assistant that quotes",what:"Garnier wedding quote, a hundred and twenty guests",h:1.0,stop:{
       head:"A wedding quote was about to go out at low-season rates",
-      body:"The request named the high-season rate card. The assistant opened the winter one. Stopped before sending, and you are being told now rather than on the wedding day.",
+      body:"The request named the high-season rate card. The AI assistant opened the winter one. Stopped before sending, and you are being told now rather than on the wedding day.",
       saved:"What it would have cost: a signed quote <b>€6,800 under</b>, for a date that cannot be sold twice.",tech:null}},
-    {who:"The replies assistant",what:"Replies to this week's online reviews",h:1.0},
-    {who:"The drafting assistant",what:"Proposal for the Duval seminar, three days",h:1.0,gate:{
+    {who:"The AI assistant that answers",what:"Replies to this week's online reviews",h:1.0},
+    {who:"The AI assistant that drafts",what:"Proposal for the Duval seminar, three days",h:1.0,gate:{
       head:"An eighteen-thousand-euro contract, and it carries your name",
-      body:"The proposal is ready, the dates are free, a person who did not write it has read it. Sending it is yours.",
-      detail:"Read by: Inès · 3 days · 40 rooms · high-season rates checked"}},
-    {who:"The inbox assistant",what:"Today's confirmations and follow-ups",h:0.9}]},
+      body:"The proposal is ready, the dates are free, the reviewing AI assistant has signed it off. Sending it is yours.",
+      detail:"Signed off by: the reviewing AI assistant · 3 days · 40 rooms · high-season rates checked"}},
+    {who:"The AI assistant that sorts the inbox",what:"Today's confirmations and follow-ups",h:0.9}]},
   {name:"The online shop", intro:"A three-person online shop, two thousand products, a catalogue never finished.",
    punch:"A hundred product pages written today. At this pace the catalogue is done in a month, not three years.",
    caught:"€1,900", caughtLabel:"of late returns accepted, stopped",
    items:[
-    {who:"The drafting assistant",what:"Product pages, batch 1: fifty items",h:1.2},
-    {who:"The replies assistant",what:"Replies to the weekend's return requests",h:1.0,stop:{
+    {who:"The AI assistant that drafts",what:"Product pages, batch 1: fifty items",h:1.2},
+    {who:"The AI assistant that answers",what:"Replies to the weekend's return requests",h:1.0,stop:{
       head:"Twelve returns were about to be accepted past the deadline",
-      body:"The shop's rule says thirty days. Twelve requests were at forty-five. The assistant may not grant what the rule refuses: it stopped and is showing them to you.",
+      body:"The shop's rule says thirty days. Twelve requests were at forty-five. The AI assistant may not grant what the rule refuses: it stopped and is showing them to you.",
       saved:"What it would have cost: <b>€1,900 in refunds</b> outside the rule, and a precedent every later customer will quote.",tech:null}},
-    {who:"The drafting assistant",what:"Product pages, batch 2: fifty items",h:1.2},
-    {who:"The drafting assistant",what:"Autumn letter to eight thousand customers",h:1.0,gate:{
+    {who:"The AI assistant that drafts",what:"Product pages, batch 2: fifty items",h:1.2},
+    {who:"The AI assistant that drafts",what:"Autumn letter to eight thousand customers",h:1.0,gate:{
       head:"Eight thousand people will get this, and an email cannot be recalled",
-      body:"The text is ready, a person who did not write it has read it, the links are tested. Sending is yours.",
-      detail:"Read by: Thomas · 8,000 recipients · 3 links tested"}},
-    {who:"The inbox assistant",what:"Stock update from the supplier",h:0.9}]},
+      body:"The text is ready, the reviewing AI assistant has signed it off, the links are tested. Sending is yours.",
+      detail:"Signed off by: the reviewing AI assistant · 8,000 recipients · 3 links tested"}},
+    {who:"The AI assistant that sorts the inbox",what:"Stock update from the supplier",h:0.9}]},
   {name:"The communications agency", intro:"A six-person agency, four clients to keep talking every day.",
    punch:"Four clients served before four o'clock. You approved one publication.",
    caught:"1 figure", caughtLabel:"invented, stopped before publication",
    items:[
-    {who:"The drafting assistant",what:"This week's posts for the Vidal account",h:1.0},
-    {who:"The drafting assistant",what:"Press release for the Nexa account",h:1.2,stop:{
+    {who:"The AI assistant that drafts",what:"This week's posts for the Vidal account",h:1.0},
+    {who:"The AI assistant that drafts",what:"Press release for the Nexa account",h:1.2,stop:{
       head:"A press release was about to go out with a figure nothing supports",
       body:"The release quoted 40% growth. No document provided contained it. The rule says a figure names its source or does not go out: the release stopped at the gate.",
       saved:"What it would have cost: <b>an invented figure under a client's name</b>. Last time, it cost the client.",tech:null}},
-    {who:"The drafting assistant",what:"Commercial proposal for a new prospect",h:1.2},
-    {who:"The drafting assistant",what:"Vidal's monthly report, to publish",h:0.9,gate:{
+    {who:"The AI assistant that drafts",what:"Commercial proposal for a new prospect",h:1.2},
+    {who:"The AI assistant that drafts",what:"Vidal's monthly report, to publish",h:0.9,gate:{
       head:"It goes out under the client's name, and you answer for it",
-      body:"The report is ready, every figure names its source, a person who did not write it has read it. Publishing is yours.",
-      detail:"Read by: Sarah · 6 pages · 9 figures, 9 sources"}},
-    {who:"The inbox assistant",what:"Morning monitoring and press review",h:0.9}]},
+      body:"The report is ready, every figure names its source, the reviewing AI assistant has signed it off. Publishing is yours.",
+      detail:"Signed off by: the reviewing AI assistant · 6 pages · 9 figures, 9 sources"}},
+    {who:"The AI assistant that sorts the inbox",what:"Morning monitoring and press review",h:0.9}]},
   {name:"Human resources", intro:"The HR department of a three-hundred-person company. One open position, thirty applications, and the tools everyone uses on their own.",
    punch:"Thirty candidates got an answer the same day. Not one CV left the company.",
    caught:"30 CVs", caughtLabel:"kept inside the company",
    items:[
-    {who:"The sorting assistant",what:"Sort the thirty applications against the job description",h:1.2},
-    {who:"The drafting assistant",what:"Replies to the candidates not selected",h:1.0,stop:{
+    {who:"The AI assistant that sorts",what:"Sort the thirty applications against the job description",h:1.2},
+    {who:"The AI assistant that drafts",what:"Replies to the candidates not selected",h:1.0,stop:{
       head:"Thirty CVs were about to go into a tool nobody declared",
       body:"The request sent the applications to the free tool a colleague uses at home. Not declared means not allowed. Stopped before a single file left.",
       saved:"What it would have cost: <b>thirty personal files</b> with a vendor you have no contract with, and a duty to report it.",tech:null}},
-    {who:"The drafting assistant",what:"Job description for the next hire",h:1.0},
-    {who:"The drafting assistant",what:"Reply to Mr Roux's request for a negotiated departure",h:1.0,gate:{
+    {who:"The AI assistant that drafts",what:"Job description for the next hire",h:1.0},
+    {who:"The AI assistant that drafts",what:"Reply to Mr Roux's request for a negotiated departure",h:1.0,gate:{
       head:"It binds the company, and it carries your name",
-      body:"The reply is ready, it cites the rules that apply, a person who did not write it has read it. Sending it is yours.",
-      detail:"Read by: Nadia · 2 rules cited · legal deadline checked"}},
-    {who:"The sorting assistant",what:"Onboarding schedule for the three newcomers",h:0.9}]},
-  {name:"Customer service", intro:"A four-person customer service desk, two hundred messages a day, one assistant answering the routine ones.",
+      body:"The reply is ready, it cites the rules that apply, the reviewing AI assistant has signed it off. Sending it is yours.",
+      detail:"Signed off by: the reviewing AI assistant · 2 rules cited · legal deadline checked"}},
+    {who:"The AI assistant that sorts",what:"Onboarding schedule for the three newcomers",h:0.9}]},
+  {name:"Customer service", intro:"A four-person customer service desk, two hundred messages a day, one AI assistant answering the routine ones.",
    punch:"Two hundred replies out today, and not one promise that accounting discovers three weeks later.",
    caught:"€640", caughtLabel:"promised in your name without approval, stopped",
    items:[
-    {who:"The replies assistant",what:"Replies to the hundred and twenty routine questions from overnight: delivery, tracking, invoices",h:1.2},
-    {who:"The replies assistant",what:"Weekend complaints, thirty-two cases",h:1.1,stop:{
+    {who:"The AI assistant that answers",what:"Replies to the hundred and twenty routine questions from overnight: delivery, tracking, invoices",h:1.2},
+    {who:"The AI assistant that answers",what:"Weekend complaints, thirty-two cases",h:1.1,stop:{
       head:"Three credits were about to be promised above the limit",
-      body:"Three furious customers, three gestures of two hundred euros and more. The assistant's ceiling is thirty euros; above that, a person decides. It stopped and put the three cases in front of you.",
+      body:"Three furious customers, three gestures of two hundred euros and more. The AI assistant's ceiling is thirty euros; above that, a person decides. It stopped and put the three cases in front of you.",
       saved:"What it would have cost: <b>€640 promised in your name</b> with nobody having decided it, found by accounting three weeks later.",tech:null}},
-    {who:"The inbox assistant",what:"Today's messages sorted by urgency and by team",h:1.0},
-    {who:"The drafting assistant",what:"Reply to the Marchand account, which is threatening to cancel",h:1.0,gate:{
+    {who:"The AI assistant that sorts the inbox",what:"Today's messages sorted by urgency and by team",h:1.0},
+    {who:"The AI assistant that drafts",what:"Reply to the Marchand account, which is threatening to cancel",h:1.0,gate:{
       head:"A yearly contract at stake, and it carries your name",
-      body:"The reply is ready: it owns the mistake and offers a gesture within the rules. A person who did not write it has read it back. Sending it is yours.",
-      detail:"Read by: Karim · gesture: €30 · contract: €4,800 a year · history attached"}},
-    {who:"The drafting assistant",what:"Week's summary: the five most frequent complaint reasons",h:0.9}]}
+      body:"The reply is ready: it owns the mistake and offers a gesture within the rules. The reviewing AI assistant has signed it off. Sending it is yours.",
+      detail:"Signed off by: the reviewing AI assistant · gesture: €30 · contract: €4,800 a year · history attached"}},
+    {who:"The AI assistant that drafts",what:"Week's summary: the five most frequent complaint reasons",h:0.9}]}
  ]}
 };
 var STATE_LABEL = {
@@ -595,7 +601,7 @@ function doneH(){
 function fmtHours(v){ var r=Math.round(v*10)/10; return (LANG==="fr"? String(r).replace(".",",") : r)+" h"; }
 function clockText(){
  if(phase==="idle") return t("clockLabel");
- var hour = 8 + 9*(doneH()/totalH());
+ var hour = 9 + 8*(doneH()/totalH());
  var hh=Math.floor(hour), mm=Math.floor((hour-hh)*60/5)*5;
  return (hh<10?"0":"")+hh+" h "+(mm<10?"0":"")+mm;
 }
@@ -703,7 +709,7 @@ function tick(){
  for(i=0;i<items.length;i++){
   it=items[i];
   if(it.st==="run"){
-   it.p += 100/(it.h*40+18);
+   it.p += 100/(it.h*32+14);
    if(it.p>=100){
     it.p=100;
     if(it.gate && !it.gateDone){ it.st="you"; it.gateDone=true; }
@@ -730,6 +736,7 @@ function start(){ phase="run"; if(timer) clearInterval(timer); timer=setInterval
 
 function paint(){
  document.getElementById("eyebrow").textContent=t("eyebrow");
+ document.getElementById("pickLabel").textContent=t("pickLabel");
  document.getElementById("title").textContent=t("title");
  document.getElementById("lede").textContent=t("lede");
  document.getElementById("boardTitle").textContent=day().name;
