@@ -48,7 +48,8 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 .tk[aria-pressed=true]{background:var(--strip);border-color:var(--amber);color:var(--ink);font-weight:600}
 
 .stage{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:28px 0 0}
-@media(min-width:940px){.stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}}
+@media(min-width:940px){.stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}
+ #side{position:sticky;top:20px}}
 
 .board{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
 .board-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
@@ -64,6 +65,12 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 .row.s-you::before{background:var(--you)} .row.s-done::before{background:var(--done)}
 .row.s-stop::before{background:var(--stop)}
 .row.s-done{opacity:.72}
+.rows.deciding .row{opacity:.3}
+.rows.deciding .row.s-you,.rows.deciding .row.s-stop{opacity:1}
+.row.s-you,.row.s-stop{background:rgba(233,162,59,.06)}
+@keyframes callout{0%,100%{box-shadow:inset 3px 0 0 -1px transparent}50%{box-shadow:inset 3px 0 0 -1px rgba(233,162,59,.9)}}
+.row.s-stop,.row.s-you{animation:callout 1.9s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.row.s-stop,.row.s-you{animation:none}}
 .who{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
  text-transform:uppercase;color:var(--ink-3);margin:0 0 3px}
 .what{margin:0;font-size:14.8px;font-weight:500;line-height:1.35}
@@ -265,72 +272,102 @@ var STATE_LABEL = {
  fr:{next:"à venir",run:"en cours",you:"pour vous",done:"atterri",stop:"arrêté"}
 };
 
-var CEIL=2, TICK=110, items=[], phase="idle", clicks=0, timer=null, hour=8, saved=false, track="code";
+var CEIL=2, TICK=120, items=[], phase="idle", clicks=0, timer=null, saved=false, track="code";
+var sideKey="", built=false;
 
 function t(k){ return T[LANG][k]; }
+
 function build(){
  items = SCEN[LANG][track].map(function(s,i){
   return {i:i, who:s.who, what:s.what, h:s.h, stop:s.stop||null, gate:s.gate||null,
-          st:"next", p:0, fixed:false, returned:false, gateDone:false};
+          st:"next", p:0, fixed:false, gateDone:false};
  });
- phase="idle"; clicks=0; hour=8; saved=false;
+ phase="idle"; clicks=0; saved=false; sideKey=""; built=false;
  if(timer){ clearInterval(timer); timer=null; }
 }
 
-function fmtHour(){
- var hh=Math.floor(hour), mm=Math.round((hour-hh)*60);
+function totalH(){ var s=0,i; for(i=0;i<items.length;i++) s+=items[i].h; return s; }
+function doneH(){
+ var s=0,i; for(i=0;i<items.length;i++){ var it=items[i]; s += it.h * (it.st==="done"?1:it.p/100); }
+ return s;
+}
+function fmtHours(v){ return (LANG==="fr"? String(v).replace(".",",") : v)+" h"; }
+function clockText(){
+ if(phase==="idle") return t("clockLabel");
+ var hour = 8 + 9*(doneH()/totalH());
+ var hh=Math.floor(hour), mm=Math.floor((hour-hh)*60/5)*5;
  return (hh<10?"0":"")+hh+" h "+(mm<10?"0":"")+mm;
 }
-function totalHours(){
- var s=0; for(var i=0;i<items.length;i++) s+=items[i].h;
- return (LANG==="fr"? s.toString().replace(".",",") : s) + " h";
-}
 
-function drawRows(){
- var L=STATE_LABEL[LANG], h="";
- for(var i=0;i<items.length;i++){
-  var it=items[i];
-  h+='<div class="row s-'+it.st+'">'+
-     '<div><p class="who">'+it.who+'</p><p class="what">'+it.what+'</p></div>'+
-     '<span class="badge">'+L[it.st]+'</span>'+
-     '<div class="track-bar"><i style="width:'+(it.st==="done"?100:it.p)+'%"></i></div>'+
-     '</div>';
+/* ---------- le tableau : construit une fois, mis à jour en place ---------- */
+function buildRows(){
+ var L=STATE_LABEL[LANG], h="", i;
+ for(i=0;i<items.length;i++){
+  h+='<div class="row s-next" data-r="'+i+'">'+
+     '<div><p class="who"></p><p class="what"></p></div>'+
+     '<span class="badge"></span>'+
+     '<div class="track-bar"><i></i></div></div>';
  }
  document.getElementById("rows").innerHTML=h;
- document.getElementById("clock").textContent = phase==="idle" ? t("clockLabel") : fmtHour();
+ var rows=document.querySelectorAll(".row");
+ for(i=0;i<items.length;i++){
+  rows[i].querySelector(".who").textContent=items[i].who;
+  rows[i].querySelector(".what").textContent=items[i].what;
+ }
+ built=true;
+}
+function syncRows(){
+ var L=STATE_LABEL[LANG], rows=document.querySelectorAll(".row"), i;
+ if(rows.length!==items.length){ buildRows(); rows=document.querySelectorAll(".row"); }
+ for(i=0;i<items.length;i++){
+  var it=items[i], el=rows[i];
+  var cls="row s-"+it.st;
+  if(el.className!==cls) el.className=cls;
+  var b=el.querySelector(".badge");
+  if(b.textContent!==L[it.st]) b.textContent=L[it.st];
+  el.querySelector(".track-bar i").style.width=(it.st==="done"?100:it.p)+"%";
+ }
+ document.getElementById("rows").classList.toggle("deciding", !!pending());
+ document.getElementById("clock").textContent=clockText();
 }
 
+/* ---------- le panneau : redessiné seulement quand il change de nature ---------- */
+function pending(){
+ for(var i=0;i<items.length;i++) if(items[i].st==="stop"||items[i].st==="you") return items[i];
+ return null;
+}
 function panel(k,head,body,extra,acts){
  return '<div class="panel lead"><p class="kicker">'+k+'</p><h3>'+head+'</h3>'+
         '<p>'+body+'</p>'+(extra||'')+'<div class="acts">'+acts+'</div></div>';
 }
-
-function drawSide(){
- var s=document.getElementById("side"), stopIt=null, gateIt=null, i;
- for(i=0;i<items.length;i++){
-  if(items[i].st==="stop") stopIt=items[i];
-  if(items[i].st==="you") gateIt=items[i];
- }
- if(phase==="idle"){
-  s.innerHTML=panel(t("startK"),t("startH"),t("startP"),"",
+function syncSide(){
+ var p=pending(), key, html;
+ if(phase==="idle"){ key="idle"; }
+ else if(p && p.st==="stop"){ key="stop"+p.i; }
+ else if(p && p.st==="you"){ key="gate"+p.i; }
+ else if(phase==="end"){ key="end"; }
+ else { key="run"; }
+ if(key===sideKey) return;
+ sideKey=key;
+ if(key==="idle"){
+  html=panel(t("startK"),t("startH"),t("startP"),"",
    '<button class="btn primary big" id="go">'+t("startBtn")+'</button>');
- } else if(stopIt){
-  var x=stopIt.stop;
+ } else if(key.indexOf("stop")===0){
+  var x=p.stop;
   var tech = x.tech ? '<details class="tech"><summary>'+(LANG==="fr"?"Ce que le lanceur a imprimé":"What the launcher printed")+'</summary><pre>'+x.tech+'</pre></details>' : '';
-  s.innerHTML=panel(t("stopK"),x.head,x.body,'<div class="saved">'+x.saved+'</div>'+tech,
+  html=panel(t("stopK"),x.head,x.body,'<div class="saved">'+x.saved+'</div>'+tech,
    '<button class="btn primary" id="fix">'+t("fixBtn")+'</button>');
- } else if(gateIt){
-  var g=gateIt.gate;
-  s.innerHTML=panel(t("gateK"),g.head,g.body,
-   '<div class="saved">'+g.detail+'</div>',
+ } else if(key.indexOf("gate")===0){
+  var g=p.gate;
+  html=panel(t("gateK"),g.head,g.body,'<div class="saved">'+g.detail+'</div>',
    '<button class="btn primary" id="ok">'+t("approve")+'</button>'+
    '<button class="btn ghost" id="back">'+t("ret")+'</button>');
- } else if(phase==="end"){
-  s.innerHTML='<div class="panel lead"><p class="kicker">'+t("endK")+'</p><h3>'+t("endH")+'</h3>'+
+ } else if(key==="end"){
+  html='<div class="panel lead"><p class="kicker">'+t("endK")+'</p><h3>'+t("endH")+'</h3>'+
    '<div class="tally">'+
     '<div class="good"><b>'+items.length+'</b><span>'+t("tDone")+'</span></div>'+
     '<div class="hot"><b>'+clicks+'</b><span>'+t("tClicks")+'</span></div>'+
-    '<div><b>'+totalHours()+'</b><span>'+t("tWork")+'</span></div>'+
+    '<div><b>'+fmtHours(totalH())+'</b><span>'+t("tWork")+'</span></div>'+
     (saved?'<div class="hot"><b>4 200 €</b><span>'+t("tSaved")+'</span></div>':'')+
    '</div>'+
    '<p class="strongline" style="margin-top:16px">'+t("endP")+'</p>'+
@@ -340,46 +377,54 @@ function drawSide(){
     '<button class="btn ghost" id="again">'+t("again")+'</button>'+
    '</div></div>';
  } else {
-  s.innerHTML='<div class="panel"><p class="kicker">'+t("runK")+'</p><h3>'+t("runH")+'</h3><p>'+t("runP")+'</p></div>';
+  html='<div class="panel"><p class="kicker">'+t("runK")+'</p><h3>'+t("runH")+'</h3><p>'+t("runP")+'</p></div>';
+ }
+ document.getElementById("side").innerHTML=html;
+ if((key.indexOf("stop")===0||key.indexOf("gate")===0) && window.innerWidth<940){
+  document.getElementById("side").scrollIntoView({behavior:"smooth",block:"center"});
  }
 }
 
-function running(){ var n=0; for(var i=0;i<items.length;i++) if(items[i].st==="run") n++; return n; }
-function blocked(){ for(var i=0;i<items.length;i++) if(items[i].st==="stop"||items[i].st==="you") return true; return false; }
+function running(){ var n=0,i; for(i=0;i<items.length;i++) if(items[i].st==="run") n++; return n; }
+
+/* Le rythme d'une journée : on travaille d'abord, l'incident arrive ensuite,
+   et il reste du travail derrière la décision pour que le bilan ne tombe pas dessus. */
+var NOT_BEFORE={1:0.20, 4:0.72};
+function ready(it){
+ var nb=NOT_BEFORE[it.i]; if(!nb) return true;
+ return (doneH()/totalH()) >= nb;
+}
 
 function tick(){
- var i,it,changed=false;
+ if(pending()) return;              /* la journée s'arrête pendant que vous décidez */
+ var i,it;
  for(i=0;i<items.length;i++){
   it=items[i];
   if(it.st==="run"){
-   it.p += 100/((it.h*10)+6);
+   it.p += 100/(it.h*55+22);
    if(it.p>=100){
     it.p=100;
     if(it.gate && !it.gateDone){ it.st="you"; it.gateDone=true; }
     else it.st="done";
    }
-   changed=true;
   }
  }
- hour += 0.07;
- if(!blocked()){
+ if(!pending()){
   for(i=0;i<items.length;i++){
    it=items[i];
-   if(it.st==="next" && running()<CEIL){
-    if(it.stop && !it.fixed){ it.st="stop"; }
-    else { it.st="run"; }
-    changed=true;
+   if(it.st==="next" && running()<CEIL && ready(it)){
+    if(it.stop && !it.fixed) it.st="stop"; else it.st="run";
     break;
    }
   }
  }
- var alldone=true;
- for(i=0;i<items.length;i++) if(items[i].st!=="done") alldone=false;
- if(alldone && phase!=="end"){ phase="end"; clearInterval(timer); timer=null; }
- drawRows(); drawSide();
+ var all=true;
+ for(i=0;i<items.length;i++) if(items[i].st!=="done") all=false;
+ if(all && phase!=="end"){ phase="end"; clearInterval(timer); timer=null; }
+ syncRows(); syncSide();
 }
 
-function start(){ phase="run"; if(timer) clearInterval(timer); timer=setInterval(tick,TICK); drawRows(); drawSide(); }
+function start(){ phase="run"; if(timer) clearInterval(timer); timer=setInterval(tick,TICK); syncRows(); syncSide(); }
 
 function paint(){
  document.getElementById("eyebrow").textContent=t("eyebrow");
@@ -388,12 +433,12 @@ function paint(){
  document.getElementById("boardTitle").textContent=t("boardTitle");
  document.getElementById("foot1").textContent=t("foot1");
  document.getElementById("foot2").textContent=t("foot2");
- var bs=document.querySelectorAll(".tk");
- for(var i=0;i<bs.length;i++){
+ var bs=document.querySelectorAll(".tk"),i;
+ for(i=0;i<bs.length;i++){
   bs[i].textContent=t(bs[i].getAttribute("data-track"));
   bs[i].setAttribute("aria-pressed", String(bs[i].getAttribute("data-track")===track));
  }
- drawRows(); drawSide();
+ buildRows(); syncRows(); sideKey=""; syncSide();
 }
 
 document.addEventListener("click",function(e){
@@ -402,16 +447,16 @@ document.addEventListener("click",function(e){
  if(b.id==="go"){ clicks++; start(); return; }
  if(b.id==="fix"){
   clicks++; saved=true;
-  for(var i=0;i<items.length;i++) if(items[i].st==="stop"){ items[i].fixed=true; items[i].st="next"; }
-  drawRows(); drawSide(); return;
+  for(var i=0;i<items.length;i++) if(items[i].st==="stop"){ items[i].fixed=true; items[i].st="run"; items[i].p=0; }
+  syncRows(); syncSide(); return;
  }
  if(b.id==="ok"||b.id==="back"){
   clicks++;
   for(var j=0;j<items.length;j++) if(items[j].st==="you"){
-   if(b.id==="ok"){ items[j].st="done"; }
-   else { items[j].returned=true; items[j].st="next"; items[j].p=0; }
+   if(b.id==="ok") items[j].st="done";
+   else { items[j].st="run"; items[j].p=55; }
   }
-  drawRows(); drawSide(); return;
+  syncRows(); syncSide(); return;
  }
  if(b.id==="again"){ build(); paint(); return; }
 });
