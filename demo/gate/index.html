@@ -3,425 +3,422 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Try to get a mission past the gate — Guildwork</title>
-<meta name="description" content="Break the contract yourself and watch the launcher refuse, naming the condition that fired.">
+<title>A day in charge — Guildwork</title>
+<meta name="description" content="Run a working day where AI agents do the work and you keep the last word. Two minutes, nothing to install.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 :root{
-  --ground:#0B1526;--surface:#0A1322;--strip:#14223A;--well:#070D18;
-  --line:#1D2B44;--line-strong:#2B3B57;--line-amber:#6E5330;
-  --card:linear-gradient(168deg,#1B2434 0%,#0F1929 55%,#0A1322 100%);
-  --card-lead:linear-gradient(168deg,#232C3B 0%,#121C2D 52%,#0A1322 100%);
-  --shadow-lift:0 2px 12px rgba(0,0,0,.5),0 26px 64px -34px rgba(0,0,0,.9);
-  --ink:#F3EDE2;--ink-2:#9FAAC0;--ink-3:#6B7791;
-  --amber:#E9A23B;--amber-2:#F5C46B;--refuse:#D0644A;--ok:#6FB07B;
-  color-scheme:dark;
+ --ground:#0B1526;--surface:#0A1322;--strip:#14223A;--well:#070D18;
+ --line:#1D2B44;--line-strong:#2B3B57;--line-amber:#6E5330;
+ --card:linear-gradient(168deg,#1B2434 0%,#0F1929 55%,#0A1322 100%);
+ --card-lead:linear-gradient(168deg,#232C3B 0%,#121C2D 52%,#0A1322 100%);
+ --shadow-lift:0 2px 12px rgba(0,0,0,.5),0 26px 64px -34px rgba(0,0,0,.9);
+ --ink:#F3EDE2;--ink-2:#9FAAC0;--ink-3:#6B7791;
+ --amber:#E9A23B;--amber-2:#F5C46B;
+ --run:#E8AE57;--next:#79B4E0;--you:#F3EDE2;--done:#78C48C;--stop:#E9A23B;
+ color-scheme:dark;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);
- font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-a{color:var(--amber-2);text-decoration-color:rgba(245,196,107,.35);text-underline-offset:3px}
-:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:3px}
+ font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+a{color:var(--amber-2);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
 h1,h2,h3{text-wrap:balance}
 
-header{border-bottom:1px solid var(--line);padding:18px 0}
+header{border-bottom:1px solid var(--line);padding:16px 0}
 .bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .glyph{width:24px;height:24px;border:1.5px solid var(--ink);border-radius:3px;position:relative;flex:none}
 .glyph::after{content:"";position:absolute;left:4px;right:4px;top:9.6px;height:3px;background:var(--amber);border-radius:1px}
 .wordmark{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:16px}
-.bar-end{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.bar-end{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
-.hero{padding:44px 0 8px}
+.hero{padding:40px 0 6px}
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;
  text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
-h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(1.9rem,4.4vw,2.7rem);
- line-height:1.08;margin:0 0 12px;letter-spacing:-.015em}
-.lede{color:var(--ink-2);max-width:66ch;margin:0 0 10px;font-size:16.5px}
-.tracks{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 0}
+h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6vw,2.9rem);
+ line-height:1.06;margin:0 0 12px;letter-spacing:-.018em}
+.lede{color:var(--ink-2);max-width:60ch;margin:0;font-size:17px}
+
 .tk{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);
- font:inherit;font-size:14px;padding:9px 18px;border-radius:7px;cursor:pointer}
+ font:inherit;font-size:13.5px;padding:7px 14px;border-radius:7px;cursor:pointer}
 .tk:hover{color:var(--ink);border-color:#4E5F80}
-.tk[aria-pressed=true]{background:var(--amber);border-color:var(--amber);color:#1B1206;font-weight:600}
+.tk[aria-pressed=true]{background:var(--strip);border-color:var(--amber);color:var(--ink);font-weight:600}
 
-.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding:30px 0 10px}
-@media(min-width:960px){.cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:start}}
+.stage{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:28px 0 0}
+@media(min-width:940px){.stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}}
 
-.card{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:24px 22px}
-.card.lead{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
-.card h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.2rem;margin:0 0 4px}
-.card .sub{color:var(--ink-3);font-size:13.5px;margin:0 0 18px}
+.board{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.board-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+ padding:14px 18px;background:var(--strip);border-bottom:1px solid var(--line)}
+.board-head h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.05rem;margin:0}
+.clock{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)}
+.rows{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:1fr auto;gap:6px 14px;padding:14px 18px;
+ border-bottom:1px solid var(--line);position:relative;transition:opacity .3s}
+.row:last-child{border-bottom:0}
+.row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .3s}
+.row.s-run::before{background:var(--run)} .row.s-next::before{background:var(--next)}
+.row.s-you::before{background:var(--you)} .row.s-done::before{background:var(--done)}
+.row.s-stop::before{background:var(--stop)}
+.row.s-done{opacity:.72}
+.who{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--ink-3);margin:0 0 3px}
+.what{margin:0;font-size:14.8px;font-weight:500;line-height:1.35}
+.badge{align-self:start;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+ text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid;white-space:nowrap}
+.s-run .badge{color:var(--run);border-color:rgba(232,174,87,.45);background:rgba(232,174,87,.12)}
+.s-next .badge{color:var(--next);border-color:rgba(121,180,224,.4);background:rgba(121,180,224,.1)}
+.s-you .badge{color:#0B1526;border-color:var(--you);background:var(--you);font-weight:600}
+.s-done .badge{color:var(--done);border-color:rgba(120,196,140,.45);background:rgba(120,196,140,.12)}
+.s-stop .badge{color:var(--stop);border-color:rgba(233,162,59,.5);background:rgba(233,162,59,.14)}
+.track-bar{grid-column:1/-1;height:3px;background:var(--well);border-radius:2px;overflow:hidden;margin-top:4px}
+.track-bar i{display:block;height:100%;width:0;background:var(--run);border-radius:2px;transition:width .28s linear}
+.s-done .track-bar i{background:var(--done)}
 
-.f{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
-.f label{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
- text-transform:uppercase;color:var(--ink-3)}
-.f input,.f select,.f textarea{background:var(--well);border:1px solid var(--line);color:var(--ink);
- border-radius:7px;padding:10px 12px;font:inherit;font-size:14.5px;width:100%}
-.f textarea{min-height:66px;resize:vertical}
-.f select{cursor:pointer}
-.sw{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:7px;
- padding:10px 12px;margin-bottom:9px;cursor:pointer;font-size:14px;color:var(--ink-2);background:var(--surface)}
-.sw input{accent-color:var(--amber);margin:4px 0 0}
-.sw:has(input:checked){color:var(--ink);border-color:var(--line-strong);background:var(--strip)}
-
-.presets{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 20px}
-.pz{background:var(--surface);border:1px dashed var(--line-strong);color:var(--ink-2);
- font:inherit;font-size:13px;padding:7px 13px;border-radius:7px;cursor:pointer}
-.pz:hover{color:var(--ink);border-color:var(--amber);border-style:solid}
-
-.run{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:6px}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:7px;
- border:1px solid transparent;font:inherit;font-weight:600;font-size:15px;cursor:pointer;text-decoration:none}
+.panel{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:20px}
+.panel.lead{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
+.panel h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.18rem;margin:0 0 8px}
+.panel p{margin:0 0 12px;font-size:14.6px;color:var(--ink-2)}
+.panel p.strongline{color:var(--ink)}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+ text-transform:uppercase;color:var(--amber);margin:0 0 10px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 19px;border-radius:8px;border:1px solid transparent;
+ font:inherit;font-weight:600;font-size:14.5px;cursor:pointer;text-decoration:none}
 .btn.primary{background:var(--amber);color:#1B1206}
 .btn.primary:hover{background:var(--amber-2)}
 .btn.ghost{border-color:var(--line-strong);color:var(--ink);background:transparent;font-weight:400}
 .btn.ghost:hover{border-color:#4E5F80;background:var(--strip)}
-.score{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)}
-.score b{color:var(--amber)}
+.btn.big{padding:14px 26px;font-size:16px}
+details.tech{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+details.tech summary{cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+ letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+details.tech summary:hover{color:var(--ink-2)}
+pre{margin:12px 0 0;background:var(--well);border:1px solid var(--line);border-radius:8px;padding:13px;
+ overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.65;color:var(--ink-2);white-space:pre-wrap}
+pre b{color:var(--ink);font-weight:500}
 
-.term{background:var(--well);border:1px solid var(--line);border-radius:10px;padding:18px 18px 20px;
- font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.72;min-height:340px;
- overflow-x:auto;white-space:pre-wrap;word-break:break-word}
-.term .cmd{color:var(--ink)}
-.term .ok{color:var(--ok)}
-.term .no{color:var(--refuse)}
-.term .dim{color:var(--ink-3)}
-.term .hi{color:var(--amber-2)}
-.term .lead{color:var(--ink);font-weight:500}
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:1px;background:var(--line);
+ border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:18px 0 0}
+.tally div{background:var(--surface);padding:14px 16px}
+.tally b{display:block;font-family:"Fraunces",Georgia,serif;font-size:1.7rem;line-height:1.1;margin-bottom:2px}
+.tally span{font-size:12.5px;color:var(--ink-3)}
+.tally .hot b{color:var(--amber)}
+.tally .good b{color:var(--done)}
 
-.foot{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 60px;color:var(--ink-3);font-size:13.5px}
-.foot p{margin:0 0 8px;max-width:70ch}
-@media(max-width:520px){.wrap{padding:0 16px}.hero{padding-top:32px}}
+.saved{border:1px solid var(--line-amber);background:rgba(233,162,59,.07);border-radius:8px;
+ padding:12px 14px;margin:12px 0 0;font-size:14px;color:var(--ink-2)}
+.saved b{color:var(--ink)}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 60px;color:var(--ink-3);font-size:13.4px}
+.foot p{margin:0 0 7px;max-width:72ch}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(max-width:520px){.wrap{padding:0 16px}.hero{padding-top:30px}}
 </style>
 </head>
 <body>
 
 <header><div class="wrap bar">
-  <a class="mark" href="../../"><span class="glyph" aria-hidden="true"></span><span class="wordmark">Guildwork</span></a>
-  <span class="bar-end"><a class="btn ghost" id="back" href="../../">Back to the site</a></span>
+ <a class="mark" href="../../"><span class="glyph" aria-hidden="true"></span><span class="wordmark">Guildwork</span></a>
+ <span class="bar-end">
+  <button class="tk" data-track="code" aria-pressed="true"></button>
+  <button class="tk" data-track="nocode" aria-pressed="false"></button>
+ </span>
 </div></header>
 
 <div class="wrap hero">
-  <p class="eyebrow" id="eyebrow"></p>
-  <h1 id="title"></h1>
-  <p class="lede" id="lede"></p>
-  <div class="tracks" role="group" aria-label="Track">
-    <button class="tk" data-track="code" aria-pressed="true"></button>
-    <button class="tk" data-track="nocode" aria-pressed="false"></button>
-  </div>
+ <p class="eyebrow" id="eyebrow"></p>
+ <h1 id="title"></h1>
+ <p class="lede" id="lede"></p>
 </div>
 
-<div class="wrap cols">
-  <section class="card lead">
-    <h2 id="formTitle"></h2>
-    <p class="sub" id="formSub"></p>
-    <div class="presets" id="presets"></div>
-    <div id="fields"></div>
-    <div class="run">
-      <button class="btn primary" id="go"></button>
-      <span class="score" id="score"></span>
-    </div>
-  </section>
-  <section class="card">
-    <h2 id="termTitle"></h2>
-    <p class="sub" id="termSub"></p>
-    <div class="term" id="term"></div>
-  </section>
+<div class="wrap stage">
+ <section class="board">
+  <div class="board-head"><h2 id="boardTitle"></h2><span class="clock" id="clock"></span></div>
+  <div class="rows" id="rows"></div>
+ </section>
+ <aside id="side"></aside>
 </div>
 
 <div class="wrap foot">
-  <p id="foot1"></p>
-  <p id="foot2"></p>
+ <p id="foot1"></p><p id="foot2"></p>
 </div>
 
 <script>
-const LANG = document.documentElement.getAttribute("data-lang") === "fr" ? "fr" : "en";
-const SHA = "4f1c9ab";
+var LANG = document.documentElement.getAttribute("data-lang")==="fr" ? "fr" : "en";
+var CAL = "https://cal.com/simon-pacifae-dupont/30min";
 
-const T = {
+var T = {
  en:{
-  ui:{back:"Back to the site", code:"You have code", nocode:"You don't have code",
-      eyebrow:"Interactive · nothing to install · 2 minutes",
-      go:"Launch the mission", score:(n,t)=>`refusals met: ${n} of ${t}`,
-      title:"Try to get a mission past the gate",
-      lede:"Change the contract on the left, then press launch. The launcher checks it and refuses, naming the condition that fired. Break it however you like: every refusal below is one a real incident paid for.",
-      foot1:"This demonstration stops at the refusal or at the launch. It does not run an agent, and it writes nothing anywhere.",
-      foot2:"The conditions, the wording of the refusals and the exit codes are those of the launcher described in the kit."},
-  code:{
-   formTitle:"The mission contract", formSub:"The body of the issue is the contract. Edit it.",
-   termTitle:"Your terminal", termSub:"What the launcher prints, line by line.",
-   presets:[["Remove the scope","scope"],["Set a field from a comment","comment"],["Ask for a level the seat doesn't carry","effort"]],
-   fields:[
-    {k:"objective",t:"text",l:"Objective",v:"Repair the reading of the sensor log on start-up"},
-    {k:"scope",t:"text",l:"Scope — exact paths",v:"src/device/reader.py, tests/device/"},
-    {k:"agent",t:"select",l:"Agent",o:[["claude","Claude Code"],["codex","Codex CLI"],["grok","Grok Build"],["house","An assistant nobody declared"]],v:"claude"},
-    {k:"effort",t:"select",l:"Effort",o:[["AUTO","AUTO"],["MEDIUM","MEDIUM"],["MAX","MAX"],["ULTRACODE","ULTRACODE"]],v:"AUTO"},
-    {k:"branch",t:"text",l:"Branch and worktree",v:"fix/sensor-reader + wt-sensor"},
-    {k:"comment",t:"textarea",l:"A comment posted under the issue",v:""}],
-   switches:[["leftover","A branch and a worktree from a previous run are still on the machine"],
-             ["screen",'This mission needs the screen ("exclusive foreground")'],
-             ["screenTaken","Another mission is already holding the screen"]],
-   run:"tools/mission_launcher.py 118",
-   pass:["contract fields read from the governance commit","seat is startable, model and effort carried",
-         "capabilities matched exactly","no second writer","no comment amends a contract field","screen is free"],
-   refusals:{
-    scope:{c:"1",h:"required field missing or ambiguous",
-      d:'Scope is empty. A mission that cannot state its terms is not a contract, and silence is not an exclusion.'},
-    seat:{c:"5",h:"the seat does not satisfy a declared capability",
-      d:'"An assistant nobody declared" has no row in the capabilities table. Unknown routes as cannot execute: an agent whose capability is not recorded is not a capable agent, it is an unverified one.'},
-    effort:{c:"2",h:"declared effort unavailable in this environment",
-      d:(s)=>`Seat "Grok Build" carries low, medium, high and xhigh. It does not carry ${s.effort}. A value outside the mapping is a refusal, never a nearest neighbour.`},
-    leftover:{c:"4",h:"a second writer would be created",
-      d:'Branch fix/sensor-reader and worktree wt-sensor already exist. Merging a delivery removes the remote head and nothing else: the local branch and its worktree are exactly what refuses the next launch.'},
-    comment:{c:"6",h:"a comment sets a field the issue body owns",
-      d:(s,q)=>`The comment reads as setting a contract field: "${q}". The launcher validates the body, then tells the agent to read the comments. A field set in a comment would govern the run without having been checked by anything.`},
-    screen:{c:"8",h:"the screen is held by another mission",
-      d:'This contract asks for the foreground, and another mission is already holding it. Two runs opening windows means the second one types into the first one\'s.'}},
-   okLines:["branch created from the governance commit","worktree registered","entry command ran",
-            "starting Claude Code — model claude-opus-5, effort AUTO","first instruction generated from the issue"],
-   okTail:"The session is open with its first turn already submitted. There is no paste, and no flag can set a parameter the contract did not set."},
-  nocode:{
-   formTitle:"The job you are handing to an AI", formSub:"The written request is the contract. Edit it.",
-   termTitle:"What the check says", termSub:"Line by line, before anything is sent.",
-   presets:[["Don't say which documents","scope"],["Change an instruction by message","comment"],["Leave nobody to approve","gate"]],
-   fields:[
-    {k:"objective",t:"text",l:"What you are asking for",v:"Draft the reply to the Meyer file"},
-    {k:"scope",t:"text",l:"Which documents it may use",v:"The Meyer file, the 2026 rate card"},
-    {k:"agent",t:"select",l:"Who does the work",o:[["writer","The assistant that drafts"],["sorter","The assistant that sorts the inbox"],["house","A tool nobody declared"]],v:"writer"},
-    {k:"output",t:"select",l:"What comes out",o:[["draft","A draft for a person to read"],["sent","A reply sent straight to the client"]],v:"draft"},
-    {k:"gate",t:"select",l:"Who approves before it leaves",o:[["you","You"],["lead","The person who owns the file"],["none","Nobody"]],v:"you"},
-    {k:"comment",t:"textarea",l:"A message someone sent afterwards",v:""}],
-   switches:[["leftover","Someone else already has this file open"],
-             ["screen",'This job needs the front-desk screen'],
-             ["screenTaken","The front-desk screen is already taken"]],
-   run:"check the request — Meyer file",
-   pass:["the request names what it may use","the tool is one we declared","the tool is allowed to produce that",
-         "someone is named to approve","nobody else has the file open","the screen is free"],
-   refusals:{
-    scope:{c:"1",h:"the request does not say what it may use",
-      d:'No documents are named. An assistant given no boundary will use whatever it finds, and nobody will be able to say afterwards what it read.'},
-    seat:{c:"5",h:"this tool was never declared",
-      d:'"A tool nobody declared" has no entry. Not declared means not allowed, not because we suspect it, but because nobody has checked what it can reach.'},
-    capability:{c:"5",h:"this tool may not produce that",
-      d:'The assistant that sorts the inbox is not allowed to write to a client. It may read and classify. What it is allowed to produce is declared once, and checked every time.'},
-    gate:{c:"3",h:"nobody is named to approve",
-      d:'Nobody is set to approve before it leaves. A job that reaches a client with no name on it is a job nobody can be asked about afterwards.'},
-    leftover:{c:"4",h:"someone else already has this file open",
-      d:'Two people working the same file end up with two versions of the truth, and the one that gets sent is the one that was saved last.'},
-    comment:{c:"6",h:"an instruction was changed by message",
-      d:(s,q)=>`The message reads as changing the request: "${q}". The written request is what was checked. An instruction changed in a chat governs the work without anyone having reviewed it.`},
-    screen:{c:"8",h:"the screen is taken",
-      d:'This job needs the front-desk screen and someone is already using it.'}},
-   go:"Start the job",
-   okLines:["the file is yours for the duration","the approver is named and will be asked","the job starts"],
-   okTail:"Nothing leaves until the named person has approved it. That is the whole point: the work runs without you, the decision does not."}
+  code:"You have code", nocode:"You don't have code",
+  eyebrow:"Interactive · nothing to install · 2 minutes",
+  title:"A day in charge",
+  lede:"Five pieces of work, agents that do them, and you. Press start and see what actually reaches you.",
+  boardTitle:"Today", clockLabel:"start",
+  startK:"Ready", startH:"Your day is waiting",
+  startP:"Five jobs, two agents working at once. Nothing starts until you say so, and nothing leaves without a name on it.",
+  startBtn:"Start the day",
+  runK:"Running", runH:"They are working",
+  runP:"Two at a time, never more. The rest wait their turn. You have nothing to do until something needs you.",
+  stopK:"Stopped before it went out", fixBtn:"Fix it and run it again",
+  gateK:"This one is yours", approve:"Approve and send", ret:"Send it back",
+  retP:"Sent back with your reason. It will come back corrected.",
+  endK:"End of day", endH:"Everything landed",
+  tDone:"jobs finished", tClicks:"clicks from you", tWork:"of their work", tSaved:"caught before it went out",
+  endBtn:"I want this day", endGhost:"Read the kit",
+  endP:"That is the whole promise. The work runs without you. The decisions do not.",
+  again:"Run it again",
+  foot1:"Nothing here is a simulation of an AI. These are the states of a real board, the real refusals of the launcher, and the real shape of a working day.",
+  foot2:"Times are compressed. Everything else is what the system does."
  },
  fr:{
-  ui:{back:"Retour au site", code:"Vous avez du code", nocode:"Vous n'avez pas de code",
-      eyebrow:"Interactif · rien à installer · 2 minutes",
-      go:"Lancer la mission", score:(n,t)=>`refus rencontrés : ${n} sur ${t}`,
-      title:"Essayez de faire passer une mission",
-      lede:"Modifiez le contrat à gauche, puis lancez. Le lanceur le vérifie et refuse en nommant la condition qui a tiré. Cassez-le comme vous voulez : chacun des refus ci-dessous a été payé par un incident réel.",
-      foot1:"Cette démonstration s'arrête au refus ou au lancement. Elle ne fait tourner aucun agent et n'écrit nulle part.",
-      foot2:"Les conditions, la formulation des refus et les codes de sortie sont ceux du lanceur décrit dans le pack."},
-  code:{
-   formTitle:"Le contrat de mission", formSub:"Le corps de la demande est le contrat. Modifiez-le.",
-   termTitle:"Votre terminal", termSub:"Ce que le lanceur imprime, ligne par ligne.",
-   presets:[["Enlever le périmètre","scope"],["Changer un champ par un commentaire","comment"],["Demander un niveau que le siège ne porte pas","effort"]],
-   fields:[
-    {k:"objective",t:"text",l:"Objectif",v:"Réparer la lecture du journal de capteur au démarrage"},
-    {k:"scope",t:"text",l:"Périmètre — chemins exacts",v:"src/device/reader.py, tests/device/"},
-    {k:"agent",t:"select",l:"Agent",o:[["claude","Claude Code"],["codex","Codex CLI"],["grok","Grok Build"],["house","Un assistant que personne n'a déclaré"]],v:"claude"},
-    {k:"effort",t:"select",l:"Effort",o:[["AUTO","AUTO"],["MEDIUM","MEDIUM"],["MAX","MAX"],["ULTRACODE","ULTRACODE"]],v:"AUTO"},
-    {k:"branch",t:"text",l:"Branche et worktree",v:"fix/sensor-reader + wt-sensor"},
-    {k:"comment",t:"textarea",l:"Un commentaire posté sous la demande",v:""}],
-   switches:[["leftover","Une branche et un worktree d'un run précédent traînent encore sur la machine"],
-             ["screen",'Cette mission a besoin de l\'écran (« premier plan exclusif »)'],
-             ["screenTaken","Une autre mission tient déjà l'écran"]],
-   run:"tools/mission_launcher.py 118",
-   pass:["champs du contrat lus au commit de gouvernance","siège démarrable, modèle et effort portés",
-         "capacités appariées exactement","aucun second écrivain","aucun commentaire n'amende un champ","écran libre"],
-   refusals:{
-    scope:{c:"1",h:"champ requis absent ou ambigu",
-      d:'Le périmètre est vide. Une mission incapable d\'énoncer ses termes n\'est pas un contrat, et le silence n\'est pas une exclusion.'},
-    seat:{c:"5",h:"le siège ne satisfait pas une capacité déclarée",
-      d:'« Un assistant que personne n\'a déclaré » n\'a pas de ligne dans la table des capacités. Inconnu se route comme ne peut pas exécuter : un agent dont la capacité n\'est pas enregistrée n\'est pas un agent capable, c\'est un agent non vérifié.'},
-    effort:{c:"2",h:"effort déclaré indisponible dans cet environnement",
-      d:(s)=>`Le siège « Grok Build » porte low, medium, high et xhigh. Il ne porte pas ${s.effort}. Une valeur hors du mapping est un refus, jamais un plus proche voisin.`},
-    leftover:{c:"4",h:"un second écrivain serait créé",
-      d:'La branche fix/sensor-reader et le worktree wt-sensor existent déjà. Fusionner une livraison supprime la tête distante et rien d\'autre : la branche locale et son worktree sont exactement ce qui refuse le lancement suivant.'},
-    comment:{c:"6",h:"un commentaire fixe un champ dont le corps est le contrat",
-      d:(s,q)=>`Le commentaire se lit comme fixant un champ du contrat : « ${q} ». Le lanceur valide le corps, puis dit à l'agent de lire les commentaires. Un champ posé en commentaire gouvernerait le run sans avoir été vérifié par rien.`},
-    screen:{c:"8",h:"l'écran est tenu par une autre mission",
-      d:'Ce contrat demande le premier plan, et une autre mission le tient déjà. Deux runs qui ouvrent des fenêtres, c\'est le second qui tape dans celles du premier.'}},
-   okLines:["branche créée depuis le commit de gouvernance","worktree enregistré","commande d'entrée exécutée",
-            "démarrage de Claude Code — modèle claude-opus-5, effort AUTO","première instruction générée depuis la demande"],
-   okTail:"La session est ouverte avec son premier tour déjà soumis. Il n'y a pas de copier-coller, et aucun drapeau ne peut fixer un paramètre que le contrat n'a pas fixé."},
-  nocode:{
-   formTitle:"Le travail que vous confiez à une IA", formSub:"La demande écrite est le contrat. Modifiez-la.",
-   termTitle:"Ce que dit le contrôle", termSub:"Ligne par ligne, avant que quoi que ce soit parte.",
-   presets:[["Ne pas dire quels documents","scope"],["Changer une consigne par message","comment"],["Ne laisser personne valider","gate"]],
-   fields:[
-    {k:"objective",t:"text",l:"Ce que vous demandez",v:"Rédiger la réponse au dossier Meyer"},
-    {k:"scope",t:"text",l:"Quels documents il a le droit d'utiliser",v:"Le dossier Meyer, la grille tarifaire 2026"},
-    {k:"agent",t:"select",l:"Qui fait le travail",o:[["writer","L'assistant qui rédige"],["sorter","L'assistant qui trie la boîte mail"],["house","Un outil que personne n'a déclaré"]],v:"writer"},
-    {k:"output",t:"select",l:"Ce qui en sort",o:[["draft","Un brouillon qu'une personne relit"],["sent","Une réponse envoyée directement au client"]],v:"draft"},
-    {k:"gate",t:"select",l:"Qui valide avant que ça parte",o:[["you","Vous"],["lead","Le responsable du dossier"],["none","Personne"]],v:"you"},
-    {k:"comment",t:"textarea",l:"Un message envoyé après coup",v:""}],
-   switches:[["leftover","Quelqu'un d'autre a déjà ce dossier ouvert"],
-             ["screen","Ce travail a besoin de l'écran de l'accueil"],
-             ["screenTaken","L'écran de l'accueil est déjà pris"]],
-   run:"contrôle de la demande — dossier Meyer",
-   pass:["la demande nomme ce qu'elle a le droit d'utiliser","l'outil est un de ceux qu'on a déclarés",
-         "l'outil a le droit de produire ça","quelqu'un est nommé pour valider","personne d'autre n'a le dossier ouvert","l'écran est libre"],
-   refusals:{
-    scope:{c:"1",h:"la demande ne dit pas ce qu'elle a le droit d'utiliser",
-      d:'Aucun document n\'est nommé. Un assistant sans limite ira chercher ce qu\'il trouve, et personne ne pourra dire après coup ce qu\'il a lu.'},
-    seat:{c:"5",h:"cet outil n'a jamais été déclaré",
-      d:'« Un outil que personne n\'a déclaré » n\'a pas de fiche. Non déclaré veut dire non autorisé, non pas parce qu\'on le soupçonne, mais parce que personne n\'a vérifié ce qu\'il peut atteindre.'},
-    capability:{c:"5",h:"cet outil n'a pas le droit de produire ça",
-      d:'L\'assistant qui trie la boîte mail n\'a pas le droit d\'écrire à un client. Il lit et il classe. Ce qu\'un outil a le droit de produire se déclare une fois, et se vérifie à chaque fois.'},
-    gate:{c:"3",h:"personne n'est nommé pour valider",
-      d:'Personne n\'est chargé de valider avant l\'envoi. Un travail qui arrive chez un client sans nom dessus est un travail dont on ne pourra demander compte à personne.'},
-    leftover:{c:"4",h:"quelqu'un d'autre a déjà ce dossier ouvert",
-      d:'À deux sur le même dossier, on obtient deux versions de la vérité, et celle qui part est celle qui a été enregistrée en dernier.'},
-    comment:{c:"6",h:"une consigne a été changée par message",
-      d:(s,q)=>`Le message se lit comme changeant la demande : « ${q} ». C'est la demande écrite qui a été vérifiée. Une consigne changée dans une conversation gouverne le travail sans que personne ne l'ait relue.`},
-    screen:{c:"8",h:"l'écran est pris",
-      d:'Ce travail a besoin de l\'écran de l\'accueil et quelqu\'un l\'utilise déjà.'}},
-   go:"Lancer le travail",
-   okLines:["le dossier est à vous le temps du travail","le valideur est nommé et sera sollicité","le travail démarre"],
-   okTail:"Rien ne part tant que la personne nommée n'a pas validé. C'est tout l'objet : le travail tourne sans vous, la décision non."}
+  code:"Vous avez du code", nocode:"Vous n'avez pas de code",
+  eyebrow:"Interactif · rien à installer · 2 minutes",
+  title:"Une journée aux commandes",
+  lede:"Cinq travaux, des agents qui les font, et vous. Lancez, et regardez ce qui remonte vraiment jusqu'à vous.",
+  boardTitle:"Aujourd'hui", clockLabel:"départ",
+  startK:"Prêt", startH:"Votre journée attend",
+  startP:"Cinq travaux, deux agents à la fois. Rien ne démarre sans vous, et rien ne part sans un nom dessus.",
+  startBtn:"Lancer la journée",
+  runK:"En cours", runH:"Ils travaillent",
+  runP:"Deux à la fois, jamais plus. Les autres attendent leur tour. Vous n'avez rien à faire tant que rien ne vous appelle.",
+  stopK:"Arrêté avant de partir", fixBtn:"Corriger et relancer",
+  gateK:"Celui-ci vous revient", approve:"Valider et envoyer", ret:"Renvoyer",
+  retP:"Renvoyé avec votre motif. Il reviendra corrigé.",
+  endK:"Fin de journée", endH:"Tout est livré",
+  tDone:"travaux terminés", tClicks:"clics de votre part", tWork:"de leur travail", tSaved:"arrêté avant de sortir",
+  endBtn:"Je veux cette journée", endGhost:"Lire le pack",
+  endP:"C'est toute la promesse. Le travail tourne sans vous. Les décisions, non.",
+  again:"Refaire une journée",
+  foot1:"Rien ici ne simule une IA. Ce sont les états d'un vrai tableau, les vrais refus du lanceur, et la forme réelle d'une journée de travail.",
+  foot2:"Les durées sont compressées. Tout le reste est ce que le système fait."
  }
 };
 
-const PASSCOUNT={
- code:{scope:0,effort:1,seat:2,leftover:3,comment:4,screen:5},
- nocode:{scope:0,seat:1,capability:2,gate:3,leftover:4,comment:5,screen:5}};
-let track="code", met={}, S={};
-const D=()=>T[LANG][track], U=()=>T[LANG].ui;
-
-function initState(){
-  S={};
-  D().fields.forEach(f=>S[f.k]=f.v);
-  D().switches.forEach(([k])=>S[k]=false);
-}
-
-const FIELDWORDS=/^\s*(?:#{1,6}\s*)?(mode|scope|p[ée]rim[èe]tre|model|mod[èe]le|agent|effort|budget|risk|risque|documents?|valideur|sortie|output)\s*[:=]\s*\S/im;
-
-function firstRefusal(){
-  const r=D().refusals;
-  if(!String(S.scope||"").trim()) return ["scope",r.scope];
-  if(S.agent==="house") return ["seat",r.seat];
-  if(track==="code" && S.agent==="grok" && (S.effort==="MAX"||S.effort==="ULTRACODE")) return ["effort",r.effort];
-  if(track==="nocode" && S.agent==="sorter" && S.output==="sent") return ["capability",r.capability];
-  if(track==="nocode" && S.gate==="none") return ["gate",r.gate];
-  if(S.leftover) return ["leftover",r.leftover];
-  const m=FIELDWORDS.exec(String(S.comment||""));
-  if(m) return ["comment",r.comment,m[0].trim()];
-  if(S.screen && S.screenTaken) return ["screen",r.screen];
-  return null;
-}
-
-const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-
-function renderForm(){
-  const d=D();
-  document.getElementById("presets").innerHTML=d.presets.map(([t],i)=>
-    `<button class="pz" data-pz="${i}">${esc(t)}</button>`).join("");
-  document.getElementById("fields").innerHTML=
-   d.fields.map(f=>{
-     const lab=`<label for="f-${f.k}">${esc(f.l)}</label>`;
-     if(f.t==="select") return `<div class="f">${lab}<select id="f-${f.k}" data-k="${f.k}">`+
-       f.o.map(([v,t])=>`<option value="${v}" ${S[f.k]===v?"selected":""}>${esc(t)}</option>`).join("")+`</select></div>`;
-     if(f.t==="textarea") return `<div class="f">${lab}<textarea id="f-${f.k}" data-k="${f.k}" placeholder="—">${esc(S[f.k]||"")}</textarea></div>`;
-     return `<div class="f">${lab}<input id="f-${f.k}" type="text" data-k="${f.k}" value="${esc(S[f.k]||"")}"></div>`;
-   }).join("")+
-   d.switches.map(([k,t])=>
-     `<label class="sw"><input type="checkbox" data-k="${k}" ${S[k]?"checked":""}> ${esc(t)}</label>`).join("");
-  const total=Object.keys(d.refusals).length;
-  document.getElementById("score").innerHTML=U().score(`<b>${Object.keys(met[track]||{}).length}</b>`,total);
-}
-
-function line(cls,txt){return `<span class="${cls}">${txt}</span>\n`;}
-
-function run(){
-  const d=D(), out=[], ref=firstRefusal();
-  out.push(line("cmd","$ "+esc(d.run)));
-  out.push(line("dim",LANG==="fr"?`gouvernance ${SHA} · lu au runtime, jamais copié dans l'outil`
-                                 :`governance ${SHA} · read at runtime, never copied into the tool`));
-  out.push("\n");
-  const idx = ref ? (PASSCOUNT[track][ref[0]] ?? 0) : d.pass.length;
-  d.pass.forEach((p,i)=>{ if(i<idx) out.push(line("ok","  ✓ "+esc(p))); });
-  if(ref){
-    const [key,r,quote]=ref;
-    const body = typeof r.d==="function" ? r.d(S,quote) : r.d;
-    out.push(line("no","  ✕ "+(LANG==="fr"?`refusé — condition ${r.c} : `:`refused — condition ${r.c}: `)+esc(r.h)));
-    out.push("\n");
-    out.push(line("lead","    "+esc(body).replace(/\n/g,"\n    ")));
-    out.push("\n");
-    out.push(line("dim",LANG==="fr"?"  rien n'a démarré · code de sortie 2":"  nothing started · exit code 2"));
-    met[track]=met[track]||{}; met[track][key]=1;
-  } else {
-    d.okLines.forEach(l=>out.push(line("ok","  ✓ "+esc(l))));
-    out.push("\n");
-    out.push(line("hi","    "+esc(d.okTail).replace(/\n/g,"\n    ")));
-    out.push("\n");
-    out.push(line("dim",LANG==="fr"?"  code de sortie 0":"  exit code 0"));
-  }
-  document.getElementById("term").innerHTML=out.join("");
-  renderForm();
-}
-
-function paint(){
-  const u=U(),d=D();
-  document.getElementById("eyebrow").textContent=u.eyebrow;
-  document.getElementById("title").textContent=u.title;
-  document.getElementById("lede").textContent=u.lede;
-  document.getElementById("go").textContent=d.go||u.go;
-  document.getElementById("back").textContent=u.back;
-  document.getElementById("foot1").textContent=u.foot1;
-  document.getElementById("foot2").textContent=u.foot2;
-  document.getElementById("formTitle").textContent=d.formTitle;
-  document.getElementById("formSub").textContent=d.formSub;
-  document.getElementById("termTitle").textContent=d.termTitle;
-  document.getElementById("termSub").textContent=d.termSub;
-  document.querySelectorAll(".tk").forEach(b=>{
-    b.textContent=u[b.dataset.track];
-    b.setAttribute("aria-pressed",String(b.dataset.track===track));
-  });
-  renderForm(); run();
-}
-
-const PRESETS={
- code:[s=>{s.scope="";},s=>{s.comment=LANG==="fr"?"### Mode: read-only\nJe pense qu'il vaut mieux en lecture seule.":"### Mode: read-only\nBetter keep this one read-only I think.";},
-       s=>{s.agent="grok";s.effort="ULTRACODE";}],
- nocode:[s=>{s.scope="";},s=>{s.comment=LANG==="fr"?"Documents : finalement prends aussi les dossiers des autres clients":"Documents: actually use the other clients' files too";},
-         s=>{s.gate="none";}]
+var SCEN = {
+ en:{
+  code:[
+   {who:"Claude Code",what:"Repair the sensor log read on start-up",h:1.5},
+   {who:"Codex CLI",what:"Quote generator: use this year's price list",h:2,stop:{
+     head:"A quote was about to go out on last year's prices",
+     body:"The contract named the price file, and the file on the machine was the 2025 one. The launcher read the contract before starting and stopped there. Nothing ran, nothing was sent.",
+     saved:"What it cost you: <b>nothing</b>. What it would have cost: a signed quote <b>4 200 € under</b>, found at invoicing.",
+     tech:"$ tools/mission_launcher.py 118\ngovernance 4f1c9ab · read at runtime, never copied into the tool\n\n  ✓ contract fields read from the governance commit\n  ✗ <b>refused — condition 1: required field missing or ambiguous</b>\n\n    The declared scope names prices/2026.csv. That path does not exist at this\n    commit. A mission that cannot state its terms is not a contract.\n\n  nothing started · exit code 2"}},
+   {who:"Grok Build",what:"Rewrite the failing test for the bridge",h:1},
+   {who:"Claude Code",what:"Release notes for version 2.4",h:1.5,gate:{
+     head:"Ready to go out, and it carries your name",
+     body:"The notes are written, the checks are green, and a second seat that did not write them has read them. Publishing is yours: it is the one thing here that cannot be taken back.",
+     detail:"Reviewed by: Grok HQ · 14 files · 0 failures introduced"}},
+   {who:"Codex CLI",what:"Tidy the dependencies before the weekend",h:0.5}
+  ],
+  nocode:[
+   {who:"The drafting assistant",what:"Reply to the Meyer file",h:1.5},
+   {who:"The quote assistant",what:"Quote for the Lenoir site",h:2,stop:{
+     head:"A quote was about to go out on last year's prices",
+     body:"The request named the 2026 rate card. The file the assistant reached for was the 2025 one. It was stopped before writing a line, and you are being told now rather than at invoicing.",
+     saved:"What it cost you: <b>nothing</b>. What it would have cost: a signed quote <b>4 200 € under</b>, found six weeks later.",
+     tech:null}},
+   {who:"The inbox assistant",what:"Sort and answer the simple tickets",h:1},
+   {who:"The drafting assistant",what:"Answer to the complaint from Mrs Aubert",h:1.5,gate:{
+     head:"Ready to go out, and it carries your name",
+     body:"The answer is written, it names the documents it used, and a person who did not write it has read it. Sending is yours: it is the one thing here that cannot be taken back.",
+     detail:"Read by: Camille · sources: the Aubert file, the 2026 terms"}},
+   {who:"The minutes assistant",what:"Minutes of this morning's meeting",h:0.5}
+  ]
+ }
+};
+SCEN.fr = {
+ code:[
+  {who:"Claude Code",what:"Réparer la lecture du journal de capteur au démarrage",h:1.5},
+  {who:"Codex CLI",what:"Générateur de devis : passer sur la grille de cette année",h:2,stop:{
+    head:"Un devis partait sur la grille de l'an dernier",
+    body:"Le contrat nommait le fichier de prix, et le fichier présent sur la machine était celui de 2025. Le lanceur a lu le contrat avant de démarrer et s'est arrêté là. Rien n'a tourné, rien n'est parti.",
+    saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : un devis signé <b>4 200 € en dessous</b>, découvert à la facturation.",
+    tech:"$ tools/mission_launcher.py 118\ngouvernance 4f1c9ab · lu au runtime, jamais copié dans l'outil\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✗ <b>refusé — condition 1 : champ requis absent ou ambigu</b>\n\n    Le périmètre déclaré nomme prices/2026.csv. Ce chemin n'existe pas à ce\n    commit. Une mission incapable d'énoncer ses termes n'est pas un contrat.\n\n  rien n'a démarré · code de sortie 2"}},
+  {who:"Grok Build",what:"Réécrire le test en échec sur le pont",h:1},
+  {who:"Claude Code",what:"Notes de version pour la 2.4",h:1.5,gate:{
+    head:"Prêt à sortir, et ça porte votre nom",
+    body:"Les notes sont écrites, les contrôles sont au vert, et un second siège qui ne les a pas écrites les a relues. La publication vous revient : c'est la seule chose ici qu'on ne peut pas reprendre.",
+    detail:"Relu par : Grok HQ · 14 fichiers · 0 échec introduit"}},
+  {who:"Codex CLI",what:"Ranger les dépendances avant le week-end",h:0.5}
+ ],
+ nocode:[
+  {who:"L'assistant qui rédige",what:"Réponse au dossier Meyer",h:1.5},
+  {who:"L'assistant qui chiffre",what:"Devis pour le chantier Lenoir",h:2,stop:{
+    head:"Un devis partait sur la grille de l'an dernier",
+    body:"La demande nommait la grille 2026. Le fichier que l'assistant a ouvert était celle de 2025. Il a été arrêté avant d'écrire une ligne, et on vous le dit maintenant plutôt qu'à la facturation.",
+    saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : un devis signé <b>4 200 € en dessous</b>, découvert six semaines plus tard.",
+    tech:null}},
+  {who:"L'assistant qui trie",what:"Trier et répondre aux demandes simples",h:1},
+  {who:"L'assistant qui rédige",what:"Réponse à la réclamation de Mme Aubert",h:1.5,gate:{
+    head:"Prête à partir, et ça porte votre nom",
+    body:"La réponse est écrite, elle nomme les documents qui ont servi, et une personne qui ne l'a pas rédigée l'a relue. L'envoi vous revient : c'est la seule chose ici qu'on ne peut pas reprendre.",
+    detail:"Relu par : Camille · sources : le dossier Aubert, les conditions 2026"}},
+  {who:"L'assistant qui rédige",what:"Compte-rendu de la réunion de ce matin",h:0.5}
+ ]
 };
 
-document.addEventListener("click",e=>{
- const b=e.target.closest("button"); if(!b) return;
- if(b.dataset.track){ track=b.dataset.track; initState(); paint(); return; }
- if(b.dataset.pz!==undefined){ initState(); PRESETS[track][+b.dataset.pz](S); paint(); return; }
- if(b.id==="go"){ run(); return; }
-});
-document.addEventListener("input",e=>{
- const k=e.target.dataset.k; if(!k) return;
- S[k]= e.target.type==="checkbox" ? e.target.checked : e.target.value;
-});
-document.addEventListener("change",e=>{
- const k=e.target.dataset.k; if(!k) return;
- S[k]= e.target.type==="checkbox" ? e.target.checked : e.target.value;
- if(e.target.tagName==="SELECT"||e.target.type==="checkbox") run();
+var STATE_LABEL = {
+ en:{next:"waiting",run:"running",you:"for you",done:"landed",stop:"stopped"},
+ fr:{next:"à venir",run:"en cours",you:"pour vous",done:"atterri",stop:"arrêté"}
+};
+
+var CEIL=2, TICK=110, items=[], phase="idle", clicks=0, timer=null, hour=8, saved=false, track="code";
+
+function t(k){ return T[LANG][k]; }
+function build(){
+ items = SCEN[LANG][track].map(function(s,i){
+  return {i:i, who:s.who, what:s.what, h:s.h, stop:s.stop||null, gate:s.gate||null,
+          st:"next", p:0, fixed:false, returned:false, gateDone:false};
+ });
+ phase="idle"; clicks=0; hour=8; saved=false;
+ if(timer){ clearInterval(timer); timer=null; }
+}
+
+function fmtHour(){
+ var hh=Math.floor(hour), mm=Math.round((hour-hh)*60);
+ return (hh<10?"0":"")+hh+" h "+(mm<10?"0":"")+mm;
+}
+function totalHours(){
+ var s=0; for(var i=0;i<items.length;i++) s+=items[i].h;
+ return (LANG==="fr"? s.toString().replace(".",",") : s) + " h";
+}
+
+function drawRows(){
+ var L=STATE_LABEL[LANG], h="";
+ for(var i=0;i<items.length;i++){
+  var it=items[i];
+  h+='<div class="row s-'+it.st+'">'+
+     '<div><p class="who">'+it.who+'</p><p class="what">'+it.what+'</p></div>'+
+     '<span class="badge">'+L[it.st]+'</span>'+
+     '<div class="track-bar"><i style="width:'+(it.st==="done"?100:it.p)+'%"></i></div>'+
+     '</div>';
+ }
+ document.getElementById("rows").innerHTML=h;
+ document.getElementById("clock").textContent = phase==="idle" ? t("clockLabel") : fmtHour();
+}
+
+function panel(k,head,body,extra,acts){
+ return '<div class="panel lead"><p class="kicker">'+k+'</p><h3>'+head+'</h3>'+
+        '<p>'+body+'</p>'+(extra||'')+'<div class="acts">'+acts+'</div></div>';
+}
+
+function drawSide(){
+ var s=document.getElementById("side"), stopIt=null, gateIt=null, i;
+ for(i=0;i<items.length;i++){
+  if(items[i].st==="stop") stopIt=items[i];
+  if(items[i].st==="you") gateIt=items[i];
+ }
+ if(phase==="idle"){
+  s.innerHTML=panel(t("startK"),t("startH"),t("startP"),"",
+   '<button class="btn primary big" id="go">'+t("startBtn")+'</button>');
+ } else if(stopIt){
+  var x=stopIt.stop;
+  var tech = x.tech ? '<details class="tech"><summary>'+(LANG==="fr"?"Ce que le lanceur a imprimé":"What the launcher printed")+'</summary><pre>'+x.tech+'</pre></details>' : '';
+  s.innerHTML=panel(t("stopK"),x.head,x.body,'<div class="saved">'+x.saved+'</div>'+tech,
+   '<button class="btn primary" id="fix">'+t("fixBtn")+'</button>');
+ } else if(gateIt){
+  var g=gateIt.gate;
+  s.innerHTML=panel(t("gateK"),g.head,g.body,
+   '<div class="saved">'+g.detail+'</div>',
+   '<button class="btn primary" id="ok">'+t("approve")+'</button>'+
+   '<button class="btn ghost" id="back">'+t("ret")+'</button>');
+ } else if(phase==="end"){
+  s.innerHTML='<div class="panel lead"><p class="kicker">'+t("endK")+'</p><h3>'+t("endH")+'</h3>'+
+   '<div class="tally">'+
+    '<div class="good"><b>'+items.length+'</b><span>'+t("tDone")+'</span></div>'+
+    '<div class="hot"><b>'+clicks+'</b><span>'+t("tClicks")+'</span></div>'+
+    '<div><b>'+totalHours()+'</b><span>'+t("tWork")+'</span></div>'+
+    (saved?'<div class="hot"><b>4 200 €</b><span>'+t("tSaved")+'</span></div>':'')+
+   '</div>'+
+   '<p class="strongline" style="margin-top:16px">'+t("endP")+'</p>'+
+   '<div class="acts">'+
+    '<a class="btn primary big" href="'+CAL+'">'+t("endBtn")+'</a>'+
+    '<a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">'+t("endGhost")+'</a>'+
+    '<button class="btn ghost" id="again">'+t("again")+'</button>'+
+   '</div></div>';
+ } else {
+  s.innerHTML='<div class="panel"><p class="kicker">'+t("runK")+'</p><h3>'+t("runH")+'</h3><p>'+t("runP")+'</p></div>';
+ }
+}
+
+function running(){ var n=0; for(var i=0;i<items.length;i++) if(items[i].st==="run") n++; return n; }
+function blocked(){ for(var i=0;i<items.length;i++) if(items[i].st==="stop"||items[i].st==="you") return true; return false; }
+
+function tick(){
+ var i,it,changed=false;
+ for(i=0;i<items.length;i++){
+  it=items[i];
+  if(it.st==="run"){
+   it.p += 100/((it.h*10)+6);
+   if(it.p>=100){
+    it.p=100;
+    if(it.gate && !it.gateDone){ it.st="you"; it.gateDone=true; }
+    else it.st="done";
+   }
+   changed=true;
+  }
+ }
+ hour += 0.07;
+ if(!blocked()){
+  for(i=0;i<items.length;i++){
+   it=items[i];
+   if(it.st==="next" && running()<CEIL){
+    if(it.stop && !it.fixed){ it.st="stop"; }
+    else { it.st="run"; }
+    changed=true;
+    break;
+   }
+  }
+ }
+ var alldone=true;
+ for(i=0;i<items.length;i++) if(items[i].st!=="done") alldone=false;
+ if(alldone && phase!=="end"){ phase="end"; clearInterval(timer); timer=null; }
+ drawRows(); drawSide();
+}
+
+function start(){ phase="run"; if(timer) clearInterval(timer); timer=setInterval(tick,TICK); drawRows(); drawSide(); }
+
+function paint(){
+ document.getElementById("eyebrow").textContent=t("eyebrow");
+ document.getElementById("title").textContent=t("title");
+ document.getElementById("lede").textContent=t("lede");
+ document.getElementById("boardTitle").textContent=t("boardTitle");
+ document.getElementById("foot1").textContent=t("foot1");
+ document.getElementById("foot2").textContent=t("foot2");
+ var bs=document.querySelectorAll(".tk");
+ for(var i=0;i<bs.length;i++){
+  bs[i].textContent=t(bs[i].getAttribute("data-track"));
+  bs[i].setAttribute("aria-pressed", String(bs[i].getAttribute("data-track")===track));
+ }
+ drawRows(); drawSide();
+}
+
+document.addEventListener("click",function(e){
+ var b=e.target.closest("button"); if(!b) return;
+ if(b.getAttribute("data-track")){ track=b.getAttribute("data-track"); build(); paint(); return; }
+ if(b.id==="go"){ clicks++; start(); return; }
+ if(b.id==="fix"){
+  clicks++; saved=true;
+  for(var i=0;i<items.length;i++) if(items[i].st==="stop"){ items[i].fixed=true; items[i].st="next"; }
+  drawRows(); drawSide(); return;
+ }
+ if(b.id==="ok"||b.id==="back"){
+  clicks++;
+  for(var j=0;j<items.length;j++) if(items[j].st==="you"){
+   if(b.id==="ok"){ items[j].st="done"; }
+   else { items[j].returned=true; items[j].st="next"; items[j].p=0; }
+  }
+  drawRows(); drawSide(); return;
+ }
+ if(b.id==="again"){ build(); paint(); return; }
 });
 
-const q=new URLSearchParams(location.search).get("piste")||new URLSearchParams(location.search).get("track");
+var q=new URLSearchParams(location.search).get("piste")||new URLSearchParams(location.search).get("track");
 if(q==="nocode"||q==="sans-code") track="nocode";
-initState(); paint();
+build(); paint();
 </script>
 </body>
 </html>
