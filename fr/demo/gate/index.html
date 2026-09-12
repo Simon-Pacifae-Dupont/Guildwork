@@ -51,6 +51,12 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 @media(min-width:940px){.stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}
  #side{position:sticky;top:20px}}
 
+.days{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.day{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);
+ font:inherit;font-size:13.5px;padding:8px 14px;border-radius:8px;cursor:pointer}
+.day:hover{color:var(--ink);border-color:#4E5F80}
+.day[aria-pressed=true]{background:var(--amber);border-color:var(--amber);color:#1B1206;font-weight:600}
+.punch{font-family:"Fraunces",Georgia,serif;font-size:1.22rem;line-height:1.3;color:var(--ink);margin:0 0 4px}
 .board{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
 .board-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
  padding:14px 18px;background:var(--strip);border-bottom:1px solid var(--line)}
@@ -142,9 +148,12 @@ pre b{color:var(--ink);font-weight:500}
 </div>
 
 <div class="wrap stage">
- <section class="board">
+ <section>
+ <div class="days" id="days" role="group"></div>
+ <div class="board">
   <div class="board-head"><h2 id="boardTitle"></h2><span class="clock" id="clock"></span></div>
   <div class="rows" id="rows"></div>
+ </div>
  </section>
  <aside id="side"></aside>
 </div>
@@ -165,7 +174,7 @@ var T = {
   lede:"Five pieces of work, agents that do them, and you. Press start and see what actually reaches you.",
   boardTitle:"Today", clockLabel:"start",
   startK:"Ready", startH:"Your day is waiting",
-  startP:"Five jobs, two agents working at once. Nothing starts until you say so, and nothing leaves without a name on it.",
+  startP:"Five jobs, two agents at a time. Nothing starts until you say so, and nothing leaves without a name on it.",
   startBtn:"Start the day",
   runK:"Running", runH:"They are working",
   runP:"Two at a time, never more. The rest wait their turn. You have nothing to do until something needs you.",
@@ -178,7 +187,7 @@ var T = {
   endP:"That is the whole promise. The work runs without you. The decisions do not.",
   again:"Run it again",
   foot1:"Nothing here is a simulation of an AI. These are the states of a real board, the real refusals of the launcher, and the real shape of a working day.",
-  foot2:"Times are compressed. Everything else is what the system does."
+  foot2:"Times are compressed and the amounts are those of the example. Everything else is what the system does."
  },
  fr:{
   code:"Vous avez du code", nocode:"Vous n'avez pas de code",
@@ -200,85 +209,347 @@ var T = {
   endP:"C'est toute la promesse. Le travail tourne sans vous. Les décisions, non.",
   again:"Refaire une journée",
   foot1:"Rien ici ne simule une IA. Ce sont les états d'un vrai tableau, les vrais refus du lanceur, et la forme réelle d'une journée de travail.",
-  foot2:"Les durées sont compressées. Tout le reste est ce que le système fait."
+  foot2:"Les durées sont compressées et les montants sont ceux de l'exemple. Tout le reste est ce que le système fait."
  }
 };
 
-var SCEN = {
- en:{
-  code:[
-   {who:"Claude Code",what:"Repair the sensor log read on start-up",h:1.5},
-   {who:"Codex CLI",what:"Quote generator: use this year's price list",h:2,stop:{
-     head:"A quote was about to go out on last year's prices",
-     body:"The contract named the price file, and the file on the machine was the 2025 one. The launcher read the contract before starting and stopped there. Nothing ran, nothing was sent.",
-     saved:"What it cost you: <b>nothing</b>. What it would have cost: a signed quote <b>4 200 € under</b>, found at invoicing.",
-     tech:"$ tools/mission_launcher.py 118\ngovernance 4f1c9ab · read at runtime, never copied into the tool\n\n  ✓ contract fields read from the governance commit\n  ✗ <b>refused — condition 1: required field missing or ambiguous</b>\n\n    The declared scope names prices/2026.csv. That path does not exist at this\n    commit. A mission that cannot state its terms is not a contract.\n\n  nothing started · exit code 2"}},
-   {who:"Grok Build",what:"Rewrite the failing test for the bridge",h:1},
-   {who:"Claude Code",what:"Release notes for version 2.4",h:1.5,gate:{
-     head:"Ready to go out, and it carries your name",
-     body:"The notes are written, the checks are green, and a second seat that did not write them has read them. Publishing is yours: it is the one thing here that cannot be taken back.",
-     detail:"Reviewed by: Grok HQ · 14 files · 0 failures introduced"}},
-   {who:"Codex CLI",what:"Tidy the dependencies before the weekend",h:0.5}
-  ],
-  nocode:[
-   {who:"The drafting assistant",what:"Reply to the Meyer file",h:1.5},
-   {who:"The quote assistant",what:"Quote for the Lenoir site",h:2,stop:{
-     head:"A quote was about to go out on last year's prices",
-     body:"The request named the 2026 rate card. The file the assistant reached for was the 2025 one. It was stopped before writing a line, and you are being told now rather than at invoicing.",
-     saved:"What it cost you: <b>nothing</b>. What it would have cost: a signed quote <b>4 200 € under</b>, found six weeks later.",
-     tech:null}},
-   {who:"The inbox assistant",what:"Sort and answer the simple tickets",h:1},
-   {who:"The drafting assistant",what:"Answer to the complaint from Mrs Aubert",h:1.5,gate:{
-     head:"Ready to go out, and it carries your name",
-     body:"The answer is written, it names the documents it used, and a person who did not write it has read it. Sending is yours: it is the one thing here that cannot be taken back.",
-     detail:"Read by: Camille · sources: the Aubert file, the 2026 terms"}},
-   {who:"The minutes assistant",what:"Minutes of this morning's meeting",h:0.5}
-  ]
- }
-};
-SCEN.fr = {
- code:[
-  {who:"Claude Code",what:"Réparer la lecture du journal de capteur au démarrage",h:1.5},
-  {who:"Codex CLI",what:"Générateur de devis : passer sur la grille de cette année",h:2,stop:{
-    head:"Un devis partait sur la grille de l'an dernier",
-    body:"Le contrat nommait le fichier de prix, et le fichier présent sur la machine était celui de 2025. Le lanceur a lu le contrat avant de démarrer et s'est arrêté là. Rien n'a tourné, rien n'est parti.",
-    saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : un devis signé <b>4 200 € en dessous</b>, découvert à la facturation.",
-    tech:"$ tools/mission_launcher.py 118\ngouvernance 4f1c9ab · lu au runtime, jamais copié dans l'outil\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✗ <b>refusé — condition 1 : champ requis absent ou ambigu</b>\n\n    Le périmètre déclaré nomme prices/2026.csv. Ce chemin n'existe pas à ce\n    commit. Une mission incapable d'énoncer ses termes n'est pas un contrat.\n\n  rien n'a démarré · code de sortie 2"}},
-  {who:"Grok Build",what:"Réécrire le test en échec sur le pont",h:1},
-  {who:"Claude Code",what:"Notes de version pour la 2.4",h:1.5,gate:{
-    head:"Prêt à sortir, et ça porte votre nom",
-    body:"Les notes sont écrites, les contrôles sont au vert, et un second siège qui ne les a pas écrites les a relues. La publication vous revient : c'est la seule chose ici qu'on ne peut pas reprendre.",
-    detail:"Relu par : Grok HQ · 14 fichiers · 0 échec introduit"}},
-  {who:"Codex CLI",what:"Ranger les dépendances avant le week-end",h:0.5}
+
+/* Dix journées types : cinq par piste. Chaque journée a cinq travaux, un arrêt qui
+   sauve quelque chose de chiffré, une décision qui revient à la personne, et une
+   phrase de bilan qui dit le gain. Les montants sont ceux de l'exemple. */
+var DAYS = {
+ fr:{ code:[
+  {name:"L'éditeur de logiciel", intro:"Une équipe de six, un logiciel en production, une version 2.4 à sortir vendredi.",
+   punch:"Cinq chantiers livrés dans la journée. La semaine dernière, l'équipe en avait sorti deux.",
+   caught:"4 200 €", caughtLabel:"arrêté avant de sortir",
+   items:[
+    {who:"Claude Code",what:"Corriger le bug de connexion signalé par trois clients",h:1.2},
+    {who:"Codex CLI",what:"Générateur de factures : passer sur la grille 2026",h:1.3,stop:{
+      head:"Une facture partait sur la grille de l'an dernier",
+      body:"Le contrat nommait le fichier de prix 2026. Celui présent sur la machine était celui de 2025. Le lanceur a lu le contrat avant de démarrer et s'est arrêté là : rien n'a tourné, rien n'est parti.",
+      saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : des factures <b>4 200 € en dessous</b>, découvertes à la relance.",
+      tech:"$ tools/mission_launcher.py 118\ngouvernance 4f1c9ab · lue au runtime\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✗ <b>refusé — condition 1 : champ requis absent ou ambigu</b>\n\n    Le périmètre nomme prices/2026.csv. Ce chemin n'existe pas à ce commit.\n    Une mission incapable d'énoncer ses termes n'est pas un contrat.\n\n  rien n'a démarré · code de sortie 2"}},
+    {who:"Grok Build",what:"Réécrire les tests du module d'export",h:1.0},
+    {who:"Claude Code",what:"Notes de version 2.4",h:1.0,gate:{
+      head:"Prêt à sortir, et ça porte votre nom",
+      body:"Les notes sont écrites, les contrôles sont au vert, et un second siège qui ne les a pas écrites les a relues. Publier vous revient : c'est la seule chose ici qu'on ne peut pas reprendre.",
+      detail:"Relu par : Grok HQ · 14 fichiers · 0 échec introduit"}},
+    {who:"Codex CLI",what:"Mettre à jour les dépendances avant le week-end",h:0.9}]},
+  {name:"L'agence web", intro:"Une agence de huit personnes qui livre des sites à des clients. Trois chantiers en parallèle.",
+   punch:"Trois sites avancés dans la journée, un livré. Vous avez signé une seule chose.",
+   caught:"3 100 €", caughtLabel:"de commandes qui seraient parties dans le vide",
+   items:[
+    {who:"Claude Code",what:"Site du cabinet Morel : formulaire de contact et mentions RGPD",h:1.2},
+    {who:"Codex CLI",what:"Boutique Lenoir : brancher le paiement réel",h:1.2,stop:{
+      head:"Le paiement allait être branché avec les identifiants de test",
+      body:"Le contrat disait « paiement réel ». Un commentaire posté en dessous fixait les identifiants du bac à sable. Le lanceur valide le corps de la demande, pas les commentaires : il a refusé en donnant l'adresse du commentaire.",
+      saved:"Ce que ça aurait coûté : un week-end de lancement où <b>3 100 € de commandes</b> sont encaissées nulle part.",
+      tech:"$ tools/mission_launcher.py 212\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✓ siège démarrable, modèle et effort portés\n  ✓ capacités appariées exactement\n  ✓ aucun second écrivain\n  ✗ <b>refusé — condition 6 : un commentaire fixe un champ du contrat</b>\n\n    issue #212, commentaire 3 : « Mode: sandbox ». Le corps déclare production.\n    Un champ posé en commentaire gouvernerait le run sans avoir été vérifié.\n\n  rien n'a démarré · code de sortie 2"}},
+    {who:"Grok Build",what:"Site de l'hôtel Beaurivage : galerie photo et vitesse sur mobile",h:1.0},
+    {who:"Claude Code",what:"Livraison du site Morel au client",h:1.0,gate:{
+      head:"Le client reçoit ses accès, et ça porte votre nom",
+      body:"Le site passe les contrôles, un second siège l'a parcouru page par page, et le client attend l'e-mail. L'envoyer vous revient.",
+      detail:"Relu par : Grok HQ · 11 pages · formulaire testé de bout en bout"}},
+    {who:"Codex CLI",what:"Rapport mensuel de suivi pour les trois clients",h:0.9}]},
+  {name:"La startup", intro:"Deux fondateurs, un produit en bêta, cinquante utilisateurs qui attendent la version payante.",
+   punch:"La version payante est prête à partir. La base n'a pas été effacée en route.",
+   caught:"50 comptes", caughtLabel:"sauvés d'une suppression sans copie",
+   items:[
+    {who:"Claude Code",what:"Page de paiement et abonnement mensuel",h:1.3},
+    {who:"Codex CLI",what:"Supprimer les comptes de test de la base",h:0.9,stop:{
+      head:"Une suppression allait partir sans copie de sauvegarde",
+      body:"Le contrat demandait d'effacer les comptes de test. Il ne nommait aucune sauvegarde préalable. Le siège a démarré, lu ses conditions d'arrêt, et s'est arrêté avant de supprimer quoi que ce soit. Il l'a écrit dans son rapport.",
+      saved:"Ce que ça aurait coûté : <b>les cinquante premiers utilisateurs</b>, effacés avec les comptes de test, sans copie.",
+      tech:"Transmission report — mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>: the contract orders a deletion and names\nno backup taken first. Nothing was deleted. Scope untouched.\n\nNext decision owner: Chief Architect. Smallest next action: name the backup."}},
+    {who:"Grok Build",what:"Importer les contacts depuis un fichier Excel",h:1.0},
+    {who:"Claude Code",what:"E-mail d'annonce de la version payante",h:1.0,gate:{
+      head:"Cinquante personnes vont le recevoir, et on ne rappelle pas un e-mail",
+      body:"Le texte est prêt, un second siège l'a relu, la liste des destinataires est la bonne. L'envoi vous revient.",
+      detail:"Relu par : Grok HQ · 50 destinataires · lien de paiement testé"}},
+    {who:"Codex CLI",what:"Tableau de bord des inscriptions",h:1.0}]},
+  {name:"L'équipe data", intro:"Trois personnes qui produisent les chiffres que la direction lit chaque lundi matin.",
+   punch:"Le rapport de lundi est prêt jeudi soir, et chaque chiffre dit d'où il vient.",
+   caught:"1 rapport", caughtLabel:"faux de 8 %, arrêté avant le comité",
+   items:[
+    {who:"Claude Code",what:"Corriger le calcul du chiffre d'affaires par région",h:1.2},
+    {who:"Codex CLI",what:"Rapport hebdomadaire : ajouter la marge par produit",h:1.2,stop:{
+      head:"La marge allait être calculée sur les coûts de l'an dernier",
+      body:"Le contrat exigeait les coûts 2026. Le fichier disponible était celui de 2025. Le siège s'est arrêté sous la condition d'arrêt du contrat au lieu de produire un chiffre plausible et faux.",
+      saved:"Ce que ça aurait coûté : une marge <b>fausse de 8 %</b>, présentée lundi au comité de direction, et une décision prise dessus.",
+      tech:"Transmission report — mission #305\n\nStopped under <b>stop condition 2 (ITEM)</b>: the only cost file at this commit is\ncosts/2025.csv; the contract requires 2026. A figure computed on it would be\nplausible and wrong. Item halted, other items continued."}},
+    {who:"Grok Build",what:"Nettoyer les doublons dans la base clients",h:1.0},
+    {who:"Claude Code",what:"Envoyer le rapport de lundi à la direction",h:0.9,gate:{
+      head:"La direction va lire ces chiffres, et ils portent votre nom",
+      body:"Chaque chiffre nomme sa source, un second siège a refait les totaux, et le rapport est prêt. L'envoyer vous revient.",
+      detail:"Relu par : Grok HQ · 12 indicateurs · sources nommées sur chacun"}},
+    {who:"Codex CLI",what:"Documenter la source de chaque indicateur",h:0.9}]},
+  {name:"La DSI d'une PME", intro:"Deux informaticiens pour deux cents salariés, un logiciel de gestion de douze ans, des demandes tous les jours.",
+   punch:"Cinq demandes traitées dans la journée. La migration attendra la nuit, comme prévu.",
+   caught:"200 personnes", caughtLabel:"épargnées d'une coupure en pleine journée",
+   items:[
+    {who:"Claude Code",what:"Export des congés vers le nouvel outil RH",h:1.2},
+    {who:"Codex CLI",what:"Migrer la base de données vers le nouveau serveur",h:1.3,stop:{
+      head:"Une migration allait couper la gestion en plein après-midi",
+      body:"Le contrat revendiquait le serveur de production, une ressource qu'un seul travail peut tenir, et pendant les heures d'ouverture. Le lanceur a refusé : ce serveur est réservé à la fenêtre de nuit.",
+      saved:"Ce que ça aurait coûté : <b>deux cents personnes</b> sans logiciel de gestion un mardi à 15 h.",
+      tech:"$ tools/mission_launcher.py 431\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✓ siège démarrable, modèle et effort portés\n  ✓ capacités appariées exactement\n  ✓ aucun second écrivain\n  ✓ aucun commentaire n'amende un champ\n  ✗ <b>refusé — condition 8 : ressource exclusive revendiquée</b>\n\n    Host: prod-db, exclusive — réservé à la fenêtre 22 h – 5 h.\n    Deux travaux sur cette ressource, c'est le second qui coupe le premier.\n\n  rien n'a démarré · code de sortie 2"}},
+    {who:"Grok Build",what:"Corriger l'impression des bons de livraison",h:0.9},
+    {who:"Claude Code",what:"Mise à jour de sécurité du serveur de messagerie",h:1.0,gate:{
+      head:"Tout le monde sera déconnecté cinq minutes, et c'est à vous de choisir quand",
+      body:"La mise à jour est prête et testée sur la copie. Elle redémarre le serveur. Le moment vous revient.",
+      detail:"Testée sur la copie · redémarrage : 5 min · 200 boîtes concernées"}},
+    {who:"Codex CLI",what:"Inventaire des accès qui traînent",h:0.9}]}
  ],
  nocode:[
-  {who:"L'assistant qui rédige",what:"Réponse au dossier Meyer",h:1.5},
-  {who:"L'assistant qui chiffre",what:"Devis pour le chantier Lenoir",h:2,stop:{
-    head:"Un devis partait sur la grille de l'an dernier",
-    body:"La demande nommait la grille 2026. Le fichier que l'assistant a ouvert était celle de 2025. Il a été arrêté avant d'écrire une ligne, et on vous le dit maintenant plutôt qu'à la facturation.",
-    saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : un devis signé <b>4 200 € en dessous</b>, découvert six semaines plus tard.",
-    tech:null}},
-  {who:"L'assistant qui trie",what:"Trier et répondre aux demandes simples",h:1},
-  {who:"L'assistant qui rédige",what:"Réponse à la réclamation de Mme Aubert",h:1.5,gate:{
-    head:"Prête à partir, et ça porte votre nom",
-    body:"La réponse est écrite, elle nomme les documents qui ont servi, et une personne qui ne l'a pas rédigée l'a relue. L'envoi vous revient : c'est la seule chose ici qu'on ne peut pas reprendre.",
-    detail:"Relu par : Camille · sources : le dossier Aubert, les conditions 2026"}},
-  {who:"L'assistant qui rédige",what:"Compte-rendu de la réunion de ce matin",h:0.5}
- ]
+  {name:"Le cabinet", intro:"Un cabinet d'expertise comptable, quatre collaborateurs, des clients qui écrivent tous les jours.",
+   punch:"Vingt-trois réponses parties aujourd'hui. Vous en avez lu une.",
+   caught:"4 200 €", caughtLabel:"arrêté avant de sortir",
+   items:[
+    {who:"L'assistant qui rédige",what:"Réponse au dossier Meyer",h:1.2},
+    {who:"L'assistant qui chiffre",what:"Devis pour la reprise du dossier Lenoir",h:1.2,stop:{
+      head:"Un devis partait sur la grille de l'an dernier",
+      body:"La demande nommait la grille 2026. Le fichier que l'assistant a ouvert était celle de 2025. Il a été arrêté avant d'écrire une ligne, et on vous le dit maintenant plutôt qu'à la facturation.",
+      saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : un devis signé <b>4 200 € en dessous</b>, découvert six semaines plus tard.",tech:null}},
+    {who:"L'assistant qui trie",what:"Trier et répondre aux demandes simples",h:1.0},
+    {who:"L'assistant qui rédige",what:"Réponse à la réclamation de Mme Aubert",h:1.0,gate:{
+      head:"Prête à partir, et ça porte votre nom",
+      body:"La réponse est écrite, elle nomme les documents qui ont servi, et une personne qui ne l'a pas rédigée l'a relue. L'envoi vous revient.",
+      detail:"Relu par : Camille · sources : le dossier Aubert, les conditions 2026"}},
+    {who:"L'assistant qui rédige",what:"Compte-rendu de la réunion de ce matin",h:0.9}]},
+  {name:"L'hôtel", intro:"Un hôtel de soixante chambres, quarante demandes de séminaire par semaine, un responsable pour les chiffrer.",
+   punch:"Quarante devis partis avant midi. La semaine dernière, douze.",
+   caught:"6 800 €", caughtLabel:"de trop peu sur un devis, arrêté",
+   items:[
+    {who:"L'assistant qui chiffre",what:"Devis pour les quatorze demandes de séminaire d'hier",h:1.3},
+    {who:"L'assistant qui chiffre",what:"Devis mariage Garnier, cent vingt personnes",h:1.0,stop:{
+      head:"Un devis de mariage partait au tarif de basse saison",
+      body:"La demande nommait la grille haute saison. L'assistant a ouvert celle de l'hiver. Arrêté avant l'envoi, et on vous le dit maintenant plutôt que le jour du mariage.",
+      saved:"Ce que ça aurait coûté : un devis signé <b>6 800 € en dessous</b>, pour une date qu'on ne peut plus revendre.",tech:null}},
+    {who:"L'assistant qui répond",what:"Réponses aux avis en ligne de la semaine",h:1.0},
+    {who:"L'assistant qui rédige",what:"Proposition pour le séminaire Duval, trois jours",h:1.0,gate:{
+      head:"Dix-huit mille euros de contrat, et ça porte votre nom",
+      body:"La proposition est prête, les dates sont libres, une personne qui ne l'a pas écrite l'a relue. L'envoyer vous revient.",
+      detail:"Relu par : Inès · 3 jours · 40 chambres · grille haute saison vérifiée"}},
+    {who:"L'assistant qui trie",what:"Confirmations et relances du jour",h:0.9}]},
+  {name:"La boutique en ligne", intro:"Une boutique en ligne de trois personnes, deux mille produits, un catalogue jamais fini.",
+   punch:"Cent fiches écrites aujourd'hui. À ce rythme, le catalogue est fini dans un mois, pas dans trois ans.",
+   caught:"1 900 €", caughtLabel:"de retours acceptés hors délai, arrêtés",
+   items:[
+    {who:"L'assistant qui rédige",what:"Fiches produit, lot 1 : cinquante références",h:1.2},
+    {who:"L'assistant qui répond",what:"Réponses aux demandes de retour du week-end",h:1.0,stop:{
+      head:"Douze retours allaient être acceptés hors délai",
+      body:"La règle de la boutique dit trente jours. Douze demandes en avaient quarante-cinq. L'assistant n'a pas le droit d'accorder ce que la règle refuse : il s'est arrêté et vous les présente.",
+      saved:"Ce que ça aurait coûté : <b>1 900 € de remboursements</b> hors règle, et un précédent que tous les clients suivants invoqueront.",tech:null}},
+    {who:"L'assistant qui rédige",what:"Fiches produit, lot 2 : cinquante références",h:1.2},
+    {who:"L'assistant qui rédige",what:"Lettre de rentrée aux huit mille clients",h:1.0,gate:{
+      head:"Huit mille personnes vont la recevoir, et on ne rappelle pas un e-mail",
+      body:"Le texte est prêt, une personne qui ne l'a pas écrit l'a relu, les liens sont testés. L'envoi vous revient.",
+      detail:"Relu par : Thomas · 8 000 destinataires · 3 liens testés"}},
+    {who:"L'assistant qui trie",what:"Mise à jour des stocks depuis le fournisseur",h:0.9}]},
+  {name:"L'agence de communication", intro:"Une agence de six personnes, quatre clients à faire parler chaque jour.",
+   punch:"Quatre clients servis avant seize heures. Vous avez validé une publication.",
+   caught:"1 chiffre", caughtLabel:"inventé, arrêté avant publication",
+   items:[
+    {who:"L'assistant qui rédige",what:"Publications de la semaine pour le client Vidal",h:1.0},
+    {who:"L'assistant qui rédige",what:"Communiqué de presse pour le client Nexa",h:1.2,stop:{
+      head:"Un communiqué partait avec un chiffre que rien ne justifie",
+      body:"Le communiqué citait une croissance de 40 %. Aucun document fourni ne la contenait. La règle dit qu'un chiffre nomme sa source ou ne sort pas : le communiqué s'est arrêté à la porte.",
+      saved:"Ce que ça aurait coûté : <b>un chiffre inventé sous le nom d'un client</b>. La dernière fois, ça a coûté le client.",tech:null}},
+    {who:"L'assistant qui rédige",what:"Proposition commerciale pour un nouveau prospect",h:1.2},
+    {who:"L'assistant qui rédige",what:"Rapport mensuel du client Vidal, à publier",h:0.9,gate:{
+      head:"Ça part sous le nom du client, et c'est vous qui répondez",
+      body:"Le rapport est prêt, chaque chiffre nomme sa source, une personne qui ne l'a pas écrit l'a relu. Publier vous revient.",
+      detail:"Relu par : Sarah · 6 pages · 9 chiffres, 9 sources"}},
+    {who:"L'assistant qui trie",what:"Veille et revue de presse du matin",h:0.9}]},
+  {name:"Les ressources humaines", intro:"Le service RH d'une entreprise de trois cents personnes. Un poste ouvert, trente candidatures, et les outils que chacun utilise dans son coin.",
+   punch:"Trente candidats ont eu une réponse le jour même. Aucun CV n'est sorti de l'entreprise.",
+   caught:"30 CV", caughtLabel:"gardés dans l'entreprise",
+   items:[
+    {who:"L'assistant qui trie",what:"Tri des trente candidatures selon la fiche de poste",h:1.2},
+    {who:"L'assistant qui rédige",what:"Réponses aux candidats non retenus",h:1.0,stop:{
+      head:"Trente CV allaient partir dans un outil que personne n'a déclaré",
+      body:"La demande envoyait les candidatures vers l'outil gratuit qu'une collaboratrice utilise chez elle. Non déclaré veut dire non autorisé. Arrêté avant qu'un seul dossier ne sorte.",
+      saved:"Ce que ça aurait coûté : <b>trente dossiers personnels</b> chez un éditeur avec qui vous n'avez aucun contrat, et l'obligation de le déclarer.",tech:null}},
+    {who:"L'assistant qui rédige",what:"Fiche de poste pour le prochain recrutement",h:1.0},
+    {who:"L'assistant qui rédige",what:"Réponse à la demande de rupture conventionnelle de M. Roux",h:1.0,gate:{
+      head:"Ça engage l'entreprise, et ça porte votre nom",
+      body:"La réponse est prête, elle cite les textes qui s'appliquent, une personne qui ne l'a pas écrite l'a relue. L'envoyer vous revient.",
+      detail:"Relu par : Nadia · 2 textes cités · délai légal vérifié"}},
+    {who:"L'assistant qui trie",what:"Planning d'intégration des trois arrivants",h:0.9}]}
+ ]},
+ en:{ code:[
+  {name:"The software company", intro:"A team of six, a product in production, version 2.4 due on Friday.",
+   punch:"Five jobs delivered in one day. Last week the team shipped two.",
+   caught:"€4,200", caughtLabel:"caught before it went out",
+   items:[
+    {who:"Claude Code",what:"Fix the login bug three customers reported",h:1.2},
+    {who:"Codex CLI",what:"Invoice generator: move to the 2026 price list",h:1.3,stop:{
+      head:"Invoices were about to go out on last year's prices",
+      body:"The contract named the 2026 price file. The one on the machine was 2025. The launcher read the contract before starting and stopped there: nothing ran, nothing was sent.",
+      saved:"What it cost you: <b>nothing</b>. What it would have cost: invoices <b>€4,200 under</b>, found at chasing time.",
+      tech:"$ tools/mission_launcher.py 118\ngovernance 4f1c9ab · read at runtime\n\n  ✓ contract fields read from the governance commit\n  ✗ <b>refused — condition 1: required field missing or ambiguous</b>\n\n    Scope names prices/2026.csv. That path does not exist at this commit.\n    A mission that cannot state its terms is not a contract.\n\n  nothing started · exit code 2"}},
+    {who:"Grok Build",what:"Rewrite the tests for the export module",h:1.0},
+    {who:"Claude Code",what:"Release notes for 2.4",h:1.0,gate:{
+      head:"Ready to go out, and it carries your name",
+      body:"The notes are written, the checks are green, and a second seat that did not write them has read them. Publishing is yours: it is the one thing here that cannot be taken back.",
+      detail:"Reviewed by: Grok HQ · 14 files · 0 failures introduced"}},
+    {who:"Codex CLI",what:"Update the dependencies before the weekend",h:0.9}]},
+  {name:"The web agency", intro:"An eight-person agency that builds sites for clients. Three jobs in parallel.",
+   punch:"Three sites moved forward in a day, one delivered. You signed one thing.",
+   caught:"€3,100", caughtLabel:"of orders that would have gone nowhere",
+   items:[
+    {who:"Claude Code",what:"Morel law firm site: contact form and privacy notice",h:1.2},
+    {who:"Codex CLI",what:"Lenoir shop: switch payments to live",h:1.2,stop:{
+      head:"Live payments were about to be wired with the test credentials",
+      body:"The contract said live payments. A comment posted underneath set the sandbox credentials. The launcher validates the body of the request, not the comments: it refused and gave the comment's address.",
+      saved:"What it would have cost: a launch weekend where <b>€3,100 of orders</b> are collected nowhere.",
+      tech:"$ tools/mission_launcher.py 212\n\n  ✓ contract fields read from the governance commit\n  ✓ seat startable, model and effort carried\n  ✓ capabilities matched exactly\n  ✓ no second writer\n  ✗ <b>refused — condition 6: a comment sets a contract field</b>\n\n    issue #212, comment 3: “Mode: sandbox”. The body declares production.\n    A field set in a comment would govern the run unchecked.\n\n  nothing started · exit code 2"}},
+    {who:"Grok Build",what:"Beaurivage hotel site: photo gallery and mobile speed",h:1.0},
+    {who:"Claude Code",what:"Deliver the Morel site to the client",h:1.0,gate:{
+      head:"The client gets their access, and it carries your name",
+      body:"The site passes its checks, a second seat has walked every page, and the client is waiting for the email. Sending it is yours.",
+      detail:"Reviewed by: Grok HQ · 11 pages · form tested end to end"}},
+    {who:"Codex CLI",what:"Monthly progress report for the three clients",h:0.9}]},
+  {name:"The startup", intro:"Two founders, a product in beta, fifty users waiting for the paid version.",
+   punch:"The paid version is ready to go. The database was not wiped on the way.",
+   caught:"50 accounts", caughtLabel:"saved from a deletion with no copy",
+   items:[
+    {who:"Claude Code",what:"Payment page and monthly subscription",h:1.3},
+    {who:"Codex CLI",what:"Delete the test accounts from the database",h:0.9,stop:{
+      head:"A deletion was about to run with no backup",
+      body:"The contract ordered the test accounts deleted. It named no backup first. The seat started, read its stop conditions, and stopped before deleting anything. It wrote that in its report.",
+      saved:"What it would have cost: <b>the first fifty users</b>, wiped along with the test accounts, with no copy.",
+      tech:"Transmission report — mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>: the contract orders a deletion and names\nno backup taken first. Nothing was deleted. Scope untouched.\n\nNext decision owner: Chief Architect. Smallest next action: name the backup."}},
+    {who:"Grok Build",what:"Import contacts from an Excel file",h:1.0},
+    {who:"Claude Code",what:"Announcement email for the paid version",h:1.0,gate:{
+      head:"Fifty people will get this, and an email cannot be recalled",
+      body:"The text is ready, a second seat has read it, the recipient list is the right one. Sending is yours.",
+      detail:"Reviewed by: Grok HQ · 50 recipients · payment link tested"}},
+    {who:"Codex CLI",what:"Sign-ups dashboard",h:1.0}]},
+  {name:"The data team", intro:"Three people who produce the figures management reads every Monday morning.",
+   punch:"Monday's report is ready on Thursday night, and every figure says where it came from.",
+   caught:"1 report", caughtLabel:"8% wrong, stopped before the board",
+   items:[
+    {who:"Claude Code",what:"Fix the revenue-by-region calculation",h:1.2},
+    {who:"Codex CLI",what:"Weekly report: add margin per product",h:1.2,stop:{
+      head:"Margin was about to be computed on last year's costs",
+      body:"The contract required 2026 costs. The only file available was 2025. The seat stopped under the contract's stop condition instead of producing a plausible, wrong figure.",
+      saved:"What it would have cost: a margin <b>8% wrong</b>, shown to the board on Monday, and a decision taken on it.",
+      tech:"Transmission report — mission #305\n\nStopped under <b>stop condition 2 (ITEM)</b>: the only cost file at this commit is\ncosts/2025.csv; the contract requires 2026. A figure computed on it would be\nplausible and wrong. Item halted, other items continued."}},
+    {who:"Grok Build",what:"Clean the duplicates in the customer base",h:1.0},
+    {who:"Claude Code",what:"Send Monday's report to management",h:0.9,gate:{
+      head:"Management will read these figures, and they carry your name",
+      body:"Every figure names its source, a second seat has redone the totals, and the report is ready. Sending it is yours.",
+      detail:"Reviewed by: Grok HQ · 12 indicators · a source on each"}},
+    {who:"Codex CLI",what:"Document the source of every indicator",h:0.9}]},
+  {name:"An SME's IT department", intro:"Two IT people for two hundred staff, a twelve-year-old management system, requests every day.",
+   punch:"Five requests handled in a day. The migration will wait for the night, as planned.",
+   caught:"200 people", caughtLabel:"spared an outage in the middle of the day",
+   items:[
+    {who:"Claude Code",what:"Export leave records to the new HR tool",h:1.2},
+    {who:"Codex CLI",what:"Migrate the database to the new server",h:1.3,stop:{
+      head:"A migration was about to cut the system mid-afternoon",
+      body:"The contract claimed the production server, a resource only one job can hold, during opening hours. The launcher refused: that server is reserved for the night window.",
+      saved:"What it would have cost: <b>two hundred people</b> without their management system on a Tuesday at 3 pm.",
+      tech:"$ tools/mission_launcher.py 431\n\n  ✓ contract fields read from the governance commit\n  ✓ seat startable, model and effort carried\n  ✓ capabilities matched exactly\n  ✓ no second writer\n  ✓ no comment amends a field\n  ✗ <b>refused — condition 8: exclusive resource claimed</b>\n\n    Host: prod-db, exclusive — reserved for the 22:00–05:00 window.\n    Two jobs on that resource means the second one cuts the first.\n\n  nothing started · exit code 2"}},
+    {who:"Grok Build",what:"Fix the delivery-note printing",h:0.9},
+    {who:"Claude Code",what:"Security update on the mail server",h:1.0,gate:{
+      head:"Everyone will be disconnected for five minutes, and when is yours to choose",
+      body:"The update is ready and tested on the copy. It restarts the server. The moment is yours.",
+      detail:"Tested on the copy · restart: 5 min · 200 mailboxes affected"}},
+    {who:"Codex CLI",what:"Inventory of access rights left lying around",h:0.9}]}
+ ],
+ nocode:[
+  {name:"The firm", intro:"An accounting firm, four associates, clients who write every day.",
+   punch:"Twenty-three replies went out today. You read one.",
+   caught:"€4,200", caughtLabel:"caught before it went out",
+   items:[
+    {who:"The drafting assistant",what:"Reply to the Meyer file",h:1.2},
+    {who:"The quote assistant",what:"Quote for taking over the Lenoir file",h:1.2,stop:{
+      head:"A quote was about to go out on last year's prices",
+      body:"The request named the 2026 rate card. The file the assistant reached for was 2025. It was stopped before writing a line, and you are being told now rather than at invoicing.",
+      saved:"What it cost you: <b>nothing</b>. What it would have cost: a signed quote <b>€4,200 under</b>, found six weeks later.",tech:null}},
+    {who:"The inbox assistant",what:"Sort and answer the simple requests",h:1.0},
+    {who:"The drafting assistant",what:"Reply to Mrs Aubert's complaint",h:1.0,gate:{
+      head:"Ready to go out, and it carries your name",
+      body:"The reply is written, it names the documents it used, and a person who did not write it has read it. Sending is yours.",
+      detail:"Read by: Camille · sources: the Aubert file, the 2026 terms"}},
+    {who:"The drafting assistant",what:"Minutes of this morning's meeting",h:0.9}]},
+  {name:"The hotel", intro:"A sixty-room hotel, forty group enquiries a week, one manager to price them.",
+   punch:"Forty quotes out before noon. Last week, twelve.",
+   caught:"€6,800", caughtLabel:"too low on one quote, stopped",
+   items:[
+    {who:"The quote assistant",what:"Quotes for yesterday's fourteen seminar enquiries",h:1.3},
+    {who:"The quote assistant",what:"Garnier wedding quote, a hundred and twenty guests",h:1.0,stop:{
+      head:"A wedding quote was about to go out at low-season rates",
+      body:"The request named the high-season rate card. The assistant opened the winter one. Stopped before sending, and you are being told now rather than on the wedding day.",
+      saved:"What it would have cost: a signed quote <b>€6,800 under</b>, for a date that cannot be sold twice.",tech:null}},
+    {who:"The replies assistant",what:"Replies to this week's online reviews",h:1.0},
+    {who:"The drafting assistant",what:"Proposal for the Duval seminar, three days",h:1.0,gate:{
+      head:"An eighteen-thousand-euro contract, and it carries your name",
+      body:"The proposal is ready, the dates are free, a person who did not write it has read it. Sending it is yours.",
+      detail:"Read by: Inès · 3 days · 40 rooms · high-season rates checked"}},
+    {who:"The inbox assistant",what:"Today's confirmations and follow-ups",h:0.9}]},
+  {name:"The online shop", intro:"A three-person online shop, two thousand products, a catalogue never finished.",
+   punch:"A hundred product pages written today. At this pace the catalogue is done in a month, not three years.",
+   caught:"€1,900", caughtLabel:"of late returns accepted, stopped",
+   items:[
+    {who:"The drafting assistant",what:"Product pages, batch 1: fifty items",h:1.2},
+    {who:"The replies assistant",what:"Replies to the weekend's return requests",h:1.0,stop:{
+      head:"Twelve returns were about to be accepted past the deadline",
+      body:"The shop's rule says thirty days. Twelve requests were at forty-five. The assistant may not grant what the rule refuses: it stopped and is showing them to you.",
+      saved:"What it would have cost: <b>€1,900 in refunds</b> outside the rule, and a precedent every later customer will quote.",tech:null}},
+    {who:"The drafting assistant",what:"Product pages, batch 2: fifty items",h:1.2},
+    {who:"The drafting assistant",what:"Autumn letter to eight thousand customers",h:1.0,gate:{
+      head:"Eight thousand people will get this, and an email cannot be recalled",
+      body:"The text is ready, a person who did not write it has read it, the links are tested. Sending is yours.",
+      detail:"Read by: Thomas · 8,000 recipients · 3 links tested"}},
+    {who:"The inbox assistant",what:"Stock update from the supplier",h:0.9}]},
+  {name:"The communications agency", intro:"A six-person agency, four clients to keep talking every day.",
+   punch:"Four clients served before four o'clock. You approved one publication.",
+   caught:"1 figure", caughtLabel:"invented, stopped before publication",
+   items:[
+    {who:"The drafting assistant",what:"This week's posts for the Vidal account",h:1.0},
+    {who:"The drafting assistant",what:"Press release for the Nexa account",h:1.2,stop:{
+      head:"A press release was about to go out with a figure nothing supports",
+      body:"The release quoted 40% growth. No document provided contained it. The rule says a figure names its source or does not go out: the release stopped at the gate.",
+      saved:"What it would have cost: <b>an invented figure under a client's name</b>. Last time, it cost the client.",tech:null}},
+    {who:"The drafting assistant",what:"Commercial proposal for a new prospect",h:1.2},
+    {who:"The drafting assistant",what:"Vidal's monthly report, to publish",h:0.9,gate:{
+      head:"It goes out under the client's name, and you answer for it",
+      body:"The report is ready, every figure names its source, a person who did not write it has read it. Publishing is yours.",
+      detail:"Read by: Sarah · 6 pages · 9 figures, 9 sources"}},
+    {who:"The inbox assistant",what:"Morning monitoring and press review",h:0.9}]},
+  {name:"Human resources", intro:"The HR department of a three-hundred-person company. One open position, thirty applications, and the tools everyone uses on their own.",
+   punch:"Thirty candidates got an answer the same day. Not one CV left the company.",
+   caught:"30 CVs", caughtLabel:"kept inside the company",
+   items:[
+    {who:"The sorting assistant",what:"Sort the thirty applications against the job description",h:1.2},
+    {who:"The drafting assistant",what:"Replies to the candidates not selected",h:1.0,stop:{
+      head:"Thirty CVs were about to go into a tool nobody declared",
+      body:"The request sent the applications to the free tool a colleague uses at home. Not declared means not allowed. Stopped before a single file left.",
+      saved:"What it would have cost: <b>thirty personal files</b> with a vendor you have no contract with, and a duty to report it.",tech:null}},
+    {who:"The drafting assistant",what:"Job description for the next hire",h:1.0},
+    {who:"The drafting assistant",what:"Reply to Mr Roux's request for a negotiated departure",h:1.0,gate:{
+      head:"It binds the company, and it carries your name",
+      body:"The reply is ready, it cites the rules that apply, a person who did not write it has read it. Sending it is yours.",
+      detail:"Read by: Nadia · 2 rules cited · legal deadline checked"}},
+    {who:"The sorting assistant",what:"Onboarding schedule for the three newcomers",h:0.9}]}
+ ]}
 };
-
 var STATE_LABEL = {
  en:{next:"waiting",run:"running",you:"for you",done:"landed",stop:"stopped"},
  fr:{next:"à venir",run:"en cours",you:"pour vous",done:"atterri",stop:"arrêté"}
 };
 
-var CEIL=2, TICK=120, items=[], phase="idle", clicks=0, timer=null, saved=false, track="code";
+var CEIL=2, TICK=120, items=[], phase="idle", clicks=0, timer=null, saved=false, track="code", dayIx=0;
 var sideKey="", built=false;
 
 function t(k){ return T[LANG][k]; }
+function day(){ return DAYS[LANG][track][dayIx]; }
 
 function build(){
- items = SCEN[LANG][track].map(function(s,i){
+ items = day().items.map(function(s,i){
   return {i:i, who:s.who, what:s.what, h:s.h, stop:s.stop||null, gate:s.gate||null,
           st:"next", p:0, fixed:false, gateDone:false};
  });
@@ -291,7 +562,7 @@ function doneH(){
  var s=0,i; for(i=0;i<items.length;i++){ var it=items[i]; s += it.h * (it.st==="done"?1:it.p/100); }
  return s;
 }
-function fmtHours(v){ return (LANG==="fr"? String(v).replace(".",",") : v)+" h"; }
+function fmtHours(v){ var r=Math.round(v*10)/10; return (LANG==="fr"? String(r).replace(".",",") : r)+" h"; }
 function clockText(){
  if(phase==="idle") return t("clockLabel");
  var hour = 8 + 9*(doneH()/totalH());
@@ -350,7 +621,7 @@ function syncSide(){
  if(key===sideKey) return;
  sideKey=key;
  if(key==="idle"){
-  html=panel(t("startK"),t("startH"),t("startP"),"",
+  html=panel(t("startK"),day().name,day().intro+" "+t("startP"),"",
    '<button class="btn primary big" id="go">'+t("startBtn")+'</button>');
  } else if(key.indexOf("stop")===0){
   var x=p.stop;
@@ -364,11 +635,12 @@ function syncSide(){
    '<button class="btn ghost" id="back">'+t("ret")+'</button>');
  } else if(key==="end"){
   html='<div class="panel lead"><p class="kicker">'+t("endK")+'</p><h3>'+t("endH")+'</h3>'+
+   '<p class="punch">'+day().punch+'</p>'+
    '<div class="tally">'+
     '<div class="good"><b>'+items.length+'</b><span>'+t("tDone")+'</span></div>'+
     '<div class="hot"><b>'+clicks+'</b><span>'+t("tClicks")+'</span></div>'+
     '<div><b>'+fmtHours(totalH())+'</b><span>'+t("tWork")+'</span></div>'+
-    (saved?'<div class="hot"><b>4 200 €</b><span>'+t("tSaved")+'</span></div>':'')+
+    (saved?'<div class="hot"><b>'+day().caught+'</b><span>'+day().caughtLabel+'</span></div>':'')+
    '</div>'+
    '<p class="strongline" style="margin-top:16px">'+t("endP")+'</p>'+
    '<div class="acts">'+
@@ -401,7 +673,7 @@ function tick(){
  for(i=0;i<items.length;i++){
   it=items[i];
   if(it.st==="run"){
-   it.p += 100/(it.h*55+22);
+   it.p += 100/(it.h*40+18);
    if(it.p>=100){
     it.p=100;
     if(it.gate && !it.gateDone){ it.st="you"; it.gateDone=true; }
@@ -430,7 +702,12 @@ function paint(){
  document.getElementById("eyebrow").textContent=t("eyebrow");
  document.getElementById("title").textContent=t("title");
  document.getElementById("lede").textContent=t("lede");
- document.getElementById("boardTitle").textContent=t("boardTitle");
+ document.getElementById("boardTitle").textContent=day().name;
+ var ds=DAYS[LANG][track], dh="";
+ for(var d=0;d<ds.length;d++){
+  dh+='<button class="day" data-day="'+d+'" aria-pressed="'+(d===dayIx)+'">'+ds[d].name+'</button>';
+ }
+ document.getElementById("days").innerHTML=dh;
  document.getElementById("foot1").textContent=t("foot1");
  document.getElementById("foot2").textContent=t("foot2");
  var bs=document.querySelectorAll(".tk"),i;
@@ -443,7 +720,8 @@ function paint(){
 
 document.addEventListener("click",function(e){
  var b=e.target.closest("button"); if(!b) return;
- if(b.getAttribute("data-track")){ track=b.getAttribute("data-track"); build(); paint(); return; }
+ if(b.getAttribute("data-track")){ track=b.getAttribute("data-track"); dayIx=0; build(); paint(); return; }
+ if(b.getAttribute("data-day")!==null){ dayIx=+b.getAttribute("data-day"); build(); paint(); return; }
  if(b.id==="go"){ clicks++; start(); return; }
  if(b.id==="fix"){
   clicks++; saved=true;
