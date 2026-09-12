@@ -208,6 +208,22 @@
   .langswitch{max-width:1180px;margin:0 auto;padding:0 22px 34px;color:var(--muted);
     font-size:13px;font-family:"IBM Plex Mono",monospace}
   .langswitch a{color:var(--ink-2)}
+  /* la carte de decision repond vraiment : c'est ce que la page affirme faire */
+  .act .opt{cursor:pointer}
+  .decision.settled .opt{cursor:default; opacity:.55}
+  .decision.settled .opt.on{opacity:1}
+  .act .go, .act .back{cursor:pointer}
+  .act .go.done{background:transparent; border:1px solid var(--line-strong); color:var(--ink-2); box-shadow:none}
+  /* le champ libre se tape : il porte sa consigne, et ce qu'on y ecrit devient la decision */
+  .act .free{cursor:text}
+  .act .free:empty::before{content:attr(data-placeholder); color:var(--muted)}
+  .act .free:focus{outline:none; border-color:var(--s); color:var(--ink)}
+  .act .free.typed{color:var(--ink)}
+  .decision.settled .free{cursor:default; opacity:.5}
+  .decision.settled .free.typed{opacity:1}
+  /* une decision enregistree prend la teinte de l'etat atterri : l'accent, jamais le fond */
+  .act .exact.settled{border-color:var(--s-done)}
+  .act .exact.settled .lbl{color:var(--s-done)}
 </style>
 </head>
 <body>
@@ -238,7 +254,7 @@
   </div>
 
   <div class="demoflag">
-    <b>A frozen demonstration, on the fictional Lantern example.</b> The controls below are shown, not live — this page writes nothing.
+    <b>A demonstration, on the fictional Lantern example.</b> The decision card answers: choose or write, and the page records the choice in front of you. It writes nowhere and never merges.
     What the kit publishes today is the board <em>reader</em>, <code>templates/board/board.html</code>, which reads a real repository
     through the viewer's own GitHub connector; <a href="reader/">its demonstration is here</a>. The host reading and the decision path
     shown on this page are newer than that template and run on the repository this was built in. They reach the kit when they have
@@ -250,7 +266,7 @@
     <div class="sechead"><span class="chev"></span><span class="nm">What is owed to you, and to nobody else</span></div>
     <p class="lede">A reserved gate is not a wait. <span class="mono" style="font-size:.8em">gate:po</span> says who will decide; it does not say the decision has arrived.</p>
 
-    <article class="decision">
+    <article class="decision" data-act-badge="landed" data-recorded="Recorded" data-act-note="Recorded at 11:14, in the name of simon. The gate:po-approved label is set beside gate:po, and the hourly task merges under its five unchanged conditions." data-hold-note="Recorded at 11:14. Nothing is published, the decision stays yours, and the delivery does not reach the hourly task." data-written-note="Recorded at 11:14, word for word, in the name of simon. Nothing is merged: what you wrote goes on the issue, and the decision stays yours." data-lbl-act="What was published, word for word" data-lbl-held="What is recorded, word for word" data-lbl-written="What you write, and what will be published">
       <div class="head">
         <a>PR #133</a>
         <h3>The handshake retries, and the bench says when to stop</h3>
@@ -269,21 +285,27 @@
         <div>
           <p class="lbl">Choose</p>
           <div class="opts">
-            <div class="opt on"><span class="k">approve</span><span>Approve the delivery — sets <span class="mono">gate:po-approved</span></span></div>
-            <div class="opt"><span class="k">hold</span><span>Not yet — the door stays mine</span></div>
+            <div class="opt on" data-k="act"><span class="k">approve</span><span>Approve the delivery — sets <span class="mono">gate:po-approved</span></span></div>
+            <div class="opt" data-k="hold"><span class="k">hold</span><span>Not yet — the door stays mine</span></div>
           </div>
         </div>
         <div>
           <p class="lbl">Or write, if no option fits</p>
-          <div class="free">What is missing, or what is wrong.</div>
+          <div class="free" contenteditable="true" role="textbox" aria-multiline="true" aria-label="What is missing, or what is wrong" data-placeholder="What is missing, or what is wrong."></div>
         </div>
         <div class="exact">
           <p class="lbl">What will be published, word for word</p>
-          <pre>Product Owner's decision: **approved**. The delivery passes to the
+          <pre data-for="act">Product Owner's decision: **approved**. The delivery passes to the
 hourly task, which merges under its five unchanged conditions.
 
 *Decided from the workstream board, and recorded by it. The merge
 stays with the hourly task, under its five conditions.*</pre>
+          <pre data-for="hold" hidden>Nothing is published.
+
+Held by the Product Owner: gate:po is not joined by
+gate:po-approved, so the hourly task will not see this
+delivery, and the decision stays theirs.</pre>
+          <pre data-for="write" hidden></pre>
           <p class="also">Posted on the issue in the name of <b>simon</b>. And <span class="mono">gate:po</span> gains <span class="mono">gate:po-approved</span> beside it — that is the label the hourly task reads, and it is what merges. This page records a decision; it never merges.</p>
         </div>
         <div class="row">
@@ -433,3 +455,87 @@ stays with the hourly task, under its five conditions.*</pre>
 </script>
 </body>
 </html>
+<script>
+/* La decision se prend sur la page. Trois chemins : l'une des deux options, ou ce
+   que vous ecrivez vous-meme. Rien n'est publie ni envoye : la page enregistre un
+   choix devant vous et le montre, ce qui est exactement ce qu'elle affirme faire.
+   Meme script sur les quatre demonstrations, les deux pistes et les deux langues. */
+(function () {
+  var card = document.querySelector(".decision"); if (!card) return;
+  var D = card.dataset;
+  var opts = [].slice.call(card.querySelectorAll(".opt"));
+  var exact = card.querySelector(".exact");
+  var lbl = exact.querySelector(".lbl");
+  var pres = [].slice.call(exact.querySelectorAll("pre"));
+  var written = exact.querySelector('pre[data-for="write"]');
+  var free = card.querySelector(".free");
+  var go = card.querySelector(".go"), back = card.querySelector(".back");
+  var badge = card.querySelector(".head .badge");
+  var tileYou = document.querySelector(".tile.s-you b");
+  var tileDone = document.querySelector(".tile.s-done b");
+  var note = document.createElement("p");
+  note.className = "also"; note.hidden = true; exact.appendChild(note);
+  var start = {
+    badgeText: badge.textContent, badgeClass: badge.className, lbl: lbl.textContent,
+    you: tileYou ? tileYou.textContent : null, done: tileDone ? tileDone.textContent : null,
+    goText: go.textContent
+  };
+  function settled() { return card.classList.contains("settled"); }
+  function choice() { var o = card.querySelector(".opt.on"); return o ? o.dataset.k : "write"; }
+  function show(k) {
+    opts.forEach(function (o) { o.classList.toggle("on", o.dataset.k === k); });
+    pres.forEach(function (p) { p.hidden = p.dataset.for !== k; });
+    lbl.textContent = k === "write" ? D.lblWritten : start.lbl;
+  }
+  function syncFree() {
+    var t = free.textContent.trim();
+    free.classList.toggle("typed", t.length > 0);
+    if (t.length) { written.textContent = t; show("write"); } else { show("act"); }
+  }
+  function reset() {
+    free.textContent = ""; free.classList.remove("typed");
+    show("act"); note.hidden = true; exact.classList.remove("settled");
+    badge.textContent = start.badgeText; badge.className = start.badgeClass;
+    if (tileYou) tileYou.textContent = start.you;
+    if (tileDone) tileDone.textContent = start.done;
+    go.textContent = start.goText; go.classList.remove("done");
+    free.setAttribute("contenteditable", "true");
+    card.classList.remove("settled");
+  }
+  function settle() {
+    var k = choice();
+    if (k === "act") {
+      badge.textContent = D.actBadge; badge.className = "badge s-done";
+      if (tileYou) tileYou.textContent = String(Math.max(0, parseInt(start.you, 10) - 1));
+      if (tileDone) tileDone.textContent = String(parseInt(start.done, 10) + 1);
+      note.textContent = D.actNote; lbl.textContent = D.lblAct;
+    } else if (k === "hold") {
+      note.textContent = D.holdNote; lbl.textContent = D.lblHeld;
+    } else {
+      note.textContent = D.writtenNote; lbl.textContent = D.lblHeld;
+    }
+    note.hidden = false; exact.classList.add("settled");
+    go.textContent = D.recorded; go.classList.add("done");
+    free.setAttribute("contenteditable", "false");
+    card.classList.add("settled");
+  }
+  opts.forEach(function (o) {
+    o.setAttribute("role", "button"); o.tabIndex = 0;
+    function pick() { if (settled()) return; free.textContent = ""; free.classList.remove("typed"); show(o.dataset.k); }
+    o.addEventListener("click", pick);
+    o.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  });
+  free.addEventListener("input", function () { if (!settled()) syncFree(); });
+  free.addEventListener("paste", function (e) {
+    e.preventDefault();
+    var t = (e.clipboardData || window.clipboardData).getData("text");
+    document.execCommand("insertText", false, t.replace(/\s+/g, " "));
+  });
+  [go, back].forEach(function (el) { el.setAttribute("role", "button"); el.tabIndex = 0; });
+  go.addEventListener("click", function () { if (!settled()) settle(); });
+  back.addEventListener("click", reset);
+  go.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!settled()) settle(); } });
+  back.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); reset(); } });
+  show("act");
+})();
+</script>

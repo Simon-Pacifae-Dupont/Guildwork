@@ -208,6 +208,22 @@
   .langswitch{max-width:1180px;margin:0 auto;padding:0 22px 34px;color:var(--muted);
     font-size:13px;font-family:"IBM Plex Mono",monospace}
   .langswitch a{color:var(--ink-2)}
+  /* la carte de decision repond vraiment : c'est ce que la page affirme faire */
+  .act .opt{cursor:pointer}
+  .decision.settled .opt{cursor:default; opacity:.55}
+  .decision.settled .opt.on{opacity:1}
+  .act .go, .act .back{cursor:pointer}
+  .act .go.done{background:transparent; border:1px solid var(--line-strong); color:var(--ink-2); box-shadow:none}
+  /* le champ libre se tape : il porte sa consigne, et ce qu'on y ecrit devient la decision */
+  .act .free{cursor:text}
+  .act .free:empty::before{content:attr(data-placeholder); color:var(--muted)}
+  .act .free:focus{outline:none; border-color:var(--s); color:var(--ink)}
+  .act .free.typed{color:var(--ink)}
+  .decision.settled .free{cursor:default; opacity:.5}
+  .decision.settled .free.typed{opacity:1}
+  /* une decision enregistree prend la teinte de l'etat atterri : l'accent, jamais le fond */
+  .act .exact.settled{border-color:var(--s-done)}
+  .act .exact.settled .lbl{color:var(--s-done)}
 </style>
 </head>
 <body>
@@ -238,14 +254,14 @@
   </div>
 
   <div class="demoflag">
-    <b>Une démonstration figée, sur l’exemple fictif Lantern.</b> Les commandes ci-dessous sont montrées, pas actives — cette page n’écrit rien. Ce que le pack publie aujourd’hui, c’est le <em>lecteur</em> du tableau, <code>templates/board/board.html</code>, qui lit un vrai dépôt par le connecteur GitHub du lecteur lui-même ; <a href="reader/">sa démonstration est ici</a>. La lecture par l’hôte et le chemin de décision montrés sur cette page sont plus récents que ce gabarit, et tournent sur le dépôt où tout ceci a été construit. Ils rejoindront le pack quand ils auront cessé de bouger — c’est la règle que suit tout le reste de ce pack.</div>
+    <b>Une démonstration, sur l’exemple fictif Lantern.</b> La carte de décision répond : choisissez ou écrivez, et la page enregistre le choix devant vous. Elle n’écrit nulle part et ne fusionne jamais. Ce que le pack publie aujourd’hui, c’est le <em>lecteur</em> du tableau, <code>templates/board/board.html</code>, qui lit un vrai dépôt par le connecteur GitHub du lecteur lui-même ; <a href="reader/">sa démonstration est ici</a>. La lecture par l’hôte et le chemin de décision montrés sur cette page sont plus récents que ce gabarit, et tournent sur le dépôt où tout ceci a été construit. Ils rejoindront le pack quand ils auront cessé de bouger — c’est la règle que suit tout le reste de ce pack.</div>
 
 
   <section class="sec">
     <div class="sechead"><span class="chev"></span><span class="nm">Ce qu’on vous doit, à vous et à personne d’autre</span></div>
     <p class="lede">Une porte réservée n’est pas une attente. <span class="mono" style="font-size:.8em">gate:po</span> dit qui tranchera ; il ne dit pas que la décision est arrivée.</p>
 
-    <article class="decision">
+    <article class="decision" data-act-badge="posé" data-recorded="Enregistré" data-act-note="Enregistré à 11:14, au nom de simon. L’étiquette gate:po-approved est posée à côté de gate:po, et la tâche horaire fusionne sous ses cinq conditions inchangées." data-hold-note="Enregistré à 11:14. Rien n’est publié, la décision reste la vôtre, et la livraison n’atteint pas la tâche horaire." data-written-note="Enregistré à 11:14, mot pour mot, au nom de simon. Rien n’est fusionné : ce que vous avez écrit part sur l’issue, et la décision reste la vôtre." data-lbl-act="Ce qui a été publié, mot pour mot" data-lbl-held="Ce qui est enregistré, mot pour mot" data-lbl-written="Ce que vous écrivez, et qui sera publié">
       <div class="head">
         <a>PR #133</a>
         <h3>Le dialogue retente, et le banc dit quand s’arrêter</h3>
@@ -264,21 +280,27 @@
         <div>
           <p class="lbl">Choisir</p>
           <div class="opts">
-            <div class="opt on"><span class="k">approuver</span><span>Approuver la livraison — pose <span class="mono">gate:po-approved</span></span></div>
-            <div class="opt"><span class="k">garder</span><span>Pas encore — la porte reste la mienne</span></div>
+            <div class="opt on" data-k="act"><span class="k">approuver</span><span>Approuver la livraison — pose <span class="mono">gate:po-approved</span></span></div>
+            <div class="opt" data-k="hold"><span class="k">garder</span><span>Pas encore — la porte reste la mienne</span></div>
           </div>
         </div>
         <div>
           <p class="lbl">Ou écrire, si aucune option ne convient</p>
-          <div class="free">Ce qui manque, ou ce qui ne va pas.</div>
+          <div class="free" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Ce qui manque, ou ce qui ne va pas" data-placeholder="Ce qui manque, ou ce qui ne va pas."></div>
         </div>
         <div class="exact">
           <p class="lbl">Ce qui sera publié, mot pour mot</p>
-          <pre>Décision du Product Owner : **approuvée**. La livraison passe à la
+          <pre data-for="act">Décision du Product Owner : **approuvée**. La livraison passe à la
 tâche horaire, qui fusionne sous ses cinq conditions inchangées.
 
 *Décidé depuis le tableau des chantiers, et enregistré par lui. La
 fusion reste à la tâche horaire, sous ses cinq conditions.*</pre>
+          <pre data-for="hold" hidden>Rien n’est publié.
+
+Gardé par le Product Owner : gate:po n’est pas doublé de
+gate:po-approved, donc la tâche horaire ne verra pas cette
+livraison, et la décision reste la sienne.</pre>
+          <pre data-for="write" hidden></pre>
           <p class="also">Publié sur l’issue au nom de <b>simon</b>. Et <span class="mono">gate:po</span> gagne <span class="mono">gate:po-approved</span> à côté de lui — c’est l’étiquette que lit la tâche horaire, et c’est elle qui fusionne. Cette page enregistre une décision ; elle ne fusionne jamais.</p>
         </div>
         <div class="row">
@@ -428,3 +450,87 @@ fusion reste à la tâche horaire, sous ses cinq conditions.*</pre>
 </script>
 </body>
 </html>
+<script>
+/* La decision se prend sur la page. Trois chemins : l'une des deux options, ou ce
+   que vous ecrivez vous-meme. Rien n'est publie ni envoye : la page enregistre un
+   choix devant vous et le montre, ce qui est exactement ce qu'elle affirme faire.
+   Meme script sur les quatre demonstrations, les deux pistes et les deux langues. */
+(function () {
+  var card = document.querySelector(".decision"); if (!card) return;
+  var D = card.dataset;
+  var opts = [].slice.call(card.querySelectorAll(".opt"));
+  var exact = card.querySelector(".exact");
+  var lbl = exact.querySelector(".lbl");
+  var pres = [].slice.call(exact.querySelectorAll("pre"));
+  var written = exact.querySelector('pre[data-for="write"]');
+  var free = card.querySelector(".free");
+  var go = card.querySelector(".go"), back = card.querySelector(".back");
+  var badge = card.querySelector(".head .badge");
+  var tileYou = document.querySelector(".tile.s-you b");
+  var tileDone = document.querySelector(".tile.s-done b");
+  var note = document.createElement("p");
+  note.className = "also"; note.hidden = true; exact.appendChild(note);
+  var start = {
+    badgeText: badge.textContent, badgeClass: badge.className, lbl: lbl.textContent,
+    you: tileYou ? tileYou.textContent : null, done: tileDone ? tileDone.textContent : null,
+    goText: go.textContent
+  };
+  function settled() { return card.classList.contains("settled"); }
+  function choice() { var o = card.querySelector(".opt.on"); return o ? o.dataset.k : "write"; }
+  function show(k) {
+    opts.forEach(function (o) { o.classList.toggle("on", o.dataset.k === k); });
+    pres.forEach(function (p) { p.hidden = p.dataset.for !== k; });
+    lbl.textContent = k === "write" ? D.lblWritten : start.lbl;
+  }
+  function syncFree() {
+    var t = free.textContent.trim();
+    free.classList.toggle("typed", t.length > 0);
+    if (t.length) { written.textContent = t; show("write"); } else { show("act"); }
+  }
+  function reset() {
+    free.textContent = ""; free.classList.remove("typed");
+    show("act"); note.hidden = true; exact.classList.remove("settled");
+    badge.textContent = start.badgeText; badge.className = start.badgeClass;
+    if (tileYou) tileYou.textContent = start.you;
+    if (tileDone) tileDone.textContent = start.done;
+    go.textContent = start.goText; go.classList.remove("done");
+    free.setAttribute("contenteditable", "true");
+    card.classList.remove("settled");
+  }
+  function settle() {
+    var k = choice();
+    if (k === "act") {
+      badge.textContent = D.actBadge; badge.className = "badge s-done";
+      if (tileYou) tileYou.textContent = String(Math.max(0, parseInt(start.you, 10) - 1));
+      if (tileDone) tileDone.textContent = String(parseInt(start.done, 10) + 1);
+      note.textContent = D.actNote; lbl.textContent = D.lblAct;
+    } else if (k === "hold") {
+      note.textContent = D.holdNote; lbl.textContent = D.lblHeld;
+    } else {
+      note.textContent = D.writtenNote; lbl.textContent = D.lblHeld;
+    }
+    note.hidden = false; exact.classList.add("settled");
+    go.textContent = D.recorded; go.classList.add("done");
+    free.setAttribute("contenteditable", "false");
+    card.classList.add("settled");
+  }
+  opts.forEach(function (o) {
+    o.setAttribute("role", "button"); o.tabIndex = 0;
+    function pick() { if (settled()) return; free.textContent = ""; free.classList.remove("typed"); show(o.dataset.k); }
+    o.addEventListener("click", pick);
+    o.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  });
+  free.addEventListener("input", function () { if (!settled()) syncFree(); });
+  free.addEventListener("paste", function (e) {
+    e.preventDefault();
+    var t = (e.clipboardData || window.clipboardData).getData("text");
+    document.execCommand("insertText", false, t.replace(/\s+/g, " "));
+  });
+  [go, back].forEach(function (el) { el.setAttribute("role", "button"); el.tabIndex = 0; });
+  go.addEventListener("click", function () { if (!settled()) settle(); });
+  back.addEventListener("click", reset);
+  go.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!settled()) settle(); } });
+  back.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); reset(); } });
+  show("act");
+})();
+</script>

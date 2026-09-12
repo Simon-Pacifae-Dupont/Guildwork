@@ -211,12 +211,21 @@
   /* Les trois piles de ce bureau. Memes teintes de chantier, noms du metier. */
   :root{ --w-devis:var(--w-device); --w-reponses:var(--w-sync); --w-comptes:var(--w-dashboard); }
   /* la carte de decision repond vraiment : c'est ce que la page affirme faire */
-  .opt{cursor:pointer}
-  .decision.settled .opt{cursor:default;opacity:.55}
+  .act .opt{cursor:pointer}
+  .decision.settled .opt{cursor:default; opacity:.55}
   .decision.settled .opt.on{opacity:1}
-  .go{cursor:pointer}
-  .go.done{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);box-shadow:none}
-  .back{cursor:pointer}
+  .act .go, .act .back{cursor:pointer}
+  .act .go.done{background:transparent; border:1px solid var(--line-strong); color:var(--ink-2); box-shadow:none}
+  /* le champ libre se tape : il porte sa consigne, et ce qu'on y ecrit devient la decision */
+  .act .free{cursor:text}
+  .act .free:empty::before{content:attr(data-placeholder); color:var(--muted)}
+  .act .free:focus{outline:none; border-color:var(--s); color:var(--ink)}
+  .act .free.typed{color:var(--ink)}
+  .decision.settled .free{cursor:default; opacity:.5}
+  .decision.settled .free.typed{opacity:1}
+  /* une decision enregistree prend la teinte de l'etat atterri : l'accent, jamais le fond */
+  .act .exact.settled{border-color:var(--s-done)}
+  .act .exact.settled .lbl{color:var(--s-done)}
 </style>
 </head>
 <body>
@@ -252,7 +261,7 @@
     <div class="sechead"><span class="chev"></span><span class="nm">Ce qu’on vous doit, à vous et à personne d’autre</span></div>
     <p class="lede">Un devis au-dessus de votre seuil ne vous attend pas parce qu’il est important. Il vous attend parce qu’il est <i>fini</i> : chiffré, relu, et rien ne manque pour décider.</p>
 
-    <article class="decision" data-sent-badge="parti" data-recorded="Enregistré" data-sent-note="Enregistré à 11:14, au nom de l’associée. Le devis quitte « à vous » et rejoint les envois du jour, en gardant le nom de la grille et celui de la personne qui l’a relu." data-held-note="Enregistré à 11:14. Rien n’est parti, le devis reste « à vous », et la demande 2411 garde son échéance de 24 heures.">
+    <article class="decision" data-act-badge="parti" data-recorded="Enregistré" data-act-note="Enregistré à 11:14, au nom de l’associée. Le devis quitte « à vous » et rejoint les envois du jour, en gardant le nom de la grille et celui de la personne qui l’a relu." data-hold-note="Enregistré à 11:14. Rien n’est parti, le devis reste « à vous », et la demande 2411 garde son échéance de 24 heures." data-written-note="Enregistré à 11:14, mot pour mot, au nom de l’associée. Rien n’est parti : ce que vous avez écrit devient la demande, et le devis reste « à vous »." data-lbl-act="Ce qui est parti, mot pour mot" data-lbl-held="Ce qui est enregistré, mot pour mot" data-lbl-written="Ce que vous écrivez, et qui sera enregistré">
       <div class="head">
         <a>Devis 2418</a>
         <h3>Séminaire 40 personnes, deux nuits, salle et restauration</h3>
@@ -271,17 +280,17 @@
         <div>
           <p class="lbl">Choisir</p>
           <div class="opts">
-            <div class="opt on" data-k="envoyer"><span class="k">envoyer</span><span>Envoyer le devis au client, avec les deux écarts</span></div>
-            <div class="opt" data-k="garder"><span class="k">garder</span><span>Pas encore, je veux d’abord trancher la salle</span></div>
+            <div class="opt on" data-k="act"><span class="k">envoyer</span><span>Envoyer le devis au client, avec les deux écarts</span></div>
+            <div class="opt" data-k="hold"><span class="k">garder</span><span>Pas encore, je veux d’abord trancher la salle</span></div>
           </div>
         </div>
         <div>
           <p class="lbl">Ou écrire, si aucune option ne convient</p>
-          <div class="free">Ce qui manque, ou ce qui ne va pas.</div>
+          <div class="free" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Ce qui manque, ou ce qui ne va pas" data-placeholder="Ce qui manque, ou ce qui ne va pas."></div>
         </div>
         <div class="exact">
           <p class="lbl">Ce qui partira, mot pour mot</p>
-          <pre data-for="envoyer">Bonjour,
+          <pre data-for="act">Bonjour,
 
 Voici notre proposition pour vos 40 personnes, les 14 et 15 octobre.
 Tarifs de la grille en vigueur au 1er septembre.
@@ -293,11 +302,12 @@ Deux points à votre main :
   dès que vous nous confirmez le nombre.
 
 Le détail est en pièce jointe.</pre>
-          <pre data-for="garder" hidden>Rien ne part au client.
+          <pre data-for="hold" hidden>Rien ne part au client.
 
 Gardé par l’associée : la salle du 15 doit être tranchée
 avant l’envoi. Le devis reste dans « à vous », et la demande
 2411 garde son échéance de 24 heures.</pre>
+          <pre data-for="write" hidden></pre>
           <p class="also">Envoyé au nom de <b>l’associée</b>, et classé sous la demande 2411. Le devis garde le nom de la grille qui a servi et celui de la personne qui l’a relu. Cette page enregistre une décision ; elle n’envoie rien d’elle-même.</p>
         </div>
         <div class="row">
@@ -466,59 +476,86 @@ avant l’envoi. Le devis reste dans « à vous », et la demande
 </body>
 </html>
 <script>
-/* La decision se prend sur la page. Rien n'est envoye : la page enregistre un
-   choix devant vous et le montre, ce qui est exactement ce qu'elle affirme. */
+/* La decision se prend sur la page. Trois chemins : l'une des deux options, ou ce
+   que vous ecrivez vous-meme. Rien n'est publie ni envoye : la page enregistre un
+   choix devant vous et le montre, ce qui est exactement ce qu'elle affirme faire.
+   Meme script sur les quatre demonstrations, les deux pistes et les deux langues. */
 (function () {
   var card = document.querySelector(".decision"); if (!card) return;
+  var D = card.dataset;
   var opts = [].slice.call(card.querySelectorAll(".opt"));
-  var pres = [].slice.call(card.querySelectorAll(".exact pre"));
+  var exact = card.querySelector(".exact");
+  var lbl = exact.querySelector(".lbl");
+  var pres = [].slice.call(exact.querySelectorAll("pre"));
+  var written = exact.querySelector('pre[data-for="write"]');
+  var free = card.querySelector(".free");
   var go = card.querySelector(".go"), back = card.querySelector(".back");
   var badge = card.querySelector(".head .badge");
   var tileYou = document.querySelector(".tile.s-you b");
   var tileDone = document.querySelector(".tile.s-done b");
   var note = document.createElement("p");
-  note.className = "also"; note.hidden = true;
-  card.querySelector(".exact").appendChild(note);
-  var D = card.dataset, start = {
-    badgeText: badge.textContent, badgeClass: badge.className,
-    you: tileYou.textContent, done: tileDone.textContent, goText: go.textContent
+  note.className = "also"; note.hidden = true; exact.appendChild(note);
+  var start = {
+    badgeText: badge.textContent, badgeClass: badge.className, lbl: lbl.textContent,
+    you: tileYou ? tileYou.textContent : null, done: tileDone ? tileDone.textContent : null,
+    goText: go.textContent
   };
-  function choice() { var o = card.querySelector(".opt.on"); return o ? o.dataset.k : "envoyer"; }
+  function settled() { return card.classList.contains("settled"); }
+  function choice() { var o = card.querySelector(".opt.on"); return o ? o.dataset.k : "write"; }
   function show(k) {
     opts.forEach(function (o) { o.classList.toggle("on", o.dataset.k === k); });
     pres.forEach(function (p) { p.hidden = p.dataset.for !== k; });
+    lbl.textContent = k === "write" ? D.lblWritten : start.lbl;
+  }
+  function syncFree() {
+    var t = free.textContent.trim();
+    free.classList.toggle("typed", t.length > 0);
+    if (t.length) { written.textContent = t; show("write"); } else { show("act"); }
   }
   function reset() {
-    show("envoyer"); note.hidden = true;
+    free.textContent = ""; free.classList.remove("typed");
+    show("act"); note.hidden = true; exact.classList.remove("settled");
     badge.textContent = start.badgeText; badge.className = start.badgeClass;
-    tileYou.textContent = start.you; tileDone.textContent = start.done;
+    if (tileYou) tileYou.textContent = start.you;
+    if (tileDone) tileDone.textContent = start.done;
     go.textContent = start.goText; go.classList.remove("done");
+    free.setAttribute("contenteditable", "true");
     card.classList.remove("settled");
   }
   function settle() {
     var k = choice();
-    if (k === "envoyer") {
-      badge.textContent = D.sentBadge; badge.className = "badge s-done";
-      tileYou.textContent = String(Math.max(0, parseInt(start.you, 10) - 1));
-      tileDone.textContent = String(parseInt(start.done, 10) + 1);
-      note.textContent = D.sentNote;
+    if (k === "act") {
+      badge.textContent = D.actBadge; badge.className = "badge s-done";
+      if (tileYou) tileYou.textContent = String(Math.max(0, parseInt(start.you, 10) - 1));
+      if (tileDone) tileDone.textContent = String(parseInt(start.done, 10) + 1);
+      note.textContent = D.actNote; lbl.textContent = D.lblAct;
+    } else if (k === "hold") {
+      note.textContent = D.holdNote; lbl.textContent = D.lblHeld;
     } else {
-      note.textContent = D.heldNote;
+      note.textContent = D.writtenNote; lbl.textContent = D.lblHeld;
     }
-    note.hidden = false; go.textContent = D.recorded;
-    go.classList.add("done"); card.classList.add("settled");
+    note.hidden = false; exact.classList.add("settled");
+    go.textContent = D.recorded; go.classList.add("done");
+    free.setAttribute("contenteditable", "false");
+    card.classList.add("settled");
   }
   opts.forEach(function (o) {
     o.setAttribute("role", "button"); o.tabIndex = 0;
-    function pick() { if (!card.classList.contains("settled")) show(o.dataset.k); }
+    function pick() { if (settled()) return; free.textContent = ""; free.classList.remove("typed"); show(o.dataset.k); }
     o.addEventListener("click", pick);
     o.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
   });
+  free.addEventListener("input", function () { if (!settled()) syncFree(); });
+  free.addEventListener("paste", function (e) {
+    e.preventDefault();
+    var t = (e.clipboardData || window.clipboardData).getData("text");
+    document.execCommand("insertText", false, t.replace(/\s+/g, " "));
+  });
   [go, back].forEach(function (el) { el.setAttribute("role", "button"); el.tabIndex = 0; });
-  go.addEventListener("click", function () { if (!card.classList.contains("settled")) settle(); });
+  go.addEventListener("click", function () { if (!settled()) settle(); });
   back.addEventListener("click", reset);
-  go.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!card.classList.contains("settled")) settle(); } });
+  go.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!settled()) settle(); } });
   back.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); reset(); } });
-  show("envoyer");
+  show("act");
 })();
 </script>
