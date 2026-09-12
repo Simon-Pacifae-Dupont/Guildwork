@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le bureau &mdash; ce qui a été confié</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    /* The site's own ground: Guildwork navy, ivory ink. The board is dark only, like the site. */
+    --ground:#0B1526; --surface:#0A1322; --surface-2:#14223A; --well:#070D18;
+    --ink:#F3EDE2; --ink-2:#9FAAC0; --muted:#6B7791;
+    --line:#1D2B44; --line-strong:#2B3B57; --brand:#5CB9C4;
+
+    /* SIX STATES, the hues the reference board established: one row carries
+       exactly one, always filled, the word inside. Each tint is the state mixed
+       into the site's surface, so a tinted row still sits on navy.
+       "for you" is the ink itself: every other hue is a machine state, the human
+       is the one object on the board without a colour. Red is kept for "broken". */
+    --s-run:#E8AE57;      --s-run-tint:#36322D;
+    --s-bridge:#BDA2E4;   --s-bridge-tint:#2E3049;
+    --s-next:#79B4E0;     --s-next-tint:#203348;
+    --s-you:#F3EDE2;      --s-you-tint:#393E48;
+    --s-done:#78C48C;     --s-done-tint:#203637;
+    --s-broken:#EC8A79;   --s-broken-tint:#372B33;
+
+    /* WORKSTREAMS. Panel frame only — never a row. Muted against the states. */
+    --w-device:#88A88F; --w-sync:#80B8B6; --w-dashboard:#79A7BD;
+    --w-gate:#B2AF8C;   --w-watcher:#B797B2; --w-governance:#A6ACCF;
+
+    --shadow:0 1px 2px rgba(0,0,0,.35);
+    --shadow-lift:0 2px 12px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,"Segoe UI",sans-serif;
+    font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:30px 22px 40px}
+  a{color:var(--brand); text-underline-offset:2px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+  .s-run   {--s:var(--s-run);    --t:var(--s-run-tint)}
+  .s-bridge{--s:var(--s-bridge); --t:var(--s-bridge-tint)}
+  .s-next  {--s:var(--s-next);   --t:var(--s-next-tint)}
+  .s-you   {--s:var(--s-you);    --t:var(--s-you-tint)}
+  .s-done  {--s:var(--s-done);   --t:var(--s-done-tint)}
+  .s-broken{--s:var(--s-broken); --t:var(--s-broken-tint)}
+
+  .badge{
+    display:inline-block; background:var(--s); color:var(--ground);
+    font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    white-space:nowrap; padding:3px 9px; border-radius:2px;
+  }
+  .rel{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-2); white-space:nowrap}
+  .tag{
+    display:inline-block; font-size:10.5px; font-weight:500; letter-spacing:.06em;
+    text-transform:uppercase; white-space:nowrap; color:var(--muted);
+    border:1px solid var(--line-strong); padding:2px 7px; border-radius:2px;
+  }
+
+  /* masthead */
+  .masthead{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+    gap:16px; padding-bottom:14px; border-bottom:2px solid var(--ink)}
+  .masthead h1{font-family:Newsreader,"IBM Plex Serif","Bitstream Charter",Georgia,serif;
+    font-weight:500; font-size:46px; line-height:1; margin:0; letter-spacing:-.02em}
+  .masthead .sub{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); margin-top:8px}
+  .refreshbox{display:flex; flex-direction:column; align-items:flex-start; gap:9px}
+  .stamp{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--muted); font-variant-numeric:tabular-nums}
+  .refresh{font:inherit; font-size:15px; font-weight:600; background:var(--surface); color:var(--ink);
+    border:1px solid var(--line-strong); border-radius:2px; padding:10px 22px; letter-spacing:.01em}
+
+  /* glance */
+  .glance{display:grid; gap:1px; margin:1px -17px 0; grid-template-columns:repeat(8,1fr);
+    background:var(--line); border-bottom:1px solid var(--line)}
+  .glance .tile{background:var(--ground); padding:15px 17px 16px; display:flex; flex-direction:column; gap:3px; min-width:0}
+  .glance .tile > b{font-family:"IBM Plex Mono",monospace; font-size:30px; font-weight:600; line-height:1;
+    font-variant-numeric:tabular-nums; letter-spacing:-.02em; color:var(--s,var(--ink))}
+  .glance .cap{font-size:10.5px; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:var(--muted)}
+  .glance em{font-style:normal; font-size:10px; color:var(--muted); letter-spacing:.04em}
+
+  /* sections */
+  .sec{margin-top:34px}
+  .sechead{display:flex; align-items:baseline; gap:11px; padding:9px 2px 9px 0;
+    border-bottom:1px solid var(--line); margin-bottom:15px}
+  .sechead .nm{font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  .sechead .chev{width:0; height:0; border-left:5px solid var(--muted);
+    border-top:4px solid transparent; border-bottom:4px solid transparent; transform:rotate(90deg); align-self:center}
+  .lede{font-family:Newsreader,"IBM Plex Serif","Bitstream Charter",Georgia,serif;
+    font-size:20px; color:var(--ink-2); margin:0 0 16px; max-width:62ch}
+
+  /* decision */
+  .decision{--s:var(--s-you); --t:var(--s-you-tint);
+    border:1px solid var(--line); border-left:3px solid var(--s); background:var(--surface);
+    box-shadow:var(--shadow-lift); padding:18px 21px; display:flex; flex-direction:column; gap:9px}
+  .decision .head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+  .decision .head a{font-family:"IBM Plex Mono",monospace; font-size:15px; font-weight:600; color:var(--s); text-decoration:none}
+  .decision .head h3{margin:0; font-family:Newsreader,"IBM Plex Serif","Bitstream Charter",Georgia,serif;
+    font-weight:500; font-size:20px; line-height:1.25}
+  .decision p{margin:0; font-size:14px; color:var(--ink-2); max-width:76ch}
+  .decision .issueline{font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--muted)}
+
+  .act{border-top:1px dashed var(--line-strong); padding-top:14px; margin-top:3px; display:grid; gap:10px}
+  .act .lbl{font-size:10.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--s); margin:0 0 6px}
+  .act .reco{margin:0; font-size:13.5px; color:var(--ink-2); max-width:76ch}
+  .act .reco b{color:var(--ink); font-weight:600}
+  .act .opts{display:grid; gap:8px}
+  .act .opt{font:inherit; font-size:13.5px; text-align:left; color:var(--ink);
+    border:1px solid var(--line-strong); border-left:3px solid var(--line-strong);
+    background:var(--surface); padding:11px 15px; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap}
+  .act .opt.on{border-left-color:var(--s); background:var(--t)}
+  .act .opt .k{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--muted); letter-spacing:.04em; flex:0 0 auto}
+  .act .free{font:inherit; font-size:13.5px; color:var(--muted); width:100%; min-height:60px;
+    border:1px solid var(--line-strong); background:var(--surface); padding:11px 14px}
+  .act .exact{border:1px solid var(--ink); background:var(--well); padding:14px 16px; font-size:13px; color:var(--ink); max-width:82ch;
+    box-shadow:inset 0 1px 8px rgba(0,0,0,.28)}
+  .act .exact pre{margin:0; white-space:pre-wrap; font-family:"IBM Plex Mono",monospace; font-size:12.5px; line-height:1.5}
+  .act .exact .also{margin:11px 0 0; padding-top:10px; border-top:1px solid var(--line-strong); font-size:12.5px; color:var(--ink-2)}
+  .act .row{display:flex; gap:10px; align-items:center}
+  .act .go,.act .back{font:inherit; font-size:13.5px; font-weight:600;
+    border:1px solid var(--line-strong); background:var(--surface); color:var(--ink); padding:10px 17px}
+  .act .go{border-color:var(--s); background:var(--s); color:var(--ground)}
+  /* The demonstration shows the hand: a pointer on the confirm, the button pressed.
+     The click itself is what the frozen page cannot do; the green counter above is what it leads to. */
+  .act .row{position:relative}
+  .act .go.pressed{background:#D9D2C4; border-color:#D9D2C4; box-shadow:inset 0 2px 5px rgba(0,0,0,.4)}
+  .hand{position:absolute; left:70px; top:14px; width:44px; height:44px; pointer-events:none}
+  .hand .ring{position:absolute; left:-1px; top:-2px; width:28px; height:28px; border-radius:50%;
+    border:2px solid var(--s-done); box-shadow:0 0 0 4px var(--s-done-tint)}
+  .hand svg{position:absolute; left:11px; top:11px; width:22px; height:30px; filter:drop-shadow(0 2px 3px rgba(0,0,0,.7))}
+
+  /* the bench */
+  .bench{border:1px solid var(--line); border-left:3px solid var(--s-bridge);
+    background:var(--surface); box-shadow:var(--shadow); padding:18px 20px}
+  .bench .cap{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+    padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--line)}
+  .bench .cap b{font-family:Newsreader,"IBM Plex Serif","Bitstream Charter",Georgia,serif; font-size:23px; font-weight:500}
+  .bench .cap > span{font-size:13.5px; color:var(--muted); max-width:66ch}
+  .procs{display:grid; gap:12px; grid-template-columns:1fr 1fr}
+  .proc{border:1px solid var(--line); border-top:3px solid var(--s); background:var(--t);
+    padding:13px 15px; display:flex; flex-direction:column; gap:9px}
+  .proc.claims{box-shadow:var(--shadow-lift)}
+  .proc .top{display:flex; align-items:baseline; gap:9px; flex-wrap:wrap}
+  .proc .num{font-family:"IBM Plex Mono",monospace; font-size:17px; font-weight:600;
+    font-variant-numeric:tabular-nums; color:var(--s)}
+  .proc dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:2px 12px; font-size:12.5px}
+  .proc dt{color:var(--muted)} .proc dd{margin:0; font-family:"IBM Plex Mono",monospace; font-size:12px}
+  .agebar{display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-top:14px;
+    padding-top:12px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted)}
+  .trackwrap{margin-top:17px}
+  .trackwrap h4{margin:0 0 9px; font-size:10.5px; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:var(--muted)}
+  .track{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:9px}
+  .track li{display:flex; flex-direction:column; gap:5px; min-width:150px; max-width:250px;
+    border:1px solid var(--line); border-left:3px solid var(--s); background:var(--t); padding:8px 12px 9px}
+  .track li .who{font-family:"IBM Plex Mono",monospace; font-size:14px; font-weight:600;
+    color:var(--s); font-variant-numeric:tabular-nums}
+  .track li .who .rank{color:var(--muted); font-weight:500; font-size:11px; margin-right:6px}
+  .track li .why{font-size:11px; color:var(--ink-2); line-height:1.35}
+
+  /* workstream panels */
+  .streams{display:grid; gap:16px; grid-template-columns:1fr 1fr; align-items:start}
+  .stream{border:1px solid var(--line); border-top:3px solid var(--w); background:var(--surface); box-shadow:var(--shadow)}
+  .stream > header{display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:11px 15px; border-bottom:1px solid var(--line); background:var(--surface-2)}
+  .stream > header h3{margin:0; font-size:12.5px; font-weight:600; text-transform:uppercase;
+    letter-spacing:.15em; color:var(--w)}
+  .stream > header .count{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--muted)}
+  ul.items{list-style:none; margin:0; padding:0}
+  ul.items li{display:flex; gap:12px; padding:12px 15px 12px 12px;
+    border-top:1px solid var(--line); border-left:3px solid var(--s)}
+  ul.items li:first-child{border-top:none}
+  ul.items li.now{background:var(--t)}
+  ul.items li .n{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--muted);
+    font-variant-numeric:tabular-nums; padding-top:3px; min-width:3.4em}
+  ul.items li.now .n{color:var(--s); font-weight:600}
+  ul.items li .body{display:flex; flex-direction:column; gap:7px; min-width:0}
+  ul.items li .t{font-family:Newsreader,"IBM Plex Serif","Bitstream Charter",Georgia,serif;
+    font-size:16.5px; line-height:1.3; color:var(--ink)}
+  ul.items li .marks{display:flex; gap:8px; flex-wrap:wrap; align-items:baseline}
+  ul.items li .blocked{font-size:12.5px; color:var(--ink-2)}
+
+  /* --- responsive: the fixed grids collapse instead of overflowing --- */
+  @media (max-width:820px){
+    .streams{grid-template-columns:1fr}
+    .procs{grid-template-columns:1fr}
+    .glance{grid-template-columns:repeat(4,1fr)}
+  }
+  @media (max-width:520px){
+    .glance{grid-template-columns:repeat(2,1fr); margin-left:0; margin-right:0}
+    ul.items li{flex-wrap:wrap}
+  }
+
+  .demoflag{margin:20px 0 6px; border-left:3px solid var(--brand); background:var(--surface);
+    padding:13px 17px; font-size:13.5px; line-height:1.55; color:var(--ink-2); max-width:78ch;
+    box-shadow:var(--shadow)}
+  .demoflag b{color:var(--ink)}
+  .demoflag code{font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+  /* focus lights the thread, and dims the rest (brand/design-system.md) */
+  .tile,.decision,.proc,.track li,.items li{transition:opacity .16s ease,transform .16s ease}
+  .focusing :is(.tile,.decision,.proc,.track li,.items li):not(.hot){opacity:.18}
+  .src:is(.tile,.decision,.proc){transform:translateY(-2px)}
+  :is(.tile,.decision,.proc,.track li,.items li):focus-visible{outline:1px solid var(--line-strong);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){.tile,.decision,.proc,.track li,.items li{transition:none}}
+  /* le passage d'une langue à l'autre : même page, même adresse au miroir près */
+  .langswitch{max-width:1180px;margin:0 auto;padding:0 22px 34px;color:var(--muted);
+    font-size:13px;font-family:"IBM Plex Mono",monospace}
+  .langswitch a{color:var(--ink-2)}
+  /* Les trois piles de ce bureau. Memes teintes de chantier, noms du metier. */
+  :root{ --w-devis:var(--w-device); --w-reponses:var(--w-sync); --w-comptes:var(--w-dashboard); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div>
+      <h1>Ce qui a été confié</h1>
+      <div class="sub">cabinet fictif · semaine du 8 septembre</div>
+    </div>
+    <div class="refreshbox">
+      <div class="refresh">Rafraîchir</div>
+      <div class="stamp">lu · demandes 11:12 · documents 11:12 · envois 11:04</div>
+    </div>
+  </div>
+
+  <div class="glance">
+    <div class="tile s-run"><b>2</b><span class="cap">en cours de rédaction</span><em>lu il y a 40 s</em></div>
+    <div class="tile s-bridge"><b>1</b><span class="cap">chez l’associée</span><em>lu il y a 40 s</em></div>
+    <div class="tile s-next"><b>5</b><span class="cap">à faire</span><em>choisis à la main</em></div>
+    <div class="tile s-you"><b>1</b><span class="cap">à vous</span><em>au-dessus de votre seuil</em></div>
+    <div class="tile s-broken"><b>1</b><span class="cap">à reprendre</span><em>source non nommée</em></div>
+    <div class="tile s-done"><b>9</b><span class="cap">parti aujourd’hui</span><em>envois 11:04</em></div>
+    <div class="tile"><b>14</b><span class="cap">demandes ouvertes</span><em>lu en entier</em></div>
+    <div class="tile"><b>5</b><span class="cap">documents en attente</span><em>lu ce matin</em></div>
+  </div>
+
+  <div class="demoflag">
+    <b>Une démonstration figée, sur un cabinet fictif.</b> Les boutons sont montrés, pas actifs : cette page n’envoie rien. Elle lit ce que vos équipes ont confié à une IA, quel que soit l’outil qui l’a produit, et le range dans les trois piles ci-dessous. Les objets changent d’un métier à l’autre ; les trois questions, non.</div>
+
+  <section class="sec">
+    <div class="sechead"><span class="chev"></span><span class="nm">Ce qu’on vous doit, à vous et à personne d’autre</span></div>
+    <p class="lede">Un devis au-dessus de votre seuil ne vous attend pas parce qu’il est important. Il vous attend parce qu’il est <i>fini</i> : chiffré, relu, et rien ne manque pour décider.</p>
+
+    <article class="decision">
+      <div class="head">
+        <a>Devis 2418</a>
+        <h3>Séminaire 40 personnes, deux nuits, salle et restauration</h3>
+        <span class="badge s-you">à vous</span>
+        <span class="tag">au-dessus de 15 000 €</span>
+        <span class="rel">répond à la demande 2411</span>
+      </div>
+      <p class="issueline">2411 · Demande de groupe reçue lundi 8 h 42, réponse attendue sous 24 h</p>
+      <p>Chiffré sur la grille de la saison, celle du 1<sup>er</sup> septembre. Deux écarts par rapport à la demande, nommés par l’assistant plutôt que lissés : la salle demandée n’est libre qu’un des deux soirs, et le menu végétarien n’est pas chiffré dans la grille. Relu ce matin par une personne qui ne l’a pas rédigé.</p>
+
+      <div class="act">
+        <div>
+          <p class="lbl">Recommandation</p>
+          <p class="reco"><b>Envoyer le devis.</b> Les deux écarts sont écrits noir sur blanc dans le message, donc le client décide en les voyant, pas après.</p>
+        </div>
+        <div>
+          <p class="lbl">Choisir</p>
+          <div class="opts">
+            <div class="opt on"><span class="k">envoyer</span><span>Envoyer le devis au client, avec les deux écarts</span></div>
+            <div class="opt"><span class="k">garder</span><span>Pas encore, je veux d’abord trancher la salle</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="lbl">Ou écrire, si aucune option ne convient</p>
+          <div class="free">Ce qui manque, ou ce qui ne va pas.</div>
+        </div>
+        <div class="exact">
+          <p class="lbl">Ce qui partira, mot pour mot</p>
+          <pre>Bonjour,
+
+Voici notre proposition pour vos 40 personnes, les 14 et 15 octobre.
+Tarifs de la grille en vigueur au 1er septembre.
+
+Deux points à votre main :
+- la salle Belvédère n’est libre que le 14 ; le 15, nous vous
+  proposons la salle Orangerie, même capacité, même tarif ;
+- le menu végétarien n’est pas dans la grille, nous le chiffrons
+  dès que vous nous confirmez le nombre.
+
+Le détail est en pièce jointe.</pre>
+          <p class="also">Envoyé au nom de <b>l’associée</b>, et classé sous la demande 2411. Le devis garde le nom de la grille qui a servi et celui de la personne qui l’a relu. Cette page enregistre une décision ; elle n’envoie rien d’elle-même.</p>
+        </div>
+        <div class="row">
+          <div class="go pressed">Envoyer ceci</div>
+          <div class="back">Retour</div>
+          <span class="hand" aria-hidden="true"><span class="ring"></span><svg viewBox="0 0 22 30"><path d="M2 1.5 L2 22.5 L7.2 17.6 L11 27.5 L15.2 25.6 L11.4 16 L18.6 15.7 Z" fill="#F3EDE2" stroke="#0B1526" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="sec">
+    <div class="sechead"><span class="chev"></span><span class="nm">Ce qui est parti sans vous</span></div>
+    <p class="lede">Vous ne les validez pas, et ils restent affichés. Une délégation que personne ne voit n’est pas une délégation, c’est un angle mort.</p>
+
+    <div class="bench">
+      <div class="cap">
+        <b>9 partis aujourd’hui</b>
+        <span>Sous la règle que vous avez posée : en dessous de 15 000 €, rédigé sur une grille en vigueur, relu par quelqu’un d’autre que le rédacteur. Vous pouvez nommer, à tout instant, tout ce qui est parti en votre nom.</span>
+      </div>
+      <div class="procs">
+        <article class="proc s-done">
+          <div class="top"><span class="num">2415</span><span class="badge s-done">parti</span></div>
+          <dl>
+            <dt>quoi</dt><dd>devis groupe, 8 200 €</dd>
+            <dt>grille</dt><dd>saison, 1<sup>er</sup> sept.</dd>
+            <dt>relu par</dt><dd>M., réception</dd>
+            <dt>envoyé</dt><dd>09:38</dd>
+          </dl>
+        </article>
+        <article class="proc s-done">
+          <div class="top"><span class="num">2409</span><span class="badge s-done">parti</span></div>
+          <dl>
+            <dt>quoi</dt><dd>réponse à réclamation</dd>
+            <dt>source</dt><dd>politique commerciale v4</dd>
+            <dt>relu par</dt><dd>A., service client</dd>
+            <dt>envoyé</dt><dd>10:52</dd>
+          </dl>
+        </article>
+      </div>
+      <div class="agebar">
+        <span class="badge s-run">lecture fraîche</span>
+        <span>Lu il y a 40 s (11:12:31), seuil 90 minutes. Passé ce seuil, les compteurs qui dépendent d’une lecture affichent <span class="mono">?</span> plutôt qu’un chiffre : une page qui ne voit plus rien ne doit jamais affirmer que tout va bien.</span>
+      </div>
+
+      <div class="trackwrap">
+        <h4>Ordre de passage chez l’associée · 3 choisis à la main ce matin, non déduits</h4>
+        <ul class="track">
+          <li class="s-next"><span class="who"><span class="rank">1</span>2418</span><span class="why">réponse attendue sous 24 h</span></li>
+          <li class="s-next"><span class="who"><span class="rank">2</span>2402</span><span class="why">attend que 2418 soit parti, même client</span></li>
+          <li class="s-next"><span class="who"><span class="rank">3</span>2396</span><span class="why">clause à relire, aucune échéance</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sechead"><span class="chev"></span><span class="nm">Ce qu’il refuse de deviner</span></div>
+    <p class="lede">Ces cas ne sont pas rangés discrètement au jugé : ils sont comptés, devant tout le monde. Ce compteur est fait pour afficher zéro, et il est la mesure honnête de là où la pratique ne tient pas encore.</p>
+
+    <div class="trackwrap">
+      <h4>2 cas que rien ne justifie encore</h4>
+      <ul class="track">
+        <li class="s-broken"><span class="who">2407</span><span class="why">un compte rendu dont aucune source n’est nommée, impossible de dire sur quoi il a été écrit</span></li>
+        <li class="s-broken"><span class="who">2391</span><span class="why">une réponse rattachée à une demande déjà close la semaine dernière</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sechead"><span class="chev"></span><span class="nm">Ouvert, par type de document</span></div>
+    <div class="streams">
+      <section class="stream" style="--w:var(--w-devis)">
+        <header><h3>devis</h3><span class="count">3</span></header>
+        <ul class="items">
+          <li class="s-you now"><span class="n">2418</span><span class="body">
+            <span class="t">Séminaire 40 personnes, deux nuits, salle et restauration</span>
+            <span class="marks"><span class="badge s-you">à vous</span><span class="tag">au-dessus de 15 000 €</span><span class="rel">répond à 2411</span></span></span></li>
+          <li class="s-run"><span class="n">2421</span><span class="body">
+            <span class="t">Comité de direction, une journée, 12 personnes</span>
+            <span class="marks"><span class="badge s-run">en cours</span><span class="rel">reçu à 10:20</span></span></span></li>
+          <li class="s-next"><span class="n">2402</span><span class="body">
+            <span class="t">Reconduction annuelle, même client que 2418</span>
+            <span class="blocked">attend que 2418 soit parti : deux devis au même client le même jour se contredisent vite</span>
+            <span class="marks"><span class="badge s-next">à faire</span></span></span></li>
+        </ul>
+      </section>
+      <section class="stream" style="--w:var(--w-reponses)">
+        <header><h3>réponses clients</h3><span class="count">3</span></header>
+        <ul class="items">
+          <li class="s-bridge now"><span class="n">2414</span><span class="body">
+            <span class="t">Réclamation sur une facturation de janvier</span>
+            <span class="marks"><span class="badge s-bridge">chez l’associée</span><span class="rel">source : politique commerciale v4</span></span></span></li>
+          <li class="s-done"><span class="n">2409</span><span class="body">
+            <span class="t">Geste commercial dans les limites posées</span>
+            <span class="marks"><span class="badge s-done">parti</span><span class="rel">relu par A.</span></span></span></li>
+          <li class="s-broken"><span class="n">2391</span><span class="body">
+            <span class="t">Réponse à une demande close la semaine dernière</span>
+            <span class="blocked">la demande a été close vendredi, cette réponse ne se rattache à rien d’ouvert</span>
+            <span class="marks"><span class="badge s-broken">à reprendre</span></span></span></li>
+        </ul>
+      </section>
+      <section class="stream" style="--w:var(--w-comptes)">
+        <header><h3>comptes rendus</h3><span class="count">2</span></header>
+        <ul class="items">
+          <li class="s-run"><span class="n">2420</span><span class="body">
+            <span class="t">Comité du 9 septembre, relevé de décisions</span>
+            <span class="marks"><span class="badge s-run">en cours</span><span class="rel">source : enregistrement du 9</span></span></span></li>
+          <li class="s-broken"><span class="n">2407</span><span class="body">
+            <span class="t">Comité du 2 septembre</span>
+            <span class="blocked">aucune source nommée, personne ne peut dire sur quoi il a été écrit</span>
+            <span class="marks"><span class="badge s-broken">à reprendre</span></span></span></li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+</div>
+
+<p class="langswitch"><a href="../../../demo/desk/" hreflang="en" lang="en">English version</a></p>
+
+<script>
+/* Focus lights the thread, and dims the rest — brand/design-system.md.
+   Hover or focus one object: what shares its state (from a counter) or one of
+   its numbers (from a row) stays lit; everything else steps back. */
+(function () {
+  var ITEMS = ".tile, .decision, .proc, .track li, .items li", TILES = ".tile";
+  var scope = document.querySelector(".wrap");
+  if (!scope) return;
+  function stateOf(el) { var m = /\bs-(run|bridge|next|you|done|broken)\b/.exec(el.className); if (m) return m[1]; var b = el.querySelector(".badge"); m = b && /\bs-(run|bridge|next|you|done|broken)\b/.exec(b.className); return m ? m[1] : null; }
+  function numbers(el) { return (el.textContent.match(/#\d+/g) || []); }
+  function all() { return Array.prototype.slice.call(scope.querySelectorAll(ITEMS)); }
+  function thread(src) {
+    var items = all(), st = stateOf(src), lit = [src], ns = numbers(src);
+    if (src.matches(TILES)) {
+      if (!st) return null;
+      items.forEach(function (e) { if (e !== src && !e.matches(TILES) && stateOf(e) === st) lit.push(e); });
+      return lit;
+    }
+    if (!ns.length && !st) return null;
+    items.forEach(function (e) {
+      if (e === src) return;
+      if (e.matches(TILES)) { if (st && stateOf(e) === st) lit.push(e); return; }
+      var en = numbers(e);
+      for (var i = 0; i < ns.length; i++) if (en.indexOf(ns[i]) >= 0) { lit.push(e); return; }
+    });
+    return lit;
+  }
+  function clear() { scope.classList.remove("focusing"); all().forEach(function (e) { e.classList.remove("hot", "src"); }); }
+  function light(src) {
+    var lit = thread(src); clear(); if (!lit) return;
+    scope.classList.add("focusing"); lit.forEach(function (e) { e.classList.add("hot"); }); src.classList.add("src");
+  }
+  function item(t) { return t && t.closest ? t.closest(ITEMS) : null; }
+  scope.addEventListener("pointerover", function (ev) { var t = item(ev.target); if (t) light(t); });
+  scope.addEventListener("pointerout", function (ev) { var t = item(ev.target); if (t && !(ev.relatedTarget && t.contains(ev.relatedTarget))) clear(); });
+  scope.addEventListener("focusin", function (ev) { var t = item(ev.target); if (t) light(t); });
+  scope.addEventListener("focusout", function (ev) { var t = item(ev.target); if (t && !(ev.relatedTarget && t.contains(ev.relatedTarget))) clear(); });
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") clear(); });
+  document.addEventListener("pointerdown", function (ev) { if (!item(ev.target)) clear(); });
+  function reach() { all().forEach(function (e) { if (!e.hasAttribute("tabindex")) e.setAttribute("tabindex", "0"); }); }
+  reach();
+  if (window.MutationObserver) new MutationObserver(reach).observe(scope, { childList: true, subtree: true });
+})();
+</script>
+</body>
+</html>
