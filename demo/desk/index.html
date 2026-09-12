@@ -210,6 +210,13 @@
   .langswitch a{color:var(--ink-2)}
   /* The three piles on this desk. Same workstream hues, the trade's own names. */
   :root{ --w-quotes:var(--w-device); --w-replies:var(--w-sync); --w-minutes:var(--w-dashboard); }
+  /* la carte de decision repond vraiment : c'est ce que la page affirme faire */
+  .opt{cursor:pointer}
+  .decision.settled .opt{cursor:default;opacity:.55}
+  .decision.settled .opt.on{opacity:1}
+  .go{cursor:pointer}
+  .go.done{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);box-shadow:none}
+  .back{cursor:pointer}
 </style>
 </head>
 <body>
@@ -239,13 +246,13 @@
   </div>
 
   <div class="demoflag">
-    <b>A frozen demonstration, on a fictional firm.</b> The buttons are shown, not live: this page sends nothing. It reads what your people handed to an AI, whatever tool produced it, and sorts it into the three piles below. The objects change from one trade to the next; the three questions do not.</div>
+    <b>A demonstration, on a fictional firm.</b> The decision card answers: choose, and the page records the choice in front of you. It sends nothing and writes nowhere. It reads what your people handed to an AI, whatever tool produced it, and sorts it into the three piles below. The objects change from one trade to the next; the three questions do not.</div>
 
   <section class="sec">
     <div class="sechead"><span class="chev"></span><span class="nm">What is owed to you, and to nobody else</span></div>
     <p class="lede">A quote above your threshold is not waiting on you because it matters. It is waiting because it is <i>finished</i>: priced, read back, and nothing is missing to decide.</p>
 
-    <article class="decision">
+    <article class="decision" data-sent-badge="sent" data-recorded="Recorded" data-sent-note="Recorded at 11:14, in the name of the partner. The quote leaves “for you” and joins the day’s sent pile, keeping the name of the rate card and of the person who read it back." data-held-note="Recorded at 11:14. Nothing went out, the quote stays in “for you”, and request 2411 keeps its 24-hour clock.">
       <div class="head">
         <a>Quote 2418</a>
         <h3>Forty people, two nights, room hire and catering</h3>
@@ -254,7 +261,7 @@
         <span class="rel">answers request 2411</span>
       </div>
       <p class="issueline">2411 · Group enquiry received Monday 8:42, answer expected within 24 hours</p>
-      <p>Priced on this season's rate card, the one dated 1<sup>st</sup> September. Two gaps against the enquiry, named by the assistant rather than smoothed over: the room asked for is free on only one of the two nights, and the vegetarian menu is not on the rate card. Read back this morning by someone who did not write it.</p>
+      <p>Priced on this season's rate card, the one dated 1<sup>st</sup> September. Two gaps against the enquiry, named by the AI assistant rather than smoothed over: the room asked for is free on only one of the two nights, and the vegetarian menu is not on the rate card. Read back this morning by someone who did not write it.</p>
 
       <div class="act">
         <div>
@@ -264,8 +271,8 @@
         <div>
           <p class="lbl">Choose</p>
           <div class="opts">
-            <div class="opt on"><span class="k">send</span><span>Send the quote to the client, with both gaps</span></div>
-            <div class="opt"><span class="k">hold</span><span>Not yet, I want to settle the room first</span></div>
+            <div class="opt on" data-k="envoyer"><span class="k">send</span><span>Send the quote to the client, with both gaps</span></div>
+            <div class="opt" data-k="garder"><span class="k">hold</span><span>Not yet, I want to settle the room first</span></div>
           </div>
         </div>
         <div>
@@ -274,7 +281,7 @@
         </div>
         <div class="exact">
           <p class="lbl">What will be sent, word for word</p>
-          <pre>Hello,
+          <pre data-for="envoyer">Hello,
 
 Here is our proposal for your forty people, 14 and 15 October.
 Rates from the card in force on 1 September.
@@ -286,6 +293,11 @@ Two points are yours to settle:
   soon as you confirm the number.
 
 The detail is attached.</pre>
+          <pre data-for="garder" hidden>Nothing goes to the client.
+
+Held by the partner: the room for the 15th has to be settled
+before this goes out. The quote stays in “for you”, and
+request 2411 keeps its 24-hour clock.</pre>
           <p class="also">Sent in the name of <b>the partner</b>, and filed under request 2411. The quote keeps the name of the rate card that was used and of the person who read it back. This page records a decision; it never sends anything itself.</p>
         </div>
         <div class="row">
@@ -453,3 +465,60 @@ The detail is attached.</pre>
 </script>
 </body>
 </html>
+<script>
+/* La decision se prend sur la page. Rien n'est envoye : la page enregistre un
+   choix devant vous et le montre, ce qui est exactement ce qu'elle affirme. */
+(function () {
+  var card = document.querySelector(".decision"); if (!card) return;
+  var opts = [].slice.call(card.querySelectorAll(".opt"));
+  var pres = [].slice.call(card.querySelectorAll(".exact pre"));
+  var go = card.querySelector(".go"), back = card.querySelector(".back");
+  var badge = card.querySelector(".head .badge");
+  var tileYou = document.querySelector(".tile.s-you b");
+  var tileDone = document.querySelector(".tile.s-done b");
+  var note = document.createElement("p");
+  note.className = "also"; note.hidden = true;
+  card.querySelector(".exact").appendChild(note);
+  var D = card.dataset, start = {
+    badgeText: badge.textContent, badgeClass: badge.className,
+    you: tileYou.textContent, done: tileDone.textContent, goText: go.textContent
+  };
+  function choice() { var o = card.querySelector(".opt.on"); return o ? o.dataset.k : "envoyer"; }
+  function show(k) {
+    opts.forEach(function (o) { o.classList.toggle("on", o.dataset.k === k); });
+    pres.forEach(function (p) { p.hidden = p.dataset.for !== k; });
+  }
+  function reset() {
+    show("envoyer"); note.hidden = true;
+    badge.textContent = start.badgeText; badge.className = start.badgeClass;
+    tileYou.textContent = start.you; tileDone.textContent = start.done;
+    go.textContent = start.goText; go.classList.remove("done");
+    card.classList.remove("settled");
+  }
+  function settle() {
+    var k = choice();
+    if (k === "envoyer") {
+      badge.textContent = D.sentBadge; badge.className = "badge s-done";
+      tileYou.textContent = String(Math.max(0, parseInt(start.you, 10) - 1));
+      tileDone.textContent = String(parseInt(start.done, 10) + 1);
+      note.textContent = D.sentNote;
+    } else {
+      note.textContent = D.heldNote;
+    }
+    note.hidden = false; go.textContent = D.recorded;
+    go.classList.add("done"); card.classList.add("settled");
+  }
+  opts.forEach(function (o) {
+    o.setAttribute("role", "button"); o.tabIndex = 0;
+    function pick() { if (!card.classList.contains("settled")) show(o.dataset.k); }
+    o.addEventListener("click", pick);
+    o.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  });
+  [go, back].forEach(function (el) { el.setAttribute("role", "button"); el.tabIndex = 0; });
+  go.addEventListener("click", function () { if (!card.classList.contains("settled")) settle(); });
+  back.addEventListener("click", reset);
+  go.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!card.classList.contains("settled")) settle(); } });
+  back.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); reset(); } });
+  show("envoyer");
+})();
+</script>

@@ -210,6 +210,13 @@
   .langswitch a{color:var(--ink-2)}
   /* Les trois piles de ce bureau. Memes teintes de chantier, noms du metier. */
   :root{ --w-devis:var(--w-device); --w-reponses:var(--w-sync); --w-comptes:var(--w-dashboard); }
+  /* la carte de decision repond vraiment : c'est ce que la page affirme faire */
+  .opt{cursor:pointer}
+  .decision.settled .opt{cursor:default;opacity:.55}
+  .decision.settled .opt.on{opacity:1}
+  .go{cursor:pointer}
+  .go.done{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);box-shadow:none}
+  .back{cursor:pointer}
 </style>
 </head>
 <body>
@@ -239,13 +246,13 @@
   </div>
 
   <div class="demoflag">
-    <b>Une démonstration figée, sur un cabinet fictif.</b> Les boutons sont montrés, pas actifs : cette page n’envoie rien. Elle lit ce que vos équipes ont confié à une IA, quel que soit l’outil qui l’a produit, et le range dans les trois piles ci-dessous. Les objets changent d’un métier à l’autre ; les trois questions, non.</div>
+    <b>Une démonstration, sur un cabinet fictif.</b> La carte de décision répond : choisissez, et la page enregistre le choix devant vous. Elle n’envoie rien et n’écrit nulle part. Elle lit ce que vos équipes ont confié à une IA, quel que soit l’outil qui l’a produit, et le range dans les trois piles ci-dessous. Les objets changent d’un métier à l’autre ; les trois questions, non.</div>
 
   <section class="sec">
     <div class="sechead"><span class="chev"></span><span class="nm">Ce qu’on vous doit, à vous et à personne d’autre</span></div>
     <p class="lede">Un devis au-dessus de votre seuil ne vous attend pas parce qu’il est important. Il vous attend parce qu’il est <i>fini</i> : chiffré, relu, et rien ne manque pour décider.</p>
 
-    <article class="decision">
+    <article class="decision" data-sent-badge="parti" data-recorded="Enregistré" data-sent-note="Enregistré à 11:14, au nom de l’associée. Le devis quitte « à vous » et rejoint les envois du jour, en gardant le nom de la grille et celui de la personne qui l’a relu." data-held-note="Enregistré à 11:14. Rien n’est parti, le devis reste « à vous », et la demande 2411 garde son échéance de 24 heures.">
       <div class="head">
         <a>Devis 2418</a>
         <h3>Séminaire 40 personnes, deux nuits, salle et restauration</h3>
@@ -254,7 +261,7 @@
         <span class="rel">répond à la demande 2411</span>
       </div>
       <p class="issueline">2411 · Demande de groupe reçue lundi 8 h 42, réponse attendue sous 24 h</p>
-      <p>Chiffré sur la grille de la saison, celle du 1<sup>er</sup> septembre. Deux écarts par rapport à la demande, nommés par l’assistant plutôt que lissés : la salle demandée n’est libre qu’un des deux soirs, et le menu végétarien n’est pas chiffré dans la grille. Relu ce matin par une personne qui ne l’a pas rédigé.</p>
+      <p>Chiffré sur la grille de la saison, celle du 1<sup>er</sup> septembre. Deux écarts par rapport à la demande, nommés par l’assistant IA plutôt que lissés : la salle demandée n’est libre qu’un des deux soirs, et le menu végétarien n’est pas chiffré dans la grille. Relu ce matin par une personne qui ne l’a pas rédigé.</p>
 
       <div class="act">
         <div>
@@ -264,8 +271,8 @@
         <div>
           <p class="lbl">Choisir</p>
           <div class="opts">
-            <div class="opt on"><span class="k">envoyer</span><span>Envoyer le devis au client, avec les deux écarts</span></div>
-            <div class="opt"><span class="k">garder</span><span>Pas encore, je veux d’abord trancher la salle</span></div>
+            <div class="opt on" data-k="envoyer"><span class="k">envoyer</span><span>Envoyer le devis au client, avec les deux écarts</span></div>
+            <div class="opt" data-k="garder"><span class="k">garder</span><span>Pas encore, je veux d’abord trancher la salle</span></div>
           </div>
         </div>
         <div>
@@ -274,7 +281,7 @@
         </div>
         <div class="exact">
           <p class="lbl">Ce qui partira, mot pour mot</p>
-          <pre>Bonjour,
+          <pre data-for="envoyer">Bonjour,
 
 Voici notre proposition pour vos 40 personnes, les 14 et 15 octobre.
 Tarifs de la grille en vigueur au 1er septembre.
@@ -286,6 +293,11 @@ Deux points à votre main :
   dès que vous nous confirmez le nombre.
 
 Le détail est en pièce jointe.</pre>
+          <pre data-for="garder" hidden>Rien ne part au client.
+
+Gardé par l’associée : la salle du 15 doit être tranchée
+avant l’envoi. Le devis reste dans « à vous », et la demande
+2411 garde son échéance de 24 heures.</pre>
           <p class="also">Envoyé au nom de <b>l’associée</b>, et classé sous la demande 2411. Le devis garde le nom de la grille qui a servi et celui de la personne qui l’a relu. Cette page enregistre une décision ; elle n’envoie rien d’elle-même.</p>
         </div>
         <div class="row">
@@ -453,3 +465,60 @@ Le détail est en pièce jointe.</pre>
 </script>
 </body>
 </html>
+<script>
+/* La decision se prend sur la page. Rien n'est envoye : la page enregistre un
+   choix devant vous et le montre, ce qui est exactement ce qu'elle affirme. */
+(function () {
+  var card = document.querySelector(".decision"); if (!card) return;
+  var opts = [].slice.call(card.querySelectorAll(".opt"));
+  var pres = [].slice.call(card.querySelectorAll(".exact pre"));
+  var go = card.querySelector(".go"), back = card.querySelector(".back");
+  var badge = card.querySelector(".head .badge");
+  var tileYou = document.querySelector(".tile.s-you b");
+  var tileDone = document.querySelector(".tile.s-done b");
+  var note = document.createElement("p");
+  note.className = "also"; note.hidden = true;
+  card.querySelector(".exact").appendChild(note);
+  var D = card.dataset, start = {
+    badgeText: badge.textContent, badgeClass: badge.className,
+    you: tileYou.textContent, done: tileDone.textContent, goText: go.textContent
+  };
+  function choice() { var o = card.querySelector(".opt.on"); return o ? o.dataset.k : "envoyer"; }
+  function show(k) {
+    opts.forEach(function (o) { o.classList.toggle("on", o.dataset.k === k); });
+    pres.forEach(function (p) { p.hidden = p.dataset.for !== k; });
+  }
+  function reset() {
+    show("envoyer"); note.hidden = true;
+    badge.textContent = start.badgeText; badge.className = start.badgeClass;
+    tileYou.textContent = start.you; tileDone.textContent = start.done;
+    go.textContent = start.goText; go.classList.remove("done");
+    card.classList.remove("settled");
+  }
+  function settle() {
+    var k = choice();
+    if (k === "envoyer") {
+      badge.textContent = D.sentBadge; badge.className = "badge s-done";
+      tileYou.textContent = String(Math.max(0, parseInt(start.you, 10) - 1));
+      tileDone.textContent = String(parseInt(start.done, 10) + 1);
+      note.textContent = D.sentNote;
+    } else {
+      note.textContent = D.heldNote;
+    }
+    note.hidden = false; go.textContent = D.recorded;
+    go.classList.add("done"); card.classList.add("settled");
+  }
+  opts.forEach(function (o) {
+    o.setAttribute("role", "button"); o.tabIndex = 0;
+    function pick() { if (!card.classList.contains("settled")) show(o.dataset.k); }
+    o.addEventListener("click", pick);
+    o.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  });
+  [go, back].forEach(function (el) { el.setAttribute("role", "button"); el.tabIndex = 0; });
+  go.addEventListener("click", function () { if (!card.classList.contains("settled")) settle(); });
+  back.addEventListener("click", reset);
+  go.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!card.classList.contains("settled")) settle(); } });
+  back.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); reset(); } });
+  show("envoyer");
+})();
+</script>
