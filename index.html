@@ -516,7 +516,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <div class="wrap hero">
   <p class="eyebrow">AI-agent orchestration · free kit (MIT) · hands-on help</p>
   <h1>Put AI agents to work <em>and keep the last word</em>.</h1>
-  <p class="lede"><strong>Guildwork is a discipline built one incident at a time, and still being built:</strong> a contract before every task handed to an AI, a witness while it runs, a closeout after — and a launcher that refuses to start what isn’t in order. Running today on real software (seven agents, twenty-five merges a day), it holds a law firm, an agency or a support desk just as well.</p>
+  <p class="lede"><strong>Guildwork is a discipline built one incident at a time, and upgraded by every new one:</strong> a contract before every task handed to an AI, a witness while it runs, a closeout after — and a launcher that refuses to start what isn’t in order. Running today on real software (seven agents, twenty-five merges a day), it holds a law firm, an agency or a support desk just as well.</p>
   <p class="lede">The kit is public and free. Installing it where you work is my job.</p>
   <a class="try" href="demo/gate/">
     <p class="try-tag">Interactive demo · nothing to install</p>
@@ -916,37 +916,36 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="situations" class="wrap">
   <h2>Six situations you will recognise</h2>
-  <p>None is invented in its mechanism: these are the four failures every team that puts several agents to work produces, carried outside code. Under each, the rule that prevents it. The first is as far from code as one can get.</p>
+  <p>In each of them, nobody cheated and nobody was careless. What is missing is always the same thing: a record of what was used, and somebody else who re-reads it before it goes out. Under each, the rule that prevents it.</p>
   <div class="feat">
     <div>
-      <p class="n"><svg class="i" aria-hidden="true"><use href="#i-fork"/></svg><span>The restaurant</span></p>
-      <h3>Tonight's menu was written by an AI. So was the allergen line.</h3>
-      <p>Every week the sous-chef has an assistant write the evening menu from last week's — it is fast, it is clean, and the allergen line comes with it. This week the tiramisu changed: the new recipe has walnuts. The allergen line did not move, because the assistant read the old recipe card. Nobody re-read it; it is "the same menu as usual". The allergic customer is in the dining room on a Tuesday.</p>
-      <p>This is not an AI error. It is a source that changed without anything saying so, a menu printed without a human who did not write it reading it, and a previous time — there is always one — when the menu was already wrong and nobody wrote it down. The mechanism is exactly the one that breaks a team of developers. It does not need a line of code to exist.</p>
+      <p class="n"><svg class="i" aria-hidden="true"><use href="#i-scales"/></svg><span>The firm</span></p>
+      <h3>Two contradictory answers to the same client, one day apart</h3>
+      <p>Two associates, two assistants, two ways of asking the question. On Monday the client gets one position. On Tuesday he gets the opposite, on the same matter. He calls the partner, who finds out at the same moment he does. Nobody can say which of the two answers was re-read, nor which documents each assistant worked from.</p>
+      <p>Both associates did their job. Neither cut a corner, neither went around anything. What is missing is not one more rule to follow: it is a single place where the request is written once for both of them, and a record of what was used to answer it.</p>
     </div>
     <div class="side">
       <h4>What was missing, in three words</h4>
-      <p><strong>The source, named.</strong> Which recipe card was used — this week's or last week's — written on the menu itself, before printing.</p>
-      <p><strong>The gate.</strong> Nothing goes to the dining room until someone who did not write it has read the allergen line, and signed it.</p>
-      <p><strong>The register.</strong> The previous time, written down in one line, would have become the rule that prevents this one.</p>
-      <div class="rulebox">The rule fits in one sentence, and an owner understands it without being told what an agent is: <em>nothing goes to the dining room unless the card that was used is named, and a human who did not write it has read it.</em></div>
+      <p><strong>The written request.</strong> What is being asked, from which documents, and what must come out. In one place for both associates, before anyone starts.</p>
+      <p><strong>The gate.</strong> Nothing reaches the client until someone who did not write it has re-read it, and their name stays on it.</p>
+      <p><strong>The register.</strong> The first contradiction, written down in one line, would have become the rule that prevents the second.</p>
+      <div class="rulebox">The rule fits in one sentence, and a partner understands it without anyone explaining what an agent is: <em>nothing reaches the client unless the documents that were used are named, and someone who did not write it has re-read it.</em></div>
     </div>
   </div>
   <div class="scenes">
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-scales"/></svg><span>The firm</span></p><h3>Two contradictory answers to the same client</h3><p>Two associates, two AI assistants, two prompts. The client receives one position on Monday and its opposite on Tuesday, and nobody can say which one was reviewed.</p><p class="rule">One task, one written contract; nothing leaves without a reviewer who did not write it.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-mega"/></svg><span>The agency</span></p><h3>An invented claim, published under the client's name</h3><p>A plausible figure, a source that does not exist, a post that has been live for four days. Nobody knows what the agent was asked, or by whom.</p><p class="rule">A gate before publication; what was used to produce it is named, and kept.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-headset"/></svg><span>The support desk</span></p><h3>A refund promised outside policy</h3><p>The agent answering tickets promised a goodwill gesture nobody had authorised. Found three weeks later, by accounting.</p><p class="rule">The agent knows what it may commit to, refuses the rest — and says that it refuses.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ruler"/></svg><span>The engineering office</span></p><h3>A quote computed on last year's price list</h3><p>The agent read the right template and the wrong price file. The quote went out, signed. The substitution was silent: nothing said which list had been used.</p><p class="rule">Every output names its sources; a change of source is an event, not a detail.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>Management</span></p><h3>The method went on leave</h3><p>The assistant who has the board minutes produced "her way" is away for three weeks. Nobody knows how to reproduce what she got.</p><p class="rule">Every session leaves a record the next one can read; the method belongs to the company.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>You, tonight</span></p><h3>The human who carries the messages</h3><p>You paste the output of one tool into another, all day, so that your agents "work together". You have become the message bus of your own assistants.</p><p class="rule">Agents hand work over through a board, not through you; you decide, you no longer carry.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>Human resources</span></p><h3>An application pasted into a personal tool</h3><p>To write a rejection, a colleague pastes the CV and her interview notes into the tool she uses at home. It is good, it is free, and it does not belong to the company.</p><p class="rule">Authorised tools are declared; what leaves the company is named before it leaves.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-mega"/></svg><span>The agency</span></p><h3>An invented claim, published under the client's name</h3><p>A plausible figure, a source that does not exist, a post live for four days. Nobody knows what the assistant was asked, or by whom.</p><p class="rule">A gate before publication; what was used to produce it is named, and it is kept.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-headset"/></svg><span>The support desk</span></p><h3>A refund promised outside policy</h3><p>The assistant answering tickets promised a gesture nobody had authorised. Found three weeks later, by accounting.</p><p class="rule">The assistant knows what it may commit to, refuses the rest, and says that it refuses.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>Management</span></p><h3>The method went on leave</h3><p>The assistant who has the board minutes produced “her way” is away for three weeks. Nobody knows how to reproduce what she got.</p><p class="rule">Every piece of work leaves a record the next one can read; the method belongs to the company.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-fork"/></svg><span>The restaurant</span></p><h3>Tonight's menu, and the allergen line with it</h3><p>The menu is written from last week's. The tiramisu changed, the allergen line did not: the assistant read the old recipe card, and nobody re-read it.</p><p class="rule">Nothing reaches the dining room unless the recipe card that was used is named, and someone who did not write it has re-read it.</p></div>
   </div>
 </section>
 
 <hr class="rule">
 
 <section id="board-nocode" class="wrap">
-  <h2>The same board, without a line of code</h2>
-  <p>The tool that holds all of this is one page that reads what your teams handed to an AI, and sorts it into three piles. On a software project it reads pull requests. In a firm, an agency or a support desk it reads quotes, client replies, meeting notes and drafted clauses. <strong>The objects change; the three questions do not.</strong></p>
+  <h2>One page that says what was handed to an AI, and to whom</h2>
+  <p>The tool that holds all of this is one page that reads what your teams handed to an AI, and sorts it into three piles: quotes, client replies, meeting notes, drafted clauses, whatever tool produced them. <strong>The objects change from one trade to the next; the three questions do not.</strong></p>
   <div class="scenes">
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Owed to you</span></p><h3>What is waiting for you, and for nobody else</h3><p>The quote above your threshold. The reply to a complaint. The clause an assistant drafted. Each names the person who signs it, and appears in front of that person only once it is genuinely finished.</p><p class="rule">If it is not on your list, it is not waiting on you — and you stop being the bottleneck by default.</p></div>
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Moving without you</span></p><h3>What goes out under delegation, in plain sight</h3><p>Routine answers, standard confirmations, the summaries nobody needs to arbitrate. They leave without your signature — and they are still shown, because a delegation nobody can see is not a delegation.</p><p class="rule">You do not approve them. You can name, at any moment, everything that went out in your name.</p></div>
@@ -963,7 +962,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="next-nocode" class="wrap">
   <h2>Where this is going</h2>
-  <p>One page that reads what your people hand to an AI — quotes this year, minutes and client replies the next — and sorts it into the same three piles, under the same seven states as a software board. The person who signs sits in the consultant's chair, not the executor's: the AI brings the finished thing and the one decision that is theirs, and everything else leaves in plain sight.</p>
+  <p>One page that reads what your people hand to an AI — quotes this year, minutes and client replies the next — and sorts it into the same three piles, under the same states from one trade to the next. The person who signs sits in the consultant's chair, not the executor's: the AI brings the finished thing and the one decision that is theirs, and everything else leaves in plain sight.</p>
 </section>
 
 <hr class="rule">

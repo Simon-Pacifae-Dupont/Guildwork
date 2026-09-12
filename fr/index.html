@@ -522,7 +522,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <div class="wrap hero">
   <p class="eyebrow">Orchestration d’agents IA · pack libre (MIT) · accompagnement</p>
   <h1>Faire travailler des agents IA <em>en gardant le dernier mot</em>.</h1>
-  <p class="lede"><strong>Guildwork est une discipline construite incident après incident, et qui se construit encore :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Elle tourne aujourd'hui sur un logiciel réel (sept agents, vingt-cinq merges par jour) et tient aussi un cabinet, une agence ou un service client.</p>
+  <p class="lede"><strong>Guildwork est une discipline construite incident après incident, que chaque nouvel incident met à niveau :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Elle tourne aujourd'hui sur un logiciel réel (sept agents, vingt-cinq merges par jour) et tient aussi un cabinet, une agence ou un service client.</p>
   <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
   <a class="try" href="demo/gate/">
     <p class="try-tag">Démonstration interactive · rien à installer</p>
@@ -924,37 +924,36 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="situations" class="wrap">
   <h2>Six situations que vous reconnaîtrez</h2>
-  <p>Aucune n'est inventée dans son mécanisme : ce sont les quatre défaillances que produit toute équipe qui fait travailler plusieurs agents, transposées hors du code. Sous chacune, la règle qui l'empêche. La première est la plus loin du code qu'on puisse aller.</p>
+  <p>Dans chacune, personne n'a triché et personne n'a été négligent. Ce qui manque est toujours la même chose : une trace de ce qui a servi, et quelqu'un d'autre qui relit avant que ça sorte. Sous chacune, la règle qui l'empêche.</p>
   <div class="feat">
     <div>
-      <p class="n"><svg class="i" aria-hidden="true"><use href="#i-fork"/></svg><span>Le restaurant</span></p>
-      <h3>La carte du soir a été rédigée par une IA. La mention allergènes aussi.</h3>
-      <p>Chaque semaine, le second fait rédiger la carte du soir par un assistant, à partir de celle de la semaine précédente — c'est rapide, c'est propre, et la mention des allergènes vient avec. Cette semaine, le tiramisu a changé : la nouvelle recette contient des noix. La mention, elle, n'a pas bougé, parce que l'assistant a lu l'ancienne fiche. Personne n'a relu ; c'est « la même carte que d'habitude ». Le client allergique est en salle un mardi.</p>
-      <p>Ce n'est pas une erreur d'IA. C'est une source qui a changé sans que rien le dise, une carte imprimée sans qu'un humain qui n'a pas rédigé l'ait relue, et une fois précédente — il y en a toujours une — où la carte était déjà fausse et où personne ne l'a notée. Le mécanisme est exactement celui qui fait planter une équipe de développeurs. Il n'a pas besoin d'une ligne de code pour exister.</p>
+      <p class="n"><svg class="i" aria-hidden="true"><use href="#i-scales"/></svg><span>Le cabinet</span></p>
+      <h3>Deux réponses contradictoires au même client, à un jour d'intervalle</h3>
+      <p>Deux collaborateurs, deux assistants, deux façons de poser la question. Lundi, le client reçoit une position. Mardi, il reçoit son contraire, sur le même dossier. Il appelle l'associé, qui découvre le problème en même temps que lui. Personne ne peut dire laquelle des deux réponses a été relue, ni sur quels documents chaque assistant a travaillé.</p>
+      <p>Les deux collaborateurs ont bien fait leur travail. Aucun n'a bâclé, aucun n'a contourné quoi que ce soit. Ce qui manque n'est pas une règle de plus à respecter : c'est un endroit où la demande est écrite une fois pour les deux, et une trace de ce qui a servi à y répondre.</p>
     </div>
     <div class="side">
       <h4>Ce qui manquait, en trois mots</h4>
-      <p><strong>La source nommée.</strong> Quelle fiche a servi — celle de cette semaine ou celle d'avant — écrit sur la carte elle-même, avant impression.</p>
-      <p><strong>La porte.</strong> Rien ne part en salle sans qu'une personne qui n'a pas rédigé ait relu la ligne allergènes, et l'ait signé.</p>
-      <p><strong>Le registre.</strong> La fois précédente, notée en une ligne, serait devenue la règle qui empêche celle-ci.</p>
-      <div class="rulebox">La règle tient en une phrase, et un patron la comprend sans qu'on lui explique ce qu'est un agent : <em>rien ne part en salle sans que la fiche qui a servi soit nommée, et sans qu'un humain qui n'a pas rédigé ait relu.</em></div>
+      <p><strong>La demande écrite.</strong> Ce qu'on demande, sur quels documents, et ce qui doit en sortir. Au même endroit pour les deux collaborateurs, avant de commencer.</p>
+      <p><strong>La porte.</strong> Rien ne part au client sans qu'une personne qui n'a pas rédigé ait relu, et son nom reste dessus.</p>
+      <p><strong>Le registre.</strong> La première contradiction, notée en une ligne, serait devenue la règle qui empêche la seconde.</p>
+      <div class="rulebox">La règle tient en une phrase, et un associé la comprend sans qu'on lui explique ce qu'est un agent : <em>rien ne part au client sans que les documents qui ont servi soient nommés, et sans qu'une personne qui n'a pas rédigé ait relu.</em></div>
     </div>
   </div>
   <div class="scenes">
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-scales"/></svg><span>Le cabinet</span></p><h3>Deux réponses contradictoires au même client</h3><p>Deux collaborateurs, deux assistants IA, deux prompts. Le client reçoit lundi une position, mardi son contraire, et personne ne peut dire laquelle a été relue.</p><p class="rule">Une tâche, un contrat écrit ; rien ne part sans un relecteur qui n'a pas rédigé.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-mega"/></svg><span>L'agence</span></p><h3>Une affirmation inventée, publiée sous le nom du client</h3><p>Un chiffre plausible, une source qui n'existe pas, un post en ligne depuis quatre jours. On ne sait pas ce qui a été demandé à l'agent, ni par qui.</p><p class="rule">Une porte avant publication ; ce qui a servi à produire est nommé, et il est conservé.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-headset"/></svg><span>Le support</span></p><h3>Un remboursement promis hors politique</h3><p>L'agent qui répond aux tickets a promis un geste commercial que personne n'avait autorisé. Découvert trois semaines plus tard, par la comptabilité.</p><p class="rule">L'agent connaît ce qu'il peut engager, refuse le reste — et dit qu'il refuse.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ruler"/></svg><span>Le bureau d'études</span></p><h3>Un devis calculé sur la grille de l'an dernier</h3><p>L'agent a lu le bon modèle et le mauvais fichier de prix. Le devis est parti, signé. La substitution était silencieuse : rien ne disait quelle grille avait servi.</p><p class="rule">Chaque production nomme ses sources ; un changement de source est un événement, pas un détail.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>La direction</span></p><h3>La méthode est partie en congé</h3><p>L'assistante qui fait produire les comptes-rendus de direction « à sa façon » est absente trois semaines. Personne ne sait reproduire ce qu'elle obtenait.</p><p class="rule">Chaque session laisse une trace lisible par la suivante ; la méthode appartient à l'entreprise.</p></div>
-    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>Vous, ce soir</span></p><h3>L'humain qui porte les messages</h3><p>Vous copiez la sortie d'un outil dans un autre, toute la journée, pour que vos agents « travaillent ensemble ». Vous êtes devenu le bus de messages de vos propres assistants.</p><p class="rule">Les agents se passent le travail par un tableau, pas par vous ; vous tranchez, vous ne transportez plus.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-person"/></svg><span>Les ressources humaines</span></p><h3>Un dossier de candidature collé dans un outil personnel</h3><p>Pour rédiger un refus, une collaboratrice colle le CV et ses notes d'entretien dans l'outil qu'elle utilise chez elle. Il est bon, il est gratuit, et il n'appartient pas à l'entreprise.</p><p class="rule">Les outils autorisés sont déclarés ; ce qui sort de l'entreprise est nommé avant de sortir.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-mega"/></svg><span>L'agence</span></p><h3>Une affirmation inventée, publiée sous le nom du client</h3><p>Un chiffre plausible, une source qui n'existe pas, un post en ligne depuis quatre jours. On ne sait pas ce qui a été demandé à l'assistant, ni par qui.</p><p class="rule">Une porte avant publication ; ce qui a servi à produire est nommé, et il est conservé.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-headset"/></svg><span>Le service client</span></p><h3>Un remboursement promis hors politique</h3><p>L'assistant qui répond aux tickets a promis un geste commercial que personne n'avait autorisé. Découvert trois semaines plus tard, par la comptabilité.</p><p class="rule">L'assistant connaît ce qu'il peut engager, refuse le reste, et dit qu'il refuse.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-case"/></svg><span>La direction</span></p><h3>La méthode est partie en congé</h3><p>L'assistante qui fait produire les comptes-rendus de direction « à sa façon » est absente trois semaines. Personne ne sait reproduire ce qu'elle obtenait.</p><p class="rule">Chaque travail laisse une trace lisible par le suivant ; la méthode appartient à l'entreprise.</p></div>
+    <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-fork"/></svg><span>Le restaurant</span></p><h3>La carte du soir, et la mention allergènes avec</h3><p>La carte est rédigée à partir de celle de la semaine dernière. Le tiramisu a changé, la mention allergènes non : l'assistant a lu l'ancienne fiche, et personne n'a relu.</p><p class="rule">Rien ne part en salle sans que la fiche qui a servi soit nommée, et sans qu'une personne qui n'a pas rédigé ait relu.</p></div>
   </div>
 </section>
 
 <hr class="rule">
 
 <section id="board-nocode" class="wrap">
-  <h2>Le même tableau, sans une ligne de code</h2>
-  <p>L'outil qui tient tout cela est une page unique, qui lit ce que vos équipes ont confié à une IA et le range en trois piles. Sur un projet logiciel, elle lit des pull requests. Dans un cabinet, une agence ou un service client, elle lit des devis, des réponses, des comptes-rendus, des clauses rédigées. <strong>Les objets changent ; les trois questions, non.</strong></p>
+  <h2>Une page qui dit ce qui a été confié, et à qui</h2>
+  <p>L'outil qui tient tout cela est une page unique, qui lit ce que vos équipes ont confié à une IA et le range en trois piles : des devis, des réponses clients, des comptes-rendus, des clauses rédigées, quel que soit l'outil qui les a produits. <strong>Les objets changent d'un métier à l'autre ; les trois questions, non.</strong></p>
   <div class="scenes">
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-ask"/></svg><span>Ce qu'on vous doit</span></p><h3>Ce qui vous attend, vous et personne d'autre</h3><p>Le devis au-dessus de votre seuil. La réponse à une réclamation. La clause qu'un assistant a rédigée. Chacun nomme la personne qui signe, et n'apparaît devant elle qu'une fois réellement terminé.</p><p class="rule">Si ce n'est pas dans votre liste, ça ne vous attend pas — et vous cessez d'être le goulot par défaut.</p></div>
     <div class="scene"><p class="n"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg><span>Ce qui avance sans vous</span></p><h3>Ce qui part sous délégation, à la vue de tous</h3><p>Les réponses courantes, les confirmations standard, les comptes-rendus que personne n'a besoin d'arbitrer. Ils partent sans votre signature — et restent affichés, parce qu'une délégation que personne ne voit n'est pas une délégation.</p><p class="rule">Vous ne les validez pas. Vous pouvez nommer, à tout instant, tout ce qui est parti en votre nom.</p></div>
@@ -971,7 +970,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 
 <section id="next-nocode" class="wrap">
   <h2>Où ça va</h2>
-  <p>Une page qui lit ce que vos équipes confient à une IA — les devis cette année, les comptes rendus et les réponses clients la suivante — et le trie dans les mêmes trois piles, sous les mêmes sept états qu'un tableau de logiciel. La personne qui signe est dans le fauteuil du consultant, pas de l'exécutant : l'IA apporte la chose finie et la seule décision qui lui revient, et tout le reste part au grand jour.</p>
+  <p>Une page qui lit ce que vos équipes confient à une IA — les devis cette année, les comptes rendus et les réponses clients la suivante — et le trie dans les mêmes trois piles, sous les mêmes états d'un métier à l'autre. La personne qui signe est dans le fauteuil du consultant, pas de l'exécutant : l'IA apporte la chose finie et la seule décision qui lui revient, et tout le reste part au grand jour.</p>
 </section>
 
 <hr class="rule">
