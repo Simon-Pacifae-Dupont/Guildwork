@@ -49,7 +49,7 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 
 .pick{padding:26px 0 0}
 .pick-label{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
-.stage{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:16px 0 0}
+.stage{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:32px 0 0}
 @media(min-width:940px){.stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}
  #side{position:sticky;top:20px}}
 
@@ -130,7 +130,11 @@ pre b{color:var(--ink);font-weight:500}
 .foot{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 60px;color:var(--ink-3);font-size:13.4px}
 .foot p{margin:0 0 7px;max-width:72ch}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
-@media(max-width:520px){.wrap{padding:0 16px}.hero{padding-top:30px}}
+/* Le raccourci `padding` sur .wrap annulait le padding vertical des blocs qui
+   portent aussi cette classe : le selecteur de journee se retrouvait colle a la
+   demonstration sur telephone. On ne touche donc que les cotes, et la scene garde
+   son ecart d'objet (24px sur telephone, 32 au-dessus). */
+@media(max-width:520px){.wrap{padding-inline:16px}.hero{padding-top:30px}.stage{padding-top:24px}}
 </style>
 </head>
 <body>
@@ -183,7 +187,7 @@ var T = {
   startP:"Five jobs, two agents at a time. Nothing starts until you say so, and nothing leaves without a name on it.",
   startBtn:"Start the day",
   runK:"Running", runH:"They are working",
-  runP:"Two at a time, never more. The rest wait their turn. You have nothing to do until something needs you.",
+  runP:"Two at a time, because that is the ceiling you set. The rest wait their turn. You have nothing to do until something needs you.",
   stopK:"Stopped before it went out", fixBtn:"Fix it and run it again",
   gateK:"This one is yours", approve:"Approve and send", ret:"Send it back",
   retP:"Sent back with your reason. It will come back corrected.",
