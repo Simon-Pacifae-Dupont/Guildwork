@@ -98,6 +98,19 @@
   .btn.ghost{border-color:var(--edge);color:var(--ink)}
   .btn.ghost:hover{border-color:#4E5F80;background:var(--node)}
   .note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);margin:var(--gap-caption) 0 0}
+  /* ---- the try card: the demo leads the hero, above booking and the kit ---- */
+  .try{display:block;margin-top:30px;border:1px solid var(--line-amber);border-radius:12px;
+    background:var(--card-lead);box-shadow:var(--shadow-lift);padding:28px 28px 24px;
+    text-decoration:none;color:var(--ink);transition:transform .16s ease,border-color .16s ease}
+  .try:hover{transform:translateY(-2px);border-color:var(--amber);text-decoration:none}
+  .try .try-tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--amber);margin:0 0 10px}
+  .try h2{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;
+    font-size:clamp(1.4rem,2.7vw,1.8rem);line-height:1.14;margin:0 0 10px;letter-spacing:-.01em}
+  .try .try-lede{color:var(--ink-2);font-size:15.5px;margin:0;max-width:64ch}
+  .try .try-go{display:inline-block;margin-top:18px;font-size:15px;font-weight:600;color:var(--amber-2)}
+  .wrap.hero .try + .cta{margin-top:20px}
+  @media (max-width:520px){.try{padding:22px 20px 20px}}
 
   /* ---- sections ---- */
   section.wrap{padding-block:var(--gap-section)}
@@ -511,6 +524,12 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   <h1>Faire travailler des agents IA <em>en gardant le dernier mot</em>.</h1>
   <p class="lede"><strong>Guildwork est une discipline construite incident après incident, et qui se construit encore :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après — et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Elle tourne aujourd'hui sur un logiciel réel (sept agents, vingt-cinq merges par jour) et tient aussi un cabinet, une agence ou un service client.</p>
   <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
+  <a class="try" href="demo/gate/">
+    <p class="try-tag">Démonstration interactive · rien à installer</p>
+    <h2>Essayez de faire passer une mission</h2>
+    <p class="try-lede">Cassez le contrat vous-même : enlevez le périmètre, changez un champ par un commentaire, demandez un niveau que le siège ne porte pas. Le lanceur le vérifie et refuse, en nommant la condition qui a tiré. Deux minutes, avec ou sans code.</p>
+    <span class="try-go">Ouvrir la démonstration &rarr;</span>
+  </a>
   <div class="cta">
     <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Réserver 30 minutes</a>
     <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Lire le pack</a>
@@ -585,6 +604,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 
 <section id="refusal" class="wrap">
   <h2>À quoi ressemble un refus</h2>
+  <p class="note"><a href="demo/gate/">Provoquez-en un vous-même &rarr;</a> — les mêmes conditions, dans votre navigateur.</p>
   <p>Le lanceur a lu le contrat #118, récupéré la gouvernance au commit sur lequel la mission allait tourner, et s'est arrêté avant de créer quoi que ce soit. Trois jours plus tôt, une tentative sur le même lot avait été refusée en relecture ; sa branche avait survécu sur le dépôt distant parce que personne n'en avait écrit la disposition. <strong>Le silence, c'est des débris — et le lanceur les a vus avant qu'un second scribe n'existe.</strong></p>
   <div class="term">
     <div class="term-head"><i></i><i></i><i></i><span>mission_launcher.py 118 --dry-run · Lantern, poste de travail</span></div>
