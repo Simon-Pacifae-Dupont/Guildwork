@@ -150,7 +150,7 @@ says which value is Lantern's and what you still owe.
 ## Where it comes from
 
 A Windows desktop application in Python with a 13 155-test suite, measured on
-8 September 2026; one human Product Owner, ChatGPT Work in the advisory Chief
+8 September 2026; one human Product Owner, Claude Cowork in the advisory Chief
 Architect seat, and executing seats on Claude Code, Grok Build and Codex CLI.
 In the thirteen days to 7 September 2026, 344 contracts were opened and
 320 pull requests merged, twenty-five a day; 548 sessions closed with a

@@ -23,7 +23,7 @@ was written by AI seats under the contracts described in this pack.
 | role profiles | 8 |
 | harness options on the mission form | 7 |
 | execution harnesses in the current operating view | 3 — Claude Code, Grok Build and Codex CLI; each mission still names its role, model and effort |
-| architect seat | ChatGPT Work — an advisory cloud session with no local launch surface, holding the board: contracts, labels, rulings, the register, and every command the human runs |
+| architect seat | Claude Cowork — an advisory cloud session with no local launch surface, holding the board: contracts, labels, rulings, the register, and every command the human runs |
 
 ## The throughput
 

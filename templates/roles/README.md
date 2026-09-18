@@ -15,7 +15,7 @@ The eight profiles of the Lantern example:
 | Slug | Seat | Nature |
 |---|---|---|
 | `product-owner` | the human | final authority, merge to `main` |
-| `chief-architect` | ChatGPT Work (advisory cloud session) | contracts, routing, rulings, labels, the register, the commands the human runs — no local launch surface |
+| `chief-architect` | Claude Cowork (advisory cloud session) | contracts, routing, rulings, labels, the register, the commands the human runs — no local launch surface |
 | `claude-code` | Claude Code | implementation, tests, pull requests |
 | `grok-build` | Grok Build | delivery of assigned atomic lots |
 | `grok-hq` | Grok HQ (profile) | adversarial architecture review |
