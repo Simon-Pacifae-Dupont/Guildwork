@@ -65,12 +65,12 @@
         'contract and launch — five surfaces · ten checks today',
         'execute and deliver — nobody certifies their own work  ←',
         'close and learn — the durable evidence  ←',
-        'watch and route — what exists now, and what comes next',
+        'watch and route — deterministic, and it wakes the seats',
         'consult — the read from someone with nothing to defend'
       ],
       nodes: {
         po:    { icon: 'person', kind: 'human',   k: 'authority',          t: 'Product Owner',        s: 'human · final say\nlaunches and merges\nunder the named gate' },
-        ca:    { icon: 'bot',    kind: 'control', k: 'advisory seat',      t: 'Chief Architect',      s: 'ChatGPT Work\ncontracts, board, rulings\nno local launch surface', tag: 'advisory' },
+        ca:    { icon: 'bot',    kind: 'control', k: 'architect seat',     t: 'Chief Architect',      s: 'Claude Code on the host\ncontracts and rulings\nno write in the tree', tag: 'board' },
         iss:   { icon: 'doc',    kind: 'control', k: 'source of truth',    t: 'Issue = contract',     s: 'goal · scope · stops\nauthority, seat, model\ntitle #N first', tick: true },
         lnch:  { icon: 'shield', kind: 'control', k: 'before any session', t: 'Launcher · 10 checks', s: '7 stable, from the contract\n+ 3 hardened by use\nrefuses by name', tag: '7 + 3', tick: true },
         wt:    { icon: 'branch', kind: 'control', k: 'isolated workspace', t: 'Worktree',             s: 'one branch · one writer\nguild-hi at entry\nthe contract travels in', tick: true },
@@ -84,9 +84,9 @@
         close: { icon: 'broom',  kind: 'control', k: 'after the merge',    t: 'Closeout tool',        s: 'five checks, regenerable\ncloses contracts\nfrom the delivery', tick: true },
         reg:   { icon: 'book',   kind: 'signal',  k: 'learning loop',      t: 'Findings register',    s: 'every mismatch has\nan owner — ruled,\nconverted or declined' },
         event: { icon: 'inbox',  kind: 'watcher', k: 'authorised signal',  t: 'GitHub event',         s: 'a route label is applied\nor the host produces\na new measured reading' },
-        watch: { icon: 'pulse',  kind: 'watcher', k: 'today · deterministic', t: 'Watcher',           s: 'polls every two minutes\nsees · dedupes · records\nstarts no model', tag: 'now' },
-        read:  { icon: 'eye',    kind: 'watcher', k: 'current output',     t: 'Fresh board reading',  s: 'the latest host state\ntime of the reading\nprojection, never truth', tag: 'now' },
-        dispatch: { icon: 'send', kind: 'future', k: 'next · after canaries', t: 'Receive · deliver · wake', s: 'accept the authorised mission event · send the canonical contract\nwake the named existing seat · zero model call when nothing changed', tag: 'next' },
+        watch: { icon: 'pulse',  kind: 'watcher', k: 'deterministic',      t: 'Watcher',              s: 'polls every two minutes\nsees · dedupes · records\nstarts no model', tag: 'live' },
+        read:  { icon: 'eye',    kind: 'watcher', k: 'current output',     t: 'Fresh board reading',  s: 'the latest host state\ntime of the reading\nprojection, never truth', tag: 'live' },
+        dispatch: { icon: 'send', kind: 'watcher', k: 'armed · deterministic', t: 'Receive · deliver · wake', s: 'accept the armed mission event · send the canonical contract · launch the named seat\nwake the architect when the mission returns · zero model call when nothing changed', tag: 'live' },
         ask:   { icon: 'doc',  kind: 'control', k: 'what calls for it',  t: 'A contested ruling',        s: 'a ruling under dispute\na design to validate\na figure nobody measured' },
         rev:   { icon: 'bot',  kind: 'control', k: 'outside review',     t: 'Consultant with no surface', s: 'GPT · Grok, outside the tree\nstarts nothing, merges nothing\nhence a neutral read', tag: 'neutral' },
         opin:  { icon: 'book', kind: 'control', k: 'what it produces',   t: 'An opinion, not a decision', s: 'a finding in the register\nthe gate stays human\nan opinion merges nothing' }
@@ -97,7 +97,7 @@
         bye:   'exit 3: follow the printed push steps;\ndo not rerun',
         close: 'refuses: open · dirty · absent from server\nin use · unmerged'
       },
-      labels: { validated: 'validated contract', bye: 'guild-bye', merged: 'after merge', rule: 'becomes the next rule', wake: 'wake the named seat' }
+      labels: { validated: 'validated contract', bye: 'guild-bye', merged: 'after merge', rule: 'becomes the next rule', wake: 'launch the named seat' }
     },
     fr: {
       stage: 'Canvas de fonctionnement de Guildwork : contrat, lancement, exécution, clôture, boucle d’apprentissage, et le watcher.',
@@ -105,12 +105,12 @@
         'contrat et lancement — cinq surfaces · dix contrôles aujourd’hui',
         'exécuter et livrer — personne ne certifie son propre travail  ←',
         'clore et apprendre — la preuve durable  ←',
-        'observer et router — ce qui existe, puis la prochaine étape',
+        'observer et router — déterministe, et il réveille les sièges',
         'consulter — l’avis de qui n’a rien à défendre'
       ],
       nodes: {
         po:    { icon: 'person', kind: 'human',   k: 'autorité',            t: 'Product Owner',         s: 'humain · dernier mot\nlance et fusionne\nsous la porte nommée' },
-        ca:    { icon: 'bot',    kind: 'control', k: 'siège consultatif',   t: 'Architecte en chef',    s: 'ChatGPT Work\ncontrats et tableau\npas de lancement local', tag: 'conseil' },
+        ca:    { icon: 'bot',    kind: 'control', k: 'siège local',         t: 'Architecte en chef',    s: 'Claude Code sur l’hôte\ncontrats et arbitrages\nne touche pas à l’arbre', tag: 'tableau' },
         iss:   { icon: 'doc',    kind: 'control', k: 'source de vérité',    t: 'Issue = contrat',       s: 'but · portée · arrêts\nautorité, siège, modèle\ntitre #N en tête', tick: true },
         lnch:  { icon: 'shield', kind: 'control', k: 'avant toute session', t: 'Lanceur · 10 contrôles', s: '7 stables, du contrat\n+ 3 durcis par l’usage\nrefuse en nommant', tag: '7 + 3', tick: true },
         wt:    { icon: 'branch', kind: 'control', k: 'espace isolé',        t: 'Worktree',              s: 'une branche · un scribe\nguild-hi à l’entrée\nle contrat voyage avec', tick: true },
@@ -124,9 +124,9 @@
         close: { icon: 'broom',  kind: 'control', k: 'après le merge',      t: 'Outil de clôture',      s: 'cinq contrôles\nclôt les contrats\ndepuis la livraison', tick: true },
         reg:   { icon: 'book',   kind: 'signal',  k: 'boucle d’apprentissage', t: 'Registre de constats', s: 'chaque écart a un\npropriétaire : arbitré,\ntransformé ou refusé' },
         event: { icon: 'inbox',  kind: 'watcher', k: 'signal autorisé',     t: 'Événement GitHub',      s: 'une étiquette de route\nou une nouvelle mesure\nde l’hôte' },
-        watch: { icon: 'pulse',  kind: 'watcher', k: 'aujourd’hui · déterministe', t: 'Watcher',        s: 'toutes les deux minutes\nvoit, déduplique, note\nne démarre aucun modèle', tag: 'actuel' },
-        read:  { icon: 'eye',    kind: 'watcher', k: 'sortie actuelle',     t: 'Lecture fraîche du tableau', s: 'dernier état de l’hôte\nl’heure de la lecture\nprojection, pas vérité', tag: 'actuel' },
-        dispatch: { icon: 'send', kind: 'future', k: 'ensuite · après validation', t: 'Recevoir · transmettre · réveiller', s: 'recevoir l’événement autorisé · transmettre le contrat canonique\nréveiller le bon siège existant · zéro appel IA si rien ne change', tag: 'prochain' },
+        watch: { icon: 'pulse',  kind: 'watcher', k: 'déterministe',        t: 'Watcher',               s: 'toutes les deux minutes\nvoit, déduplique, note\nne démarre aucun modèle', tag: 'actif' },
+        read:  { icon: 'eye',    kind: 'watcher', k: 'sortie actuelle',     t: 'Lecture fraîche du tableau', s: 'dernier état de l’hôte\nl’heure de la lecture\nprojection, pas vérité', tag: 'actif' },
+        dispatch: { icon: 'send', kind: 'watcher', k: 'armé · déterministe', t: 'Recevoir · transmettre · réveiller', s: 'recevoir l’événement armé · transmettre le contrat canonique · lancer le siège nommé\nréveiller l’architecte au retour de la mission · zéro appel IA si rien ne change', tag: 'actif' },
         ask:   { icon: 'doc',  kind: 'control', k: 'ce qui déclenche',   t: 'Une décision contestée',   s: 'un arbitrage discuté\nune conception à valider\nun chiffre non mesuré' },
         rev:   { icon: 'bot',  kind: 'control', k: 'relecture externe',  t: 'Consultant sans surface',  s: 'GPT · Grok, hors de l’arbre\nne lance ni ne fusionne\nd’où l’avis neutre', tag: 'neutre' },
         opin:  { icon: 'book', kind: 'control', k: 'ce que ça produit',  t: 'Un avis, pas une décision', s: 'un constat au registre\nla porte reste humaine\nun avis ne fusionne rien' }
@@ -137,7 +137,7 @@
         bye:   'exit 3 : suivre les étapes de push imprimées ;\nne pas relancer',
         close: 'refuse : ouverte · sale · absente du serveur\nen usage · non fusionnée'
       },
-      labels: { validated: 'contrat validé', bye: 'guild-bye', merged: 'après merge', rule: 'devient la règle suivante', wake: 'réveiller le siège nommé' }
+      labels: { validated: 'contrat validé', bye: 'guild-bye', merged: 'après merge', rule: 'devient la règle suivante', wake: 'lancer le siège nommé' }
     }
   };
 
@@ -164,8 +164,8 @@
       { a: 'reg', b: 'ca', kind: 'signal', how: 'loop', label: L.rule },
       { a: 'event', b: 'watch', kind: 'control', how: 'h' },
       { a: 'watch', b: 'read', kind: 'control', how: 'h' },
-      { a: 'read', b: 'dispatch', kind: 'future', how: 'h' },
-      { a: 'dispatch', b: 'seats', kind: 'future', how: 'wake', label: L.wake },
+      { a: 'read', b: 'dispatch', kind: 'control', how: 'h' },
+      { a: 'dispatch', b: 'seats', kind: 'control', how: 'wake', label: L.wake },
       { a: 'ask', b: 'rev', kind: 'control', how: 'h' },
       { a: 'rev', b: 'opin', kind: 'signal', how: 'h' }
     ];
@@ -198,8 +198,8 @@
      The canvas is a production line, so it should read like one: when the
      system runs, you watch the work move through it, and a pipe with nothing
      in it is a pipe that has stopped. Every wire carries a train of parcels
-     at one constant speed — filled where something really runs today,
-     outlined on the path that is drawn but not yet active. Nothing moves
+     at one constant speed — all filled since 18 September 2026, when the
+     receive–deliver–wake route went live. Nothing moves
      under prefers-reduced-motion, and nothing is drawn at all in the
      exported image, which has to stay a still picture. */
   const SPEED = 24;      // pixels per second, the same in every pipe

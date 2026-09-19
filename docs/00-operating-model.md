@@ -45,8 +45,8 @@ exist.
 
 A *seat* is a harness running under a role. The role is a short profile in
 the repository (`templates/roles/`); the harness is whatever executes it —
-Claude Code, Grok Build, Codex CLI, a Grok profile, ChatGPT Work in its
-advisory seat, or a person. The
+Claude Code, in an executing seat or in the architect seat, Grok Build,
+Codex CLI, a Grok profile, or a person. The
 mission contract names both, and the launcher refuses a mission whose
 harness cannot physically do what the contract requires.
 
@@ -57,26 +57,35 @@ seats are:
 | Seat | Runs as | Holds |
 |---|---|---|
 | Product Owner | the human | the bench, the product verdict, the merge to `main`, every irreversible act — and every terminal |
-| Chief Architect | ChatGPT Work, an advisory cloud session | the board: contracts — which the launcher turns into every other seat's first instruction — routing, rulings, labels, the register, and the exact commands the human runs; never a local launch surface |
+| Chief Architect | Claude Code, a session on the developer machine, opened in its own folder | the board: contracts — which the launcher turns into every other seat's first instruction — routing, rulings, labels, the register, the routine merges and launches; never a write in the tree |
 | Lead Software Engineer | Claude Code | implementation, tests, pull requests, adversarial self-review |
 | Software Engineering | Grok Build and Codex CLI | assigned atomic lots in declared worktrees, under the model and effort named by the contract |
 | HQ Architecture, Domain Expert, UX/UI | Grok profiles | adversarial review and domain authority, each in its lane |
 | Witness | any seat that did not write the delivery | reads the delivery's evidence against the repository before the gate; the gate merges on the witness's word, not the author's |
 
-**The architect seat orchestrates, and it cannot execute.** That is a
-design choice, not a limitation to work around. The Chief Architect runs in
-a cloud session whose shell is `remote` — it can read and write GitHub end
-to end and it can reach files on the developer machine, but it cannot run
-a command there, start a harness, or push a commit. So everything it does
-is an act on GitHub or a line of text: the contract on the issue, the
-ruling in a comment, the label on the object, the register entry, the
-routine merge it performs under the human's standing delegation — a GitHub
-act recorded on the pull request, never a push — and the command it hands
-the human to paste. The human runs the command and reports what the
-terminal said; the architect reads the report and hands over the next one.
-A seat that holds the board and cannot touch the tree is a seat that cannot
-become the second writer or the silent substitution — and a seat that
-merges only what a witness has read is not the merge tool either.
+**The architect seat orchestrates, and it does not write in the tree.** Until
+18 September 2026 that was a property of where the seat ran: a cloud session
+with a `remote` shell, which could not run a command on the developer machine
+at all. It is not any more, because a mission that returns cannot wake a cloud
+session, and it can wake a Claude Code session on the host — so the seat moved
+to the host, and the move is an entry in the register. What keeps the seat
+from becoming the second writer or the silent substitution is now two
+mechanisms, both measured rather than assumed. The launcher strips the seat's
+own session markers from the environment of every mission it starts, so a
+mission cannot inherit the seat's identity, its transcript or its messaging
+token — the day one did, a merge with no identifiable author followed, and
+that is the incident this check was bought by. And while a mission is in
+flight the seat writes nothing in the repository checkout and runs neither
+`pull` nor `checkout` there; its own outputs land outside the tree. Everything
+the seat does is still an act on GitHub or a line of text — the contract on
+the issue, the ruling in a comment, the label on the object, the register
+entry, the routine merge it performs under the human's standing delegation,
+recorded on the pull request — plus the launch it now performs itself, which
+the launcher checks like any other. The human keeps every irreversible act and
+every decision; what changed is that the routine commands stopped passing
+through a hand that had nothing to decide about them. A seat that holds the
+board and does not touch the tree is still not the second writer — and a seat
+that merges only what a witness has read is still not the merge tool either.
 
 The division that makes the system work is stated once and kept: **the
 architect seat holds the board; the human holds the terminals.** Issue

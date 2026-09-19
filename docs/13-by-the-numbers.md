@@ -23,7 +23,7 @@ was written by AI seats under the contracts described in this pack.
 | role profiles | 8 |
 | harness options on the mission form | 7 |
 | execution harnesses in the current operating view | 3 — Claude Code, Grok Build and Codex CLI; each mission still names its role, model and effort |
-| architect seat | Claude Cowork — an advisory cloud session with no local launch surface, holding the board: contracts, labels, rulings, the register, and every command the human runs |
+| architect seat | Claude Code — a session on the developer machine since 18 September 2026, holding the board: contracts, labels, rulings, the register, the routine merges and launches. It writes nothing in the tree, and the launcher strips its identity from every mission it starts |
 
 ## The throughput
 

@@ -163,8 +163,9 @@ Lantern et ce qui vous reste à écrire.
 ## D'où ça vient
 
 Une application de bureau Windows en Python avec une suite de 13 155 tests,
-mesurée le 8 septembre 2026 ; un seul humain Product Owner, Claude Cowork au
-siège consultatif d'architecte en chef, et des sièges d'exécution sur Claude
+mesurée le 8 septembre 2026 ; un seul humain Product Owner, un siège d'architecte en chef tenu tour à tour par
+ChatGPT Work, Claude Cowork et, depuis le 18 septembre 2026, Claude Code sur la
+machine de développement, et des sièges d'exécution sur Claude
 Code, Grok Build et Codex CLI. Dans les treize jours jusqu'au
 7 septembre 2026, 344 contrats ont été ouverts et 320 pull requests fusionnées, vingt-cinq par jour ; 548 sessions se sont closes avec une entrée de journal, sur
 les 36 jours d'existence du journal. `docs/13-by-the-numbers.md` contient la table
