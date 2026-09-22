@@ -89,9 +89,9 @@ Every required field is present, and every dropdown value is one the form
 offers — matched against the options the form declares at the governance
 commit, never taken as prose. `Branch and worktree` must split into two
 halves. An optional field is never read at all: its value reaches neither
-the contract nor the generated instruction, set or unset, which is why the
-human reads `Screen demand` and `Host` on the issue before he launches, and
-the launcher never prints them back to him.
+the contract nor the generated instruction, set or unset, which is why
+whoever launches reads `Screen demand` and `Host` on the issue first, and
+the launcher never prints them back.
 
 ### Condition 2 — the seat, the effort, the model, the profile
 

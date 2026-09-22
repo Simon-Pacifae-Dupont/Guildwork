@@ -19,7 +19,7 @@ and the month of incidents that made the rules stick. Those are the work.
 | the journal format and the continuity contract | the measured capability table for your seats — every cell has to be observed, on your machines |
 | the findings-register template and a filled example | the event watcher and its adapters |
 | the regenerable-paths manifest with its reasoning | the render checks, the board schema, the token scopes — the human-only setup |
-| the worked Lantern mission, end to end | your first forty incidents |
+| the worked Lantern mission, end to end | your own first incidents |
 
 ## The order, and why it is this order
 
@@ -37,10 +37,12 @@ release-target guard beside it.
 
 **3. Create the labels, by a human, once.** Then apply them from the
 architect seat, always. Decide who the architect seat is before the first
-mission: on the source project it is a cloud session with no shell on the
-developer machine, and that division — the architect holds the board, the
-human holds the terminals, and the architect *cannot* hold a terminal — is
-the single rule that removed the human from the message path.
+mission: on the source project it is a Claude Code session on the
+developer machine that holds the board, runs the routine launches and
+merges, and writes nothing in the tree; the launcher strips its session
+markers from every mission it starts. That division — the architect holds
+the board, the human holds the verdict and every irreversible act — is the
+single rule that removed the human from the message path.
 
 **4. Start the journal and the continuity contract.** One richer file
 written at every exit, read at every entry. This is the cheapest part of

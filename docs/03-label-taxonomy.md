@@ -65,7 +65,7 @@ line states, or has ever been applied is measured by hand or not at all.
 
 `watcher:claude`, `watcher:codex` and `watcher:both` are routing for a
 different machine: a deterministic, non-AI poller that observes label
-events and starts, or in shadow mode records, a route to a seat. The labels
+events and routes them to the named seat. The labels
 are created behind the human gate like the seventeen, and the poller never
 creates, applies or removes them.
 

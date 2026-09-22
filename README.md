@@ -65,7 +65,7 @@ it outside the gate*; *durable means reachable from a pushed ref*.
 
 <p align="center">
   <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/canvas/"><img alt="Where a mission can stop: the operating model drawn on the Lantern example; click to open the interactive version" src="brand/lifecycle-canvas.png" width="880"></a><br>
-  <sub>Read it as a path: ten checks before a session starts (seven stable contract conditions, three guards hardened in operation), a witness and a human gate before anything lands, three exit codes decided by durability alone, a register that sends every incident back into the next contract, and a watcher drawn twice: what it does today, and the receive–deliver–wake loop that is not active yet. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/canvas/">Interactive version</a>. Hover a block to isolate its path.</sub>
+  <sub>Read it as a path: ten checks before a session starts (seven stable contract conditions, three guards hardened in operation), a witness and a human gate before anything lands, three exit codes decided by durability alone, a register that sends every incident back into the next contract, and a watcher drawn in two steps: what it sees, and the receive–deliver–wake route, live since 18 September 2026, that launches a mission from an armed contract and wakes the architect when the mission returns. <a href="https://simon-pacifae-dupont.github.io/Guildwork/demo/canvas/">Interactive version</a>. Hover a block to isolate its path.</sub>
 </p>
 
 **The board, read for what it owes each seat.** Six counters, then three
@@ -100,9 +100,10 @@ templates/   the files to drop into a repository: issue form, pull request templ
 examples/    one fictional mission followed end to end: issue, launcher transcript,
              generated instruction, transmission report, pull request, journal entry,
              closeout transcript, register
-demo/        the two pages the site opens: the board as it runs (demo/board/, with the
-             published reader under demo/board/reader/) and the operating canvas
-             (demo/canvas/); French versions under fr/demo/
+demo/        the pages the site opens: the board as it runs (demo/board/, with the
+             published reader under demo/board/reader/), the no-code desk
+             (demo/desk/) and the operating canvas (demo/canvas/); French
+             versions under fr/demo/
 brand/       the mark, the lockups, the design system, and every image the README
              and the site show, each rendered from a page in demo/, never retouched
 ```
@@ -168,10 +169,11 @@ The kit is the part that has stopped moving. Three things are still moving
 on the project it comes from, and each will reach the kit the way everything here did, once a real incident has paid for it. The board becomes the
 control: not a report on the agents, but the page where the one decision
 that is the Product Owner's is taken and recorded by the same click. The
-watcher already observes authorised GitHub events and fresh host readings
-every two minutes, deduplicates them and publishes the latest reading without
-starting a model; after its adapter canaries it can receive the route,
-deliver the canonical contract and wake the named existing seat. That path is deliberately not active yet. And the same seven states (running, holding the screen, next, for you, landed, broken, expired) sit on every board, whatever it follows;
+watcher reads authorised GitHub events and fresh host readings every two
+minutes, deduplicates them and publishes the latest reading without starting
+a model; since 18 September 2026 it also receives the armed mission, delivers
+the canonical contract and wakes the named existing seat, carrying a route and
+never an authority. And the same seven states (running, holding the screen, next, for you, landed, broken, expired) sit on every board, whatever it follows;
 the names adapt to a project, the positions and the hues do not
 (`brand/design-system.md`).
 

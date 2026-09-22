@@ -70,7 +70,7 @@ the delivery pushed. It:
 6. returns a code the durability verdict decides.
 
 It **never stages, commits or pushes.** It reports the gap and prints the
-steps that close it; closing it is an explicit human act. That separation is
+steps that close it; closing it is an explicit act by whoever closes the session, never the tool's. That separation is
 the lifecycle's design and this document does not touch it.
 
 ## Exit codes — the durability verdict decides

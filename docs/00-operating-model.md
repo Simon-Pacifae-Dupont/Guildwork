@@ -56,7 +56,7 @@ seats are:
 
 | Seat | Runs as | Holds |
 |---|---|---|
-| Product Owner | the human | the bench, the product verdict, the merge to `main`, every irreversible act — and every terminal |
+| Product Owner | the human | the bench, the product verdict, the merge to `main`, every irreversible act and every reserved gate |
 | Chief Architect | Claude Code, a session on the developer machine, opened in its own folder | the board: contracts — which the launcher turns into every other seat's first instruction — routing, rulings, labels, the register, the routine merges and launches; never a write in the tree |
 | Lead Software Engineer | Claude Code | implementation, tests, pull requests, adversarial self-review |
 | Software Engineering | Grok Build and Codex CLI | assigned atomic lots in declared worktrees, under the model and effort named by the contract |
@@ -88,11 +88,12 @@ board and does not touch the tree is still not the second writer — and a seat
 that merges only what a witness has read is still not the merge tool either.
 
 The division that makes the system work is stated once and kept: **the
-architect seat holds the board; the human holds the terminals.** Issue
+architect seat holds the board; the human holds the verdict.** Issue
 bodies, contracts, labels — including the routing labels — comments, rulings,
-the register and the opening of a missing pull request are the architect's,
-always and without being asked. Launch commands, merges under the gate, and
-the final say are the human's. Handing the human an act of the board puts
+the register, the opening of a missing pull request, the routine launches and
+the merges under standing delegation are the architect's, always and without
+being asked. The reserved gates, every irreversible act and the final say are
+the human's. Handing the human an act of the board puts
 him back in the loop the system exists to remove.
 
 Two consequences of the shape, stated because a reader will ask:
@@ -121,9 +122,9 @@ the same canvas the README shows; hover a block to isolate its path.
 1. **The contract is written** on the issue form, by the architect seat.
    Every required field is filled; the dropdowns lead conservative; the
    title starts with the issue's own number so the mission can be found in
-   a wall of terminals. The architect then hands the human one launch
+   a wall of terminals. The architect then launches it: one
    command.
-2. **The launcher validates it** — the human runs it — against the
+2. **The launcher validates it** — the architect seat runs it — against the
    governance *at the commit the mission will run on*, checks ten things —
    seven stable contract conditions plus three operational guards — and
    refuses, naming which one fired, or creates the
@@ -147,11 +148,12 @@ the same canvas the README shows; hover a block to isolate its path.
 7. **The closeout tool disposes** of what the run created, refusing every
    worktree whose material is not provably preserved, and closes the contract
    from the merged delivery's `Mission:` line.
-8. **The watcher observes without impersonating a seat.** Today it reads
-   authorised GitHub events and fresh host state every two minutes,
-   deduplicates and records them, and starts no model. The later
-   receive–deliver–wake path remains disabled until its adapters pass their
-   canaries; even then it will carry a named route, never grant authority.
+8. **The watcher routes without impersonating a seat.** It reads authorised
+   GitHub events and fresh host state every two minutes, deduplicates and
+   records them, and starts no model of its own. Since 18 September 2026 it
+   also receives the armed mission event, delivers the canonical contract and
+   wakes or launches the named seat; it carries a named route and never
+   grants authority.
 
 ## The four principles under the rules
 

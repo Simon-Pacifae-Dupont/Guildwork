@@ -4,11 +4,12 @@
 figures are real. They were measured on 9 September 2026 over complete days
 only — 1 August to 7 September, thirty-eight days — and are frozen at that
 reading; the domain is
-deliberately not described beyond one sentence.*
+deliberately not described beyond one sentence. One count keeps moving: the
+incident register, which grows with every new incident (`docs/12-incidents.md`).*
 
 ## The project
 
-A Windows desktop application in Python, driving an external audio host
+A Windows desktop application in Python, driving an external host
 process, with a full test suite of **13 155 tests** at the last complete
 run before measurement, on 8 September (12 100 two days earlier, 10 400 a
 week before that). One human — the Product Owner — who

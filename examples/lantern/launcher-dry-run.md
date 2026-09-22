@@ -7,7 +7,7 @@ for.*
 
 ## 1. The first dry run refuses
 
-The Product Owner runs the dry run from the primary checkout, with the
+The Chief Architect runs the dry run from the primary checkout, with the
 environment's interpreter spelled in full:
 
 ```

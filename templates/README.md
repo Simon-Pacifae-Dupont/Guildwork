@@ -17,7 +17,11 @@ the list at the end of this page — from the corresponding page under
 | `github/ISSUE_TEMPLATE/ai_mission.yml` | `.github/ISSUE_TEMPLATE/ai_mission.yml`, on the default branch | `docs/01-mission-contract.md` |
 | `github/pull_request_template.md` | `.github/pull_request_template.md`, on the default branch | `docs/02-delivery-contract.md` |
 | `labels.sh` | run once, by a human | `docs/03-label-taxonomy.md` |
+| `AI_TEAM.md` | the repository root | `docs/00-operating-model.md` |
+| `AI_TEAM.md` | the repository root | `docs/00-operating-model.md` |
 | `roles/*.md` | `docs/guild/roles/` | `docs/00-operating-model.md` |
+| `HANDOVER.md` | `docs/guild/HANDOVER.md` | `docs/08-continuity.md` |
+| `HANDOVER.md` | `docs/guild/HANDOVER.md` | `docs/08-continuity.md` |
 | `journal/README.md`, `journal/ENTRY.md` | `docs/guild/journal/` | `docs/06-session-cycle.md`, `docs/08-continuity.md` |
 | `REGENERABLE_PATHS.txt` | `docs/guild/` | `docs/07-closeout.md` |
 | `FINDINGS_REGISTER.md` | the body of one issue, kept open | `docs/09-findings-register.md` |
@@ -27,15 +31,13 @@ the list at the end of this page — from the corresponding page under
 What the templates reference and do not contain, because it is the
 adopting project's to write, under whatever names it prefers:
 
-- the team charter (`AI_TEAM.md`) that every role profile points at, and the
-  per-seat operational documents the profiles name (`CLAUDE.md`,
+- the per-seat operational documents the role profiles name (`CLAUDE.md`,
   `AGENTS.md`, `docs/CHIEF_ARCHITECT.md`, `docs/DOMAIN_EXPERT.md`,
   `docs/CALIBRATION_COVERAGE.md`, `docs/design/LAYOUT_RULES.md`);
 - the workflow document the form's help texts cite (`MISSION_WORKFLOW.md`)
   and the capability document (`AGENT_CAPABILITIES.md`) — `docs/01` to
   `docs/11` of this pack, rewritten for one repository;
 - the continuity contract (`docs/guild/CONTINUITY_CONTRACT.md`, from
-  `docs/08`) and the curated handover (`docs/guild/HANDOVER.md`) that
-  `guild-hi` reports beside the journal;
+  `docs/08`);
 - the project glossary (`docs/GLOSSARY.md`) that the name check in every
   transmission report is made against.

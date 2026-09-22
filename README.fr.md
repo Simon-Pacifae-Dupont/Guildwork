@@ -76,7 +76,7 @@ référence poussée*.
 
 <p align="center">
   <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/canvas/"><img alt="Où une mission peut s'arrêter : le modèle de fonctionnement dessiné sur l'exemple Lantern ; cliquer pour ouvrir la version interactive" src="brand/lifecycle-canvas.fr.png" width="880"></a><br>
-  <sub>À lire comme un chemin : dix contrôles avant qu'une session démarre (sept conditions stables du contrat, trois garde-fous durcis par l'usage), un témoin et une porte humaine avant toute intégration, trois codes de sortie décidés par la seule durabilité, un registre qui renvoie chaque incident dans le contrat suivant, et un watcher dessiné deux fois : ce qu'il fait aujourd'hui, et la boucle recevoir–transmettre–réveiller qui n'est pas encore active. <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/canvas/">Version interactive</a>. Survolez un bloc pour isoler son chemin.</sub>
+  <sub>À lire comme un chemin : dix contrôles avant qu'une session démarre (sept conditions stables du contrat, trois garde-fous durcis par l'usage), un témoin et une porte humaine avant toute intégration, trois codes de sortie décidés par la seule durabilité, un registre qui renvoie chaque incident dans le contrat suivant, et un watcher dessiné en deux temps : ce qu'il voit, et la route recevoir–transmettre–réveiller, active depuis le 18 septembre 2026, qui lance une mission depuis un contrat armé et réveille l'architecte quand la mission revient. <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/canvas/">Version interactive</a>. Survolez un bloc pour isoler son chemin.</sub>
 </p>
 
 **Le tableau, lu pour ce qu'il doit à chaque siège.** Six compteurs, puis
@@ -110,12 +110,13 @@ docs/        quinze documents, numérotés dans l'ordre de lecture
 templates/   les fichiers à poser dans un dépôt : formulaire d'issue, gabarit de
              pull request, recette d'étiquettes, profils de rôle, format de journal,
              manifeste des chemins régénérables, registre de constats, convention de changelog
-examples/    une mission fictive suivie de bout en bout : issue, transcription du lanceur, instruction générée, rapport de transmission, pull request,
+examples/    une mission fictive suivie de bout en bout : issue, transcription du lanceur,
+             instruction générée, rapport de transmission, pull request,
              entrée de journal, transcription de clôture, registre
-demo/        les deux pages que le site ouvre : le tableau tel qu'il tourne (demo/board/,
-             avec le lecteur livré sous demo/board/reader/ ; la même paire
-             existe sous fr/) et le canvas de
-             fonctionnement (demo/canvas/) ; versions françaises sous fr/demo/
+demo/        les pages que le site ouvre : le tableau tel qu'il tourne (demo/board/,
+             avec le lecteur livré sous demo/board/reader/), le bureau sans code
+             (demo/desk/) et le canvas de fonctionnement (demo/canvas/) ; versions
+             françaises sous fr/demo/
 brand/       la marque, les lockups, le design system, et chaque image que le README
              et le site montrent, toutes rendues depuis une page de demo/, jamais retouchées
 ```
@@ -181,10 +182,11 @@ le projet dont il vient, et chacune rejoindra le kit comme tout ce qui est
 ici : une fois qu'un incident réel l'aura payée. Le tableau devient le
 contrôle : pas un rapport sur les agents, mais la page où la seule décision
 qui revient au Product Owner se prend et s'enregistre du même clic. Le
-watcher observe déjà les événements GitHub autorisés et les lectures fraîches
-de l'hôte toutes les deux minutes, les déduplique et publie la dernière
-lecture sans démarrer de modèle ; après les canaris de ses adaptateurs, il
-pourra recevoir la route, transmettre le contrat canonique et réveiller le siège existant nommé. Ce trajet n'est volontairement pas encore actif. Et les mêmes sept états (en cours, tient l'écran, à venir, pour vous, atterri, cassé, périmé) sont sur chaque tableau, quoi qu'il suive ; les noms s'adaptent au
+watcher lit les événements GitHub autorisés et les lectures fraîches de l'hôte
+toutes les deux minutes, les déduplique et publie la dernière lecture sans
+démarrer de modèle ; depuis le 18 septembre 2026, il reçoit aussi la mission
+armée, transmet le contrat canonique et réveille le siège existant nommé, en
+portant une route et jamais une autorité. Et les mêmes sept états (en cours, tient l'écran, à venir, pour vous, atterri, cassé, périmé) sont sur chaque tableau, quoi qu'il suive ; les noms s'adaptent au
 projet, les positions et les teintes non (`brand/design-system.md`).
 
 ## Ce que ce n'est pas
