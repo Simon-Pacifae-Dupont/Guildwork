@@ -1,10 +1,12 @@
 # Incidents, and the rules they paid for
 
 *Every rule in this pack was bought by a failure on a real project, and
-most of them were bought within a week of each other. Forty-seven failures are
+most of them were bought within a week of each other. The failures are
 listed here — anonymised, without issue numbers, with the domain removed —
 because a rule whose incident is unknown is a rule that gets relaxed by the
-first person who finds it inconvenient.*
+first person who finds it inconvenient. The register is not closed: an
+incident enters it the day it pays for a rule of the kit, and the count on
+the site is the count in this file.*
 
 The format is the same for each: what happened, then the rule it produced.
 Dates are kept where they say something about tempo.
@@ -110,6 +112,33 @@ failure line even in the CLI's own debug log.
 → The launcher resolves the profile itself, from the governance commit,
 before anything starts; the regime is part of the claim and every refusal
 names it.
+
+**The seat that could not execute.** The pack described the architect seat
+as a cloud session that could not run a command on the developer machine, and
+sold that as the property keeping it from becoming a second writer. Then a
+mission returned and had to wake the seat that wrote its contract — and
+nothing wakes a cloud session; the wake reaches a session on the host. The
+seat moved to the host on 18 September 2026. The same day, one resumed
+mission inherited the seat's own session markers — its identity, its
+transcript setting, its messaging token — and a merge followed with no
+identifiable author. The guarantee had not been replaced. It had only been
+lost.
+→ A seat's safety property is a mechanism, never a location. The launcher
+strips the seat's session markers from every mission it starts, so no
+mission can act as the seat; the seat writes nothing in the checkout while a
+mission is in flight; and the pack describes the seat from its charter, not
+from where it used to run.
+
+**Written, said the bridge.** A file bridge between a cloud session and the
+developer machine answered *written* on two files it had not written, twice
+in one day. The modification time was fresh and the content was the old one.
+A commit prepared on those files would have published the previous version
+under a message describing the new one. The size caught it: the file on disk
+was 575 bytes short of the file that had been sent.
+→ An acknowledgement is not a write. Every file put on a machine by a bridge
+is read back and compared to what was sent — size first, bytes after —
+before any command that depends on it is handed to the human. A second
+attempt goes by another route, never the same one again.
 
 ## The launcher
 
@@ -309,6 +338,29 @@ reported as *the full suite*.
 variable that selects a platform. Measure the merge result, not the branch
 tip.
 
+**Two writers, one file, forty minutes.** Two sessions were rewriting the
+same two landing pages whole, each from its own copy, and one copy was always
+behind. The same eight changes were on `main` at 23:51, gone at 23:56, back
+at 00:31, gone again at 00:32. Neither session saw a conflict, because
+neither merged: each replaced the file. The work was lost twice in forty
+minutes and nothing signalled it.
+→ One file, one writer. A change on another writer's file is asked for by
+message, never made in passing. No file is rewritten whole from a copy older
+than the remote head; a transformation is replayed on the head, and an
+anchored replay fails loudly on exactly the lines the other writer changed.
+
+**The commit that lived in a workshop.** A session clone that could clone
+but not push carried a commit for a whole evening. The files it held were
+delivered by another route and published under a commit the clone never saw.
+The next session found the clone's commit, took it for the versioned truth,
+and was about to rebuild the published work on a base that no longer existed
+anywhere but there.
+→ Durable means reachable from a pushed ref, for a seat's own workshop too.
+A clone that cannot push keeps no commit and no modified file between two
+turns: it transforms, delivers, and is reset to the published head. What was
+prepared lives in the delivered files and in the replayable script, never in
+the clone.
+
 ## Labels and forms
 
 **The mission surface that did not render.** A specification, a diff
@@ -371,3 +423,15 @@ showed exactly what he had described.
 → When the only user reports what he sees, ask what the instrument missed.
 Where an observation cannot be reproduced, the finding is *not reproduced
 by this method*, named with the method — never *probably not there*.
+
+**The seat that was read from history.** A role profile named the wrong
+harness in the architect seat. The session that fixed it read the
+repository's own history — one commit naming a cloud session, a later one
+naming another — and chose the more recent. It published a profile naming a
+seat that had stopped existing that morning: the seat's charter, the living
+source, said in its first line where the seat now ran, and nobody had opened
+it. The false profile was on the public site for a day, in two languages.
+→ A fact about a seat is read from the seat's charter, never from the
+history of the document that describes it. History says what was believed;
+the charter says what is. The role profiles are rewritten from the charter
+each time a seat changes, and the change is dated in the register.

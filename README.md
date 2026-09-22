@@ -121,7 +121,7 @@ brand/       the mark, the lockups, the design system, and every image the READM
 | [09 · The findings register](docs/09-findings-register.md) | one issue, two exits, reviewed at every sweep |
 | [10 · Effort and execution parameters](docs/10-effort-and-execution-parameters.md) | the exact mapping, per-seat levels, *state what ran* |
 | [11 · Changelog fragments](docs/11-changelog-fragments.md) | one file per mission, assembled at release |
-| [12 · Incidents](docs/12-incidents.md) | forty-seven failures, and the rule each one paid for |
+| [12 · Incidents](docs/12-incidents.md) | every failure that paid for a rule, and the rule — the register grows |
 | [13 · By the numbers](docs/13-by-the-numbers.md) | the real project's figures, domain removed |
 | [14 · The adoption path](docs/14-adoption-path.md) | what to do in what order, and what this pack does not contain |
 

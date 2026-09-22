@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>« Écrit », disait le pont — Payé par un incident · Guildwork</title>
+<meta name="description" content="Un accusé de réception n’est pas une écriture. Chaque fichier posé sur une machine par un pont est relu et comparé à ce qui a été envoyé — la taille d’abord, les octets ensuite — a">
+<meta property="og:title" content="« Écrit », disait le pont — Payé par un incident · Guildwork">
+<meta property="og:description" content="Un accusé de réception n’est pas une écriture. Chaque fichier posé sur une machine par un pont est relu et comparé à ce qui a été envoyé — la taille d’abord, les octets ensuite — a">
+<meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
+<meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/fr/incidents/written-said-the-bridge/">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="en" href="https://simon-pacifae-dupont.github.io/Guildwork/incidents/written-said-the-bridge/">
+<link rel="alternate" hreflang="fr" href="https://simon-pacifae-dupont.github.io/Guildwork/fr/incidents/written-said-the-bridge/">
+<link rel="alternate" hreflang="x-default" href="https://simon-pacifae-dupont.github.io/Guildwork/incidents/written-said-the-bridge/">
+<link rel="icon" href="../../../brand/favicon-64.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../../brand/incidents.css">
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="../../"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56" fill="none" stroke="#F3EDE2" stroke-width="12" stroke-linejoin="round"/><rect x="52" y="44" width="39" height="12" fill="#E9A23B"/></svg><b>Guildwork</b></a>
+    <nav>
+      <a href="../">← Tous les incidents</a>
+      <a href="../../">Le kit</a>
+    </nav>
+    <div class="bar-end">
+      <div class="lang">
+        <a href="../../../incidents/written-said-the-bridge/" hreflang="en" lang="en">EN</a>
+        <a href="./" hreflang="fr" lang="fr" aria-current="page">FR</a>
+      </div>
+      <a class="lang" style="padding:8px 12px;color:var(--ink-2);text-decoration:none" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">GitHub</a>
+    </div>
+  </div>
+</header>
+<div class="wrap hero">
+  <p class="eyebrow"><span>Payé par un incident</span><span>Routage et capacités</span></p>
+  <h1>« Écrit », disait le pont</h1>
+</div>
+<main class="wrap">
+  <section>
+    <h2>Ce qui a cassé</h2>
+    <div class="card"><p>Un pont de fichiers entre une session cloud et la machine de développement a répondu <em>écrit</em> sur deux fichiers qu’il n’avait pas écrits, deux fois dans la même journée. La date de modification était fraîche et le contenu était l’ancien. Un commit préparé sur ces fichiers aurait publié la version précédente sous un message décrivant la nouvelle. C’est la taille qui l’a attrapé : le fichier sur le disque avait 575 octets de moins que celui qui avait été envoyé.</p></div>
+  </section>
+  <section>
+    <h2>La règle qu'il a payée</h2>
+    <div class="card-lead"><p class="rule-text">Un accusé de réception n’est pas une écriture. Chaque fichier posé sur une machine par un pont est relu et comparé à ce qui a été envoyé — la taille d’abord, les octets ensuite — avant qu’une commande qui en dépend soit remise à l’humain. Une seconde tentative passe par une autre route, jamais deux fois par la même.</p></div>
+  </section>
+  <nav class="pager"><a href="../seat-that-could-not-execute/"><span class="dir">Incident précédent</span>Le siège qui ne pouvait pas exécuter</a><a href="../wrong-role/"><span class="dir">Incident suivant</span>Le mauvais rôle</a></nav>
+</main>
+<footer class="wrap">
+  <p>Les cinquante-deux incidents du registre, et la règle que chacun a payée, sont publics dans le kit Guildwork, sous licence MIT. Le registre grandit à chaque nouvel incident. Chaque exemple est réécrit sur un projet fictif nommé Lantern : les mécaniques sont réelles, le produit ne l'est pas.</p>
+  <p><a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/12-incidents.md">Le registre complet</a> · <a href="../../">Le kit, en français</a></p>
+</footer>
+</body>
+</html>

@@ -58,7 +58,7 @@ asked to remember is a defect.
 | continuity contract | 11 KB |
 | launcher | 4 700 lines of Python, tested, reading three policy sources from the pinned governance commit at every run |
 | closeout tool | 2 800 lines of Python, tested, holding no list of disposable names |
-| rules produced by named incidents | about forty-five, listed in `12-incidents.md` |
+| rules produced by named incidents | one per entry of `12-incidents.md`, and the register keeps growing after this window |
 
 ## Two readings of the same numbers
 
@@ -69,8 +69,8 @@ model or effort surfaced in a durable artefact, and fourteen deliveries out
 of five hundred and seventy-five closed refused or superseded — with the
 refusal recorded on each.
 
-**The sober reading.** The same period produced about forty-five incidents
-serious enough to earn a rule, most of them inside one week. Most of the
+**The sober reading.** The same period produced the incidents that fill
+`12-incidents.md`, each serious enough to earn a rule, most of them inside one week. Most of the
 seats the launcher can start are `unknown` on the hardware property the
 queue would most like filled, and they will stay `unknown` until somebody
 measures them. Neither command-line harness enforces read-only from its own

@@ -134,7 +134,7 @@ brand/       la marque, les lockups, le design system, et chaque image que le RE
 | [09 · Le registre de constats](docs/09-findings-register.md) | une issue, deux sorties, revue à chaque passage |
 | [10 · Effort et paramètres d'exécution](docs/10-effort-and-execution-parameters.md) | la correspondance exacte, les niveaux par siège, *dire ce qui a tourné* |
 | [11 · Les fragments de changelog](docs/11-changelog-fragments.md) | un fichier par mission, assemblés à la release |
-| [12 · Les incidents](docs/12-incidents.md) | quarante-sept défaillances, et la règle que chacune a payée |
+| [12 · Les incidents](docs/12-incidents.md) | chaque défaillance qui a payé une règle, et la règle — le registre grandit |
 | [13 · Les chiffres](docs/13-by-the-numbers.md) | les chiffres réels du projet, domaine retiré |
 | [14 · Le chemin d'adoption](docs/14-adoption-path.md) | quoi faire dans quel ordre, et ce que ce pack ne contient pas |
 
