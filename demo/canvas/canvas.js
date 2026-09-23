@@ -117,27 +117,27 @@
         seats: { icon: 'bot',    kind: 'control', k: 'exécution réelle',    t: 'Sièges d’exécution',    s: 'Claude Code · Grok Build\nCodex CLI\nmodèle + effort imposés', tag: '3 sièges' },
         pr:    { icon: 'merge',  kind: 'control', k: 'surface de livraison', t: 'Pull request',         s: 'livre la mission #N\nce qui a vraiment tourné\net les preuves', tick: true },
         wit:   { icon: 'eye',    kind: 'control', k: 'lecture indépendante', t: 'Témoin',               s: 'pas l’auteur\nlit la livraison\ncontre le dépôt', tick: true },
-        gate:  { icon: 'door',   kind: 'human',   k: 'autorité humaine',    t: 'Porte',                 s: 'le Product Owner, ou\nune délégation, décide\nd’après le témoin', tick: true },
+        gate:  { icon: 'door',   kind: 'human',   k: 'autorité humaine',    t: 'Porte',                 s: 'le Product Owner ou\nsa délégation écrite\ndécide sur le témoin', tick: true },
         main:  { icon: 'branch', kind: 'landed',  k: 'résultat durable',    t: 'main',                  s: 'fusionné\net rien\nde plus faible', tag: 'intégré' },
         bye:   { icon: 'bye',    kind: 'control', k: 'une commande de sortie', t: 'guild-bye',          s: '0 durable · 3 incomplet\n2 fatal\njamais relancer l’exit 3' },
         jrn:   { icon: 'book',   kind: 'control', k: 'mémoire de session',  t: 'Journal Guild',         s: 'un fichier par session\natteignable depuis\nune ref poussée', tick: true },
-        close: { icon: 'broom',  kind: 'control', k: 'après le merge',      t: 'Outil de clôture',      s: 'cinq contrôles\nclôt les contrats\ndepuis la livraison', tick: true },
+        close: { icon: 'broom',  kind: 'control', k: 'après la fusion',     t: 'Outil de clôture',      s: 'cinq contrôles\nclôt les contrats\ndepuis la livraison', tick: true },
         reg:   { icon: 'book',   kind: 'signal',  k: 'boucle d’apprentissage', t: 'Registre de constats', s: 'chaque écart a un\npropriétaire : arbitré,\ntransformé ou refusé' },
         event: { icon: 'inbox',  kind: 'watcher', k: 'signal autorisé',     t: 'Événement GitHub',      s: 'une étiquette de route\nou une nouvelle mesure\nde l’hôte' },
         watch: { icon: 'pulse',  kind: 'watcher', k: 'déterministe',        t: 'Watcher',               s: 'toutes les deux minutes\nvoit, déduplique, note\nne démarre aucun modèle', tag: 'actif' },
         read:  { icon: 'eye',    kind: 'watcher', k: 'sortie actuelle',     t: 'Lecture fraîche du tableau', s: 'dernier état de l’hôte\nl’heure de la lecture\nprojection, pas vérité', tag: 'actif' },
         dispatch: { icon: 'send', kind: 'watcher', k: 'armé · déterministe', t: 'Recevoir · transmettre · réveiller', s: 'recevoir l’événement armé · transmettre le contrat canonique · lancer le siège nommé\nréveiller l’architecte au retour de la mission · zéro appel IA si rien ne change', tag: 'actif' },
-        ask:   { icon: 'doc',  kind: 'control', k: 'ce qui déclenche',   t: 'Une décision contestée',   s: 'un arbitrage discuté\nune conception à valider\nun chiffre non mesuré' },
+        ask:   { icon: 'doc',  kind: 'control', k: 'ce qui déclenche',   t: 'Un arbitrage contesté',   s: 'un arbitrage discuté\nune conception à valider\nun chiffre non mesuré' },
         rev:   { icon: 'bot',  kind: 'control', k: 'relecture externe',  t: 'Consultant sans surface',  s: 'GPT · Grok, hors de l’arbre\nne lance ni ne fusionne\nd’où l’avis neutre', tag: 'neutre' },
         opin:  { icon: 'book', kind: 'control', k: 'ce que ça produit',  t: 'Un avis, pas une décision', s: 'un constat au registre\nla porte reste humaine\nun avis ne fusionne rien' }
       },
       pills: {
         lnch:  '1–7 contrat · siège/modèle/effort · rôle\nscribe · capacité · source · titre\n8 écran exclusif · 9 limite de transport\n10 chemin de portée illisible',
-        gate:  'refusée : close sans merge — le contrat reste ouvert',
+        gate:  'refusée : close sans fusion — le contrat reste ouvert',
         bye:   'exit 3 : suivre les étapes de push imprimées ;\nne pas relancer',
         close: 'refuse : ouverte · sale · absente du serveur\nen usage · non fusionnée'
       },
-      labels: { validated: 'contrat validé', bye: 'guild-bye', merged: 'après merge', rule: 'devient la règle suivante', wake: 'lancer le siège nommé' }
+      labels: { validated: 'contrat validé', bye: 'guild-bye', merged: 'après fusion', rule: 'devient la règle suivante', wake: 'lancer le siège nommé' }
     }
   };
 
