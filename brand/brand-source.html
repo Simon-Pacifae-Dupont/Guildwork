@@ -60,6 +60,13 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
 .banner .side .name span { color: var(--amber-2); }
 .banner .side .role { font-family: "Plex Mono", monospace; font-size: 19px; color: var(--muted); }
 
+/* ---------- LINKEDIN PAGE COVER 1128x191 : the page logo covers the lower left, the content sits right ---------- */
+.banner.page { width: 1128px; height: 191px; }
+.banner.page .content { left: auto; right: 64px; height: 191px; gap: 26px; }
+.banner.page .content svg { width: 92px; height: 92px; }
+.banner.page .word { font-size: 64px; }
+.banner.page .tag { font-size: 17px; margin-top: 10px; }
+
 /* ---------- X HEADER 1500x500 : the avatar covers the lower left, the content sits right ---------- */
 .banner.x { width: 1500px; height: 500px; }
 .banner.x .content { left: auto; right: 96px; height: 430px; }
@@ -254,6 +261,14 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
     <div><p class="word">Guild<span>work</span></p><p class="tag">gouvernance pour <b>agents IA</b> · vous gardez le dernier mot</p></div>
   </div>
   <div class="foot">simon-pacifae-dupont.github.io/Guildwork</div>
+</div>
+
+<div id="page-cover" class="board banner page">
+  <svg class="lanes"><use href="#lanes"/></svg>
+  <div class="content">
+    <svg><use href="#mark"/></svg>
+    <div><p class="word">Guild<span>work</span></p><p class="tag">gouvernance pour <b>agents IA</b> · vous gardez le dernier mot</p></div>
+  </div>
 </div>
 
 </body>
