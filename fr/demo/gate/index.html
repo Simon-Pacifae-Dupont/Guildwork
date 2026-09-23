@@ -63,7 +63,7 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 .board-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
  padding:14px 18px;background:var(--strip);border-bottom:1px solid var(--line)}
 .board-head h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.05rem;margin:0}
-.clock{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)}
+.clock{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
 .rows{display:flex;flex-direction:column}
 .row{display:grid;grid-template-columns:1fr auto;gap:6px 14px;padding:14px 18px;
  border-bottom:1px solid var(--line);position:relative;transition:opacity .3s}
@@ -82,6 +82,11 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 .who{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
  text-transform:uppercase;color:var(--ink-3);margin:0 0 3px}
 .what{margin:0;font-size:14.8px;font-weight:500;line-height:1.35}
+.meta{margin:4px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.s-done .meta,.s-you .meta,.s-stop .meta{color:var(--ink-2)}
+.panel p.nextline{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;color:var(--ink)}
+.nextline span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.04em;color:var(--next);margin-bottom:4px}
+.tally .wide{grid-column:1/-1}
 .badge{align-self:start;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
  text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid;white-space:nowrap}
 .s-run .badge{color:var(--run);border-color:rgba(232,174,87,.45);background:rgba(232,174,87,.12)}
@@ -184,20 +189,22 @@ var T = {
   lede:"Five pieces of work, agents that do them, and you. Press start and see what actually reaches you.",
   boardTitle:"Today", clockLabel:"start",
   startK:"Ready", startH:"Your day is waiting",
-  startP:"Five jobs, two agents at a time. Nothing starts until you say so, and nothing leaves without a name on it.",
+  startP:"Five jobs that come in through the day, two agents at a time at most. Nothing starts until you start the day, and nothing leaves without a name on it.",
   startBtn:"Start the day",
   runK:"Running", runH:"They are working",
-  runP:"Two at a time, never more. The rest wait their turn. You have nothing to do until something needs you.",
+  runP:"Each job starts when its request comes in, two at a time at most. The clock runs fast while nothing needs you.",
+  idleH:"Nothing needs you", nextL:"Next", skipBtn:"Skip ahead",
   stopK:"Stopped before it went out", fixBtn:"Fix it and run it again",
   gateK:"This one is yours", approve:"Approve and send", ret:"Send it back",
   retP:"Sent back with your reason. It will come back corrected.",
   endK:"End of day", endH:"Everything landed",
-  tDone:"jobs finished", tClicks:"clicks from you", tWork:"of their work", tSaved:"caught before it went out",
+  tDone:"jobs delivered", tYou:"of your time", tWork:"of their work", tHand:"by hand, estimated", endAt:"Last one out at ",
+  mNext:"comes in at ", mRun:"since ", mStop:"stopped at ", mYou:"ready at ", mDone:"landed at ", mHand:"by hand ≈ ",
   endBtn:"I want this day", endGhost:"Read the kit",
   endP:"That is the whole promise. The work runs without you. The decisions do not.",
   again:"Run it again",
   foot1:"Nothing here is a simulation of an AI. These are the states of a real board, the real refusals of the launcher, and the real shape of a working day.",
-  foot2:"Times are compressed and the amounts are those of the example. Everything else is what the system does."
+  foot2:"The clock runs fast while nothing needs you. Durations and amounts are those of the example, on the scale of a real day. Everything else is what the system does."
  },
  fr:{
   code:"Vous avez du code", nocode:"Vous n'avez pas de code",
@@ -206,25 +213,27 @@ var T = {
   lede:"Cinq travaux, des agents qui les font, et vous. Lancez, et regardez ce qui remonte vraiment jusqu'à vous.",
   boardTitle:"Aujourd'hui", clockLabel:"départ",
   startK:"Prêt", startH:"Votre journée attend",
-  startP:"Cinq travaux, deux agents à la fois. Rien ne démarre sans vous, et rien ne part sans un nom dessus.",
+  startP:"Cinq travaux qui arrivent au fil de la journée, deux agents à la fois au plus. Rien ne démarre avant que vous lanciez la journée, et rien ne part sans un nom dessus.",
   startBtn:"Lancer la journée",
   runK:"En cours", runH:"Ils travaillent",
-  runP:"Deux à la fois, parce que c'est le plafond que vous avez réglé. Les autres attendent leur tour. Vous n'avez rien à faire tant que rien ne vous appelle.",
+  runP:"Chaque travail démarre quand sa demande arrive, deux à la fois au plus. L'horloge accélère tant que rien ne vous attend.",
+  idleH:"Rien ne vous attend", nextL:"Prochain", skipBtn:"Avancer",
   stopK:"Arrêté avant de partir", fixBtn:"Corriger et relancer",
   gateK:"Celui-ci vous revient", approve:"Valider et envoyer", ret:"Renvoyer",
   retP:"Renvoyé avec votre motif. Il reviendra corrigé.",
   endK:"Fin de journée", endH:"Tout est livré",
-  tDone:"travaux terminés", tClicks:"clics de votre part", tWork:"de leur travail", tSaved:"arrêté avant de sortir",
+  tDone:"travaux livrés", tYou:"de votre temps", tWork:"de leur travail", tHand:"à la main, estimé", endAt:"Dernier envoi à ",
+  mNext:"arrive à ", mRun:"depuis ", mStop:"arrêté à ", mYou:"prêt à ", mDone:"livré à ", mHand:"à la main ≈ ",
   endBtn:"Je veux cette journée", endGhost:"Lire le pack",
   endP:"C'est toute la promesse. Le travail tourne sans vous. Les décisions, non.",
   again:"Refaire une journée",
   foot1:"Rien ici ne simule une IA. Ce sont les états d'un vrai tableau, les vrais refus du lanceur, et la forme réelle d'une journée de travail.",
-  foot2:"Les durées sont compressées et les montants sont ceux de l'exemple. Tout le reste est ce que le système fait."
+  foot2:"L'horloge accélère tant que rien ne vous attend. Les durées et les montants sont ceux de l'exemple, à l'échelle d'une vraie journée. Tout le reste est ce que le système fait."
  }
 };
 
 
-/* Dix journées types : cinq par piste. Chaque journée a cinq travaux, un arrêt qui
+/* Onze journées types : cinq avec du code, six sans. Chaque journée a cinq travaux, un arrêt qui
    sauve quelque chose de chiffré, une décision qui revient à la personne, et une
    phrase de bilan qui dit le gain. Les montants sont ceux de l'exemple. */
 var DAYS = {
@@ -320,14 +329,14 @@ var DAYS = {
       head:"Un devis partait sur la grille de l'an dernier",
       body:"La demande nommait la grille 2026. Le fichier que l'assistant IA a ouvert était celle de 2025. Il a été arrêté avant d'écrire une ligne, et on vous le dit maintenant plutôt qu'à la facturation.",
       saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : un devis annuel signé <b>1 100 € en dessous</b>, reconduit chaque année, découvert à la deuxième facture.",tech:null}},
-    {who:"L'assistant IA qui trie",what:"Trier et répondre aux demandes simples",h:1.0},
+    {who:"L'assistant IA qui trie",what:"Répondre aux vingt et une demandes simples du jour",h:1.0},
     {who:"L'assistant IA qui rédige",what:"Réponse à la réclamation de Mme Aubert",h:1.0,gate:{
       head:"Prête à partir, et ça porte votre nom",
       body:"La réponse est écrite, elle nomme les documents qui ont servi, et l'assistant IA de relecture l'a validée. L'envoi vous revient.",
       detail:"Validée par : l'assistant IA de relecture · sources : le dossier Aubert, les conditions 2026"}},
     {who:"L'assistant IA qui rédige",what:"Compte-rendu de la réunion de ce matin",h:0.9}]},
   {name:"L'hôtel", intro:"Un hôtel de soixante chambres et deux salles, une dizaine de demandes de groupe par semaine, un responsable qui les chiffre entre deux urgences.",
-   punch:"Les devis de la semaine sont partis le jour même. D'habitude, sous trois jours, et un sur trois ne partait jamais.",
+   punch:"Cinq devis partis le jour de la demande. D'habitude, il fallait trois jours, et un client sur trois avait déjà réservé ailleurs.",
    caught:"6 800 €", caughtLabel:"de trop peu sur un devis, arrêté",
    items:[
     {who:"L'assistant IA qui chiffre",what:"Devis pour les trois demandes de séminaire de la semaine",h:1.3},
@@ -357,20 +366,20 @@ var DAYS = {
       detail:"Validé par : l'assistant IA de relecture · 8 000 destinataires · 3 liens testés"}},
     {who:"L'assistant IA qui trie",what:"Mise à jour des stocks depuis le fournisseur",h:0.9}]},
   {name:"L'agence de communication", intro:"Une agence de six personnes, quatre clients à faire parler chaque jour.",
-   punch:"Quatre clients servis avant seize heures. Vous avez validé une publication.",
+   punch:"Trois clients et un prospect servis dans la journée. Vous avez validé une seule publication.",
    caught:"1 chiffre", caughtLabel:"inventé, arrêté avant publication",
    items:[
     {who:"L'assistant IA qui rédige",what:"Publications de la semaine pour le client Vidal",h:1.0},
     {who:"L'assistant IA qui rédige",what:"Communiqué de presse pour le client Nexa",h:1.2,stop:{
       head:"Un communiqué partait avec un chiffre que rien ne justifie",
-      body:"Le communiqué citait une croissance de 40 %. Aucun document fourni ne la contenait. La règle dit qu'un chiffre nomme sa source ou ne sort pas : le communiqué s'est arrêté à la porte.",
+      body:"Le communiqué citait une croissance de 40 %. Aucun document fourni ne la contenait. La règle dit qu'un chiffre nomme sa source ou ne sort pas : le communiqué s'est arrêté avant de partir.",
       saved:"Ce que ça aurait coûté : <b>un chiffre inventé sous le nom d'un client</b>. La dernière fois, ça a coûté le client.",tech:null}},
     {who:"L'assistant IA qui rédige",what:"Proposition commerciale pour un nouveau prospect",h:1.2},
     {who:"L'assistant IA qui rédige",what:"Rapport mensuel du client Vidal, à publier",h:0.9,gate:{
       head:"Ça part sous le nom du client, et c'est vous qui répondez",
       body:"Le rapport est prêt, chaque chiffre nomme sa source, l'assistant IA de relecture l'a validé. Publier vous revient.",
       detail:"Validé par : l'assistant IA de relecture · 6 pages · 9 chiffres, 9 sources"}},
-    {who:"L'assistant IA qui trie",what:"Veille et revue de presse du matin",h:0.9}]},
+    {who:"L'assistant IA qui trie",what:"Veille et revue de presse pour demain matin",h:0.9}]},
   {name:"Les ressources humaines", intro:"Le service RH d'une entreprise de trois cents personnes. Un poste ouvert, trente candidatures, et les outils que chacun utilise dans son coin.",
    punch:"Trente candidats ont eu une réponse le jour même. Aucun CV n'est sorti de l'entreprise.",
    caught:"30 CV", caughtLabel:"gardés dans l'entreprise",
@@ -387,7 +396,7 @@ var DAYS = {
       detail:"Validée par : l'assistant IA de relecture · 2 textes cités · délai légal vérifié"}},
     {who:"L'assistant IA qui trie",what:"Planning d'intégration des trois arrivants",h:0.9}]},
   {name:"Le service client", intro:"Un service client de quatre personnes, deux cents messages par jour, un assistant IA qui répond aux questions courantes.",
-   punch:"Deux cents réponses parties aujourd'hui, et pas une promesse que la comptabilité découvrira dans trois semaines.",
+   punch:"Quatre-vingt-treize réponses parties avant midi, et pas une promesse que la comptabilité découvrira dans trois semaines.",
    caught:"640 €", caughtLabel:"promis en votre nom sans autorisation, arrêtés",
    items:[
     {who:"L'assistant IA qui répond",what:"Réponses aux soixante questions courantes arrivées depuis hier soir : délais, suivi, factures",h:1.2},
@@ -494,14 +503,14 @@ var DAYS = {
       head:"A quote was about to go out on last year's prices",
       body:"The request named the 2026 rate card. The file the AI assistant reached for was 2025. It was stopped before writing a line, and you are being told now rather than at invoicing.",
       saved:"What it cost you: <b>nothing</b>. What it would have cost: a yearly quote signed <b>€1,100 under</b>, renewed every year, found at the second invoice.",tech:null}},
-    {who:"The AI assistant that sorts the inbox",what:"Sort and answer the simple requests",h:1.0},
+    {who:"The AI assistant that sorts the inbox",what:"Answer the day's twenty-one simple requests",h:1.0},
     {who:"The AI assistant that drafts",what:"Reply to Mrs Aubert's complaint",h:1.0,gate:{
       head:"Ready to go out, and it carries your name",
       body:"The reply is written, it names the documents it used, and the reviewing AI assistant has signed it off. Sending is yours.",
       detail:"Signed off by: the reviewing AI assistant · sources: the Aubert file, the 2026 terms"}},
     {who:"The AI assistant that drafts",what:"Minutes of this morning's meeting",h:0.9}]},
   {name:"The hotel", intro:"A sixty-room hotel with two meeting rooms, ten or so group enquiries a week, one manager pricing them between two emergencies.",
-   punch:"This week's quotes went out the same day. Usually it takes three days, and one in three never goes out at all.",
+   punch:"Five quotes out on the day they were asked for. It used to take three days, and one client in three had already booked elsewhere.",
    caught:"€6,800", caughtLabel:"too low on one quote, stopped",
    items:[
     {who:"The AI assistant that quotes",what:"Quotes for this week's three seminar enquiries",h:1.3},
@@ -531,20 +540,20 @@ var DAYS = {
       detail:"Signed off by: the reviewing AI assistant · 8,000 recipients · 3 links tested"}},
     {who:"The AI assistant that sorts the inbox",what:"Stock update from the supplier",h:0.9}]},
   {name:"The communications agency", intro:"A six-person agency, four clients to keep talking every day.",
-   punch:"Four clients served before four o'clock. You approved one publication.",
+   punch:"Three clients and a prospect served in one day. You approved a single publication.",
    caught:"1 figure", caughtLabel:"invented, stopped before publication",
    items:[
     {who:"The AI assistant that drafts",what:"This week's posts for the Vidal account",h:1.0},
     {who:"The AI assistant that drafts",what:"Press release for the Nexa account",h:1.2,stop:{
       head:"A press release was about to go out with a figure nothing supports",
-      body:"The release quoted 40% growth. No document provided contained it. The rule says a figure names its source or does not go out: the release stopped at the gate.",
+      body:"The release quoted 40% growth. No document provided contained it. The rule says a figure names its source or does not go out: the release stopped before it went out.",
       saved:"What it would have cost: <b>an invented figure under a client's name</b>. Last time, it cost the client.",tech:null}},
     {who:"The AI assistant that drafts",what:"Commercial proposal for a new prospect",h:1.2},
     {who:"The AI assistant that drafts",what:"Vidal's monthly report, to publish",h:0.9,gate:{
       head:"It goes out under the client's name, and you answer for it",
       body:"The report is ready, every figure names its source, the reviewing AI assistant has signed it off. Publishing is yours.",
       detail:"Signed off by: the reviewing AI assistant · 6 pages · 9 figures, 9 sources"}},
-    {who:"The AI assistant that sorts the inbox",what:"Morning monitoring and press review",h:0.9}]},
+    {who:"The AI assistant that sorts the inbox",what:"Monitoring and press review for tomorrow morning",h:0.9}]},
   {name:"Human resources", intro:"The HR department of a three-hundred-person company. One open position, thirty applications, and the tools everyone uses on their own.",
    punch:"Thirty candidates got an answer the same day. Not one CV left the company.",
    caught:"30 CVs", caughtLabel:"kept inside the company",
@@ -561,7 +570,7 @@ var DAYS = {
       detail:"Signed off by: the reviewing AI assistant · 2 rules cited · legal deadline checked"}},
     {who:"The AI assistant that sorts",what:"Onboarding schedule for the three newcomers",h:0.9}]},
   {name:"Customer service", intro:"A four-person customer service desk, two hundred messages a day, one AI assistant answering the routine ones.",
-   punch:"Two hundred replies out today, and not one promise that accounting discovers three weeks later.",
+   punch:"Ninety-three replies out before noon, and not one promise that accounting discovers three weeks later.",
    caught:"€640", caughtLabel:"promised in your name without approval, stopped",
    items:[
     {who:"The AI assistant that answers",what:"Replies to the sixty routine questions in since last night: delivery, tracking, invoices",h:1.2},
@@ -577,45 +586,68 @@ var DAYS = {
     {who:"The AI assistant that drafts",what:"Week's summary: the five most frequent complaint reasons",h:0.9}]}
  ]}
 };
+/* Chaque travail a une heure d'arrivée, le temps réel que l'agent y passe, et le temps
+   qu'il aurait pris à la main. Les minutes sont celles de l'exemple, à l'échelle d'une
+   vraie journée ; même index que les travaux de DAYS, dans les deux langues. */
+var TIMES = {
+ code:[
+  [["9:05",25,180],["9:40",35,240],["11:10",40,300],["14:30",12,60],["16:00",20,90]],
+  [["9:10",30,180],["10:20",25,120],["11:30",35,240],["15:00",10,45],["16:30",15,120]],
+  [["9:15",40,360],["10:45",8,30],["11:30",20,120],["15:10",10,60],["16:20",30,240]],
+  [["9:00",25,150],["10:30",30,180],["11:45",20,180],["15:30",5,30],["16:20",25,120]],
+  [["8:45",20,120],["10:15",5,60],["11:00",15,120],["14:00",20,90],["15:30",25,240]]],
+ nocode:[
+  [["8:50",4,45],["9:30",6,90],["10:15",18,210],["14:40",5,40],["15:30",3,60]],
+  [["8:45",12,270],["9:40",6,120],["11:00",8,90],["14:30",10,150],["16:30",6,60]],
+  [["8:40",15,750],["9:30",6,60],["10:45",15,750],["14:00",10,180],["16:00",5,60]],
+  [["9:00",10,180],["10:00",8,120],["11:15",20,240],["14:30",12,180],["16:30",8,60]],
+  [["9:00",10,300],["10:00",8,150],["11:30",6,90],["14:30",8,120],["16:00",10,120]],
+  [["8:30",20,300],["9:15",25,320],["10:30",5,60],["11:20",5,45],["16:30",10,120]]]
+};
 var STATE_LABEL = {
  en:{next:"waiting",run:"running",you:"for you",done:"landed",stop:"stopped"},
  fr:{next:"à venir",run:"en cours",you:"pour vous",done:"atterri",stop:"arrêté"}
 };
 
-var CEIL=2, TICK=120, items=[], phase="idle", clicks=0, timer=null, saved=false, track="code", dayIx=0;
-var sideKey="", built=false;
+/* L'horloge suit une vraie journée. Elle court vite quand rien ne tourne, ralentit
+   pendant qu'un agent travaille, et s'arrête pendant que vous décidez. Le bouton
+   « Avancer » saute au prochain événement : personne n'attend une barre. */
+var CEIL=2, TICK=100, FAST=12, SLOW=1.5, DAY_START=8*60+30;
+var items=[], phase="idle", timer=null, saved=false, track="code", dayIx=0;
+var sideKey="", built=false, now=DAY_START, yourMin=0;
 
 function t(k){ return T[LANG][k]; }
 function day(){ return DAYS[LANG][track][dayIx]; }
+function mins(s){ var p=s.split(":"); return (+p[0])*60+(+p[1]); }
 
 function build(){
+ var tm=TIMES[track][dayIx];
  items = day().items.map(function(s,i){
-  return {i:i, who:s.who, what:s.what, h:s.h, stop:s.stop||null, gate:s.gate||null,
-          st:"next", p:0, fixed:false, gateDone:false};
+  return {i:i, who:s.who, what:s.what, stop:s.stop||null, gate:s.gate||null,
+          at:mins(tm[i][0]), m:tm[i][1], hand:tm[i][2],
+          st:"next", p:0, left:0, total:0, spent:0, fixed:false, gateDone:false, t:null};
  });
- phase="idle"; clicks=0; saved=false; sideKey=""; built=false;
+ now=DAY_START; yourMin=0; phase="idle"; saved=false; sideKey=""; built=false;
  if(timer){ clearInterval(timer); timer=null; }
 }
 
-function totalH(){ var s=0,i; for(i=0;i<items.length;i++) s+=items[i].h; return s; }
-function doneH(){
- var s=0,i; for(i=0;i<items.length;i++){ var it=items[i]; s += it.h * (it.st==="done"?1:it.p/100); }
- return s;
+function hm(v){
+ var h=Math.floor(v/60), m=Math.round(v-h*60); if(m===60){ h++; m=0; }
+ return LANG==="fr" ? h+" h "+(m<10?"0":"")+m : (h<10?"0":"")+h+":"+(m<10?"0":"")+m;
 }
-function fmtHours(v){ var r=Math.round(v*10)/10; return (LANG==="fr"? String(r).replace(".",",") : r)+" h"; }
-function clockText(){
- if(phase==="idle") return t("clockLabel");
- var hour = 9 + 8*(doneH()/totalH());
- var hh=Math.floor(hour), mm=Math.floor((hour-hh)*60/5)*5;
- return (hh<10?"0":"")+hh+" h "+(mm<10?"0":"")+mm;
+function dur(v){
+ v=Math.round(v); if(v<60) return v+" min";
+ var h=Math.floor(v/60), m=v-h*60;
+ return h+" h"+(m? " "+(m<10?"0":"")+m : "");
 }
+function clockText(){ return hm(now); }
 
 /* ---------- le tableau : construit une fois, mis à jour en place ---------- */
 function buildRows(){
- var L=STATE_LABEL[LANG], h="", i;
+ var h="", i;
  for(i=0;i<items.length;i++){
   h+='<div class="row s-next" data-r="'+i+'">'+
-     '<div><p class="who"></p><p class="what"></p></div>'+
+     '<div><p class="who"></p><p class="what"></p><p class="meta"></p></div>'+
      '<span class="badge"></span>'+
      '<div class="track-bar"><i></i></div></div>';
  }
@@ -627,6 +659,13 @@ function buildRows(){
  }
  built=true;
 }
+function metaText(it){
+ if(it.st==="next") return t("mNext")+hm(it.at);
+ if(it.st==="run") return t("mRun")+hm(it.t)+" · "+dur(it.total);
+ if(it.st==="stop") return t("mStop")+hm(it.t);
+ if(it.st==="you") return t("mYou")+hm(it.t)+" · "+dur(it.spent);
+ return t("mDone")+hm(it.t)+" · "+dur(it.spent)+" · "+t("mHand")+dur(it.hand);
+}
 function syncRows(){
  var L=STATE_LABEL[LANG], rows=document.querySelectorAll(".row"), i;
  if(rows.length!==items.length){ buildRows(); rows=document.querySelectorAll(".row"); }
@@ -636,7 +675,9 @@ function syncRows(){
   if(el.className!==cls) el.className=cls;
   var b=el.querySelector(".badge");
   if(b.textContent!==L[it.st]) b.textContent=L[it.st];
-  el.querySelector(".track-bar i").style.width=(it.st==="done"?100:it.p)+"%";
+  var mt=el.querySelector(".meta"), txt=metaText(it);
+  if(mt.textContent!==txt) mt.textContent=txt;
+  el.querySelector(".track-bar i").style.width=(it.st==="done"||it.st==="you"?100:it.p)+"%";
  }
  document.getElementById("rows").classList.toggle("deciding", !!pending());
  document.getElementById("clock").textContent=clockText();
@@ -647,18 +688,25 @@ function pending(){
  for(var i=0;i<items.length;i++) if(items[i].st==="stop"||items[i].st==="you") return items[i];
  return null;
 }
+function running(){ var n=0,i; for(i=0;i<items.length;i++) if(items[i].st==="run") n++; return n; }
+function upcoming(){
+ for(var i=0;i<items.length;i++) if(items[i].st==="next") return items[i];
+ return null;
+}
 function panel(k,head,body,extra,acts){
  return '<div class="panel lead"><p class="kicker">'+k+'</p><h3>'+head+'</h3>'+
         '<p>'+body+'</p>'+(extra||'')+'<div class="acts">'+acts+'</div></div>';
 }
+function totalOf(f){ var s=0,i; for(i=0;i<items.length;i++) s+=items[i][f]; return s; }
+function lastOut(){ var v=DAY_START,i; for(i=0;i<items.length;i++) if(items[i].t>v) v=items[i].t; return v; }
 function syncSide(){
- var p=pending(), key, html;
+ var p=pending(), nx=upcoming(), key, html;
  if(phase==="idle"){ key="idle"; }
  else if(p && p.st==="stop"){ key="stop"+p.i; }
  else if(p && p.st==="you"){ key="gate"+p.i; }
  else if(phase==="end"){ key="end"; }
- else { key="run"; }
- if(key===sideKey) return;
+ else { key="run"+(nx?nx.i:"x"); }
+ if(key===sideKey){ runHead(); return; }
  sideKey=key;
  if(key==="idle"){
   html=panel(t("startK"),day().name,day().intro+" "+t("startP"),"",
@@ -666,21 +714,23 @@ function syncSide(){
  } else if(key.indexOf("stop")===0){
   var x=p.stop;
   var tech = x.tech ? '<details class="tech"><summary>'+(LANG==="fr"?"Ce que le lanceur a imprimé":"What the launcher printed")+'</summary><pre>'+x.tech+'</pre></details>' : '';
-  html=panel(t("stopK"),x.head,x.body,'<div class="saved">'+x.saved+'</div>'+tech,
+  html=panel(t("stopK")+" · "+hm(p.t),x.head,x.body,'<div class="saved">'+x.saved+'</div>'+tech,
    '<button class="btn primary" id="fix">'+t("fixBtn")+'</button>');
  } else if(key.indexOf("gate")===0){
   var g=p.gate;
-  html=panel(t("gateK"),g.head,g.body,'<div class="saved">'+g.detail+'</div>',
+  html=panel(t("gateK")+" · "+hm(p.t),g.head,g.body,'<div class="saved">'+g.detail+'</div>',
    '<button class="btn primary" id="ok">'+t("approve")+'</button>'+
    '<button class="btn ghost" id="back">'+t("ret")+'</button>');
  } else if(key==="end"){
   html='<div class="panel lead"><p class="kicker">'+t("endK")+'</p><h3>'+t("endH")+'</h3>'+
    '<p class="punch">'+day().punch+'</p>'+
+   '<p>'+t("endAt")+hm(lastOut())+'.</p>'+
    '<div class="tally">'+
     '<div class="good"><b>'+items.length+'</b><span>'+t("tDone")+'</span></div>'+
-    '<div class="hot"><b>'+clicks+'</b><span>'+t("tClicks")+'</span></div>'+
-    '<div><b>'+fmtHours(totalH())+'</b><span>'+t("tWork")+'</span></div>'+
-    (saved?'<div class="hot"><b>'+day().caught+'</b><span>'+day().caughtLabel+'</span></div>':'')+
+    '<div class="hot"><b>'+dur(yourMin)+'</b><span>'+t("tYou")+'</span></div>'+
+    '<div><b>'+dur(totalOf("spent"))+'</b><span>'+t("tWork")+'</span></div>'+
+    '<div><b>'+dur(totalOf("hand"))+'</b><span>'+t("tHand")+'</span></div>'+
+    (saved?'<div class="hot wide"><b>'+day().caught+'</b><span>'+day().caughtLabel+'</span></div>':'')+
    '</div>'+
    '<p class="strongline" style="margin-top:16px">'+t("endP")+'</p>'+
    '<div class="acts">'+
@@ -689,33 +739,40 @@ function syncSide(){
     '<button class="btn ghost" id="again">'+t("again")+'</button>'+
    '</div></div>';
  } else {
-  html='<div class="panel"><p class="kicker">'+t("runK")+'</p><h3>'+t("runH")+'</h3><p>'+t("runP")+'</p></div>';
+  html='<div class="panel"><p class="kicker">'+t("runK")+'</p><h3 id="runH"></h3><p>'+t("runP")+'</p>'+
+   (nx?'<p class="nextline"><span>'+t("nextL")+' · '+hm(nx.at)+'</span>'+nx.what+'</p>'+
+       '<div class="acts"><button class="btn ghost" id="skip">'+t("skipBtn")+'</button></div>':'')+
+   '</div>';
  }
  document.getElementById("side").innerHTML=html;
+ runHead();
  if((key.indexOf("stop")===0||key.indexOf("gate")===0) && window.innerWidth<940){
   document.getElementById("side").scrollIntoView({behavior:"smooth",block:"center"});
  }
 }
 
-function running(){ var n=0,i; for(i=0;i<items.length;i++) if(items[i].st==="run") n++; return n; }
-
-/* Le rythme d'une journée : on travaille d'abord, l'incident arrive ensuite,
-   et il reste du travail derrière la décision pour que le bilan ne tombe pas dessus. */
-var NOT_BEFORE={1:0.20, 4:0.72};
-function ready(it){
- var nb=NOT_BEFORE[it.i]; if(!nb) return true;
- return (doneH()/totalH()) >= nb;
+/* Le titre du panneau suit l'état sans redessiner le panneau : il ne clignote pas. */
+function runHead(){
+ var h=document.getElementById("runH"); if(!h) return;
+ var txt = running()>0 ? t("runH") : t("idleH");
+ if(h.textContent!==txt) h.textContent=txt;
 }
 
-function tick(){
- if(pending()) return;              /* la journée s'arrête pendant que vous décidez */
- var i,it;
+/* Un pas d'horloge. Rend vrai si un travail a changé d'état. */
+function step(rush){
+ var i,it,changed=false,w=running()>0;
+ var dt = rush ? 30 : (w ? SLOW : FAST);
+ var nx=upcoming();
+ if(nx && running()<CEIL && nx.at>now) dt=Math.min(dt, nx.at-now);
+ for(i=0;i<items.length;i++){ it=items[i]; if(it.st==="run" && it.left<dt) dt=it.left; }
+ if(dt<0) dt=0;
+ now+=dt;
  for(i=0;i<items.length;i++){
   it=items[i];
   if(it.st==="run"){
-   it.p += 100/(it.h*25+11);
-   if(it.p>=100){
-    it.p=100;
+   it.left-=dt; it.spent+=dt; it.p=100*(1-it.left/it.total);
+   if(it.left<=0.0001){
+    it.left=0; it.p=100; it.t=now; changed=true;
     if(it.gate && !it.gateDone){ it.st="you"; it.gateDone=true; }
     else it.st="done";
    }
@@ -724,15 +781,26 @@ function tick(){
  if(!pending()){
   for(i=0;i<items.length;i++){
    it=items[i];
-   if(it.st==="next" && running()<CEIL && ready(it)){
-    if(it.stop && !it.fixed) it.st="stop"; else it.st="run";
-    break;
+   if(it.st==="next" && it.at<=now && running()<CEIL){
+    changed=true; it.t=now;
+    if(it.stop && !it.fixed){ it.st="stop"; break; }
+    it.st="run"; it.left=it.m; it.total=it.m;
    }
   }
  }
  var all=true;
  for(i=0;i<items.length;i++) if(items[i].st!=="done") all=false;
- if(all && phase!=="end"){ phase="end"; clearInterval(timer); timer=null; }
+ if(all && phase!=="end"){ phase="end"; now=lastOut(); if(timer){ clearInterval(timer); timer=null; } changed=true; }
+ return changed;
+}
+function tick(){
+ if(pending()||phase!=="run") return;
+ step(false);
+ syncRows(); syncSide();
+}
+function skip(){
+ var n=0;
+ while(phase==="run" && !pending() && n<400){ n++; if(step(true)) break; }
  syncRows(); syncSide();
 }
 
@@ -763,25 +831,30 @@ document.addEventListener("click",function(e){
  var b=e.target.closest("button"); if(!b) return;
  if(b.getAttribute("data-track")){ track=b.getAttribute("data-track"); dayIx=0; build(); paint(); return; }
  if(b.getAttribute("data-day")!==null){ dayIx=+b.getAttribute("data-day"); build(); paint(); return; }
- if(b.id==="go"){ clicks++; start(); return; }
+ if(b.id==="go"){ start(); return; }
+ if(b.id==="skip"){ skip(); return; }
  if(b.id==="fix"){
-  clicks++; saved=true;
-  for(var i=0;i<items.length;i++) if(items[i].st==="stop"){ items[i].fixed=true; items[i].st="run"; items[i].p=0; }
-  syncRows(); syncSide(); return;
+  saved=true; yourMin+=2;
+  for(var i=0;i<items.length;i++) if(items[i].st==="stop"){ items[i].fixed=true; items[i].st="next"; }
+  step(false); syncRows(); syncSide(); return;
  }
  if(b.id==="ok"||b.id==="back"){
-  clicks++;
+  yourMin += (b.id==="ok") ? 4 : 3;
   for(var j=0;j<items.length;j++) if(items[j].st==="you"){
-   if(b.id==="ok") items[j].st="done";
-   else { items[j].st="run"; items[j].p=55; }
+   var it=items[j];
+   if(b.id==="ok"){ it.st="done"; it.t=now; }
+   else { it.st="run"; it.gateDone=false; it.left=Math.max(3,Math.round(it.m/2)); it.total=it.left; it.p=0; it.t=now; }
   }
-  syncRows(); syncSide(); return;
+  step(false); syncRows(); syncSide(); return;
  }
  if(b.id==="again"){ build(); paint(); return; }
 });
 
-var q=new URLSearchParams(location.search).get("piste")||new URLSearchParams(location.search).get("track");
+var qs=new URLSearchParams(location.search);
+var q=qs.get("piste")||qs.get("track");
 if(q==="nocode"||q==="sans-code") track="nocode";
+var dj=parseInt(qs.get("jour")||qs.get("day"),10);
+if(dj>=0 && dj<DAYS[LANG][track].length) dayIx=dj;
 build(); paint();
 </script>
 </body>
