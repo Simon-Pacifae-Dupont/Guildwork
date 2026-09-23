@@ -29,6 +29,7 @@ header{position:sticky;top:0;z-index:10;background:rgba(11,21,38,.86);backdrop-f
 .brand svg{width:28px;height:28px;flex:none}
 .brand b{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
  font-weight:600;font-size:20px;letter-spacing:-.02em}
+.brand b span{color:var(--amber)}
 .bar nav{display:flex;gap:17px;font-family:"IBM Plex Mono",monospace;font-size:12px}
 .bar nav a{color:var(--ink-2);text-decoration:none;white-space:nowrap}
 .bar nav a:hover{color:var(--ink)}

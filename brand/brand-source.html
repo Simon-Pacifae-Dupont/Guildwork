@@ -41,6 +41,8 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
 .lockup .tag { font-family: "Plex Mono", monospace; font-weight: 400; font-size: 30px; letter-spacing: 0.02em; margin: 22px 0 0 6px; }
 .dark .word, .transparent .word { color: var(--ivory); }
 .light .word { color: var(--ink); }
+.word span { color: var(--amber); }
+.light .word span, .feat.repo .word span { color: #B57414; }
 .dark .tag, .transparent .tag { color: var(--muted); }
 .light .tag { color: #4A5670; }
 
@@ -57,6 +59,11 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
 .banner .side .name { font-family: Fraunces, serif; font-variation-settings: "opsz" 48, "SOFT" 40; font-weight: 500; font-size: 30px; color: var(--ivory); letter-spacing: -0.01em; }
 .banner .side .name span { color: var(--amber-2); }
 .banner .side .role { font-family: "Plex Mono", monospace; font-size: 19px; color: var(--muted); }
+
+/* ---------- X HEADER 1500x500 : the avatar covers the lower left, the content sits right ---------- */
+.banner.x { width: 1500px; height: 500px; }
+.banner.x .content { left: auto; right: 96px; height: 430px; }
+.banner.x .foot { right: 96px; bottom: 44px; }
 
 
 /* ---------- GITHUB SOCIAL PREVIEW 1280x640 ---------- */
@@ -101,17 +108,21 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
 <!-- mark definition, reused -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
-    <symbol id="mark" viewBox="0 0 100 100">
-      <!-- frame: the guild -->
-      <path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56"
-            fill="none" stroke="var(--ivory)" stroke-width="12" stroke-linecap="butt" stroke-linejoin="round"/>
-      <!-- the gate bar: the delivery crossing the gate -->
-      <rect x="52" y="44" width="39" height="12" fill="var(--amber)"/>
+    <symbol id="mark" viewBox="-35 -35 386 386">
+      <!-- five pieces on a four-by-four grid: four placed by the agents, the amber one is yours -->
+      <rect x="80" y="0" width="76" height="76" fill="var(--ivory)"/>
+      <rect x="0" y="80" width="76" height="156" fill="var(--ivory)"/>
+      <rect x="240" y="160" width="76" height="76" fill="var(--ivory)"/>
+      <rect x="80" y="240" width="156" height="76" fill="var(--ivory)"/>
+      <rect x="160" y="80" width="76" height="76" fill="var(--amber)"/>
     </symbol>
-    <symbol id="mark-ink" viewBox="0 0 100 100">
-      <path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56"
-            fill="none" stroke="var(--ink)" stroke-width="12" stroke-linecap="butt" stroke-linejoin="round"/>
-      <rect x="52" y="44" width="39" height="12" fill="var(--amber)"/>
+    <symbol id="mark-ink" viewBox="-35 -35 386 386">
+      <!-- the same, for a light ground -->
+      <rect x="80" y="0" width="76" height="76" fill="var(--ink)"/>
+      <rect x="0" y="80" width="76" height="156" fill="var(--ink)"/>
+      <rect x="240" y="160" width="76" height="76" fill="var(--ink)"/>
+      <rect x="80" y="240" width="156" height="76" fill="var(--ink)"/>
+      <rect x="160" y="80" width="76" height="76" fill="var(--amber)"/>
     </symbol>
     <!-- background lanes: faint parallel lines converging into one -->
     <symbol id="lanes" viewBox="0 0 1584 396" preserveAspectRatio="none">
@@ -146,22 +157,22 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
 
 <div id="lockup-dark" class="board lockup dark">
   <svg><use href="#mark"/></svg>
-  <div><p class="word">Guildwork</p><p class="tag">governance for AI agents · you keep the last word</p></div>
+  <div><p class="word">Guild<span>work</span></p><p class="tag">governance for AI agents · you keep the last word</p></div>
 </div>
 <div id="lockup-light" class="board lockup light">
   <svg><use href="#mark-ink"/></svg>
-  <div><p class="word">Guildwork</p><p class="tag">governance for AI agents · you keep the last word</p></div>
+  <div><p class="word">Guild<span>work</span></p><p class="tag">governance for AI agents · you keep the last word</p></div>
 </div>
 <div id="lockup-transparent" class="board lockup transparent">
   <svg><use href="#mark"/></svg>
-  <div><p class="word">Guildwork</p><p class="tag">governance for AI agents · you keep the last word</p></div>
+  <div><p class="word">Guild<span>work</span></p><p class="tag">governance for AI agents · you keep the last word</p></div>
 </div>
 
 <div id="banner-en" class="board banner">
   <svg class="lanes"><use href="#lanes"/></svg>
   <div class="content">
     <svg><use href="#mark"/></svg>
-    <div><p class="word">Guildwork</p><p class="tag">governance for <b>AI agents</b> · you keep the last word</p></div>
+    <div><p class="word">Guild<span>work</span></p><p class="tag">governance for <b>AI agents</b> · you keep the last word</p></div>
   </div>
   <div class="side">
     <div class="name">Simon <span>“Pacifae”</span> Dupont</div>
@@ -174,7 +185,7 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
   <svg class="lanes"><use href="#lanes"/></svg>
   <div class="content">
     <svg><use href="#mark"/></svg>
-    <div><p class="word">Guildwork</p><p class="tag">gouvernance pour <b>agents IA</b> · vous gardez le dernier mot</p></div>
+    <div><p class="word">Guild<span>work</span></p><p class="tag">gouvernance pour <b>agents IA</b> · vous gardez le dernier mot</p></div>
   </div>
   <div class="side">
     <div class="name">Simon <span>“Pacifae”</span> Dupont</div>
@@ -188,7 +199,7 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
   <div class="content">
     <div class="row">
       <svg><use href="#mark"/></svg>
-      <p class="word">Guildwork</p>
+      <p class="word">Guild<span>work</span></p>
     </div>
     <p class="tag">governance kit for <b>AI agents, with or without code</b>:<br>contracts, forms, vocabulary, tool specifications,<br>and the incidents that paid for every rule.</p>
   </div>
@@ -200,7 +211,7 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
   <div class="content">
     <div class="row">
       <svg><use href="#mark"/></svg>
-      <p class="word">Guildwork</p>
+      <p class="word">Guild<span>work</span></p>
     </div>
     <p class="tag">gouvernance pour <b>agents IA, avec ou sans code</b> :<br>contrats, formulaires, vocabulaire, spécification des outils,<br>et les incidents qui ont payé chaque règle.</p>
   </div>
@@ -234,6 +245,15 @@ body { margin: 0; background: #666; font-family: Inter, sans-serif; }
     </div>
     <div class="foot"><span>MIT</span><span>15 documents</span><span>rien &agrave; installer</span></div>
   </div>
+</div>
+
+<div id="x-banner" class="board banner x">
+  <svg class="lanes"><use href="#lanes"/></svg>
+  <div class="content">
+    <svg><use href="#mark"/></svg>
+    <div><p class="word">Guild<span>work</span></p><p class="tag">gouvernance pour <b>agents IA</b> · vous gardez le dernier mot</p></div>
+  </div>
+  <div class="foot">simon-pacifae-dupont.github.io/Guildwork</div>
 </div>
 
 </body>

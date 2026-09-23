@@ -1,8 +1,10 @@
 # Brand assets
 
-The mark is a geometric G: the frame is the guild, the amber bar is the
-delivery crossing the gate. Ink `#0B1526`, ivory `#F3EDE2`, amber `#E9A23B`.
-Wordmark in Fraunces, taglines in IBM Plex Mono.
+The mark is a G built from five pieces on a four-by-four grid: four ivory pieces placed by
+the agents, one amber piece that is yours. It is the promise drawn: the work runs without
+you, the last word does not. Drawn by Anto, set in the site's own colours: ink `#0B1526`,
+ivory `#F3EDE2`, amber `#E9A23B`. No curves, so it stays sharp down to 16 pixels. The
+wordmark is Guild + work, *work* in amber, in Fraunces; taglines in IBM Plex Mono.
 
 | File | Use |
 |---|---|
@@ -11,6 +13,7 @@ Wordmark in Fraunces, taglines in IBM Plex Mono.
 | `logo-avatar-1024.png`, `logo-avatar-400.png`, `logo-avatar-light-1024.png`, `favicon-64.png` | square avatars |
 | `github-social-preview.png` | 1280×640, the repository's social preview |
 | `linkedin-banner-en.png`, `linkedin-banner-fr.png` | 1584×396, the LinkedIn profile cover |
+| `x-banner.png` | 1500×500, the X header — the content sits right, where the avatar does not cover it |
 | `linkedin-post-fr.png` | 1280×640, the card to attach to a French post (the English post uses `github-social-preview.png`) |
 | `linkedin-featured-page.png`, `linkedin-featured-repo.png` | 1280×720, the two LinkedIn *Featured* thumbnails — ink for the site, ivory for the repository, so the two cards never read alike |
 | `lifecycle-canvas.png`, `lifecycle-canvas.fr.png` | the operating model drawn on the Lantern example, English and French — rendered from the interactive pages at `demo/canvas/` and `fr/demo/canvas/` (`?export` on either page gives the frame the PNG is cut from); every public image links to the interactive page. `lifecycle-canvas.html` and `lifecycle-canvas.fr.html` here only forward to those pages |

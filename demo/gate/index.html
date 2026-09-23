@@ -30,8 +30,8 @@ h1,h2,h3{text-wrap:balance}
 header{border-bottom:1px solid var(--line);padding:16px 0}
 .bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.glyph{width:24px;height:24px;border:1.5px solid var(--ink);border-radius:3px;position:relative;flex:none}
-.glyph::after{content:"";position:absolute;left:4px;right:4px;top:9.6px;height:3px;background:var(--amber);border-radius:1px}
+.glyph{width:24px;height:24px;flex:none}
+.wordmark b{color:var(--amber);font-weight:inherit}
 .wordmark{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:16px}
 .bar-end{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
@@ -145,7 +145,7 @@ pre b{color:var(--ink);font-weight:500}
 <body>
 
 <header><div class="wrap bar">
- <a class="mark" href="../../"><span class="glyph" aria-hidden="true"></span><span class="wordmark">Guildwork</span></a>
+ <a class="mark" href="../../"><svg class="glyph" viewBox="0 0 316 316" aria-hidden="true"><rect x="80" y="0" width="76" height="76" fill="#F3EDE2"/><rect x="0" y="80" width="76" height="156" fill="#F3EDE2"/><rect x="240" y="160" width="76" height="76" fill="#F3EDE2"/><rect x="80" y="240" width="156" height="76" fill="#F3EDE2"/><rect x="160" y="80" width="76" height="76" fill="#E9A23B"/></svg><span class="wordmark">Guild<b>work</b></span></a>
  <span class="bar-end">
   <button class="tk" data-track="code" aria-pressed="true"></button>
   <button class="tk" data-track="nocode" aria-pressed="false"></button>
