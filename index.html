@@ -66,6 +66,28 @@
   .brand svg{width:28px;height:28px;flex:none}
   .brand b{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
     font-weight:600;font-size:20px;letter-spacing:-.02em}
+  .brand b span{color:var(--amber)}
+  /* Le haut de page : le symbole s'assemble, la pièce ambre attend le visiteur. */
+  .hero-top{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap-object)}
+  @media (min-width:940px){.hero-top{grid-template-columns:minmax(0,1fr) 280px;gap:64px;align-items:center}}
+  .piece{margin:0;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .piece svg{width:min(220px,44vw);height:auto;overflow:visible}
+  .piece .t{fill:var(--ink);opacity:0;transform:translateY(-18px);transform-box:fill-box;animation:piece-in .55s cubic-bezier(.2,.8,.2,1) var(--d) forwards}
+  .piece .slot{fill:none;stroke:var(--amber);stroke-width:3;stroke-dasharray:9 7;opacity:0;animation:piece-slot 1.8s ease-in-out 1.2s infinite}
+  .piece .gold{fill:var(--amber);opacity:0;transform:scale(.5);transform-box:fill-box;transform-origin:center}
+  .piece.done .slot{animation:none;opacity:0}
+  .piece.done .gold{animation:piece-land .45s cubic-bezier(.2,.9,.3,1.25) forwards}
+  @keyframes piece-in{to{opacity:1;transform:none}}
+  @keyframes piece-slot{0%,100%{opacity:.3}50%{opacity:1}}
+  @keyframes piece-land{to{opacity:1;transform:none}}
+  .piece figcaption{margin-top:24px}
+  .piece p{max-width:none}
+  .piece .piece-k{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;color:var(--ink-3);margin:0 0 6px}
+  .piece .piece-h{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:22px;line-height:1.25;color:var(--ink);margin:0 0 16px}
+  .piece .piece-more{display:none;font-weight:600;font-size:15px}
+  .piece.done #piece-go{display:none}
+  .piece.done .piece-more{display:inline-block}
+  @media (prefers-reduced-motion:reduce){.piece .t{animation:none;opacity:1;transform:none}.piece .slot{animation:none;opacity:1}.piece.done .gold{animation:none;opacity:1;transform:none}}
   nav{display:flex;gap:17px;font-family:"IBM Plex Mono",monospace;font-size:12px}
   nav a{white-space:nowrap}
   nav a{color:var(--ink-2);text-decoration:none}
@@ -477,8 +499,8 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M 62 15 L 27 15 Q 15 15 15 27 L 15 73 Q 15 85 27 85 L 73 85 Q 85 85 85 73 L 85 56" fill="none" stroke="#F3EDE2" stroke-width="12" stroke-linejoin="round"/><rect x="52" y="44" width="39" height="12" fill="#E9A23B"/></svg>
-      <b>Guildwork</b>
+      <svg viewBox="0 0 316 316" aria-hidden="true"><rect x="80" y="0" width="76" height="76" fill="#F3EDE2"/><rect x="0" y="80" width="76" height="156" fill="#F3EDE2"/><rect x="240" y="160" width="76" height="76" fill="#F3EDE2"/><rect x="80" y="240" width="156" height="76" fill="#F3EDE2"/><rect x="160" y="80" width="76" height="76" fill="#E9A23B"/></svg>
+      <b>Guild<span>work</span></b>
     </a>
     <nav>
       <a href="#problem" data-track="code">Four failures</a>
@@ -530,14 +552,38 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <main id="top">
 
 <div class="wrap hero">
+  <div class="hero-top"><div class="hero-copy">
   <p class="eyebrow">AI-agent orchestration · free kit (MIT) · hands-on help</p>
   <h1>Put AI agents to work <em>and keep the last word</em>.</h1>
   <p class="lede"><strong>Guildwork is a discipline built one incident at a time, and upgraded by every new one:</strong> a contract before every task handed to an AI, a witness while it runs, a closeout after, and a launcher that refuses to start what isn’t in order. Running today on real software (seven agents, twenty-five merges a day), it holds a law firm, an agency or a support desk just as well.</p>
   <p class="lede">The kit is public and free. Installing it where you work is my job.</p>
+  </div>
+  <figure class="piece" id="piece">
+    <svg viewBox="-6 -6 328 328" role="img" aria-label="The Guildwork symbol: four ivory pieces placed by the agents, and one amber piece, yours.">
+        <rect class="t" style="--d:0.15s" x="80" y="0" width="76" height="76"/>
+        <rect class="t" style="--d:0.35s" x="0" y="80" width="76" height="156"/>
+        <rect class="t" style="--d:0.55s" x="240" y="160" width="76" height="76"/>
+        <rect class="t" style="--d:0.75s" x="80" y="240" width="156" height="76"/>
+        <rect class="slot" x="163" y="83" width="70" height="70"/>
+        <rect class="gold" x="160" y="80" width="76" height="76"/>
+    </svg>
+    <figcaption>
+      <p class="piece-k">Four pieces, placed by the agents.</p>
+      <p class="piece-h" data-done="You keep the last word.">The last one is yours.</p>
+      <button class="btn primary" type="button" id="piece-go">Place the last piece</button>
+      <a class="piece-more" href="demo/gate/">Play a whole day &rarr;</a>
+    </figcaption>
+  </figure>
+  <script>
+  (function(){var f=document.getElementById("piece"),b=document.getElementById("piece-go");if(!f||!b)return;
+   b.addEventListener("click",function(){f.classList.add("done");var h=f.querySelector(".piece-h");h.textContent=h.getAttribute("data-done");
+   setTimeout(function(){f.querySelector(".piece-more").focus();},60);});})();
+  </script>
+  </div>
   <a class="try" href="demo/gate/">
     <p class="try-tag">Interactive demo · nothing to install</p>
     <h2>Spend a day in charge</h2>
-    <p class="try-lede">Five jobs, agents that do them, and you. One mistake stopped before it went out, one decision that is yours, and a tally at the end: what got delivered, and how many times you clicked. Two minutes, with code or without.</p>
+    <p class="try-lede">Five jobs, agents that do them, and you. One mistake stopped before it went out, one decision that is yours, and a tally at the end: what got delivered, your time and theirs. Two minutes, with code or without.</p>
     <span class="try-go">Start the day &rarr;</span>
   </a>
   <div class="cta">
