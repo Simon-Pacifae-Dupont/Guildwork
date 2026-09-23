@@ -32,7 +32,7 @@ adopting project's to write, under whatever names it prefers:
 - the per-seat operational documents the role profiles name (`CLAUDE.md`,
   `AGENTS.md`, `docs/CHIEF_ARCHITECT.md`, `docs/DOMAIN_EXPERT.md`,
   `docs/CALIBRATION_COVERAGE.md`, `docs/design/LAYOUT_RULES.md`);
-- the workflow document the form's help texts cite (`MISSION_WORKFLOW.md`)
+- the workflow document the form's help texts cite (`docs/guild/MISSION_WORKFLOW.md`)
   and the capability document (`AGENT_CAPABILITIES.md`) — `docs/01` to
   `docs/11` of this pack, rewritten for one repository;
 - the continuity contract (`docs/guild/CONTINUITY_CONTRACT.md`, from

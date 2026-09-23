@@ -1,7 +1,7 @@
 # Guildwork — design system
 
 The reference for every surface that carries the Guildwork name: the site,
-the two READMEs, the board demonstrations, the board reader shipped in
+the two READMEs, the board and desk demonstrations, the board reader shipped in
 `templates/board/`, and the images rendered from them. Anything that
 disagrees with this file is wrong, and this file is what gets corrected
 first when the system changes.
@@ -262,6 +262,8 @@ site. Counters are always tabular monospace.
 | the reader's demonstrations | `demo/board/reader/`, `fr/demo/board/reader/` | dark, forced |
 | the images | `brand/board-demo-dark.png`, `brand/board-demo.fr.png` | rendered from the board demonstration in each language — recipe below |
 | the operating canvas | `demo/canvas/`, `fr/demo/canvas/` | dark only |
+| the desk as it runs (no-code demonstration) | `demo/desk/index.html`, `fr/demo/desk/index.html` | dark only, forced |
+| the desk images | `brand/desk-demo.png`, `brand/desk-demo.fr.png` | rendered from the desk demonstration in each language |
 
 A change to a token is made here first, then applied to every file in the
 table in the same commit. An image is never edited; it is re-rendered. The
@@ -273,7 +275,7 @@ in the table; a new surface inherits it before it inherits anything else.
 Rules live in one language — a rule that exists twice is a rule that will
 diverge. Narratives live in both, and the board demonstration is a
 narrative: `demo/board/index.html` and `fr/demo/board/index.html` are two
-files on purpose.
+files on purpose, and so are `demo/desk/index.html` and `fr/demo/desk/index.html`.
 
 What keeps them from drifting is not one file, it is one skeleton. **The
 two pages carry the same tags, in the same order, with the same

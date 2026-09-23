@@ -38,7 +38,7 @@ presented as live.
    than restated.
 5. The full suite passes on the merge result: `python -m pytest -q` run after
    merging `origin/develop` into the branch, with the commit named beside the
-   figure, per `MISSION_WORKFLOW.md` §14.
+   figure, per `docs/guild/MISSION_WORKFLOW.md` §14.
 6. `docs/changelog.d/118-dashboard-stale-reading.md` exists and describes the
    change in the words a release note would use.
 

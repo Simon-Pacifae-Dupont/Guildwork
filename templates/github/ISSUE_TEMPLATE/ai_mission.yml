@@ -104,7 +104,7 @@ body:
     attributes:
       label: Effort
       description: >-
-        Reasoning effort, per the effort table in MISSION_WORKFLOW.md §6, which
+        Reasoning effort, per the effort table in docs/guild/MISSION_WORKFLOW.md §6, which
         holds the normative copy of these levels. AUTO leads and is the default: it pins
         nothing and lets the runtime allocate to the difficulty actually met,
         which is the conservative answer on a scale where over-declaring spends
@@ -160,7 +160,7 @@ body:
       label: Chantier
       description: >-
         Which workstream this mission serves, from the closed vocabulary in
-        MISSION_WORKFLOW.md §4.4 — chantier:dashboard, chantier:device,
+        docs/guild/MISSION_WORKFLOW.md §4.4 — chantier:dashboard, chantier:device,
         chantier:sync, chantier:shell, chantier:gate, chantier:watcher,
         chantier:governance, chantier:release-provenance. Exactly one, and
         leaving it blank is a legitimate state: an unclassifiable lot is better
@@ -177,7 +177,7 @@ body:
       label: Screen demand
       description: >-
         What this mission takes from the Product Owner's screen while it runs,
-        from the closed vocabulary in MISSION_WORKFLOW.md §6 — none, windows
+        from the closed vocabulary in docs/guild/MISSION_WORKFLOW.md §6 — none, windows
         appear, exclusive foreground — followed by the estimated time on screen,
         which the value is useless without. Blank is a legitimate state: a
         contract written before this field existed is undeclared, not wrong, and
@@ -192,7 +192,7 @@ body:
       label: Host
       description: >-
         Which machine this mission needs, from the closed vocabulary in
-        MISSION_WORKFLOW.md §6 — any, workstation, laptop. Exactly one. The two
+        docs/guild/MISSION_WORKFLOW.md §6 — any, workstation, laptop. Exactly one. The two
         machines are spelled as the capability table spells them: workstation is the
         fixed machine the device is cabled to, laptop is the portable one.
         Blank is a legitimate state: a contract written before this field

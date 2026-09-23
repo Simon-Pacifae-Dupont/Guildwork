@@ -61,6 +61,7 @@ seats are:
 | Lead Software Engineer | Claude Code | implementation, tests, pull requests, adversarial self-review |
 | Software Engineering | Grok Build and Codex CLI | assigned atomic lots in declared worktrees, under the model and effort named by the contract |
 | HQ Architecture, Domain Expert, UX/UI | Grok profiles | adversarial review and domain authority, each in its lane |
+| Consultant | a session outside the tree — GPT, Grok, or a cloud session — with no execution surface | a read on a contested ruling, filed in the register; it starts nothing and merges nothing, which is what makes the read neutral |
 | Witness | any seat that did not write the delivery | reads the delivery's evidence against the repository before the gate; the gate merges on the witness's word, not the author's |
 
 **The architect seat orchestrates, and it does not write in the tree.** Until
