@@ -189,10 +189,10 @@ var T = {
   lede:"Five pieces of work, agents that do them, and you. Press start and see what actually reaches you.",
   boardTitle:"Today", clockLabel:"start",
   startK:"Ready", startH:"Your day is waiting",
-  startP:"Five jobs that come in through the day, two agents at a time at most. Nothing starts until you start the day, and nothing leaves without a name on it.",
+  startP:"Five jobs that come in through the day, each handed to an agent as soon as its request arrives. Nothing starts until you start the day, and nothing leaves without a name on it.",
   startBtn:"Start the day",
   runK:"Running", runH:"They are working",
-  runP:"Each job starts when its request comes in, two at a time at most. The clock runs fast while nothing needs you.",
+  runP:"Each job starts when its request comes in. The clock runs fast while nothing needs you.",
   idleH:"Nothing needs you", nextL:"Next", skipBtn:"Skip ahead",
   stopK:"Stopped before it went out", fixBtn:"Fix it and run it again",
   gateK:"This one is yours", approve:"Approve and send", ret:"Send it back",
@@ -213,10 +213,10 @@ var T = {
   lede:"Cinq travaux, des agents qui les font, et vous. Lancez, et regardez ce qui remonte vraiment jusqu'à vous.",
   boardTitle:"Aujourd'hui", clockLabel:"départ",
   startK:"Prêt", startH:"Votre journée attend",
-  startP:"Cinq travaux qui arrivent au fil de la journée, deux agents à la fois au plus. Rien ne démarre avant que vous lanciez la journée, et rien ne part sans un nom dessus.",
+  startP:"Cinq travaux qui arrivent au fil de la journée, chacun confié à un agent dès que sa demande arrive. Rien ne démarre avant que vous lanciez la journée, et rien ne part sans un nom dessus.",
   startBtn:"Lancer la journée",
   runK:"En cours", runH:"Ils travaillent",
-  runP:"Chaque travail démarre quand sa demande arrive, deux à la fois au plus. L'horloge accélère tant que rien ne vous attend.",
+  runP:"Chaque travail démarre quand sa demande arrive. L'horloge accélère tant que rien ne vous attend.",
   idleH:"Rien ne vous attend", nextL:"Prochain", skipBtn:"Avancer",
   stopK:"Arrêté avant de partir", fixBtn:"Corriger et relancer",
   gateK:"Celui-ci vous revient", approve:"Valider et envoyer", ret:"Renvoyer",
@@ -612,7 +612,7 @@ var STATE_LABEL = {
 /* L'horloge suit une vraie journée. Elle court vite quand rien ne tourne, ralentit
    pendant qu'un agent travaille, et s'arrête pendant que vous décidez. Le bouton
    « Avancer » saute au prochain événement : personne n'attend une barre. */
-var CEIL=2, TICK=100, FAST=12, SLOW=1.5, DAY_START=8*60+30;
+var CEIL=5, TICK=100, FAST=12, SLOW=1.5, DAY_START=8*60+30;
 var items=[], phase="idle", timer=null, saved=false, track="code", dayIx=0;
 var sideKey="", built=false, now=DAY_START, yourMin=0;
 
