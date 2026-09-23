@@ -18,7 +18,7 @@ Wordmark in Fraunces, taglines in IBM Plex Mono.
 | `board-demo.fr.png` | the same board in French, rendered from `fr/demo/board/`, and shown wherever the English one is shown on the French side. The two images are the same page in two languages: regenerate both, or neither |
 | `desk-demo.png`, `desk-demo.fr.png` | the no-code desk, on its fictional firm, English and French, rendered from `demo/desk/` and `fr/demo/desk/` — the same page in two languages: regenerate both, or neither |
 | `linkedin-incident-01.png` … `linkedin-incident-04.png` | 2400×3000, one image per post of the *Paid for by an incident* LinkedIn series, French — the rule in the title, the incident drawn once |
-| `linkedin-semaine-01.png` | 2400×3000, the image of the weekly *Ce que la semaine a coûté* recap, French — a two-step capture of machine output rather than a diagram, on purpose |
+| `linkedin-semaine-01.png`, `linkedin-semaine-02.png` | 2400×3000, one image per week of the *Ce que la semaine a coûté* recap, French — a two-step capture of machine output rather than a diagram, on purpose |
 | `brand-source.html` | the source of the mark, lockup, avatar, banner, social-preview, post and *Featured* images (Playwright screenshot of each frame); the canvas, board and desk images are rendered from their own pages |
 | `design-system.md` | the tokens and the rules every Guildwork surface follows — ground, ink, the five state hues, what is not a state |
 
