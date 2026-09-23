@@ -18,9 +18,7 @@ the list at the end of this page — from the corresponding page under
 | `github/pull_request_template.md` | `.github/pull_request_template.md`, on the default branch | `docs/02-delivery-contract.md` |
 | `labels.sh` | run once, by a human | `docs/03-label-taxonomy.md` |
 | `AI_TEAM.md` | the repository root | `docs/00-operating-model.md` |
-| `AI_TEAM.md` | the repository root | `docs/00-operating-model.md` |
 | `roles/*.md` | `docs/guild/roles/` | `docs/00-operating-model.md` |
-| `HANDOVER.md` | `docs/guild/HANDOVER.md` | `docs/08-continuity.md` |
 | `HANDOVER.md` | `docs/guild/HANDOVER.md` | `docs/08-continuity.md` |
 | `journal/README.md`, `journal/ENTRY.md` | `docs/guild/journal/` | `docs/06-session-cycle.md`, `docs/08-continuity.md` |
 | `REGENERABLE_PATHS.txt` | `docs/guild/` | `docs/07-closeout.md` |
