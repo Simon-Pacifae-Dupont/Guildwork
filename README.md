@@ -16,8 +16,8 @@
 
 **Not a developer?** The same discipline (a contract before, a witness during, a closeout after, and a launcher that refuses to start what isn’t in order) holds a law firm, an agency or a support desk just as well. [That door is on the same page.](https://simon-pacifae-dupont.github.io/Guildwork/#no-code)
 
-Guildwork is the governance one person built, incident by incident, and runs every day to hold a seven-seat AI engineering team on a real product
-at twenty-five merges a day: with every mission a contract, every merge behind a named gate, every
+Guildwork is the governance one person built, incident by incident, and runs every day to hold a multi-agent AI engineering team on a real product,
+whatever its number of seats, at twenty-five merges a day: with every mission a contract, every merge behind a named gate, every
 session leaving a durable record, and the human out of the message path.
 This repository is that system, extracted: the contracts, the forms, the
 vocabulary, the specification of the three tools that hold it together, and
