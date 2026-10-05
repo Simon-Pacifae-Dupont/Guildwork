@@ -8,7 +8,7 @@ file. No other mission edits it.
 
 Why: concurrent missions must not share a file. The changelog was the only
 file every mission wrote, which made it the only place two concurrent missions
-were guaranteed to conflict. At a concurrency ceiling of four, a wave of
+were guaranteed to conflict. With several missions open at once, a wave of
 missions all adding a section costs one hand-resolved conflict for every
 mission after the first, each requiring a second witness. Two fragments cost
 none: Git merges two adds without asking anyone.
