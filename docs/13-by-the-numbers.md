@@ -32,14 +32,14 @@ was written by AI seats under the contracts described in this pack.
 |---|---|
 | journal entries written by closed sessions | **548** in 36 days (3 August → 7 September) |
 | … by the lead engineer seat | 501 |
-| … by the five other AI seats that wrote one | 47 |
+| … by the other AI seats that wrote one | 47 |
 | busiest day | 46 closed sessions |
 | mission contracts opened on the issue form | **344** in the 13 days to 7 September (26 August → 7 September) — about 26 a day |
 | pull requests merged in those 13 days | **320** — 24.6 a day, days counted in UTC |
 | pull requests merged over the project's life | 561, of which 530 since the charter was adopted on 3 August |
 | deliveries closed unmerged — refused or superseded | 14, of 575 closed |
 | merged deliveries carrying a `Mission:` line | 345 |
-| standing concurrency ceiling | 4 missions at once, any mix of writer and read-only — raised from 2 |
+| standing concurrency ceiling | a project setting, any mix of writer and read-only, raised each time the governance had held at the previous one |
 
 Twenty-six contracts and twenty-five merges a day, for thirteen days, with one
 human at the gate. That is the number the rest of this pack exists to make
@@ -63,8 +63,8 @@ asked to remember is a defect.
 
 ## Two readings of the same numbers
 
-**The optimistic reading.** A single person ran a seven-seat AI engineering
-team at twenty-five merges a day for thirteen days, with every merge behind a
+**The optimistic reading.** A single person ran a multi-agent AI engineering
+team, whatever its number of seats, at twenty-five merges a day for thirteen days, with every merge behind a
 named gate, every session leaving a durable record, every substitution of
 model or effort surfaced in a durable artefact, and fourteen deliveries out
 of five hundred and seventy-five closed refused or superseded — with the

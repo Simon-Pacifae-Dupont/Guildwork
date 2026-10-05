@@ -16,7 +16,7 @@
 **Vous ne développez pas ?** La même discipline (un contrat avant, un témoin pendant, un bilan après, et un lanceur qui refuse de démarrer ce qui n’est pas en règle) tient aussi bien un cabinet, une agence ou un service client. [Cette entrée est sur la même page.](https://simon-pacifae-dupont.github.io/Guildwork/fr/#sans-code)
 
 Guildwork est la gouvernance qu'une seule personne a construite, incident après incident, et qui tourne chaque jour pour tenir une équipe
-d'ingénierie IA à sept sièges sur un produit réel, à vingt-cinq merges par jour : chaque mission un
+d'ingénierie IA multi-agents sur un produit réel, quel que soit son nombre de sièges, à vingt-cinq merges par jour : chaque mission un
 contrat, chaque merge derrière une porte nommée, chaque session laissant une
 trace durable, et l'humain hors du chemin des messages. Ce dépôt est ce
 système, extrait : les contrats, les formulaires, le vocabulaire, la

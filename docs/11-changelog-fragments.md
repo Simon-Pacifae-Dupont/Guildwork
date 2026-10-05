@@ -13,8 +13,8 @@ Two pull requests failed to merge twenty minutes apart on the same 445 KB
 changelog, each having added a section at its top. Both resolutions were
 purely additive and were performed by the integrator — which is the boundary
 erosion the one-writer rule exists to refuse: the human becoming the merge
-tool for two agents that never touched the same line of product code. At a
-concurrency ceiling of four, a wave of missions all adding a section costs
+tool for two agents that never touched the same line of product code. With
+several missions open at once, a wave of missions all adding a section costs
 one hand-resolved conflict for every mission after the first, each requiring
 a second witness. Two fragments cost none: Git merges two adds without
 asking anyone.
