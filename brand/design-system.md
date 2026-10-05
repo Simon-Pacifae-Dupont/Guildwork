@@ -245,6 +245,35 @@ because the sixteenth is the drop-in files, not a hole. When a screen shows
 more ground than content between two sections, the fix is the token, not
 the section.
 
+## Section heads and bands, the editorial rhythm (October 2026)
+
+The home page reads as a sequence of distinct sections, not one long sheet:
+
+- **The hero headline runs the full width**, up to 118 px, and its amber line
+  sits on lines of its own, full stop included (the stop itself stays ivory).
+  The introduction and the mark share the row beneath it.
+- **Four measured figures close the hero**, on the code track only: they are
+  the same figures as *What it runs on*, with the same labels, and the last
+  one is a door to the incidents. A reader of the no-code track never meets
+  `pull requests`.
+- **Every section opens on a head** (`.sec-head`): a 9 px amber square, the
+  title on the left, its introduction beside it on the right from 900 px up,
+  stacked below that. The head carries the introduction and nothing else; the
+  section's object follows at `--gap-object`.
+- **Every other section sits on a band** of `--surface` running the full
+  width of the window, framed by `--line` above and below. The bands replace
+  the rules between sections, so no section carries both.
+- **The four failures** show their number large, in Fraunces and the refusal
+  red, above their name; their grid has four columns, then two, then one,
+  never three and an orphan.
+- Heads and grids **rise into place** as they enter the screen (opacity and
+  18 px, scroll-driven); they are complete at rest wherever the browser does
+  not drive the animation, and `prefers-reduced-motion` removes it.
+- **No public surface gives a number of agents.** The team is described as
+  one that scales with the work, never by its headcount.
+- **A scrollbar never shifts the page**: `scrollbar-gutter: stable` on the
+  page and on every area that scrolls.
+
 ## Type
 
 Site: Fraunces for display, IBM Plex Sans for text, IBM Plex Mono for
