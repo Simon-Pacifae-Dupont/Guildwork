@@ -140,6 +140,10 @@ pre b{color:var(--ink);font-weight:500}
    demonstration sur telephone. On ne touche donc que les cotes, et la scene garde
    son ecart d'objet (24px sur telephone, 32 au-dessus). */
 @media(max-width:520px){.wrap{padding-inline:16px}.hero{padding-top:30px}.stage{padding-top:24px}}
+/* ---- visual pass B (October 2026): the amber square before the eyebrow; a scrollbar never shifts the page ---- */
+html{scrollbar-gutter:stable}
+.eyebrow{color:var(--amber);display:flex;align-items:flex-start;gap:10px}
+.eyebrow::before{content:"";width:9px;height:9px;background:var(--amber);flex:none;margin-top:.35em}
 </style>
 </head>
 <body>
