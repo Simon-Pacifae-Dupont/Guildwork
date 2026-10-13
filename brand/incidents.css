@@ -130,5 +130,5 @@ main>section:has(.grid):nth-of-type(odd){
 main>section:first-child:not(:has(h2)){margin-bottom:0}
 @media (max-width:720px){:root{--gap-section:48px;--gap-object:24px}section>.card:first-child p{font-size:var(--fs-md)}}
 /* ---- reach (October 2026, design-system « Size, contrast and reach »): a standalone control is at least 28 × 28 px, 44 × 44 on a phone; a link inside a sentence is exempt ---- */
-nav a{min-height:28px;display:inline-flex;align-items:center}
+nav:not(.pager) a{min-height:28px;display:inline-flex;align-items:center}
 @media(max-width:640px){.bar .brand,.lang a,a.lang{min-height:44px}.lang a{min-width:44px;display:inline-flex;align-items:center;justify-content:center}}
