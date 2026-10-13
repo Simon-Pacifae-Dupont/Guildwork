@@ -59,6 +59,8 @@ workstream frame, its header bands are *strip*, its decision card is
 state is a hue, not an elevation. The Studio uses *card-lead* for one object
 per screen at most, framed in `--line-strong`; `--line-amber` stays the
 site's, because in the Studio amber means a running agent and nothing else.
+For the same reason, in the Studio, Code and Work alike, the brand amber
+`--amber` appears only in the logo and the logotype.
 
 The Studio has two places, Code and Work. Both sit on `--ground` and are
 told apart by a glow at the top of the window, by Work's Newsreader titles,
@@ -306,15 +308,19 @@ and a fluid heading clamps between two steps of the ramp.
   24 px. On a gradient, contrast is measured against its lightest colour
   under the text. Secondary text is `--ink-2`; `--muted` is never text.
 - **A standalone control is at least 28 × 28 px on a computer and 44 × 44 px
-  on a phone**, its hit area, padding included. A link inside a sentence is
-  exempt. An icon button carries its name (`aria-label` and a tooltip) and
+  on a phone**, in both directions, width and height, its hit area padding
+  included. A link inside a sentence is exempt; a link alone on its line is
+  not. An icon button carries its name (`aria-label` and a tooltip) and
   never shrinks.
 - **Selection changes a border's colour, and its background where needed:**
   never its thickness, never an outer ring, and the content does not move by
   a pixel. A keyboard focus is always visible and never looks like
-  selection: it adds an outline.
+  selection: it adds a 2 px outline.
 - **Weights 400, 500 and 600, upright only.** No 700, no italics: emphasis
   is colour or weight 600, never a slant.
+- **No em dash** in visible text, nor in a `title`, `aria-label`,
+  `placeholder` or `alt`, nor in a document's title. A pause takes a colon, a
+  comma or a full stop.
 
 ## Section heads and bands, the editorial rhythm (October 2026)
 
