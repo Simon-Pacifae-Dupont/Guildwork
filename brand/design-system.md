@@ -245,6 +245,26 @@ because the sixteenth is the drop-in files, not a hole. When a screen shows
 more ground than content between two sections, the fix is the token, not
 the section.
 
+## Corners — one radius per role (October 2026)
+
+A corner says what kind of object it is, so every radius is a role, never a
+taste. The board demonstrations and the board reader keep their square-ish
+2 px; the Studio, an application someone works in all day, takes softer
+corners, chosen by the Product Owner on 13 October 2026 after comparing the
+same screen at 2 px and at 8–12 px.
+
+| Token | Value | Where |
+|---|---|---|
+| `--radius-board` | 2 px | the board demonstrations, the shipped board reader, the 3 px state rule's ends |
+| `--radius-site` | 10 px | the site's cards, frames and buttons |
+| `--radius-panel` | 12 px | the Studio's panels, dialogs and the one raised surface of a screen |
+| `--radius-control` | 8 px | the Studio's rows, buttons, fields and search; 10 px for a primary button 46 px or taller |
+| `--radius-key` | 5 px | a keyboard key shown beside an action |
+| `--radius-pill` | 999 px | a state pill and a count |
+| `--radius-paper` | 3 px | a document shown as itself (a letter, a quote) on the no-code desk |
+
+A circle stays a circle (an avatar, a dot, a knot on the day's thread).
+
 ## Section heads and bands, the editorial rhythm (October 2026)
 
 The home page reads as a sequence of distinct sections, not one long sheet:
