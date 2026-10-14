@@ -5,11 +5,11 @@ dot, so that they read as templates rather than as this repository's own
 configuration; they go to `.github/` in the adopting repository.*
 
 The files to drop into a repository, written against the Lantern example.
-Every value that is Lantern's — the workstream names, the capability
+Every value that is Lantern's (the workstream names, the capability
 `device-bridge`, the machine names `workstation` and `laptop`, the role
-`domain-expert` — is a placeholder for the adopting project's own, and every
-help text that names a document names one the adopting project writes —
-the list at the end of this page — from the corresponding page under
+`domain-expert`) is a placeholder for the adopting project's own, and every
+help text that names a document names one the adopting project writes
+(the list at the end of this page) from the corresponding page under
 `docs/`.
 
 | File | Goes to | Described in |
@@ -25,7 +25,7 @@ the list at the end of this page — from the corresponding page under
 | `REGENERABLE_PATHS.txt` | `docs/guild/` | `docs/07-closeout.md` |
 | `FINDINGS_REGISTER.md` | the body of one issue, kept open | `docs/09-findings-register.md` |
 | `changelog.d/README.md` | `docs/changelog.d/` | `docs/11-changelog-fragments.md` |
-| `board/board.html` | published as a page on claude.ai with the GitHub connector — see `board/README.md` | `docs/00-operating-model.md`, `docs/02-delivery-contract.md` |
+| `board/board.html` | published as a page on claude.ai with the GitHub connector (see `board/README.md`) | `docs/00-operating-model.md`, `docs/02-delivery-contract.md` |
 
 What the templates reference and do not contain, because it is the
 adopting project's to write, under whatever names it prefers:
@@ -34,7 +34,7 @@ adopting project's to write, under whatever names it prefers:
   `AGENTS.md`, `docs/CHIEF_ARCHITECT.md`, `docs/DOMAIN_EXPERT.md`,
   `docs/CALIBRATION_COVERAGE.md`, `docs/design/LAYOUT_RULES.md`);
 - the workflow document the form's help texts cite (`docs/guild/MISSION_WORKFLOW.md`)
-  and the capability document (`AGENT_CAPABILITIES.md`) — `docs/01` to
+  and the capability document (`AGENT_CAPABILITIES.md`): `docs/01` to
   `docs/11` of this pack, rewritten for one repository;
 - the continuity contract (`docs/guild/CONTINUITY_CONTRACT.md`, from
   `docs/08`);

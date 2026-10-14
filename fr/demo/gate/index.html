@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Une journée aux commandes — Guildwork</title>
+<title>Une journée aux commandes · Guildwork</title>
 <meta name="description" content="Passez une journée où des agents IA font le travail et où vous gardez le dernier mot. Deux minutes, rien à installer.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -256,7 +256,7 @@ var DAYS = {
       head:"Une facture partait sur la grille de l'an dernier",
       body:"Le contrat nommait le fichier de prix 2026. Celui présent sur la machine était celui de 2025. Le lanceur a lu le contrat avant de démarrer et s'est arrêté là : rien n'a tourné, rien n'est parti.",
       saved:"Ce que ça vous a coûté : <b>rien</b>. Ce que ça aurait coûté : des factures <b>4 200 € en dessous</b>, découvertes à la relance.",
-      tech:"$ tools/mission_launcher.py 118\ngouvernance 4f1c9ab · lue au runtime\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✗ <b>refusé — condition 1 : champ requis absent ou ambigu</b>\n\n    Le périmètre nomme prices/2026.csv. Ce chemin n'existe pas à ce commit.\n    Une mission incapable d'énoncer ses termes n'est pas un contrat.\n\n  rien n'a démarré · code de sortie 2"}},
+      tech:"$ tools/mission_launcher.py 118\ngouvernance 4f1c9ab · lue au runtime\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✗ <b>refusé, condition 1 : champ requis absent ou ambigu</b>\n\n    Le périmètre nomme prices/2026.csv. Ce chemin n'existe pas à ce commit.\n    Une mission incapable d'énoncer ses termes n'est pas un contrat.\n\n  rien n'a démarré · code de sortie 2"}},
     {who:"Grok Build",what:"Réécrire les tests du module d'export",h:1.0},
     {who:"Claude Code",what:"Notes de version 2.4",h:1.0,gate:{
       head:"Prêt à sortir, et ça porte votre nom",
@@ -272,7 +272,7 @@ var DAYS = {
       head:"Le paiement allait être branché avec les identifiants de test",
       body:"Le contrat disait « paiement réel ». Un commentaire posté en dessous fixait les identifiants du bac à sable. Le lanceur valide le corps de la demande, pas les commentaires : il a refusé en donnant l'adresse du commentaire.",
       saved:"Ce que ça aurait coûté : un week-end de lancement où <b>3 100 € de commandes</b> sont encaissées nulle part.",
-      tech:"$ tools/mission_launcher.py 212\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✓ siège démarrable, modèle et effort portés\n  ✓ capacités appariées exactement\n  ✓ aucun second écrivain\n  ✗ <b>refusé — condition 6 : un commentaire fixe un champ du contrat</b>\n\n    issue #212, commentaire 3 : « Mode: sandbox ». Le corps déclare production.\n    Un champ posé en commentaire gouvernerait le run sans avoir été vérifié.\n\n  rien n'a démarré · code de sortie 2"}},
+      tech:"$ tools/mission_launcher.py 212\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✓ siège démarrable, modèle et effort portés\n  ✓ capacités appariées exactement\n  ✓ aucun second écrivain\n  ✗ <b>refusé, condition 6 : un commentaire fixe un champ du contrat</b>\n\n    issue #212, commentaire 3 : « Mode: sandbox ». Le corps déclare production.\n    Un champ posé en commentaire gouvernerait le run sans avoir été vérifié.\n\n  rien n'a démarré · code de sortie 2"}},
     {who:"Grok Build",what:"Site de l'hôtel Beaurivage : galerie photo et vitesse sur mobile",h:1.0},
     {who:"Claude Code",what:"Livraison du site Morel au client",h:1.0,gate:{
       head:"Le client reçoit ses accès, et ça porte votre nom",
@@ -288,7 +288,7 @@ var DAYS = {
       head:"Une suppression allait partir sans copie de sauvegarde",
       body:"Le contrat demandait d'effacer les comptes de test. Il ne nommait aucune sauvegarde préalable. Le siège a démarré, lu ses conditions d'arrêt, et s'est arrêté avant de supprimer quoi que ce soit. Il l'a écrit dans son rapport.",
       saved:"Ce que ça aurait coûté : <b>les cinquante premiers utilisateurs</b>, effacés avec les comptes de test, sans copie.",
-      tech:"Transmission report — mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>: the contract orders a deletion and names\nno backup taken first. Nothing was deleted. Scope untouched.\n\nNext decision owner: Chief Architect. Smallest next action: name the backup."}},
+      tech:"Transmission report: mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>: the contract orders a deletion and names\nno backup taken first. Nothing was deleted. Scope untouched.\n\nNext decision owner: Chief Architect. Smallest next action: name the backup."}},
     {who:"Grok Build",what:"Importer les contacts depuis un fichier Excel",h:1.0},
     {who:"Claude Code",what:"E-mail d'annonce de la version payante",h:1.0,gate:{
       head:"Cinquante personnes vont le recevoir, et on ne rappelle pas un e-mail",
@@ -304,7 +304,7 @@ var DAYS = {
       head:"La marge allait être calculée sur les coûts de l'an dernier",
       body:"Le contrat exigeait les coûts 2026. Le fichier disponible était celui de 2025. Le siège s'est arrêté sous la condition d'arrêt du contrat au lieu de produire un chiffre plausible et faux.",
       saved:"Ce que ça aurait coûté : une marge <b>fausse de 8 %</b>, présentée lundi au comité de direction, et une décision prise dessus.",
-      tech:"Transmission report — mission #305\n\nStopped under <b>stop condition 2 (ITEM)</b>: the only cost file at this commit is\ncosts/2025.csv; the contract requires 2026. A figure computed on it would be\nplausible and wrong. Item halted, other items continued."}},
+      tech:"Transmission report: mission #305\n\nStopped under <b>stop condition 2 (ITEM)</b>: the only cost file at this commit is\ncosts/2025.csv; the contract requires 2026. A figure computed on it would be\nplausible and wrong. Item halted, other items continued."}},
     {who:"Grok Build",what:"Nettoyer les doublons dans la base clients",h:1.0},
     {who:"Claude Code",what:"Envoyer le rapport de lundi à la direction",h:0.9,gate:{
       head:"La direction va lire ces chiffres, et ils portent votre nom",
@@ -320,7 +320,7 @@ var DAYS = {
       head:"Une migration allait couper la gestion en plein après-midi",
       body:"Le contrat revendiquait le serveur de production, une ressource qu'un seul travail peut tenir, et pendant les heures d'ouverture. Le lanceur a refusé : ce serveur est réservé à la fenêtre de nuit.",
       saved:"Ce que ça aurait coûté : <b>deux cents personnes</b> sans logiciel de gestion un mardi à 15 h.",
-      tech:"$ tools/mission_launcher.py 431\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✓ siège démarrable, modèle et effort portés\n  ✓ capacités appariées exactement\n  ✓ aucun second écrivain\n  ✓ aucun commentaire n'amende un champ\n  ✗ <b>refusé — condition 8 : ressource exclusive revendiquée</b>\n\n    Host: prod-db, exclusive — réservé à la fenêtre 22 h – 5 h.\n    Deux travaux sur cette ressource, c'est le second qui coupe le premier.\n\n  rien n'a démarré · code de sortie 2"}},
+      tech:"$ tools/mission_launcher.py 431\n\n  ✓ champs du contrat lus au commit de gouvernance\n  ✓ siège démarrable, modèle et effort portés\n  ✓ capacités appariées exactement\n  ✓ aucun second écrivain\n  ✓ aucun commentaire n'amende un champ\n  ✗ <b>refusé, condition 8 : ressource exclusive revendiquée</b>\n\n    Host: prod-db, exclusive. Réservé à la fenêtre 22 h – 5 h.\n    Deux travaux sur cette ressource, c'est le second qui coupe le premier.\n\n  rien n'a démarré · code de sortie 2"}},
     {who:"Grok Build",what:"Corriger l'impression des bons de livraison",h:0.9},
     {who:"Claude Code",what:"Mise à jour de sécurité du serveur de messagerie",h:1.0,gate:{
       head:"Tout le monde sera déconnecté cinq minutes, et c'est à vous de choisir quand",
@@ -430,7 +430,7 @@ var DAYS = {
       head:"Invoices were about to go out on last year's prices",
       body:"The contract named the 2026 price file. The one on the machine was 2025. The launcher read the contract before starting and stopped there: nothing ran, nothing was sent.",
       saved:"What it cost you: <b>nothing</b>. What it would have cost: invoices <b>€4,200 under</b>, found at chasing time.",
-      tech:"$ tools/mission_launcher.py 118\ngovernance 4f1c9ab · read at runtime\n\n  ✓ contract fields read from the governance commit\n  ✗ <b>refused — condition 1: required field missing or ambiguous</b>\n\n    Scope names prices/2026.csv. That path does not exist at this commit.\n    A mission that cannot state its terms is not a contract.\n\n  nothing started · exit code 2"}},
+      tech:"$ tools/mission_launcher.py 118\ngovernance 4f1c9ab · read at runtime\n\n  ✓ contract fields read from the governance commit\n  ✗ <b>refused, condition 1: required field missing or ambiguous</b>\n\n    Scope names prices/2026.csv. That path does not exist at this commit.\n    A mission that cannot state its terms is not a contract.\n\n  nothing started · exit code 2"}},
     {who:"Grok Build",what:"Rewrite the tests for the export module",h:1.0},
     {who:"Claude Code",what:"Release notes for 2.4",h:1.0,gate:{
       head:"Ready to go out, and it carries your name",
@@ -446,7 +446,7 @@ var DAYS = {
       head:"Live payments were about to be wired with the test credentials",
       body:"The contract said live payments. A comment posted underneath set the sandbox credentials. The launcher validates the body of the request, not the comments: it refused and gave the comment's address.",
       saved:"What it would have cost: a launch weekend where <b>€3,100 of orders</b> are collected nowhere.",
-      tech:"$ tools/mission_launcher.py 212\n\n  ✓ contract fields read from the governance commit\n  ✓ seat startable, model and effort carried\n  ✓ capabilities matched exactly\n  ✓ no second writer\n  ✗ <b>refused — condition 6: a comment sets a contract field</b>\n\n    issue #212, comment 3: “Mode: sandbox”. The body declares production.\n    A field set in a comment would govern the run unchecked.\n\n  nothing started · exit code 2"}},
+      tech:"$ tools/mission_launcher.py 212\n\n  ✓ contract fields read from the governance commit\n  ✓ seat startable, model and effort carried\n  ✓ capabilities matched exactly\n  ✓ no second writer\n  ✗ <b>refused, condition 6: a comment sets a contract field</b>\n\n    issue #212, comment 3: “Mode: sandbox”. The body declares production.\n    A field set in a comment would govern the run unchecked.\n\n  nothing started · exit code 2"}},
     {who:"Grok Build",what:"Beaurivage hotel site: photo gallery and mobile speed",h:1.0},
     {who:"Claude Code",what:"Deliver the Morel site to the client",h:1.0,gate:{
       head:"The client gets their access, and it carries your name",
@@ -462,7 +462,7 @@ var DAYS = {
       head:"A deletion was about to run with no backup",
       body:"The contract ordered the test accounts deleted. It named no backup first. The seat started, read its stop conditions, and stopped before deleting anything. It wrote that in its report.",
       saved:"What it would have cost: <b>the first fifty users</b>, wiped along with the test accounts, with no copy.",
-      tech:"Transmission report — mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>: the contract orders a deletion and names\nno backup taken first. Nothing was deleted. Scope untouched.\n\nNext decision owner: Chief Architect. Smallest next action: name the backup."}},
+      tech:"Transmission report: mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>: the contract orders a deletion and names\nno backup taken first. Nothing was deleted. Scope untouched.\n\nNext decision owner: Chief Architect. Smallest next action: name the backup."}},
     {who:"Grok Build",what:"Import contacts from an Excel file",h:1.0},
     {who:"Claude Code",what:"Announcement email for the paid version",h:1.0,gate:{
       head:"Fifty people will get this, and an email cannot be recalled",
@@ -478,7 +478,7 @@ var DAYS = {
       head:"Margin was about to be computed on last year's costs",
       body:"The contract required 2026 costs. The only file available was 2025. The seat stopped under the contract's stop condition instead of producing a plausible, wrong figure.",
       saved:"What it would have cost: a margin <b>8% wrong</b>, shown to the board on Monday, and a decision taken on it.",
-      tech:"Transmission report — mission #305\n\nStopped under <b>stop condition 2 (ITEM)</b>: the only cost file at this commit is\ncosts/2025.csv; the contract requires 2026. A figure computed on it would be\nplausible and wrong. Item halted, other items continued."}},
+      tech:"Transmission report: mission #305\n\nStopped under <b>stop condition 2 (ITEM)</b>: the only cost file at this commit is\ncosts/2025.csv; the contract requires 2026. A figure computed on it would be\nplausible and wrong. Item halted, other items continued."}},
     {who:"Grok Build",what:"Clean the duplicates in the customer base",h:1.0},
     {who:"Claude Code",what:"Send Monday's report to management",h:0.9,gate:{
       head:"Management will read these figures, and they carry your name",
@@ -494,7 +494,7 @@ var DAYS = {
       head:"A migration was about to cut the system mid-afternoon",
       body:"The contract claimed the production server, a resource only one job can hold, during opening hours. The launcher refused: that server is reserved for the night window.",
       saved:"What it would have cost: <b>two hundred people</b> without their management system on a Tuesday at 3 pm.",
-      tech:"$ tools/mission_launcher.py 431\n\n  ✓ contract fields read from the governance commit\n  ✓ seat startable, model and effort carried\n  ✓ capabilities matched exactly\n  ✓ no second writer\n  ✓ no comment amends a field\n  ✗ <b>refused — condition 8: exclusive resource claimed</b>\n\n    Host: prod-db, exclusive — reserved for the 22:00–05:00 window.\n    Two jobs on that resource means the second one cuts the first.\n\n  nothing started · exit code 2"}},
+      tech:"$ tools/mission_launcher.py 431\n\n  ✓ contract fields read from the governance commit\n  ✓ seat startable, model and effort carried\n  ✓ capabilities matched exactly\n  ✓ no second writer\n  ✓ no comment amends a field\n  ✗ <b>refused, condition 8: exclusive resource claimed</b>\n\n    Host: prod-db, exclusive. Reserved for the 22:00–05:00 window.\n    Two jobs on that resource means the second one cuts the first.\n\n  nothing started · exit code 2"}},
     {who:"Grok Build",what:"Fix the delivery-note printing",h:0.9},
     {who:"Claude Code",what:"Security update on the mail server",h:1.0,gate:{
       head:"Everyone will be disconnected for five minutes, and when is yours to choose",

@@ -1,4 +1,4 @@
-# The launcher on #118 — a refusal, a disposal, a launch
+# The launcher on #118: a refusal, a disposal, a launch
 
 *Three terminal transcripts, in the order they happened. Paths and SHAs are
 Lantern's. The shape of the output is the tool's; the wording of each
@@ -15,13 +15,13 @@ PS> C:\repos\lantern\.venv\Scripts\python.exe C:\repos\lantern\tools\mission_lau
 ```
 
 ```
-Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading while the device bridge reconnects
+Mission #118: #118 Dashboard tiles keep their last reading while the device bridge reconnects
   https://github.com/lantern-workshop/lantern/issues/118
   primary checkout: C:\repos\lantern
   governance policy: 3f9c2d1a7b8e4c05d6f1a2b3c4d5e6f708192a3b (origin/develop, fetched at launch)
-  run: launch — creates the branch and the worktree the contract declares
+  run: launch (creates the branch and the worktree the contract declares)
 
-REFUSED — 1 refusal(s). Nothing was started.
+REFUSED: 1 refusal(s). Nothing was started.
 
   condition 4: a second writer would be created
       branch 'feature/dashboard-stale-reading' already exists on origin -- a writer
@@ -30,8 +30,8 @@ REFUSED — 1 refusal(s). Nothing was started.
       on the same name; under 'one writer' that is the two-writer failure itself
 ```
 
-The banner shows the number twice — `Mission #118 — #118 — [MISSION] …` —
-because the launcher prints `Mission #<number> — <title>` and the title
+The banner shows the number twice (`Mission #118: #118 Dashboard tiles …`)
+because the launcher prints `Mission #<number>: <title>` and the title
 carries its own number by convention. Known, cosmetic, and not a defect: the
 convention serves the terminal list, and the terminal list is the surface
 that had the problem.
@@ -46,9 +46,9 @@ for it. Silence is debris.
 
 The destructive act is the Product Owner's, on its own line, with the target
 named. The Chief Architect records the disposition on #120's closing
-comment — *branch `feature/dashboard-stale-reading` is spent: nothing on it
+comment (*branch `feature/dashboard-stale-reading` is spent: nothing on it
 survives the refusal that this comment does not record, and its journal
-entry is carried by the preservation pull request #122, merged* — and hands
+entry is carried by the preservation pull request #122, merged*) and hands
 over the one command:
 
 ```
@@ -65,13 +65,13 @@ PS> C:\repos\lantern\.venv\Scripts\python.exe C:\repos\lantern\tools\mission_lau
 ```
 
 ```
-Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading while the device bridge reconnects
+Mission #118: #118 Dashboard tiles keep their last reading while the device bridge reconnects
   https://github.com/lantern-workshop/lantern/issues/118
   primary checkout: C:\repos\lantern
   governance policy: 3f9c2d1a7b8e4c05d6f1a2b3c4d5e6f708192a3b (origin/develop, fetched at launch)
-  run: launch — creates the branch and the worktree the contract declares
+  run: launch (creates the branch and the worktree the contract declares)
 
-CONTRACT OK — all 7 condition(s) pass.
+CONTRACT OK: all 7 condition(s) pass.
 
 Commands:
   1. git -C C:\repos\lantern worktree add C:\repos\lantern-worktrees\wt-dashboard-stale-reading -b feature/dashboard-stale-reading 3f9c2d1a7b8e4c05d6f1a2b3c4d5e6f708192a3b
@@ -85,7 +85,7 @@ Generated first instruction (6412 characters):
 ```
 
 Three things a reader can check off this output. The governance SHA is the
-commit the worktree will be created from — command 1 names it, not the ref.
+commit the worktree will be created from: command 1 names it, not the ref.
 The effort flag carries `high`, the exact mapping of the contract's `HIGH`,
 and the model is passed as declared; there is no flag on the launcher that
 could have set either. And the first instruction is the positional prompt
@@ -95,8 +95,8 @@ nothing is pasted.
 ## 4. The launch
 
 The same command without `--dry-run`. The launcher fetches again, resolves
-the ref again, re-evaluates the ten current checks — seven stable contract
-conditions plus three operational guards — against whatever the tree
+the ref again, re-evaluates the ten current checks (seven stable contract
+conditions plus three operational guards) against whatever the tree
 is *now*, and only then runs the three commands. It exits `0` when the
 agent session it started exits `0`; a non-zero agent exit is reported as
 `4` with the agent's own code printed, never returned.
@@ -134,5 +134,5 @@ A worktree in exactly one of the two lists above is the case to look at by hand.
 The second list is the other half of the blindness: a session opened on the
 sync worktree two days ago and never closed. Its process is gone. Whether
 its journal was ever written is the closeout tool's condition 1, and the
-remedy it will name is the exit command, run from that worktree — not
+remedy it will name is the exit command, run from that worktree, not
 deleting the marker.

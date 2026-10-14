@@ -2,8 +2,8 @@
 
 **A mission does not add a section to `docs/CHANGELOG.md`. It adds
 `docs/changelog.d/<issue>-<slug>.md`, a file nobody else touches.** The
-fragment holds exactly what a changelog section holds — a `## ` heading and
-its prose — and belongs to the mission that wrote it for the life of the
+fragment holds exactly what a changelog section holds (a `## ` heading and
+its prose) and belongs to the mission that wrote it for the life of the
 file. No other mission edits it.
 
 Why: concurrent missions must not share a file. The changelog was the only
@@ -16,7 +16,7 @@ none: Git merges two adds without asking anyone.
 ## The fragment
 
 ```markdown
-## <issue number> — <what changed, in the words a release note would use>
+## <issue number>: <what changed, in the words a release note would use>
 
 <One to five sentences. What a reader of the release needs to know; where the
 evidence lives; what was deliberately not done.>
@@ -55,4 +55,4 @@ convention removed.
 A mission writer never assembles the shared file: writing the fragment is the
 whole changelog obligation. A release integrator never hand-edits the
 generated region: the region is rebuilt wholesale on every run, so a hand edit
-is erased by the next assembly — edit the fragment and assemble again.
+is erased by the next assembly. Edit the fragment and assemble again.

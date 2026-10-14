@@ -1,8 +1,8 @@
-# Lantern — the worked example
+# Lantern: the worked example
 
 Every example in this pack is written against **Lantern**, a fictional
 project: a small Python desktop application for a workshop, showing bench
-sensors — temperature, humidity, power draw, door contacts — on a
+sensors (temperature, humidity, power draw, door contacts) on a
 dashboard, with a bridge to a physical **bench controller** over a serial
 link. It has three pages (Dashboard, Device, Sync) and a frame they all
 wear (the shell). Its repository is `lantern-workshop/lantern`, its
@@ -15,13 +15,13 @@ placeholder for the adopting project's own.
 
 ## One mission, end to end
 
-The files in this directory follow a single mission — **#118, Dashboard
-tiles keep their last reading while the device bridge reconnects** —
+The files in this directory follow a single mission (**#118, Dashboard
+tiles keep their last reading while the device bridge reconnects**)
 through the whole lifecycle, in the order a reader would meet them:
 
 | File | Surface | What it shows |
 |---|---|---|
-| `mission-issue.md` | the issue | the contract as the form renders it — every field, the number leading the title |
+| `mission-issue.md` | the issue | the contract as the form renders it: every field, the number leading the title |
 | `launcher-dry-run.md` | the terminal | a refusal on condition 4, the disposal it asked for, then a clean verdict and the commands the launch would run |
 | `first-instruction.md` | the seat's first turn | the instruction generated from the issue: contract block, governance SHA, verbatim sections, the entry transcript |
 | `transmission-report.md` | a comment on the issue | what the seat posts before it closes: entry evidence, execution parameters, validation, the name check, the census relayed |

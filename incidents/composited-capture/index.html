@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The composited capture — Paid for by an incident · Guildwork</title>
+<title>The composited capture · Paid for by an incident · Guildwork</title>
 <meta name="description" content="Exclusive foreground* is a measurement, not an implementation choice. A window pushed behind another is not a slower measurement; it is a false one.">
-<meta property="og:title" content="The composited capture — Paid for by an incident · Guildwork">
+<meta property="og:title" content="The composited capture · Paid for by an incident · Guildwork">
 <meta property="og:description" content="Exclusive foreground* is a measurement, not an implementation choice. A window pushed behind another is not a slower measurement; it is a false one.">
 <meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
 <meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/incidents/composited-capture/">
@@ -42,7 +42,7 @@
 <main class="wrap">
   <section>
     <h2>What broke</h2>
-    <div class="card"><p>A capture read the client area of a window through the platform&#x27;s device context, which returns what is composited inside the window&#x27;s rectangle — so an overlapping window put its own pixels into the evidence, and a later capture run&#x27;s occlusion refusal fired legitimately and wrote nothing.</p></div>
+    <div class="card"><p>A capture read the client area of a window through the platform&#x27;s device context, which returns what is composited inside the window&#x27;s rectangle, so an overlapping window put its own pixels into the evidence, and a later capture run&#x27;s occlusion refusal fired legitimately and wrote nothing.</p></div>
   </section>
   <section>
     <h2>The rule it paid for</h2>

@@ -19,7 +19,7 @@
 <style>
   :root{--fs-xs:.8125rem;--fs-sm:.875rem;--fs-prose-2:.9375rem;--fs-md:1rem;--fs-lg:1.25rem;--fs-xl:1.5rem;--fs-figure:1.75rem;--fs-2xl:2rem;
     --ground:#0B1526;
-    /* ELEVATION — one ladder for every surface that carries the mark (brand/design-system.md).
+    /* ELEVATION: one ladder for every surface that carries the mark (brand/design-system.md).
        ground < surface (flat) < card (gradient) < card-lead (gradient + amber frame); strip = a header band or a
        selected control inside a card; well = an inset that reads as a hole (terminal, code, input). */
     --surface:#0A1322; --strip:#14223A; --well:#070D18;
@@ -28,14 +28,14 @@
     --card-lead:linear-gradient(168deg,#232C3B 0%,#121C2D 52%,#0A1322 100%);
     --shadow:0 1px 2px rgba(0,0,0,.35),0 16px 34px -22px rgba(0,0,0,.8);
     --shadow-lift:0 2px 12px rgba(0,0,0,.5),0 26px 64px -34px rgba(0,0,0,.9);
-    /* legacy names — aliases of the ladder above, so older rules keep reading */
+    /* legacy names: aliases of the ladder above, so older rules keep reading */
     --ground-2:var(--surface); --node:var(--strip); --edge:var(--line-strong); --edge-2:var(--line);
     --ink:#F3EDE2; --ink-2:#9FAAC0; --ink-3:#6B7791;
     --amber:#E9A23B; --amber-2:#F5C46B; --control:#7FA6D6; --refuse:#D0644A; --ok:#6FB07B;
     --measure:66ch;
-    /* the vertical rhythm — brand/design-system.md "Rhythm: four gaps" */
+    /* the vertical rhythm: brand/design-system.md "Rhythm: four gaps" */
     --gap-section:72px; --gap-object:32px; --gap-caption:16px; --gap-para:12px;
-    /* icons: one law for the whole page — a size relative to the text they label,
+    /* icons: one law for the whole page. A size relative to the text they label,
        and one optical lift, larger next to lowercase (which has descenders)
        than next to capitals (which have none). No icon sets these itself. */
     --icon:1.34em; --icon-lift:-.13em; --icon-lift-caps:-.07em; --icon-lift-underlined:-.04em;
@@ -162,6 +162,8 @@
     box-shadow:0 10px 30px rgba(0,0,0,.45);backdrop-filter:blur(7px);transition:transform .16s ease,background .16s ease}
   .canvas-frame a:hover::after,.canvas-frame a:focus-visible::after,.board-frame a:hover::after,.board-frame a:focus-visible::after{transform:translateY(-2px);background:var(--strip)}
   .canvas-frame a:focus-visible,.board-frame a:focus-visible{outline-offset:-4px}
+  /* a ring inside a box that clips draws inward, so overflow never cuts it */
+  .lang a:focus-visible,.docs a:focus-visible,.figs a:focus-visible,.pricebar a:focus-visible,.term pre:focus-visible{outline-offset:-2px}
   @media(max-width:560px){.canvas-frame a,.board-frame a{padding-bottom:46px}.canvas-frame a::after,.board-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:var(--fs-xs)}}
   /* the board */
   .board-frame{margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
@@ -275,7 +277,7 @@
 
 
   /* ---- mobile: the three prices, comparable without scrolling ---- */
-  /* where this is going — prose, not cards: three short claims after the proof */
+  /* where this is going (prose, not cards): three short claims after the proof */
   .next{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
   .next p{margin:0;font-size:var(--fs-prose-2);color:var(--ink-2)}
   .next p b{display:block;color:var(--ink);font-weight:600;margin-bottom:6px}
@@ -346,7 +348,7 @@
   footer{border-top:1px solid var(--edge-2);padding-block:34px 56px;font-size:var(--fs-xs);color:var(--ink-2)}
   footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
-  /* the incident count is a door to the incident pages — design-system.md, "an image of a surface is a door to it" */
+  /* the incident count is a door to the incident pages (design-system.md, "an image of a surface is a door to it") */
   a.fig{text-decoration:none;color:inherit;transition:transform .16s}
   a.fig:hover{transform:translateY(-2px)}
 /* ---- reach (October 2026, design-system « Size, contrast and reach »): a standalone control is at least 28 × 28 px, 44 × 44 on a phone; a link inside a sentence is exempt ---- */
@@ -365,7 +367,7 @@ svg.tl .tk,svg.tl .mk,svg.tl .lb{font-size:calc(var(--fs-xs) * var(--tl-k,1))}
 :where(em,i,cite,dfn,var,address){font-style:normal}
 </style>
 <style>
-  /* French runs longer than English — a touch more room on the display sizes */
+  /* French runs longer than English: a touch more room on the display sizes */
   h1{max-width:21ch}
   h2{max-width:28ch}
 </style>
@@ -785,13 +787,13 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <div class="term-head"><i></i><i></i><i></i><span>mission_launcher.py 118 --dry-run · Lantern, poste de travail</span></div>
     <pre><span class="cmd">C:\repos\lantern\.venv\Scripts\python.exe C:\repos\lantern\tools\mission_launcher.py 118 --dry-run</span>
 
-Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading while the device bridge reconnects
+Mission #118: #118 Dashboard tiles keep their last reading while the device bridge reconnects
   <span class="dim">https://github.com/lantern-workshop/lantern/issues/118</span>
   primary checkout: C:\repos\lantern
   governance policy: 3f9c2d1a7b8e4c05d6f1a2b3c4d5e6f708192a3b <span class="dim">(origin/develop, fetched at launch)</span>
-  run: launch — creates the branch and the worktree the contract declares
+  run: launch (creates the branch and the worktree the contract declares)
 
-<span class="ref">REFUSED — 1 refusal(s). Nothing was started.</span>
+<span class="ref">REFUSED: 1 refusal(s). Nothing was started.</span>
 
   <span class="cond">condition 4: a second writer would be created</span>
       branch 'feature/dashboard-stale-reading' already exists on origin -- a writer
@@ -959,7 +961,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <rect class="hit" x="1037.2" y="26" width="26.8" height="230" fill="transparent" data-i="37"/>
 </svg></div>
     <div class="tl-tip"></div>
-    <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>·</td></tr><tr><td>02/08</td><td>20</td><td>·</td></tr><tr><td>03/08</td><td>24</td><td>·</td></tr><tr><td>04/08</td><td>17</td><td>·</td></tr><tr><td>05/08</td><td>20</td><td>·</td></tr><tr><td>06/08</td><td>13</td><td>·</td></tr><tr><td>07/08</td><td>14</td><td>·</td></tr><tr><td>08/08</td><td>8</td><td>·</td></tr><tr><td>09/08</td><td>5</td><td>·</td></tr><tr><td>10/08</td><td>2</td><td>·</td></tr><tr><td>11/08</td><td>6</td><td>·</td></tr><tr><td>12/08</td><td>1</td><td>·</td></tr><tr><td>13/08</td><td>7</td><td>·</td></tr><tr><td>14/08</td><td>2</td><td>·</td></tr><tr><td>15/08</td><td>2</td><td>·</td></tr><tr><td>16/08</td><td>6</td><td>·</td></tr><tr><td>17/08</td><td>16</td><td>·</td></tr><tr><td>18/08</td><td>4</td><td>·</td></tr><tr><td>19/08</td><td>9</td><td>·</td></tr><tr><td>20/08</td><td>12</td><td>·</td></tr><tr><td>21/08</td><td>15</td><td>·</td></tr><tr><td>22/08</td><td>7</td><td>·</td></tr><tr><td>23/08</td><td>2</td><td>·</td></tr><tr><td>24/08</td><td>4</td><td>·</td></tr><tr><td>25/08</td><td>14</td><td>·</td></tr><tr><td>26/08</td><td>14</td><td>·</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>41</td><td>6</td></tr><tr><td>06/09</td><td>38</td><td>12</td></tr><tr><td>07/09</td><td>20</td><td>13</td></tr></tbody></table></details>
+    <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td aria-label="non comptées">·</td></tr><tr><td>02/08</td><td>20</td><td aria-label="non comptées">·</td></tr><tr><td>03/08</td><td>24</td><td aria-label="non comptées">·</td></tr><tr><td>04/08</td><td>17</td><td aria-label="non comptées">·</td></tr><tr><td>05/08</td><td>20</td><td aria-label="non comptées">·</td></tr><tr><td>06/08</td><td>13</td><td aria-label="non comptées">·</td></tr><tr><td>07/08</td><td>14</td><td aria-label="non comptées">·</td></tr><tr><td>08/08</td><td>8</td><td aria-label="non comptées">·</td></tr><tr><td>09/08</td><td>5</td><td aria-label="non comptées">·</td></tr><tr><td>10/08</td><td>2</td><td aria-label="non comptées">·</td></tr><tr><td>11/08</td><td>6</td><td aria-label="non comptées">·</td></tr><tr><td>12/08</td><td>1</td><td aria-label="non comptées">·</td></tr><tr><td>13/08</td><td>7</td><td aria-label="non comptées">·</td></tr><tr><td>14/08</td><td>2</td><td aria-label="non comptées">·</td></tr><tr><td>15/08</td><td>2</td><td aria-label="non comptées">·</td></tr><tr><td>16/08</td><td>6</td><td aria-label="non comptées">·</td></tr><tr><td>17/08</td><td>16</td><td aria-label="non comptées">·</td></tr><tr><td>18/08</td><td>4</td><td aria-label="non comptées">·</td></tr><tr><td>19/08</td><td>9</td><td aria-label="non comptées">·</td></tr><tr><td>20/08</td><td>12</td><td aria-label="non comptées">·</td></tr><tr><td>21/08</td><td>15</td><td aria-label="non comptées">·</td></tr><tr><td>22/08</td><td>7</td><td aria-label="non comptées">·</td></tr><tr><td>23/08</td><td>2</td><td aria-label="non comptées">·</td></tr><tr><td>24/08</td><td>4</td><td aria-label="non comptées">·</td></tr><tr><td>25/08</td><td>14</td><td aria-label="non comptées">·</td></tr><tr><td>26/08</td><td>14</td><td aria-label="non comptées">·</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>41</td><td>6</td></tr><tr><td>06/09</td><td>38</td><td>12</td></tr><tr><td>07/09</td><td>20</td><td>13</td></tr></tbody></table></details>
   </div>
   <div class="readings">
     <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours, moins de dix par jour, l'humain portant les instructions d'un siège à l'autre. Après, 320 en treize, vingt-cinq par jour. Les sièges ont changé en même temps que la gouvernance ; le doublement n'est donc pas à elle seule. Ce qui est à elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>

@@ -1,4 +1,4 @@
-# AI team charter — Lantern
+# AI team charter: Lantern
 
 *Template. Goes to the root of the adopting repository as `AI_TEAM.md`.
 Every role profile under `docs/guild/roles/` points here for its full
@@ -46,7 +46,7 @@ Claude Code, in a declared worktree. Implementation, integration,
 refactoring, tests, branches, commits and pull requests, technical
 documentation, adversarial self-review. Operational workflow: `CLAUDE.md`.
 
-## Software Engineering — coding agents
+## Software Engineering: coding agents
 
 Grok Build, Codex CLI and any other coding harness, each in its declared
 worktree, under the model and effort its contract names. Delivery of

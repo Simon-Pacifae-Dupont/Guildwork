@@ -1,4 +1,4 @@
-# The launcher — specification
+# The launcher: specification
 
 *A fail-closed tool that reads a mission issue by number, checks the contract
 it declares against the governance at the commit the mission will run on,
@@ -25,9 +25,9 @@ otherwise type:
 2. resolve the governance ref (`origin/develop`) to a commit, once;
 3. read the mission form, the capability table and the role profiles **out of
    that commit** (`git show <sha>:<path>`), never from a working tree;
-4. read the mission issue from GitHub by number — body, title, state,
+4. read the mission issue from GitHub by number: body, title, state,
    comments;
-5. evaluate the ten current checks — seven stable contract conditions plus
+5. evaluate the ten current checks: seven stable contract conditions plus
    three operational guards;
 6. create the branch and the worktree **from that same commit**;
 7. export the source path so the worktree's session resolves its own
@@ -35,7 +35,7 @@ otherwise type:
 8. run the entry command (`guild-hi --role <declared role>`) in the worktree;
 9. start the declared harness with the declared model and the mapped effort,
    passing a **first instruction generated from the issue** as the positional
-   prompt — which starts an interactive session with that turn already
+   prompt, which starts an interactive session with that turn already
    submitted. There is no paste.
 
 The worktree is created from the same SHA the conditions measured, so the
@@ -52,7 +52,7 @@ launch would not use.
 
 `--repo-root` overrides that read for the tests and for a deliberate local
 run against uncommitted governance. It is the only path whose policy comes
-off a disk, **and the report says so in those words** — an override that
+off a disk, **and the report says so in those words**: an override that
 rendered identically to a pinned run would be the same defect with a
 friendlier face. A policy file that cannot be reached at the pinned commit
 is a stop, never a fallback.
@@ -64,7 +64,7 @@ Every condition can refuse, and the message names which one fired.
 | # | Condition | Why it is a refusal |
 |---|---|---|
 | 1 | a required field is absent or ambiguous | a mission that cannot state its own terms is not a contract |
-| 2 | the declared `Agent`, `Model` or `Effort` is not available in this environment | launching at a different effort — or under a different prompt — than declared is the drift this exists to stop |
+| 2 | the declared `Agent`, `Model` or `Effort` is not available in this environment | launching at a different effort, or under a different prompt, than declared is the drift this exists to stop |
 | 3 | the declared `Guild role` is not a known role | the demonstrated failure: a session entered as one role where the issue said another |
 | 4 | a second writer would be created | the one-writer invariant, checked rather than trusted |
 | 5 | the named `Agent` does not satisfy every declared capability | the capability table, read at runtime |
@@ -75,7 +75,7 @@ Every condition can refuse, and the message names which one fired.
 An unevaluated check is not a passing check, and the report names which one
 and why. The form itself is checked the same way: a template that yields no
 field, and a field id a condition addresses that the form no longer declares,
-are both refusals under condition 1 — a renamed field is otherwise a
+are both refusals under condition 1: a renamed field is otherwise a
 condition that quietly stops being evaluated.
 
 **Three sources are read at runtime and never copied into the tool**: the
@@ -83,17 +83,17 @@ form supplies the fields and the option vocabulary; the capability document
 supplies the table; the profiles directory supplies the role slugs. A
 constant would agree with itself.
 
-### Condition 1 — the contract states its own terms
+### Condition 1: the contract states its own terms
 
 Every required field is present, and every dropdown value is one the form
-offers — matched against the options the form declares at the governance
+offers, matched against the options the form declares at the governance
 commit, never taken as prose. `Branch and worktree` must split into two
 halves. An optional field is never read at all: its value reaches neither
 the contract nor the generated instruction, set or unset, which is why
 whoever launches reads `Screen demand` and `Host` on the issue first, and
 the launcher never prints them back.
 
-### Condition 2 — the seat, the effort, the model, the profile
+### Condition 2: the seat, the effort, the model, the profile
 
 Four halves, and they are not the same check.
 
@@ -103,7 +103,7 @@ Four halves, and they are not the same check.
   naming it: a form value the launcher silently cannot start is the defect
   the table was built to repair. Each row carries the executable, the model
   flag, the effort flag, the model shape and the effort levels *that seat
-  was measured to carry* — data, not branching prose.
+  was measured to carry*: data, not branching prose.
 - **The effort is one the seat carries.** Checked only for a pinned level,
   since `AUTO` passes no flag and has nothing to verify. The levels are
   declared constants because parsing the CLI's `--help` for them was tried
@@ -112,7 +112,7 @@ Four halves, and they are not the same check.
   missions ran by hand in one day as a result. The program names its own set
   when it rejects a value; that is where the constants came from, verified
   by exercise and recorded beside the constant.
-- **The model has the right shape** — an alias the CLI's own help names, or
+- **The model has the right shape**: an alias the CLI's own help names, or
   a full name of the shape that seat accepts. Neither mapped CLI enumerates
   its models, so a well-formed identifier passes condition 2 and can still
   fail to resolve when the session starts; the CLI stays the authority on
@@ -125,7 +125,7 @@ Four halves, and they are not the same check.
   `Agent` field maps onto. Three refusals, none of them a warning printed
   over a started run. The launcher does this because the CLI does not: given
   a profile path that does not exist, the harness in question exits `0` with
-  an empty stderr and silently runs the default agent, byte for byte — so a
+  an empty stderr and silently runs the default agent, byte for byte. So a
   mission contracted for the Domain Expert and quietly executed by the
   default agent would sign a transmission report with a seat that never ran.
   And the *regime* is part of the claim: the bare-name form loads a profile
@@ -134,12 +134,12 @@ Four halves, and they are not the same check.
   looks the (regime, argument form) pair up in a measured table, and every
   profile refusal names the regime it assumed.
 
-### Condition 3 — the role exists
+### Condition 3: the role exists
 
 The declared `Guild role` is one of the profile slugs in the repository at
 the governance commit, or the internal-worker sentinel.
 
-### Condition 4 — one writer, checked rather than trusted
+### Condition 4: one writer, checked rather than trusted
 
 On the entry path: the declared branch does not exist, the declared worktree
 is not registered, and its path is not a non-empty directory. Condition 4
@@ -149,7 +149,7 @@ it with, and it says so.
 
 **Condition 4 also warns, in exactly one case, and the warning is not a
 refusal.** A `read-only` contract whose declared seat runs on a CLI with no
-read-only mode — the state of every startable seat on the source project —
+read-only mode (the state of every startable seat on the source project)
 produces a warning rather than a refusal. The verdict deliberately does not
 count it: *a warning that blocked would be a refusal wearing another word,
 and a refusal that only printed would be the fail-open this launcher exists
@@ -161,11 +161,11 @@ lived only in scrollback is the failure this repository kept rediscovering.
 **Condition 4 evaluates both modes.** Its early return for `read-only` was
 harmless while such a mission got a detached worktree; now that every
 mission gets the branch its contract names, a read-only mission whose branch
-already existed would fail at `git worktree add` instead — outside the
+already existed would fail at `git worktree add` instead, outside the
 numbered refusals, in a tool whose contract is that a refusal names which
 condition fired.
 
-### Condition 5 — the seat can do what the contract requires
+### Condition 5: the seat can do what the contract requires
 
 Every declared capability, matched exactly against the seat's row of the
 capability table, read from the governance commit. `unknown` routes as
@@ -174,20 +174,20 @@ names the form uses drops a row's trailing qualifier and requires the result
 to name exactly one row; anything else is `unknown` on all three, which
 fails closed.
 
-### Condition 6 — the body is the contract
+### Condition 6: the body is the contract
 
 The protected set is derived from the form: *every field a condition
 addresses by name, plus every dropdown.* A comment is refused when a line
 both reads as setting a protected field and names a value that field would
-take — and is not refused when it names the value the body already declares,
+take, and is not refused when it names the value the body already declares,
 because a transmission report quotes the contract block. The refusal names
 the comment URL and the field. The generated instruction then states what
 was checked, rather than certifying the result: a guard that is missing is a
 gap; a guard that reports having run is worse.
 
-### Condition 7 — the title's own number
+### Condition 7: the title's own number
 
-The number leading the title is compared against the issue it sits on —
+The number leading the title is compared against the issue it sits on,
 never merely matched as a shape. A title leading with *another* issue's
 number is refused. A title leading with **no** number warns and does not
 block, since GitHub assigns the number after the body is written; that is
@@ -203,7 +203,7 @@ conditions pass still starts. Three
 closed issues once returned *contract OK* with nothing saying so, and a
 second run of any of them would have produced a branch, a worktree and a
 delivery indistinguishable from a first. Why warn rather than refuse: a
-refusal does not prevent the mission, it moves it outside the gate — and a
+refusal does not prevent the mission, it moves it outside the gate. And a
 hard refusal would push a legitimate relaunch, a contract closed in error, or
 a re-run after a revert out to where the by-hand missions ran. It fires on
 `--resume` too: which door a run comes through changes nothing about what
@@ -216,33 +216,33 @@ Built from the issue rather than composed. It carries, in order:
 - who the seat is: the mission number, the role, and that this instruction
   was generated from the issue and does not replace it;
 - on a resume, that this is a corrective pass, and the return comment that
-  authorises it — by URL, with older returns listed as history;
+  authorises it, by URL, with older returns listed as history;
 - the issue URL, and one command that prints every comment with the URL it
   came from (not one command per comment keyed by an id the REST endpoint
-  answers 404 for — the generated command has to run, not merely look
+  answers 404 for: the generated command has to run, not merely look
   plausible);
 - **the contract block** as the form declares it: every dropdown and input
   the launcher read, the resolved branch and worktree path, the governance
-  SHA, and the profile if one was resolved — with its declared name and the
+  SHA, and the profile if one was resolved, with its declared name and the
   regime it was loaded in;
 - the read-only warning where it applies, the title warning, the
   closed-contract warning, and a sentence naming which fields the comment
   check stood over;
 - every prose section of the issue, **verbatim**;
 - the entry transcript, already performed, with the instruction not to run
-  the entry command again — a second run overwrites the snapshot the exit
-  command compares against — and to close with exactly one exit command;
+  the entry command again (a second run overwrites the snapshot the exit
+  command compares against) and to close with exactly one exit command;
 - the obligation to post the transmission report before closing, **naming
   the execution parameters in it**: model, effort, profile, and how the
-  session was started — *state what actually ran, and say so plainly if it
+  session was started: *state what actually ran, and say so plainly if it
   is not what this instruction names.*
 
 An entry transcript longer than a fixed budget is truncated with a marker
-saying where the cut fell and how to read the rest — and if the cut took the
+saying where the cut fell and how to read the rest, and if the cut took the
 preservation census, the census is re-attached after the marker, once, so
 the seat reads it in the order the entry printed it.
 
-## `--resume` — the return door, and what it is not
+## `--resume`: the return door, and what it is not
 
 A lot handed back for a corrective pass already has its branch and its
 worktree, which on the entry path is exactly what condition 4 refuses.
@@ -253,13 +253,13 @@ pass executed on the CLI's default model rather than the model its contract
 declared. Nothing reported the substitution.
 
 **`--resume` is not permission to bypass condition 4. It is the distinction
-condition 4 cannot otherwise draw** — between a *second* writer and *the
+condition 4 cannot otherwise draw**: between a *second* writer and *the
 same* writer resuming, which are identical in every observable the entry
 path has. It supplies two:
 
-- **the issue carries a return** — one of its comments opens with the word
+- **the issue carries a return**: one of its comments opens with the word
   `Returned`, which is the shape the board already writes;
-- **the workspace is idle** — the entry command writes a session marker and
+- **the workspace is idle**: the entry command writes a session marker and
   the exit command deletes it, so a session still running, or that died
   without closing, leaves the marker behind and the resume refuses.
 
@@ -275,8 +275,8 @@ which meant the oldest governed.
 **The return is the permission; the closed session is the evidence.** A
 comment says nothing about a session still mid-turn, so neither half stands
 alone. Both are refusals of condition 4, alongside four more: the declared
-worktree must be registered on the declared branch — a detached one fails
-for its own named reason — its registered path must still be a directory, no
+worktree must be registered on the declared branch (a detached one fails
+for its own named reason), its registered path must still be a directory, no
 second worktree may hold that branch, and the branch must exist locally. The
 limit is stated rather than hidden: the marker proves no *Guild session* is
 open, never that no process is running, and an agent started in that
@@ -285,7 +285,7 @@ directory by hand leaves no trace the machine can read.
 **A refused resume names its obstacle in full.** Where the workspace is not
 idle, the refusal prints the marker's absolute path, the worktree it sits in
 and the branch that worktree is registered on, then every field the marker
-carries — role, branch, head SHA, timestamp, working-tree fingerprint — so
+carries (role, branch, head SHA, timestamp, working-tree fingerprint) so
 the operator reads what the obstacle *says*. Three missions were once
 resumed at the cost of a file deleted by hand each, because the refusal
 named a directory and a relative filename in two clauses of one sentence. It
@@ -304,16 +304,16 @@ is offered no removal command for the worktree or the branch: those hold the
 work it came back for, and this tool created neither.
 
 Every other condition is evaluated unchanged, by the same code in the same
-order. What follows validation is the launch sequence minus its first step
-— no `git worktree add`, then the same entry command and the same seat
+order. What follows validation is the launch sequence minus its first step:
+no `git worktree add`, then the same entry command and the same seat
 command, built from the same contract by the same function. **There is no
 flag that sets the model or the effort, on either path**: a parameter an
 operator can type is a parameter an operator can forget.
 
-## `--list` — the process table, and what it cannot see
+## `--list`: the process table, and what it cannot see
 
 The session marker cannot tell you whether anything is running: it says a
-session was opened and not closed — whether the process that opened it is
+session was opened and not closed, whether the process that opened it is
 alive or died an hour ago. On one night that gap cost both errors at once. A
 live session was declared dead because it had pushed nothing for twenty
 minutes, and had its branch and worktree destroyed underneath it; in the same
@@ -328,15 +328,15 @@ instruction, which the launcher passes as the positional prompt and which
 therefore stays in the process's own argument list for as long as it runs.
 It starts nothing, asks GitHub nothing, and takes no issue number. Beside
 that it prints the registered worktrees whose session marker is open with no
-process running them — the other half of the blindness.
+process running them: the other half of the blindness.
 
 **What it cannot see, and it says so in its own output**, because a list
 that is silently incomplete is worse than no list: a process whose command
 line this caller may not read (the count is printed); a session started by
 hand, since only the launcher writes a generated instruction; a session on
 another machine; an agent reached through a wrapper process; and whether a
-live process is *working* — it proves a process exists with that argument
-list, not that it is making progress.
+live process is *working* (it proves a process exists with that argument
+list, not that it is making progress).
 
 **Neither read is the other's proof.** A worktree in both lists is
 agreement; a worktree in exactly one is the case to look at by hand, and the
@@ -350,7 +350,7 @@ The exit code describes the launcher's own outcome, never the agent's.
 | Code | Means |
 |---|---|
 | `0` | the launcher did what it was asked; on a real launch, the agent session it started also exited 0 |
-| `1` | it could not proceed — an input it needs could not be read, or a step it runs itself failed |
+| `1` | it could not proceed: an input it needs could not be read, or a step it runs itself failed |
 | `2` | the contract did not check out; nothing was started |
 | `4` | the agent session ran and exited non-zero; its own return code is printed rather than returned |
 
@@ -366,7 +366,7 @@ Disjoint by construction, not by the improbability of a collision.
 
 - **The interpreter is the environment's, spelled in full.** A bare `python`
   in a bare shell on the developer machine resolves to a store stub and the
-  launcher does not start — observed, not inferred.
+  launcher does not start. Observed, not inferred.
 - **The source path is exported before any invocation.** Worktrees borrow the
   primary checkout's environment, and without the export a worktree session
   silently reads another checkout's code.
@@ -379,7 +379,7 @@ Staging is explicit-path only; `git add -A`, `git add .` and `git add -u`
 are refused by the harness's own settings, and the refusal is a guard rail
 rather than the rule.
 
-## Launch instructions are the launcher's or they are manual — never both
+## Launch instructions are the launcher's or they are manual: never both
 
 The launcher creates the worktree and the branch itself. Handing over a
 manual `git worktree add` *and then* the launcher command for the same
@@ -391,7 +391,7 @@ one route or the other.
 ## The launcher is opt-in, and that is a decision
 
 Nothing forces a mission through it. A mission may still be started by the
-commands the launcher runs, typed by hand — and everything the launcher
+commands the launcher runs, typed by hand, and everything the launcher
 enforces is then enforced by whoever types them. The day the launcher
 becomes the mandatory path is a decision, not an implementation, and on the
 source project it was taken in practice before it was taken in writing:
@@ -403,15 +403,15 @@ recorded.
 
 The reference implementation refuses on more than seven conditions today.
 Three arrived after this document was written: one that reserves a resource
-only one seat can hold at a time — the machine's foreground, in the Lantern
+only one seat can hold at a time (the machine's foreground, in the Lantern
 example, where a run opens windows and a second run would type into the
-first one's; one that refuses a first instruction too long to survive the
+first one's); one that refuses a first instruction too long to survive the
 command line, which now travels as a file; and one that refuses a scope the
 launcher cannot read, after a prose path drifted into naming nothing and a
 repair was written to a lot no one had looked at.
 
 They are not in the table, and the table is not wrong. A condition reaches
-this document when it has stopped moving and its refusal has been paid for —
+this document when it has stopped moving and its refusal has been paid for:
 an incident it would have prevented, named in `12-incidents.md`, not a
 precaution someone thought of. Between those two moments a condition lives in
 the implementation and nowhere else, and anyone reading only this file is
@@ -422,6 +422,6 @@ document that tracked the implementation week by week would be a changelog
 with a specification's authority: the reader could not tell which conditions
 had been paid for and which were still being tried, and the first one
 withdrawn would take the credibility of the other nine with it. The number in
-the heading is a claim about what has held, not a count of what runs — and
+the heading is a claim about what has held, not a count of what runs, and
 when these three have held, they will be numbered here and the heading will
 say ten.

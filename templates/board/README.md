@@ -1,6 +1,6 @@
 # The board reader
 
-*One page that reads the board for what it owes each seat — and says, on its
+*One page that reads the board for what it owes each seat, and says, on its
 face, what it could not read.*
 
 `board.html` is the page the Product Owner opens instead of the issue list.
@@ -12,11 +12,11 @@ architect's to merge, on the witness's word), **the open missions by
 workstream**, and **what recently landed**.
 
 It guesses nothing. A delivery exists when an open pull request carries the
-line `Mission: #N delivers | supersedes` — `docs/02-delivery-contract.md`'s
+line `Mission: #N delivers | supersedes`, `docs/02-delivery-contract.md`'s
 convention, and the only evidence the page accepts. A workstream exists when
-the `chantier:*` label is set. Whatever fits no rule — a pull request without
+the `chantier:*` label is set. Whatever fits no rule (a pull request without
 a `Mission:` line, a mission without a workstream, an issue page that could
-not be read — is **counted separately, on the face of the board**, rather
+not be read) is **counted separately, on the face of the board**, rather
 than filed by guesswork. Those counters are the measure of what the
 governance is not yet doing; they are meant to read zero.
 
@@ -24,7 +24,7 @@ governance is not yet doing; they are meant to read zero.
 
 The page reads GitHub through the viewer's own connector, with the viewer's
 credentials, and never holds a token. As written it runs as a page published
-on claude.ai with the GitHub connector — the host that provides
+on claude.ai with the GitHub connector, the host that provides
 `claude.use("mcp")`. Any host that offers the same call can serve it; a
 plain web server cannot, and the page then says so instead of showing an
 empty board.

@@ -2,7 +2,7 @@
 <html lang="fr" data-theme="dark">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lantern — le tableau, lu pour ce qu’il vous doit</title>
+<title>Lantern · le tableau, lu pour ce qu’il vous doit</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
   :root {--fs-xs:.8125rem;--fs-sm:.875rem;--fs-prose-2:.9375rem;--fs-md:1rem;--fs-lg:1.25rem;--fs-xl:1.5rem;--fs-figure:1.75rem;--fs-2xl:2rem;
@@ -202,18 +202,18 @@ td.num a{white-space:nowrap}
   "staleDays": 14,
   "refreshMs": 120000,
   "workstreamNames": {
-    "dashboard": "Tableau de bord — les tuiles que lit un opérateur",
-    "device": "Appareil — calibration et pont du banc",
-    "sync": "Synchro — export des relevés",
-    "shell": "Coque — le cadre que porte chaque page",
-    "gate": "Porte — lanceur, contrôle de gouvernance, porte de test",
-    "watcher": "Watcher — le watcher des événements d’étiquette",
-    "governance": "Gouvernance — les documents qui disent quelles sont les règles",
+    "dashboard": "Tableau de bord : les tuiles que lit un opérateur",
+    "device": "Appareil : calibration et pont du banc",
+    "sync": "Synchro : export des relevés",
+    "shell": "Coque : le cadre que porte chaque page",
+    "gate": "Porte : lanceur, contrôle de gouvernance, porte de test",
+    "watcher": "Watcher : le watcher des événements d’étiquette",
+    "governance": "Gouvernance : les documents qui disent quelles sont les règles",
     "release-provenance": "Provenance des versions"
   }
 };
   var T = {
- "eyebrow": "Lantern — le tableau, en direct",
+ "eyebrow": "Lantern · le tableau, en direct",
  "h1": "Où en sont les chantiers",
  "refresh": "Rafraîchir",
  "connecting": "connexion au tableau…",
@@ -228,21 +228,21 @@ td.num a{white-space:nowrap}
  "today": "aujourd’hui",
  "dayUnit": "j",
  "owedHeading": "Ce qu’on vous doit, à vous et à personne d’autre",
- "owedState": "Une porte réservée n’est pas une attente. {label} dit <em>qui tranchera</em> ; il ne dit pas que la décision est arrivée. Une décision est due quand une pull request ouverte porte la ligne <span class=\"mono\">Mission: #N delivers</span> — la ligne du contrat lui-même, et rien d’autre.",
+ "owedState": "Une porte réservée n’est pas une attente. {label} dit <em>qui tranchera</em> ; il ne dit pas que la décision est arrivée. Une décision est due quand une pull request ouverte porte la ligne <span class=\"mono\">Mission: #N delivers</span> : la ligne du contrat lui-même, et rien d’autre.",
  "decisionNow": "Une décision vous attend maintenant",
  "reservedNotReached": "Portes réservées, pas encore atteintes",
  "toDecideCount": "{n} à trancher",
  "nothingToDecide": "rien à trancher",
  "nothingDeliveredOwed": "Aucune livraison n’attend votre décision. Les portes ci-dessous existent, mais le travail ne les a pas encore atteintes.",
- "reservedNote": "Ces contrats vous reviendront, plus tard. Un lot dont la porte réservée est <em>le lancement</em> n’a aucune livraison à montrer et figure ici comme les autres — la page ne sait pas les distinguer, et ne prétend pas le faire.",
+ "reservedNote": "Ces contrats vous reviendront, plus tard. Un lot dont la porte réservée est <em>le lancement</em> n’a aucune livraison à montrer et figure ici comme les autres : la page ne sait pas les distinguer, et ne prétend pas le faire.",
  "noGatePo": "Aucune issue ouverte ne porte <code>{label}</code>.",
  "none": "Aucun.",
- "deliveriesPending": "Lecture des livraisons ouvertes — sans elles, cette page ne peut pas distinguer une porte atteinte d’une porte seulement déclarée, et elle ne devinera pas.",
+ "deliveriesPending": "Lecture des livraisons ouvertes : sans elles, cette page ne peut pas distinguer une porte atteinte d’une porte seulement déclarée, et elle ne devinera pas.",
  "delegHeading": "Livré sous délégation, en attente de fusion",
  "delegState": "Les livraisons dont la porte est déléguée : l’architecte les fusionne sur la parole du témoin, sans vous. Vous les voyez passer ; vous n’avez rien à en faire.",
  "deliveriesCount": "{n} livraison(s)",
  "nothingUnderDelegation": "Aucune livraison ouverte sous délégation.",
- "orphanDeliveries": "Des pull requests ouvertes nomment une mission qui n’est plus ouverte : {list}. Soit la mission a été close avant sa livraison, soit la ligne <code>Mission:</code> est fausse — dans les deux cas, allez voir.",
+ "orphanDeliveries": "Des pull requests ouvertes nomment une mission qui n’est plus ouverte : {list}. Soit la mission a été close avant sa livraison, soit la ligne <code>Mission:</code> est fausse. Dans les deux cas, allez voir.",
  "noMissionLine": "{n} pull request(s) ouverte(s) sans ligne <code>Mission:</code> : {list}. Le tableau ne peut pas les rattacher à un contrat, et il ne devine pas.",
  "chHeading": "Par chantier",
  "missionsOpen": "{n} missions ouvertes",
@@ -268,15 +268,15 @@ td.num a{white-space:nowrap}
  "legendOwed": "vous attend",
  "legendFlight": "avance sous délégation",
  "legendIdle": "réservée, pas encore atteinte",
- "legendBroken": "cassé — une lecture qui a échoué, ou revenue incomplète",
+ "legendBroken": "cassé : une lecture qui a échoué, ou revenue incomplète",
  "legendAccent": "ouvert, par chantier",
  "statOpen": "issues ouvertes",
  "statToDecide": "à trancher",
  "statDelegated": "livré sous délégation",
  "statUnclassified": "sans chantier",
  "statUnread": "issues non lues",
- "demoNote": "<b>Ceci est un instantané figé du tableau fictif Lantern</b>, pour que la lecture puisse être montrée sans dépôt derrière. La même page, publiée sur claude.ai avec le connecteur GitHub, lit un vrai tableau en direct — c’est ainsi qu’elle sert sur le projet dont ce pack est extrait.",
- "footer": "<p><b>Ce que cette page lit vraiment.</b> Les issues ouvertes du dépôt (toutes les pages), les pull requests ouvertes et les pull requests closes, par le connecteur GitHub du lecteur lui-même. Rien n’est recopié : états, portes et âges sont calculés à l’ouverture et rafraîchis toutes les deux minutes.</p><p><b>Ce qu’elle ne devine pas.</b> Une livraison existe quand une pull request ouverte porte la ligne <span class=\"mono\">Mission: #N delivers | supersedes</span> — la convention du contrat de livraison, et rien d’autre. Un chantier existe quand l’étiquette <span class=\"mono\">chantier:*</span> est posée. Ce qui n’entre dans aucune règle est compté à part, sur la face du tableau, plutôt que rangé au jugé.</p>",
+ "demoNote": "<b>Ceci est un instantané figé du tableau fictif Lantern</b>, pour que la lecture puisse être montrée sans dépôt derrière. La même page, publiée sur claude.ai avec le connecteur GitHub, lit un vrai tableau en direct : c’est ainsi qu’elle sert sur le projet dont ce pack est extrait.",
+ "footer": "<p><b>Ce que cette page lit vraiment.</b> Les issues ouvertes du dépôt (toutes les pages), les pull requests ouvertes et les pull requests closes, par le connecteur GitHub du lecteur lui-même. Rien n’est recopié : états, portes et âges sont calculés à l’ouverture et rafraîchis toutes les deux minutes.</p><p><b>Ce qu’elle ne devine pas.</b> Une livraison existe quand une pull request ouverte porte la ligne <span class=\"mono\">Mission: #N delivers | supersedes</span> : la convention du contrat de livraison, et rien d’autre. Un chantier existe quand l’étiquette <span class=\"mono\">chantier:*</span> est posée. Ce qui n’entre dans aucune règle est compté à part, sur la face du tableau, plutôt que rangé au jugé.</p>",
  "offlineSection": "Cette section lit le tableau en direct et ne peut pas l’atteindre ici. Ouvrez la page depuis claude.ai avec le connecteur GitHub connecté.",
  "errNotConnected": "<b>Le connecteur {s} n’est pas ajouté pour ce lecteur.</b> Ajoutez-le dans claude.ai → Réglages → Connecteurs, puis rechargez.",
  "errReauth": "<b>La connexion à {s} a expiré.</b> Reconnectez-la dans claude.ai → Réglages → Connecteurs.",
@@ -289,7 +289,7 @@ td.num a{white-space:nowrap}
  "errDefault": "<b>Le tableau n’a pas pu être lu.</b> {m}"
 };
   var SOURCE = "static";           // "mcp" (live, through the viewer's GitHub connector) or "static"
-  var STATIC = {"takenAt": 1788544800000, "issues": [{"number": 131, "title": "#131 — [MISSION] Le dialogue avec le contrôleur retente avec un délai borné", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:device"], "created_at": "2026-09-03T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 129, "title": "#129 — [MISSION] Le manifeste d’export nomme la fenêtre de relevés qu’il couvre", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:sync"], "created_at": "2026-09-02T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 128, "title": "#128 — [MISSION] Les tuiles du tableau affichent l’âge de leur dernier relevé", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:dashboard"], "created_at": "2026-09-02T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 127, "title": "#127 — [MISSION] Le focus clavier de la coque survit à un changement de page", "labels": ["ai-mission", "role:grok-build", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:shell"], "created_at": "2026-09-01T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 126, "title": "#126 — [MISSION] La condition 5 du lanceur nomme la capacité qu’elle n’a pas pu satisfaire", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:gate"], "created_at": "2026-08-31T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 124, "title": "#124 — [MISSION] Le journal d’ombre du témoin tourne à un mégaoctet", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:watcher"], "created_at": "2026-08-30T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 122, "title": "#122 — [MISSION] Le manifeste de clôture liste les tables de calibration générées", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:gate"], "created_at": "2026-08-29T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 116, "title": "#116 — [MISSION] La page de calibration refuse d’enregistrer une table avec une cellule non mesurée", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:high", "watcher:claude", "chantier:device"], "created_at": "2026-08-23T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 112, "title": "#112 — [MISSION] Le gabarit de journal de session gagne la déclaration des non-préservés", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:governance"], "created_at": "2026-08-19T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 109, "title": "#109 — [MISSION] L’archive de version porte le commit dont elle a été construite", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:release-provenance"], "created_at": "2026-08-14T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 104, "title": "#104 — [MISSION] La synchro retente un export que le contrôleur a écourté", "labels": ["ai-mission", "role:grok-build", "mode:one-writer", "gate:delegated", "risk:medium", "watcher:claude"], "created_at": "2026-08-08T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 97, "title": "#97 — Registre des constats", "labels": ["watcher:claude"], "created_at": "2026-07-26T08:00:00Z", "updated_at": "2026-09-04T08:00:00Z"}, {"number": 61, "title": "#61 — Délégation permanente : fusions de routine", "labels": [], "created_at": "2026-07-08T08:00:00Z", "updated_at": "2026-08-05T08:00:00Z"}], "openPrs": [{"number": 133, "title": "#131 — reprises du dialogue, bornées", "body": "## Mission\n\nMission: #131 delivers — le dialogue retente trois fois avec un délai borné, puis rapporte.\n\n## Paramètres d’exécution\n\nModèle claude-opus-5, effort HIGH, démarrée par tools/mission_launcher.py.", "created_at": "2026-09-04T15:00:00Z"}, {"number": 132, "title": "#128 — âge des tuiles", "body": "## Mission\n\nMission: #128 delivers — chaque tuile affiche l’âge de son dernier relevé.\n", "created_at": "2026-09-04T11:00:00Z"}, {"number": 130, "title": "#129 — fenêtre du manifeste d’export", "body": "## Mission\n\nMission: #129 delivers — le manifeste nomme sa fenêtre de relevés.\n", "created_at": "2026-09-03T08:00:00Z"}, {"number": 115, "title": "Référence de design — la coque du tableau, hors ligne", "body": "**Brouillon.** Un artefact de design pour le siège UX/UI, pas une livraison. Ouverte pour être regardée, pas fusionnée au fil de l’eau.", "created_at": "2026-08-16T08:00:00Z"}], "closedPrs": [{"number": 125, "title": "#122 — le manifeste de clôture liste les tables de calibration", "merged_at": "2026-09-04T09:00:00Z"}, {"number": 123, "title": "#118 — les tuiles gardent leur dernier relevé pendant que le pont se reconnecte", "merged_at": "2026-09-03T08:00:00Z"}, {"number": 121, "title": "#112 — gabarit de journal : la déclaration des non-préservés", "merged_at": "2026-09-02T08:00:00Z"}, {"number": 120, "title": "#118 — les tuiles gardent leur dernier relevé (refusée)", "merged_at": null}, {"number": 119, "title": "#110 — page appareil : glyphes d’état de calibration", "merged_at": "2026-09-01T08:00:00Z"}, {"number": 117, "title": "#108 — coque : titres de page dans le titre de fenêtre", "merged_at": "2026-08-31T08:00:00Z"}, {"number": 114, "title": "#107 — synchro : le chemin d’export est configurable", "merged_at": "2026-08-30T08:00:00Z"}, {"number": 113, "title": "#106 — lanceur : épinglage de gouvernance imprimé dans la bannière", "merged_at": "2026-08-29T08:00:00Z"}, {"number": 111, "title": "#105 — témoin : liste d’autorisation des acteurs", "merged_at": "2026-08-28T08:00:00Z"}]};             // only read when SOURCE === "static"
+  var STATIC = {"takenAt": 1788544800000, "issues": [{"number": 131, "title": "#131 Le dialogue avec le contrôleur retente avec un délai borné", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:device"], "created_at": "2026-09-03T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 129, "title": "#129 Le manifeste d’export nomme la fenêtre de relevés qu’il couvre", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:sync"], "created_at": "2026-09-02T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 128, "title": "#128 Les tuiles du tableau affichent l’âge de leur dernier relevé", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:dashboard"], "created_at": "2026-09-02T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 127, "title": "#127 Le focus clavier de la coque survit à un changement de page", "labels": ["ai-mission", "role:grok-build", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:shell"], "created_at": "2026-09-01T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 126, "title": "#126 La condition 5 du lanceur nomme la capacité qu’elle n’a pas pu satisfaire", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:gate"], "created_at": "2026-08-31T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 124, "title": "#124 Le journal d’ombre du témoin tourne à un mégaoctet", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:watcher"], "created_at": "2026-08-30T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 122, "title": "#122 Le manifeste de clôture liste les tables de calibration générées", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:gate"], "created_at": "2026-08-29T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 116, "title": "#116 La page de calibration refuse d’enregistrer une table avec une cellule non mesurée", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:high", "watcher:claude", "chantier:device"], "created_at": "2026-08-23T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 112, "title": "#112 Le gabarit de journal de session gagne la déclaration des non-préservés", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:delegated", "risk:low", "watcher:claude", "chantier:governance"], "created_at": "2026-08-19T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 109, "title": "#109 L’archive de version porte le commit dont elle a été construite", "labels": ["ai-mission", "role:claude-code", "mode:one-writer", "gate:po", "risk:medium", "watcher:claude", "chantier:release-provenance"], "created_at": "2026-08-14T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 104, "title": "#104 La synchro retente un export que le contrôleur a écourté", "labels": ["ai-mission", "role:grok-build", "mode:one-writer", "gate:delegated", "risk:medium", "watcher:claude"], "created_at": "2026-08-08T08:00:00Z", "updated_at": "2026-09-03T08:00:00Z"}, {"number": 97, "title": "#97 Registre des constats", "labels": ["watcher:claude"], "created_at": "2026-07-26T08:00:00Z", "updated_at": "2026-09-04T08:00:00Z"}, {"number": 61, "title": "#61 Délégation permanente : fusions de routine", "labels": [], "created_at": "2026-07-08T08:00:00Z", "updated_at": "2026-08-05T08:00:00Z"}], "openPrs": [{"number": 133, "title": "#131 reprises du dialogue, bornées", "body": "## Mission\n\nMission: #131 delivers : le dialogue retente trois fois avec un délai borné, puis rapporte.\n\n## Paramètres d’exécution\n\nModèle claude-opus-5, effort HIGH, démarrée par tools/mission_launcher.py.", "created_at": "2026-09-04T15:00:00Z"}, {"number": 132, "title": "#128 âge des tuiles", "body": "## Mission\n\nMission: #128 delivers : chaque tuile affiche l’âge de son dernier relevé.\n", "created_at": "2026-09-04T11:00:00Z"}, {"number": 130, "title": "#129 fenêtre du manifeste d’export", "body": "## Mission\n\nMission: #129 delivers : le manifeste nomme sa fenêtre de relevés.\n", "created_at": "2026-09-03T08:00:00Z"}, {"number": 115, "title": "Référence de design : la coque du tableau, hors ligne", "body": "**Brouillon.** Un artefact de design pour le siège UX/UI, pas une livraison. Ouverte pour être regardée, pas fusionnée au fil de l’eau.", "created_at": "2026-08-16T08:00:00Z"}], "closedPrs": [{"number": 125, "title": "#122 le manifeste de clôture liste les tables de calibration", "merged_at": "2026-09-04T09:00:00Z"}, {"number": 123, "title": "#118 les tuiles gardent leur dernier relevé pendant que le pont se reconnecte", "merged_at": "2026-09-03T08:00:00Z"}, {"number": 121, "title": "#112 gabarit de journal : la déclaration des non-préservés", "merged_at": "2026-09-02T08:00:00Z"}, {"number": 120, "title": "#118 les tuiles gardent leur dernier relevé (refusée)", "merged_at": null}, {"number": 119, "title": "#110 page appareil : glyphes d’état de calibration", "merged_at": "2026-09-01T08:00:00Z"}, {"number": 117, "title": "#108 coque : titres de page dans le titre de fenêtre", "merged_at": "2026-08-31T08:00:00Z"}, {"number": 114, "title": "#107 synchro : le chemin d’export est configurable", "merged_at": "2026-08-30T08:00:00Z"}, {"number": 113, "title": "#106 lanceur : épinglage de gouvernance imprimé dans la bannière", "merged_at": "2026-08-29T08:00:00Z"}, {"number": 111, "title": "#105 témoin : liste d’autorisation des acteurs", "merged_at": "2026-08-28T08:00:00Z"}]};             // only read when SOURCE === "static"
 
   var REPO_URL = "https://github.com/" + CONFIG.owner + "/" + CONFIG.repo;
   var MISSION_LINE = new RegExp("^\\s*Mission:\\s*#(\\d+)\\s+(delivers|supersedes|refused)\\b", "mi");
@@ -305,7 +305,7 @@ td.num a{white-space:nowrap}
   // ---- helpers ---------------------------------------------------------------
   function esc(s) { return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); }
   function unesc(s) { return String(s == null ? "" : s).replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&"); }
-  function title(t) { return unesc(t).replace(/^#\d+\s*[—-]\s*/,"").replace(/^\[(MISSION|HANDOVER|REVIEW BRIEF)\]\s*/i,""); }
+  function title(t) { return unesc(t).replace(/^#\d+\s*[\u2014:-]?\s*/,"").replace(/^\[(MISSION|HANDOVER|REVIEW BRIEF)\]\s*/i,""); }
   var NOW = function () { return SOURCE === "static" ? STATIC.takenAt : Date.now(); };
   function daysSince(iso) { return iso ? Math.floor((NOW() - new Date(iso).getTime()) / 86400000) : null; }
   function age(iso) { var d = daysSince(iso); return d == null ? "" : d <= 0 ? T.today : d + " " + T.dayUnit; }
@@ -335,7 +335,7 @@ td.num a{white-space:nowrap}
   function gateChip(it) {
     if (has(it, CONFIG.labels.gatePo)) return '<span class="chip c-owed">' + T.chipReserved + '</span>';
     if (has(it, CONFIG.labels.gateDelegated)) return '<span class="chip c-idle">' + T.chipDelegated + '</span>';
-    return '<span class="chip c-idle">—</span>';
+    return '<span class="chip c-idle">·</span>';
   }
 
   function issueRow(it, dl) {
@@ -424,7 +424,7 @@ td.num a{white-space:nowrap}
 
   function renderStats(issues, unclassed, owedNow, delegated) {
     var missions = issues.filter(function (i) { return has(i, CONFIG.labels.mission); }).length;
-    var prs = state.openPrs ? state.openPrs.length : "—";
+    var prs = state.openPrs ? state.openPrs.length : "·";
     var vals = [[missions, T.statMissions, ""], [issues.length, T.statOpen, ""], [prs, T.statPrs, ""],
                 [owedNow, T.statToDecide, owedNow ? "owed" : ""], [delegated, T.statDelegated, delegated ? "flight" : ""], [unclassed, T.statUnclassified, ""]];
     if (state.issuesTruncated) vals.push([state.issuesTruncated, T.statUnread, "broken"]);
@@ -553,7 +553,7 @@ td.num a{white-space:nowrap}
 })();
 </script>
 <script>
-/* Focus lights the thread, and dims the rest — brand/design-system.md.
+/* Focus lights the thread, and dims the rest (brand/design-system.md).
    Hover or focus one object: what shares its state (from a counter) or one of
    its numbers (from a row) stays lit; everything else steps back. */
 (function () {

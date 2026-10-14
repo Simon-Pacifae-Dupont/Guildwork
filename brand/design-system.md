@@ -23,7 +23,7 @@ and the demonstrations open dark whatever the visitor's system says
 | `--ink-2` | `#9FAAC0` | secondary text: captions, eyebrows, counts, times, notes |
 | `--muted` / `--ink-3` | `#6B7791` | non-text only: rules, disabled marks. Never text: 4.1 : 1 on the ground, under AA. A mark that carries meaning (a status dot) reaches 3 : 1 against what it sits on, so it is never `--muted` on a state tint |
 | `--amber` | `#E9A23B` | the site's own accent: buttons, punch rules, the mark |
-| `--brand` / `--accent` | `#5CB9C4` | links and notes inside a board — teal, so it never reads as a state |
+| `--brand` / `--accent` | `#5CB9C4` | links and notes inside a board: teal, so it never reads as a state |
 
 The one exception is the shipped reader's light theme, kept for teams who
 install the template outside the site: ivory ground `#F3EDE2`, navy ink
@@ -39,11 +39,11 @@ the ladder is what a new widget reads before it draws anything.
 
 | Level | Token | Value | Frame | Shadow | Use |
 |---|---|---|---|---|---|
-| ground | `--ground` | `#0B1526` | — | — | the page, and nothing else |
-| surface | `--surface` | `#0A1322`, flat | `--line` `#1D2B44` | `--shadow` | a tile in a grid, a board panel, a list row, a menu — the plain level |
+| ground | `--ground` | `#0B1526` | · | · | the page, and nothing else |
+| surface | `--surface` | `#0A1322`, flat | `--line` `#1D2B44` | `--shadow` | a tile in a grid, a board panel, a list row, a menu. The plain level |
 | card | `--card` | gradient 168°: `#1B2434` → `#0F1929` at 55 % → `#0A1322` | `--line` | `--shadow` | anything the eye should land on as an object: a figure, an offer, a door, a question, the chart |
-| card-lead | `--card-lead` | gradient 168°: `#232C3B` → `#121C2D` at 52 % → `#0A1322` | `--line-amber` `#6E5330` | `--shadow-lift` | the one object of a section that is chosen or featured — at most one per section |
-| strip | `--strip` | `#14223A`, flat | — | — | a header band inside a card, a hover, a selected control, a tooltip |
+| card-lead | `--card-lead` | gradient 168°: `#232C3B` → `#121C2D` at 52 % → `#0A1322` | `--line-amber` `#6E5330` | `--shadow-lift` | the one object of a section that is chosen or featured, at most one per section |
+| strip | `--strip` | `#14223A`, flat | · | · | a header band inside a card, a hover, a selected control, a tooltip |
 | well | `--well` | `#070D18`, flat | `--line-strong` `#2B3B57` | inset | an inset that reads as a hole: a terminal, a code block, an input |
 
 The gradient starts less blue than the ground and ends at the surface
@@ -72,7 +72,7 @@ stays the well (a terminal, code, an input), never the ground of a place.
 The exact wording a decision would publish is a *well*: `--well` with an
 ivory frame and inset shadow. It is a preview, not an outcome, so it never
 uses the green *landed* tint. Green appears only where the confirmed action
-leads — in the frozen demonstration, the ring at the pointer's tip.
+leads: in the frozen demonstration, the ring at the pointer's tip.
 
 ## The six states: the reference board's hues, never the site's
 
@@ -84,20 +84,20 @@ be swapped for them.
 
 | State | Reader token | Hue (dark) | Row tint on navy | Hue (light, template only) | Tint (light) |
 |---|---|---|---|---|---|
-| running — the mission is executing | `--flight` / `--s-run` | `#E8AE57` | `#36322D` | `#8F5C10` | `#F9EDD8` |
-| holds the screen / the bench — running *and* holding the one exclusive resource | `--s-bridge` | `#BDA2E4` | `#2E3049` | `#6B4795` | `#ECE4F6` |
-| next — queued, with its rank | `--idle` / `--s-next` | `#79B4E0` | `#203348` | `#1A5384` | `#DDE9F3` |
-| for you — nothing moves without your decision | `--owed` / `--s-you` | `#F3EDE2` — the ink | `#393E48` | `#0B1526` — the ink | `#E4DFD3` |
-| landed — merged, or ruled | `--landed` / `--s-done` | `#78C48C` | `#203637` | `#1C6640` | `#DCEBE1` |
-| broken — something must be repaired before anything moves again | `--broken` / `--s-broken` | `#EC8A79` | `#372B33` | `#9C3223` | `#F8E1DC` |
-| reading expired — not a seventh state: the absence of one | `--s-off` | `#93A3A1` | `#212B2A` | `#5C6A68` | `#E4E9E8` |
+| running: the mission is executing | `--flight` / `--s-run` | `#E8AE57` | `#36322D` | `#8F5C10` | `#F9EDD8` |
+| holds the screen / the bench: running *and* holding the one exclusive resource | `--s-bridge` | `#BDA2E4` | `#2E3049` | `#6B4795` | `#ECE4F6` |
+| next: queued, with its rank | `--idle` / `--s-next` | `#79B4E0` | `#203348` | `#1A5384` | `#DDE9F3` |
+| for you: nothing moves without your decision | `--owed` / `--s-you` | `#F3EDE2` (the ink) | `#393E48` | `#0B1526` (the ink) | `#E4DFD3` |
+| landed: merged, or ruled | `--landed` / `--s-done` | `#78C48C` | `#203637` | `#1C6640` | `#DCEBE1` |
+| broken: something must be repaired before anything moves again | `--broken` / `--s-broken` | `#EC8A79` | `#372B33` | `#9C3223` | `#F8E1DC` |
+| reading expired (not a seventh state: the absence of one) | `--s-off` | `#93A3A1` | `#212B2A` | `#5C6A68` | `#E4E9E8` |
 
 A row tint is the state hue mixed twenty percent into `--surface`, so a
 tinted row still sits on navy rather than on the reference board's own
 ground. On the light theme the ink is mixed at ten percent instead, since
 twenty reads as grey on ivory.
 
-**For you is the ink, not a hue.** Every other state is a machine state —
+**For you is the ink, not a hue.** Every other state is a machine state:
 something a seat, a queue or a merge did. The human is the one object on
 the board without a colour, so a *for you* counter, badge or rule is set
 in the ink itself: the brightest thing on a dark page, without a hue to
@@ -109,13 +109,13 @@ the one place where a button is ivory on navy.
 "something went wrong", so no state that means "your turn" may use it.
 *Broken* is a delivery whose checks are red, a seat that exited on an
 error, a bridge that was lost while a claim stood, a reading that failed
-or came back short — anything that has to be repaired before the thing it
+or came back short: anything that has to be repaired before the thing it
 sits on can move again. It is the loudest hue on the board, and the only
 one that is allowed to be loud. A board with nothing broken shows no red
 at all; that is the point.
 
-The names adapt to a project — the reference board says *running* where a
-reader may say *in flight*, and a French board says *cassé* — but the
+The names adapt to a project (the reference board says *running* where a
+reader may say *in flight*, and a French board says *cassé*), but the
 seven positions, their hues and what each may colour do not. That is what
 makes the states one system across every board that carries the mark,
 whatever project it follows.
@@ -123,8 +123,8 @@ whatever project it follows.
 ## The counter bar shows every state, green included
 
 The row of counters at the top of a board carries one tile per state, in
-the ladder's order — running, holds the screen, next, for you, broken,
-landed — and then the plain counts. A state that is absent that day shows
+the ladder's order (running, holds the screen, next, for you, broken,
+landed), and then the plain counts. A state that is absent that day shows
 its zero in its own hue rather than disappearing: a board with `0 broken`
 in red and `9 landed` in green says more than a board with neither. Green
 is the state that resolves the tension red creates, and a bar that shows
@@ -138,8 +138,8 @@ card, so it ends on the action rather than on a list.
 
 ## What is not a state, and must never look like one
 
-- **A workstream** lives in a panel's frame — its heading and its 3 px top
-  rule — and nowhere else. Its hues are muted against the states on
+- **A workstream** lives in a panel's frame (its heading and its 3 px top
+  rule) and nowhere else. Its hues are muted against the states on
   purpose: `#88A88F #80B8B6 #79A7BD #B2AF8C #B797B2 #A6ACCF`.
 - **A pointer** (`issue of #N`, `delivers PR #N`, `waits for #N`) is
   neutral monospace in `--ink-2`. Where something comes from is a different
@@ -151,8 +151,8 @@ card, so it ends on the action rather than on a list.
 
 ## An image of a surface is a door to it
 
-Every image that shows a surface which exists interactively — the board,
-the canvas, a reader — is wrapped in a link to that surface and carries the
+Every image that shows a surface which exists interactively (the board,
+the canvas, a reader) is wrapped in a link to that surface and carries the
 same button, bottom right, on a strip of `--surface` under the image, never
 over it: *Explore the interactive canvas ↗*, *Explore the interactive
 board ↗*. The `alt` says the image can be clicked. A bare image of an
@@ -162,8 +162,8 @@ make the image itself the link and say so in the caption.
 
 ## Focus lights the thread, and dims the rest
 
-Every surface that shows more than one object — the canvas, a board, a
-reader — answers the pointer the same way. Hover or keyboard-focus one
+Every surface that shows more than one object (the canvas, a board, a
+reader) answers the pointer the same way. Hover or keyboard-focus one
 object and its **thread** stays lit while everything else on the surface
 steps back to 18 % opacity, in 160 ms. Nothing is brightened, recoloured
 or moved except the object under the pointer, which may lift by 2 px.
@@ -171,12 +171,12 @@ Leaving it, pressing Escape, or tapping elsewhere restores the surface.
 
 What a thread is depends on where you start:
 
-- from a **counter tile** — every object in that state (hover *for you*
+- from a **counter tile**: every object in that state (hover *for you*
   and only what is owed to you stays readable);
-- from a **row, card or process** — every object that shares one of its
+- from a **row, card or process**: every object that shares one of its
   numbers (`#131` lights `PR #133` because the row says *delivers PR
   #133*), plus the counter tile of its state;
-- on the **canvas**, from a block — its wires, the blocks at their other
+- on the **canvas**, from a block: its wires, the blocks at their other
   ends, and the refusal note that hangs from it.
 
 A tile with no state (`open issues`) starts no thread. A panel's frame and
@@ -195,12 +195,12 @@ carries a train of parcels at one constant speed, and a pipe with nothing
 in it is a pipe that has stopped. The parcel takes the colour of its wire
 and nothing else enters the palette: a **filled** parcel where something
 really runs today, an **outline** on a path that is drawn but not yet
-active — the same distinction the teal *next* thread already makes, said
+active, the same distinction the teal *next* thread already makes, said
 twice so it cannot be missed.
 
 Three rules hold it in place. A parcel passes *behind* a label, never
 across the word, so the labels are painted last. Nothing moves under
-`prefers-reduced-motion: reduce` — the parcels are not drawn at all,
+`prefers-reduced-motion: reduce`: the parcels are not drawn at all,
 rather than drawn and frozen. And nothing is drawn in `?export`: the
 rendered image has to stay a still picture, identical from one render to
 the next.
@@ -212,14 +212,14 @@ makes the drawing read as one system, so the number is chosen for the
 *shortest* wire, not the longest: the gap between two neighbouring cards
 is nineteen pixels, and below roughly a second the crossing stops being a
 flow and becomes a flash. The long return loop is slower to complete as a
-result, which is correct — it is a margin, not the line. The motion is `calcMode="paced"`,
+result, which is correct: it is a margin, not the line. The motion is `calcMode="paced"`,
 never `linear`: linear gives every path segment the same slice of time, so
 a parcel crawls through a fourteen-pixel corner arc and races down a
-three-hundred-pixel straight, and they pile up in the bends — which reads
+three-hundred-pixel straight, and they pile up in the bends, which reads
 as a jam, the opposite of what the drawing says.
 
 A parcel fades in as it leaves a card and fades out as it reaches the next,
-over a fixed distance — seven pixels — and not a fixed share of the trip, so
+over a fixed distance (seven pixels) and not a fixed share of the trip, so
 the fade is the same everywhere whatever the wire's length. Without it, a
 parcel on the nineteen-pixel gap between two neighbouring cards vanishes at
 one end and snaps back to the other, and the eye reads a rewind rather than
@@ -234,7 +234,7 @@ path that is drawn but not yet active.
 An arrowhead and a moving parcel say the same thing twice, and on a
 nineteen-pixel gap between two cards the arrowhead leaves the parcel no
 room at all. So the arrowheads belong to the still: they are hidden while
-the parcels run, and they come back wherever the parcels do not — the
+the parcels run, and they come back wherever the parcels do not: the
 exported image, and any viewer who asked for reduced motion. For the same
 reason the dashes hold still. One motion per line, and it is the work.
 
@@ -245,7 +245,7 @@ the page is one of them:
 
 | Token | Value | Between |
 |---|---|---|
-| `--gap-section` | 72 px (48 on mobile) | one section and the next — each side, so 144 px of ground between two titles |
+| `--gap-section` | 72 px (48 on mobile) | one section and the next (each side, so 144 px of ground between two titles) |
 | `--gap-object` | 32 px (24 on mobile) | a section's intro and its first object: a frame, a grid, a terminal, a card row |
 | `--gap-caption` | 16 px | an object and the caption or note that reads it |
 | `--gap-para` | 12 px | two paragraphs |
@@ -368,7 +368,7 @@ monospace.
 | the board as it runs (demonstration) | `demo/board/index.html`, `fr/demo/board/index.html` | dark only, forced |
 | the shipped reader | `templates/board/board.html` | follows the viewer; light theme kept |
 | the reader's demonstrations | `demo/board/reader/`, `fr/demo/board/reader/` | dark, forced |
-| the images | `brand/board-demo-dark.png`, `brand/board-demo.fr.png` | rendered from the board demonstration in each language — recipe below |
+| the images | `brand/board-demo-dark.png`, `brand/board-demo.fr.png` | rendered from the board demonstration in each language (recipe below) |
 | the operating canvas | `demo/canvas/`, `fr/demo/canvas/` | dark only |
 | the desk as it runs (no-code demonstration) | `demo/desk/index.html`, `fr/demo/desk/index.html` | dark only, forced |
 | the desk images | `brand/desk-demo.png`, `brand/desk-demo.fr.png` | rendered from the desk demonstration in each language |
@@ -385,7 +385,7 @@ is drift until the Studio's next lot closes it.
 
 ## Two languages, one skeleton
 
-Rules live in one language — a rule that exists twice is a rule that will
+Rules live in one language: a rule that exists twice is a rule that will
 diverge. Narratives live in both, and the board demonstration is a
 narrative: `demo/board/index.html` and `fr/demo/board/index.html` are two
 files on purpose, and so are `demo/desk/index.html` and `fr/demo/desk/index.html`.
@@ -412,7 +412,7 @@ Both images come from the same recipe, and both are re-rendered together:
 viewport **1020 CSS px wide**, device scale **2.4** (so the file is 2448 px
 across), viewport tall enough that the clip is not silently trimmed to it,
 the page fully loaded, then a clip from the top down to **62 px below the
-bottom of `.decision`** — which lands just under the next section's
+bottom of `.decision`**, which lands just under the next section's
 heading, with air below it and nothing cut. Saved in **true colour**: a
 256-colour palette softens the small state glyphs and reads as blur at
 any size.
