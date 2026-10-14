@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-:root{
+:root{--fs-xs:.8125rem;--fs-sm:.875rem;--fs-prose-2:.9375rem;--fs-md:1rem;--fs-lg:1.25rem;--fs-xl:1.5rem;--fs-figure:1.75rem;--fs-2xl:2rem;
  --ground:#0B1526;--surface:#0A1322;--strip:#14223A;--well:#070D18;
  --line:#1D2B44;--line-strong:#2B3B57;--line-amber:#6E5330;
  --card:linear-gradient(168deg,#1B2434 0%,#0F1929 55%,#0A1322 100%);
@@ -21,7 +21,7 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);
- font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6}
+ font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:var(--fs-md);line-height:1.6}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 a{color:var(--amber-2);text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
@@ -32,38 +32,38 @@ header{border-bottom:1px solid var(--line);padding:16px 0}
 .mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .glyph{width:24px;height:24px;flex:none}
 .wordmark b{color:var(--amber);font-weight:inherit}
-.wordmark{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:16px}
+.wordmark{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:var(--fs-md)}
 .bar-end{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
 .hero{padding:40px 0 6px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;
- text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.13em;
+ text-transform:uppercase;color:var(--ink-2);margin:0 0 12px}
 h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6vw,2.9rem);
  line-height:1.06;margin:0 0 12px;letter-spacing:-.018em}
-.lede{color:var(--ink-2);max-width:60ch;margin:0;font-size:17px}
+.lede{color:var(--ink-2);max-width:60ch;margin:0;font-size:var(--fs-md)}
 
 .tk{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);
- font:inherit;font-size:13.5px;padding:7px 14px;border-radius:7px;cursor:pointer}
+ font:inherit;font-size:var(--fs-sm);padding:7px 14px;border-radius:7px;cursor:pointer}
 .tk:hover{color:var(--ink);border-color:#4E5F80}
 .tk[aria-pressed=true]{background:var(--strip);border-color:var(--amber);color:var(--ink);font-weight:600}
 
 .pick{padding:26px 0 0}
-.pick-label{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+.pick-label{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px}
 .stage{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:32px 0 0}
 @media(min-width:940px){.stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start}
  #side{position:sticky;top:20px}}
 
 .days{display:flex;gap:8px;flex-wrap:wrap;margin:0}
 .day{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);
- font:inherit;font-size:13.5px;padding:8px 14px;border-radius:8px;cursor:pointer}
+ font:inherit;font-size:var(--fs-sm);padding:8px 14px;border-radius:8px;cursor:pointer}
 .day:hover{color:var(--ink);border-color:#4E5F80}
 .day[aria-pressed=true]{background:var(--amber);border-color:var(--amber);color:#1B1206;font-weight:600}
-.punch{font-family:"Fraunces",Georgia,serif;font-size:1.22rem;line-height:1.3;color:var(--ink);margin:0 0 4px}
+.punch{font-family:"Fraunces",Georgia,serif;font-size:var(--fs-lg);line-height:1.3;color:var(--ink);margin:0 0 4px}
 .board{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
 .board-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
  padding:14px 18px;background:var(--strip);border-bottom:1px solid var(--line)}
-.board-head h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.05rem;margin:0}
-.clock{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+.board-head h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:var(--fs-md);margin:0}
+.clock{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-prose-2);color:var(--ink);font-variant-numeric:tabular-nums}
 .rows{display:flex;flex-direction:column}
 .row{display:grid;grid-template-columns:1fr auto;gap:6px 14px;padding:14px 18px;
  border-bottom:1px solid var(--line);position:relative;transition:opacity .3s}
@@ -79,15 +79,15 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 @keyframes callout{0%,100%{box-shadow:inset 3px 0 0 -1px transparent}50%{box-shadow:inset 3px 0 0 -1px rgba(233,162,59,.9)}}
 .row.s-stop,.row.s-you{animation:callout 1.9s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.row.s-stop,.row.s-you{animation:none}}
-.who{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
- text-transform:uppercase;color:var(--ink-3);margin:0 0 3px}
-.what{margin:0;font-size:14.8px;font-weight:500;line-height:1.35}
-.meta{margin:4px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.who{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--ink-2);margin:0 0 3px}
+.what{margin:0;font-size:var(--fs-prose-2);font-weight:500;line-height:1.35}
+.meta{margin:4px 0 0;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink-2);font-variant-numeric:tabular-nums}
 .s-done .meta,.s-you .meta,.s-stop .meta{color:var(--ink-2)}
 .panel p.nextline{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;color:var(--ink)}
-.nextline span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.04em;color:var(--next);margin-bottom:4px}
+.nextline span{display:block;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.04em;color:var(--next);margin-bottom:4px}
 .tally .wide{grid-column:1/-1}
-.badge{align-self:start;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+.badge{align-self:start;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.1em;
  text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid;white-space:nowrap}
 .s-run .badge{color:var(--run);border-color:rgba(232,174,87,.45);background:rgba(232,174,87,.12)}
 .s-next .badge{color:var(--next);border-color:rgba(121,180,224,.4);background:rgba(121,180,224,.1)}
@@ -100,39 +100,39 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.6
 
 .panel{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:20px}
 .panel.lead{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
-.panel h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.18rem;margin:0 0 8px}
-.panel p{margin:0 0 12px;font-size:14.6px;color:var(--ink-2)}
+.panel h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:var(--fs-lg);margin:0 0 8px}
+.panel p{margin:0 0 12px;font-size:var(--fs-prose-2);color:var(--ink-2)}
 .panel p.strongline{color:var(--ink)}
-.kicker{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.13em;
  text-transform:uppercase;color:var(--amber);margin:0 0 10px}
 .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 19px;border-radius:8px;border:1px solid transparent;
- font:inherit;font-weight:600;font-size:14.5px;cursor:pointer;text-decoration:none}
+ font:inherit;font-weight:600;font-size:var(--fs-prose-2);cursor:pointer;text-decoration:none}
 .btn.primary{background:var(--amber);color:#1B1206}
 .btn.primary:hover{background:var(--amber-2)}
 .btn.ghost{border-color:var(--line-strong);color:var(--ink);background:transparent;font-weight:400}
 .btn.ghost:hover{border-color:#4E5F80;background:var(--strip)}
-.btn.big{padding:14px 26px;font-size:16px}
+.btn.big{padding:14px 26px;font-size:var(--fs-md)}
 details.tech{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
-details.tech summary{cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
- letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+details.tech summary{cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);
+ letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
 details.tech summary:hover{color:var(--ink-2)}
 pre{margin:12px 0 0;background:var(--well);border:1px solid var(--line);border-radius:8px;padding:13px;
- overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.65;color:var(--ink-2);white-space:pre-wrap}
+ overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);line-height:1.65;color:var(--ink-2);white-space:pre-wrap}
 pre b{color:var(--ink);font-weight:500}
 
 .tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:1px;background:var(--line);
  border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:18px 0 0}
 .tally div{background:var(--surface);padding:14px 16px}
-.tally b{display:block;font-family:"Fraunces",Georgia,serif;font-size:1.7rem;line-height:1.1;margin-bottom:2px}
-.tally span{font-size:12.5px;color:var(--ink-3)}
+.tally b{display:block;font-family:"Fraunces",Georgia,serif;font-size:var(--fs-figure);line-height:1.1;margin-bottom:2px}
+.tally span{font-size:var(--fs-xs);color:var(--ink-2)}
 .tally .hot b{color:var(--amber)}
 .tally .good b{color:var(--done)}
 
 .saved{border:1px solid var(--line-amber);background:rgba(233,162,59,.07);border-radius:8px;
- padding:12px 14px;margin:12px 0 0;font-size:14px;color:var(--ink-2)}
+ padding:12px 14px;margin:12px 0 0;font-size:var(--fs-sm);color:var(--ink-2)}
 .saved b{color:var(--ink)}
-.foot{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 60px;color:var(--ink-3);font-size:13.4px}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 60px;color:var(--ink-2);font-size:var(--fs-xs)}
 .foot p{margin:0 0 7px;max-width:72ch}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 /* Le raccourci `padding` sur .wrap annulait le padding vertical des blocs qui
@@ -144,6 +144,11 @@ pre b{color:var(--ink);font-weight:500}
 html{scrollbar-gutter:stable}
 .eyebrow{color:var(--amber);display:flex;align-items:flex-start;gap:10px}
 .eyebrow::before{content:"";width:9px;height:9px;background:var(--amber);flex:none;margin-top:.35em}
+/* ---- reach (October 2026, design-system « Size, contrast and reach »): a standalone control is at least 28 × 28 px, 44 × 44 on a phone; a link inside a sentence is exempt ---- */
+html{scrollbar-gutter:stable}
+.mark{min-height:28px}
+details.tech summary{padding-block:5px}
+@media(max-width:640px){.mark,.tk,.day{min-height:44px}details.tech summary{padding-block:13px}}
 </style>
 </head>
 <body>

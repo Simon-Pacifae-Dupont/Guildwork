@@ -25,19 +25,22 @@
   };
 
   /* ---------------------------------------------------------------- geometry
-     Five columns of 205, a 24 gap. Four lanes. The canvas is 1180 × 960. */
-  const W = 1180, H = 1294, CW = 205;
-  const X = [34, 263, 492, 721, 950];
+     Five columns of 280, a 24 gap. Five lanes. Every label is at least 13 px
+     (design-system « Size, contrast and reach », October 2026): the drawing is
+     never scaled down; a narrower window pans inside the stage, and a phone
+     reads the same content as a stacked list. */
+  const W = 1564, H = 1322, CW = 280;
+  const X = [34, 338, 642, 946, 1250];
   const LANE = [
-    { rule: 36,  y: 68,  h: 130, labelX: 34 },
-    { rule: 352, y: 372, h: 116, labelX: 34 },
-    { rule: 588, y: 620, h: 116, centerOn: ['close', 'bye'] },   // its label sits centred between the two drops from lane 2, at equal distance from each
-    { rule: 838, y: 870, h: 130, labelX: 34 },
-    { rule: 1088, y: 1120, h: 142, labelX: 34 }
+    { rule: 36,  y: 68,  h: 140, labelX: 34 },
+    { rule: 362, y: 382, h: 136, labelX: 34 },
+    { rule: 618, y: 650, h: 124, centerOn: ['close', 'bye'] },   // its label sits centred between the two drops from lane 2, at equal distance from each
+    { rule: 876, y: 908, h: 140, labelX: 34 },
+    { rule: 1100, y: 1132, h: 158, labelX: 34 }
   ];
   const LOOP_X = 14;       // the register's way back up, in the left margin
-  const LOOP_Y = 322;      // and its way across, between the launcher's pill and lane 2
-  const WAKE_X = 1100;     // the watcher's way up to the seat, through the empty last slot of lane 3
+  const LOOP_Y = 340;      // and its way across, between the launcher's pill and lane 2
+  const WAKE_X = 1449;     // the watcher's way up to the seat, through the empty last slot of lane 3
 
   // id → [lane, column] ; dispatch spans the last two columns
   const PLACE = {
@@ -51,10 +54,10 @@
 
   // refusal notes: which card they hang from, where they sit, how wide
   const PILLS = {
-    lnch:  { x: 560, y: 224, w: 360, hangX: 823 },
-    gate:  { x: 400, y: 514, w: 300, hangX: 430 },
-    bye:   { x: 700, y: 762, w: 300, hangX: 823 },
-    close: { x: 263, y: 762, w: 330, hangX: 365 }
+    lnch:  { x: 732, y: 220, w: 420, hangX: 1082 },
+    gate:  { x: 486, y: 538, w: 470, hangX: 518 },
+    bye:   { x: 884, y: 800, w: 420, hangX: 1082 },
+    close: { x: 338, y: 800, w: 420, hangX: 440 }
   };
 
   /* ---------------------------------------------------------------- copy */
@@ -62,11 +65,11 @@
     en: {
       stage: 'Guildwork operating canvas: contract, launch, execution, closeout, learning loop, and the watcher.',
       lanes: [
-        'contract and launch — five surfaces · ten checks today',
-        'execute and deliver — nobody certifies their own work  ←',
-        'close and learn — the durable evidence  ←',
-        'watch and route — deterministic, and it wakes the seats',
-        'consult — the read from someone with nothing to defend'
+        'contract and launch: five surfaces · ten checks today',
+        'execute and deliver: nobody certifies their own work  ←',
+        'close and learn: the durable evidence  ←',
+        'watch and route: deterministic, and it wakes the seats',
+        'consult: the read from someone with nothing to defend'
       ],
       nodes: {
         po:    { icon: 'person', kind: 'human',   k: 'authority',          t: 'Product Owner',        s: 'human · final say\nlaunches and merges\nunder the named gate' },
@@ -74,15 +77,15 @@
         iss:   { icon: 'doc',    kind: 'control', k: 'source of truth',    t: 'Issue = contract',     s: 'goal · scope · stops\nauthority, seat, model\ntitle #N first', tick: true },
         lnch:  { icon: 'shield', kind: 'control', k: 'before any session', t: 'Launcher · 10 checks', s: '7 stable, from the contract\n+ 3 hardened by use\nrefuses by name', tag: '7 + 3', tick: true },
         wt:    { icon: 'branch', kind: 'control', k: 'isolated workspace', t: 'Worktree',             s: 'one branch · one writer\nguild-hi at entry\nthe contract travels in', tick: true },
-        seats: { icon: 'bot',    kind: 'control', k: 'real execution',     t: 'Executing seats',      s: 'Claude Code · Grok Build\nCodex CLI\nmodel + effort enforced', tag: '3 seats' },
+        seats: { icon: 'bot',    kind: 'control', k: 'real execution',     t: 'Executing seats',      s: 'Claude Code · Grok Build\nCodex CLI\nmodel + effort enforced' },
         pr:    { icon: 'merge',  kind: 'control', k: 'delivery surface',   t: 'Pull request',         s: 'delivers mission #N\nwhat actually ran\nand the evidence', tick: true },
         wit:   { icon: 'eye',    kind: 'control', k: 'independent read',   t: 'Witness',              s: 'not the author\nreads the delivery\nagainst the repository', tick: true },
-        gate:  { icon: 'door',   kind: 'human',   k: 'human authority',    t: 'Gate',                 s: 'the Product Owner — or\na standing delegation —\ndecides from the witness', tick: true },
+        gate:  { icon: 'door',   kind: 'human',   k: 'human authority',    t: 'Gate',                 s: 'the Product Owner, or\na standing delegation,\ndecides from the witness', tick: true },
         main:  { icon: 'branch', kind: 'landed',  k: 'durable outcome',    t: 'main',                 s: 'merged\nand nothing\nweaker', tag: 'landed' },
         bye:   { icon: 'bye',    kind: 'control', k: 'one exit command',   t: 'guild-bye',            s: '0 durable · 3 incomplete\n2 fatal\nnever rerun exit 3' },
         jrn:   { icon: 'book',   kind: 'control', k: 'session memory',     t: 'Guild Journal',        s: 'one file per session\nreachable from\na pushed ref', tick: true },
         close: { icon: 'broom',  kind: 'control', k: 'after the merge',    t: 'Closeout tool',        s: 'five checks, regenerable\ncloses contracts\nfrom the delivery', tick: true },
-        reg:   { icon: 'book',   kind: 'signal',  k: 'learning loop',      t: 'Findings register',    s: 'every mismatch has\nan owner — ruled,\nconverted or declined' },
+        reg:   { icon: 'book',   kind: 'signal',  k: 'learning loop',      t: 'Findings register',    s: 'every mismatch has\nan owner: ruled,\nconverted or declined' },
         event: { icon: 'inbox',  kind: 'watcher', k: 'authorised signal',  t: 'GitHub event',         s: 'a route label is applied\nor the host produces\na new measured reading' },
         watch: { icon: 'pulse',  kind: 'watcher', k: 'deterministic',      t: 'Watcher',              s: 'polls every two minutes\nsees · dedupes · records\nstarts no model', tag: 'live' },
         read:  { icon: 'eye',    kind: 'watcher', k: 'current output',     t: 'Fresh board reading',  s: 'the latest host state\ntime of the reading\nprojection, never truth', tag: 'live' },
@@ -93,7 +96,7 @@
       },
       pills: {
         lnch:  '1–7 contract · seat/model/effort · role\nwriter · capability · source · title\n8 exclusive display · 9 transport limit\n10 unreadable scope path',
-        gate:  'refused: closes unmerged — the contract stays open',
+        gate:  'refused: closes unmerged; the contract stays open',
         bye:   'exit 3: follow the printed push steps;\ndo not rerun',
         close: 'refuses: open · dirty · absent from server\nin use · unmerged'
       },
@@ -102,11 +105,11 @@
     fr: {
       stage: 'Canvas de fonctionnement de Guildwork : contrat, lancement, exécution, clôture, boucle d’apprentissage, et le watcher.',
       lanes: [
-        'contrat et lancement — cinq surfaces · dix contrôles aujourd’hui',
-        'exécuter et livrer — personne ne certifie son propre travail  ←',
-        'clore et apprendre — la preuve durable  ←',
-        'observer et router — déterministe, et il réveille les sièges',
-        'consulter — l’avis de qui n’a rien à défendre'
+        'contrat et lancement : cinq surfaces · dix contrôles aujourd’hui',
+        'exécuter et livrer : personne ne certifie son propre travail  ←',
+        'clore et apprendre : la preuve durable  ←',
+        'observer et router : déterministe, et il réveille les sièges',
+        'consulter : l’avis de qui n’a rien à défendre'
       ],
       nodes: {
         po:    { icon: 'person', kind: 'human',   k: 'autorité',            t: 'Product Owner',         s: 'humain · dernier mot\nlance et fusionne\nsous la porte nommée' },
@@ -114,7 +117,7 @@
         iss:   { icon: 'doc',    kind: 'control', k: 'source de vérité',    t: 'Issue = contrat',       s: 'but · portée · arrêts\nautorité, siège, modèle\ntitre #N en tête', tick: true },
         lnch:  { icon: 'shield', kind: 'control', k: 'avant toute session', t: 'Lanceur · 10 contrôles', s: '7 stables, du contrat\n+ 3 durcis par l’usage\nrefuse en nommant', tag: '7 + 3', tick: true },
         wt:    { icon: 'branch', kind: 'control', k: 'espace isolé',        t: 'Worktree',              s: 'une branche · un scribe\nguild-hi à l’entrée\nle contrat voyage avec', tick: true },
-        seats: { icon: 'bot',    kind: 'control', k: 'exécution réelle',    t: 'Sièges d’exécution',    s: 'Claude Code · Grok Build\nCodex CLI\nmodèle + effort imposés', tag: '3 sièges' },
+        seats: { icon: 'bot',    kind: 'control', k: 'exécution réelle',    t: 'Sièges d’exécution',    s: 'Claude Code · Grok Build\nCodex CLI\nmodèle + effort imposés' },
         pr:    { icon: 'merge',  kind: 'control', k: 'surface de livraison', t: 'Pull request',         s: 'livre la mission #N\nce qui a vraiment tourné\net les preuves', tick: true },
         wit:   { icon: 'eye',    kind: 'control', k: 'lecture indépendante', t: 'Témoin',               s: 'pas l’auteur\nlit la livraison\ncontre le dépôt', tick: true },
         gate:  { icon: 'door',   kind: 'human',   k: 'autorité humaine',    t: 'Porte',                 s: 'le Product Owner ou\nsa délégation écrite\ndécide sur le témoin', tick: true },
@@ -133,7 +136,7 @@
       },
       pills: {
         lnch:  '1–7 contrat · siège/modèle/effort · rôle\nscribe · capacité · source · titre\n8 écran exclusif · 9 limite de transport\n10 chemin de portée illisible',
-        gate:  'refusée : close sans fusion — le contrat reste ouvert',
+        gate:  'refusée : close sans fusion ; le contrat reste ouvert',
         bye:   'exit 3 : suivre les étapes de push imprimées ;\nne pas relancer',
         close: 'refuse : ouverte · sale · absente du serveur\nen usage · non fusionnée'
       },
@@ -401,12 +404,43 @@
     return cv;
   }
 
+  /* The same content as a stacked list, lane by lane, in reading order. A phone
+     reads this instead of the drawing (its labels could not hold 13 px at that
+     width); everywhere else it stays as the drawing's text alternative. */
+  function list(host, lang) {
+    const T = COPY[lang];
+    const wrap = document.createElement('div');
+    wrap.className = 'flow-list';
+    T.lanes.forEach((text, li) => {
+      const sec = document.createElement('section');
+      const h = document.createElement('h2');
+      h.textContent = text.replace(/\s*←\s*$/, '');
+      sec.appendChild(h);
+      const ol = document.createElement('ol');
+      Object.keys(PLACE).filter(id => PLACE[id][0] === li).sort((a, b) => PLACE[a][1] - PLACE[b][1]).forEach(id => {
+        const n = T.nodes[id];
+        const it = document.createElement('li');
+        it.className = 'item ' + n.kind;
+        it.innerHTML = '<span class="k"></span><strong class="t"></strong><span class="s"></span>';
+        it.querySelector('.k').textContent = n.k;
+        it.querySelector('.t').textContent = n.t;
+        it.querySelector('.s').textContent = n.s;
+        if (PILLS[id]) { const r = document.createElement('p'); r.className = 'refusal'; r.textContent = T.pills[id]; it.appendChild(r); }
+        ol.appendChild(it);
+      });
+      sec.appendChild(ol);
+      wrap.appendChild(sec);
+    });
+    host.insertAdjacentElement('afterend', wrap);
+  }
+
   const stage = document.getElementById('stage');
   const lang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
   const cv = build(stage, lang);
+  list(stage, lang);
   function fit() {
     const exporting = document.documentElement.classList.contains('export');
-    const k = exporting ? (stage.clientWidth - 2) / W : Math.min(1, Math.max(.72, (stage.clientWidth - 2) / W));
+    const k = exporting ? (stage.clientWidth - 2) / W : 1;   // never smaller than drawn: a narrower window pans inside the stage
     cv.style.transform = `scale(${k})`;
     stage.style.height = (H * k + 2) + 'px';
   }

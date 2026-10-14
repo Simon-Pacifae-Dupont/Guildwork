@@ -1,12 +1,12 @@
-# Guildwork — design system
+# Guildwork: design system
 
 The reference for every surface that carries the Guildwork name: the site,
 the two READMEs, the board and desk demonstrations, the board reader shipped in
-`templates/board/`, and the images rendered from them. Anything that
+`templates/board/`, the images rendered from them, and the Studio. Anything that
 disagrees with this file is wrong, and this file is what gets corrected
 first when the system changes.
 
-## Ground and ink — the site's own
+## Ground and ink
 
 Every Guildwork surface is dark only. There is no light theme on the site,
 and the demonstrations open dark whatever the visitor's system says
@@ -20,8 +20,8 @@ and the demonstrations open dark whatever the visitor's system says
 | `--line` | `#1D2B44` | quiet rules between siblings |
 | `--line-strong` | `#2B3B57` | a border that frames |
 | `--ink` | `#F3EDE2` | text, ivory |
-| `--ink-2` | `#9FAAC0` | secondary text |
-| `--muted` / `--ink-3` | `#6B7791` | captions, eyebrows, counts |
+| `--ink-2` | `#9FAAC0` | secondary text: captions, eyebrows, counts, times, notes |
+| `--muted` / `--ink-3` | `#6B7791` | non-text only: rules, disabled marks. Never text: 4.1 : 1 on the ground, under AA. A mark that carries meaning (a status dot) reaches 3 : 1 against what it sits on, so it is never `--muted` on a state tint |
 | `--amber` | `#E9A23B` | the site's own accent: buttons, punch rules, the mark |
 | `--brand` / `--accent` | `#5CB9C4` | links and notes inside a board — teal, so it never reads as a state |
 
@@ -29,7 +29,7 @@ The one exception is the shipped reader's light theme, kept for teams who
 install the template outside the site: ivory ground `#F3EDE2`, navy ink
 `#0B1526`, rules `#D9D2C4` / `#E8E2D6`, teal accent `#0D5C66`.
 
-## Elevation — one ladder for every surface
+## Elevation: one ladder for every surface
 
 The ground is navy and it stays navy, but nothing that sits on it may be
 flat navy on navy: that is the mistake the site made until 7 September,
@@ -56,14 +56,25 @@ The board sits on the same ladder: its panels are *surface* with a
 workstream frame, its header bands are *strip*, its decision card is
 *surface* with a state rule and `--shadow-lift`. A board never uses
 *card-lead*: on a board the thing that must stand out is a state, and a
-state is a hue, not an elevation.
+state is a hue, not an elevation. The Studio uses *card-lead* for one object
+per screen at most, framed in `--line-strong`; `--line-amber` stays the
+site's, because in the Studio amber means a running agent and nothing else.
+For the same reason, in the Studio, Code and Work alike, the brand amber
+`--amber` appears only in the logo and the logotype.
+
+The Studio has two places, Code and Work. Both sit on `--ground` and are
+told apart by a glow at the top of the window, by Work's Newsreader titles,
+and by what they hold: terminals in Code, documents in Work. The glows are
+Studio tokens: `--glow-code` is `--line-strong` mixed at 45 %, `--glow-work`
+is `--ink` mixed at 6 %. A glow is never made from a state hue. `--well`
+stays the well (a terminal, code, an input), never the ground of a place.
 
 The exact wording a decision would publish is a *well*: `--well` with an
 ivory frame and inset shadow. It is a preview, not an outcome, so it never
 uses the green *landed* tint. Green appears only where the confirmed action
 leads — in the frozen demonstration, the ring at the pointer's tip.
 
-## The six states — the reference board's hues, never the site's
+## The six states: the reference board's hues, never the site's
 
 A state colours exactly three things: the counter of that state, the badge
 that names it, and the left rule of a row or card in that state. Nothing
@@ -174,7 +185,7 @@ lit row. Text is never covered by the effect, and the effect never lies:
 an object is lit because it is related, not because it is important.
 
 Every object that can start a thread is reachable by keyboard (`tabindex`),
-and focus behaves exactly as hover. `prefers-reduced-motion` removes the
+and focus behaves as hover, plus its outline. `prefers-reduced-motion` removes the
 transition, not the dimming.
 
 ## A running system shows the work moving
@@ -227,7 +238,7 @@ the parcels run, and they come back wherever the parcels do not — the
 exported image, and any viewer who asked for reduced motion. For the same
 reason the dashes hold still. One motion per line, and it is the work.
 
-## Rhythm — four gaps, and no other vertical number
+## Rhythm: four gaps, and no other vertical number
 
 Airy, not empty. The site keeps four named distances and every margin on
 the page is one of them:
@@ -245,7 +256,7 @@ because the sixteenth is the drop-in files, not a hole. When a screen shows
 more ground than content between two sections, the fix is the token, not
 the section.
 
-## Corners — one radius per role (October 2026)
+## Corners: one radius per role (October 2026)
 
 A corner says what kind of object it is, so every radius is a role, never a
 taste. The board demonstrations and the board reader keep their square-ish
@@ -264,6 +275,52 @@ same screen at 2 px and at 8–12 px.
 | `--radius-paper` | 3 px | a document shown as itself (a letter, a quote) on the no-code desk |
 
 A circle stays a circle (an avatar, a dot, a knot on the day's thread).
+
+## Size, contrast and reach: one floor for every surface (October 2026)
+
+The site, the demonstrations and the Studio read with the same eyes, so they
+share one floor. Settled between the Studio's design seats and the site
+in October 2026, after a measure of every surface at 1707 × 930, the
+Product Owner's screen, and at 390 × 844.
+
+**One type ramp.** Every text size is a step of this ramp, in rem, so a
+surface with a text-size setting scales every step at once. Only display
+type above 32 px (the site's hero and section titles) sizes itself freely,
+and a fluid heading clamps between two steps of the ramp.
+
+| Token | Value | For |
+|---|---|---|
+| `--fs-xs` | 13 px | tags, eyebrows, counts, a diagram's labels |
+| `--fs-sm` | 14 px | secondary text: ages, numbers, notes |
+| `--fs-prose-2` | 15 px | secondary prose |
+| `--fs-md` | 16 px | body text |
+| `--fs-lg` | 20 px | a bar's title |
+| `--fs-xl` | 24 px | a step's heading |
+| `--fs-figure` | 28 px | a counter's figure |
+| `--fs-2xl` | 32 px | a screen's own title |
+
+- **Nothing under 13 px**, mono labels included. A diagram's labels count as
+  text at the size they render, at every size the surface supports. Where a
+  diagram cannot hold 13 px at phone width, the phone gets the same content
+  as a stacked list, not a smaller drawing. An exported image follows the
+  rule at the size it is displayed, and carries a text alternative.
+- **Every text reaches AA** against what it sits on: 4.5 : 1, or 3 : 1 from
+  24 px. On a gradient, contrast is measured against its lightest colour
+  under the text. Secondary text is `--ink-2`; `--muted` is never text.
+- **A standalone control is at least 28 × 28 px on a computer and 44 × 44 px
+  on a phone**, in both directions, width and height, its hit area padding
+  included. A link inside a sentence is exempt; a link alone on its line is
+  not. An icon button carries its name (`aria-label` and a tooltip) and
+  never shrinks.
+- **Selection changes a border's colour, and its background where needed:**
+  never its thickness, never an outer ring, and the content does not move by
+  a pixel. A keyboard focus is always visible and never looks like
+  selection: it adds a 2 px outline.
+- **Weights 400, 500 and 600, upright only.** No 700, no italics: emphasis
+  is colour or weight 600, never a slant.
+- **No em dash** in visible text, nor in a `title`, `aria-label`,
+  `placeholder` or `alt`, nor in a document's title. A pause takes a colon, a
+  comma or a full stop.
 
 ## Section heads and bands, the editorial rhythm (October 2026)
 
@@ -299,7 +356,9 @@ The home page reads as a sequence of distinct sections, not one long sheet:
 Site: Fraunces for display, IBM Plex Sans for text, IBM Plex Mono for
 figures, labels and anything a machine wrote. Boards: Newsreader for
 display (the reference board's face), IBM Plex Sans and Mono as on the
-site. Counters are always tabular monospace.
+site. The Studio: Newsreader for display, Fraunces for the wordmark
+only, IBM Plex Sans and Mono as on the site. Counters are always tabular
+monospace.
 
 ## Where each surface reads its tokens
 
@@ -313,11 +372,16 @@ site. Counters are always tabular monospace.
 | the operating canvas | `demo/canvas/`, `fr/demo/canvas/` | dark only |
 | the desk as it runs (no-code demonstration) | `demo/desk/index.html`, `fr/demo/desk/index.html` | dark only, forced |
 | the desk images | `brand/desk-demo.png`, `brand/desk-demo.fr.png` | rendered from the desk demonstration in each language |
+| the Studio | its `studio/static/tokens.css`, a copy that names the kit commit it was taken from | dark only |
 
 A change to a token is made here first, then applied to every file in the
 table in the same commit. An image is never edited; it is re-rendered. The
 focus behaviour above is carried by the same short script on every surface
 in the table; a new surface inherits it before it inherits anything else.
+
+The Studio lives in another repository. Its copy names the kit commit it
+was taken from. Any difference between that commit and this file's `main`
+is drift until the Studio's next lot closes it.
 
 ## Two languages, one skeleton
 

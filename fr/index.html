@@ -17,7 +17,7 @@
 <link rel="icon" href="../brand/favicon-64.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-  :root{
+  :root{--fs-xs:.8125rem;--fs-sm:.875rem;--fs-prose-2:.9375rem;--fs-md:1rem;--fs-lg:1.25rem;--fs-xl:1.5rem;--fs-figure:1.75rem;--fs-2xl:2rem;
     --ground:#0B1526;
     /* ELEVATION — one ladder for every surface that carries the mark (brand/design-system.md).
        ground < surface (flat) < card (gradient) < card-lead (gradient + amber frame); strip = a header band or a
@@ -44,7 +44,7 @@
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{margin:0;background:var(--ground);color:var(--ink);
-    font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;
+    font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:var(--fs-md);line-height:1.65;
     -webkit-font-smoothing:antialiased}
   img{max-width:100%;display:block}
   a{color:var(--amber-2);text-decoration-color:rgba(245,196,107,.35);text-underline-offset:3px}
@@ -65,7 +65,7 @@
   .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-right:auto}
   .brand svg{width:28px;height:28px;flex:none}
   .brand b{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
-    font-weight:600;font-size:20px;letter-spacing:-.02em}
+    font-weight:600;font-size:var(--fs-lg);letter-spacing:-.02em}
   .brand b span{color:var(--amber)}
   /* Le haut de page : le symbole s'assemble, la pièce ambre attend le visiteur. */
   .hero-top{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap-object)}
@@ -82,55 +82,55 @@
   @keyframes piece-land{to{opacity:1;transform:none}}
   .piece figcaption{margin-top:24px}
   .piece p{max-width:none}
-  .piece .piece-k{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;color:var(--ink-3);margin:0 0 6px}
-  .piece .piece-h{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:22px;line-height:1.25;color:var(--ink);margin:0 0 16px}
-  .piece .piece-more{display:none;font-weight:600;font-size:15px}
+  .piece .piece-k{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.04em;color:var(--ink-2);margin:0 0 6px}
+  .piece .piece-h{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:var(--fs-xl);line-height:1.25;color:var(--ink);margin:0 0 16px}
+  .piece .piece-more{display:none;font-weight:600;font-size:var(--fs-prose-2)}
   .piece.done #piece-go{display:none}
   .piece.done .piece-more{display:inline-block}
   @media (prefers-reduced-motion:reduce){.piece .t{animation:none;opacity:1;transform:none}.piece .slot{animation:none;opacity:1}.piece.done .gold{animation:none;opacity:1;transform:none}}
-  nav{display:flex;gap:17px;font-family:"IBM Plex Mono",monospace;font-size:12px}
+  nav{display:flex;gap:17px;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs)}
   nav a{white-space:nowrap}
   nav a{color:var(--ink-2);text-decoration:none}
   nav a:hover{color:var(--ink)}
-  /* the bar needs 1340px for these words in French; below 1380px the menu carries them */
-  @media (max-width:1380px){nav{display:none}}
+  /* one word per section (October 2026): the widest bar, the « avec code » track with the brand, the languages and GitHub, needs 870px of window at 13 px with 28px targets; below 880px the menu carries it */
+  @media (max-width:879px){nav{display:none}}
   .bar-end{display:flex;align-items:center;gap:11px;flex:none}
   .lang{display:flex;border:1px solid var(--edge);border-radius:7px;overflow:hidden;
-    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em}
-  .lang a{padding:8px 10px;line-height:1;color:var(--ink-3);text-decoration:none}
+    font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.06em}
+  .lang a{padding:8px 10px;line-height:1;color:var(--ink-2);text-decoration:none}
   .lang a+a{border-left:1px solid var(--edge)}
   .lang a:hover{color:var(--ink);background:var(--node)}
   .lang a[aria-current]{background:var(--node);color:var(--ink)}
 
   /* ---- hero ---- */
   .wrap.hero{padding-block:88px 64px}
-  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--ink-3);margin:0 0 16px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-2);margin:0 0 16px}
   h1{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 144,"SOFT" 40;
     font-weight:600;font-size:clamp(34px,5.6vw,60px);line-height:1.03;letter-spacing:-.022em;
     margin:0 0 22px;max-width:19ch;text-wrap:balance}
   h1 em{font-style:normal;color:var(--amber)}
-  .lede{font-size:19px;color:var(--ink-2);max-width:var(--measure);margin:0 0 14px}
+  .lede{font-size:var(--fs-lg);color:var(--ink-2);max-width:var(--measure);margin:0 0 14px}
   .lede strong{color:var(--ink);font-weight:500}
   .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
   .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:7px;
-    font-size:14.5px;font-weight:600;text-decoration:none;border:1px solid transparent}
+    font-size:var(--fs-prose-2);font-weight:600;text-decoration:none;border:1px solid transparent}
   .btn.primary{background:var(--amber);color:#1B1206}
   .btn.primary:hover{background:var(--amber-2)}
   .btn.ghost{border-color:var(--edge);color:var(--ink)}
   .btn.ghost:hover{border-color:#4E5F80;background:var(--node)}
-  .note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);margin:var(--gap-caption) 0 0}
+  .note{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink-2);margin:var(--gap-caption) 0 0}
   /* ---- the try card: the demo leads the hero, above booking and the kit ---- */
   .try{display:block;margin-top:30px;border:1px solid var(--line-amber);border-radius:12px;
     background:var(--card-lead);box-shadow:var(--shadow-lift);padding:28px 28px 24px;
     text-decoration:none;color:var(--ink);transition:transform .16s ease,border-color .16s ease}
   .try:hover{transform:translateY(-2px);border-color:var(--amber);text-decoration:none}
-  .try .try-tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+  .try .try-tag{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.12em;
     text-transform:uppercase;color:var(--amber);margin:0 0 10px}
   .try h2{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;
-    font-size:clamp(1.4rem,2.7vw,1.8rem);line-height:1.14;margin:0 0 10px;letter-spacing:-.01em}
-  .try .try-lede{color:var(--ink-2);font-size:15.5px;margin:0;max-width:64ch}
-  .try .try-go{display:inline-block;margin-top:18px;font-size:15px;font-weight:600;color:var(--amber-2)}
+    font-size:clamp(var(--fs-xl),2.7vw,var(--fs-figure));line-height:1.14;margin:0 0 10px;letter-spacing:-.01em}
+  .try .try-lede{color:var(--ink-2);font-size:var(--fs-md);margin:0;max-width:64ch}
+  .try .try-go{display:inline-block;margin-top:18px;font-size:var(--fs-prose-2);font-weight:600;color:var(--amber-2)}
   .wrap.hero .try + .cta{margin-top:20px}
   @media (max-width:520px){.try{padding:22px 20px 20px}}
 
@@ -138,18 +138,18 @@
   section.wrap{padding-block:var(--gap-section)}
   section[id],.contact{scroll-margin-top:80px}
   h2{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
-    font-weight:600;font-size:clamp(25px,3.4vw,34px);line-height:1.12;letter-spacing:-.017em;
+    font-weight:600;font-size:clamp(var(--fs-xl),3.4vw,34px);line-height:1.12;letter-spacing:-.017em;
     margin:0 0 22px;max-width:26ch;text-wrap:balance}
-  h3{font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-.005em}
+  h3{font-size:var(--fs-md);font-weight:600;margin:0 0 6px;letter-spacing:-.005em}
   p{max-width:var(--measure)}
 
   /* four failures */
   .failures{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
     border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(258px,100%),1fr));margin-top:var(--gap-object)}
   .failure{background:var(--card);padding:28px 24px 30px}
-  .failure .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--refuse);
+  .failure .n{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--refuse);
     letter-spacing:.1em;margin:0 0 10px}
-  .failure p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+  .failure p{font-size:var(--fs-prose-2);color:var(--ink-2);margin:0;max-width:none}
 
   /* canvas */
   .canvas-frame{position:relative;margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
@@ -158,11 +158,11 @@
   .canvas-frame a img,.board-frame a img{display:block}
   .canvas-frame a::after,.board-frame a::after{content:attr(data-action);position:absolute;right:14px;bottom:12px;padding:9px 13px;
     border:1px solid rgba(245,196,107,.62);border-radius:999px;background:rgba(7,13,24,.9);color:var(--amber-2);
-    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.03em;
+    font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);font-weight:500;letter-spacing:.03em;
     box-shadow:0 10px 30px rgba(0,0,0,.45);backdrop-filter:blur(7px);transition:transform .16s ease,background .16s ease}
   .canvas-frame a:hover::after,.canvas-frame a:focus-visible::after,.board-frame a:hover::after,.board-frame a:focus-visible::after{transform:translateY(-2px);background:var(--strip)}
   .canvas-frame a:focus-visible,.board-frame a:focus-visible{outline-offset:-4px}
-  @media(max-width:560px){.canvas-frame a,.board-frame a{padding-bottom:46px}.canvas-frame a::after,.board-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:9.5px}}
+  @media(max-width:560px){.canvas-frame a,.board-frame a{padding-bottom:46px}.canvas-frame a::after,.board-frame a::after{right:9px;bottom:9px;padding:7px 10px;font-size:var(--fs-xs)}}
   /* the board */
   .board-frame{margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface);
     box-shadow:var(--shadow-lift)}
@@ -170,8 +170,8 @@
   /* the trajectory */
   .tl-wrap{margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:18px 18px 12px;position:relative}
   .tl-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;margin:0 0 6px}
-  .tl-head h3{font-size:15px;margin:0}
-  .tl-legend{display:flex;gap:18px;font-size:12.5px;color:var(--ink-2)}
+  .tl-head h3{font-size:var(--fs-prose-2);margin:0}
+  .tl-legend{display:flex;gap:18px;font-size:var(--fs-xs);color:var(--ink-2)}
   .tl-legend span{display:inline-flex;align-items:center;gap:7px}
   .tl-legend i{display:inline-block;width:14px;height:10px;border-radius:2px}
   .tl-legend i.line{height:2px;width:18px;border-radius:1px;position:relative}
@@ -179,49 +179,49 @@
   .tl-scroll{overflow-x:auto}
   svg.tl{display:block;width:100%;height:auto}
   @media (max-width:720px){svg.tl{min-width:720px}}
-  svg.tl .tk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-3)}
-  svg.tl .mk{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-2)}
-  svg.tl .lb{font-family:"IBM Plex Mono",monospace;font-size:11.5px;fill:var(--ink);font-weight:500}
+  svg.tl .tk{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);fill:var(--ink-3)}
+  svg.tl .mk{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);fill:var(--ink-2)}
+  svg.tl .lb{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);fill:var(--ink);font-weight:500}
   svg.tl .hit{cursor:crosshair}
   .tl-tip{position:absolute;pointer-events:none;background:var(--strip);border:1px solid var(--edge);border-radius:6px;padding:8px 10px;
-    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink);white-space:nowrap;display:none;box-shadow:0 10px 24px -12px rgba(0,0,0,.8)}
+    font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink);white-space:nowrap;display:none;box-shadow:0 10px 24px -12px rgba(0,0,0,.8)}
   .tl-tip b{color:var(--ink-2);font-weight:400;display:block;margin-bottom:3px}
-  .tl-table{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+  .tl-table{margin-top:10px;font-size:var(--fs-xs);color:var(--ink-2)}
   .tl-table summary{cursor:pointer}
-  .tl-table table{border-collapse:collapse;margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-2)}
+  .tl-table table{border-collapse:collapse;margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink-2)}
   .tl-table td,.tl-table th{padding:2px 10px 2px 0;text-align:right;font-weight:400}
-  .tl-table th{color:var(--ink-3)}
+  .tl-table th{color:var(--ink-2)}
   .readings{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;margin-top:26px}
-  .readings p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+  .readings p{font-size:var(--fs-prose-2);color:var(--ink-2);margin:0;max-width:none}
   .readings strong{color:var(--ink);font-weight:600}
   /* the two columns */
   .vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px;margin-top:var(--gap-object)}
   .vs > div{border:1px solid var(--line);border-radius:10px;padding:26px 24px 28px;background:var(--card);box-shadow:var(--shadow)}
   .vs > div.me{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
-  .vs .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+  .vs .tag{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 12px}
   .vs .me .tag{color:var(--amber)}
   .vs ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
-  .vs li{font-size:14px;color:var(--ink-2);padding-left:20px;position:relative}
-  .vs li::before{position:absolute;left:0;font-size:12px}
-  .vs .repo li::before{content:"·";color:var(--ink-3);font-size:18px;line-height:1;top:-1px}
+  .vs li{font-size:var(--fs-sm);color:var(--ink-2);padding-left:20px;position:relative}
+  .vs li::before{position:absolute;left:0;font-size:var(--fs-xs)}
+  .vs .repo li::before{content:"·";color:var(--ink-2);font-size:var(--fs-lg);line-height:1;top:-1px}
   .vs .me li::before{content:"→";color:var(--amber)}
   .vs li em{font-style:normal;color:var(--ink)}
   /* the refusal, as a terminal */
   .term{margin-top:var(--gap-object);border:1px solid var(--line-strong);border-radius:10px;background:var(--well);overflow:hidden;
     box-shadow:var(--shadow-lift)}
   .term-head{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--edge-2);
-    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
+    font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink-2)}
   .term-head i{width:9px;height:9px;border-radius:50%;background:#26354F;display:inline-block}
   .term-head span{margin-left:8px}
-  .term pre{margin:0;padding:18px 20px 22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+  .term pre{margin:0;padding:18px 20px 22px;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);line-height:1.6;
     color:var(--ink-2);overflow-x:auto;white-space:pre;tab-size:4}
   .term .cmd{color:var(--ink)}
-  .term .cmd::before{content:"PS> ";color:var(--ink-3)}
+  .term .cmd::before{content:"PS> ";color:var(--ink-2)}
   .term .ref{color:var(--refuse);font-weight:600}
   .term .cond{color:var(--amber-2)}
-  .term .dim{color:var(--ink-3)}
-  @media (max-width:720px){.term pre{font-size:11.5px;padding:14px 14px 18px}}
-  .caption{font-size:13.5px;color:var(--ink-3);margin:var(--gap-caption) 0 0;max-width:78ch}
+  .term .dim{color:var(--ink-2)}
+  @media (max-width:720px){.term pre{font-size:var(--fs-xs);padding:14px 14px 18px}}
+  .caption{font-size:var(--fs-sm);color:var(--ink-2);margin:var(--gap-caption) 0 0;max-width:78ch}
 
   /* numbers */
   .figs{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);
@@ -230,9 +230,9 @@
   .fig b{display:block;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;
     font-weight:600;font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
-  .fig span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:9px}
+  .fig span{display:block;font-size:var(--fs-sm);color:var(--ink-2);margin-top:9px}
   .sober{margin-top:28px;padding-left:18px;border-left:2px solid var(--edge);color:var(--ink-2);
-    font-size:14.5px;max-width:78ch}
+    font-size:var(--fs-prose-2);max-width:78ch}
   .sober strong{color:var(--ink);font-weight:600}
 
   /* documents */
@@ -240,30 +240,30 @@
     background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden}
   .doc{background:var(--surface);padding:18px 18px;text-decoration:none;color:inherit;display:block}
   .doc:hover{background:var(--strip)}
-  .doc code{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);display:block;margin-bottom:5px}
-  .doc span{font-size:14px;color:var(--ink)}
+  .doc code{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink-2);display:block;margin-bottom:5px}
+  .doc span{font-size:var(--fs-sm);color:var(--ink)}
 
   /* engagements */
   .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px;margin-top:var(--gap-object)}
   .offer{border:1px solid var(--line);border-radius:10px;padding:30px 26px 32px;background:var(--card);box-shadow:var(--shadow);
     display:flex;flex-direction:column}
   .offer.lead{border-color:var(--line-amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
-  .offer .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+  .offer .tag{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-2);margin:0 0 12px}
   .offer.lead .tag{color:var(--amber)}
   .offer h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;
-    font-weight:600;font-size:21px;letter-spacing:-.015em;margin:0 0 10px}
-  .offer p{font-size:14.5px;color:var(--ink-2);margin:0 0 16px;max-width:none}
+    font-weight:600;font-size:var(--fs-lg);letter-spacing:-.015em;margin:0 0 10px}
+  .offer p{font-size:var(--fs-prose-2);color:var(--ink-2);margin:0 0 16px;max-width:none}
   .offer ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
-  .offer li{font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative}
+  .offer li{font-size:var(--fs-sm);color:var(--ink-2);padding-left:20px;position:relative}
   .offer li em{font-style:normal;color:var(--ink)}
-  .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:12px}
+  .offer li::before{content:"→";position:absolute;left:0;color:var(--amber);font-size:var(--fs-xs)}
   /* the price block has one fixed height, so the price line sits at the same height in every card */
   .offer .price{margin-top:auto;min-height:108px;padding-top:16px;border-top:1px solid var(--edge-2);
-    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
-  .offer .price small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:4px}
+    font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink)}
+  .offer .price small{display:block;color:var(--ink-2);font-size:var(--fs-xs);margin-top:4px}
   .offer{position:relative}
-  .offer .go{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14px;font-weight:600;
+  .offer .go{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:var(--fs-sm);font-weight:600;
     color:var(--amber-2);text-decoration:none}
   .offer .go::after{content:"";position:absolute;inset:0;border-radius:10px}
   .offer .go span{transition:transform .16s}
@@ -277,7 +277,7 @@
   /* ---- mobile: the three prices, comparable without scrolling ---- */
   /* where this is going — prose, not cards: three short claims after the proof */
   .next{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  .next p{margin:0;font-size:14.5px;color:var(--ink-2)}
+  .next p{margin:0;font-size:var(--fs-prose-2);color:var(--ink-2)}
   .next p b{display:block;color:var(--ink);font-weight:600;margin-bottom:6px}
   @media (max-width:820px){.next{grid-template-columns:1fr}}
   .pricebar{display:none}
@@ -287,10 +287,10 @@
     .pricebar a{background:var(--ground-2);padding:13px 8px 14px;text-decoration:none;display:block;text-align:center}
     .pricebar a:active{background:var(--node)}
     .pricebar span{display:flex;flex-direction:column;align-items:center;justify-content:center;
-      font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.07em;
-      text-transform:uppercase;color:var(--ink-3);margin-bottom:7px;line-height:1.35;text-align:center}
-    .pricebar span i{font-style:normal;opacity:.68;letter-spacing:.04em}
-    .pricebar b{display:block;font-size:13.5px;color:var(--amber-2);font-weight:600;font-variant-numeric:tabular-nums;line-height:1.15}
+      font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.07em;
+      text-transform:uppercase;color:var(--ink-2);margin-bottom:7px;line-height:1.35;text-align:center}
+    .pricebar span i{font-style:normal;color:var(--ink-2);letter-spacing:.04em}
+    .pricebar b{display:block;font-size:var(--fs-sm);color:var(--amber-2);font-weight:600;font-variant-numeric:tabular-nums;line-height:1.15}
     .offers{margin-top:16px}
     .offer{scroll-margin-top:76px}
   }
@@ -305,7 +305,7 @@
   /* ---- mobile navigation ---- */
   .burger{display:none}
   nav.menu{display:none}
-  @media (max-width:1380px){
+  @media (max-width:879px){
     .burger{display:inline-flex;flex-direction:column;justify-content:center;gap:4.5px;
       width:42px;height:36px;padding:0 9px;border:1px solid var(--edge);border-radius:7px;
       background:transparent;cursor:pointer;flex:none}
@@ -320,7 +320,7 @@
       border-top:1px solid var(--edge-2);padding:2px 24px 14px;
       max-height:calc(100vh - 68px);max-height:calc(100dvh - 68px);overflow-y:auto;overscroll-behavior:contain}
     nav.menu[hidden]{display:none}
-    nav.menu a{padding:12px 0;font-family:"IBM Plex Mono",monospace;font-size:13.5px;
+    nav.menu a{padding:12px 0;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-sm);
       color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--edge-2)}
     nav.menu a:last-child{border-bottom:0}
     nav.menu a.switch{color:var(--amber-2)}
@@ -330,8 +330,8 @@
 
   /* ---- menu: contact group ---- */
   nav.menu .menu-h{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--edge-2);
-    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-  nav.menu a.ic{display:flex;align-items:center;gap:11px;border-bottom:0;padding:10px 0;color:var(--ink);font-size:13.5px}
+    font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  nav.menu a.ic{display:flex;align-items:center;gap:11px;border-bottom:0;padding:10px 0;color:var(--ink);font-size:var(--fs-sm)}
   nav.menu a.ic svg{width:var(--icon);height:var(--icon);flex:none;fill:currentColor;opacity:.7}
   nav.menu a.ic.cal{color:var(--amber-2);font-weight:600}
   nav.menu a.ic.cal svg{opacity:1}
@@ -339,16 +339,30 @@
   /* contact */
   .contact{background:var(--ground-2);border-top:1px solid var(--edge-2);padding-block:96px}
   .who{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:28px}
-  .who p{font-size:15px;color:var(--ink-2);flex:1 1 340px;margin:0}
-  .lines{font-family:"IBM Plex Mono",monospace;font-size:13.5px;display:flex;flex-direction:column;gap:9px}
+  .who p{font-size:var(--fs-prose-2);color:var(--ink-2);flex:1 1 340px;margin:0}
+  .lines{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-sm);display:flex;flex-direction:column;gap:9px}
   .lines a{color:var(--ink)}
 
-  footer{border-top:1px solid var(--edge-2);padding-block:34px 56px;font-size:12.5px;color:var(--ink-3)}
+  footer{border-top:1px solid var(--edge-2);padding-block:34px 56px;font-size:var(--fs-xs);color:var(--ink-2)}
   footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
   /* the incident count is a door to the incident pages — design-system.md, "an image of a surface is a door to it" */
   a.fig{text-decoration:none;color:inherit;transition:transform .16s}
   a.fig:hover{transform:translateY(-2px)}
+/* ---- reach (October 2026, design-system « Size, contrast and reach »): a standalone control is at least 28 × 28 px, 44 × 44 on a phone; a link inside a sentence is exempt ---- */
+nav a{min-height:28px;display:inline-flex;align-items:center}
+nav:not(.menu) a{min-width:28px;justify-content:center}
+details.tl-table>summary{padding-block:4px}
+.offer a.go,.lines a{min-height:28px}
+.play a{display:inline-flex;align-items:center;min-height:28px}
+svg.tl .tk{fill:var(--ink-2)}
+/* the timeline's labels are text: the script below sets --tl-k so they render at 13 px whatever width the drawing takes; at phone width the data table replaces the drawing */
+svg.tl .tk,svg.tl .mk,svg.tl .lb{font-size:calc(var(--fs-xs) * var(--tl-k,1))}
+@media(max-width:720px){.tl-scroll,.tl-legend{display:none}details.tl-table[open]>summary{display:none}.tl-table table{width:100%}}
+@media(max-width:640px){.bar .brand,.lang a,.burger,#piece-go,.offer a.go,.lines a,.play a{min-height:44px}.lang a{min-width:44px;display:inline-flex;align-items:center;justify-content:center}.burger{min-width:44px}details.tl-table>summary{padding-block:12px}nav a{min-height:44px}}
+/* ---- weights and focus (October 2026, design-system « Size, contrast and reach »): weights 400, 500 and 600, upright only; a keyboard focus adds a 2 px outline ---- */
+:where(b,strong,th,h1,h2,h3,h4,h5,h6){font-weight:600}
+:where(em,i,cite,dfn,var,address){font-style:normal}
 </style>
 <style>
   /* French runs longer than English — a touch more room on the display sizes */
@@ -361,18 +375,18 @@
   .q{border:1px solid var(--line);border-radius:10px;background:var(--card);box-shadow:var(--shadow);padding:24px 26px 26px;display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start}
   .q::before{counter-increment:q;content:counter(q);font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:40px;line-height:1;color:var(--amber);margin-top:-4px}
   .q p{margin:0;max-width:none}
-  .q .ask{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 48,"SOFT" 40;font-weight:600;font-size:21px;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
-  .q .why{font-size:14.5px;color:var(--ink-2);margin-top:10px}
-  .punch{margin-top:22px;padding-left:18px;border-left:2px solid var(--amber);font-size:16.5px;color:var(--ink);max-width:70ch}
+  .q .ask{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 48,"SOFT" 40;font-weight:600;font-size:var(--fs-lg);line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+  .q .why{font-size:var(--fs-prose-2);color:var(--ink-2);margin-top:10px}
+  .punch{margin-top:22px;padding-left:18px;border-left:2px solid var(--amber);font-size:var(--fs-md);color:var(--ink);max-width:70ch}
   .punch strong{font-weight:600}
   .scenes{display:grid;gap:1px;background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));margin-top:var(--gap-object)}
   .scene{background:var(--card);padding:28px 24px 30px;display:flex;flex-direction:column}
-  .scene .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
-  .scene h3{font-size:17px;margin:0 0 10px;letter-spacing:-.005em}
-  .scene p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
+  .scene .n{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink-2);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
+  .scene h3{font-size:var(--fs-md);margin:0 0 10px;letter-spacing:-.005em}
+  .scene p{font-size:var(--fs-prose-2);color:var(--ink-2);margin:0;max-width:none}
   /* the rule block is pushed to the foot of the card and given one fixed height, so the separators line up across a row */
   .scene h3 + p{margin-bottom:var(--gap-object)}
-  .scene .rule{border:0;padding-top:20px;border-top:1px solid var(--edge-2);font-size:14px;color:var(--ink);margin:auto 0 0}
+  .scene .rule{border:0;padding-top:20px;border-top:1px solid var(--edge-2);font-size:var(--fs-sm);color:var(--ink);margin:auto 0 0}
   /* Aligner les six cartes n'a de sens qu'a partir de deux colonnes : la grille passe
      en colonne unique vers 610px, et la reservation de hauteur ne ferait plus que
      creuser du vide sous les textes courts. Au-dessus, les rangees prennent la meme
@@ -384,27 +398,27 @@
     .scene .rule{min-height:calc(5.1em + 20px)}
   }
   .scene .rule::before{content:"→ ";color:var(--amber)}
-  .scene .play{margin:auto 0 var(--gap-caption);font-size:13.5px}
+  .scene .play{margin:auto 0 var(--gap-caption);font-size:var(--fs-sm)}
   .scene .play + .rule{margin-top:0}
-  .feat .play{margin-top:16px;font-size:14px}
+  .feat .play{margin-top:16px;font-size:var(--fs-sm)}
   .feat{margin-top:var(--gap-object);border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:30px 28px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
   @media (max-width:820px){.feat{grid-template-columns:1fr}}
-  .feat .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
-  .feat h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:0 0 14px}
-  .feat p{font-size:15.5px;color:var(--ink-2);margin:0;max-width:none}
+  .feat .n{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
+  .feat h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:var(--fs-xl);line-height:1.2;letter-spacing:-.015em;margin:0 0 14px}
+  .feat p{font-size:var(--fs-md);color:var(--ink-2);margin:0;max-width:none}
   .feat p+p{margin-top:12px}
   .feat .side{border-left:1px solid var(--edge-2);padding-left:28px}
   @media (max-width:820px){.feat .side{border-left:0;padding-left:0;border-top:1px solid var(--edge-2);padding-top:20px}}
-  .feat .side h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px;font-weight:500}
-  .feat .side p{font-size:14.5px}
+  .feat .side h4{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px;font-weight:500}
+  .feat .side p{font-size:var(--fs-prose-2)}
   .feat .side p strong{color:var(--ink);font-weight:600}
-  .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid var(--line-amber);color:var(--ink);font-size:15px}
+  .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid var(--line-amber);color:var(--ink);font-size:var(--fs-prose-2)}
   .proof{margin-top:var(--gap-object);border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
   @media (max-width:720px){.proof{grid-template-columns:1fr}}
-  .proof p{margin:0;max-width:none;font-size:15.5px;color:var(--ink-2)}
+  .proof p{margin:0;max-width:none;font-size:var(--fs-md);color:var(--ink-2)}
   .proof strong{color:var(--ink);font-weight:600}
   .proof .fig{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;font-size:44px;line-height:1;color:var(--amber);letter-spacing:-.02em;white-space:nowrap}
-  .proof .fig small{display:block;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12.5px;color:var(--ink-3);font-weight:400;letter-spacing:0;margin-top:6px}
+  .proof .fig small{display:block;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:var(--fs-xs);color:var(--ink-2);font-weight:400;letter-spacing:0;margin-top:6px}
 
   /* ---- the two doors ---- */
   .wrap.hero{padding-block:72px 40px}
@@ -418,12 +432,12 @@
     background:var(--card);box-shadow:var(--shadow);color:inherit;text-decoration:none;position:relative;transition:border-color .16s,transform .16s}
   .door:hover{border-color:#4E5F80;transform:translateY(-2px)}
   .door[aria-pressed="true"]{border-color:var(--amber);background:var(--card-lead);box-shadow:var(--shadow-lift)}
-  .door .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0}
+  .door .tag{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0}
   .door[aria-pressed="true"] .tag{color:var(--amber)}
   .door h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;
-    font-size:23px;line-height:1.2;letter-spacing:-.015em;margin:0}
-  .door p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:none}
-  .door .go{margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;color:var(--amber-2)}
+    font-size:var(--fs-xl);line-height:1.2;letter-spacing:-.015em;margin:0}
+  .door p{font-size:var(--fs-prose-2);color:var(--ink-2);margin:0;max-width:none}
+  .door .go{margin-top:auto;padding-top:16px;font-size:var(--fs-sm);font-weight:600;color:var(--amber-2)}
   .door .go::after{content:attr(data-off)}
   .door[aria-pressed="true"] .go{color:var(--ink-2);font-weight:500}
   .door[aria-pressed="true"] .go::before{content:"\25CF  ";color:var(--amber)}
@@ -496,8 +510,8 @@
     .hero .piece{flex-direction:row;align-items:center;gap:18px;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
     .hero .piece svg{width:88px}
     .hero .piece figcaption{margin-top:0}
-    .hero .piece .piece-h{font-size:19px;margin-bottom:12px}
-    .lede{font-size:17px}
+    .hero .piece .piece-h{font-size:var(--fs-lg);margin-bottom:12px}
+    .lede{font-size:var(--fs-md)}
   }
   @media (max-width:420px){.hero .piece{gap:14px;padding:16px}.hero .piece svg{width:72px}.hero .piece .btn{padding-inline:16px}}
   @media (max-width:380px){.hero .piece{flex-direction:column;align-items:center;text-align:center}.hero .piece figcaption{margin-top:16px}}
@@ -507,7 +521,7 @@
   .hero-figs>*+*{padding-left:24px;border-left:1px solid var(--line)}
   .hero-figs b{display:block;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 96,"SOFT" 40;font-weight:600;
     font-size:clamp(38px,4.6vw,56px);line-height:1;color:var(--amber);letter-spacing:-.02em;margin-bottom:12px}
-  .hero-figs span{display:block;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+  .hero-figs span{display:block;font-size:var(--fs-sm);line-height:1.45;color:var(--ink-2)}
   .hero-figs a:hover span{color:var(--ink)}
   @media (max-width:939px){
     .hero-figs{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -545,7 +559,7 @@
   .failure .n b{display:block;font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:46px;line-height:1;
     font-variation-settings:"opsz" 144,"SOFT" 30;letter-spacing:-.03em;color:var(--refuse);margin-bottom:16px}
   .failure .n .sep{display:none}
-  .failure h3{font-size:17px}
+  .failure h3{font-size:var(--fs-md)}
   #numbers .figs{border:0;border-radius:0;background:none;gap:0;border-block:1px solid var(--line-strong)}
   #numbers .fig{background:none;box-shadow:none;padding:24px 20px 22px 0}
   #numbers .fig+.fig{padding-left:20px;border-left:1px solid var(--line)}
@@ -614,7 +628,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
         <a href="../" hreflang="en" lang="en">EN</a>
         <a href="./" hreflang="fr" lang="fr" aria-current="page">FR</a>
       </div>
-      <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork" style="padding:8px 15px;font-size:13px">GitHub</a>
+      <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork" style="padding:8px 15px;font-size:var(--fs-xs)">GitHub</a>
           <button class="burger" type="button" id="burger" aria-controls="menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -843,7 +857,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <line x1="44" x2="1064" y1="26.0" y2="26.0" stroke="#1D2B44" stroke-width="1"/>
 <text x="36" y="30.0" text-anchor="end" class="tk">50</text>
 <line x1="715.1" x2="715.1" y1="12" y2="256.0" stroke="#9FAAC0" stroke-width="1" stroke-dasharray="3 4"/>
-<text x="721.1" y="22" class="mk">26 août : le formulaire de mission est en service</text>
+<text x="709.1" y="22" text-anchor="end" class="mk">26 août : le formulaire de mission est en service</text>
 <path class="bar" d="M48.4,256.0 v-46.6 q0,-4 4,-4 h10 q4,0 4,4 v46.6 z" fill="#C9801C"><title>2026-08-01: 11</title></path>
 <path class="bar" d="M75.3,256.0 v-88.0 q0,-4 4,-4 h10 q4,0 4,4 v88.0 z" fill="#C9801C"><title>2026-08-02: 20</title></path>
 <path class="bar" d="M102.1,256.0 v-106.4 q0,-4 4,-4 h10 q4,0 4,4 v106.4 z" fill="#C9801C"><title>2026-08-03: 24</title></path>
@@ -895,10 +909,10 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <circle cx="996.9" cy="228.4" r="6" fill="#0A1322"/><circle cx="996.9" cy="228.4" r="4" fill="#3F7FD8"/>
 <circle cx="1023.7" cy="200.8" r="6" fill="#0A1322"/><circle cx="1023.7" cy="200.8" r="4" fill="#3F7FD8"/>
 <circle cx="1050.6" cy="196.2" r="6" fill="#0A1322"/><circle cx="1050.6" cy="196.2" r="4" fill="#3F7FD8"/>
-<text x="996.9" y="59.4" text-anchor="middle" class="lb">41</text>
-<text x="1023.7" y="73.2" text-anchor="middle" class="lb">38</text>
+<text x="994.9" y="59.4" text-anchor="middle" class="lb">41</text>
+<text x="1025.7" y="73.2" text-anchor="middle" class="lb">38</text>
 <text x="819.0" y="80.4" text-anchor="start" class="lb">36</text>
-<text x="57.4" y="274" text-anchor="middle" class="tk">1er août</text>
+<text x="48.4" y="274" text-anchor="start" class="tk">1er août</text>
 <text x="245.3" y="274" text-anchor="middle" class="tk">8</text>
 <text x="433.2" y="274" text-anchor="middle" class="tk">15</text>
 <text x="621.1" y="274" text-anchor="middle" class="tk">22</text>
@@ -945,7 +959,7 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <rect class="hit" x="1037.2" y="26" width="26.8" height="230" fill="transparent" data-i="37"/>
 </svg></div>
     <div class="tl-tip"></div>
-    <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>—</td></tr><tr><td>02/08</td><td>20</td><td>—</td></tr><tr><td>03/08</td><td>24</td><td>—</td></tr><tr><td>04/08</td><td>17</td><td>—</td></tr><tr><td>05/08</td><td>20</td><td>—</td></tr><tr><td>06/08</td><td>13</td><td>—</td></tr><tr><td>07/08</td><td>14</td><td>—</td></tr><tr><td>08/08</td><td>8</td><td>—</td></tr><tr><td>09/08</td><td>5</td><td>—</td></tr><tr><td>10/08</td><td>2</td><td>—</td></tr><tr><td>11/08</td><td>6</td><td>—</td></tr><tr><td>12/08</td><td>1</td><td>—</td></tr><tr><td>13/08</td><td>7</td><td>—</td></tr><tr><td>14/08</td><td>2</td><td>—</td></tr><tr><td>15/08</td><td>2</td><td>—</td></tr><tr><td>16/08</td><td>6</td><td>—</td></tr><tr><td>17/08</td><td>16</td><td>—</td></tr><tr><td>18/08</td><td>4</td><td>—</td></tr><tr><td>19/08</td><td>9</td><td>—</td></tr><tr><td>20/08</td><td>12</td><td>—</td></tr><tr><td>21/08</td><td>15</td><td>—</td></tr><tr><td>22/08</td><td>7</td><td>—</td></tr><tr><td>23/08</td><td>2</td><td>—</td></tr><tr><td>24/08</td><td>4</td><td>—</td></tr><tr><td>25/08</td><td>14</td><td>—</td></tr><tr><td>26/08</td><td>14</td><td>—</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>41</td><td>6</td></tr><tr><td>06/09</td><td>38</td><td>12</td></tr><tr><td>07/09</td><td>20</td><td>13</td></tr></tbody></table></details>
+    <details class="tl-table"><summary>Les données, en table</summary><table><thead><tr><th>jour</th><th>merges</th><th>entrées</th></tr></thead><tbody><tr><td>01/08</td><td>11</td><td>·</td></tr><tr><td>02/08</td><td>20</td><td>·</td></tr><tr><td>03/08</td><td>24</td><td>·</td></tr><tr><td>04/08</td><td>17</td><td>·</td></tr><tr><td>05/08</td><td>20</td><td>·</td></tr><tr><td>06/08</td><td>13</td><td>·</td></tr><tr><td>07/08</td><td>14</td><td>·</td></tr><tr><td>08/08</td><td>8</td><td>·</td></tr><tr><td>09/08</td><td>5</td><td>·</td></tr><tr><td>10/08</td><td>2</td><td>·</td></tr><tr><td>11/08</td><td>6</td><td>·</td></tr><tr><td>12/08</td><td>1</td><td>·</td></tr><tr><td>13/08</td><td>7</td><td>·</td></tr><tr><td>14/08</td><td>2</td><td>·</td></tr><tr><td>15/08</td><td>2</td><td>·</td></tr><tr><td>16/08</td><td>6</td><td>·</td></tr><tr><td>17/08</td><td>16</td><td>·</td></tr><tr><td>18/08</td><td>4</td><td>·</td></tr><tr><td>19/08</td><td>9</td><td>·</td></tr><tr><td>20/08</td><td>12</td><td>·</td></tr><tr><td>21/08</td><td>15</td><td>·</td></tr><tr><td>22/08</td><td>7</td><td>·</td></tr><tr><td>23/08</td><td>2</td><td>·</td></tr><tr><td>24/08</td><td>4</td><td>·</td></tr><tr><td>25/08</td><td>14</td><td>·</td></tr><tr><td>26/08</td><td>14</td><td>·</td></tr><tr><td>27/08</td><td>13</td><td>10</td></tr><tr><td>28/08</td><td>34</td><td>29</td></tr><tr><td>29/08</td><td>21</td><td>36</td></tr><tr><td>30/08</td><td>31</td><td>1</td></tr><tr><td>31/08</td><td>32</td><td>13</td></tr><tr><td>01/09</td><td>19</td><td>5</td></tr><tr><td>02/09</td><td>19</td><td>1</td></tr><tr><td>03/09</td><td>4</td><td>5</td></tr><tr><td>04/09</td><td>34</td><td>17</td></tr><tr><td>05/09</td><td>41</td><td>6</td></tr><tr><td>06/09</td><td>38</td><td>12</td></tr><tr><td>07/09</td><td>20</td><td>13</td></tr></tbody></table></details>
   </div>
   <div class="readings">
     <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours, moins de dix par jour, l'humain portant les instructions d'un siège à l'autre. Après, 320 en treize, vingt-cinq par jour. Les sièges ont changé en même temps que la gouvernance ; le doublement n'est donc pas à elle seule. Ce qui est à elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>
@@ -1248,9 +1262,17 @@ Mission #118 — #118 — [MISSION] Dashboard tiles keep their last reading whil
 <script>
 (function(){var D={"d":["2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05","2026-08-06","2026-08-07","2026-08-08","2026-08-09","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-15","2026-08-16","2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-22","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-29","2026-08-30","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-05","2026-09-06","2026-09-07"],"m":[11,20,24,17,20,13,14,8,5,2,6,1,7,2,2,6,16,4,9,12,15,7,2,4,14,14,13,34,21,31,32,19,19,4,34,41,38,20],"r":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,29,36,1,13,5,1,5,17,6,12,13]};var svgs=document.querySelectorAll('svg.tl');svgs.forEach(function(svg){var wrap=svg.closest('.tl-wrap');var tip=wrap.querySelector('.tl-tip');var L=wrap.dataset.merges,R=wrap.dataset.rules;
 svg.addEventListener('mousemove',function(e){var t=e.target;if(!t.classList.contains('hit')){tip.style.display='none';return;}var i=+t.dataset.i;var d=new Date(D.d[i]+'T00:00:00Z');
-tip.innerHTML='<b>'+d.toLocaleDateString(wrap.dataset.lang,{day:'numeric',month:'long',timeZone:'UTC'})+'</b>'+D.m[i]+' '+L+'<br>'+(i>=25?D.r[i]+' '+R:'—');
+tip.innerHTML='<b>'+d.toLocaleDateString(wrap.dataset.lang,{day:'numeric',month:'long',timeZone:'UTC'})+'</b>'+D.m[i]+' '+L+'<br>'+(i>=25?D.r[i]+' '+R:'·');
 var r=wrap.getBoundingClientRect();var x=e.clientX-r.left+14,y=e.clientY-r.top-10;tip.style.display='block';if(x+tip.offsetWidth>r.width-8)x=e.clientX-r.left-tip.offsetWidth-14;tip.style.left=x+'px';tip.style.top=y+'px';});
 svg.addEventListener('mouseleave',function(){tip.style.display='none';});});})();
+</script>
+<script>
+/* the timeline at 13 px: its labels scale against the drawing, and at phone width the table stands in for it */
+(function(){var svgs=document.querySelectorAll('svg.tl'),mq=window.matchMedia('(max-width:720px)');
+function fit(){svgs.forEach(function(v){var w=v.getBoundingClientRect().width;if(w)v.style.setProperty('--tl-k',(1080/w).toFixed(4));});}
+function list(){if(mq.matches)document.querySelectorAll('details.tl-table').forEach(function(d){d.open=true;});}
+fit();list();if(window.ResizeObserver){var o=new ResizeObserver(fit);svgs.forEach(function(v){o.observe(v);});}else{window.addEventListener('resize',fit);}
+if(mq.addEventListener)mq.addEventListener('change',list);})();
 </script>
 <script>
 (function(){var root=document.documentElement,K='guildwork-track';
@@ -1271,7 +1293,7 @@ function set(open){btn.setAttribute('aria-expanded',open?'true':'false');menu.hi
 btn.addEventListener('click',function(){set(menu.hidden);});
 menu.addEventListener('click',function(e){if(e.target.closest('a'))set(false);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
-window.addEventListener('resize',function(){if(window.innerWidth>720)set(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>879)set(false);});
 })();
 </script>
 </body>
