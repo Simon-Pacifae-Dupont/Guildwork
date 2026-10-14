@@ -132,3 +132,6 @@ main>section:first-child:not(:has(h2)){margin-bottom:0}
 /* ---- reach (October 2026, design-system « Size, contrast and reach »): a standalone control is at least 28 × 28 px, 44 × 44 on a phone; a link inside a sentence is exempt ---- */
 nav:not(.pager) a{min-height:28px;display:inline-flex;align-items:center}
 @media(max-width:640px){.bar .brand,.lang a,a.lang{min-height:44px}.lang a{min-width:44px;display:inline-flex;align-items:center;justify-content:center}}
+/* ---- weights (October 2026, design-system « Size, contrast and reach »): weights 400, 500 and 600, upright only ---- */
+:where(b,strong,th,h1,h2,h3,h4,h5,h6){font-weight:600}
+:where(em,i,cite,dfn,var,address){font-style:normal}
