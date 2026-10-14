@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lantern — le tableau, lu pour ce qu’il vous doit</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
   :root {--fs-xs:.8125rem;--fs-sm:.875rem;--fs-prose-2:.9375rem;--fs-md:1rem;--fs-lg:1.25rem;--fs-xl:1.5rem;--fs-figure:1.75rem;--fs-2xl:2rem;
     --ground:#F3EDE2; --surface:#FFFFFF; --surface-2:#FAF6EE;
@@ -40,7 +40,7 @@
   .wrap { max-width:1080px; margin:0 auto; padding:36px 24px 88px; }
   @media (max-width:640px){ .wrap{ padding:24px 16px 60px; } }
   h1,h2 { font-family:Archivo,"Arial Narrow",system-ui,sans-serif; text-wrap:balance; margin:0; }
-  h1 { font-size:clamp(var(--fs-figure),4.2vw,38px); font-weight:700; letter-spacing:-.02em; line-height:1.1; }
+  h1 { font-size:clamp(var(--fs-figure),4.2vw,38px); font-weight:600; letter-spacing:-.02em; line-height:1.1; }
   h2 { font-size:var(--fs-lg); font-weight:600; letter-spacing:-.01em; }
   h3 { font-family:Archivo,system-ui,sans-serif; font-size:var(--fs-prose-2); font-weight:600; margin:0; }
   p { margin:0; }
@@ -59,7 +59,7 @@
   .demo { margin-top:14px; border-left:3px solid var(--accent); background:var(--accent-soft); padding:10px 14px; font-size:var(--fs-xs); color:var(--ink); max-width:76ch; }
   .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0 38px; }
   .stat { background:var(--surface); padding:13px 15px; }
-  .stat .n { font-family:Archivo,sans-serif; font-size:var(--fs-xl); font-weight:700; line-height:1.1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+  .stat .n { font-family:Archivo,sans-serif; font-size:var(--fs-xl); font-weight:600; line-height:1.1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
   .stat .l { font-size:var(--fs-xs); color:var(--ink-2); margin-top:2px; }
   .stat.owed .n { color:var(--owed); } .stat.flight .n { color:var(--flight); } .stat.broken .n { color:var(--broken); }
   section { margin-bottom:40px; }
@@ -125,12 +125,15 @@
   .stat, .owed-item, tbody tr { transition:opacity .16s ease, transform .16s ease; }
   .focusing :is(.stat, .owed-item, tbody tr):not(.hot) { opacity:.18; }
   .src.stat { transform:translateY(-2px); }
-  :is(.stat, .owed-item, tbody tr):focus-visible { outline:1px solid var(--rule-2); outline-offset:2px; }
+  :is(.stat, .owed-item, tbody tr):focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
   @media (prefers-reduced-motion:reduce) { .stat, .owed-item, tbody tr { transition:none; } }
 /* ---- reach (October 2026, design-system « Size, contrast and reach »): a standalone control is at least 28 × 28 px, 44 × 44 on a phone; a link inside a sentence is exempt ---- */
 html{scrollbar-gutter:stable}
 .k a,.msg a,td.num a{display:inline-block;min-width:28px;min-height:28px;line-height:28px;margin-block:-5px;text-align:center}
 @media(max-width:640px){button.refresh{min-height:44px}.k a,.msg a,td.num a{min-width:44px;min-height:44px;line-height:44px;margin-block:-13px}}
+/* ---- weights and focus (October 2026, design-system « Size, contrast and reach »): weights 400, 500 and 600, upright only; a keyboard focus adds a 2 px outline ---- */
+:where(b,strong,th,h1,h2,h3,h4,h5,h6){font-weight:600}
+:where(em,i,cite,dfn,var,address){font-style:normal}
 </style>
 
 <div class="wrap">
