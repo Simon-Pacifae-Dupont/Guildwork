@@ -130,6 +130,7 @@
 /* ---- reach (October 2026, design-system « Size, contrast and reach »): a standalone control is at least 28 × 28 px, 44 × 44 on a phone; a link inside a sentence is exempt ---- */
 html{scrollbar-gutter:stable}
 .k a,.msg a,td.num a{display:inline-block;min-width:28px;min-height:28px;line-height:28px;margin-block:-5px;text-align:center}
+td.num a{white-space:nowrap}
 @media(max-width:640px){button.refresh{min-height:44px}.k a,.msg a,td.num a{min-width:44px;min-height:44px;line-height:44px;margin-block:-13px}}
 /* ---- weights and focus (October 2026, design-system « Size, contrast and reach »): weights 400, 500 and 600, upright only; a keyboard focus adds a 2 px outline ---- */
 :where(b,strong,th,h1,h2,h3,h4,h5,h6){font-weight:600}
