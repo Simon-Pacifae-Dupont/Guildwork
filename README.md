@@ -12,7 +12,7 @@
 **Governance kit for running parallel AI coding agents.**
 
 **[simon-pacifae-dupont.github.io/Guildwork](https://simon-pacifae-dupont.github.io/Guildwork/)**: the same thing, on one page.
-([Version française](https://simon-pacifae-dupont.github.io/Guildwork/fr/) of the page and of this README; the fifteen documents are in English.)
+([Version française](https://simon-pacifae-dupont.github.io/Guildwork/fr/) of the page and of this README; the sixteen documents are in English.)
 
 **Not a developer?** The same discipline (a contract before, a witness during, a closeout after, and a launcher that refuses to start what isn’t in order) holds a law firm, an agency or a support desk just as well. [That door is on the same page.](https://simon-pacifae-dupont.github.io/Guildwork/#no-code)
 
@@ -93,7 +93,7 @@ demonstration are newer, and reach the kit when they have stopped moving, which 
 ## What is in this repository
 
 ```
-docs/        fifteen documents, numbered in reading order
+docs/        sixteen documents, numbered in reading order
 templates/   the files to drop into a repository: issue form, pull request template,
              label recipe, role profiles, journal format, regenerable-paths manifest,
              findings register, changelog convention
@@ -125,6 +125,7 @@ brand/       the mark, the lockups, the design system, and every image the READM
 | [12 · Incidents](docs/12-incidents.md) | every failure that paid for a rule, and the rule — the register grows |
 | [13 · By the numbers](docs/13-by-the-numbers.md) | the real project's figures, domain removed |
 | [14 · The adoption path](docs/14-adoption-path.md) | what to do in what order, and what this pack does not contain |
+| [15 · A Windows workstation](docs/15-windows-workstation.md) | two shells, three encodings, no administrator rights, the launched session's PATH, agent CLIs and browsers that do not start |
 
 ## Fifteen minutes
 

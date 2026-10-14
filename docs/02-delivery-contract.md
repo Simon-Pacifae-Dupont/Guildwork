@@ -4,8 +4,9 @@
 three rules the end of a run owes its reader, and who disposes of what a run
 created.*
 
-The template is `templates/github/pull_request_template.md`. Every section
-is mandatory; a section that does not apply says so in one line rather than
+The template is `templates/github/pull_request_template.md`; a small
+delivery may use the light one instead (see *Small deliveries*, below). Every
+section is mandatory; a section that does not apply says so in one line rather than
 disappearing. A field that disappears from the template is a question a
 reviewer would otherwise have to ask by hand, which is why the governance
 check fails when one goes missing.
@@ -170,3 +171,64 @@ A claim that a failure, a count or a condition pre-existed a change names an
 explicit commit-ish, never `HEAD`. `HEAD` moves, so a claim anchored to it
 cannot be re-checked later. Prefer direct measurement in a clean tree at the
 named base commit over an exported artefact.
+
+## Small deliveries
+
+The full template asks eleven sections of every delivery. On a
+documentation change of a few files, much of what gets written there
+is read by nobody: a client installation measured it in October 2026. A
+template whose sections are filled for form teaches its authors that
+sections are filled for form, and the habit does not stay in the small pull
+requests. So the kit carries a second template,
+`templates/github/pull_request_template.small.md`, for small deliveries
+only.
+
+**It keeps what something reads, and nothing else.** The `Mission:` line,
+which a check parses and the closeout tool closes contracts from; **What
+changed**, the files and why, in a few lines; **How it was verified**, the
+commands and their output, or `pure copy: verified by hash`; **Execution
+parameters**, in one line, because a substitution is as invisible on a
+small delivery as on a large one and the rule that makes it visible was paid
+for (`12-incidents.md`, *The ungoverned resume*); **Merge authority**,
+delegated or the reserved gate named, with the witness and its verdict when
+the gate is reserved; and **Journal**, the path of the session's entry.
+Every one of those sections is mandatory, as in the full template.
+
+**When it applies** — all of these, not some:
+
+- the delivery is documentation, governance text that changes no rule, or a
+  pure copy of files that exist elsewhere;
+- it changes no code, no test, no migration, no CI configuration and no
+  template — the two templates included;
+- it touches a handful of files, the number spelled in the workflow
+  document and nowhere else.
+
+**When it never applies**, whatever the size:
+
+- any change to a rule of the repository — a gate, a condition, a label, a
+  field of the form, a sentence of the workflow document that says what must
+  or must not happen — whichever gate it sits under;
+- any code, however small, and any test.
+
+In doubt, the full template. Choosing the small one is a claim about the
+delivery, and the witness checks it like any other: a delivery that fails
+one of the conditions above is returned for the full template, not merged
+under the light one.
+
+**How GitHub selects it.** The full template stays at
+`.github/pull_request_template.md` and remains the default. The small one
+goes to `.github/PULL_REQUEST_TEMPLATE/small.md`, on the default branch like
+the other. GitHub offers no picker for pull request templates: the small one
+is selected by adding `?template=small.md` to the compare URL
+(`https://github.com/<owner>/<repo>/compare/<base>...<head>?template=small.md`),
+or by a contributor copying it as the body. An agent that opens pull
+requests through the API or `gh` gets no template either way, so it writes
+the body from the file it chose, and names the choice by the headings it
+uses.
+
+**The `Mission:` line is identical in both templates** — the same section
+heading, `## Mission`, the same grammar, the same three states, the same
+optional note. The check reads that section and nothing else, so it cannot
+tell which template a delivery used, and does not need to. The governance
+check that fails when a template loses a section reads both files, each
+against its own list.

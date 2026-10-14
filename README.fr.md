@@ -31,7 +31,7 @@ suite.
   <sub>Le tableau tel qu'il tourne, sur l'exemple fictif Lantern. Huit compteurs, un par état, vert compris, portant chacun <em>comment</em> il a été lu ; puis la seule décision qui revient au Product Owner et à personne d'autre, prise sur la page où elle se lit, le commentaire qu'elle publiera étant montré mot pour mot avant. Il ne fusionne jamais. <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/">Ouvrir la démonstration</a>. Figée, et elle le dit sur sa face. <a href="https://simon-pacifae-dupont.github.io/Guildwork/fr/demo/board/reader/">Le lecteur livré est ici</a>, lui aussi en français.</sub>
 </p>
 
-> **Les quinze documents du pack sont en anglais** et le restent : c'est la
+> **Les seize documents du pack sont en anglais** et le restent : c'est la
 > langue de travail du système, et une règle qui existe en deux versions
 > finit par exister en deux versions différentes. Cette page et
 > [la page de présentation](https://simon-pacifae-dupont.github.io/Guildwork/fr/)
@@ -106,7 +106,7 @@ auront cessé de bouger, c'est la règle que tout le reste ici applique.
 ## Ce que contient ce dépôt
 
 ```
-docs/        quinze documents, numérotés dans l'ordre de lecture
+docs/        seize documents, numérotés dans l'ordre de lecture
 templates/   les fichiers à poser dans un dépôt : formulaire d'issue, gabarit de
              pull request, recette d'étiquettes, profils de rôle, format de journal,
              manifeste des chemins régénérables, registre de constats, convention de changelog
@@ -138,6 +138,7 @@ brand/       la marque, les lockups, le design system, et chaque image que le RE
 | [12 · Les incidents](docs/12-incidents.md) | chaque défaillance qui a payé une règle, et la règle — le registre grandit |
 | [13 · Les chiffres](docs/13-by-the-numbers.md) | les chiffres réels du projet, domaine retiré |
 | [14 · Le chemin d'adoption](docs/14-adoption-path.md) | quoi faire dans quel ordre, et ce que ce pack ne contient pas |
+| [15 · Un poste Windows](docs/15-windows-workstation.md) | deux PowerShell, trois encodages, pas de droits d'administrateur, le PATH des sessions lancées, les CLI d'agents et les navigateurs qui ne démarrent pas |
 
 ## Quinze minutes
 

@@ -16,6 +16,7 @@ the list at the end of this page — from the corresponding page under
 |---|---|---|
 | `github/ISSUE_TEMPLATE/ai_mission.yml` | `.github/ISSUE_TEMPLATE/ai_mission.yml`, on the default branch | `docs/01-mission-contract.md` |
 | `github/pull_request_template.md` | `.github/pull_request_template.md`, on the default branch | `docs/02-delivery-contract.md` |
+| `github/pull_request_template.small.md` | `.github/PULL_REQUEST_TEMPLATE/small.md`, on the default branch; selected with `?template=small.md`, for small deliveries only | `docs/02-delivery-contract.md`, *Small deliveries* |
 | `labels.sh` | run once, by a human | `docs/03-label-taxonomy.md` |
 | `AI_TEAM.md` | the repository root | `docs/00-operating-model.md` |
 | `roles/*.md` | `docs/guild/roles/` | `docs/00-operating-model.md` |
