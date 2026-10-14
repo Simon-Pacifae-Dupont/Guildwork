@@ -202,7 +202,6 @@
   .tile,.decision,.proc,.track li,.items li{transition:opacity .16s ease,transform .16s ease}
   .focusing :is(.tile,.decision,.proc,.track li,.items li):not(.hot){opacity:.18}
   .src:is(.tile,.decision,.proc){transform:translateY(-2px)}
-  :is(.tile,.decision,.proc,.track li,.items li):focus-visible{outline:1px solid var(--line-strong);outline-offset:2px}
   @media (prefers-reduced-motion:reduce){.tile,.decision,.proc,.track li,.items li{transition:none}}
   /* le passage d'une langue à l'autre : même page, même adresse au miroir près */
   .langswitch{max-width:1180px;margin:0 auto;padding:0 22px 34px;color:var(--ink-2);
@@ -219,7 +218,7 @@
   /* le champ libre se tape : il porte sa consigne, et ce qu'on y ecrit devient la decision */
   .act .free{cursor:text}
   .act .free:empty::before{content:attr(data-placeholder); color:var(--ink-2)}
-  .act .free:focus{outline:none; border-color:var(--s); color:var(--ink)}
+  .act .free:focus{border-color:var(--s); color:var(--ink)}
   .act .free.typed{color:var(--ink)}
   .decision.settled .free{cursor:default; opacity:.5}
   .decision.settled .free.typed{opacity:1}
@@ -232,6 +231,10 @@ sup{font-size:var(--fs-xs)}
 .demoflag a{padding-block:5px}
 .langswitch a{display:inline-flex;align-items:center;min-height:28px}
 @media(max-width:640px){.langswitch a{min-height:44px}.row .go,.row .back{min-height:44px}.demoflag a{padding-block:13px}}
+/* ---- weights and focus (October 2026, design-system « Size, contrast and reach »): weights 400, 500 and 600, upright only; a keyboard focus adds a 2 px outline ---- */
+:where(b,strong,th,h1,h2,h3,h4,h5,h6){font-weight:600}
+:where(em,i,cite,dfn,var,address){font-style:normal}
+:focus-visible{outline:2px solid var(--amber,#E9A23B);outline-offset:3px}
 </style>
 </head>
 <body>
