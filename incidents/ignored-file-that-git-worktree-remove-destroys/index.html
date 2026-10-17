@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The ignored file that git worktree remove destroys — Paid for by an incident · Guildwork</title>
+<title>The ignored file that git worktree remove destroys · Paid for by an incident · Guildwork</title>
 <meta name="description" content="Condition 2 asks for untracked and ignored explicitly; the only exception is a committed manifest a person wrote down.">
-<meta property="og:title" content="The ignored file that git worktree remove destroys — Paid for by an incident · Guildwork">
+<meta property="og:title" content="The ignored file that git worktree remove destroys · Paid for by an incident · Guildwork">
 <meta property="og:description" content="Condition 2 asks for untracked and ignored explicitly; the only exception is a committed manifest a person wrote down.">
 <meta property="og:image" content="https://simon-pacifae-dupont.github.io/Guildwork/brand/github-social-preview.png">
 <meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/incidents/ignored-file-that-git-worktree-remove-destroys/">
@@ -42,7 +42,7 @@
 <main class="wrap">
   <section>
     <h2>What broke</h2>
-    <div class="card"><p>A gitignored file, or any untracked file under a common configuration, is destroyed by a <code>git worktree remove</code> that exits 0 with no <code>--force</code> — reproduced on two Git versions. An earlier revision of the tool&#x27;s own documentation claimed a backstop existed, and that claim is what made the hole invisible to the tool&#x27;s own review.</p></div>
+    <div class="card"><p>A gitignored file, or any untracked file under a common configuration, is destroyed by a <code>git worktree remove</code> that exits 0 with no <code>--force</code>, reproduced on two Git versions. An earlier revision of the tool&#x27;s own documentation claimed a backstop existed, and that claim is what made the hole invisible to the tool&#x27;s own review.</p></div>
   </section>
   <section>
     <h2>The rule it paid for</h2>

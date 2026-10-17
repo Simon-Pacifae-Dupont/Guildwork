@@ -1,8 +1,8 @@
-/* Guildwork — the operating canvas, drawn on the Lantern example.
+/* Guildwork: the operating canvas, drawn on the Lantern example.
    One layout, two languages. The mission path reads as a serpentine: left to
    right, then right to left, so every step between two lanes is a short drop
-   between neighbours, and the two loops that return — the register into the
-   next contract, the watcher waking a seat — run in margins that hold no text.
+   between neighbours, and the two loops that return (the register into the
+   next contract, the watcher waking a seat) run in margins that hold no text.
    Rule of the drawing: no wire crosses a word. */
 (function () {
   'use strict';
@@ -201,7 +201,7 @@
      The canvas is a production line, so it should read like one: when the
      system runs, you watch the work move through it, and a pipe with nothing
      in it is a pipe that has stopped. Every wire carries a train of parcels
-     at one constant speed — all filled since 18 September 2026, when the
+     at one constant speed, all filled since 18 September 2026, when the
      receive–deliver–wake route went live. Nothing moves
      under prefers-reduced-motion, and nothing is drawn at all in the
      exported image, which has to stay a still picture. */
@@ -228,7 +228,7 @@
         shape(w.kind, g);
         // 'paced', not 'linear': linear gives every path segment the same slice of
         // time, so a parcel crawls through a 14-pixel corner arc and races down a
-        // 300-pixel straight — they pile up in the bends. Paced is constant speed.
+        // 300-pixel straight. They pile up in the bends. Paced is constant speed.
         const m = el('animateMotion', {
           dur: dur.toFixed(3) + 's', repeatCount: 'indefinite', rotate: 'auto',
           calcMode: 'paced', begin: (-k * dur / n).toFixed(3) + 's'

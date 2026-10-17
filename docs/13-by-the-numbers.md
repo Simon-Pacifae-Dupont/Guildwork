@@ -2,7 +2,7 @@
 
 *What this governance ran on, how much went through it, and how fast. All
 figures are real. They were measured on 9 September 2026 over complete days
-only — 1 August to 7 September, thirty-eight days — and are frozen at that
+only (1 August to 7 September, thirty-eight days) and are frozen at that
 reading; the domain is
 deliberately not described beyond one sentence. One count keeps moving: the
 incident register, which grows with every new incident (`docs/12-incidents.md`).*
@@ -12,7 +12,7 @@ incident register, which grows with every new incident (`docs/12-incidents.md`).
 A Windows desktop application in Python, driving an external host
 process, with a full test suite of **13 155 tests** at the last complete
 run before measurement, on 8 September (12 100 two days earlier, 10 400 a
-week before that). One human — the Product Owner — who
+week before that). One human, the Product Owner, who
 holds the hardware, the product verdict and the merge to the release branch.
 Every line of code, test and governance document since early August 2026
 was written by AI seats under the contracts described in this pack.
@@ -23,8 +23,8 @@ was written by AI seats under the contracts described in this pack.
 |---|---|
 | role profiles | 8 |
 | harness options on the mission form | 7 |
-| execution harnesses in the current operating view | 3 — Claude Code, Grok Build and Codex CLI; each mission still names its role, model and effort |
-| architect seat | Claude Code — a session on the developer machine since 18 September 2026, holding the board: contracts, labels, rulings, the register, the routine merges and launches. It writes nothing in the tree, and the launcher strips its identity from every mission it starts |
+| execution harnesses in the current operating view | 3: Claude Code, Grok Build and Codex CLI; each mission still names its role, model and effort |
+| architect seat | Claude Code, a session on the developer machine since 18 September 2026, holding the board: contracts, labels, rulings, the register, the routine merges and launches. It writes nothing in the tree, and the launcher strips its identity from every mission it starts |
 
 ## The throughput
 
@@ -34,10 +34,10 @@ was written by AI seats under the contracts described in this pack.
 | … by the lead engineer seat | 501 |
 | … by the other AI seats that wrote one | 47 |
 | busiest day | 46 closed sessions |
-| mission contracts opened on the issue form | **344** in the 13 days to 7 September (26 August → 7 September) — about 26 a day |
-| pull requests merged in those 13 days | **320** — 24.6 a day, days counted in UTC |
+| mission contracts opened on the issue form | **344** in the 13 days to 7 September (26 August → 7 September), about 26 a day |
+| pull requests merged in those 13 days | **320**, 24.6 a day, days counted in UTC |
 | pull requests merged over the project's life | 561, of which 530 since the charter was adopted on 3 August |
-| deliveries closed unmerged — refused or superseded | 14, of 575 closed |
+| deliveries closed unmerged (refused or superseded) | 14, of 575 closed |
 | merged deliveries carrying a `Mission:` line | 345 |
 | standing concurrency ceiling | a project setting, any mix of writer and read-only, raised each time the governance had held at the previous one |
 
@@ -50,7 +50,7 @@ asked to remember is a defect.
 
 | | |
 |---|---|
-| labels | 28 — the seventeen-label mission taxonomy, three routing labels, eight workstream labels |
+| labels | 28: the seventeen-label mission taxonomy, three routing labels, eight workstream labels |
 | launcher conditions | 7 specified; the reference implementation currently refuses on 10 |
 | closeout conditions | 5, plus four refusals in the contract-closing mode |
 | register entries | five families; the governance family alone passed 150 entries |
@@ -67,7 +67,7 @@ asked to remember is a defect.
 team, whatever its number of seats, at twenty-five merges a day for thirteen days, with every merge behind a
 named gate, every session leaving a durable record, every substitution of
 model or effort surfaced in a durable artefact, and fourteen deliveries out
-of five hundred and seventy-five closed refused or superseded — with the
+of five hundred and seventy-five closed refused or superseded, with the
 refusal recorded on each.
 
 **The sober reading.** The same period produced the incidents that fill

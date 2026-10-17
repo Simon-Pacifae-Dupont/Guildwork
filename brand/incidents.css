@@ -1,4 +1,4 @@
-/* Guildwork — incident pages. Tokens and ladder: brand/design-system.md */
+/* Guildwork: incident pages. Tokens and ladder: brand/design-system.md */
 *{box-sizing:border-box}
 :root{--fs-xs:.8125rem;--fs-sm:.875rem;--fs-prose-2:.9375rem;--fs-md:1rem;--fs-lg:1.25rem;--fs-xl:1.5rem;--fs-figure:1.75rem;--fs-2xl:2rem;
  --ground:#0B1526;--surface:#0A1322;--strip:#14223A;--well:#070D18;
@@ -119,7 +119,7 @@ main>section:has(.grid):nth-of-type(odd){
 .grid .t{margin:0;font-size:var(--fs-lg);letter-spacing:-.01em;transition:color .16s}
 .grid .r{margin:0;font-size:var(--fs-sm)}
 .grid a:hover .t,.grid a:focus-visible .t{color:var(--amber-2)}
-.grid a:focus-visible{outline-offset:-2px}
+.grid a:focus-visible,.lang a:focus-visible{outline-offset:-2px}
 @media (max-width:760px){.grid a{grid-template-columns:minmax(0,1fr)}}
 /* the pager names the neighbours in the headline face */
 .pager{border-top:1px solid var(--line-strong)}

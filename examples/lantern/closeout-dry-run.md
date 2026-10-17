@@ -90,21 +90,21 @@ C:/repos/lantern-worktrees/wt-gate-title-audit        0c9de55 (detached HEAD)
 What the report says, worktree by worktree:
 
 - **`wt-dashboard-stale-reading`** is removable, and the tool still prints
-  what the removal destroys — the declared-regenerable group — because a run
+  what the removal destroys (the declared-regenerable group) because a run
   that silently omitted it would be back to inferring.
 - **`wt-device-calibration-panel`** has an open pull request. Until the
   rule changed, that satisfied condition 5; it no longer does, because a
   returned lot is resumed into exactly this directory.
 - **`wt-sync-export-retry`** is the worktree the launcher's `--list` flagged
   the day before: an open session marker, a dead process, and a commit only
-  its reflog knows. Three conditions refuse, and the first names the remedy
-  — run the exit command from that worktree. Deleting the marker would pass
+  its reflog knows. Three conditions refuse, and the first names the remedy:
+  run the exit command from that worktree. Deleting the marker would pass
   condition 1 and lose the journal that was never written.
 - **`wt-shell-headbar-tokens`** holds one file no commit anywhere has ever
   held. The tool cannot know whether it matters; it knows it is the only
   copy.
 - **`wt-gate-title-audit`** is a detached read-only review worktree made by
-  hand, reachable at HEAD — and its private reflog names two commits nothing
+  hand, reachable at HEAD, and its private reflog names two commits nothing
   on the remote contains. `git worktree remove` would delete that reflog
   with the worktree.
 
@@ -137,7 +137,7 @@ open pull requests read: 2 of a 200 window
 ```
 
 Three closures, one refusal quoting what it read. The hold on #114 is
-prose — a sentence in a ruling — and the tool matched it on one of the
+prose (a sentence in a ruling), and the tool matched it on one of the
 phrases listed in its source; a hold worded some other way would not have
 been seen, and the report says so. The plain run reads merged deliveries
 only; the other two refusals are what `--only-pr` answers when a person

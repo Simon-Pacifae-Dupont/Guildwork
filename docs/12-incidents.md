@@ -2,7 +2,7 @@
 
 *Every rule in this pack was bought by a failure on a real project, and
 most of them were bought within a week of each other. The failures are
-listed here — anonymised, without issue numbers, with the domain removed —
+listed here (anonymised, without issue numbers, with the domain removed)
 because a rule whose incident is unknown is a rule that gets relaxed by the
 first person who finds it inconvenient. The register is not closed: an
 incident enters it the day it pays for a rule of the kit, and the count on
@@ -15,7 +15,7 @@ Dates are kept where they say something about tempo.
 
 **A real test of the handover.** A session was closed, the context cleared
 and a new session opened on the same branch. Git state survived perfectly.
-The new session recovered the branch, the head, the pull request — and a
+The new session recovered the branch, the head, the pull request, and a
 global priority three sprints stale. An audit's root causes, its recommended
 next lot and the decision blocking it had to be reconstructed by hand from a
 journal, a pull request, the repository and old scratch directories; some
@@ -26,7 +26,7 @@ journal is read before the curated handover.
 
 **The completed next action.** A session opened on a branch with no journal
 entry, so entry fell back to an older entry whose next action read
-*"authorise phase 3"* — while `HEAD` was the merge commit that delivered
+*"authorise phase 3"*, while `HEAD` was the merge commit that delivered
 phase 3. The entry had not been superseded; it had been completed, by a
 session whose own entry was still sitting in an open pull request.
 → Precedence orders sources, not claims. A next action that observed Git
@@ -55,8 +55,8 @@ handover. No automation may read exit status as the outcome of a mission
 unless the tool makes that status true.
 
 **Twenty-five entries that said "none".** Seats that had checked and found
-nothing conversation-only wrote the word `none` into the declaration —
-twenty-two of them the bare word, fifteen on a single day — and each got
+nothing conversation-only wrote the word `none` into the declaration
+(twenty-two of them the bare word, fifteen on a single day), and each got
 exit 3, then spent a paragraph of its report explaining a tool defect.
 → Three states, told apart structurally: named, declared absent, undeclared.
 No string is matched.
@@ -66,7 +66,7 @@ No string is matched.
 **The 117 KB file.** A mission was written for an agent with no shell on the
 developer machine. Sixteen of seventeen findings were carried without
 difficulty; the seventeenth lived in a 117 KB test file, and the agent moves
-file content by retyping it through an API call — a vector that had already
+file content by retyping it through an API call: a vector that had already
 corrupted a project file earlier in the same mission, caught only by
 blob-hash verification.
 → A three-atom capability vocabulary; a mission declares what it requires
@@ -89,7 +89,7 @@ host it was launched on. No check anywhere could have seen either.
 **The screen.** The human's words: *"when the agent works on the app's
 geometry, does it have to manipulate the app's windows in the foreground?
 It floods my screen and often I can't do anything else."* And a mission
-that was foreground for a reason no window rule would have found — it drove
+that was foreground for a reason no window rule would have found: it drove
 the physical device through a capture harness and needed the operator's
 undivided attention.
 → The `Screen demand` field, three values and a duration, classified by
@@ -98,14 +98,14 @@ a window.
 
 **The composited capture.** A capture read the client area of a window
 through the platform's device context, which returns what is composited
-inside the window's rectangle — so an overlapping window put its own pixels
+inside the window's rectangle, so an overlapping window put its own pixels
 into the evidence, and a later capture run's occlusion refusal fired
 legitimately and wrote nothing.
 → *Exclusive foreground* is a measurement, not an implementation choice. A
 window pushed behind another is not a slower measurement; it is a false one.
 
 **The silent default agent.** Given a profile path that did not exist, the
-harness exited 0 with an empty stderr and ran the default agent — byte for
+harness exited 0 with an empty stderr and ran the default agent: byte for
 byte the control's system prompt. And the bare-name form of the flag loaded
 the profile headless and loaded nothing in the interactive terminal, with no
 failure line even in the CLI's own debug log.
@@ -116,11 +116,11 @@ names it.
 **The seat that could not execute.** The pack described the architect seat
 as a cloud session that could not run a command on the developer machine, and
 sold that as the property keeping it from becoming a second writer. Then a
-mission returned and had to wake the seat that wrote its contract — and
+mission returned and had to wake the seat that wrote its contract, and
 nothing wakes a cloud session; the wake reaches a session on the host. The
 seat moved to the host on 18 September 2026. The same day, one resumed
-mission inherited the seat's own session markers — its identity, its
-transcript setting, its messaging token — and a merge followed with no
+mission inherited the seat's own session markers (its identity, its
+transcript setting, its messaging token), and a merge followed with no
 identifiable author. The guarantee had not been replaced. It had only been
 lost.
 → A seat's safety property is a mechanism, never a location. The launcher
@@ -136,7 +136,7 @@ A commit prepared on those files would have published the previous version
 under a message describing the new one. The size caught it: the file on disk
 was 575 bytes short of the file that had been sent.
 → An acknowledgement is not a write. Every file put on a machine by a bridge
-is read back and compared to what was sent — size first, bytes after —
+is read back and compared to what was sent (size first, bytes after)
 before any command that depends on it is handed to the human. A second
 attempt goes by another route, never the same one again.
 
@@ -173,7 +173,7 @@ beside the constant. Documentation about a program is not the program.
 
 **The refusal that moved the mission.** Two read-only missions were refused
 because the harness has no read-only mode. Both then ran by hand under a
-planning mode — where they had no read-only enforcement either, *and* none
+planning mode, where they had no read-only enforcement either, *and* none
 of the conditions, no one-writer check, no governance pin and no session
 entry.
 → *A refusal does not prevent the mission; it moves it outside the gate.*
@@ -183,13 +183,13 @@ its report.
 **The ungoverned resume.** Two of four lots handled on one day were
 returned; both resumes ran outside the launcher, and at least one corrective
 pass executed on the CLI's default model rather than the model its contract
-declared. Nothing reported the substitution — no launcher involved, no
+declared. Nothing reported the substitution: no launcher involved, no
 contract to check against, no field for it in the report.
 → The `--resume` door; execution parameters mandatory in every report and
 every pull request.
 
 **The oldest return governed.** A lot returned twice carried two returns,
-and the reader took the first match on the order the API delivered — the
+and the reader took the first match on the order the API delivered: the
 oldest.
 → The newest return governs; the report names the one read and how many
 older ones were passed over.
@@ -199,7 +199,7 @@ directory and a relative filename in two clauses of one sentence. Three
 missions were resumed that day, each at the cost of a marker deleted by
 hand.
 → A refused resume prints the absolute path, the branch, every field the
-marker carries, and the remedy in order — the exit command first.
+marker carries, and the remedy in order, the exit command first.
 
 **The `###` inside the Objective.** A sub-heading written inside the
 Objective for readability ended the Objective, and the generated instruction
@@ -234,7 +234,7 @@ and the same enumeration took a search.
 `git worktree add` and then the launcher command for the same mission; the
 launcher's one-writer condition refused, correctly, because the worktree
 already existed.
-→ Launch instructions are the launcher's or they are manual — never both.
+→ Launch instructions are the launcher's or they are manual, never both.
 
 **Another mission's number.** A title carried another mission's number for
 a whole mission, and read as conforming at a glance.
@@ -243,7 +243,7 @@ matched as a shape.
 
 **The comment that set a field.** A `### Mode: read-only` heading in a
 comment took the whole heading as the field name, matched no label, and
-passed — while the generated instruction told the agent no comment had set a
+passed, while the generated instruction told the agent no comment had set a
 field. And when the check was tightened, transmission reports quoting the
 launcher's own contract block produced one refusal per line.
 → Condition 6 reads both spellings; a comment naming the value the body
@@ -253,7 +253,7 @@ checked instead of certifying the result.
 **Three closed contracts, relaunchable.** Three closed issues returned
 *contract OK* with nothing saying so; a second run of any of them would have
 produced a branch, a worktree and a delivery indistinguishable from a first.
-→ The closed-contract warning — appended after the conditions, belonging to
+→ The closed-contract warning: appended after the conditions, belonging to
 none of them, changing no exit code.
 
 **Both errors at once.** A live session was declared dead because it had
@@ -271,7 +271,7 @@ platform's store stub, and the launcher did not start.
 ## Delivery and disposal
 
 **Five lifecycle failures in a day.** Two pull requests were superseded and
-nothing said so — both relationships existed only in the head of whoever
+nothing said so: both relationships existed only in the head of whoever
 performed them. A refused pull request was left open, so the live board
 reported it for a day as a decision waiting for the human, who was about to
 take it a second time.
@@ -300,14 +300,14 @@ assembly check deliberately not wired into pull-request CI.
 
 **Twenty-nine issues closed by hand.** Closing keywords never fired in this
 topology, so one sweep closed twenty-nine issues whose work had shipped days
-earlier — and until then, *open* did not mean *not done*, and every count
+earlier. And until then, *open* did not mean *not done*, and every count
 taken off the board was wrong.
 → The closeout tool closes contracts from the merged delivery's `Mission:`
 line, with four refusals that are the deliverable.
 
 **The ignored file that `git worktree remove` destroys.** A gitignored
 file, or any untracked file under a common configuration, is destroyed by a
-`git worktree remove` that exits 0 with no `--force` — reproduced on two Git
+`git worktree remove` that exits 0 with no `--force`, reproduced on two Git
 versions. An earlier revision of the tool's own documentation claimed a
 backstop existed, and that claim is what made the hole invisible to the
 tool's own review.
@@ -316,7 +316,7 @@ exception is a committed manifest a person wrote down.
 
 **`??` misread as "absent from the repository".** In a worktree pinned at
 an old commit, an untracked path means *untracked at this commit*; every
-reader had read it as *absent from the repository* — a register entry, a
+reader had read it as *absent from the repository*: a register entry, a
 warning that three directories held the only copies of three journal
 entries, and then a whole mission contract, all on the false premise. Prose
 had recorded the lesson eight hours earlier.
@@ -324,15 +324,15 @@ had recorded the lesson eight hours earlier.
 each means.
 
 **The second lock.** Refusing the session directory as well as the marker
-inside it — because the exit command deletes the marker and leaves the
-empty directory — made every worktree that had ever hosted a closed session
+inside it (because the exit command deletes the marker and leaves the
+empty directory) made every worktree that had ever hosted a closed session
 refuse forever, for a directory containing nothing.
 → One condition per door; the manifest names the directory as regenerable
 and states the residual risk beside it.
 
 **Two figures for one commit.** The same commit reported ten thousand
 passed under the declared test command and six failures under an inherited
-environment variable that selected another platform backend — and both were
+environment variable that selected another platform backend, and both were
 reported as *the full suite*.
 → A gate line records the command as run, including any environment
 variable that selects a platform. Measure the merge result, not the branch
@@ -417,17 +417,17 @@ last seven days.
 check, and adds the row in the same lot where it can.
 
 **One frame in sixty.** The only user reported something on screen; the
-first response reached for reasons he might be mistaken — display scale, a
-driver, an update — none evidenced. He filmed it, and one frame in sixty
+first response reached for reasons he might be mistaken (display scale, a
+driver, an update), none evidenced. He filmed it, and one frame in sixty
 showed exactly what he had described.
 → When the only user reports what he sees, ask what the instrument missed.
 Where an observation cannot be reproduced, the finding is *not reproduced
-by this method*, named with the method — never *probably not there*.
+by this method*, named with the method, never *probably not there*.
 
 **The seat that was read from history.** A role profile named the wrong
 harness in the architect seat. The session that fixed it read the
-repository's own history — one commit naming a cloud session, a later one
-naming another — and chose the more recent. It published a profile naming a
+repository's own history (one commit naming a cloud session, a later one
+naming another) and chose the more recent. It published a profile naming a
 seat that had stopped existing that morning: the seat's charter, the living
 source, said in its first line where the seat now ran, and nobody had opened
 it. The false profile was on the public site for a day, in two languages.

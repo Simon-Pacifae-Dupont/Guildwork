@@ -1,5 +1,5 @@
 <!--
-Body of the issue titled "Unowned findings register — things that are true,
+Body of the issue titled "Unowned findings register: things that are true,
 unassigned, and currently kept alive only by someone re-reading a closed
 issue". One such issue per repository, kept open for the life of the project.
 Entries are added by editing the body; rulings and strike-throughs are edits
@@ -9,8 +9,8 @@ comments to know what is still alive.
 
 ## What this is
 
-A register of findings that are **established** — measured, reviewed, or ruled
-— and that **no mission owns**. Nothing here is a mission. Each entry is a
+A register of findings that are **established** (measured, reviewed, or ruled)
+and that **no mission owns**. Nothing here is a mission. Each entry is a
 candidate for one, or for an explicit decision not to.
 
 It exists because a board sweep closes issues, and each closure otherwise ends
@@ -40,14 +40,14 @@ makes registers untrustworthy.
 
 **An entry has a key, a claim, a reason it matters and a source.** The key is
 a family letter and a number that is never reused (`T1`, `G12`); the source is
-a permalink — a comment, a report section, a file and line — so that a reader
+a permalink (a comment, a report section, a file and line) so that a reader
 can check the claim rather than trust the register.
 
 ---
 
 ## Tooling and CI
 
-**T1 — <one-line claim>.**
+**T1: <one-line claim>.**
 <Why it is true, what it costs, and why no mission owns it yet.>
 *Source:* <permalink>.
 
@@ -55,7 +55,7 @@ can check the claim rather than trust the register.
 
 ## Product and UX debt
 
-**P1 — <one-line claim>.**
+**P1: <one-line claim>.**
 <...>
 *Source:* <permalink>.
 
@@ -63,7 +63,7 @@ can check the claim rather than trust the register.
 
 ## Host and measurement
 
-**H1 — <one-line claim>.**
+**H1: <one-line claim>.**
 <...>
 *Source:* <permalink>.
 
@@ -71,7 +71,7 @@ can check the claim rather than trust the register.
 
 ## Governance
 
-**G1 — <one-line claim>.**
+**G1: <one-line claim>.**
 <...>
 *Source:* <permalink>.
 
@@ -85,11 +85,11 @@ The register carries them because a ruling recorded on a closed issue is a
 ruling nobody re-reads.
 -->
 
-**K1 — <the ruling, in one sentence>.** Ruled by <seat>, <date>, at <permalink>.
+**K1: <the ruling, in one sentence>.** Ruled by <seat>, <date>, at <permalink>.
 
 ---
 
-## Tracked elsewhere — deliberately not duplicated here
+## Tracked elsewhere: deliberately not duplicated here
 
 | Finding | Where |
 |---|---|

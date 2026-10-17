@@ -4,8 +4,8 @@
 contains and what it does not, and what to decide before the first mission.*
 
 Guildwork is a demonstration, not a product. What is in this repository is
-the shape of the system — contracts, forms, vocabulary, and the
-specification of the three tools — precisely enough to audit. What is not in
+the shape of the system (contracts, forms, vocabulary, and the
+specification of the three tools) precisely enough to audit. What is not in
 it is the code of the tools, the day-one configuration of a project's seats,
 and the month of incidents that made the rules stick. Those are the work.
 
@@ -13,12 +13,12 @@ and the month of incidents that made the rules stick. Those are the work.
 
 | In the pack | Not in the pack |
 |---|---|
-| the mission form and the pull request template, ready to drop in | the launcher, the closeout tool, the entry/exit commands — specified in `05`, `06`, `07`, not shipped |
+| the mission form and the pull request template, ready to drop in | the launcher, the closeout tool, the entry/exit commands: specified in `05`, `06`, `07`, not shipped |
 | the label recipe, twenty-eight labels in three families | the governance check, the mission-line check, the title audit, the changelog assembler |
 | eight role profiles and the seat model | a team charter (the document the profiles point at) written for your team |
-| the journal format and the continuity contract | the measured capability table for your seats — every cell has to be observed, on your machines |
+| the journal format and the continuity contract | the measured capability table for your seats: every cell has to be observed, on your machines |
 | the findings-register template and a filled example | the event watcher and its adapters |
-| the regenerable-paths manifest with its reasoning | the render checks, the board schema, the token scopes — the human-only setup |
+| the regenerable-paths manifest with its reasoning | the render checks, the board schema, the token scopes: the human-only setup |
 | the worked Lantern mission, end to end | your own first incidents |
 
 ## The order, and why it is this order
@@ -30,8 +30,8 @@ by hand for a week and learn where its own incidents are. A team that
 installs the launcher first argues with the launcher.
 
 **2. Put the contract on the issue form and the delivery on the pull
-request template.** Both are structural from day one — a field that
-disappears is a question a reviewer has to ask by hand — and both resolve
+request template.** Both are structural from day one (a field that
+disappears is a question a reviewer has to ask by hand), and both resolve
 from the default branch, so decide the branch topology first and record the
 release-target guard beside it.
 
@@ -40,8 +40,8 @@ architect seat, always. Decide who the architect seat is before the first
 mission: on the source project it is a Claude Code session on the
 developer machine that holds the board, runs the routine launches and
 merges, and writes nothing in the tree; the launcher strips its session
-markers from every mission it starts. That division — the architect holds
-the board, the human holds the verdict and every irreversible act — is the
+markers from every mission it starts. That division (the architect holds
+the board, the human holds the verdict and every irreversible act) is the
 single rule that removed the human from the message path.
 
 **4. Start the journal and the continuity contract.** One richer file
@@ -56,12 +56,12 @@ table enforces the guess faithfully.
 
 **6. Install the launcher, and route every mission through it.** Seven
 conditions; refuse and name which. Run it `--dry-run` on the existing board
-first and read what it refuses — on the source project the dry run over the
+first and read what it refuses: on the source project the dry run over the
 back catalogue is what found half the contract-writing rules.
 
 **7. Install the closeout tool, and let it refuse.** Dry run by default. On
 a healthy machine most worktrees refuse, and reading why is how the
-regenerable-paths manifest gets written — by a person, from what the tool
+regenerable-paths manifest gets written, by a person, from what the tool
 found, never from a category.
 
 **8. Open the register at the first board sweep**, and rule on every entry
@@ -95,6 +95,6 @@ Installing this on a repository, adapting the vocabulary to a team's own
 workstreams and seats, measuring the capability table on the team's
 machines, writing the launcher and closeout against the team's harnesses,
 and running the first two weeks of missions alongside the team until the
-rules are theirs — that is the service the author offers, and it is the
+rules are theirs. That is the service the author offers, and it is the
 reason the tools are described here rather than shipped. The contact is in
 the `README`.

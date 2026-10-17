@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Guildwork — the label recipe.
+# Guildwork: the label recipe.
 #
 # Three families, and only the first is capped. The mission taxonomy is
 # seventeen labels and no more: one marker, one per role profile under
@@ -13,7 +13,7 @@
 # two different acts.
 #
 # `gh label create` fails on a label that already exists; use `gh label edit`
-# for those — and reconcile any description written by hand before
+# for those, and reconcile any description written by hand before
 # overwriting it, or it is lost.
 #
 # Run from the repository, or pass --repo <owner>/<name> to every line.

@@ -1,4 +1,4 @@
-# PR #124 — #118 — Dashboard tiles keep their last reading while the device bridge reconnects
+# PR #124: #118 Dashboard tiles keep their last reading while the device bridge reconnects
 
 *The pull request body, as the seat filled the template. The `Mission:`
 line is the first thing the mission-line check reads; every other section
@@ -25,20 +25,20 @@ declares; no corrective pass.
 
 ## Files changed
 
-- **Dashboard model** — `tile_model.py`: `TileReading` gains `taken_at` and
+- **Dashboard model** (`tile_model.py`): `TileReading` gains `taken_at` and
   `stale`; stale is set per tile on `DISCONNECTED`, cleared per tile on the
   first fresh reading after `CONNECTED`.
-- **Dashboard widget** — `tiles.py`: stale style and the `stale since
+- **Dashboard widget** (`tiles.py`): stale style and the `stale since
   HH:MM:SS` badge, rendered from the reading's own timestamp.
-- **Tests** — `tests/dashboard/test_tiles_stale.py`, new, 11 tests, two of
+- **Tests**: `tests/dashboard/test_tiles_stale.py`, new, 11 tests, two of
   them under the `geometry` marker.
-- **Changelog fragment** — `docs/changelog.d/118-dashboard-stale-reading.md`.
-- **Glossary** — one row added, *stale (Dashboard)*, per the name check.
-- **Journal** — `docs/guild/journal/20260904T151806Z-claude-code-c41d9e2.md`.
+- **Changelog fragment**: `docs/changelog.d/118-dashboard-stale-reading.md`.
+- **Glossary**: one row added, *stale (Dashboard)*, per the name check.
+- **Journal**: `docs/guild/journal/20260904T151806Z-claude-code-c41d9e2.md`.
 
 Nothing under `src/lantern/bridge/`.
 
-## Validation — run
+## Validation: run
 
 | Command | Against | Result | Verdict |
 |---|---|---|---|
@@ -52,11 +52,11 @@ No pre-existing failures: base `3f9c2d1` runs the full suite at 1 212
 passed, 1 xfailed.
 
 The pull request head at merge is `a9f3c10`, the journal commit on top of
-`c41d9e2`: re-verified with `git diff --stat c41d9e2 a9f3c10` — one file
-under `docs/guild/journal/`, no code — so the gate figure measured at
+`c41d9e2`: re-verified with `git diff --stat c41d9e2 a9f3c10` (one file
+under `docs/guild/journal/`, no code), so the gate figure measured at
 `e07a55b` describes the merged object.
 
-## Validation — not run
+## Validation: not run
 
 nothing skipped
 
@@ -73,13 +73,13 @@ nothing skipped
 ## Safety and governance invariants
 
 - [x] No product, runtime or safety code touched beyond the mission scope
-- [x] No mass staging — explicit paths only, staged set audited before commit
-- [x] One writer — no second writer and no unauthorized subagent
+- [x] No mass staging: explicit paths only, staged set audited before commit
+- [x] One writer: no second writer and no unauthorized subagent
 - [x] Scope matches the mission issue
 
 ## Residual risks
 
-- Badge time is shown in the reading's zone, not the viewer's — matters only
+- Badge time is shown in the reading's zone, not the viewer's: matters only
   for exports read on another machine; Sync's, not this lot's. Reported for
   the register in the transmission report.
 
@@ -90,5 +90,5 @@ nothing skipped
 
 ## Report target
 
-Chief Architect, as a comment on #118 — posted, with exit evidence appended
+Chief Architect, as a comment on #118: posted, with exit evidence appended
 after guild-bye.

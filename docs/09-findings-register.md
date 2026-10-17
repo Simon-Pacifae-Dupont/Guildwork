@@ -23,7 +23,7 @@ where every seat already reads, because its body can be edited by the
 architect seat without a pull request, and because a permalink to a comment
 on it is a citation every other document can carry. On the source project
 the workflow document, the capability document and the launcher's own source
-cite register entries by key — `G7`, `H2`, `K1` — the way a legal text
+cite register entries by key (`G7`, `H2`, `K1`) the way a legal text
 cites a precedent.
 
 ## The rule that keeps it from becoming a graveyard
@@ -44,28 +44,28 @@ be declined rather than carried a fourth time. Carrying a finding
 indefinitely is a decision to ignore it, made without saying so.
 
 **Nothing is added that already has an open issue.** Duplication is what
-makes registers untrustworthy. A closing table, *tracked elsewhere —
+makes registers untrustworthy. A closing table, *tracked elsewhere:
 deliberately not duplicated here*, names the findings that live on their own
 issue and where.
 
 ## The shape of an entry
 
 ```
-**G12 — a routing label left in place is read as ownership, and it is not.**
+**G12: a routing label left in place is read as ownership, and it is not.**
 A measurement over thirty-three routes found five useless dispatches, every
 one traced to a routing label used as a seat-marker. No code lot fixes it;
 a seat that owns an object records that in the issue.
 *Source:* <permalink to the report section>.
 ```
 
-Four parts, always: a **key** — a family letter and a number never reused —
+Four parts, always: a **key** (a family letter and a number never reused),
 a **claim** in one sentence, the **reason it matters** in a few, and a
 **source** that is a permalink, so a reader can check the claim rather than
 trust the register. The families are whatever the project's findings
 actually fall into; on the source project they are tooling and CI (`T`),
 product and UX debt (`P`), host and measurement (`H`), governance (`G`), and
 a fifth family, policies in force (`K`), for rulings that are not findings
-but that every seat must apply — a ruling recorded on a closed issue is a
+but that every seat must apply: a ruling recorded on a closed issue is a
 ruling nobody re-reads.
 
 An entry states its own epistemic status. *"Recorded as carried by lot X. I
@@ -84,7 +84,7 @@ whole reason the register is worth keeping honestly.
   decision whose author is unclear cannot be revisited; a rule whose
   incident is unclear cannot be relaxed safely.
 - A **board sweep** walks the register top to bottom: each live entry is
-  turned into a mission, declined with a reason, or carried — and a third
+  turned into a mission, declined with a reason, or carried. And a third
   carry is a decline.
 - The register **never carries a mission's own work**: an entry is a
   finding, not a to-do, and the day it becomes a to-do it becomes an issue.
@@ -94,6 +94,6 @@ whole reason the register is worth keeping honestly.
 Not a backlog: a backlog is a queue of things to do, and the register holds
 things that are true. Not a changelog: a changelog records what changed, and
 the register records what was found and not yet acted on. Not a decision
-log: rulings live where they were made — on the issue, in the document they
-amend — and the register's `K` family only points at the ones every seat
+log: rulings live where they were made (on the issue, in the document they
+amend), and the register's `K` family only points at the ones every seat
 must apply.

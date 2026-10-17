@@ -1,4 +1,4 @@
-/* Guildwork — the operating canvas. Ground, ink and elevation are the site's
+/* Guildwork: the operating canvas. Ground, ink and elevation are the site's
    (brand/design-system.md); the four wire colours are roles, not states:
    control blue for the mission path, amber for the learning loop, red for a
    named refusal, teal dashed for what is next and not active yet. */
@@ -70,7 +70,7 @@ text.wlab{fill:var(--ink-2);font-family:"IBM Plex Mono",monospace;font-size:var(
 .wlab-bg{fill:var(--surface);stroke:rgba(43,59,87,.7);stroke-width:.8px}
 
 /* focus: hover or tab a card, its path stays lit and the rest steps back */
-/* packets — the work itself, moving. A filled parcel where something runs
+/* packets: the work itself, moving. A filled parcel where something runs
    today; an outline on the path that is drawn but not yet active. */
 svg.wires.running path.wire{marker-end:none}
 .pkt .body{fill:var(--control);stroke:none}

@@ -25,7 +25,7 @@
     --s-done:#78C48C;     --s-done-tint:#203637;
     --s-broken:#EC8A79;   --s-broken-tint:#372B33;
 
-    /* WORKSTREAMS. Panel frame only — never a row. Muted against the states. */
+    /* WORKSTREAMS. Panel frame only, never a row. Muted against the states. */
     --w-device:#88A88F; --w-sync:#80B8B6; --w-dashboard:#79A7BD;
     --w-gate:#B2AF8C;   --w-watcher:#B797B2; --w-governance:#A6ACCF;
 
@@ -263,7 +263,7 @@ sup{font-size:var(--fs-xs)}
   </div>
 
   <div class="demoflag">
-    <b>Une démonstration, sur l’exemple fictif Lantern.</b> La carte de décision répond : choisissez ou écrivez, et la page enregistre le choix devant vous. Elle n’écrit nulle part et ne fusionne jamais. Ce que le pack publie aujourd’hui, c’est le <em>lecteur</em> du tableau, <code>templates/board/board.html</code>, qui lit un vrai dépôt par le connecteur GitHub du lecteur lui-même ; <a href="reader/">sa démonstration est ici</a>. La lecture par l’hôte et le chemin de décision montrés sur cette page sont plus récents que ce gabarit, et tournent sur le dépôt où tout ceci a été construit. Ils rejoindront le pack quand ils auront cessé de bouger — c’est la règle que suit tout le reste de ce pack.</div>
+    <b>Une démonstration, sur l’exemple fictif Lantern.</b> La carte de décision répond : choisissez ou écrivez, et la page enregistre le choix devant vous. Elle n’écrit nulle part et ne fusionne jamais. Ce que le pack publie aujourd’hui, c’est le <em>lecteur</em> du tableau, <code>templates/board/board.html</code>, qui lit un vrai dépôt par le connecteur GitHub du lecteur lui-même ; <a href="reader/">sa démonstration est ici</a>. La lecture par l’hôte et le chemin de décision montrés sur cette page sont plus récents que ce gabarit, et tournent sur le dépôt où tout ceci a été construit. Ils rejoindront le pack quand ils auront cessé de bouger : c’est la règle que suit tout le reste de ce pack.</div>
 
 
   <section class="sec">
@@ -278,19 +278,19 @@ sup{font-size:var(--fs-xs)}
         <span class="tag">gate:po</span>
         <span class="rel">livre la PR #133</span>
       </div>
-      <p class="issueline">#131 — Le dialogue avec le contrôleur retente avec un délai borné</p>
+      <p class="issueline">#131 Le dialogue avec le contrôleur retente avec un délai borné</p>
       <p>Trois reprises avec un délai borné, et la quatrième rapporte au lieu de retenter. Le siège a mesuré la panne avant de la réparer : le contrôleur a répondu à la deuxième tentative dans onze exécutions sur douze, et jamais à la quatrième.</p>
 
       <div class="act">
         <div>
           <p class="lbl">Recommandation</p>
-          <p class="reco"><b>Approuver la livraison</b> — la porte a été atteinte, et elle s’actionne depuis cette carte plutôt que de se lire dans un diff.</p>
+          <p class="reco"><b>Approuver la livraison</b> : la porte a été atteinte, et elle s’actionne depuis cette carte plutôt que de se lire dans un diff.</p>
         </div>
         <div>
           <p class="lbl">Choisir</p>
           <div class="opts">
-            <div class="opt on" data-k="act"><span class="k">approuver</span><span>Approuver la livraison — pose <span class="mono">gate:po-approved</span></span></div>
-            <div class="opt" data-k="hold"><span class="k">garder</span><span>Pas encore — la porte reste la mienne</span></div>
+            <div class="opt on" data-k="act"><span class="k">approuver</span><span>Approuver la livraison (pose <span class="mono">gate:po-approved</span>)</span></div>
+            <div class="opt" data-k="hold"><span class="k">garder</span><span>Pas encore, la porte reste la mienne</span></div>
           </div>
         </div>
         <div>
@@ -310,7 +310,7 @@ Gardé par le Product Owner : gate:po n’est pas doublé de
 gate:po-approved, donc la tâche horaire ne verra pas cette
 livraison, et la décision reste la sienne.</pre>
           <pre data-for="write" hidden></pre>
-          <p class="also">Publié sur l’issue au nom de <b>simon</b>. Et <span class="mono">gate:po</span> gagne <span class="mono">gate:po-approved</span> à côté de lui — c’est l’étiquette que lit la tâche horaire, et c’est elle qui fusionne. Cette page enregistre une décision ; elle ne fusionne jamais.</p>
+          <p class="also">Publié sur l’issue au nom de <b>simon</b>. Et <span class="mono">gate:po</span> gagne <span class="mono">gate:po-approved</span> à côté de lui : c’est l’étiquette que lit la tâche horaire, et c’est elle qui fusionne. Cette page enregistre une décision ; elle ne fusionne jamais.</p>
         </div>
         <div class="row">
           <div class="go pressed">Écrire ceci</div>
@@ -352,11 +352,11 @@ livraison, et la décision reste la sienne.</pre>
       </div>
       <div class="agebar">
         <span class="badge s-run">lecture fraîche</span>
-        <span>Lu il y a 40 s (11:12:31), seuil 90 min. Passé ce seuil, les marques d’exécution s’éteignent d’elles-mêmes et les deux compteurs qui en dépendent affichent <span class="mono">?</span> — une page qui ne voit pas les processus ne doit jamais affirmer qu’un processus est vivant.</span>
+        <span>Lu il y a 40 s (11:12:31), seuil 90 min. Passé ce seuil, les marques d’exécution s’éteignent d’elles-mêmes et les deux compteurs qui en dépendent affichent <span class="mono">?</span>, car une page qui ne voit pas les processus ne doit jamais affirmer qu’un processus est vivant.</span>
       </div>
 
       <div class="trackwrap">
-        <h4>Ordre du banc — 3 choisis à la main le 6 septembre, non déduits</h4>
+        <h4>Ordre du banc : 3 choisis à la main le 6 septembre, non déduits</h4>
         <ul class="track">
           <li class="s-next"><span class="who"><span class="rank">1</span>#126</span><span class="why">le lanceur nomme la capacité qu’il n’a pas pu satisfaire</span></li>
           <li class="s-next"><span class="who"><span class="rank">2</span>#116</span><span class="why">attend que #126 soit <i>posé</i></span></li>
@@ -364,10 +364,10 @@ livraison, et la décision reste la sienne.</pre>
         </ul>
       </div>
       <div class="trackwrap">
-        <h4>Prises du banc hors de cet ordre — 2, dont 1 non lancée</h4>
+        <h4>Prises du banc hors de cet ordre : 2, dont 1 non lancée</h4>
         <ul class="track">
           <li class="s-next"><span class="who">#103</span><span class="why">sonde de firmware, collision d’écriture avec #124</span></li>
-          <li class="s-you"><span class="who">#97</span><span class="why">non lancée — son démarrage est votre porte</span></li>
+          <li class="s-you"><span class="who">#97</span><span class="why">non lancée : son démarrage est votre porte</span></li>
         </ul>
       </div>
     </div>
@@ -386,7 +386,7 @@ livraison, et la décision reste la sienne.</pre>
             <span class="t">Le dialogue avec le contrôleur retente avec un délai borné</span>
             <span class="marks"><span class="badge s-you">à vous</span><span class="tag">gate:po</span><span class="rel">livre la PR #133</span></span></span></li>
           <li class="s-next"><span class="n">#103</span><span class="body">
-            <span class="t">Ce que coûte vraiment une sonde de firmware — l’instrument d’abord</span>
+            <span class="t">Ce que coûte vraiment une sonde de firmware : l’instrument d’abord</span>
             <span class="blocked">collision d’écriture avec #124 sur le même fichier</span>
             <span class="marks"><span class="badge s-next">prochain</span></span></span></li>
         </ul>
@@ -399,7 +399,7 @@ livraison, et la décision reste la sienne.</pre>
             <span class="marks"><span class="badge s-run">en cours</span><span class="rel">issue de #135</span></span></span></li>
           <li class="s-broken"><span class="n">#138</span><span class="body">
             <span class="t">Le travailleur de synchro se reconnecte après la mise en veille de l’appareil</span>
-            <span class="blocked">contrôles rouges sur la livraison — elle n’atteint pas la tâche horaire tant qu’ils ne passent pas</span>
+            <span class="blocked">contrôles rouges sur la livraison : elle n’atteint pas la tâche horaire tant qu’ils ne passent pas</span>
             <span class="marks"><span class="badge s-broken">cassé</span><span class="rel">livre la PR #140</span></span></span></li>
           <li class="s-done"><span class="n">#129</span><span class="body">
             <span class="t">Le manifeste d’export nomme la fenêtre de relevés qu’il couvre</span>
@@ -414,7 +414,7 @@ livraison, et la décision reste la sienne.</pre>
 <p class="langswitch"><a href="../../../demo/board/" hreflang="en" lang="en">English version</a></p>
 
 <script>
-/* Focus lights the thread, and dims the rest — brand/design-system.md.
+/* Focus lights the thread, and dims the rest (brand/design-system.md).
    Hover or focus one object: what shares its state (from a counter) or one of
    its numbers (from a row) stays lit; everything else steps back. */
 (function () {

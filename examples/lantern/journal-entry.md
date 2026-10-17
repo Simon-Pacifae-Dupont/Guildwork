@@ -7,7 +7,7 @@ seat's, unbounded, and only the ones with content appear.*
 ---
 
 ```
-# Guild Handover — Lead Software Engineer — 2026-09-04T15:18:06Z
+# Guild Handover: Lead Software Engineer, 2026-09-04T15:18:06Z
 
 Branch: feature/dashboard-stale-reading @ c41d9e2
 Entry snapshot: resolved
@@ -21,7 +21,7 @@ Dashboard tiles survive a bridge drop with their last reading and its age (#118)
 ## Confirmed
 
 - `BridgeState` carries the last reading's timestamp on the tile model side
-  (`TileReading.taken_at`), so the badge never reads the wall clock — stop
+  (`TileReading.taken_at`), so the badge never reads the wall clock. Stop
   condition 2 did not fire.
 - The stale badge fits every tile of the reference layout at 1 280 × 800
   under the real desktop platform, 6 px to spare on the tightest tile
@@ -30,15 +30,15 @@ Dashboard tiles survive a bridge drop with their last reading and its age (#118)
 
 ## Changed
 
-- src/lantern/dashboard/tile_model.py — TileReading.taken_at, TileReading.stale, per-tile stale set/clear on bridge transitions
-- src/lantern/dashboard/tiles.py — stale style, `stale since HH:MM:SS` badge
-- tests/dashboard/test_tiles_stale.py — new, 11 tests
-- docs/changelog.d/118-dashboard-stale-reading.md — new
-- docs/GLOSSARY.md — one row, *stale (Dashboard)*
+- src/lantern/dashboard/tile_model.py: TileReading.taken_at, TileReading.stale, per-tile stale set/clear on bridge transitions
+- src/lantern/dashboard/tiles.py: stale style, `stale since HH:MM:SS` badge
+- tests/dashboard/test_tiles_stale.py: new, 11 tests
+- docs/changelog.d/118-dashboard-stale-reading.md: new
+- docs/GLOSSARY.md: one row, *stale (Dashboard)*
 
 ## Decisions
 
-- The badge shows the reading's own time, not the disconnection time — the
+- The badge shows the reading's own time, not the disconnection time. The
   contract's criterion 1, and the reason: an operator wants to know how old
   the number is, not when the cable went.
 - No global offline banner: named out of scope by the contract, carried to
@@ -51,12 +51,12 @@ Dashboard tiles survive a bridge drop with their last reading and its age (#118)
   changed, because the Dashboard sense is the one an operator says aloud.
 - `wt-sync-export-retry` carries an open session marker with no process and
   one commit no remote ref contains (entry census). Not this lot's; reported.
-- The geometry marker run takes 41 s on this host with windows appearing —
+- The geometry marker run takes 41 s on this host with windows appearing:
   the contract's `Screen demand` (under a minute, once) was accurate.
 
 ## Uncertain
 
-- Whether the stale style reads correctly under the high-contrast theme —
+- Whether the stale style reads correctly under the high-contrast theme:
   not measured; the geometry run covers size, not contrast. A UX/UI seat
   question.
 
@@ -97,7 +97,7 @@ session exists only in the conversation.
 
 ---
 
-The exit command returned **3** — `EXIT_INCOMPLETE` — because at the
+The exit command returned **3** (`EXIT_INCOMPLETE`) because at the
 moment it returned the entry was written and valid but not yet reachable
 from a pushed ref; it never pushes. The seat committed the entry by explicit
 path on the feature branch, pushed by explicit refspec, proved reachability

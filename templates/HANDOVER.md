@@ -1,4 +1,4 @@
-# Curated handover — Lantern
+# Curated handover: Lantern
 
 *Template. Goes to `docs/guild/HANDOVER.md` in the adopting repository.
 Every role profile lists it first in its mandatory reading, and `guild-hi`

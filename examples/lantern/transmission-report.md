@@ -1,4 +1,4 @@
-# Transmission report — #118
+# Transmission report: #118
 
 *Posted by the seat as a comment on the issue, before the exit command. This
 is the artefact a reviewer reads first; a report missing any of the eight
@@ -7,7 +7,7 @@ missing a template section is rejected.*
 
 ---
 
-## Transmission report — mission #118, Lead Software Engineer (Claude Code)
+## Transmission report: mission #118, Lead Software Engineer (Claude Code)
 
 **Delivery:** PR #124, `feature/dashboard-stale-reading` → `develop`, head
 `c41d9e2`, base `3f9c2d1`.
@@ -28,7 +28,7 @@ declares.
 ### Preservation census (relayed from entry, not re-measured)
 
 A census was taken at entry. `unpreserved`: empty. `unknown`:
-`wt-sync-export-retry` — its HEAD reflog names one commit no remote ref
+`wt-sync-export-retry`, its HEAD reflog names one commit no remote ref
 contains; entry could not establish whether it is load-bearing. Reported
 here for the Chief Architect; this seat did not touch that worktree.
 
@@ -41,13 +41,13 @@ here for the Chief Architect; this seat did not touch that worktree.
 - `src/lantern/dashboard/tiles.py`: the stale style and the badge
   `stale since HH:MM:SS`, rendered from `taken_at`, never from the wall
   clock at disconnection.
-- `tests/dashboard/test_tiles_stale.py`: 11 tests — criteria 1, 2 and 3,
-  plus the badge geometry under the `geometry` marker for criterion 4.
+- `tests/dashboard/test_tiles_stale.py`: 11 tests (criteria 1, 2 and 3,
+  plus the badge geometry under the `geometry` marker for criterion 4).
 - `docs/changelog.d/118-dashboard-stale-reading.md`.
-- `src/lantern/bridge/state.py`: read, not changed — `git diff --stat`
+- `src/lantern/bridge/state.py`: read, not changed. `git diff --stat`
   shows no line under `src/lantern/bridge/`.
 
-### Validation — run
+### Validation: run
 
 | Command | Against | Result | Verdict |
 |---|---|---|---|
@@ -66,7 +66,7 @@ figure names the merge result, not the branch tip.
 Pre-existing failures: none. The base commit `3f9c2d1` runs the same full
 suite at 1 212 passed, 1 xfailed.
 
-### Validation — not run
+### Validation: not run
 
 Nothing skipped.
 
@@ -74,7 +74,7 @@ Nothing skipped.
 
 Introduced two names: `TileReading.taken_at` and `TileReading.stale`.
 Checked both against `docs/GLOSSARY.md` and `src/`: `stale` appears in the
-glossary under *Sync* with the meaning *an export older than its source* —
+glossary under *Sync* with the meaning *an export older than its source*,
 a different sense on a different surface. Recorded as a collision the
 glossary does not carry; added the row *stale (Dashboard)* in this lot,
 citing this report.
@@ -93,7 +93,7 @@ badge fits at 1 280 × 800 with 6 px to spare on the tightest tile).
 
 ### Warnings the launcher told this seat to repeat
 
-None — the contract is `one writer`, the issue is open, the title carries
+None: the contract is `one writer`, the issue is open, the title carries
 its own number.
 
 ### Disposition owed at merge
@@ -104,7 +104,7 @@ merge. The journal entry rides the branch (committed before the merge, see
 below); nothing on the worktree is held by no other ref. Removal is the
 Product Owner's, by the closeout tool.
 
-### Exit evidence — appended after guild-bye
+### Exit evidence: appended after guild-bye
 
 `guild-bye --unpreserved-none` exit 3 (`EXIT_INCOMPLETE`: entry written,
 not yet reachable from a pushed ref). Journal entry

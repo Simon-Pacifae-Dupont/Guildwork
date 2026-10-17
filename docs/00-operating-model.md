@@ -4,14 +4,14 @@
 
 ## The problem it solves
 
-One person runs a software project with several AI coding agents at once —
+One person runs a software project with several AI coding agents at once:
 different vendors, different harnesses, different strengths. The agents are
 fast and tireless, and left to themselves they produce four kinds of damage
 that no amount of prompting cures:
 
 - **two agents write the same file** and the human becomes the merge tool;
-- **an agent runs under parameters nobody declared** — another model, another
-  effort level, another prompt — and nothing records the substitution;
+- **an agent runs under parameters nobody declared** (another model, another
+  effort level, another prompt) and nothing records the substitution;
 - **what an agent learned dies with its context window**, so the next session
   re-derives it, or worse, works from a stale summary with confidence;
 - **the human ends up as the message bus**, carrying instructions from one
@@ -30,7 +30,7 @@ one job:
 
 | Surface | Job |
 |---|---|
-| **Issue** | the mission **contract** — objective, scope, authority, stop conditions |
+| **Issue** | the mission **contract**: objective, scope, authority, stop conditions |
 | **Project board** | the **queue**: `Backlog → Ready → Active → Review → Human Gate → Done` |
 | **Worktree** | the isolated **workspace** one mission runs in |
 | **Pull request** | the **delivery and review** surface |
@@ -44,53 +44,53 @@ exist.
 ## The seats
 
 A *seat* is a harness running under a role. The role is a short profile in
-the repository (`templates/roles/`); the harness is whatever executes it —
+the repository (`templates/roles/`); the harness is whatever executes it:
 Claude Code, in an executing seat or in the architect seat, Grok Build,
 Codex CLI, a Grok profile, or a person. The
 mission contract names both, and the launcher refuses a mission whose
 harness cannot physically do what the contract requires.
 
-On the Lantern example — a small Python desktop application that tracks bench
-sensors for a workshop, with a bridge to a physical bench controller — the
+On the Lantern example (a small Python desktop application that tracks bench
+sensors for a workshop, with a bridge to a physical bench controller) the
 seats are:
 
 | Seat | Runs as | Holds |
 |---|---|---|
 | Product Owner | the human | the bench, the product verdict, the merge to `main`, every irreversible act and every reserved gate |
-| Chief Architect | Claude Code, a session on the developer machine, opened in its own folder | the board: contracts — which the launcher turns into every other seat's first instruction — routing, rulings, labels, the register, the routine merges and launches; never a write in the tree |
+| Chief Architect | Claude Code, a session on the developer machine, opened in its own folder | the board: contracts (which the launcher turns into every other seat's first instruction), routing, rulings, labels, the register, the routine merges and launches; never a write in the tree |
 | Lead Software Engineer | Claude Code | implementation, tests, pull requests, adversarial self-review |
 | Software Engineering | Grok Build and Codex CLI | assigned atomic lots in declared worktrees, under the model and effort named by the contract |
 | HQ Architecture, Domain Expert, UX/UI | Grok profiles | adversarial review and domain authority, each in its lane |
-| Consultant | a session outside the tree — GPT, Grok, or a cloud session — with no execution surface | a read on a contested ruling, filed in the register; it starts nothing and merges nothing, which is what makes the read neutral |
+| Consultant | a session outside the tree (GPT, Grok, or a cloud session) with no execution surface | a read on a contested ruling, filed in the register; it starts nothing and merges nothing, which is what makes the read neutral |
 | Witness | any seat that did not write the delivery | reads the delivery's evidence against the repository before the gate; the gate merges on the witness's word, not the author's |
 
 **The architect seat orchestrates, and it does not write in the tree.** Until
 18 September 2026 that was a property of where the seat ran: a cloud session
 with a `remote` shell, which could not run a command on the developer machine
 at all. It is not any more, because a mission that returns cannot wake a cloud
-session, and it can wake a Claude Code session on the host — so the seat moved
+session, and it can wake a Claude Code session on the host. So the seat moved
 to the host, and the move is an entry in the register. What keeps the seat
 from becoming the second writer or the silent substitution is now two
 mechanisms, both measured rather than assumed. The launcher strips the seat's
 own session markers from the environment of every mission it starts, so a
 mission cannot inherit the seat's identity, its transcript or its messaging
-token — the day one did, a merge with no identifiable author followed, and
+token. The day one did, a merge with no identifiable author followed, and
 that is the incident this check was bought by. And while a mission is in
 flight the seat writes nothing in the repository checkout and runs neither
 `pull` nor `checkout` there; its own outputs land outside the tree. Everything
-the seat does is still an act on GitHub or a line of text — the contract on
+the seat does is still an act on GitHub or a line of text (the contract on
 the issue, the ruling in a comment, the label on the object, the register
 entry, the routine merge it performs under the human's standing delegation,
-recorded on the pull request — plus the launch it now performs itself, which
+recorded on the pull request), plus the launch it now performs itself, which
 the launcher checks like any other. The human keeps every irreversible act and
 every decision; what changed is that the routine commands stopped passing
 through a hand that had nothing to decide about them. A seat that holds the
-board and does not touch the tree is still not the second writer — and a seat
+board and does not touch the tree is still not the second writer, and a seat
 that merges only what a witness has read is still not the merge tool either.
 
 The division that makes the system work is stated once and kept: **the
 architect seat holds the board; the human holds the verdict.** Issue
-bodies, contracts, labels — including the routing labels — comments, rulings,
+bodies, contracts, labels (including the routing labels), comments, rulings,
 the register, the opening of a missing pull request, the routine launches and
 the merges under standing delegation are the architect's, always and without
 being asked. The reserved gates, every irreversible act and the final say are
@@ -113,11 +113,11 @@ Two consequences of the shape, stated because a reader will ask:
 ## The lifecycle, end to end
 
 A diagram of agents usually shows who calls whom. This one is better read
-for where it can stop: ten checks in the reference launcher — seven stable
-contract conditions plus three operational guards — before a session starts, a witness
+for where it can stop: ten checks in the reference launcher (seven stable
+contract conditions plus three operational guards) before a session starts, a witness
 and a gate before anything lands, and a register that sends every incident
 back into the next contract. It is drawn, block by block, at
-[`demo/canvas/`](../demo/canvas/) (French: [`fr/demo/canvas/`](../fr/demo/canvas/)) —
+[`demo/canvas/`](../demo/canvas/) (French: [`fr/demo/canvas/`](../fr/demo/canvas/)),
 the same canvas the README shows; hover a block to isolate its path.
 
 1. **The contract is written** on the issue form, by the architect seat.
@@ -125,9 +125,9 @@ the same canvas the README shows; hover a block to isolate its path.
    title starts with the issue's own number so the mission can be found in
    a wall of terminals. The architect then launches it: one
    command.
-2. **The launcher validates it** — the architect seat runs it — against the
-   governance *at the commit the mission will run on*, checks ten things —
-   seven stable contract conditions plus three operational guards — and
+2. **The launcher validates it** (the architect seat runs it) against the
+   governance *at the commit the mission will run on*, checks ten things
+   (seven stable contract conditions plus three operational guards) and
    refuses, naming which one fired, or creates the
    branch and worktree, runs the entry command (`guild-hi`), and starts the
    declared harness under the declared model and effort with a first
@@ -137,13 +137,13 @@ the same canvas the README shows; hover a block to isolate its path.
    explicit refspec, and posts a transmission report on the issue naming what
    actually ran.
 4. **The delivery is a pull request** whose body carries one `Mission:` line
-   naming the contract and the state of the delivery — `delivers`,
+   naming the contract and the state of the delivery: `delivers`,
    `supersedes`, or `refused`.
 5. **The session closes** with exactly one exit command (`guild-bye`), which
-   writes the journal entry and returns a code that says whether the entry is durable —
-   reachable from a pushed ref — or not yet.
-6. **A witness reads the delivery** — a seat that did not write it checks
-   the report's claims against the repository — and **the gate merges**: the
+   writes the journal entry and returns a code that says whether the entry is durable
+   (reachable from a pushed ref) or not yet.
+6. **A witness reads the delivery** (a seat that did not write it checks
+   the report's claims against the repository) and **the gate merges**: the
    architect seat under the human's standing delegation for routine work,
    the human himself for everything reserved.
 7. **The closeout tool disposes** of what the run created, refusing every
@@ -159,14 +159,14 @@ the same canvas the README shows; hover a block to isolate its path.
 ## The four principles under the rules
 
 **Measured, not assumed.** A capability, a figure, a freshness claim, a
-process's liveness — each is recorded with how it was established and when.
+process's liveness: each is recorded with how it was established and when.
 `unknown` is a permitted value and it routes as *cannot*. A table marked
 "observed" without the observation beside each cell was false within four
 hours on the row describing its own author.
 
 **Fail closed, and say which condition.** A check that could not be evaluated
 blocks exactly as a failed one does. Every refusal names the condition, the
-field and the remedy. A warning is not a softer refusal — it is a fact carried
+field and the remedy. A warning is not a softer refusal: it is a fact carried
 into the durable artefacts so that a later reader finds it.
 
 **A refusal does not prevent the mission; it moves it outside the gate.**

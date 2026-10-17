@@ -41,7 +41,7 @@ to the human stopped on the `&&` error in a window that was running 5.1.
 ## Text rewritten in the wrong encoding
 
 **Symptom.** After a script edits a file, every accented character in it is
-doubled — `é` becomes `Ã©` — and the diff touches every line that held one.
+doubled (`é` becomes `Ã©`) and the diff touches every line that held one.
 
 **Cause.** In 5.1, `Get-Content` reads a UTF-8 file that has no byte-order
 mark as the ANSI code page, and `Set-Content` writes back what it read. The
@@ -75,8 +75,8 @@ through those two cmdlets again.
 fires, although the titles are there. Printed from the script, the `À`
 comes back as another character.
 
-**Cause.** PowerShell decodes the output of native programs — `gh`, `git`,
-any `.exe` — with the console's output encoding, which defaults to the OEM
+**Cause.** PowerShell decodes the output of native programs (`gh`, `git`,
+any `.exe`) with the console's output encoding, which defaults to the OEM
 code page. `gh` writes UTF-8. Every non-ASCII character in a title, a body
 or a label name is decoded wrongly before the script sees it, and a pattern
 written correctly matches nothing.
@@ -130,7 +130,7 @@ tool.
 **Fix.** Make the session's PATH explicit: the launcher, or the seat's
 profile, carries the tool directories into the session it starts. And at
 entry, before any work, the session checks for the tools its contract will
-need — `where node`, `where pnpm`, or the project's own equivalents — and
+need (`where node`, `where pnpm`, or the project's own equivalents) and
 stops with a message naming the missing tool. A session that cannot run its
 tests stops; it does not skip them and report the rest. This is the same
 rule as *the interpreter is the environment's, spelled in full*, in
@@ -152,7 +152,7 @@ Codex desktop app could.
 
 **Fix.** Probe every agent CLI before a mission relies on it: its
 `--version`, then one trivial read-only run in a scratch directory. Record
-what works — which executable, which path, which flag — in the capability
+what works (which executable, which path, which flag) in the capability
 table, with how and when it was observed (`04-capabilities-and-routing.md`).
 On that workstation the witness ran through the desktop app's `codex.exe`,
 with `--no-daemon`, and that is the line the table carries. A CLI nobody has
@@ -168,8 +168,8 @@ only, with `spawn UNKNOWN`. Elsewhere, a test that passes on the workstation
 fails in CI for want of a program.
 
 **Cause.** Playwright's Firefox did not start on that workstation; Chromium
-and WebKit did. Separately, a test called `pg_dump.exe` by that name — a
-Windows-only binary, hard-coded — and a Linux CI runner has `pg_dump` and
+and WebKit did. Separately, a test called `pg_dump.exe` by that name (a
+Windows-only binary, hard-coded), and a Linux CI runner has `pg_dump` and
 no `.exe`.
 
 **Fix.** The suite runs Chromium and WebKit by default, and Firefox only

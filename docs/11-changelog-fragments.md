@@ -11,7 +11,7 @@ the reasoning.
 
 Two pull requests failed to merge twenty minutes apart on the same 445 KB
 changelog, each having added a section at its top. Both resolutions were
-purely additive and were performed by the integrator — which is the boundary
+purely additive and were performed by the integrator, which is the boundary
 erosion the one-writer rule exists to refuse: the human becoming the merge
 tool for two agents that never touched the same line of product code. With
 several missions open at once, a wave of missions all adding a section costs
@@ -21,8 +21,8 @@ asking anyone.
 
 ## The convention
 
-A mission adds `docs/changelog.d/<issue>-<slug>.md` — a `## ` heading and
-its prose, exactly what a changelog section holds — and belongs to the
+A mission adds `docs/changelog.d/<issue>-<slug>.md` (a `## ` heading and
+its prose, exactly what a changelog section holds) and belongs to the
 mission that wrote it for the life of the file. No other mission edits it.
 Writing the fragment is the whole changelog obligation.
 
@@ -40,7 +40,7 @@ assembler, so fragments accumulate while the assembled region stays where
 the last assembly left it. Measured on the source project at two dates a
 month apart: six fragments and one assembled section; then fifty-two
 fragments and two assembled sections. Both readings are correct and neither
-needs repair — the gap widening is the convention working, and the
+needs repair: the gap widening is the convention working, and the
 assembler running once at release preparation is what closes it. Two
 missions each reported the gap as drift, and each was right to escalate an
 undocumented condition, which is why the condition is now documented: **a
@@ -60,7 +60,7 @@ construction. The reason is part of the rule.
 ## Two prohibitions
 
 A mission writer never assembles the shared file. A release integrator never
-hand-edits the generated region — it is rebuilt wholesale on every run, so a
+hand-edits the generated region: it is rebuilt wholesale on every run, so a
 hand edit is erased by the next assembly; edit the fragment and assemble
 again.
 
@@ -70,6 +70,6 @@ No existing contract is amended by a convention that arrives after it; a
 mission whose acceptance criteria still say *add a section to the changelog*
 delivers what its own contract says. The changelog obligation is an
 acceptance criterion the architect seat writes into a contract, not a field
-of the mission form — which is the general shape of how a rule enters this
+of the mission form, which is the general shape of how a rule enters this
 system: dated, forward-binding, and never retroactively invalidating the
 contracts already on the board.
