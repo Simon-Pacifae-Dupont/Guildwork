@@ -278,6 +278,18 @@
 
   /* ---- mobile: the three prices, comparable without scrolling ---- */
   /* where this is going (prose, not cards): three short claims after the proof */
+  /* "Where this is going": a line that moves. The kit has landed (green), what still moves runs (amber), what comes next waits (blue). */
+  .nx{--landed:#78C48C;--running:#E8AE57;--next:#79B4E0;margin-top:30px;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:0 28px;position:relative;padding-top:34px}
+  .nx::before{content:"";position:absolute;left:7px;right:0;top:7px;height:2px;background:linear-gradient(90deg,var(--landed) 0 var(--split),var(--line-strong) var(--split))}
+  .nx-it{position:relative;min-width:0}
+  .nx-it b{display:block;font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 36,"SOFT" 40;font-weight:600;font-size:var(--fs-lg);line-height:1.25;color:var(--ink);margin:0 0 8px;text-wrap:balance}
+  .nx-it p{margin:0;font-size:var(--fs-prose-2);color:var(--ink-2);max-width:62ch}
+  .nx-badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;line-height:1;padding:6px 8px 5px;border-radius:999px;border:1px solid var(--c);color:var(--c);margin-bottom:12px}
+  .nx-dot{position:absolute;top:-34px;left:0;width:16px;height:16px;border-radius:50%;border:2px solid var(--c);background:var(--ground)}
+  .nx .st-landed{--c:var(--landed)}.nx .st-running{--c:var(--running)}.nx .st-next{--c:var(--next)}
+  .nx .st-landed .nx-dot{background:var(--landed)}
+  .nx .st-running .nx-dot{background:var(--running);box-shadow:0 0 0 6px color-mix(in srgb,var(--running) 22%,transparent)}
+  @media (max-width:1000px){.nx{grid-template-columns:1fr;gap:28px;padding:0 0 0 34px}.nx::before{left:7px;top:8px;bottom:0;right:auto;width:2px;height:auto;background:var(--line-strong)}.nx-dot{top:2px;left:-34px}}
   .next{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
   .next p{margin:0;font-size:var(--fs-prose-2);color:var(--ink-2)}
   .next p b{display:block;color:var(--ink);font-weight:600;margin-bottom:6px}
@@ -563,10 +575,10 @@ svg.tl .tk,svg.tl .mk,svg.tl .lb{font-size:calc(var(--fs-xs) * var(--tl-k,1))}
   #numbers .fig b{font-size:40px;letter-spacing:-.03em}
   @media (max-width:600px){#numbers .fig+.fig{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
   @supports (animation-timeline:view()){
-    .sec-head,.failures,.figs,.docs,.next,.offers,.qs,.feat,.scenes{animation:gw-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
+    .sec-head,.failures,.figs,.docs,.next,.nx,.offers,.qs,.feat,.scenes{animation:gw-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
     @keyframes gw-rise{from{opacity:.001;translate:0 18px}to{opacity:1;translate:0 0}}
   }
-  @media (prefers-reduced-motion:reduce){.sec-head,.failures,.figs,.docs,.next,.offers,.qs,.feat,.scenes{animation:none}}
+  @media (prefers-reduced-motion:reduce){.sec-head,.failures,.figs,.docs,.next,.nx,.offers,.qs,.feat,.scenes{animation:none}}
 </style>
 <script>
 /* pick the track before first paint, so a link to a section inside it can scroll to it */
@@ -1050,12 +1062,13 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
 <section id="next" class="wrap">
   <div class="sec-head">
   <h2>Where this is going</h2>
-  <p>The kit is the part that has stopped moving. Three things are still moving on the project it comes from, and each will reach the kit the way everything here did, once a real incident has paid for it.</p>
+  <p>Most of what was still moving at launch has now reached the kit. What moves today is the place where the work is run.</p>
   </div>
-  <div class="next">
-    <p><b>The board becomes the control.</b> Not a report on the agents: the page where the one decision that is yours is taken, and recorded by the same click. Twenty-five merges a day are not survivable any other way.</p>
-    <p><b>A watcher that routes.</b> Every two minutes it reads authorised events and fresh host readings without starting a model. Since 18 September 2026 it also receives the armed mission, delivers the canonical contract and wakes the named seat, without inheriting any authority. It reaches the kit once its own incidents have paid for its rules.</p>
-    <p><b>The same seven states on every board.</b> Running, holding the screen, next, for you, landed, broken, expired, whatever the board follows. The names adapt to a project; the positions and the hues do not.</p>
+  <div class="nx" style="--n:4;--split:calc(62.5% + 18px)">
+    <div class="nx-it st-landed"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In the kit</span><b>The kit</b><p>Contracts, forms, taxonomy and the specification of the tools. Version 1.0 since 5 September 2026.</p></div>
+    <div class="nx-it st-landed"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In the kit</span><b>A watcher that routes</b><p>Every two minutes it reads authorised events and fresh host readings without starting a model. Since 18 September 2026 it also receives the armed mission, delivers the canonical contract and wakes the named seat, without inheriting any authority.</p></div>
+    <div class="nx-it st-landed"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In the kit</span><b>The same seven states on every board</b><p>Running, holding the screen, next, for you, landed, broken, expired, whatever the board follows. The names adapt to a project; the positions and the hues do not.</p></div>
+    <div class="nx-it st-running"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In progress</span><b>Guildwork Studio</b><p>One application for the whole workspace: the one decision that is yours, and the register of everything that left in your name. This is where the board becomes the control.</p></div>
   </div>
 </section>
 
@@ -1216,7 +1229,12 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
 <section id="next-nocode" class="wrap">
   <div class="sec-head">
   <h2>Where this is going</h2>
-  <p>One page that reads what your people hand to an AI (quotes this year, minutes and client replies the next) and sorts it into the same three piles, under the same states from one trade to the next. The person who signs sits in the consultant's chair, not the executor's: the AI brings the finished thing and the one decision that is theirs, and everything else leaves in plain sight.</p>
+  <p>The person who signs sits in the consultant's chair, not the executor's: the AI brings the finished thing and the one decision that is theirs, and everything else leaves in plain sight.</p>
+  </div>
+  <div class="nx" style="--n:3;--split:calc(16.7% + 5px)">
+    <div class="nx-it st-landed"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">Online</span><b>The demonstration</b><p>A hotel’s quotes, minutes and client replies, sorted into the three piles. <a href="demo/desk/">Open it</a>, nothing to install.</p></div>
+    <div class="nx-it st-running"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In progress</span><b>Guildwork Studio</b><p>The same three piles in one application, with a signing desk where the person who signs finds the one decision that is theirs.</p></div>
+    <div class="nx-it st-next"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">Next</span><b>Your trade</b><p>What sits in the piles changes from one trade to the next; the three piles and their states do not. Adapting them to yours is the installation.</p></div>
   </div>
 </section>
 
