@@ -621,6 +621,17 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 @media (prefers-reduced-motion:reduce){.mini .on,.mini .slot{animation:none;opacity:1}.fig-you.done .gold{animation:none;opacity:1}}
 @media (min-width:940px){.hero h1{font-size:clamp(44px,7.4vw,102px);max-width:none}}
 </style>
+<style>
+/* Closing contact on PC: the title and its paragraph on the left, the contact lines on the right,
+   centred on that pair so the three read as one block. */
+@media (min-width:940px){
+  .contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:88px;align-items:start}
+  .contact h2{grid-column:1;grid-row:1}
+  .contact .who{display:contents}
+  .contact .who p{grid-column:1;grid-row:2;margin-top:16px;max-width:62ch}
+  .contact .lines{grid-column:2;grid-row:1/span 2;align-self:center;gap:12px;padding-left:40px;border-left:1px solid var(--line)}
+}
+</style>
 </head>
 <body>
 <svg class="sprite" aria-hidden="true" focusable="false"><defs>
