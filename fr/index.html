@@ -600,10 +600,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   .hero-top .hero-figs{grid-column:1/-1;grid-row:4;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.25fr);margin:0 0 40px}
   .hero-top .hero-figs>*{padding-top:18px;padding-bottom:18px}
   .hero-figs .fig-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-  .mini{flex:none;width:40px;height:40px;overflow:visible}
-  .mini .off{fill:none;stroke:var(--line-strong);stroke-width:8}
-  .mini .on{fill:var(--ink);transform-box:fill-box;animation:mini-in .5s cubic-bezier(.2,.8,.2,1) var(--d) backwards}
-  .mini .slot{fill:none;stroke:var(--amber);stroke-width:12;stroke-dasharray:22 16;animation:slot-pulse 1.6s ease-in-out 1.6s infinite}
+    .mini .slot{fill:none;stroke:var(--amber);stroke-width:12;stroke-dasharray:22 16;animation:slot-pulse 1.6s ease-in-out 1.6s infinite}
   .mini .gold{fill:var(--amber);opacity:0;transform-box:fill-box;transform-origin:center}
   .hero-top .hero-figs>.fig-you{border:1px dashed var(--amber);border-radius:12px;background:rgba(233,162,59,.07);
     padding:16px 18px;margin:-1px 0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
@@ -616,8 +613,14 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   .fig-you.done .gold{animation:mini-land .45s cubic-bezier(.2,.9,.3,1.25) forwards}
   .fig-you.done .btn{display:none}.fig-you.done .more{display:inline-block}
 }
-@media (max-width:939px){.fig-you,.figs-cap,.hero-figs .mini{display:none}
-  .hero-top #piece{order:1}.hero-top .try{order:2}.hero-top .cta{order:3}.hero-top .note{order:4}.hero-top .hero-figs{order:5}}
+@media (max-width:939px){.fig-you,.figs-cap{display:none}
+  .hero-top .hero-figs{order:1;margin-top:8px}.hero-top #piece{order:2}.hero-top .try{order:3}.hero-top .cta{order:4}.hero-top .note{order:5}
+  .pieces .mini{width:30px;height:30px}}
+.pieces .fig-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.pieces b{font-size:clamp(26px,2.5vw,34px);line-height:1.05;letter-spacing:-.015em;margin-bottom:10px}
+.mini{flex:none;width:40px;height:40px;overflow:visible}
+.mini .off{fill:none;stroke:var(--line-strong);stroke-width:8}
+.mini .on{fill:var(--ink);transform-box:fill-box;animation:mini-in .5s cubic-bezier(.2,.8,.2,1) var(--d) backwards}
 @media (prefers-reduced-motion:reduce){.mini .on,.mini .slot{animation:none;opacity:1}.fig-you.done .gold{animation:none;opacity:1}}
 @media (min-width:940px){.hero h1{font-size:clamp(44px,7.4vw,102px);max-width:none}}
 </style>
@@ -715,15 +718,15 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   <div class="hero-top"><div class="hero-copy">
   <p class="eyebrow">Orchestration d’agents IA · pack libre (MIT) · accompagnement</p>
   <h1>Faire travailler des agents IA <em>en gardant le dernier mot<span class="stop">.</span></em></h1>
-  <p class="lede"><strong>Guildwork est une discipline construite incident après incident, que chaque nouvel incident met à niveau :</strong> un contrat avant chaque tâche confiée à une IA, un témoin pendant, un bilan après, et un lanceur qui refuse de démarrer ce qui n’est pas en règle. Elle tourne aujourd'hui sur un logiciel réel, à vingt-cinq merges par jour, s'ajuste à la taille de l'équipe d'agents, et tient aussi un cabinet, une agence ou un service client.</p>
+  <p class="lede"><strong>Guildwork est une discipline construite incident après incident, que chaque nouvel incident met à niveau.</strong> Elle tourne aujourd'hui sur un logiciel réel, à vingt-cinq merges par jour, s'ajuste à la taille de l'équipe d'agents, et tient aussi un cabinet, une agence ou un service client.</p>
   <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
   </div>
-   <p class="figs-cap">Quatre pièces, posées par les agents et mesurées. La cinquième est à vous.</p>
-  <div class="hero-figs" data-track="code" aria-label="Quatre des chiffres mesurés">
-    <div><span class="fig-top"><b>344</b><svg class="mini " viewBox="-6 -6 328 328" aria-hidden="true"><rect class="on" x="80" y="0" width="76" height="76" style="--d:0.25s"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>contrats de mission ouverts en treize jours</span></div>
-    <div><span class="fig-top"><b>320</b><svg class="mini " viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="on" x="0" y="80" width="76" height="156" style="--d:0.55s"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>pull requests fusionnées sur les mêmes treize jours</span></div>
-    <div><span class="fig-top"><b>548</b><svg class="mini " viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="on" x="240" y="160" width="76" height="76" style="--d:0.85s"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>sessions closes avec une entrée de journal, en 36 jours</span></div>
-    <a href="incidents/"><span class="fig-top"><b>52</b><svg class="mini " viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="on" x="80" y="240" width="156" height="76" style="--d:1.15s"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>incidents, chacun ayant payé une règle ↗</span></a>
+   <p class="figs-cap">Quatre pièces, posées par les agents à chaque tâche. La cinquième est à vous.</p>
+  <div class="hero-figs pieces" aria-label="Les quatre pièces de la discipline">
+    <div><span class="fig-top"><b>Contrat</b><svg class="mini" viewBox="-6 -6 328 328" aria-hidden="true"><rect class="on" x="80" y="0" width="76" height="76" style="--d:0.25s"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>avant chaque tâche confiée à une IA</span></div>
+    <div><span class="fig-top"><b>Témoin</b><svg class="mini" viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="on" x="0" y="80" width="76" height="156" style="--d:0.55s"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>pendant que le travail se fait</span></div>
+    <div><span class="fig-top"><b>Bilan</b><svg class="mini" viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="on" x="240" y="160" width="76" height="76" style="--d:0.85s"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>après, à chaque fois</span></div>
+    <div><span class="fig-top"><b>Refus</b><svg class="mini" viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="on" x="80" y="240" width="156" height="76" style="--d:1.15s"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>rien ne démarre s’il n’est pas en règle</span></div>
     <div class="fig-you" id="fig-you"><svg class="mini big" viewBox="-6 -6 328 328" aria-hidden="true"><rect class="on" x="80" y="0" width="76" height="76"/><rect class="on" x="0" y="80" width="76" height="156"/><rect class="on" x="240" y="160" width="76" height="76"/><rect class="on" x="80" y="240" width="156" height="76"/><rect class="slot" x="163" y="83" width="70" height="70"/><rect class="gold" x="160" y="80" width="76" height="76"/></svg><span class="you" data-done="Vous gardez le dernier mot.">La dernière est à vous.</span><button class="btn primary" type="button" id="you-go">Poser la dernière pièce</button><a class="more" href="demo/gate/">Jouer une journée entière &rarr;</a></div>
   </div>
   <a class="try" href="demo/gate/">
