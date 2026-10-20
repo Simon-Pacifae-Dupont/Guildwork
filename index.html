@@ -576,6 +576,45 @@ else if(/^(code|problem|model|refusal|board|numbers|kit|work)$/.test(h))t='code'
 if(!t){try{t=localStorage.getItem('guildwork-track')}catch(e){}}
 document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 </script>
+<style>
+@keyframes slot-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes mini-in{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes mini-land{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+@media (min-width:940px){
+  .wrap.hero{padding-top:64px}
+  #piece{display:none}
+  .hero-top{grid-template-columns:minmax(0,1fr) 340px;column-gap:64px}
+  .hero-top .eyebrow,.hero-top h1{grid-column:1/-1}
+  .hero h1{margin-bottom:26px}
+  .hero-top h1 + .lede{grid-row:5;grid-column:1}.hero-top .lede + .lede{grid-row:6;grid-column:1}
+  .hero-top .try{grid-column:2;grid-row:5/span 4;margin-top:0;align-self:start}
+  .hero-top .cta{grid-column:1;grid-row:7;margin-top:26px}
+  .hero-top .note{grid-column:1;grid-row:8}
+  .hero-top .try h2{font-size:var(--fs-xl)}
+  .figs-cap{grid-column:1/-1;grid-row:3;font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.04em;color:var(--ink-2);margin:0 0 12px;max-width:none}
+  .hero-top .hero-figs{grid-column:1/-1;grid-row:4;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.25fr);margin:0 0 40px}
+  .hero-top .hero-figs>*{padding-top:18px;padding-bottom:18px}
+  .hero-figs .fig-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .mini{flex:none;width:40px;height:40px;overflow:visible}
+  .mini .off{fill:none;stroke:var(--line-strong);stroke-width:8}
+  .mini .on{fill:var(--ink);transform-box:fill-box;animation:mini-in .5s cubic-bezier(.2,.8,.2,1) var(--d) backwards}
+  .mini .slot{fill:none;stroke:var(--amber);stroke-width:12;stroke-dasharray:22 16;animation:slot-pulse 1.6s ease-in-out 1.6s infinite}
+  .mini .gold{fill:var(--amber);opacity:0;transform-box:fill-box;transform-origin:center}
+  .hero-top .hero-figs>.fig-you{border:1px dashed var(--amber);border-radius:12px;background:rgba(233,162,59,.07);
+    padding:16px 18px;margin:-1px 0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+  .fig-you .mini{width:60px;height:60px}
+  .fig-you .you{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 36,"SOFT" 40;font-weight:600;font-size:var(--fs-lg);line-height:1.2;color:var(--ink)}
+  .fig-you .btn{white-space:normal;text-align:left;max-width:100%}
+  .fig-you .more{display:none;font-weight:600;font-size:var(--fs-prose-2)}
+  .fig-you.done{border-style:solid;background:rgba(233,162,59,.12)}
+  .fig-you.done .slot{animation:none;opacity:0}
+  .fig-you.done .gold{animation:mini-land .45s cubic-bezier(.2,.9,.3,1.25) forwards}
+  .fig-you.done .btn{display:none}.fig-you.done .more{display:inline-block}
+}
+@media (max-width:939px){.fig-you,.figs-cap,.hero-figs .mini{display:none}
+  .hero-top #piece{order:1}.hero-top .try{order:2}.hero-top .cta{order:3}.hero-top .note{order:4}.hero-top .hero-figs{order:5}}
+@media (prefers-reduced-motion:reduce){.mini .on,.mini .slot{animation:none;opacity:1}.fig-you.done .gold{animation:none;opacity:1}}
+</style>
 </head>
 <body>
 <svg class="sprite" aria-hidden="true" focusable="false"><defs>
@@ -662,6 +701,25 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   <p class="lede"><strong>Guildwork is a discipline built one incident at a time, and upgraded by every new one:</strong> a contract before every task handed to an AI, a witness while it runs, a closeout after, and a launcher that refuses to start what isn’t in order. It runs today on real software at twenty-five merges a day, scales with the size of the agent team, and holds a law firm, an agency or a support desk just as well.</p>
   <p class="lede">The kit is public and free. Installing it where you work is my job.</p>
   </div>
+   <p class="figs-cap">Four pieces, placed by the agents and measured. The fifth is yours.</p>
+  <div class="hero-figs" data-track="code" aria-label="Four of the measured figures">
+    <div><span class="fig-top"><b>344</b><svg class="mini " viewBox="-6 -6 328 328" aria-hidden="true"><rect class="on" x="80" y="0" width="76" height="76" style="--d:0.25s"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>mission contracts opened in thirteen days</span></div>
+    <div><span class="fig-top"><b>320</b><svg class="mini " viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="on" x="0" y="80" width="76" height="156" style="--d:0.55s"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>pull requests merged in the same thirteen days</span></div>
+    <div><span class="fig-top"><b>548</b><svg class="mini " viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="on" x="240" y="160" width="76" height="76" style="--d:0.85s"/><rect class="off" x="80" y="240" width="156" height="76"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>sessions closed with a journal entry, in 36 days</span></div>
+    <a href="incidents/"><span class="fig-top"><b>52</b><svg class="mini " viewBox="-6 -6 328 328" aria-hidden="true"><rect class="off" x="80" y="0" width="76" height="76"/><rect class="off" x="0" y="80" width="76" height="156"/><rect class="off" x="240" y="160" width="76" height="76"/><rect class="on" x="80" y="240" width="156" height="76" style="--d:1.15s"/><rect class="off" x="160" y="80" width="76" height="76"/></svg></span><span>incidents, each of which paid for one rule ↗</span></a>
+    <div class="fig-you" id="fig-you"><svg class="mini big" viewBox="-6 -6 328 328" aria-hidden="true"><rect class="on" x="80" y="0" width="76" height="76"/><rect class="on" x="0" y="80" width="76" height="156"/><rect class="on" x="240" y="160" width="76" height="76"/><rect class="on" x="80" y="240" width="156" height="76"/><rect class="slot" x="163" y="83" width="70" height="70"/><rect class="gold" x="160" y="80" width="76" height="76"/></svg><span class="you" data-done="You keep the last word.">The last one is yours.</span><button class="btn primary" type="button" id="you-go">Place the last piece</button><a class="more" href="demo/gate/">Play a whole day &rarr;</a></div>
+  </div>
+  <a class="try" href="demo/gate/">
+    <p class="try-tag">Interactive demo · nothing to install</p>
+    <h2>Spend a day in charge</h2>
+    <p class="try-lede">Five jobs, agents that do them, and you. One mistake stopped before it went out, one decision that is yours, and a tally at the end: what got delivered, your time and theirs. Two minutes, with code or without.</p>
+    <span class="try-go">Start the day &rarr;</span>
+  </a>
+  <div class="cta">
+    <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Book 30 minutes</a>
+    <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Read the kit</a>
+  </div>
+  <p class="note">Measured on 9 September 2026 · every figure on this page is real</p>
   <figure class="piece" id="piece">
     <svg viewBox="-6 -6 328 328" role="img" aria-label="The Guildwork symbol: four ivory pieces placed by the agents, and one amber piece, yours.">
         <rect class="t" style="--d:0.15s" x="80" y="0" width="76" height="76"/>
@@ -683,23 +741,6 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
    b.addEventListener("click",function(){f.classList.add("done");var h=f.querySelector(".piece-h");h.textContent=h.getAttribute("data-done");
    setTimeout(function(){f.querySelector(".piece-more").focus();},60);});})();
   </script>
-  </div>
-  <a class="try" href="demo/gate/">
-    <p class="try-tag">Interactive demo · nothing to install</p>
-    <h2>Spend a day in charge</h2>
-    <p class="try-lede">Five jobs, agents that do them, and you. One mistake stopped before it went out, one decision that is yours, and a tally at the end: what got delivered, your time and theirs. Two minutes, with code or without.</p>
-    <span class="try-go">Start the day &rarr;</span>
-  </a>
-  <div class="cta">
-    <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Book 30 minutes</a>
-    <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Read the kit</a>
-  </div>
-  <p class="note">Measured on 9 September 2026 · every figure on this page is real</p>
-  <div class="hero-figs" data-track="code" aria-label="Four of the measured figures">
-    <div><b>344</b><span>mission contracts opened in thirteen days</span></div>
-    <div><b>320</b><span>pull requests merged in the same thirteen days</span></div>
-    <div><b>548</b><span>sessions closed with a journal entry, in 36 days</span></div>
-    <a href="incidents/"><b>52</b><span>incidents, each of which paid for one rule ↗</span></a>
   </div>
 </div>
 
@@ -1292,5 +1333,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);}
 window.addEventListener('resize',function(){if(window.innerWidth>879)set(false);});
 })();
 </script>
+<script>(function(){var c=document.getElementById("fig-you"),b=document.getElementById("you-go");if(!c||!b)return;b.addEventListener("click",function(){c.classList.add("done");var y=c.querySelector(".you");y.textContent=y.getAttribute("data-done");setTimeout(function(){c.querySelector(".more").focus()},60);});})();</script>
 </body>
 </html>
