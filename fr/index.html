@@ -233,6 +233,11 @@
     font-weight:600;font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
   .fig span{display:block;font-size:var(--fs-sm);color:var(--ink-2);margin-top:9px}
+  /* "Since then": a second, dated reading under the five-week chart, which stays frozen. */
+  .since{margin-top:calc(var(--gap-object) + 16px)}
+  .since h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:var(--fs-xl);line-height:1.2;margin:0 0 10px;color:var(--ink)}
+  .since > p{margin:0;max-width:68ch;color:var(--ink-2);font-size:var(--fs-prose-2)}
+  .since .figs{margin-top:22px}
   .sober{margin-top:28px;padding-left:18px;border-left:2px solid var(--edge);color:var(--ink-2);
     font-size:var(--fs-prose-2);max-width:78ch}
   .sober strong{color:var(--ink);font-weight:600}
@@ -730,7 +735,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   <div class="hero-top"><div class="hero-copy">
   <p class="eyebrow">Orchestration d’agents IA · pack libre (MIT) · accompagnement</p>
   <h1>Faire travailler des agents IA <em>en gardant le dernier mot<span class="stop">.</span></em></h1>
-  <p class="lede"><strong>Guildwork est une discipline construite incident après incident, que chaque nouvel incident met à niveau.</strong> Elle tourne aujourd'hui sur un logiciel réel, à vingt-cinq merges par jour, s'ajuste à la taille de l'équipe d'agents, et tient aussi un cabinet, une agence ou un service client.</p>
+  <p class="lede"><strong>Guildwork est une discipline construite incident après incident, que chaque nouvel incident met à niveau.</strong> Elle tourne aujourd'hui sur trois logiciels réels, à cinquante merges par jour, s'ajuste à la taille de l'équipe d'agents, et tient aussi un cabinet, une agence ou un service client.</p>
   <p class="lede">Le pack est public et gratuit. L’installer chez vous, c’est mon métier.</p>
   </div>
    <p class="figs-cap">Quatre pièces, posées par les agents à chaque tâche. La cinquième est à vous.</p>
@@ -751,7 +756,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Réserver 30 minutes</a>
     <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Lire le pack</a>
   </div>
-  <p class="note">Mesuré le 9 septembre 2026 · tous les chiffres ici sont réels</p>
+  <p class="note">Mesuré le 9 septembre et le 20 octobre 2026 · tous les chiffres ici sont réels</p>
   <figure class="piece" id="piece">
     <svg viewBox="-6 -6 328 328" role="img" aria-label="Le symbole Guildwork : quatre pièces ivoire posées par les agents, et une pièce ambre, la vôtre.">
         <rect class="t" style="--d:0.15s" x="80" y="0" width="76" height="76"/>
@@ -1034,6 +1039,16 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
   <div class="readings">
     <p><strong>Le tempo.</strong> Avant les contrats, 241 merges en vingt-cinq jours, moins de dix par jour, l'humain portant les instructions d'un siège à l'autre. Après, 320 en treize, vingt-cinq par jour. Les sièges ont changé en même temps que la gouvernance ; le doublement n'est donc pas à elle seule. Ce qui est à elle, c'est qu'une seule personne a tenu ce tempo sans redevenir l'outil de merge.</p>
     <p><strong>Le coût de l'apprentissage.</strong> Chaque entrée du registre est une règle qu'un constat a payée. La première semaine des contrats, l'équipe en a écrit une pour deux merges ; la deuxième, une pour trois, au même rythme de merges. Avant le 26 août, les constats n'étaient pas comptés du tout. La première chose que le système a faite, c'est les rendre visibles.</p>
+  </div>
+  <div class="since">
+    <h3>Depuis : le même pack sur trois dépôts</h3>
+    <p>Mesuré le 20&nbsp;octobre 2026, sur des jours complets seulement. Le dépôt du produit, puis, depuis le 23&nbsp;septembre, le studio où l'on mène le travail et la forge qui construit les outils, tous trois sous les mêmes contrats.</p>
+    <div class="figs">
+      <div class="fig"><b>51</b><span>merges par jour sur les trois dépôts, les sept jours jusqu’au 19&nbsp;octobre</span></div>
+      <div class="fig"><b>82</b><span>merges le jour le plus chargé à ce jour, le 19&nbsp;octobre</span></div>
+      <div class="fig"><b>1&#8239;368</b><span>merges depuis le 1er&nbsp;août, les trois dépôts ensemble</span></div>
+      <div class="fig"><b>2</b><span>dépôts ajoutés sous le même pack le 23&nbsp;septembre, une seule livraison fermée sans merge dans chacun</span></div>
+    </div>
   </div>
 </section>
 

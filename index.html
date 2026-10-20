@@ -233,6 +233,11 @@
     font-weight:600;font-size:34px;line-height:1;color:var(--amber);letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
   .fig span{display:block;font-size:var(--fs-sm);color:var(--ink-2);margin-top:9px}
+  /* "Since then": a second, dated reading under the five-week chart, which stays frozen. */
+  .since{margin-top:calc(var(--gap-object) + 16px)}
+  .since h3{font-family:"Fraunces",Georgia,serif;font-variation-settings:"opsz" 72,"SOFT" 40;font-weight:600;font-size:var(--fs-xl);line-height:1.2;margin:0 0 10px;color:var(--ink)}
+  .since > p{margin:0;max-width:68ch;color:var(--ink-2);font-size:var(--fs-prose-2)}
+  .since .figs{margin-top:22px}
   .sober{margin-top:28px;padding-left:18px;border-left:2px solid var(--edge);color:var(--ink-2);
     font-size:var(--fs-prose-2);max-width:78ch}
   .sober strong{color:var(--ink);font-weight:600}
@@ -724,7 +729,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   <div class="hero-top"><div class="hero-copy">
   <p class="eyebrow">AI-agent orchestration · free kit (MIT) · hands-on help</p>
   <h1>Put AI agents to work <em>and keep the last word<span class="stop">.</span></em></h1>
-  <p class="lede"><strong>Guildwork is a discipline built one incident at a time, and upgraded by every new one.</strong> It runs today on real software at twenty-five merges a day, scales with the size of the agent team, and holds a law firm, an agency or a support desk just as well.</p>
+  <p class="lede"><strong>Guildwork is a discipline built one incident at a time, and upgraded by every new one.</strong> It runs today on three pieces of real software at fifty merges a day, scales with the size of the agent team, and holds a law firm, an agency or a support desk just as well.</p>
   <p class="lede">The kit is public and free. Installing it where you work is my job.</p>
   </div>
    <p class="figs-cap">Four pieces, placed by the agents on every task. The fifth is yours.</p>
@@ -745,7 +750,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Book 30 minutes</a>
     <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Read the kit</a>
   </div>
-  <p class="note">Measured on 9 September 2026 · every figure on this page is real</p>
+  <p class="note">Measured on 9 September and 20 October 2026 · every figure on this page is real</p>
   <figure class="piece" id="piece">
     <svg viewBox="-6 -6 328 328" role="img" aria-label="The Guildwork symbol: four ivory pieces placed by the agents, and one amber piece, yours.">
         <rect class="t" style="--d:0.15s" x="80" y="0" width="76" height="76"/>
@@ -1028,6 +1033,16 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
   <div class="readings">
     <p><strong>The tempo.</strong> Before the contracts, 241 merges in twenty-five days, under ten a day, with the human carrying instructions between seats. After them, 320 in thirteen, twenty-five a day. The seats changed at the same time as the governance, so the doubling is not the governance's alone. What is the governance's is that one person held that tempo without becoming the merge tool.</p>
     <p><strong>The cost of learning.</strong> Every register entry is a rule a finding paid for. In the first week of the contracts the team wrote one for every two merges; in the second, one for every three, at the same pace of merges. Before 26 August the findings were not counted at all. The first thing the system did was make them visible.</p>
+  </div>
+  <div class="since">
+    <h3>Since then: the same kit on three repositories</h3>
+    <p>Measured on 20&nbsp;October 2026, over complete days only. The product repository, then from 23&nbsp;September the studio where the work is run and the forge that builds the tools, all three under the same contracts.</p>
+    <div class="figs">
+      <div class="fig"><b>51</b><span>pull requests merged a day across the three repositories, in the seven days to 19&nbsp;October</span></div>
+      <div class="fig"><b>82</b><span>merged on the busiest day so far, 19&nbsp;October</span></div>
+      <div class="fig"><b>1&#8239;368</b><span>pull requests merged since 1&nbsp;August, the three repositories together</span></div>
+      <div class="fig"><b>2</b><span>repositories added under the same kit on 23&nbsp;September, one delivery closed unmerged in each</span></div>
+    </div>
   </div>
 </section>
 
