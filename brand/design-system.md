@@ -56,18 +56,39 @@ The board sits on the same ladder: its panels are *surface* with a
 workstream frame, its header bands are *strip*, its decision card is
 *surface* with a state rule and `--shadow-lift`. A board never uses
 *card-lead*: on a board the thing that must stand out is a state, and a
-state is a hue, not an elevation. The Studio uses *card-lead* for one object
-per screen at most, framed in `--line-strong`; `--line-amber` stays the
-site's, because in the Studio amber means a running agent and nothing else.
-For the same reason, in the Studio, Code and Work alike, the brand amber
-`--amber` appears only in the logo and the logotype.
+state is a hue, not an elevation.
 
-The Studio has two places, Code and Work. Both sit on `--ground` and are
-told apart by a glow at the top of the window, by Work's Newsreader titles,
-and by what they hold: terminals in Code, documents in Work. The glows are
-Studio tokens: `--glow-code` is `--line-strong` mixed at 45 %, `--glow-work`
-is `--ink` mixed at 6 %. A glow is never made from a state hue. `--well`
+The Studio is flat. Its surfaces take the ladder's flat steps only. *Card*
+and *card-lead* draw no gradient in the Studio: they resolve to `--strip`.
+Relief is one step of the ladder: a strip (`--strip`, `#14223A`) on the
+ground reads at 1.15 : 1. A box at *surface* on the ground reads at only
+1.02 : 1, so it is held by its frame alone.
+
+The Studio has no resting shadow. A row, a card, a panel or a frame sits in
+the page: `--shadow` is `none` there. `--shadow-lift` is kept for what
+floats above the page and nothing else: the decision layer, the palette,
+menus, sheets, a confirmation, Settings, a widget while it is dragged, and a
+footer pinned over scrolling content. The one featured object of a screen
+(*card-lead*, at most one per screen) is framed in `--line-strong`. It does
+not lift.
+
+A state is said by its 10 px edge, `box-shadow: inset 10px 0 0` in the
+state's hue. It is not a shadow: under a forced-colours theme it falls back
+to a 10 px `border-left` in `CanvasText`. `--line-amber` stays the site's,
+because in the Studio amber means a running agent and nothing else. For the
+same reason, in the Studio, Code and Work alike, the brand amber `--amber`
+appears only in the logo and the logotype.
+
+The Studio has two places, Code and Work. Both sit on flat `--ground` with
+no glow, and they are told apart by what they hold: terminals in Code,
+documents in Work, and Work's ink. The Studio's titles are IBM Plex Sans.
+Newsreader sets one title only: a decision's title in the console. `--well`
 stays the well (a terminal, code, an input), never the ground of a place.
+
+A gradient survives in the Studio only as a pattern that carries
+information. That is the hatching of an unproved step, La trame's track and
+segments, an owed piece, and a legend's swatch. A pattern is never
+elevation.
 
 The exact wording a decision would publish is a *well*: `--well` with an
 ivory frame and inset shadow. It is a preview, not an outcome, so it never
