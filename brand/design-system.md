@@ -336,12 +336,87 @@ and a fluid heading clamps between two steps of the ramp.
 - **Selection changes a border's colour, and its background where needed:**
   never its thickness, never an outer ring, and the content does not move by
   a pixel. A keyboard focus is always visible and never looks like
-  selection: it adds a 2 px outline.
+  selection: it adds a 2 px ring (see « Focus and selection » below).
 - **Weights 400, 500 and 600, upright only.** No 700, no italics: emphasis
   is colour or weight 600, never a slant.
 - **No em dash** in visible text, nor in a `title`, `aria-label`,
   `placeholder` or `alt`, nor in a document's title. A pause takes a colon, a
   comma or a full stop.
+
+## Focus and selection: one ring, drawn one way (October 2026)
+
+Chosen by the Product Owner on 29 October 2026, after the same defects came
+back on every product: rings cut by a scroller, seams in the corners, boxes
+moved by a ring. Drafted by the Studio's design seat (round 196).
+
+Every product draws a ring the same way, whatever it means: keyboard focus,
+the screen that takes the keys, or the current, chosen, pressed or checked
+item. A ring built differently in each view is the source of the cut edges,
+the seams in the corners and the boxes that move.
+
+**The rules.**
+
+1. **The ring sits on the edge and goes inward.** It starts at the element's
+   border box and goes in. It never sits outside, so no scroller or clip at
+   the element's edge cuts it, it never overlaps a neighbour, and it needs no
+   room.
+2. **It is one stroke.** Its outer curve is the element's own radius, and its
+   inner curve is that radius less its width. Never two strokes laid on one
+   edge (a border plus a pseudo-element, an outline plus a shadow): they
+   antialias separately and leave a seam in the corners.
+3. **Nothing moves.** The ring is an outline, a border's colour, or an
+   absolutely placed layer. It is never a border width, a padding or a margin.
+4. **The border under it takes its colour.** Otherwise the two curves'
+   antialiasing shows a lighter or darker arc.
+5. **It lies above everything the element holds.** Where the element's
+   children are positioned layers that reach its edge (a terminal, a canvas, a
+   video), the ring is the element's own top layer: an `::after` laid on the
+   border box, with `pointer-events: none`. If the element clips, it clips at
+   its border box (`overflow: clip; overflow-clip-margin: border-box`).
+6. **The meaning is the width and the colour.**
+   - The keyboard: 2 px in the space's accent.
+   - On a filled control whose fill is near the accent: the ground's colour, 2
+     px inside the edge, so that the fill keeps a rim outside it.
+   - The selection: the element's own 1 px border, in the secondary ink.
+   - The keyboard on a selected element: one ring, the keyboard's.
+7. **Forced colours.** The keyboard is `Highlight` at 2 px and the selection
+   `Highlight` at 1 px. A state's own edge keeps `CanvasText`.
+8. **One named exception.** A link inside a sentence has no box, so its ring
+   sits 2 px outside it, and its line leaves it the room.
+
+The constructions, in CSS:
+- **A control:** `outline: 2px solid var(--ring-key); outline-offset: -2px;`
+  with the border in the same colour.
+- **A filled control:** the same, with `outline-offset: -4px` and the ring in
+  the ground's colour.
+- **A host whose layers reach its edge:** `::after { content: ""; position:
+  absolute; inset: -1px; border: 2px solid var(--ring-key); border-radius:
+  inherit; pointer-events: none; z-index: <above its layers>; }`
+- **The selection:** `border-color: var(--ring-pick);`
+
+**The checks.**
+
+One test covers every view. It finds the elements by Tab order, by
+`aria-current`, `aria-pressed`, `aria-selected` and `aria-checked`, and by a
+`data-ring-host` attribute, never by a list of selectors, so a new view cannot
+escape it. It checks each ring by its pixels, at device pixel ratios 1, 1.5
+and 2, at every text size the product offers:
+
+1. **On the edge:** the ring's outermost device pixel is the border box's.
+2. **Never cut:** with the element wholly inside its scroller, the middle of
+   each side and the 45° point of each corner are painted.
+3. **One stroke:** along each corner's 45° line, no pixel inside the stroke is
+   darker than both its neighbours by more than 12 % of the ring's luminance.
+4. **Nothing moves:** every box on the page is identical, to 0.01 px, with and
+   without the ring.
+5. **Above its content:** with a child layer flush to the edge, the ring is
+   still painted.
+6. **The radius:** the outer curve passes through the 45° point at R(1 − 1/√2)
+   from the corner.
+7. **Contrast:** at least 3:1 between the ring's pixels and the same pixels
+   without the ring.
+8. **Forced colours:** the ring is `Highlight`, and a state's edge stays
+   `CanvasText`.
 
 ## Section heads and bands, the editorial rhythm (October 2026)
 
