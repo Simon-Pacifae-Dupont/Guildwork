@@ -2,6 +2,7 @@
 # asset, once per version. It runs when integrations/spec-kit/ changes on main;
 # a version that already has its release is left alone, so a change shipped
 # without a version bump publishes nothing (bump extension.yml to release).
+# Its releases are never marked Latest: that badge belongs to the kit's own.
 name: Spec Kit extension
 
 on:
@@ -68,4 +69,5 @@ jobs:
           } > notes.md
           gh release create "$TAG" guildwork.zip guildwork.zip.sha256 \
             --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-            --title "guildwork extension for Spec Kit $VERSION" --notes-file notes.md
+            --title "guildwork extension for Spec Kit $VERSION" --notes-file notes.md \
+            --latest=false
