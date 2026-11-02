@@ -1,0 +1,62 @@
+schema_version: "1.0"
+
+extension:
+  id: "guildwork"
+  name: "Guildwork: request, verdict, register"
+  version: "0.1.0"
+  description: "No code is written until a named human approves a written request, and every verdict is kept."
+  author: "Simon Dupont (@Simon-Pacifae-Dupont)"
+  repository: "https://github.com/Simon-Pacifae-Dupont/Guildwork"
+  license: "MIT"
+  homepage: "https://github.com/Simon-Pacifae-Dupont/Guildwork/tree/main/integrations/spec-kit"
+  category: "process"
+  effect: "read-write"
+
+requires:
+  speckit_version: ">=1.0.0"
+
+provides:
+  commands:
+    - name: "speckit.guildwork.request"
+      file: "commands/speckit.guildwork.request.md"
+      description: "Write the request a named human will rule on, from spec, plan and tasks"
+    - name: "speckit.guildwork.verdict"
+      file: "commands/speckit.guildwork.verdict.md"
+      description: "Record the human's verdict on the request: approved, held or refused"
+    - name: "speckit.guildwork.gate"
+      file: "commands/speckit.guildwork.gate.md"
+      description: "Refuse implementation unless an approved verdict covers the current spec, plan and tasks"
+    - name: "speckit.guildwork.close"
+      file: "commands/speckit.guildwork.close.md"
+      description: "Close the run on a typed verdict: delivered, partial or stopped"
+
+  templates:
+    - name: "guildwork-request"
+      file: "templates/request.md"
+      description: "The written request, with its verdict and its outcome"
+    - name: "guildwork-register"
+      file: "templates/register.md"
+      description: "The register: one line per verdict and per close, never edited"
+
+hooks:
+  after_tasks:
+    command: "speckit.guildwork.request"
+    optional: true
+    prompt: "Write the request a human will rule on before implementation?"
+    description: "Draft the written request from spec, plan and tasks"
+  before_implement:
+    command: "speckit.guildwork.gate"
+    optional: false
+    description: "Stop implementation unless an approved verdict covers the current plan"
+  after_implement:
+    command: "speckit.guildwork.close"
+    optional: true
+    prompt: "Close this run on a verdict (delivered, partial or stopped)?"
+    description: "Record the outcome of the run in the request and the register"
+
+tags:
+  - "governance"
+  - "human-in-the-loop"
+  - "approval"
+  - "audit-trail"
+  - "multi-agent"

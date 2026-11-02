@@ -117,6 +117,8 @@ demo/        les pages que le site ouvre : le tableau tel qu'il tourne (demo/boa
              avec le lecteur livré sous demo/board/reader/), le bureau sans code
              (demo/desk/) et le canvas de fonctionnement (demo/canvas/) ; versions
              françaises sous fr/demo/
+integrations/ l'extension guildwork pour Spec Kit (integrations/spec-kit/) : le verdict
+             d'une personne, écrit, avant la première ligne de code
 brand/       la marque, les lockups, le design system, et chaque image que le README
              et le site montrent, toutes rendues depuis une page de demo/, jamais retouchées
 ```
@@ -162,6 +164,21 @@ une fois, par un humain (sous Windows, lancez les lignes `gh label` de
 d'écrire, depuis `05` ; `templates/README.md` dit quelle valeur est celle de
 Lantern et ce qui vous reste à écrire.
 
+## Avec Spec Kit
+
+[Spec Kit](https://github.com/github/spec-kit) décide quoi construire : une
+spécification, un plan, des tâches. Guildwork décide qui a le droit de le
+livrer, et ce que l'humain tranche. Les deux se combinent par l'extension
+`guildwork`, dans [`integrations/spec-kit/`](integrations/spec-kit/) : entre
+`/speckit.tasks` et `/speckit.implement`, elle écrit la demande, attend le
+verdict de la personne qui décide et garde chaque verdict dans un registre.
+L'implémentation ne démarre que sur `approved`, et seulement tant que le plan
+reste celui qui a été approuvé.
+
+```
+specify extension add guildwork --from https://github.com/Simon-Pacifae-Dupont/Guildwork/releases/download/guildwork-v0.1.0/guildwork.zip
+```
+
 ## D'où ça vient
 
 Une application de bureau Windows en Python avec une suite de 13 155 tests,
@@ -192,7 +209,7 @@ projet, les positions et les teintes non (`brand/design-system.md`).
 
 ## Ce que ce n'est pas
 
-Ni un framework, ni un runtime, ni une extension. Les trois outils sont
+Ni un framework, ni un runtime. Les trois outils sont
 spécifiés dans `05`, `06` et `07` assez précisément pour être audités ou
 réimplémentés, et ils ne sont pas livrés : installer tout ceci sur un dépôt,
 adapter le vocabulaire aux sièges et aux chantiers d'une équipe, mesurer la

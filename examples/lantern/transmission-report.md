@@ -1,13 +1,16 @@
 # Transmission report: #118
 
 *Posted by the seat as a comment on the issue, before the exit command. This
-is the artefact a reviewer reads first; a report missing any of the eight
+is the artefact a reviewer reads first; a report missing any of the nine
 items `docs/06-session-cycle.md` lists is rejected the way a pull request
 missing a template section is rejected.*
 
 ---
 
 ## Transmission report: mission #118, Lead Software Engineer (Claude Code)
+
+**Verdict:** `delivered`. Criteria 1 to 4 met, each with its command under
+*Validation: run*.
 
 **Delivery:** PR #124, `feature/dashboard-stale-reading` → `develop`, head
 `c41d9e2`, base `3f9c2d1`.

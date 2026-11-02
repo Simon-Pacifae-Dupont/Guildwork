@@ -50,7 +50,7 @@ with the command named).
 ## Merge authority
 
 - [ ] delegated routine merge (Product Owner standing ruling, recorded on the delegation issue)
-- [ ] reserved Product Owner gate: `<name the gate>`, witness: `<seat>`, verdict: `<verdict>`
+- [ ] reserved Product Owner gate: `<name the gate>`, witness: `<seat>`, verdict: `approved` / `held` / `refused`
 
 ## Journal
 

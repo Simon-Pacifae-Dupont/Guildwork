@@ -270,7 +270,7 @@ body:
     id: stop_conditions
     attributes:
       label: Stop conditions
-      description: The conditions under which the agent must stop and report instead of improvising.
+      description: The conditions under which the agent must stop and report instead of improvising. A stop is a result, not a failure: the report opens on `stopped`, names the condition that fired and what was learned.
     validations:
       required: true
   - type: input

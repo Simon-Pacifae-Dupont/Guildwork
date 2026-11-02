@@ -27,6 +27,27 @@ help text that names a document names one the adopting project writes
 | `changelog.d/README.md` | `docs/changelog.d/` | `docs/11-changelog-fragments.md` |
 | `board/board.html` | published as a page on claude.ai with the GitHub connector (see `board/README.md`) | `docs/00-operating-model.md`, `docs/02-delivery-contract.md` |
 
+## How each process ends
+
+Every process these files carry ends on one word from a closed list, written
+where the next reader looks first. None of the lists contains *done*: a word
+that says something stopped, not what it delivered.
+
+| Process | Ends on | Written in |
+|---|---|---|
+| a mission run | `delivered` · `partial` · `stopped` | the first line of the transmission report (`docs/06-session-cycle.md`) |
+| a reserved gate | `approved` · `held` · `refused` | the gate comment, and the *Merge authority* line of the pull request |
+| a delivery | `delivers` · `supersedes` · `refused` | the `Mission:` line (`docs/02-delivery-contract.md`) |
+| a validation command | `PASS` · `FAIL` · `TIMEOUT` · `ABORTED` · `NO VERDICT` | *Validation: run* |
+| a findings entry | struck through as a mission `#<n>`, or `declined` with its reason | the register (`docs/09-findings-register.md`) |
+| a session | `complete` · `incomplete` | the journal entry's *Work state* |
+
+`stopped`, `held`, `refused` and `declined` are results, each written with its
+reason. A refusal that names why spares the next session the same attempt; a
+mission that stops on its own stop condition did what the contract asked.
+
+## What the templates reference
+
 What the templates reference and do not contain, because it is the
 adopting project's to write, under whatever names it prefers:
 

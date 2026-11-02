@@ -104,6 +104,8 @@ demo/        the pages the site opens: the board as it runs (demo/board/, with t
              published reader under demo/board/reader/), the no-code desk
              (demo/desk/) and the operating canvas (demo/canvas/); French
              versions under fr/demo/
+integrations/ the guildwork extension for Spec Kit (integrations/spec-kit/): a person's
+             verdict, written down, before any code is
 brand/       the mark, the lockups, the design system, and every image the README
              and the site show, each rendered from a page in demo/, never retouched
 ```
@@ -149,6 +151,21 @@ a new issue with the *AI mission* form. The first contract exists. The
 launcher that will read it is yours to write from `05`; `templates/README.md`
 says which value is Lantern's and what you still owe.
 
+## With Spec Kit
+
+[Spec Kit](https://github.com/github/spec-kit) decides what to build: a
+specification, a plan, tasks. Guildwork decides who may deliver it, and what
+the human settles. The two combine through the `guildwork` extension in
+[`integrations/spec-kit/`](integrations/spec-kit/): between `/speckit.tasks`
+and `/speckit.implement`, it writes the request, waits for the verdict of the
+person who decides, and keeps every verdict in a register. Implementation
+starts only on `approved`, and only while the plan stays the one that was
+approved.
+
+```
+specify extension add guildwork --from https://github.com/Simon-Pacifae-Dupont/Guildwork/releases/download/guildwork-v0.1.0/guildwork.zip
+```
+
 ## Where it comes from
 
 A Windows desktop application in Python with a 13 155-test suite, measured on
@@ -180,7 +197,7 @@ the names adapt to a project, the positions and the hues do not
 
 ## What it is not
 
-Not a framework, not a runtime, not an extension. The three tools are specified
+Not a framework and not a runtime. The three tools are specified
 in `05`, `06` and `07` precisely enough to audit or re-implement, and they
 are not shipped: installing this on a repository, adapting the vocabulary to
 a team's own seats and workstreams, measuring the capability table on the
