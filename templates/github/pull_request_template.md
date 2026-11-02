@@ -77,7 +77,7 @@ List them, or write `none` explicitly.
 ## Merge authority
 
 - [ ] delegated routine merge (Product Owner standing ruling, recorded on the delegation issue)
-- [ ] reserved Product Owner gate: `<name the gate>`
+- [ ] reserved Product Owner gate: `<name the gate>`, witness: `<seat>`, verdict: `approved` / `held` / `refused`
 
 ## Report target
 

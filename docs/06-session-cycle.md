@@ -225,3 +225,9 @@ a pull request missing a template section is rejected:
 7. **The preservation census relayed**, as above.
 8. **The warnings the generated instruction told it to repeat** (read-only
    not enforced, closed contract) in the fixed wording.
+9. **The verdict**, on the report's first line, and one of three: `delivered`
+   (every acceptance criterion met, each with its evidence), `partial` (the
+   criteria met, and for each one not met, why and where it goes next), or
+   `stopped` (the stop condition that fired, and what was learned). Never
+   *done*: a word that says the run ended and not what it delivered. A stop
+   with its reason is a result; the next contract is written from it.

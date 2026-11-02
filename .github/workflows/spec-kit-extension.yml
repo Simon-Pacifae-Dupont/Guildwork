@@ -1,0 +1,71 @@
+# Builds the guildwork extension for Spec Kit and publishes it as a release
+# asset, once per version. It runs when integrations/spec-kit/ changes on main;
+# a version that already has its release is left alone, so a change shipped
+# without a version bump publishes nothing (bump extension.yml to release).
+name: Spec Kit extension
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "integrations/spec-kit/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the version from the manifest
+        id: v
+        run: |
+          v=$(sed -n 's/^  version: "\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)".*/\1/p' integrations/spec-kit/extension.yml | head -1)
+          if [ -z "$v" ]; then echo "No X.Y.Z version under extension: in extension.yml"; exit 1; fi
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+          echo "tag=guildwork-v$v" >> "$GITHUB_OUTPUT"
+
+      - name: Skip if this version is already released
+        id: seen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "${{ steps.v.outputs.tag }}" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release ${{ steps.v.outputs.tag }} exists: nothing to publish."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build the archive
+        if: steps.seen.outputs.skip == 'false'
+        working-directory: integrations/spec-kit
+        run: |
+          for f in extension.yml README.md LICENSE CHANGELOG.md; do test -f "$f" || { echo "missing $f"; exit 1; }; done
+          zip -r -X "$GITHUB_WORKSPACE/guildwork.zip" extension.yml README.md LICENSE CHANGELOG.md commands templates
+          cd "$GITHUB_WORKSPACE"
+          sha256sum guildwork.zip | tee guildwork.zip.sha256
+
+      - name: Publish the release
+        if: steps.seen.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.v.outputs.tag }}
+          VERSION: ${{ steps.v.outputs.version }}
+        run: |
+          url="https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/guildwork.zip"
+          {
+            echo "The guildwork extension for Spec Kit, version $VERSION."
+            echo
+            echo "    specify extension add guildwork --from $url"
+            echo
+            echo "SHA-256 of guildwork.zip: $(cut -d' ' -f1 guildwork.zip.sha256)"
+            echo
+            echo "What changed: integrations/spec-kit/CHANGELOG.md. What it does: integrations/spec-kit/README.md."
+          } > notes.md
+          gh release create "$TAG" guildwork.zip guildwork.zip.sha256 \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "guildwork extension for Spec Kit $VERSION" --notes-file notes.md
