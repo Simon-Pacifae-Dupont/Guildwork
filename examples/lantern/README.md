@@ -29,6 +29,7 @@ through the whole lifecycle, in the order a reader would meet them:
 | `journal-entry.md` | the journal | the format-2 entry the exit command wrote, and the exit code it returned |
 | `closeout-dry-run.md` | the terminal | the closeout tool refusing four worktrees and clearing one, then closing #118 from its merged delivery |
 | `findings-register.md` | the register issue | nine entries in five families, two of them already struck through |
+| `weekly-review.md` | the weekly review issue | a run with four proposals, a skill among them, and a reader on another vendor who disagrees once |
 
 The seats on Lantern are the ones `templates/roles/` describes; the labels
 are the ones `templates/labels.sh` creates; the capability values are the

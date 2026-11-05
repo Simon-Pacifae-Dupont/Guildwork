@@ -63,6 +63,7 @@ seats are:
 | HQ Architecture, Domain Expert, UX/UI | Grok profiles | adversarial review and domain authority, each in its lane |
 | Consultant | a session outside the tree (GPT, Grok, or a cloud session) with no execution surface | a read on a contested ruling, filed in the register; it starts nothing and merges nothing, which is what makes the read neutral |
 | Witness | any seat that did not write the delivery | reads the delivery's evidence against the repository before the gate; the gate merges on the witness's word, not the author's |
+| Reader | a model other than the author's: another vendor when the installation runs one, otherwise another model | reads every lesson, rule or skill, and every proposal of the weekly review, before the human signs it; the brief names no author |
 
 **The architect seat orchestrates, and it does not write in the tree.** Until
 18 September 2026 that was a property of where the seat ran: a cloud session
@@ -102,7 +103,11 @@ Two consequences of the shape, stated because a reader will ask:
 - **What comes back.** Every incident a delivery surfaces goes to the
   register, and from the register into the next contracts as a criterion,
   a stop condition or a rule. The loop runs through the architect seat,
-  which is why it holds both the register and the contracts.
+  which is why it holds both the register and the contracts. Once a week
+  a pass outside every session reads the week's material and proposes new
+  rules, skills learned from sequences that went right three times,
+  merges and retirements; another model reads each proposal, and the human
+  signs each one (`docs/16-weekly-review.md`).
 - **Who signs.** The intended end state is one GitHub identity per seat, so
   that the history says who did what without anyone remembering. On the
   source project the bot identity exists and the seats still publish under

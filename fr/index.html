@@ -244,7 +244,11 @@
 
   /* documents */
   .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(232px,100%),1fr));gap:2px;margin-top:var(--gap-object);
-    background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden}
+    background:var(--edge-2);border:1px solid var(--edge-2);border-radius:10px;overflow:hidden;container-type:inline-size}
+  /* The last tile fills what its row leaves, so no tile ever stands alone (column count: 232px tracks, 2px gaps). */
+  @container (min-width:466px) and (max-width:699.98px){.docs>.doc:last-child{grid-column:span 2}}
+  @container (min-width:700px) and (max-width:933.98px){.docs>.doc:last-child{grid-column:span 3}}
+  @container (min-width:934px) and (max-width:1167.98px){.docs>.doc:last-child{grid-column:span 2}}
   .doc{background:var(--surface);padding:18px 18px;text-decoration:none;color:inherit;display:block}
   .doc:hover{background:var(--strip)}
   .doc code{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);color:var(--ink-2);display:block;margin-bottom:5px}
@@ -1056,7 +1060,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
 
 <section id="kit" class="wrap">
   <div class="sec-head">
-  <h2>Seize documents, numérotés dans l'ordre de lecture</h2>
+  <h2>Dix-sept documents, numérotés dans l'ordre de lecture</h2>
   <p>Commencez par <code>00</code> pour la forme, et <code>12</code> pour la raison de cette forme. Si ces deux-là en méritent un troisième, lisez <code>05</code>.</p>
   </div>
   <div class="docs">
@@ -1076,10 +1080,11 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/13-by-the-numbers.md"><code>13</code><span>Les chiffres</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/14-adoption-path.md"><code>14</code><span>Le chemin d'adoption</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/15-windows-workstation.md"><code>15</code><span>Un poste Windows</span></a>
+    <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/16-weekly-review.md"><code>16</code><span>La revue hebdomadaire</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/tree/main/templates"><code>templates/ · examples/</code><span>Les fichiers prêts à poser, et une mission fictive suivie de bout en bout</span></a>
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/tree/main/integrations/spec-kit"><code>integrations/spec-kit/</code><span>Avec Spec Kit : il décide quoi construire, cette extension qui a le droit de livrer et ce que vous tranchez</span></a>
   </div>
-  <p class="note">Les seize documents sont en anglais et le restent : c'est la langue de travail du pack, et une règle qui existe en deux versions finit par exister en deux versions différentes.</p>
+  <p class="note">Les dix-sept documents sont en anglais et le restent : c'est la langue de travail du pack, et une règle qui existe en deux versions finit par exister en deux versions différentes.</p>
 </section>
 
 <section id="next" class="wrap">
@@ -1157,7 +1162,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
     <div class="repo">
       <p class="tag">Le dépôt seul</p>
       <ul>
-        <li>seize documents, le formulaire d'issue, deux gabarits de pull request, la recette d'étiquettes, huit profils de rôle, le format de journal</li>
+        <li>dix-sept documents, le formulaire d'issue, deux gabarits de pull request, la recette d'étiquettes, huit profils de rôle, le format de journal</li>
         <li>la <em>spécification</em> du lanceur, du cycle de session et de l'outil de clôture, assez précise pour être auditée, et non livrée</li>
         <li>les incidents, anonymisés, avec la règle que chacun a payée</li>
         <li>une mission fictive suivie de bout en bout</li>

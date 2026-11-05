@@ -24,6 +24,7 @@ help text that names a document names one the adopting project writes
 | `journal/README.md`, `journal/ENTRY.md` | `docs/guild/journal/` | `docs/06-session-cycle.md`, `docs/08-continuity.md` |
 | `REGENERABLE_PATHS.txt` | `docs/guild/` | `docs/07-closeout.md` |
 | `FINDINGS_REGISTER.md` | the body of one issue, kept open | `docs/09-findings-register.md` |
+| `WEEKLY_REVIEW.md` | the body of one issue per weekly run | `docs/16-weekly-review.md` |
 | `changelog.d/README.md` | `docs/changelog.d/` | `docs/11-changelog-fragments.md` |
 | `board/board.html` | published as a page on claude.ai with the GitHub connector (see `board/README.md`) | `docs/00-operating-model.md`, `docs/02-delivery-contract.md` |
 
@@ -41,6 +42,7 @@ that says something stopped, not what it delivered.
 | a validation command | `PASS` · `FAIL` · `TIMEOUT` · `ABORTED` · `NO VERDICT` | *Validation: run* |
 | a findings entry | struck through as a mission `#<n>`, or `declined` with its reason | the register (`docs/09-findings-register.md`) |
 | a session | `complete` · `incomplete` | the journal entry's *Work state* |
+| a weekly review proposal | `signed` · `amended` · `declined` | the Product Owner's answer on the run's issue (`docs/16-weekly-review.md`) |
 
 `stopped`, `held`, `refused` and `declined` are results, each written with its
 reason. A refusal that names why spares the next session the same attempt; a

@@ -67,6 +67,11 @@ found, never from a category.
 **8. Open the register at the first board sweep**, and rule on every entry
 at every sweep after that.
 
+**9. Run the weekly review by hand once the register has a month behind
+it** (`docs/16-weekly-review.md`), with a reader on another model. It
+passes if it finds one cross-session pattern the register does not hold;
+tooling waits for a second run that pays.
+
 The fragments convention, the routing labels, the watcher and the workstream
 labels come when the board is large enough to need them, and not before: on
 the source project the workstream family arrived on day six of the form,
