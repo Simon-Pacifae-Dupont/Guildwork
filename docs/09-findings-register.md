@@ -96,4 +96,6 @@ things that are true. Not a changelog: a changelog records what changed, and
 the register records what was found and not yet acted on. Not a decision
 log: rulings live where they were made (on the issue, in the document they
 amend), and the register's `K` family only points at the ones every seat
-must apply.
+must apply. Not a place that only grows: the weekly review
+(`docs/16-weekly-review.md`) proposes merges and retirements of the rules
+that findings and incidents paid for, under the Product Owner's signature.

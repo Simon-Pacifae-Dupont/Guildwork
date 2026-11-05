@@ -6,7 +6,10 @@ listed here (anonymised, without issue numbers, with the domain removed)
 because a rule whose incident is unknown is a rule that gets relaxed by the
 first person who finds it inconvenient. The register is not closed: an
 incident enters it the day it pays for a rule of the kit, and the count on
-the site is the count in this file.*
+the site is the count in this file. An incident never leaves it; the rule
+under it can, struck through with its date and reason, when the weekly
+review shows its cause is gone, and a new rule is read by another model
+before a person validates it (`docs/16-weekly-review.md`).*
 
 The format is the same for each: what happened, then the rule it produced.
 Dates are kept where they say something about tempo.
