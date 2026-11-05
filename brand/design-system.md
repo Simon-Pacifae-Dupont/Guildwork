@@ -20,7 +20,7 @@ and the demonstrations open dark whatever the visitor's system says
 | `--line` | `#1D2B44` | quiet rules between siblings |
 | `--line-strong` | `#2B3B57` | a border that frames |
 | `--ink` | `#F3EDE2` | text, ivory |
-| `--ink-2` | `#9FAAC0` | secondary text: captions, eyebrows, counts, times, notes |
+| `--ink-2` | `#9FAAC0` | secondary text: captions, eyebrows (sentence case, untracked: see *Type*), counts, times, notes |
 | `--muted` / `--ink-3` | `#6B7791` | non-text only: rules, disabled marks. Never text: 4.1 : 1 on the ground, under AA. A mark that carries meaning (a status dot) reaches 3 : 1 against what it sits on, so it is never `--muted` on a state tint |
 | `--amber` | `#E9A23B` | the site's own accent: buttons, punch rules, the mark |
 | `--brand` / `--accent` | `#5CB9C4` | links and notes inside a board: teal, so it never reads as a state |
@@ -58,37 +58,70 @@ workstream frame, its header bands are *strip*, its decision card is
 *card-lead*: on a board the thing that must stand out is a state, and a
 state is a hue, not an elevation.
 
-The Studio is flat. Its surfaces take the ladder's flat steps only. *Card*
-and *card-lead* draw no gradient in the Studio: they resolve to `--strip`.
-Relief is one step of the ladder: a strip (`--strip`, `#14223A`) on the
-ground reads at 1.15 : 1. A box at *surface* on the ground reads at only
-1.02 : 1, so it is held by its frame alone.
+### The Studio: frost and edge light (direction C, November 2026)
 
-The Studio has no resting shadow. A row, a card, a panel or a frame sits in
-the page: `--shadow` is `none` there. `--shadow-lift` is kept for what
-floats above the page and nothing else: the decision layer, the palette,
-menus, sheets, a confirmation, Settings, a widget while it is dragged, and a
-footer pinned over scrolling content. The one featured object of a screen
-(*card-lead*, at most one per screen) is framed in `--line-strong`. It does
-not lift.
+The Studio does not take the site's gradients or its resting shadows. *Card*
+and *card-lead* draw no 168° gradient there, and `--shadow` is `none`. Since
+5 November 2026 its relief is its own, the direction the Product Owner chose
+as « Givre et lumière de bord ». It has four parts: a grain over the ground, a
+white glaze over each surface's own fill, a one-pixel light along a surface's
+top edge, and frosted glass on what floats and on nothing else. Every value
+below reads the place's own tokens, so Code and Work differ only by their
+grounds and inks.
+
+| Layer | Token | Value | On |
+|---|---|---|---|
+| grain | `--grain`, `--grain-opacity` | a grey fractal-noise SVG (`feTurbulence`, base frequency 0.85, 3 octaves, desaturated), at opacity 0.07 | one layer fixed over the ground and under all content, `pointer-events: none`; never one per panel |
+| ground shade | `--ground-shade` | 180°: the ground mixed 3 % toward white at the top, the ground itself at 40 %, mixed 15 % toward black at the foot (oklab) | the page, fixed to the window. It has no hue of its own and no centre: it is not a glow |
+| glaze | `--glaze` | 180°: white 4.5 % → 1.2 % | a panel, a card, the bar: laid over the surface's own fill, `background: var(--glaze), var(--surface)` |
+| glaze, selected | `--glaze-selected` | 180°: white 8 % → 3 % | a selected control |
+| edge light | `--edge-light` | `inset 0 1px 0`, white 8 % | the top edge of a panel or a card |
+| edge light, selected | `--edge-light-selected` | `inset 0 1px 0`, white 12 % | a selected control |
+| lead | `--glaze-lead`, `--edge-light-lead` | the place's « for you » ink at 13 % → 4 % over the top 60 %; its top edge in that ink at 55 % | the one featured object of a screen, at most one |
+| filled | `--glaze-filled`, `--edge-light-filled` | white 14 % → 0 over the button's own ink; a top edge of white 45 % | a filled button |
+| well | `--well-inset` | `inset 0 1px 2px`, black 40 % | a field, the search, the place switch: a hole under the glaze |
+| glass | `--glass`, `--glass-blur`, `--edge-light-glass` | `--strip` at 78 % → 72 %; `backdrop-filter: blur(16px) saturate(140%)`; a top edge of white 14 %; with `--shadow-lift` | what floats, and only that |
+
+- **What floats is glass; nothing else is blurred.** Floating means the
+  decision layer, the palette, menus, popovers, sheets, a confirmation,
+  Settings, a widget while it is dragged, and a footer pinned over scrolling
+  content. These are also the only places `--shadow-lift` appears. Nothing at
+  rest in the page lifts, and the one featured object of a screen is lit by
+  the lead glaze, framed in `--line-strong`, and does not lift.
+- **No glow.** The ground shade is the page's only gradient, and it has no
+  hue. A place never glows in its own colour.
+- **Text keeps its tokens.** On a glazed surface, contrast is measured
+  against the glaze's lightest colour under the text, as for any gradient.
+  The glaze never earns a text a lighter token.
+- **Selection** changes a frame's colour and its glaze. It never changes the
+  frame's thickness and never adds a ring. Focus keeps the one ring
+  (*Focus and selection*, below).
+- **Where transparency is refused, C steps back.** Under
+  `prefers-reduced-transparency: reduce` or `prefers-contrast: more`, glass
+  becomes opaque `--strip` under the glaze, with no blur, and the grain goes
+  to 0. Under `forced-colors: active`, grain, glaze, edge light and glass all
+  drop away.
+- **On the phone**, the grain and the glaze are the same. The palette and the
+  sheets keep their blur.
 
 A state is said by its 10 px edge, `box-shadow: inset 10px 0 0` in the
-state's hue. It is not a shadow: under a forced-colours theme it falls back
-to a 10 px `border-left` in `CanvasText`. `--line-amber` stays the site's,
-because in the Studio amber means a running agent and nothing else. For the
-same reason, in the Studio, Code and Work alike, the brand amber `--amber`
-appears only in the logo and the logotype.
+state's hue. It is not a shadow, and it sits on top of the glaze. Under a
+forced-colours theme it falls back to a 10 px `border-left` in `CanvasText`.
+`--line-amber` stays the site's, because in the Studio amber means a running
+agent and nothing else. For the same reason, in the Studio, Code and Work
+alike, the brand amber `--amber` appears only in the logo and the logotype.
 
-The Studio has two places, Code and Work. Both sit on flat `--ground` with
-no glow, and they are told apart by what they hold: terminals in Code,
-documents in Work, and Work's ink. The Studio's titles are IBM Plex Sans.
-Newsreader sets one title only: a decision's title in the console. `--well`
-stays the well (a terminal, code, an input), never the ground of a place.
+The Studio has two places, Code and Work. Each sits on its own `--ground`,
+shaded and grained as above, and neither glows. They are told apart by what
+they hold: terminals in Code, documents in Work, and Work's ink. The Studio's
+titles are IBM Plex Sans. Newsreader sets one title only: a decision's title
+in the console. `--well` stays the well (a terminal, code, an input), never
+the ground of a place.
 
-A gradient survives in the Studio only as a pattern that carries
-information. That is the hatching of an unproved step, La trame's track and
-segments, an owed piece, and a legend's swatch. A pattern is never
-elevation.
+Beyond those layers, a gradient appears in the Studio only as a pattern that
+carries information. The patterns are the hatching of an unproved step, La
+trame's track and segments, an owed piece, and a legend's swatch. A pattern
+is never elevation, and the glaze is never a pattern: it says nothing.
 
 The exact wording a decision would publish is a *well*: `--well` with an
 ivory frame and inset shadow. It is a preview, not an outcome, so it never
@@ -311,7 +344,7 @@ and a fluid heading clamps between two steps of the ramp.
 
 | Token | Value | For |
 |---|---|---|
-| `--fs-xs` | 13 px | tags, eyebrows, counts, a diagram's labels |
+| `--fs-xs` | 13 px | tags, eyebrows, counts, a diagram's labels; never in capitals, never tracked (see *Type*) |
 | `--fs-sm` | 14 px | secondary text: ages, numbers, notes |
 | `--fs-prose-2` | 15 px | secondary prose |
 | `--fs-md` | 16 px | body text |
@@ -452,9 +485,18 @@ The home page reads as a sequence of distinct sections, not one long sheet:
 Site: Fraunces for display, IBM Plex Sans for text, IBM Plex Mono for
 figures, labels and anything a machine wrote. Boards: Newsreader for
 display (the reference board's face), IBM Plex Sans and Mono as on the
-site. The Studio: Newsreader for display, Fraunces for the wordmark
-only, IBM Plex Sans and Mono as on the site. Counters are always tabular
+site. The Studio: IBM Plex Sans for its titles and its text, Newsreader for
+one title only (a decision's title in the console), Fraunces for the
+wordmark only, IBM Plex Mono as on the site. Counters are always tabular
 monospace.
+
+**No capitals and no tracking on a label, on any surface** (the Product
+Owner, 6 November 2026). No label, tag, chip, eyebrow, badge or navigation
+link is set in capitals, whether by `text-transform: uppercase`, by
+`font-variant-caps` or by capitals typed as such, and none is tracked past
+`letter-spacing: 0.03em`. An eyebrow stays a role (`--ink-2` at `--fs-xs`),
+in sentence case and untracked. An acronym or a name keeps its own capitals
+(`PR`, `MIT`, `GitHub`).
 
 ## Where each surface reads its tokens
 
