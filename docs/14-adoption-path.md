@@ -101,6 +101,25 @@ on day one.
   does not answer: a second source, or a stop that names the gap, never a
   stale value passed off as today's. The check is written in the
   installation record with its date.
+- **The skills the installation adds, weighed against the ones already
+  there.** The installation adds as few skills as it can. A harness shows the
+  agent a listing of the installed skills, and some harnesses cap that
+  listing: past the cap, skills stop being offered to the agent, the team's
+  own included. Before installing, count the team's skills and, where the
+  harness shows it, how much of the listing limit they use; after installing,
+  count again. If one of the team's skills is no longer offered, the
+  installation is not finished. Both counts go in the installation record.
+- **An inventory of what the installation wrote.** Every file the
+  installation writes or changes is listed in an inventory committed to the
+  repository: its path, the version that wrote it, and a fingerprint (a short
+  code that changes when the file changes). With it, a person can check that
+  nothing drifted, put back a file that went missing, and remove the
+  installation, always seeing the list of what would be removed before
+  anything is. A file the team changed after installation is shown, never
+  overwritten or removed without a person saying so. The inventory stays in
+  the repository with the rest of what was installed: the team keeps using
+  and changing it after the engagement, and removing the installation is
+  their decision, never a step of ending one.
 
 ## What adopting it looks like with help
 
