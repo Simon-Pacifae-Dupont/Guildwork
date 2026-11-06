@@ -430,6 +430,7 @@ svg.tl .tk,svg.tl .mk,svg.tl .lb{font-size:calc(var(--fs-xs) * var(--tl-k,1))}
   .feat .side h4{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px;font-weight:500}
   .feat .side p{font-size:var(--fs-prose-2)}
   .feat .side p strong{color:var(--ink);font-weight:600}
+  .feat.plain{border-color:var(--line);background:var(--card);box-shadow:var(--shadow)}
   .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid var(--line-amber);color:var(--ink);font-size:var(--fs-prose-2)}
   .proof{margin-top:var(--gap-object);border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
   @media (max-width:720px){.proof{grid-template-columns:1fr}}
@@ -1056,6 +1057,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
   <div class="sec-head">
   <h2>Seventeen documents, numbered in reading order</h2>
   <p>Start with <code>00</code> for the shape and <code>12</code> for why it is shaped that way. If those two earn a third, read <code>05</code>.</p>
+  <p>Guildwork is the method, whichever tool directs the agents: terminal, kanban, dashboard or workflow engine. That tool can carry the written request, the named verdict and the register. It does not decide them.</p>
   </div>
   <div class="docs">
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/00-operating-model.md"><code>00</code><span>The operating model</span></a>
@@ -1313,6 +1315,23 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=One%20day%20a%20month">Book 30 minutes<span>→</span></a>
     </div>
   </div>
+  <div class="feat plain" id="searchable-register">
+    <div>
+      <p class="n"><svg class="i" aria-hidden="true"><use href="#i-docs"/></svg><span>An installation that comes up often</span></p>
+      <h3>The searchable register: one answer, with its sources</h3>
+      <p>Your staff ask their question to an AI assistant that reads only your documents: your procedures, your templates, the answers you have already approved. Every answer cites the document and the passage it used. When nothing answers the question, it says so instead of making something up.</p>
+      <p>It is the answer to the firm above: on Monday and on Tuesday, the same question would have cited the same page. And when two documents contradict each other, the contradiction reaches the register the same day, not the client.</p>
+      <p class="play">Set up as a <a href="#off-premier">first agent under contract</a>: one week, for a collection of a few hundred documents. Beyond that, it is priced at the scoping day.</p>
+    </div>
+    <div class="side">
+      <h4>What the installation needs</h4>
+      <p><strong>Your reference documents</strong>, gathered in one place, and one person who says which of them are authoritative.</p>
+      <p><strong>Access rights.</strong> An HR document does not answer the whole team: who may ask about what is settled before anything is connected.</p>
+      <p><strong>An AI tool the company has approved</strong>, on a business account, never the staff's personal accounts.</p>
+      <p><strong>A week of real questions</strong>, to check it finds the right page, and answers "I don't know" the rest of the time.</p>
+    </div>
+  </div>
+  <p class="note">Start on your own, tonight: <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/no-code/install-prompt.md">the prompt that installs the three rules in Claude</a>, with its guardrails. It asks its questions before acting and starts on an invented case.</p>
   <p class="note">The thirty minutes are free and commit you to nothing: you describe your week, I tell you what I see in it, even if you go no further.</p>
 
   <div class="proof">

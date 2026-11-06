@@ -435,6 +435,7 @@ svg.tl .tk,svg.tl .mk,svg.tl .lb{font-size:calc(var(--fs-xs) * var(--tl-k,1))}
   .feat .side h4{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px;font-weight:500}
   .feat .side p{font-size:var(--fs-prose-2)}
   .feat .side p strong{color:var(--ink);font-weight:600}
+  .feat.plain{border-color:var(--line);background:var(--card);box-shadow:var(--shadow)}
   .feat .rulebox{margin-top:16px;padding:14px 16px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid var(--line-amber);color:var(--ink);font-size:var(--fs-prose-2)}
   .proof{margin-top:var(--gap-object);border:1px solid var(--line-amber);border-radius:10px;background:var(--card-lead);box-shadow:var(--shadow-lift);padding:28px 26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
   @media (max-width:720px){.proof{grid-template-columns:1fr}}
@@ -1062,6 +1063,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
   <div class="sec-head">
   <h2>Dix-sept documents, numérotés dans l'ordre de lecture</h2>
   <p>Commencez par <code>00</code> pour la forme, et <code>12</code> pour la raison de cette forme. Si ces deux-là en méritent un troisième, lisez <code>05</code>.</p>
+  <p>Guildwork est la méthode, quel que soit l'outil qui dirige les agents : terminal, kanban, tableau de bord ou moteur de flux. Cet outil peut porter la demande écrite, le verdict nommé et le registre. Il ne les décide pas.</p>
   </div>
   <div class="docs">
     <a class="doc" href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/docs/00-operating-model.md"><code>00</code><span>Le modèle de fonctionnement</span></a>
@@ -1320,6 +1322,23 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
       <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Une%20journ%C3%A9e%20par%20mois">Réserver 30 minutes<span>→</span></a>
     </div>
   </div>
+  <div class="feat plain" id="registre-interrogeable">
+    <div>
+      <p class="n"><svg class="i" aria-hidden="true"><use href="#i-docs"/></svg><span>Une installation qui revient souvent</span></p>
+      <h3>Le registre interrogeable : une seule réponse, avec ses sources</h3>
+      <p>Vos collaborateurs posent leur question à un assistant IA qui ne lit que vos documents : vos procédures, vos modèles, les réponses que vous avez déjà validées. Chaque réponse cite le document et le passage qui ont servi. Quand rien ne répond à la question, il le dit au lieu d'inventer.</p>
+      <p>C'est la réponse au cabinet plus haut : lundi et mardi, la même question aurait cité la même page. Et quand deux documents se contredisent, la contradiction arrive au registre le jour même, pas chez le client.</p>
+      <p class="play">Monté comme <a href="#off-premier">premier agent sous contrat</a> : une semaine, pour un fonds de quelques centaines de documents. Au-delà, il se chiffre au cadrage.</p>
+    </div>
+    <div class="side">
+      <h4>Ce que demande l'installation</h4>
+      <p><strong>Vos documents de référence</strong>, rassemblés en un seul endroit, et une personne qui dit lesquels font foi.</p>
+      <p><strong>Les droits d'accès.</strong> Un document RH ne répond pas à toute l'équipe : on décide qui interroge quoi avant de brancher quoi que ce soit.</p>
+      <p><strong>Un outil IA validé par l'entreprise</strong>, en compte professionnel, jamais les comptes personnels des collaborateurs.</p>
+      <p><strong>Une semaine de vraies questions</strong>, pour vérifier qu'il trouve la bonne page, et qu'il répond « je ne sais pas » le reste du temps.</p>
+    </div>
+  </div>
+  <p class="note">Commencer seul, ce soir : <a href="https://github.com/Simon-Pacifae-Dupont/Guildwork/blob/main/no-code/install-prompt.fr.md">le prompt qui installe les trois règles dans Claude</a>, avec ses garde-fous. Il pose ses questions avant d'agir et commence sur un dossier inventé.</p>
   <p class="note">Les trente minutes sont gratuites et sans engagement : vous me décrivez votre semaine, je vous dis ce que j'y vois, même si vous n'allez pas plus loin.</p>
 
   <div class="proof">

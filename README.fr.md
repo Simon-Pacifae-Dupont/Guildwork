@@ -118,6 +118,8 @@ demo/        les pages que le site ouvre : le tableau tel qu'il tourne (demo/boa
              avec le lecteur livré sous demo/board/reader/), le bureau sans code
              (demo/desk/) et le canvas de fonctionnement (demo/canvas/) ; versions
              françaises sous fr/demo/
+no-code/     le prompt qui installe les trois règles sans code (demande écrite, relecture,
+             registre) dans Claude, avec ses garde-fous ; version anglaise à côté
 integrations/ l'extension guildwork pour Spec Kit (integrations/spec-kit/) : le verdict
              d'une personne, écrit, avant la première ligne de code
 brand/       la marque, les lockups, le design system, et chaque image que le README
@@ -165,6 +167,17 @@ une fois, par un humain (sous Windows, lancez les lignes `gh label` de
 `labels.sh` depuis PowerShell). Ouvrez ensuite une issue avec le formulaire *AI mission*. Le premier contrat existe. Le lanceur qui le lira est à vous
 d'écrire, depuis `05` ; `templates/README.md` dit quelle valeur est celle de
 Lantern et ce qui vous reste à écrire.
+
+## Quel que soit l'outil qui dirige les agents
+
+Guildwork est une méthode, pas un outil de plus pour diriger des agents. Un
+terminal, un kanban, un tableau de bord qui fait tourner toute une équipe, un
+moteur de flux : quel que soit celui qui les dirige, trois choses restent à
+écrire. Ce qui est demandé, par écrit, avant que le travail commence. Qui
+tranche, nommément, avant que rien ne parte. Où chaque verdict est gardé, pour
+que l'erreur suivante devienne une règle au lieu de se répéter. Ce dépôt
+spécifie ces trois-là. L'outil qui fait tourner les agents peut les porter ; il
+ne les décide pas.
 
 ## Avec Spec Kit
 
