@@ -281,14 +281,14 @@ var DAYS = {
     {who:"Codex CLI",what:"Rapport mensuel de suivi pour les trois clients",h:0.9}]},
   {name:"La startup", intro:"Deux fondateurs, un produit en bêta, cinquante utilisateurs qui attendent la version payante.",
    punch:"La version payante est prête à partir. La base n'a pas été effacée en route.",
-   caught:"50 comptes", caughtLabel:"sauvés d'une suppression sans copie",
+   caught:"50 utilisateurs", caughtLabel:"sauvés d'une suppression qui en visait douze",
    items:[
     {who:"Claude Code",what:"Page de paiement et abonnement mensuel",h:1.3},
     {who:"Codex CLI",what:"Supprimer les comptes de test de la base",h:0.9,stop:{
-      head:"Une suppression allait partir sans copie de sauvegarde",
-      body:"Le contrat demandait d'effacer les comptes de test. Il ne nommait aucune sauvegarde préalable. Le siège a démarré, lu ses conditions d'arrêt, et s'est arrêté avant de supprimer quoi que ce soit. Il l'a écrit dans son rapport.",
-      saved:"Ce que ça aurait coûté : <b>les cinquante premiers utilisateurs</b>, effacés avec les comptes de test, sans copie.",
-      tech:"Transmission report: mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>: the contract orders a deletion and names\nno backup taken first. Nothing was deleted. Scope untouched.\n\nNext decision owner: Chief Architect. Smallest next action: name the backup."}},
+      head:"La commande allait effacer les cinquante premiers utilisateurs avec les comptes de test",
+      body:"Le contrat nommait douze comptes de test. Pour les retrouver, l'agent a écrit : supprimer tous les comptes créés avant le lancement. Avant de l'exécuter, il a compté ce qu'elle toucherait : soixante-deux comptes. Les cinquante premiers utilisateurs aussi s'étaient inscrits avant le lancement. Douze attendus, soixante-deux trouvés : il s'est arrêté, et rien n'a été effacé.",
+      saved:"Ce que ça aurait coûté : <b>les cinquante premiers utilisateurs</b>, ceux qui attendent la version payante, effacés avec les comptes de test, sans copie.",
+      tech:"Rapport de transmission : mission #77\n\nArrêtée sous la <b>condition d'arrêt 1 (LOT)</b>, avant toute écriture.\n\n  DELETE FROM accounts WHERE created_at &lt; '2026-09-01';\n  comptage à blanc : 62 lignes · le contrat en nomme 12\n  50 lignes hors de la liste du contrat\n\nRien n'a été effacé. Périmètre intact.\nDécision suivante : Chief Architect. Plus petite action : lister les 12 comptes par identifiant."}},
     {who:"Grok Build",what:"Importer les contacts depuis un fichier Excel",h:1.0},
     {who:"Claude Code",what:"E-mail d'annonce de la version payante",h:1.0,gate:{
       head:"Cinquante personnes vont le recevoir, et on ne rappelle pas un e-mail",
@@ -304,7 +304,7 @@ var DAYS = {
       head:"La marge allait être calculée sur les coûts de l'an dernier",
       body:"Le contrat exigeait les coûts 2026. Le fichier disponible était celui de 2025. Le siège s'est arrêté sous la condition d'arrêt du contrat au lieu de produire un chiffre plausible et faux.",
       saved:"Ce que ça aurait coûté : une marge <b>fausse de 8 %</b>, présentée lundi au comité de direction, et une décision prise dessus.",
-      tech:"Transmission report: mission #305\n\nStopped under <b>stop condition 2 (ITEM)</b>: the only cost file at this commit is\ncosts/2025.csv; the contract requires 2026. A figure computed on it would be\nplausible and wrong. Item halted, other items continued."}},
+      tech:"Rapport de transmission : mission #305\n\nArrêtée sous la <b>condition d'arrêt 2 (ITEM)</b> : le seul fichier de coûts à ce commit est\ncosts/2025.csv ; le contrat exige 2026. Un chiffre calculé dessus serait\nplausible et faux. Élément arrêté, les autres ont continué."}},
     {who:"Grok Build",what:"Nettoyer les doublons dans la base clients",h:1.0},
     {who:"Claude Code",what:"Envoyer le rapport de lundi à la direction",h:0.9,gate:{
       head:"La direction va lire ces chiffres, et ils portent votre nom",
@@ -455,14 +455,14 @@ var DAYS = {
     {who:"Codex CLI",what:"Monthly progress report for the three clients",h:0.9}]},
   {name:"The startup", intro:"Two founders, a product in beta, fifty users waiting for the paid version.",
    punch:"The paid version is ready to go. The database was not wiped on the way.",
-   caught:"50 accounts", caughtLabel:"saved from a deletion with no copy",
+   caught:"50 users", caughtLabel:"saved from a deletion meant for twelve",
    items:[
     {who:"Claude Code",what:"Payment page and monthly subscription",h:1.3},
     {who:"Codex CLI",what:"Delete the test accounts from the database",h:0.9,stop:{
-      head:"A deletion was about to run with no backup",
-      body:"The contract ordered the test accounts deleted. It named no backup first. The seat started, read its stop conditions, and stopped before deleting anything. It wrote that in its report.",
-      saved:"What it would have cost: <b>the first fifty users</b>, wiped along with the test accounts, with no copy.",
-      tech:"Transmission report: mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>: the contract orders a deletion and names\nno backup taken first. Nothing was deleted. Scope untouched.\n\nNext decision owner: Chief Architect. Smallest next action: name the backup."}},
+      head:"The command was about to wipe the first fifty users along with the test accounts",
+      body:"The contract named twelve test accounts. To find them, the agent wrote: delete every account created before launch. Before running it, it counted what it would touch: sixty-two accounts. The first fifty users had signed up before launch too. Twelve expected, sixty-two found: it stopped, and nothing was deleted.",
+      saved:"What it would have cost: <b>the first fifty users</b>, the ones waiting for the paid version, wiped along with the test accounts, with no copy.",
+      tech:"Transmission report: mission #77\n\nStopped under <b>stop condition 1 (LOT)</b>, before any write.\n\n  DELETE FROM accounts WHERE created_at &lt; '2026-09-01';\n  dry count: 62 rows · the contract names 12\n  50 rows outside the contract's list\n\nNothing was deleted. Scope untouched.\nNext decision owner: Chief Architect. Smallest next action: list the 12 accounts by id."}},
     {who:"Grok Build",what:"Import contacts from an Excel file",h:1.0},
     {who:"Claude Code",what:"Announcement email for the paid version",h:1.0,gate:{
       head:"Fifty people will get this, and an email cannot be recalled",

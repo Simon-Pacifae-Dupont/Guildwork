@@ -104,6 +104,8 @@ demo/        the pages the site opens: the board as it runs (demo/board/, with t
              published reader under demo/board/reader/), the no-code desk
              (demo/desk/) and the operating canvas (demo/canvas/); French
              versions under fr/demo/
+no-code/     the prompt that installs the three no-code rules (written request, sign-off,
+             register) in Claude, with its guardrails; French version alongside
 integrations/ the guildwork extension for Spec Kit (integrations/spec-kit/): a person's
              verdict, written down, before any code is
 brand/       the mark, the lockups, the design system, and every image the README
@@ -151,6 +153,16 @@ Windows, run the `gh label` lines of `labels.sh` from PowerShell). Then open
 a new issue with the *AI mission* form. The first contract exists. The
 launcher that will read it is yours to write from `05`; `templates/README.md`
 says which value is Lantern's and what you still owe.
+
+## Whatever runs the agents
+
+Guildwork is a method, not one more tool to direct agents. A terminal, a
+kanban, a dashboard that runs a whole team, a workflow engine: whichever one
+drives the agents, three things still have to be written down. What is asked,
+in writing, before the work starts. Who settles it, by name, before anything
+ships. Where each verdict is kept, so the next mistake becomes a rule instead
+of a repeat. Those three are what this repository specifies. The tool that
+runs the agents can hold them; it does not decide them.
 
 ## With Spec Kit
 
