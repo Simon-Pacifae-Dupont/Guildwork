@@ -93,6 +93,14 @@ on day one.
   execution.** A profile is not a runtime.
 - **What is regenerable**, decided by a person and committed, before the
   first removal.
+- **Every free external service wired into the installation, checked
+  first.** A free API (weather, exchange rates, public holidays, anything an
+  agent calls) is checked before it is wired in: its terms of use and
+  licence (is commercial use allowed?), its availability and call limits,
+  whether it needs a key and who holds that key, and what happens when it
+  does not answer: a second source, or a stop that names the gap, never a
+  stale value passed off as today's. The check is written in the
+  installation record with its date.
 
 ## What adopting it looks like with help
 

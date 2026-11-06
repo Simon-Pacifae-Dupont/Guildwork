@@ -418,7 +418,22 @@ var DAYS = {
       head:"Un contrat annuel en jeu, et ça porte votre nom",
       body:"La réponse est prête : elle reconnaît l'erreur et propose un geste dans les règles. L'assistant IA de relecture l'a validée. L'envoyer vous revient.",
       detail:"Validée par : l'assistant IA de relecture · geste : 30 € · contrat : 4 800 € par an · historique joint"}},
-    {who:"L'assistant IA qui rédige",what:"Bilan de la semaine : les cinq motifs de réclamation les plus fréquents",h:0.9}]}
+    {who:"L'assistant IA qui rédige",what:"Bilan de la semaine : les cinq motifs de réclamation les plus fréquents",h:0.9}]},
+  {name:"Le transporteur", intro:"Un transporteur de douze camions, des clients en France, en Belgique et en Suisse, un planning refait chaque lundi.",
+   punch:"Les tournées de la semaine sont bouclées avant 9 h. Une seule décision vous attendait.",
+   caught:"1 facture", caughtLabel:"à un taux périmé, arrêtée avant l'envoi",
+   items:[
+    {who:"L'assistant IA qui planifie",what:"Tournées de la semaine, avec la météo sur chaque livraison",h:1.2},
+    {who:"L'assistant IA qui facture",what:"Facture du client genevois, convertie au taux du jour",h:1.1,stop:{
+      head:"Une facture allait partir au taux de la semaine dernière",
+      body:"Le client genevois paie en francs suisses. Ce matin, la source du taux de change n'a pas répondu, ni la seconde prévue à l'installation. Plutôt que de convertir au dernier taux connu, celui de la semaine dernière, l'assistant IA s'est arrêté et vous présente la facture.",
+      saved:"Ce que ça aurait coûté : <b>une facture de 52 000 francs suisses</b> calculée sur un taux périmé, et un avoir à refaire chez votre plus gros client.",tech:null}},
+    {who:"L'assistant IA qui planifie",what:"Planning des chauffeurs avec les jours fériés de chaque pays traversé",h:1.0},
+    {who:"L'assistant IA qui planifie",what:"Livraison de jeudi vers Genève",h:1.0,gate:{
+      head:"De la neige annoncée jeudi sur la route : partir mercredi soir, c'est à vous de le dire",
+      body:"Quinze centimètres sont annoncés jeudi matin sur l'itinéraire. L'assistant IA propose de partir mercredi soir : une nuit de chauffeur en plus, et le client livré à l'heure. Décaler à vendredi est l'autre option, chiffrée aussi. Valider vous revient.",
+      detail:"Prévision du jour · nuit de chauffeur chiffrée · client prévenu"}},
+    {who:"L'assistant IA qui relance",what:"Relances des factures à plus de trente jours",h:0.9}]}
  ]},
  en:{ code:[
   {name:"The software company", intro:"A team of six, a product in production, version 2.4 due on Friday.",
@@ -592,7 +607,22 @@ var DAYS = {
       head:"A yearly contract at stake, and it carries your name",
       body:"The reply is ready: it owns the mistake and offers a gesture within the rules. The reviewing AI assistant has signed it off. Sending it is yours.",
       detail:"Signed off by: the reviewing AI assistant · gesture: €30 · contract: €4,800 a year · history attached"}},
-    {who:"The AI assistant that drafts",what:"Week's summary: the five most frequent complaint reasons",h:0.9}]}
+    {who:"The AI assistant that drafts",what:"Week's summary: the five most frequent complaint reasons",h:0.9}]},
+  {name:"The haulier", intro:"A twelve-truck haulier, customers in France, Belgium and Switzerland, a schedule redone every Monday.",
+   punch:"The week's rounds are settled before 9 am. One decision was waiting for you.",
+   caught:"1 invoice", caughtLabel:"at an out-of-date rate, stopped before it left",
+   items:[
+    {who:"The AI assistant that plans",what:"The week's rounds, with the weather on every delivery",h:1.2},
+    {who:"The AI assistant that invoices",what:"Invoice for the Geneva customer, converted at today's rate",h:1.1,stop:{
+      head:"An invoice was about to leave at last week's rate",
+      body:"The Geneva customer pays in Swiss francs. This morning the exchange-rate source did not answer, and neither did the second one set up at installation. Rather than convert at the last known rate, last week's, the AI assistant stopped and is showing you the invoice.",
+      saved:"What it would have cost: <b>a 52,000 Swiss franc invoice</b> worked out on an out-of-date rate, and a credit note to redo for your biggest customer.",tech:null}},
+    {who:"The AI assistant that plans",what:"Drivers' schedule with the public holidays of every country crossed",h:1.0},
+    {who:"The AI assistant that plans",what:"Thursday's delivery to Geneva",h:1.0,gate:{
+      head:"Snow forecast on Thursday's route: leaving on Wednesday evening is your call",
+      body:"Fifteen centimetres are forecast on the route on Thursday morning. The AI assistant proposes leaving on Wednesday evening: one more driver's night, and the customer delivered on time. Moving to Friday is the other option, priced too. Signing off is yours.",
+      detail:"Today's forecast · driver's night priced · customer told"}},
+    {who:"The AI assistant that chases",what:"Reminders for invoices more than thirty days overdue",h:0.9}]}
  ]}
 };
 /* Chaque travail a une heure d'arrivée, le temps réel que l'agent y passe, et le temps
@@ -611,7 +641,8 @@ var TIMES = {
   [["8:40",10,120],["9:30",6,60],["10:45",30,1500],["14:00",10,90],["16:00",5,60]],
   [["9:00",10,180],["10:00",8,120],["11:15",20,240],["14:30",12,180],["16:30",8,60]],
   [["9:00",10,300],["10:00",8,150],["11:30",6,90],["14:30",8,120],["16:00",10,120]],
-  [["8:30",20,300],["9:15",25,320],["10:30",5,60],["11:20",5,45],["16:30",10,120]]]
+  [["8:30",20,300],["9:15",25,320],["10:30",5,60],["11:20",5,45],["16:30",10,120]],
+  [["8:35",15,180],["9:20",4,40],["10:00",10,120],["11:00",6,60],["15:30",8,90]]]
 };
 var STATE_LABEL = {
  en:{next:"waiting",run:"running",you:"for you",done:"landed",stop:"stopped"},
