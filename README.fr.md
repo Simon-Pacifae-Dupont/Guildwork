@@ -13,6 +13,8 @@
 
 **[simon-pacifae-dupont.github.io/Guildwork/fr/](https://simon-pacifae-dupont.github.io/Guildwork/fr/)** : la même chose, sur une seule page.
 
+**Les règles sur une page.** Onze règles de travail, à coller telles quelles dans les instructions d'un agent IA : [RULES.fr.md](RULES.fr.md). Le reste du dépôt dit d'où elles viennent.
+
 **Vous ne développez pas ?** La même discipline (un contrat avant, un témoin pendant, un bilan après, et un lanceur qui refuse de démarrer ce qui n’est pas en règle) tient aussi bien un cabinet, une agence ou un service client. [Cette entrée est sur la même page.](https://simon-pacifae-dupont.github.io/Guildwork/fr/#sans-code)
 
 Guildwork est la gouvernance qu'une seule personne a construite, incident après incident, et qui tourne chaque jour pour tenir une équipe

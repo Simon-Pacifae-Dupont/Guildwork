@@ -14,6 +14,8 @@
 **[simon-pacifae-dupont.github.io/Guildwork](https://simon-pacifae-dupont.github.io/Guildwork/)**: the same thing, on one page.
 ([Version française](https://simon-pacifae-dupont.github.io/Guildwork/fr/) of the page and of this README; the seventeen documents are in English.)
 
+**The rules on one page.** Eleven working rules to paste as they are into an AI agent's instructions: [RULES.md](RULES.md) ([en français](RULES.fr.md)). The rest of this repository says where they come from.
+
 **Not a developer?** The same discipline (a contract before, a witness during, a closeout after, and a launcher that refuses to start what isn’t in order) holds a law firm, an agency or a support desk just as well. [That door is on the same page.](https://simon-pacifae-dupont.github.io/Guildwork/#no-code)
 
 Guildwork is the governance one person built, incident by incident, and runs every day to hold a multi-agent AI engineering team on a real product,
