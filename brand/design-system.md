@@ -104,9 +104,11 @@ grounds and inks.
 - **On the phone**, the grain and the glaze are the same. The palette and the
   sheets keep their blur.
 
-A state is said by its 10 px edge, `box-shadow: inset 10px 0 0` in the
-state's hue. It is not a shadow, and it sits on top of the glaze. Under a
-forced-colours theme it falls back to a 10 px `border-left` in `CanvasText`.
+A state is said by its 3 px edge, `box-shadow: inset 3px 0 0` in the
+state's hue, on a row and on a card alike. It is not a shadow, and it sits on
+top of the glaze. It is a scanning aid: the row's title stays the strongest
+thing in it, and the row also says its state in words, or by a shape. Under a
+forced-colours theme it falls back to a 3 px `border-left` in `CanvasText`.
 `--line-amber` stays the site's, because in the Studio amber means a running
 agent and nothing else. For the same reason, in the Studio, Code and Work
 alike, the brand amber `--amber` appears only in the logo and the logotype.
