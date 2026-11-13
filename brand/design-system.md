@@ -347,6 +347,16 @@ same screen at 2 px and at 8–12 px.
 
 A circle stays a circle (an avatar, a dot, a knot on the day's thread).
 
+**What carries a state's 3 px edge has its left corners square** (13
+November 2026, the Product Owner's choice after comparing three shapes,
+each magnified six times beside today's). A state row, a state card and a
+terminal's tab in the Studio's rail have their two left corners square, and
+their right corners keep their role's radius (8 px for a row or a tab,
+12 px for a card). The edge does not move: it stays `inset 3px 0 0` inside
+the 1 px border, so it runs straight over the whole height instead of
+thinning into the corner's arc. An object without an edge keeps four equal
+corners. A row inside a panel is a line and has no radius at all.
+
 ## Size, contrast and reach: one floor for every surface (October 2026)
 
 The site, the demonstrations and the Studio read with the same eyes, so they
