@@ -40,7 +40,7 @@ the ladder is what a new widget reads before it draws anything.
 | Level | Token | Value | Frame | Shadow | Use |
 |---|---|---|---|---|---|
 | ground | `--ground` | `#0B1526` | · | · | the page, and nothing else |
-| surface | `--surface` | `#0A1322`, flat | `--line` `#1D2B44` | `--shadow` | a tile in a grid, a board panel, a list row, a menu. The plain level |
+| surface | `--surface` | `#0A1322`, flat | `--line` `#1D2B44` | `--shadow` | a tile in a grid, a board panel, a row standing alone, a menu. The plain level |
 | card | `--card` | gradient 168°: `#1B2434` → `#0F1929` at 55 % → `#0A1322` | `--line` | `--shadow` | anything the eye should land on as an object: a figure, an offer, a door, a question, the chart |
 | card-lead | `--card-lead` | gradient 168°: `#232C3B` → `#121C2D` at 52 % → `#0A1322` | `--line-amber` `#6E5330` | `--shadow-lift` | the one object of a section that is chosen or featured, at most one per section |
 | strip | `--strip` | `#14223A`, flat | · | · | a header band inside a card, a hover, a selected control, a tooltip |
@@ -51,6 +51,14 @@ value, so a card lifts at its top-left and sits down at its bottom-right
 without ever leaving the navy family. Two shadows only: `--shadow`
 (`0 1px 2px rgba(0,0,0,.35), 0 16px 34px -22px rgba(0,0,0,.8)`) and
 `--shadow-lift` (`0 2px 12px rgba(0,0,0,.5), 0 26px 64px -34px rgba(0,0,0,.9)`).
+
+**A row inside a panel is a line, not a level.** The panel is already the
+surface. Its rows take no fill and no frame of their own. A `--line`
+hairline parts them, a row carries its state's 3 px edge, and `--strip`
+marks the hover. A row is framed only while it is selected, so the one
+framed thing on a screen is the one chosen. A row that stands alone,
+outside any panel, stays *surface*. Boxes inside a box say nothing the
+panel does not already say.
 
 The board sits on the same ladder: its panels are *surface* with a
 workstream frame, its header bands are *strip*, its decision card is
@@ -186,6 +194,12 @@ in red and `9 landed` in green says more than a board with neither. Green
 is the state that resolves the tension red creates, and a bar that shows
 red without green leaves the reader holding it.
 
+Where a sentence already says the day (the Studio's *En bref*), the bar
+may be written as one line of counts instead of tiles. Each count is in
+its state's hue, in the same order, zeros included, parted by a middle
+dot in `--ink-2`. The rule is the same; only the tiles' boxes go. Each
+count starts its thread as a tile does.
+
 A demonstration also shows the hand. The frozen board cannot click, so it
 draws the pointer on the confirm, the button pressed, and a green ring at
 the tip: what the reader would do, and what colour it leads to. The image
@@ -227,8 +241,9 @@ Leaving it, pressing Escape, or tapping elsewhere restores the surface.
 
 What a thread is depends on where you start:
 
-- from a **counter tile**: every object in that state (hover *for you*
-  and only what is owed to you stays readable);
+- from a **counter**, a tile or a count in a line of counts: every
+  object in that state (hover *for you* and only what is owed to you
+  stays readable);
 - from a **row, card or process**: every object that shares one of its
   numbers (`#131` lights `PR #133` because the row says *delivers PR
   #133*), plus the counter tile of its state;
