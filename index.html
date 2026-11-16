@@ -156,6 +156,7 @@
     background:var(--card);box-shadow:var(--shadow-lift)}
   .canvas-frame a,.board-frame a{display:block;position:relative;text-decoration:none;padding-bottom:58px;background:var(--surface)}
   .canvas-frame a img,.board-frame a img{display:block}
+  .canvas-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0B1526}
   .canvas-frame a::after,.board-frame a::after{content:attr(data-action);position:absolute;right:14px;bottom:12px;padding:9px 13px;
     border:1px solid rgba(245,196,107,.62);border-radius:999px;background:rgba(7,13,24,.9);color:var(--amber-2);
     font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);font-weight:500;letter-spacing:.03em;
@@ -1088,11 +1089,11 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
   <h2>Where this is going</h2>
   <p>Most of what was still moving at launch has now reached the kit. What moves today is the place where the work is run.</p>
   </div>
-  <div class="nx" style="--n:4;--split:calc(62.5% + 18px)">
+  <div class="nx" style="--n:4;--split:100%">
     <div class="nx-it st-landed"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In the kit</span><b>The kit</b><p>Contracts, forms, taxonomy and the specification of the tools. Version 1.0 since 5 September 2026.</p></div>
     <div class="nx-it st-landed"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In the kit</span><b>A watcher that routes</b><p>Every two minutes it reads authorised events and fresh host readings without starting a model. Since 18 September 2026 it also receives the armed mission, delivers the canonical contract and wakes the named seat, without inheriting any authority.</p></div>
     <div class="nx-it st-landed"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In the kit</span><b>The same seven states on every board</b><p>Running, holding the screen, next, for you, landed, broken, expired, whatever the board follows. The names adapt to a project; the positions and the hues do not.</p></div>
-    <div class="nx-it st-running"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">In progress</span><b>Guildwork Studio</b><p>One application for the whole workspace: the one decision that is yours, and the register of everything that left in your name. This is where the board becomes the control.</p></div>
+    <div class="nx-it st-landed"><span class="nx-dot" aria-hidden="true"></span><span class="nx-badge">Version 1</span><b>Guildwork Studio</b><p>One application to steer your coding agents: what waits on you first, every mission from request to delivery, each agent's terminal, and the same on your phone. In daily use on my own workstation since 28 October 2026.</p></div>
   </div>
 </section>
 
