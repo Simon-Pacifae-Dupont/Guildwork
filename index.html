@@ -11,6 +11,7 @@
 <meta property="og:url" content="https://simon-pacifae-dupont.github.io/Guildwork/">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://simon-pacifae-dupont.github.io/Guildwork/">
 <link rel="alternate" hreflang="en" href="https://simon-pacifae-dupont.github.io/Guildwork/">
 <link rel="alternate" hreflang="fr" href="https://simon-pacifae-dupont.github.io/Guildwork/fr/">
 <link rel="alternate" hreflang="x-default" href="https://simon-pacifae-dupont.github.io/Guildwork/">
@@ -512,6 +513,12 @@ svg.tl .tk,svg.tl .mk,svg.tl .lb{font-size:calc(var(--fs-xs) * var(--tl-k,1))}
      (the title left, its introduction beside it) and every other section sits on a band of --surface. */
   /* Simon's rule (24 September 2026): a scrollbar appearing never shifts the page */
   html{scrollbar-gutter:stable}
+  .offer .after{margin:10px 0 0;font-size:var(--fs-xs);color:var(--ink-2);max-width:none}
+  .note.founder{margin:0 0 var(--gap-para);max-width:var(--measure)}
+  .note.founder strong{color:var(--amber-2);font-weight:500}
+  .track-intro .cta{margin-top:18px}
+  /* an offer reached by its address lands below the sticky header (68 px desktop, 75 px phone) */
+  .offer[id],.feat[id]{scroll-margin-top:92px}
   nav.menu{scrollbar-gutter:stable}
   .hero-copy{display:contents}
   .hero-top{row-gap:0;align-items:start}
@@ -726,7 +733,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <a class="switch" href="#no-code" data-track="code"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>Without code →</a>
     <a class="switch" href="#code" data-track="nocode"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg>With code →</a>
     <p class="menu-h">Contact</p>
-    <a class="ic cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>Book 30 minutes</a>
+    <a class="ic cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>Book the free 30-min call</a>
     <a class="ic" href="mailto:simon.pacifae.dupont@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.5L4.6 7H19.4L12 12.5zM4 9.2V17h16V9.2l-8 6-8-6z"/></svg>simon.pacifae.dupont@gmail.com</a>
     <a class="ic" href="https://www.linkedin.com/in/simon-pacifae-dupont/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>LinkedIn</a>
     <a class="ic" href="https://github.com/Simon-Pacifae-Dupont/Guildwork"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>GitHub: read the kit</a>
@@ -739,7 +746,7 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
   <div class="hero-top"><div class="hero-copy">
   <p class="eyebrow">AI-agent orchestration · free kit (MIT) · hands-on help</p>
   <h1>Put AI agents to work <em>and keep the last word<span class="stop">.</span></em></h1>
-  <p class="lede"><strong>Guildwork is a discipline built one incident at a time, and upgraded by every new one.</strong> It runs today on three pieces of real software at fifty merges a day, scales with the size of the agent team, and holds a law firm, an agency or a support desk just as well.</p>
+  <p class="lede"><strong>Guildwork is a discipline built one incident at a time, and upgraded by every new one.</strong> Your AI agents take the work that repeats, you keep only the decisions, and you know at any moment what they delivered, refused, or are waiting on you for. In a software team as much as in a law firm, an agency or a support desk.</p>
   <p class="lede">The kit is public and free. Installing it where you work is my job.</p>
   </div>
    <p class="figs-cap">Four pieces, placed by the agents on every task. The fifth is yours.</p>
@@ -757,10 +764,9 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
     <span class="try-go">Start the day &rarr;</span>
   </a>
   <div class="cta">
-    <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Book 30 minutes</a>
-    <a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Read the kit</a>
+    <a class="btn primary" href="https://cal.com/simon-pacifae-dupont/30min">Book the free 30-min call</a>
   </div>
-  <p class="note">Measured on 9 September and 20 October 2026 · every figure on this page is real</p>
+  <p class="note" data-track="nocode">The call is free. The diagnostic that follows costs €190 excl. VAT, refunded if the document holds nothing you can use.</p>
   <figure class="piece" id="piece">
     <svg viewBox="-6 -6 328 328" role="img" aria-label="The Guildwork symbol: four ivory pieces placed by the agents, and one amber piece, yours.">
         <rect class="t" style="--d:0.15s" x="80" y="0" width="76" height="76"/>
@@ -788,13 +794,13 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 <section id="doors" class="wrap doors" aria-label="Two doors, one model. Pick yours">
   <p class="eyebrow">Two doors, one model. Pick yours</p>
   <div class="door-grid">
-    <a class="door" href="#code" data-go="code" aria-pressed="false">
+    <a class="door" role="button" href="#code" data-go="code" aria-pressed="false">
       <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>You have code</p>
       <h3>A team, one repository, agents crowding into it</h3>
       <p>Claude Code, Codex CLI, Grok or others, on code that matters. The launcher that refuses, the witness, the closeout, the board, and thirty-eight days of measured numbers.</p>
       <span class="go" data-off="Read this door →" data-on="You are reading this door"></span>
     </a>
-    <a class="door" href="#no-code" data-go="nocode" aria-pressed="false">
+    <a class="door" role="button" href="#no-code" data-go="nocode" aria-pressed="false">
       <p class="tag"><svg class="i" aria-hidden="true"><use href="#i-office"/></svg>You have no code</p>
       <h3>A company, its processes, and AIs already at work</h3>
       <p>A law firm, an agency, a restaurant, a support desk. What you could already hand to an AI, what it would give you back in hours, and the first process under contract within a week.</p>
@@ -807,6 +813,12 @@ document.documentElement.dataset.track=(t==='nocode')?'nocode':'code';})();
 
 <div class="track" id="track-code" data-track="code">
 <hr class="rule">
+
+<section class="wrap track-intro" aria-label="The discipline in production">
+  <p class="lede">Guildwork runs today on three pieces of real software at fifty merges a day, and scales with the size of the agent team. The kit that describes it is public, under the MIT licence.</p>
+  <div class="cta"><a class="btn ghost" href="https://github.com/Simon-Pacifae-Dupont/Guildwork">Read the kit</a></div>
+  <p class="note">Measured on 9 September and 20 October 2026 · every figure on this page is real</p>
+</section>
 
 <section id="problem" class="wrap">
   <div class="sec-head">
@@ -1112,6 +1124,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
   <h2>What adopting it looks like with help</h2>
   <p>The three tools are specified precisely enough to audit or re-implement, and they are not shipped. Installing this on a repository, adapting the vocabulary to a team's own seats and workstreams, measuring the capability table on their machines, writing the tools against their harnesses, and running the first two weeks of missions alongside them: that is the work, and it is the work I do.</p>
   </div>
+  <p class="note founder"><strong>Founding client, two places.</strong> The first two clients, across all offers, get 40% off their first engagement (here, the governance audit), in exchange for a case study published under their name and a testimonial.</p>
   <div class="pricebar" aria-label="The three prices"><a href="#off-audit"><span>Audit<i>2 days</i></span><b>€2 500</b></a><a href="#off-install"><span>Install<i>2 weeks</i></span><b>€12 000</b></a><a href="#off-seat"><span>Architect<i>monthly</i></span><b>€3 500</b></a></div>
   <div class="offers">
     <div class="offer lead" id="off-audit">
@@ -1128,7 +1141,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
         <li>a written report your team keeps, whatever happens next</li>
       </ul>
       <p class="price">€2 500 · fixed price<small>Deducted from the installation if you go on.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Governance%20audit">Book 30 minutes<span>→</span></a>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Governance%20audit">Book the free 30-min call<span>→</span></a>
     </div>
     <div class="offer" id="off-install">
       <p class="tag">The install</p>
@@ -1143,7 +1156,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
         <li>the findings register opened on day one, ruled on with you until the last</li>
       </ul>
       <p class="price">€12 000 · fixed price<small>For one repository and up to four seats; beyond that, the audit sets the figure. Remote, or on site in Île-de-France.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Governance%20installed">Book 30 minutes<span>→</span></a>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Governance%20installed">Book the free 30-min call<span>→</span></a>
     </div>
     <div class="offer" id="off-seat">
       <p class="tag">After</p>
@@ -1158,7 +1171,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
         <li>a monthly written reading of what the numbers say</li>
       </ul>
       <p class="price">€3 500 / month<small>Three months minimum, then monthly. Extra day: €1 200.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Standing%20architect%20seat">Book 30 minutes<span>→</span></a>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Standing%20architect%20seat">Book the free 30-min call<span>→</span></a>
     </div>
   </div>
 
@@ -1280,6 +1293,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
   <p>Most companies I meet badly underestimate what they could hand over, and overestimate what they would have to buy to do it. So we start by looking at your real work: what can be handed over right now, what that gives you back in hours, and what must stay in human hands. Nothing to buy, and the document stays with you whatever happens next.</p>
   </div>
   <p class="note">One question first: this work, do you want to do it faster yourself, or stop doing it at all? Faster yourself: <a href="#off-kit">the 48-hour AI kit</a>. Stop doing it: the diagnostic, then the scoping day and the first agent.</p>
+  <p class="note founder"><strong>Founding client, two places.</strong> The first two clients, across all offers, get 40% off their first engagement (the scoping day or the first agent), in exchange for a case study published under their name and a testimonial.</p>
   <div class="pricebar four" aria-label="The four prices"><a href="#off-diagnostic"><span>Diagnostic<i>1 hour</i></span><b>€190</b></a><a href="#off-cadrage"><span>Scoping<i>1 day</i></span><b>€1 200</b></a><a href="#off-premier"><span>First agent<i>1 week</i></span><b>€4 500</b></a><a href="#off-suivi"><span>Follow-up<i>monthly</i></span><b>€1 200</b></a></div>
   <div class="offers">
     <div class="offer lead span" id="off-diagnostic">
@@ -1295,7 +1309,8 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
           <li>the price of the installation, <em>line by line</em></li>
         </ul>
         <p class="price">€190 excl. VAT · fixed price<small>Deducted from the scoping day if you sign it within 30 days. Refunded if the document holds nothing you can use.</small></p>
-        <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=One-hour%20diagnostic">Book 30 minutes<span>→</span></a>
+        <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=One-hour%20diagnostic">Book the free 30-min call<span>→</span></a>
+        <p class="after">Then the one-hour diagnostic: €190 excl. VAT, refunded if nothing in it is usable.</p>
       </div>
     </div>
     <div class="offer" id="off-cadrage">
@@ -1310,7 +1325,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
         <li>a document your team keeps, whatever happens next</li>
       </ul>
       <p class="price">€1 200 excl. VAT · fixed price<small>Deducted from the first agent if you sign it within 30 days.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Scoping%20day">Book 30 minutes<span>→</span></a>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=Scoping%20day">Book the free 30-min call<span>→</span></a>
     </div>
     <div class="offer" id="off-premier">
       <p class="tag">The install</p>
@@ -1325,7 +1340,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
         <li>the process measured before and after: what it cost in hours, what it costs now</li>
       </ul>
       <p class="price">€4 500 excl. VAT · fixed price<small>For one process and one team; the second is priced at the scoping day. Signed within 30 days of the scoping day, it deducts that day's €1 200. On site in Île-de-France, or remote.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=First%20agent%20under%20contract">Book 30 minutes<span>→</span></a>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=First%20agent%20under%20contract">Book the free 30-min call<span>→</span></a>
     </div>
     <div class="offer" id="off-suivi">
       <p class="tag">After</p>
@@ -1340,7 +1355,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
         <li>a written reading, every month, of what the agents did, and refused</li>
       </ul>
       <p class="price">€1 200 excl. VAT / month<small>Three months minimum, then monthly. Extra day: €1 200 excl. VAT.</small></p>
-      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=One%20day%20a%20month">Book 30 minutes<span>→</span></a>
+      <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=One%20day%20a%20month">Book the free 30-min call<span>→</span></a>
     </div>
   </div>
   <div class="offers">
@@ -1358,7 +1373,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
           <li>a one-page guide and a short getting-started video</li>
         </ul>
         <p class="price">€390 · launch price<small>For the first five clients, then €490. VAT not applicable. Refunded if none of the three tasks is of use to you within seven days. On the tool you already use, with no new subscription.</small></p>
-        <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=48-hour%20AI%20kit">Book 30 minutes<span>→</span></a>
+        <a class="go" href="https://cal.com/simon-pacifae-dupont/30min?notes=48-hour%20AI%20kit">Book the free 30-min call<span>→</span></a>
       </div>
     </div>
   </div>
@@ -1399,7 +1414,7 @@ Mission #118: #118 Dashboard tiles keep their last reading while the device brid
       <p data-track="code">I am Simon Dupont. I run the agent team above, whose seats come and go with the work, wrote every rule in this kit the expensive way, and I install it on other people's repositories. The fastest thing you can do is take thirty minutes and describe your setup. I will tell you which of the four failures you already have.</p>
       <p data-track="nocode">I am Simon Dupont. The fastest thing you can do is take thirty minutes and describe what your staff have AIs do today. I will tell you which of the three questions is already costing you something.</p>
       <div class="lines">
-        <a class="cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>Book 30 minutes</a>
+        <a class="cal" href="https://cal.com/simon-pacifae-dupont/30min"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3V2h-2v2H9V2H7zm12 6v11H5V8h14z"/></svg>Book the free 30-min call</a>
         <a href="mailto:simon.pacifae.dupont@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.5L4.6 7H19.4L12 12.5zM4 9.2V17h16V9.2l-8 6-8-6z"/></svg>simon.pacifae.dupont@gmail.com</a>
         <a href="https://www.linkedin.com/in/simon-pacifae-dupont/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>linkedin.com/in/simon-pacifae-dupont</a>
         <a href="https://github.com/Simon-Pacifae-Dupont"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>github.com/Simon-Pacifae-Dupont</a>
@@ -1433,15 +1448,19 @@ if(mq.addEventListener)mq.addEventListener('change',list);})();
 </script>
 <script>
 (function(){var root=document.documentElement,K='guildwork-track';
-function fromHash(h){h=(h||'').replace(/^#/,'');if(/^(no-code|sans-code|nocode|questions|situations|offres|offers)$/.test(h))return 'nocode';if(/^(code|problem|model|refusal|board|numbers|kit|work)$/.test(h))return 'code';return null;}
+/* the track an address belongs to: a named entry, or the track that holds the anchor (an offer, a section) */
+function fromHash(h){h=(h||'').replace(/^#/,'');if(!h)return null;if(/^(no-code|sans-code|nocode|offers)$/.test(h))return 'nocode';if(h==='code')return 'code';
+var el=document.getElementById(h),t=el&&el.closest('[data-track]');return t&&t!==root&&/^(code|nocode)$/.test(t.dataset.track)?t.dataset.track:null;}
+function reach(now){var id=location.hash.replace(/^#/,'');if(!id||/^(code|no-code|sans-code|nocode)$/.test(id))return;var el=document.getElementById(id);if(el&&el.offsetParent!==null)el.scrollIntoView(now===true?{behavior:'instant'}:undefined);}
 function apply(t,scroll){root.dataset.track=t;try{localStorage.setItem(K,t)}catch(e){}
 document.querySelectorAll('.door').forEach(function(d){d.setAttribute('aria-pressed',d.dataset.go===t?'true':'false');});
 if(scroll){var el=document.getElementById('doors');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}}
-apply(root.dataset.track||'code',false);
+var first=fromHash(location.hash);apply(first||root.dataset.track||'code',false);
+/* a direct link to an anchor inside a track: open that track, then go to the anchor (the browser could not, it was hidden) */
+if(first){reach(true);window.addEventListener('load',function(){reach(true);});}
 document.querySelectorAll('.door').forEach(function(d){d.addEventListener('click',function(e){e.preventDefault();history.replaceState(null,'',d.getAttribute('href'));apply(d.dataset.go,true);});});
 document.querySelectorAll('nav a.switch').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();history.replaceState(null,'',a.getAttribute('href'));apply(fromHash(a.getAttribute('href')),true);});});
-window.addEventListener('hashchange',function(){var n=fromHash(location.hash);if(n&&n!==root.dataset.track){apply(n,false);
-var id=location.hash.replace(/^#/,'');var el=document.getElementById(id);if(el&&!/^(code|no-code|sans-code|nocode)$/.test(id))el.scrollIntoView();}});
+window.addEventListener('hashchange',function(){var n=fromHash(location.hash);if(n&&n!==root.dataset.track){apply(n,false);reach();}});
 })();
 </script>
 <script>
